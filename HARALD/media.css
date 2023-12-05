@@ -1,0 +1,444 @@
+:root {
+    --main-color: rgb(232,0,0);
+    --secondary-color: white;
+    --whitesmoke:whitesmoke;
+  }
+@media screen and (min-width:1920px) {
+    .name {
+        color: magenta;
+        font-size: 150px;
+    }
+    #about .swiper {
+        width: 1200px;
+    }
+
+    .box {
+        width: 700px;
+        height: 700px;
+    }
+    .projectbox img  {
+        width: 1200px;
+    }
+    #duoklakk .boxright {
+        width: auto;
+    }
+    .youtube {
+        width: 800px;
+        height: 450px;
+    }
+    #kontakt img {
+        width: 1000px;
+    }
+    #kontakt h2 {
+        font-size: 150px;
+        padding-bottom: 20px;
+    }
+    #kontakt .boxright{
+        font-size:40px;
+    }
+
+  }
+  @media screen and (min-width:1024px) and (max-width:1200px) {
+    .name {
+        font-size: 130px;
+        color: orange;
+    }
+    .column {
+        flex-direction: column;
+        align-items: center;
+    }
+    #about .swiper {
+        width: 900px;
+    }
+
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .projectbox{
+        flex-direction: column;
+    }
+    .projectbox img  {
+        width: 1000px;
+    }
+    #duoklakk .boxright {
+        width: auto;
+    }
+    .news-column {
+        width: calc(50% - 20px);
+    }
+    .news-column h2 {
+        font-size: 40px;
+    }
+
+    .news-column p {
+        font-size: 25px;
+    }
+    .news-image {
+        height: 700px;
+    }
+    .youtube {
+        width:1000px;
+        height:562.5px;
+    }
+    .spotify {
+        width: 1000px;
+    }
+    #kontakt .boxright{
+        font-size:35px;
+    }
+    .copyright p {
+        font-size: 20px;
+    }
+  }
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+    
+    .name {
+        font-size: 130px;
+        color: red;
+    }
+    .instrument {
+        font-size: 50px;
+    }
+    .column {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .box {
+        width: 400px;
+        height: 400px;
+        margin: 10px;
+    }
+    .projectbox{
+        flex-direction: column;
+    }
+    .projectbox img  {
+        width: 800px;
+    }
+    #duoklakk .boxright {
+        width: auto;
+    }
+    .youtube {
+        width:800px;
+        height:450px;
+    }
+    .spotify {
+        width: 800px;
+    }
+    .news-column {
+        width: calc(100% - 20px);
+    }
+    .news-column h2 {
+        font-size: larger;
+    }
+    .news-image {
+        height: 300px;
+    }
+    #kontakt img {
+        width: 700px;
+    }
+    
+
+}
+@media screen and (min-width:480px) and (max-width:768px) {
+
+    .name {
+        font-size: 110px;
+        color:  blue;
+    }
+    .instrument {
+        font-size: 40px;
+
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        height: 50px;
+    }
+    .logo {
+        margin-right: 15px;
+        padding: 15px;
+        font-size: 20px;
+    }
+
+
+    .vertical,
+    .horizontal {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        display: none;
+        padding-top: 0;
+    }
+
+    .horizontal {
+        margin-bottom: 20px;
+    }
+    .toggle {
+        display: block;
+        right: 15px;
+        top: 15px;
+    }
+
+    .vertical li,
+    .horizontal li {
+        font-size: 70px;
+        font-weight: bold;
+    }
+    .vertical li a::after,
+    .horizontal li a::after {
+        content: "";
+        width: 0;
+        height: 3px;
+        padding-top: 2px;
+        background-color:var(--main-color) ;
+        margin: auto;
+        display: block;
+    }
+    .vertical li a:hover::after,
+    .horizontal li a:hover::after{
+        width: 100%;
+        transition: width 0.5s linear;
+        margin-top: 8px;
+    }
+    .vertical.active,
+    .horizontal.active {
+        display: flex;
+        visibility: visible;
+    }
+    .title {
+        padding-left: 50px;
+    }
+
+    .column {
+        flex-direction: column;
+        align-items: center;
+    }
+    #about .swiper {
+        width: 500px;
+    }
+
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+    .spotify {
+    width: 500px;
+    }
+    .youtube {
+        width:500px;
+        height:281.25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .projectbox{
+        flex-direction: column;
+    }
+    .news-column {
+        width: calc(100% - 20px);
+    }
+    .news-column h2 {
+        font-size: larger;
+    }
+    .news-image {
+        height: 200px;
+    }
+    #solo .boxright,
+    #duovia .boxleft,
+    #duovia .boxright {
+        height: auto;
+    }
+    #duovia .review li {
+        padding: 10px;
+    }
+
+    #duoklakk .boxright {
+        width: auto;
+    }
+
+    .projectbox img {
+        width: 500px;
+    }
+    .boxright {
+        padding: 30px;
+    }
+    .readmore-title{
+        font-size: 30px;
+        font-weight:bold;
+        padding-top: 150px;
+        padding-left: 80px;
+        color: var(--main-color);
+        text-transform: uppercase;
+    }
+   .search_box:hover input {
+        width: auto;
+        height: 50px;
+    }
+    #triofussissimo .title,
+    #orchester .title,
+    #unterricht .title {
+        font-size: 70px;
+    }
+   #hof .title,
+    #discographie .title {
+        font-size: 65px;
+    }
+
+    #kontakt img {
+        width: 500px;
+    }
+    #kontakt h2 {
+        font-size: 100px;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .home-info {
+        padding-left: 20px;
+
+    }
+    .name {
+        font-size: 80px;
+        color:  brown;
+    }
+    .instrument {
+        font-size: 30px;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        height: 50px;
+    }
+    .logo {
+        margin-right: 15px;
+        padding: 15px;
+        font-size: 20px;
+    }
+    .vertical,
+    .horizontal {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        display: none;
+        padding-top: 0;
+    }
+    .horizontal {
+        margin-bottom: 20px;
+    }
+    .toggle {
+        display: block;
+        right: 15px;
+        top: 15px;
+    }
+    .vertical li,
+    .horizontal li {
+        font-size: 50px;
+        font-weight: bold;
+    }
+    .vertical li a::after,
+    .horizontal li a::after {
+        content: "";
+        width: 0;
+        height: 3px;
+        padding-top: 2px;
+        background-color:var(--main-color) ;
+        margin: auto;
+        display: block;
+    }
+    .vertical li a:hover::after,
+    .horizontal li a:hover::after{
+        width: 100%;
+        transition: width 0.5s linear;
+        margin-top: 8px;
+    }
+    .vertical.active,
+    .horizontal.active {
+        display: flex;
+        visibility: visible;
+    }
+    .column {
+        flex-direction: column;
+        align-items: center;
+    }
+    #aboutnew .swiper{
+        width: 400px;
+    }
+ 
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .box {
+        width: 400px;
+        height: 400px;
+    }
+    .spotify {
+    width: 370px;
+    }
+    .youtube {
+        width:350px;
+        height:208.125px;
+    }
+
+    .projectbox{
+        flex-direction: column;
+    }
+    .news-column {
+        width: calc(100% - 20px);
+    }
+    .news-column h2 {
+        font-size: larger;
+    }
+    .news-image {
+        height: 200px;
+    }
+    #duovia .boxleft,
+    #duovia .boxright {
+        height: auto;
+    }
+    #duoklakk .boxright {
+        width: auto;
+    }
+    #duovia .review li {
+        padding: 10px;
+    }
+    .projectbox img {
+        width: 350px;
+    }
+    .readmore-title{
+        font-size: 30px;
+        font-weight:bold;
+        padding-top: 150px;
+        padding-left: 80px;
+        color: var(--main-color);
+        text-transform: uppercase;
+    }
+   .search_box:hover input {
+        width: 100px;
+        height: 50px;
+    }
+    #termine .title,
+    #triofussissimo .title,
+    #orchester .title,
+    #discographie .title {
+        font-size: 50px;
+        padding-left:30px;
+    }
+    #lesson .title,
+    #kontakt .title,
+    #projekte .title {
+        font-size: 75px;
+        padding-left:30px;
+    }
+    #kontakt img {
+        width: 400px;
+    }
+    #kontakt h2 {
+        font-size: 90px;
+    }
+}

@@ -1,0 +1,841 @@
+:root {
+    --main-color: rgb(232,0,0);
+    --secondary-color: white;
+    --whitesmoke:whitesmoke;
+  }
+  
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: Helvetica;
+    box-sizing: border-box;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+.page {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+.bold {
+    font-weight: bold;
+}
+
+.title {
+    font-size: 90px;
+    font-weight:bold;
+    padding-top: 150px;
+    padding-left: 80px;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+.theme {
+    font-size: 30px;
+    font-weight:bold;
+    padding: 10px 100px;
+}
+.info {
+    font-size: 25px;
+    font-weight:lighter;
+    padding: 10px 100px;
+    padding-bottom: 20px;
+}
+.info a ,
+.concert-info a {
+    text-decoration: none;
+    color: black;
+}
+
+.info a:hover {
+    color: var(--main-color);
+}
+.year {
+    padding: 10px 100px;
+}
+
+
+/* header */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-color);
+    width: 100vw;
+    font-size: 25px;
+    font-weight:lighter;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top:0;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+}
+nav a:hover {
+    text-decoration: none;
+    color: var(--main-color);
+}
+.logo {
+    font-weight: bold;
+    font-size: 25px; 
+    transition: color 1s;
+    margin-right: 50px;
+    padding: 50px;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.horizontal {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.horizontal li {
+    margin-right: 15px;
+
+}
+nav a[href="#kontakt"] {
+margin-right:50px;  
+}
+#mediaList {
+    position: absolute;
+    top: 100%; /* Position the mediaList below the media link */
+    display: none;
+}
+#mediaList li {
+    display: inline-block;
+    top: -50px;
+    position: relative;
+}
+.toggle {
+    display: none;
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    font-size: 25px;
+}
+/* header end */
+
+/* home */
+#home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background-image:url(/image/Harald_Klangmanufaktur-28.png);
+    background-size: contain;
+    position: relative;
+}
+.home-info {
+    padding-top: 400px;
+    padding-left: 50px;
+    animation: slide 2s ease-out;
+}
+@keyframes slide {
+    from {
+        opacity:0 ;
+    }
+    to {
+        opacity:1;
+    }
+}
+.name {
+    font-size: 140px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.instrument {
+    font-size: 50px;
+    text-decoration: underline;
+    font-weight: 100;
+
+    color: white;;
+}
+
+.disappear-word {
+    animation: fade 1s infinite;
+}
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+#play {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* about */
+
+#about {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+
+.column {
+    display: flex;
+    align-items: center;
+}
+.en {
+    color: black;
+
+}
+.de {
+    color: black;
+
+}
+.check {
+    position: relative;
+    width: 60px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+.check:before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 25px;
+    background: black;
+    border-radius: 25px;
+}
+.check:checked:before {
+    background-color: var(--main-color);
+}
+.check:after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: 0.5s;
+    box-sizing: border-box;
+}
+.check:checked:after {
+    left: 35px;
+    border: 2px solid black;
+}
+.check:checked ~ .content.content-en {
+    display: none;
+}
+.check:checked ~ .content.content-de {
+    display: block;
+}
+.text-column {
+    flex: 1;
+    text-align: justify;
+    padding: 40px;
+    font-size: 25px;
+    font-weight:lighter;
+}
+.content {
+    display: none;
+}
+.content.content-en {
+    display: block;
+    padding-top: 20px;
+}
+.content.content-de {
+    padding-top: 20px;
+}
+
+.photo-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#about a {
+    text-decoration: none;
+    color: black;
+}
+#about a:hover {
+    color: var(--main-color);
+}
+#about .swiper .mySwiper{
+    position: relative;
+    margin: auto;
+    width: auto;
+    height:auto;
+
+}
+#about .swiper {
+    width: 700px;
+    height: auto;
+  }
+#about .swiper-slide {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#about .swiper-pagination .swiper-pagination-bullet {
+    width: 15px;
+    height:15px;
+    background:white;
+    opacity: 1;
+    margin-bottom: 30px;
+}
+#about .swiper-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--main-color);
+}
+
+#about .download {
+    display: flex;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color:black;
+    color: #ffffff;
+    margin-top: 10px;
+    width: 180px;
+  }
+#about .download :hover {
+    background-color: var(--main-color);
+  }
+
+/*about end*/
+
+/* news */
+
+#news {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 100px 20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.news-column {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-weight:lighter;
+    font-size: 20px;
+    padding: 20px;
+
+}
+.news-image {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+#news .date {
+    color: #888;
+    padding: 5px 0px;
+}
+
+.read-more {
+    display: block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    text-align: right;
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.readmore-title {
+    color: var(--main-color);
+    font-size: 70px;
+    font-weight: bold;
+    padding-top: 160px;
+    padding-left: 80px;
+    text-transform: uppercase;
+}
+/* news end */
+
+/* termine */
+
+#termine {
+    width: 100vw;
+    height: auto;
+}
+#termine .boxleft{
+    width: 60%;
+}
+#pastevents {
+    margin-bottom: 50px;
+}
+#pastevents .title {
+    color: whitesmoke;
+}
+ .info-container {
+    display: flex;
+}
+select {
+    padding: 10px;
+    font-size: 15px;
+    border: 2px solid black;
+    background-color: #fff;
+    color: #333;
+    appearance: none; /* Remove default arrow in some browsers */
+    -webkit-appearance: none; /* Remove default arrow in older WebKit browsers */
+    -moz-appearance: none; /* Remove default arrow in older Firefox */
+}
+.schedule-info-upcoming,
+.schedule-info,
+.schedule-info2022 {
+    font-size: 20px;
+}
+.schedule-info-upcoming li,
+.schedule-info li,
+.schedule-info2022 li{
+    font-size: 25px;
+    font-weight:lighter;
+    padding: 10px 100px 5px;
+}
+.schedule-info-upcoming .date,
+.schedule-info .date,
+.schedule-info2022 .date{
+    font-weight: bold;
+}
+.schedule-info-upcoming .abgesagt,
+.schedule-info .abgesagt {
+    color: var(--main-color);
+    font-weight: bold;
+    display: inline;
+}
+.info-link {
+    color: black ;
+    text-decoration: none;
+}
+.schedule-info-upcoming a:hover,
+.schedule-info a:hover,
+.schedule-info2022 a:hover {
+    color: var(--main-color);
+}
+
+.schedule-info li:nth-child(3)~ li {
+    display: none;
+}
+
+.calendar-container ul {
+    list-style: none;
+    display: flex;
+}
+.calendar-container li {
+    padding: 0px;
+    font-size: 20px;
+    padding-top: 10px;
+}
+.calendar-container li:nth-child(1){
+    padding-right: 10px;
+}
+.calendar-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+}
+.calendar-icon {
+    margin-right: 10px;
+    font-size: 15px;
+}
+.archive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    width: 180px;
+    height: 52px;
+    text-transform: uppercase;
+    background-color: var(--main-color);
+    margin: 0 auto;
+    border-radius: 30px;
+    transition: all .3s ease-out;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+.archive:hover {
+    background-color: rgba(214, 141, 141, 0.188);
+    color: inherit;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
+
+#search-icon{
+    padding: 10px 100px;
+    cursor: pointer;
+}
+.search_box:hover input {
+    width: auto;
+    height: auto;
+}
+
+.search_box input {
+    width: 0;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    font-weight: 400;
+    background-color: transparent;
+    transition: 0.8s;
+    font-size: 20px;
+}
+/* termine end */
+
+/* projekte */
+#projekte {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#discographie {
+    width: 100vw;
+    height: 100vh;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-content: center;
+    padding: 0px 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.box {
+    width: 450px;
+    height: 450px;
+    background-color: white;
+    margin: 30px;
+    color: white;
+    text-align: center;
+    transition: .3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+.container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img1{
+    object-position: top;
+}
+.img2 {
+    object-position: 63%;
+}
+.img3 {
+    object-position: 60%;
+}
+.img4 {
+    object-position: 22% ;
+}
+.img5{
+    object-position: 70%;
+    filter: grayscale(100%);
+}
+.card-body {
+    width: 100%;
+    height: 100%;
+    bottom: -100%;
+    position: absolute;
+    background:white;
+    font-size: 20px;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s ease;
+    color: black;
+    
+}
+.box:hover .card-body{
+    bottom: 0;
+}
+.card-btn {
+    background: var(--secondary-color);
+    padding: 10px 10px;
+    text-transform: uppercase;
+    outline: none;
+    cursor: pointer;
+    width: 120px;
+    color: var(--main-color);
+}
+.review {
+    font-size: 20px;
+    font-style: italic;
+}
+.review li {
+    padding: 20px;
+}
+.ablumpurchase {
+    text-align: right;
+}
+.ablumpurchase i {
+    color: white;
+    font-size: 35px;
+}
+.ablumpurchase a {
+    display: inline-block;
+    margin-left: 20px;
+    position: relative; 
+  }
+.ablumpurchase a::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+  }
+ .ablumpurchase a:hover::before {
+    opacity: 1;
+  }
+  .youtube {
+    width:560px;
+    height: 315px;
+  }
+  .spotify {
+    width: 560px;
+    padding-top: 20px;
+  }
+.projectbox {
+    display: flex;
+    font-size: 25px;
+    font-weight:lighter;
+    text-align: justify;
+}
+.projectbox img {
+    width: 700px;
+    padding-bottom: 50px;
+}
+.boxright {
+    background-color: var(--main-color);
+}
+.boxleft {
+    background-color: whitesmoke;
+    align-items: center;
+}
+.boxright a,
+.boxleft a {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.boxleft a:hover {
+    color: var(--main-color);
+}
+.boxright a:hover {
+    color:white;
+}
+.boxleft,
+.boxright {
+    width: auto;
+    height: auto;
+    padding: 50px;
+}
+.back {
+    margin-top: 200px;
+    margin-right: 50px; /* Adjust the margin as needed */
+    float: right;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.programm li{
+    text-align: left;
+    padding: 20px;
+}
+#duoklakk .boxright {
+    width: 4000px;
+}
+
+#kontakt {
+    width: 100vw;
+    height: 100vh;
+}
+#kontakt .title {
+    color: #000000;
+}
+#kontakt img {
+    width: 700px;
+}
+#kontakt .boxleft,
+#kontakt .boxright {
+    letter-spacing: 2px;
+    color: white;
+    display: flex;
+    height: auto;
+}
+#kontakt .boxleft {
+    align-items: center;
+    justify-content: center;
+}
+#kontakt .boxright {
+    background-color: #000000;
+    flex-direction: column;
+}
+
+#kontakt .boxright p {
+    padding-top: 8px;
+}
+.contact-name {
+    font-size: 130px;
+}
+.socials {
+    list-style: none;
+    display: flex;
+    margin: 1rem 0 3rem 0;
+}
+
+.socials li {
+    margin-right: 20px;
+
+}
+#kontakt a,
+.socials a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.socials a:hover i {
+    color: var(--main-color);
+    transition: color .4s ease;
+}
+.footer {
+    color: white;
+    font-size: 15px;
+    display: flex;
+    font-weight: light;
+    padding-top: 150px;
+}
+
+.footer a:hover {
+    color: var(--main-color);
+}
+.copyright {
+    font-size: 15px;
+}
+
+#privacypolicy h3 {
+  text-align: center;
+}
+#gallerie {
+	max-width: 1200px;
+    height: auto;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+.swiper .mySwiper{
+    position: relative;
+}
+.swiper {
+    width: auto;
+    height: 750px;
+  }
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:black;
+
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: whitesmoke;
+  }
+
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: whitesmoke;
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+
+.swiper-pagination .swiper-pagination-bullet {
+    width: 15px;
+    height:15px;
+    background:white;
+    opacity: 1;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--main-color);
+}

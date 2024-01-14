@@ -87,7 +87,7 @@ img {
     display: none;
 }
 
-#header .brand h1  {
+#header h1  {
     display: inline-flex;
     margin-right: 30px;
     padding: 40px;
@@ -677,7 +677,6 @@ img {
 	max-width: 1000px;
     height: auto;
     margin: 0 auto;
-
 }
 #media .info {
     padding-left: 80px;
@@ -690,7 +689,6 @@ img {
     justify-items: center; /* Center items horizontally */
     align-items: center; 
     margin-bottom: 100px;
-
 }
 .column {
   width: 350px;
@@ -705,7 +703,6 @@ img {
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
     margin:20px;
-
   }
   .column img:hover {
     opacity: .5;
@@ -1008,7 +1005,6 @@ select {
 #kontakt .container {
 	display: flex;
 }
-
 #kontakt .section-title {
     color: #000000;
 }

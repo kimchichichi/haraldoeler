@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HARALD OELER | accordionist </title>
+  <meta data-vue-meta="1" name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist ">
+  <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="HARALD OELER | accordionist">
+  <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
+  <meta property="og:image" content="https://www.haraldoeler.com/image/slide1.webp">
+  <meta property="og:url" content="https://www.haraldoeler.com/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.haraldoeler.com/">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="media.css">
+  <link rel="stylesheet" href="toggle.css">
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <script  src="app.js"></script>
+  <script  src="header.js"></script>
+<script  src="toggle.js"></script>
+
+</head>
+
+<body>
+<!-- Header -->
+<section id="header">
+    <div class="header container">
+        <div class="brand">
+            <a href="#home" onclick="showPage('home')" data-after="home">
+                <h1>HARALD<span style="color: transparent;">_</span>OELER</h1>
+                <span class="logo">H</span>
+            </a>            
+        </div>
+        
+        <input id="toggle" type="checkbox">
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="nav-bar">
+            <div class="nav-list">
+                <ul class="vertical">
+                    <li><a href="#about" onclick="showPage('about')" data-after="about">about</a></li>
+                    <li><a href="#projekte" onclick="showPage('projekte')" data-after="projekte">projekte</a></li>
+                </ul>
+                <ul class="horizontal">
+                    <li class="noshown"><a href="#about" onclick="showPage('about')" data-after="about">about</a></li>
+                    <li class="noshown"><a href="#projekte" onclick="showPage('projekte')" data-after="projekte">projekte</a></li>
+                    <li><a href="#termine" onclick="showPage('termine')" data-after="termine">termine</a></li>
+                    <li><a href="#news" onclick="showPage('news')" data-after="news">news</a></li>
+                    <li><a href="#unterricht" onclick="showPage('unterricht')" data-after="unterricht">unterricht</a></li>
+                    <li><a href="#discographie" onclick="showPage('discographie')" data-after="discographie">discographie</a></li>                    
+                    <li><a href="#media" onclick="showPage('media')" data-after="media3">media</a></li>
+                    <li><a href="#kontakt" onclick="showPage('kontakt')" data-after="kontakt">kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+  <!-- End Header -->
+
+  <!-- home Section  -->
+  <section id="home">
+    <div class="home container">
+      <div>
+        <h1 class="name">HARALD <br>OELER
+            <span class="disappear-word">_</span><span class="namespan"></span>
+        </h1>
+        <h2 class="instrument">
+            AKKODEONIST & LEHRER & KOMPONIST <i id="play" class="fa-solid fa-circle-play" style="color: #ffffff;"></i>
+        </h2>
+        <audio id="audio">
+            <source src="MarktVonLimoges.mp3" type="audio/mp3">
+        </audio>
+        <script>
+        var audio = document.getElementById("audio");
+        var play = document.getElementById("play");
+
+        play.onclick = function () {
+        if (audio.paused) {
+        audio.play();
+        play.classList.remove("fa-circle-play");
+        play.classList.add("fa-pause-circle", "bouncing");
+        } else {
+        audio.pause();
+        play.classList.remove("fa-pause-circle", "bouncing");
+        play.classList.add("fa-circle-play");
+        }
+        }
+        </script>
+      </div>
+    </div> 
+  </section>
+  <!-- End home Section  -->
+
+  <!-- about Section -->
+  <section id="about" class="page">
+    <div class="about container">
+      <div class="about-top">
+        <h1 class="section-title">About</h1>
+        <div class="text-column">
+            <span class="de">DE </span>
+            <input type="checkbox" class="check">
+            <span class="en">EN</span>
+            <div class="content content-en">
+                <p>Bereits als Jugendlicher ausgebildet in Komposition, Orgel- und Klavierspiel, erhielt Harald Oeler seine entscheidenden musikalischen Impulse von Hans Bogner an der Musikschule Gaggenau. Erste Preise bei nationalen Wettbewerben und die Vorbereitung auf das bevorstehende Musikstudium, waren der Nährboden einer äußerst wertvollen Unterrichtszeit bei Hans Bogner.</p>
+                <br>
+                <p>Nach dem Abitur folgte ein Musikstudium im Hauptfach Akkordeon, zunächst bei Prof Hugo Noth, später bei <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> an der <a href="https://hfm-wuerzburg.de" target="_blank">Hochschule für Musik in Würzburg</a>. Die eindrucksvollen Studienjahre formten einen Musiker, welcher heute in einem breitgefächerten musikalisch-künstlerischen Aufgabenfeld von Jazz, Transkriptionsmusik und zeitgenössischer Musik aktiv ist.</p>
+                <br>
+                <p>Zahlreiche nationale und internationale Wettbewerbserfolge festigten, auf dem Weg zum Meisterklassendiplom, 2008, die Bühnenreife und künstlerische Individualität Harald Oelers. Ein 3. Preis beim 3rd <a href="https://www.npo-jaa.jp/what-s-jaa/" target="_blank">Internationale Accordion Competition JAA Tokio/Japan</a> 2002, ein 2. Preis beim bedeutendsten <a href="https://hauspoz.org/arrasate-accordion-competitions/" target="_blank">internationalen Akkordeonwettbewerb in Arrasate</a> 2007 und ein 1. Preis beim 45. <a href="https://accordion-competition.de/index.html" target="_blank">Internationalen Akkordeonwettbewerb Klingenthal</a> mit dem <a href="https://nachrichten.idw-online.de/2008/06/12/1-preis-bei-internat-akkordeonwettbewerb-fuer-2-musiker-der-hochschule-fuer-musik-wuerzburg" target="_blank">Akkordeonduo Animé</a> 2008, belegen dies eindrucksvoll.</p>
+                <br>  
+                <p>Gefördert wurde Harald Oeler während seines Studiums als Stipendiat der Studienstiftung des <a href="https://www.studienstiftung.de" target="_blank">deutschen Volkes</a> und der <a href="https://livemusicnow.de" target="_blank">Yehudi Menuhin Stiftung „Live Music Now“</a>. Konzerte bei renomierten Klassik- und Jazzfestivals wie dem Heidelberger Frühling, dem Literaturfest Niedersachsen, den Sommerlichen Musiktagen Hitzacker und dem 41. Frankfurter Jazzfestival folgten.</p>
+                <br>  
+                <p>Neben zahlreichen Rundfunkaufnahmen ist sein weitgefächertes künstlerisches Schaffen auf CDs von <a target="_blank" href="https://www.genuin.de/de/0403.php">Genuin</a>, Thorofon, <a target="_blank" href="https://www.oehmsclassics.de">OehmsClassics</a> und Dewey Records dokumentiert.</p>
+                <a class="download" href="VITA_DE.pdf" download="CV_Deutsch.pdf">Deutsch</a>
+            </div>
+            <div class="content content-de">
+                <p>Harald Oeler (* 1977 in Bietigheim-Bissingen) is a german accordionist. 
+                He received his first lessons on the accordion as a six-year-old. After completing organ studies, he received instruction on the accordion from Hans Bogner in Gaggenau, Germany in preparation for conservatory study. After successfully competing in Jugend musiziert and Jugend komponiert competitions, he began studying with Prof. Hugo Noth. He continued his studies with Prof. Stefan Hussong at the Würzburg Musikhochschule in 2001, where, upon completing his performing arts degree (künstlerisches Diplom) with distinction in 2005, he was accepted into the master class. During his studies, Harald Oeler won prizes at national and international competitions, including 3rd Prize at the Third International Accordion Competition JAA Tokyo/ Japan and 2nd Prize at the 2005 German Music Conservatory Competition. Harald Oeler was awarded a scholarship by the German National Merit Foundation and has received support from “Live music now” (Yehudi Menuhin Program for Supporting Young Musicians). Harald Oeler pursues a very active career as a concert artist in Germany and internationally, performing as a soloist and in various ensembles.</p>
+                <a class="download" href="VITA_EN.pdf" download="CV_English.pdf">English</a>
+            </div>
+        </div>
+      </div>
+      <div class="about-bottom">
+        <div class="swiper mySwiper">     
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="image/1.webp" alt="harald_solo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="image/2.webp" alt="harald_orchester">
+                </div>
+                <div class="swiper-slide">
+                    <img src="image/3.webp" alt="fussissimo">
+                </div>
+            </div>
+            <div class="swiper-button-next" style="color: #ffffff;"></div>
+            <div class="swiper-button-prev" style="color: #ffffff;"></div>
+            <div class="swiper-pagination"></div>
+            <div class="autoplay-progress">
+                <svg viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="20"></circle>
+                </svg>
+                <span></span>
+            </div>
+        </div>
+      </div> 
+    </div>  
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
+  </script>
+  <!-- Initialize Swiper -->
+<script>
+    const progressCircle = document.querySelector(".autoplay-progress svg");
+    const progressContent = document.querySelector(".autoplay-progress span");
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          progressCircle.style.setProperty("--progress", 1 - progress);
+          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+      }
+    });
+    
+    </script>
+<!-- End about Section -->
+
+<!-- projekte Section-->
+<section id="projekte" class="page">
+    <div class="projekte-header">
+        <h1 class="section-title">projekte</h1>
+    </div>
+    <div class="projekte container">
+        <div class="projectbox">
+            <div class="box">
+                <img loading="lazy" class="img1" src="image/project1.webp" alt="Project 1">
+                <div class="card-body">
+                    <a class="mehrinfo" onclick="showPage('solo')">
+                        <h2 class="card-title">SOLO</h2>
+                        <p class="card-info">Einzigartige Akkordeonmusik 
+                        <br class="card-info">der Klassik, Neuen Musik und dem Jazz</p>
+                        <br>
+                        <p>mehr infos</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" class="img2" src="image/project5.webp" alt="Project 5">
+                <div class="card-body">
+                    <a class="mehrinfo" onclick="showPage('orchester')">
+                        <h2 class="card-title">ORCHESTER</h2>
+                        <p class="card-info">Solistisches Repertoire mit Orchester</p>
+                        <br>
+                        <p>mehr infos</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" class="img3" src="image/project2.webp" alt="Project 2">
+                <div class="card-body">
+                    <a class="mehrinfo" onclick="showPage('triofussissimo')">
+                        <h2 class="card-title">FUSSISSIMO</h2>
+                        <p class="card-info">Gypsy-Ethno-Jazz Ensemble</p>
+                        <br>
+                        <p>mehr infos</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" class="img4" src="image/project3.webp" alt="Project 3">
+                <div class="card-body">
+                <a class="mehrinfo" onclick="showPage('duovia')">
+                    <h2 class="card-title">DUO ViA!</h2>
+                    <p class="card-info">Transkriptionen aus vier Jahrhunderten</p>
+                    <br>
+                    <p>mehr infos</p>
+                </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" class="img5" src="image/project4.webp" alt="Project 4">
+                <div class="card-body">
+                    <a class="mehrinfo" onclick="showPage('duoklakk')">
+                        <h2 class="card-title">DUO KlAkk!</h2>
+                        <p class="card-info">Resonanzen zwischen Neuer und Alter Musik</p>
+                        <p>neue musik x alte musik</p>
+                        <br>
+                        <p>mehr infos</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img  loading="lazy" class="img6" src="image/project6.webp" alt="Project 6">
+                <div class="card-body">
+                    <a class="mehrinfo" onclick="showPage('hof')">
+                        <h2 class="card-title"> HOFER MUSIKSCENE</h2>
+                        <p class="card-info">Projekte in Hofer Land</p>
+                        <br>
+                        <p>mehr infos</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End projekte Section -->
+
+<section id="solo" class="page">
+    <div class="projekte-header">
+        <a onclick="showPage('projekte'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+        <h2 class="section-title">SOLO</h2>
+    </div>
+    <div class="projekte container">     
+        <div class="projectbox">
+            <div class="col-left">
+                <img loading="lazy" src="image/solo.webp" alt="solo">
+                <p>Künstlerisch bewegt sich Harald Oeler in einem weiten Feld, welches von der (Ur-) Aufführung zeitgenössischer Werke, über die Transkription klassischer Werke für das Akkordeon, bis hin zum Jazz reicht. 
+                <br>
+                <br>Harald Oeler wirkte bei verschiedenen Projekten und Festivals mit, darunter der "<a target="_blank" href="https://www.heidelberger-fruehling.de">Heidelberger Frühling</a>", das "<a target="_blank" href="https://www.vgh-stiftung.de/Projekt/literaturfest-niedersachsen/">Literaturfest Niedersachsen</a>"", die <a target="_blank" href="https://www.musiktage-hitzacker.de/home.html">"Sommerliche Musiktage Hitzacker</a>" der Frankfurter "<a href="https://www.museumskonzerte.de/konzerte/museumssalon-konzerte-in-privaten-raeumen/" target="_blank">MuseumsSalon</a>" und Jazzfestivals wie das "<a target="_blank" href="https://www.br-klassik.de/themen/jazz-und-weltmusik/django-reinhardt-memorial-augsburg-100.html">Django Memorial Augsburg</a>"" und das "<a target="_blank" href="https://www.hr2.de/veranstaltungen/jazzfestival/djf23_veranst_uebersicht_54-jazzfestival-frankfurt-100.html">Frankfurter Jazzfestival</a>"". 
+                <br>
+                <br>Konzertreisen führten Harald Oeler bereits nach China, Korea, Rumänien, Finnland, Schweden, Italien, Österreich, Schweiz und Polen. Zahlreiche CD Produktionen bei <a target="_blank" href="https://www.oehmsclassics.de">OehmsClassics</a>, <a target="_blank" href="https://www.genuin.de/de/0403.php">Genuin</a> und Thorofon/<a target="_blank" href="https://www.bella-musica.de">Bella Musica</a> repräsentieren sein breitgefächertes Konzertleben.</p>
+            </div>
+            <div class="col-right">
+                <div class="solo-top">
+                    <h2>Pictures at an Exhibition</h2>
+                    <p>Modest Mussorgsky - Pictures at an Exhibition
+                    <br>Sofia Gubaidulina - Et expecto</p>
+                </div>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/02LouxvRMRz0bj5etTqFpL?utm_source=generator&theme=0" height="200" class="spotify no-border" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p>The precision of the piano and the suction power of the orchestra – the accordion unites both of these. To put it more precisely, the bayan, played by Harald Oeler, unites them in the most beautiful way. And which work shows this more impressively than Mussorgsky’s Pictures at an Exhibition? Oeler plays these movements in his own, magnificently colourful adaptation. The gnome hisses more angrily than ever and the little chicks flutter and peep their heads off, making it a pure joy for us to hear. Just how broad Oeler’s dynamic spectrum is can be experienced both in the enormous arch-form of the Great Gate of Kiev and in the whirring sound masses and harsh rhythms of <a target="_blank" href="https://en.wikipedia.org/wiki/Sofia_Gubaidulina">Sofia Gubaidulina</a>’s “Et expecto,” the second work on the new GENUIN CD. These are two Russian compositions, two centuries, two styles – an exciting combination, carried along by the drive and long breath of a true virtuoso. </p>
+                <div class="review">
+                    <ul>
+                        <li>"Oeler’s transcription unites the advantages of the original piano version and Ravel’s orchestral adaptation. On the one hand, the accordion offers a homogeneous sound comparable to that of the piano. On the other hand, it has an astounding range of colours and dynamics which one would not normally expect of this underestimated instrument." 
+                        <span class="bold">Nordwest-Radio</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="orchester" class="page">
+    <a onclick="showPage('projekte'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+    <h2 class="section-title">ORCHESTER</h2>
+    <p class="info">Solistisches Repertoire mit Orchester</p>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="image/project5.webp" alt="orchester">
+            <div>
+                <h2>Repertoire</h2>
+                <ul class="programm">
+                    <li>
+                        <span class="bold">Johann Sebastian Bach (1685-1750)</span>
+                        <p>Cembalokonzert d-Moll, BWV 1052</p>
+                        <p>1. Allegro</p>
+                        <p>2. Adagio</p>
+                        <p>3. Allegro</p>
+                    </li>
+                    <li>
+                        <span class="bold">Johann Sebastian Bach (1685-1750)</span>
+                        <p>Konzert für zwei Cembali und Streichorchester, BWV 1061</p>
+                        <p>1. Allegro</p>
+                        <p>2. Adagio Ovvero Largo</p>
+                        <p>3. Fuga</p>
+                    </li>
+                    <li>
+                        <span class="bold">Vaclav Trojan (1907-1983)</span>
+                        <p>„Pohadky“ - „Märchen“ für Akkordeon und Symphonieorchester</p>
+                        <p>1. Der Tanz in das Märchen</p>
+                        <p>2. Die verschlafene Prinzessin</p>
+                        <p>3. Das Zauberkästchen</p>
+                        <p>4. Die verzauberte Prinzessin, der tapfere Ritter und der böse Drache</p>
+                        <p>5. Das ausgelassene Karusell</p>
+                        <p>6. Vom Matrosen mit dem verhexten Schifferklavier</p>
+                        <p>7. Das Märchen von den Akrobaten</p>
+                    </li>
+                    <li>
+                        <span class="bold">Richard Galliano (*1950)</span>
+                        <p>„Opale Concerto" für Akkordeon und Streichorchester</p>
+                        <p>1. Allegro furioso</p>
+                        <p>2. Moderato malinconico</p>
+                        <p>3. Allegro energico (New York Tango)</p>
+                    </li>
+                    <li>
+                        <span class="bold">Astor Piazzolla (1921-1992)</span>
+                        <p>„Ballet-Tango“ für Akkordeon und Streichorchester </p>
+                    </li>
+                    <li>
+                        <span class="bold">Arrangements by: Erhard Cotta</span>
+                        <p>„Philharmonic Gypsy-Swing“ für Jazz-Band (Acc., Git., Db., Dr.) und Symphonieorchester
+                    </li>
+                    <li>
+                        <span class="bold">Ole Schmidt (1928-2010)</span>
+                        <br>„Symphonic Fantasy and Allegro“
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="col-right programm">
+            <li>
+                <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/WPMtnt0PfY0?si=JETDf3kezc6d1KSI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>Richard Galliano | „Opale Concerto" für Akkordeon und Streichorchester</p>
+            </li>
+            <li>
+                <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/WFCRiyENZxk?si=Nd1v95pq2rql1UpH" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                    
+                <p>Johann Sebastian Bach | Cembalokonzert d-Moll, BWV 1052</p>
+            </li>
+            <li>
+                <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/2OJ2BstBZCw?si=_1Fdp2SYgmfHXeGx" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>Astor Piazzolla | „Ballet-Tango“ für Akkordeon und Streichquartett</p>
+            </li>
+            <li>
+                <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/GATut_MZPHY?si=reZRPLNdP_VfD3t1" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                    
+                <p>Arrangements by: Erhard Cotta | „Philharmonic Gypsy-Swing“ für Jazz-Band (Acc., Git., Db., Dr.) und Symphonieorchester</p>
+            </li>
+        </ul>
+    </div>
+</section>
+<section id="triofussissimo" class="page">
+    <a onclick="showPage('projekte'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+    <h2 class="section-title">FUSSISSIMO</h2>
+    <p class="info"><a target="_blank" href="http://www.rehansyed.com">Rehan Syed</a> (Gitarre) & Simon Ort (Bass) & Harald Oeler (Akkordeon)</p>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="image/triofussissimo.webp" alt="fussissimo">
+            <p>Virtuose Spieltechnik und jede Menge Inspirationen aus Jazz und Weltmusik! Diese Kombination macht das Trio zu einem besonders interessanten Gypsy-Ethno-Jazz Ensemble!
+                Seit fast 20 Jahren hat sich der Gitarrist und Komponist Rehan Syed mit seinen projekteen einen wohlklingenden Namen in der Gypsy Jazz-Szene erspielt und ist nun mit dem erstklassigen Bassisten Simon Ort am Kontrabass und dem preisgekrönten Akkordeonisten Harald Oeler in einer Trio-Besetzung zu hören, die es in sich hat! Zum Programm von „Trio Fussissimo“ gehören originelle Eigenkompositionen von Rehan Syed mit Einﬂüssen von Tango, Bossa, französischer Musette und orientalischer Musik, und Perlen aus dem Gypsy Jazz und Weltmusik Repertoire.</p>
+            <br>
+            <ul class="socials">  
+                <li><a href="https://www.instagram.com/fussissimo/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://youtube.com/@rehansyedensemble?si=Qw3ZOZVig0MUB4hY" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="mailto:info@rehansyed.de"><i class="fa-regular fa-envelope"></i></a></li>
+            </ul>
+
+        </div>
+        <div class="col-right">
+            <ul class="programm">
+                <li>
+                    <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/TsTN3AgrpbU?si=lDWTtG0d7rmXX4Ds" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <p>Made in France - live in der musik-butik</p>
+                </li>
+                <li>
+                    <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/05HxYd95Phw?si=KHomEBYTyZwZwqlh" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                    
+                    <p>Ani Suni - live in der musik-butik</p>
+                </li>
+                <li>Booking : <a href="mailto:info@rehansyed.de">info@rehansyed.de</a></li>
+            </ul>
+        </div>
+    </div>
+</section> 
+<section id="duovia" class="page">
+    <a onclick="showPage('projekte'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+    <h2 class="section-title">DUO ViA!</h2>
+    <p class="info"><a target="_blank" href="https://sinn-yang.webflow.io">Sinn Yang</a> (Violine) & Harald Oeler (Akkordeon)</p>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="image/project3.webp" alt="duovia">
+            <span class="de">DE </span><input type="checkbox" class="check"><span class="en">EN</span>   
+                       
+            <div class="content content-en">
+                Neue Klangwelten entdecken – ein Ziel, das sich mit der außergewöhnlichen Besetzung aus Violin und Akkordeon spielerisch erreichen lässt.
+                <br>„Duo ViA!“s CD der „8 Jahreszeiten“ von Vivaldi und Piazzolla erschien 2014 bei <a href="https://www.oehmsclassics.de/interpret/6934/DuoVia" target="_blank">OehmsClassics</a> und erhielt begeisterte Kritiken. Mit Neugierde und Experimentierlust erkunden beide Künstler in ihrer exotischen Besetzung Meisterwerke der zeitgenössischen Musik, Bach, Chick Corea u.a. und traten erfolgreich in Konzerten, wie z.B. beim Festival <a href="https://www.heidelberger-fruehling.de" target="_blank">„Heidelberger Frühling“</a>, Berlin, München, Bracciano / Italien und Helsinki auf.
+            </div>
+            <div class="content content-de">
+                <p>The Duo ViA! made their debut in 2009 with the programme Seasons at the Heidelberg Spring Festival. At that time, it required a great deal of courage to present to the public, in a sold-out hall, one of the most popular and most frequently played classical works, Vivaldi’s I quattro stagioni in combination with Astor Piazzolla’s Las cuatro portenas. For the Duo, the programme Seasons was might have felt similarly when he designated his Four Seasons in the series of twelve violin concertos as “a bold adventure of harmony and invention” (“Il Cimento dell’Armonia e dell’Invenzione”).</p>
+            </div>
+        </div>
+        <div class="col-right">
+            <iframe  loading="lazy" class="youtube no-border"  src="https://www.youtube.com/embed/kw7_NO-klxM?si=WMlvblSPOAOChYwY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe loading="lazy" class="spotify no-border" src="https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0" height="200" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            <div class="review">
+                <ul>
+                    <li>"Yang und Oeler spielen wie aufeinander eingeschworen, sie bilden nicht nur rhythmisch eine Einheit. Der Dauerbrenner von Vivaldi erscheint hier stellenweise wie unter dem Mikroskop." <span class="bold">NDR</span></li>
+                    <li>„Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.“ <span class="bold">NDR Kultur</span></li>
+                    <li>„Hier haben sich zwei Interpreten außergewöhnlichen Ranges zusammengefunden, um Altbewährtes in neuem Gewande und auf höchstem Niveau vorzustellen.” <span class="bold">Musikzeitung</span></li>
+                    <li>Booking : <a href="mailto:sinnyang@gmail.com">sinnyang@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section> 
+<section id="duoklakk" class="page">
+    <a onclick="showPage('projekte'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+    <h2 class="section-title">DUO KlAkk!</h2>
+    <p class="info">Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon)</p>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="image/duoklakk.webp" alt="duoklakk">
+            <p>Das 2023 neu gegründete Duo KlAkk! machte sich von Anfang zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits dieser Transkriptionen Alter Musik, kontrapunktisch gegenüber zu stellen. Das Oeuvre des jungen Duos zeigt sich in multimedialer und stilistisch bunter Gestallt, der Lebhaftigkeit unseres Gesellschaftsbildes angepasst, ohne dabei in eine von reinen Effekten beherrschten Musik abzurutschen. <span class="bold">KlAkk!</span>… Name und Geräusch zugleich, vereint die instrumentale Besetzung und das Geräusch eines „power-on“ Kippschalters in sich. Diese finden sich nämlich an den vielfälltigen elektronischen Geräten des Duos, wie z.B. einem Line6 HX Effects, einem Schertler Jam, an Piezzos, Leuchtdioden und an digitalen Zuspielmedien.
+            <br>
+            <br>Im Mittelpunkt des Konzertprogramms steht das Werk „Double dubbing“, welches den Einsatz eines eigens erstellten Setups aus Piezzos und LEDs erfordert. Hier werden mittels elektrischer Impulse der Piezzo-Tonabnehmer, LEDs zum leuchten angeregt. Es entsteht ein lebhaftes Meer an kleinen Lichtblitzen, welche die Musik sichtbar werden lässt. 
+            <br>
+            <br>Zukünftig sieht sich KlAkk! Als Klangmedium der elektroakustischen Neuen Musik mit dem Ziel der Vermehrung originaler Literatur für Klarinette und Akkordeon im Kontext elektronischer Klangmedien.</p> 
+        </div>
+        <div class="col-right">
+            <h2>programm </h2>
+            <ul class="programm">
+                <li>
+                    <span class="bold">Joseph Haydn (1732 - 1809)</span> 
+                    <br>Divertimento in G Dur, nr 2, op. 100, für Klarinette in B und Akkordeon (Arr.Harald Oeler) 
+                    <p>1. Allegro</p>
+                    <p>2. Adagio</p>
+                    <p>3. Allegro</p>
+                </li>
+                <li>
+                    <span class="bold">Johann Svensson (1983)</span>
+                    <br>Double Dubbing (firefly song) (2020) for clarinet, accordeon & 16 piezo-buzzers
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="hof" class="page">
+    <a onclick="showPage('projekte'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+    <h2 class="section-title"> HOFER MUSIKSCENE</h2>
+    <p class="info"></p>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="image/hof.webp" alt="LU7">
+            <p>© Kat Schulz</p>
+        </div>
+        <div class="col-right">
+            <ul class="programm">
+                <li>
+                    <p class="bold">Jazz Jam Session</p>
+                    <p><i class="fa-solid fa-location-dot"></i> <a href="https://www.facebook.com/Kunstkaufhaus.Hof" target="_blank">KunstKaufHaus Hof</a></p>
+                    <p>Jeden ersten Dienstag, 20 Uhr</p>
+                    <p>KKH-Session-Group : Bernd Schricker, <a target="_blank" href="https://christophervonmammen.de/?page_id=4279">Christopher von Mammen</a>, Harald Oeler, Thomas Motschmann, Manfred Auer und Harry Tröger</p>
+                </li>
+                <li>
+                    <p class="bold">„NEU | START | JAZZ“</p>
+                    <p><i class="fa-solid fa-location-dot"></i> <a href="https://www.vhshoferland.de" target="_blank">VHS Hofer Land</a></p>
+                    <p>Konzert in der Glashalle der VHS Hofer Land in Kooperation mit dem dem <a href="https://www.dtkvbayern.de" target="_blank">Tonkünstlerverband Bayern</a> feat. <a target="_blank" href="https://christophervonmammen.de/?page_id=4279">Christopher von Mammen</a>, Markus Jung, Harald Oeler, <a href="https://www.samueljersak.com" target="_blank">Samuel Jersak</a>, Peter Nitsch und <a href="https://julianfau.com" target="_blank">Julian Fau</a></p>
+                </li>
+                <li>
+                    <p class="bold">Streichquartett & Harald Oeler</p>
+                    <p>Werke von Barock über Jazz und Tango bis hin zur Moderne.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+  <!-- news Section -->
+<section id="news" class="page">
+    <h2 class="section-title">NEWS</h2>
+    <div class="news">
+        <div class="news-column">
+            <a onclick="showPage('podcast-readmore'); return false;">
+            <img loading="lazy" src="image/news-pittispodcast.webp" alt="podcast" class="news-image"></a>
+            <a  onclick="showPage('podcast-readmore'); return false;"><h2>PODCAST</h2></a>
+            <p class="date">07.Dezember.2023</p>
+            <p class="bold uppercase">Pittis Podcast. Akkordeonspecial - 40 Jahre und 200 Knöpfe. Mit Live-Musik! </p>
+            <p><a onclick="showPage('podcast-readmore'); return false;" class="mehrinfo">mehr infos <i class="fa-solid fa-arrow-right"></i></a></p>
+        </div>
+        <div class="news-column">
+            <a onclick="showPage('vortrag-readmore'); return false;">
+            <img loading="lazy" src="image/news-symposium.webp" alt="symposium" class="news-image"></a>
+            <a onclick="showPage('vortrag-readmore'); return false;"><h2>VORTRAG</h2></a>
+            <p class="date">30.November.2023</p>
+            <p class="bold uppercase">Neurologische Grundlagen und musikalische Beweglichkeit im Anfängerunterricht </p>
+            <a onclick="showPage('vortrag-readmore'); return false;" class="mehrinfo">mehr infos <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="news-column">
+            <a href="#kinderkonzert-readmore" onclick="showPage('kinderkonzert-readmore'); return false;">
+            <img loading="lazy" src="image/news-kinderkonzert.webp" alt="kinderkonzert" class="news-image"></a>
+            <a href="#kinderkonzert-readmore" onclick="showPage('kinderkonzert-readmore'); return false;"><h2>ORCHESTERWERK</h2></a>
+            <p class="date">22.November.2023</p>
+            <p class="bold uppercase">Richard Galliano | „Opale Concerto" für Akkordeon und Streichorchester</p>
+            <a href="#kinderkonzert-readmore" onclick="showPage('kinderkonzert-readmore'); return false;" class="mehrinfo">mehr infos <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section> 
+<section id="podcast-readmore" class="page">
+    <div class="news-projectbox">
+        <h2 class="readmore-title">Pittis's Podcast</h2>
+        <a href="#news" onclick="showPage('news'); return false;" class="newsback"><i class="fa-solid fa-circle-chevron-left"></i><span style="color: white;">.</span> BACK</a>
+        <h3 class="theme">Akkordeonspecial - 40 Jahre und 200 Knöpfe. Mit Live-Musik!</h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/0qX4OVumxS2AsoomnM9AHF?utm_source=generator&theme=0" class="no-border" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <p class="newsinfo"></p>
+    </div>
+</section>
+<section id="vortrag-readmore" class="page">
+    <div class="news-projectbox">
+        <h2 class="readmore-title">SynapsePlus – mehr als nur 5 Töne!</h2>
+        <a href="#news" onclick="showPage('news'); return false;" class="newsback"><i class="fa-solid fa-circle-chevron-left"></i><span style="color: white;">.</span> BACK</a>
+        <h3 class="theme">Neurologische Grundlagen und musikalische Beweglichkeit im Anfängerunterricht
+        </h3>
+        <p class="newsinfo">Ausgehend von neuronalen Vernetzungen und neuroplastischen Veränderungen des menschlichen Gehirns im Kindes- und Jugendalter möchte der Vortrag zu einem technisch-musikalisch umfassenden Anfängerunterricht auf den Manualen M I und M III anregen. Es werden Möglichkeiten aufgezeigt, wie von der ersten Unterrichtsstunde an beide Manuale dynamisch flexibel, technisch selbstbewusst und reflektiert von Vorschul- bzw. Schulkindern bespielt werden können und die erlernten Fähigkeiten intuitiv auf Musikstücke übertragen werden können. Ziel des Vortrages ist es somit zu zeigen, wie ein früher Grundstein für den souveränen Umgang mit technischer und musikalischer Virtuosität bei Kindern gelegt werden kann.</p>
+    </div>
+</section>
+<section id="kinderkonzert-readmore" class="page">
+    <div class="news-projectbox">
+        <h2 class="readmore-title">ORCHESTERWERK</h2>
+        <a href="#news" onclick="showPage('news'); return false;" class="newsback"><i class="fa-solid fa-circle-chevron-left"></i><span style="color: white;">.</span>BACK</a>
+        <h3 class="theme">Richard Galliano | „Opale Concerto" für Akkordeon und Streichorchester</h3>
+        <iframe loading="lazy" src="https://www.youtube.com/embed/WPMtnt0PfY0?si=z159fgFsJrimDiE7" title="YouTube video player" class="youtube no-border" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="newsinfo artist">
+            <p><span class="bold">Akkordeon </span>Harald Oeler</p>
+            <p><span class="bold">Dirigent </span>Michael Falk</p>
+        </div>
+    </div>
+</section>
+<section id="homepage-readmore" class="page">
+    <a onclick="showPage('news'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i><span style="color: white;">.</span>BACK</a>
+    <h2 class="readmore-title">New Homepage</h2>
+    <p class="info">here you can...</p>
+</section>
+  
+  <!-- End news Section -->
+
+
+  <!-- Discographie -->
+<section id="discographie" class="page">
+    <div class="projekte-header">
+        <h1 class="section-title">discographie</h1>
+    </div>
+    <div class="discographie container">
+        <div class="projectbox">
+            <div class="box">
+                <img loading="lazy" src="image/discography1.webp" alt="disco1">
+                <div class="card-body">
+                <a href="#duovia" class="mehrinfo" onclick="showPage('duovia')">
+                    <h2 class="card-title">Antonio Vivaldi & Astor Piazzolla: <br>8 Jahreszeiten / 8 Seasons</h2>
+                    <p>Geige - Sinn Yang</p>
+                    <p>Akkoredeon - Harald Oeler</p>
+                    <br>
+                    <p>mehr infos</p>
+                </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" src="image/discography2.webp" alt="disco2">
+                <div class="card-body">
+                    <a href="#solo" class="mehrinfo" onclick="showPage('solo')">
+                    <h2 class="card-title">Pictures at an Exhibition</h2>
+                    <p>Solo Album</p>
+                    <br>
+                    <p>mehr infos | spotify</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" src="image/discography3.webp" alt="disco3">
+                <div class="card-body">
+                <a target="_blank" href="https://open.spotify.com/track/1IN4tB0kw6RFMCooRCFrTB?si=ccb05c31fc3e4cc8" class="mehrinfo">
+                    <h2 class="card-title">Sinn Yang, Violin</h2>
+                    <p class="card-info">Le Grand Tango for Cello & Piano</p>
+                    <p>(Arr. S.Gubaiduina & Harald Oeler)</p>
+                    <br>
+                    <p>spotify</p>
+                </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" src="image/discography4.webp" alt="disco4">
+                <div class="card-body">
+                    <a target="_blank" href="https://www.marcoboettger.de/cds/" class="mehrinfo">
+                    <h2 class="card-title">En Avril</h2>
+                    <p class="card-info">Marco Böttger Quartett</p>
+                    <p>Eigenkompositionen im Stile des legendären Gitarristen Django Reinhardt</p>
+                    <br>
+                    <p>mehr infos</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" src="image/discography5.jpg.webp" alt="disco5">
+                <div class="card-body">
+                    <a target="_blank" href="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE?si=p32xdQhxT-ay_mZrtjE3kA" class="mehrinfo">
+                    <h2 class="card-title">Parisian Melange</h2>
+                    <p class="card-info">von Hans Peter Salentin und ensemble</p>
+                    <br>
+                    <p>spotify</p>       
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" src="image/discography6.webp" alt="disco6">
+                <div class="card-body">
+                    <a target="_blank" href="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm?si=AivXlng3TdmAjQ8DD_bW3A" class="mehrinfo">
+                    <h2 class="card-title">Al Son del Tango</h2>
+                    <p class="card-info">EP von Die Vier Evangcellisten</p>
+                    <br>
+                    <p>spotify</p>
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <img loading="lazy" src="image/discpgraphy7.webp" alt="disco7">
+                <div class="card-body">
+                    <a target="_blank" href="https://www.tkv-hochfranken.de/index.php/diskografie/" class="mehrinfo">
+                    <h2 class="card-title">Musikalisches Kaleidoskop Hochfränkischer Künstler</h2>
+                    <p class="card-info">volume 1</p>
+                    <br>
+                    <p>mehr infos</p>
+                </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- end Discographie-->
+
+<!-- unterricht -->
+<section id="unterricht" class="page">
+    <h2 class="section-title">unterricht</h2>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="image/accordion.webp" alt="accordion">
+            <p>Unter seinen Schülern befinden sich zahlreiche Preisträger verschiedener Wettbewerbe, darunter vierzehn 1. Bundespreisträger bei <a href="https://www.jugend-musiziert.org" target="_blank">"Jugend musiziert"</a>, 1. Preisträger des <a href="https://www.dhv-ev.de" target="_blank">Deutschen Akkordeon Musikpreis (DAM)</a> und Preisträger des Internationalen Akkordeonfestivals in Innsbruck.</p>
+            <br>
+            <p>Neben seiner Konzert- und Lehrtätigkeit editiert Harald Oeler aktuell seine über viele Jahre entwickelte Akkordeonmethodik für Akkordeon C-Griff mit Melodiebässen, welche ab 2024 erhältlich sein wird. <a ></p>
+            <br><a target="_blank" class="mehrinfo" onclick="showPage('vortrag-readmore')" data-after="vortrag-readmore">mehr infos</a>
+        </div>
+        <div class="col-right"> 
+            <ul class="programm">
+                <li>
+                    <span class="bold">Dozent für Akkordeon, Theorie und Föderklasse</span> 
+                    <p>Seit 2010 ist Harald Oeler hauptamtlicher Akkordeondozent an der <a target="_blank" href="https://www.hofer-symphoniker.de/musikschule/">Musikschule der Hofer Symphoniker</a>. Seit 2018 zusätzlich Leiter der Theorie- und Förderklasse. </p>
+                </li>
+                <li>
+                    <span class="bold">Lehrbeauftragter</span>
+                    <p>Seit 2007 Lehrbeauftragter für Akkordeon und unterrichtrspraktisches Instrumentalspiel an der <a target="_blank" href="https://www.lmu.de/de/index.html">Ludwig-Maximilians-Universität München</a>. </p>
+                </li>
+                <li>
+                    <span class="bold">Gastprofessor für Akkordeon</span>
+                    <p>Im Sommer 2012 lehrte Harald Oeler als Gastprofessor an der <a target="_blank" href="https://en.szu.edu.cn/info/1017/1015.htm">Normal Shenzhen University</a> in China im Fach Akkordeon.</p>
+                </li>
+                <li>
+                    <span class="bold">Gastvorträge und Workshops</span>
+                    <p>Zahlreiche Workshops an Musikhochschulen darunter die <a target="_blank" href="https://www.hfm-berlin.de">Hochschule für Musik „Hanns Eisler“ Berlin</a> und die <a target="_blank" href="https://www.hmt-leipzig.de">Hochschule für Musik und Theater „Felix Mendelssohn Bartholdy“</a>.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--end unterricht-->
+
+<section id="media" class="page">
+    <h2 class="section-title">media</h2>
+    <p class="info"><i class="fa-solid fa-camera"></i> Kat Schulz & <a target="_blank" href="https://www.schwarzenbach-fotografie.de">Schwarzenbach Fotografie</a></p>   
+    <div class="row">
+          <div class="column">
+            <img loading="lazy" src="image/slide1.webp" alt="slide" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide2.webp" alt="slide" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide3.webp" alt="slide" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide4.webp" alt="slide" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide5.webp" alt="slide" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide6.webp" alt="slide" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide7.webp" alt="slide" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+          </div>
+          <div class="column">
+            <img loading="lazy" src="image/slide8.webp" alt="slide" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+          </div>
+    </div>
+    <div id="myModal" class="modal">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
+          <div class="modal-content">
+            <div class="mySlides">
+              <div class="numbertext">1 / 8</div>
+              <img loading="lazy" src="image/slide1.webp" alt="slide" style="width:100%" >
+            </div>
+            <div class="mySlides">
+              <div class="numbertext">2 / 8</div>
+              <img loading="lazy" src="image/slide2.webp" alt="slide" style="width:100%">
+            </div>
+            <div class="mySlides">
+              <div class="numbertext">3 / 8</div>
+              <img loading="lazy" src="image/slide3.webp" alt="slide" style="width:100%">
+            </div> 
+            <div class="mySlides">
+              <div class="numbertext">4 / 8 </div>
+              <img loading="lazy" src="image/slide4.webp" alt="slide" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">5 / 8 </div>
+                <img loading="lazy" src="image/slide5.webp" alt="slide" style="width:100%">
+            </div>
+                <div class="mySlides">
+                <div class="numbertext">6 / 8 </div>
+                <img loading="lazy" src="image/slide6.webp" alt="slide" style="width:100%">
+            </div>
+                <div class="mySlides">
+                <div class="numbertext">7 / 8 </div>
+                <img loading="lazy" src="image/slide7.webp" alt="slide" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">8 / 8 </div>
+                <img loading="lazy" src="image/slide8.webp" alt="slide" style="width:100%">
+            </div>
+        </div>
+              
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+</section>
+<!-- termine -->
+<section id="termine" class="page" >
+    <div class="projectbox">
+        <div class="upcoming">
+            <h2 class="section-title">TERMINE</h2>
+            <div class="info">
+                <p class="vergangens"><a onclick="showPage('past')" data-after="past">vergangene Termine</a></p>
+                <div class="searchbox">
+                    <form name="search">
+                        <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();">
+                    </form>
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <ul class="upcoming_list">
+                <li>
+                    <p class="uhr">Freitag, 19.30 Uhr</p>
+                    <p class="datum">26.01.2024</p>
+                    <p class="concert">Kammerkonzert | Hot Club Swing</p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps/dir//Klangmanufaktur+hof/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x47a11793c3cb1f5b:0xa35592cb8b7e0c54?sa=X&ved=2ahUKEwjf2_bur-KCAxXgQvEDHZOUCYwQ9Rd6BAhAEAA" target="_blank" >Klangmanufaktur</a>, Hof</p>
+                    <p class="concert-info"><a target="_blank" href="https://joscho-stephan.de">Joscho Stephan</a> Trio feat. Harald Oeler</p>
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Kammerkonzert%20%7C%20Hot%20Club%20Swing&dates=20240126T193000/20240126T213000&location=Klangmanufaktur%2C%20Hof&details=Joscho%20Stephan%20Trio%20feat.%20Harald%20Oeler" target="_blank">GOOGLE CALENDAR</a> |
+                        <a class="calendar-link" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Kammerkonzert%20%7C%20Hot%20Club%20Swing%0D%0ADTSTART:20240126T193000%0D%0ADTEND:20240126T213000%0D%0ALOCATION:Klangmanufaktur%2C%20Hof%0D%0ADESCRIPTION:Joscho%20Stephan%20Trio%20feat.%20Harald%20Oeler%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">
+                        iCAL</a>
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://www.hofer-symphoniker.de/konzerte-tickets/kammerkonzert-5/">mehr infos | ticket</a>
+                </li>
+                <li>
+                    <p class="uhr">Samstag, 20.00 Uhr</p>
+                    <p class="datum">27.01.2024</p>
+                    <p class="concert">Gipsy Swing | Bistro Abend</p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps?q=Seminarturnhalle+Nagold+-+Die+Kulturbühne,+Lange+Str.+5,+72202+Nagold,+Deutschland" target="_blank">Seminarturnhalle</a>, Nagold</p>
+                    <p class="concert-info"><a target="_blank" href="https://joscho-stephan.de">Joscho Stephan</a> Trio feat. Harald Oeler</p>
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Gipsy%20Swing%20%7C%20Bistro%20Abend&dates=20240127T200000/20240127T220000&location=Seminarturnhalle%2C%20Nagold&details=Joscho%20Stephan%20Trio%20feat.%20Harald%20Oeler" target="_blank">GOOGLE CALENDAR
+                        </a>|
+                        <a class="calendar-link" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Gipsy%20Swing%20%7C%20Bistro%20Abend%0D%0ADTSTART:20240127T200000%0D%0ADTEND:20240127T220000%0D%0ALOCATION:Seminarturnhalle%2C%20Nagold%0D%0ADESCRIPTION:Joscho%20Stephan%20Trio%20feat.%20Harald%20Oeler%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">
+                            iCAL
+                        </a>                        
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://alte-seminarturnhalle.reservix.de/tickets-joscho-stephan-trio-harald-oeler-gipsy-swing-bistroabend-in-nagold-alte-seminarturnhalle-nagold-am-27-1-2024/e2147903">mehr infos | ticket</a>
+                </li>
+                <li>
+                    <p class="uhr">Sonntag, 19.00 Uhr</p>
+                    <p class="datum">28.01.2024</p>
+                    <p class="concert">Gipsy Swing | Bistro Abend</p>                        
+                    <p class="location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href="https://www.google.com/maps/place/Kelter+Gemmrigheim/@49.024136,9.1544448,17z/data=!3m1!4b1!4m6!3m5!1s0x47982b032e30f34d:0x916b8bec4062bf48!8m2!3d49.024136!4d9.1570197!16s%2Fg%2F11fn61f81b?entry=ttu" target="_blank">Kelter</a>, Gemmrigheim
+                    </p>                    
+                    <p class="concert-info"><a target="_blank" href="https://joscho-stephan.de">Joscho Stephan</a> Trio feat. Harald Oeler</p>
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/event?action=TEMPLATE&text=Gipsy+Swing+Bistro+Abend&dates=20240128T190000/20240128T210000&details=Joscho+Stephan+Trio+feat.+Harald+Oeler&location=Kelter%2C+Gemmrigheim&sf=true" target="_blank">
+                        GOOGLE CALENDAR 
+                        </a>|
+                        <a class="calendar-link" href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Gipsy%20Swing%20Bistro%20Abend%0ADESCRIPTION:Joscho%20Stephan%20Trio%20feat.%20Harald%20Oeler%0ADTSTART:20240128T190000%0ADTEND:20240128T210000%0ALOCATION:Kelter%2C%20Gemmrigheim%0AEND:VEVENT%0AEND:VCALENDAR" download="event.ics">
+                        iCAL
+                        </a>
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://www.gemmrigheim.de/start/kultur_+bildung+_+einrichtungen/Vereine.html">mehr infos | ticket</a>
+                </li>
+                <li>
+                    <p class="uhr">Samstag, 14.00 Uhr</p>
+                    <p class="datum">11.05.2024</p>
+                    <p class="concert">Die 8 Jahreszeiten</p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.residenz-wuerzburg.de" target="_blank">Residenz</a>, Würzburg</p>
+                    <p class="concert-info"><a onclick="showPage('duovia')" data-after="duovia">Duo ViA!</a> <a target="_blank" href="https://www.sinnyang.com">Sinn Yang</a> (Violine), Harald Oeler (Akordeon)</p>
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Die%208%20Jahreszeiten&dates=20240511T140000/20240511T160000&location=Residenz%2C%20W%C3%BCrzburg&details=Duo%20ViA!%20-%20Sinn%20Yang%20%28Violine%29%2C%20Harald%20Oeler%20%28Akordeon%29" target="_blank">
+                                            GOOGLE CALENDAR
+                        </a> |
+                        <a class="calendar-link" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Die%208%20Jahreszeiten%0D%0ADTSTART:20240511T140000%0D%0ADTEND:20240511T160000%0D%0ALOCATION:Residenz%2C%20W%C3%BCrzburg%0D%0ADESCRIPTION:Duo%20ViA!%20-%20Sinn%20Yang%20%28Violine%29%2C%20Harald%20Oeler%20%28Akordeon%29%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">
+                                            iCAL
+                        </a>
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://www.residenz-wuerzburg.de">mehr infos | ticket</a>
+                </li>
+                <li>
+                    <p class="uhr">Samstag, tba</p>
+                    <p class="datum">08.06.2024</p>
+                    <p class="concert"> 39. Bayerische Theatertage |
+                        <br>Theater Hof | "Die weiße Rose"   </p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> <a target="_blank" href="https://www.google.com/maps/dir//stadt+theater+ingolstadt/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x479efe5375e4ad03:0xc399c3fd66940d00?sa=X&ved=2ahUKEwjcy5_rqdiDAxXabPEDHX_2AUMQ9Rd6BAhbEAA">Stadt Theater, </a>Ingolstadt</p>
+                    <p class="concert-info">Oper von Udo Zimmermann
+                                            <br>Libretto von Ingo Zimmermann
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/event?action=TEMPLATE&dates=20240608T000000Z/20240608T235959Z&text=39.%20Bayerische%20Theatertage%20|%20Theater%20Hof%20|%20Die%20weiße%20Rose&location=Stadt%20Theater,%20Ingolstadt&details=Oper%20von%20Udo%20Zimmermann,%20Libretto%20von%20Ingo%20Zimmermann" target="_blank">
+                            GOOGLE CALENDAR
+                        </a> |
+                        <a class="calendar-link" href="data:text/calendar;charset=utf-8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20240608T000000Z%0ADTEND:20240608T235959Z%0ASUMMARY:39.%20Bayerische%20Theatertage%20-%20Theater%20Hof%20-%20Die%20weiße%20Rose%0ALOCATION:Stadt%20Theater,%20Ingolstadt%0ADESCRIPTION:Oper%20von%20Udo%20Zimmermann,%20Libretto%20von%20Ingo%20Zimmermann%0AEND:VEVENT%0AEND:VCALENDAR" download="event.ics">
+                            iCAL
+                        </a>                        
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://theater.ingolstadt.de/aktuelles/aktuelles-1/aktuelles-detailansicht/bayerische-theatertage-2024.html">mehr infos | ticket</a>
+                </li>
+                <li>
+                    <p class="uhr">Samstag, tba</p>
+                    <p class="datum">14.09.2024</p>
+                    <p class="concert"> "Warning to the rich"</p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps?client=safari&sca_esv=597840864&rls=en&sxsrf=ACQVn08PefMNrTffwf2jL2FqHYd2OpDzhg:1705079852321&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiD0tyZXV6a2lyY2hlIGhvZjIIEAAYgAQYywEyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSKUNUNQCWJIMcAJ4AZABAJgBpAGgAf0EqgEDMC41uAEDyAEA-AEBwgIKEAAYRxjWBBiwA8ICCxAuGIAEGMcBGK8BwgIOEC4YgAQYxwEYrwEYjgXCAgUQABiABMICGhAuGIAEGMcBGK8BGJcFGNwEGN4EGOAE2AEB4gMEGAAgQYgGAZAGB7oGBggBEAEYFA&um=1&ie=UTF-8&fb=1&gl=de&sa=X&geocode=KZm9XbWyEaFHMbNLagn9ZM27&daddr=Jahnstraße+67,+95030+Hof" target="_blank">Kreuzkirche</a>, Hof</p>
+                    <p class="concert-info"><a target="_blank" href="https://kammerchor-hof.de">Kammerchor Hof</a></p>
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Warning%20to%20the%20rich&details=Kammerchor%20Hof&location=tba,%20Hof&dates=20240914T000000Z/20240914T235959Z" target="_blank">
+                                        GOOGLE CALENDAR
+                        </a> |
+                        <a class="calendar-link" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Warning%20to%20the%20rich%20(tba)%0D%0ADESCRIPTION:Kammerchor%20Hof%0D%0ADTSTART:20240914T000000Z%0D%0ADTEND:20240914T235959Z%0D%0ALOCATION:tba,%20Hof%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">
+                                        iCAL
+                        </a>
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://kammerchor-hof.de">mehr infos | ticket</a>
+                </li>
+                <li>
+                    <p class="uhr">Sonntag, tba</p>
+                    <p class="datum">15.09.2024</p>
+                    <p class="concert"> "Warning to the rich"</p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps/dir//Auferstehungskirche/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x47a11a6bfc6f2369:0xdb01cc124022d4a0?sa=X&ved=2ahUKEwiPm9rgrdiDAxVIR_EDHV8NCFAQ9Rd6BAhAEAA" target="_blank">Auferstehungskirche</a>, Bamberg </p>
+                    <p class="concert-info"><a target="_blank" href="https://kammerchor-hof.de">Kammerchor Hof</a></p>                        
+                    <div class="calendar-container">
+                        <i class="calendar-icon">&#128197;</i>
+                        <a class="calendar-link" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Warning%20to%20the%20rich&details=Kammerchor%20Hof&location=tba,%20Bamberg&dates=20240915T000000Z/20240915T235959Z" target="_blank">
+                                        GOOGLE CALENDAR
+                        </a> |
+                        <a class="calendar-link" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Warning%20to%20the%20rich%20(tba)%0D%0ADESCRIPTION:Kammerchor%20Hof%0D%0ADTSTART:20240915T000000Z%0D%0ADTEND:20240915T235959Z%0D%0ALOCATION:tba,%20Bamberg%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">
+                                        iCAL
+                        </a>
+                    </div>
+                    <a target="_blank" class="mehrinfo" href="https://kammerchor-hof.de">mehr infos | ticket</a>
+                </li>
+            </ul>  
+        </div>
+    </div>
+</section>
+<section id="past" class="page">
+    <div class="projectbox">
+        <div class="past">
+            <h2 class="section-title">PAST EVENTS</h2>
+            <a onclick="showPage('termine'); return false;" class="back" ><i class="fa-solid fa-circle-chevron-left" ></i> BACK</a>
+            <div class="info">
+                <label for="yearSelector">Select Year</label>
+                <select id="yearSelector" onchange="showSelectedYear()">
+                    <option value="placeholder" selected hidden>Select a Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                </select>
+               
+            </div>
+            <div id="year2023">
+                <h2 class="year">2023</h2>
+                <button class="scroll-to-top" onclick="scrollToTop()">Up</button>
+                <ul class="past_list">
+                    <li>
+                        <p class="abgesagt">ABGESAGT </p>
+                        <p class="uhr">Sonntag, 18:00 Uhr</p>
+                        <p class="datum">12.11.2023</p>
+                        <p class="concert-past">Duo Klakk! | Double Dobbing</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> KlangManufaktur, Hof</p>
+                        <p class="concert-info">Harald Oeler (Bajan) & Ji Eun Kim (Klarinette)</p>
+                        <a onclick="showPage('duoklakk')" data-after="duoklakk" class="mehrinfo">mehr infos</a>                    
+                    </li>
+                    <li>
+                        <p class="uhr">Sonntag, 20:00 Uhr</p>
+                        <p class="datum">10.11.2023</p>
+                        <p class="concert-past">„NEU | START | JAZZ“</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> VHS Hofer Land, Hof</p>
+                        <p class="concert-info">Konzert in der Glashalle der VHS Hofer Land in Kooperation mit dem dem <a href="https://www.dtkvbayern.de" target="_blank">Tonkünstlerverband Bayern</a> feat. <a target="_blank" href="https://christophervonmammen.de/?page_id=4279">Christopher von Mammen</a> (Saxophon), Markus Jung (Cello, Hof), Harald Oeler (Akkordeon, Hof), <a href="https://www.samueljersak.com" target="_blank">Samuel Jersak</a> (Piano, Schweiz), Peter Nitsch (Bass, Berlin) und <a href="https://julianfau.com" target="_blank">Julian Fau</a> (Drums, Nürnberg)</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.tkv-hochfranken.de/index.php/2023/11/08/neustart-jazz-in-der-glashalle-der-volkshochschule-hof/#:~:text=Freitag%2C%2010.,VHS)%20in%20Hof%20stattfinden%20wird.">mehr infos</a>
+                    </li>
+                    <li>
+                            <p class="uhr">Sonntag, 09:30 Uhr</p>
+                            <p class="datum">05.11.2023</p>
+                            <p class="concert-past">Referat</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Musikschule Kunsthalle Schirn, Frankfurt</p>
+                            <p class="concert-info">SynapsePlus – mehr als nur 5 Töne!
+            Neurologische Grundlagen und musikalische Beweglichkeit im Anfängerunterricht</p>
+                            <a target="_blank" class="mehrinfo" href="https://dalv-online.de/wp-content/uploads/2023/08/DALV_Flyer-Symposium_RZ_23-07-24.pdf">mehr infos</a>
+                    </li>
+                        <li>
+                            <p class="uhr">Sonntag, 20:00 Uhr</p>
+                            <p class="datum">29.10.2023</p>
+                            <p class="concert-past">Trio Fussisimo</p>                       
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Musik Butik, Darstadt / Ochsenfurt</p>
+                            <p class="concert-info">Gypsy-Ethno-Jazz</p>
+                            <a target="_blank" class="mehrinfo" href="https://musik-butik.de/tag/fussissimo/">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Sonntag, 15:00 Uhr</p>
+                            <p class="datum">22.10.2023</p>
+                            <p class="concert-past">Kinderkonzert "Fingerspiel und Wirbelwind"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Festsaal, Freiheitshalle, Hof</p>                        
+                            <p class="concert-info"><a target="_blank" href="https://www.hofer-symphoniker.de">Hofer Symphoniker</a></p>
+                            <a target="_blank" class="mehrinfo" href="https://www.hofer-symphoniker.de/konzerte-tickets/kinderkonzert-2/">mehr infos</a> 
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 20:00 Uhr</p>
+                            <p class="datum">07.10.2023</p>
+                            <p class="concert-past">Trio Fussisimo</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Klangmanufaktur der Hofer Symponiker, Hof</p>
+                            <p class="concert-info">Gypsy-Ethno-Jazz</p>
+                            <a onclick="showPage('triofussissimo')" data-after="triofussissimo" class="mehrinfo">mehr infos</a>                    
+                        </li>
+                        <li>
+                            <p class="uhr">Freitag, 20:00 Uhr</p>
+                            <p class="datum">06.10.2023</p>                        
+                            <p class="concert-past">Trio Fussisimo</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Caleidoskop, Schweinfurt</p>
+                            <p class="concert-info">Gypsy-Ethno-Jazz</p>
+                            <a target="_blank" class="mehrinfo" href="https://caleidoskop-schweinfurt.de/#veranstaltungen">mehr infos</a> 
+                        </li>
+                        <li>
+                            <p class="uhr">Donnerstag, 19:00 Uhr</p>
+                            <p class="datum">05.10.2023</p>
+                            <p class="concert-past">Trio Fussisimo</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Wohnst. Hallerwiese, Nürnberg</p>
+                            <p class="concert-info">Gypsy-Ethno-Jazz</p>
+                            <a onclick="showPage('triofussissimo')" data-after="triofussissimo" class="mehrinfo">mehr infos</a>                    
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 19:30 Uhr</p>
+                            <p class="datum">30.09.2023</p>
+                            <p class="concert-past">Projects 4 Cellos – die vier Evangelisten und Gäste</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal Theater, Selb</p>
+                            <p class="concert-info">Release-Konzert der neuen CD zum 15 jährigen Bühnenjubiläum des Ensembles</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.tkv-hochfranken.de/index.php/2023/09/22/projects4cellos-im-rosenthal-theater-selb/">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 21:00 Uhr</p>
+                            <p class="datum">23.09.2023</p>
+                            <p class="concert-past">Hallersteiner Nachtkonzerte 2023</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Evangelischen Kirchengemeinde Hallerstein, Hallerstein</p>
+                            <p class="concert-info"><a target="_blank" href="https://christophervonmammen.de">Christopher von Mammen</a> (Saxophon), Harald Oeler (Akkordeon) und Peter Nitsch (Bass) einen Kammermusikalischer Jazz-Abend</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.tkv-hochfranken.de/index.php/2023/09/22/projects4cellos-im-rosenthal-theater-selb/">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 19:00 Uhr</p>
+                            <p class="datum">16.09.2023</p>
+                            <p class="concert-past">DIE 8 JAHRESZEITEN</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Christkönig Kirche Titisee, Titisee-Neustadt</p>
+                            <p class="concert-info">Vivaldi & Piazzolla / <a target="_blank" href="https://www.myvanwy.de">Myvanwy-Ella Penny</a>, Violine und Harald Oeler, Akkordeon
+                            <br>ab 18 Uhr Einführung: „Die 4 Jahreszeiten“
+                            </p>
+                            <a target="_blank" class="mehrinfo" href="https://www.regio.de/homepagebaukasten_config/userfiles/16796/uploadbilder/druck-marschner-festival-2023-plakat-a4_ohne-anschnitt.pdf">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Mittwoch, 20:30 Uhr</p>
+                            <p class="datum">19.07.2023</p>
+                            <p class="concert-past">Rehan Syed Trio</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Schloss, Bad Mergentheim</p>
+                            <p class="concert-info">Rehan Syed (Gitarre), Hyunbin Park (Gitarre) und Harald Oeler (Akkordeon)</p>
+                            <a onclick="showPage('triofussissimo')" data-after="triofussissimo" class="mehrinfo">mehr infos</a>                    
+                        </li>
+                        <li>
+                            <p class="uhr">Freitag, 20:00 Uhr</p>
+                            <p class="datum">26.05.2023</p>
+                            <p class="concert-past">
+                            Das Auftaktkonzert der HofJazzNights</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Theater Hof, Hof</p>
+                            <p class="concert-info">SWING - JAZZ - GROOVE -BOSSA - BLUES + YOUNG LIONS & HOFER MUSIKSCENE</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.hofjazznights.com/programm">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Sonntag, 14:45 Uhr</p>
+                            <p class="datum">21.05.2023</p>
+                            <p class="concert-past">DCZ-Jazzfrühling</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Musikpavillon des Theresiensteins, Hof</p>
+                            <p class="concert-info">KKH-Session Group</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.infranken.de/lk/hof/ausflug/hof-jazzfruehling-findet-statt-deutsche-und-tschechische-bands-kommen-zusammen-art-5687455">mehr infos</a>
+                        </li>                    
+                        <li>
+                            <p class="uhr">Sonntag, 19:00 Uhr</p>
+                            <p class="datum">14.05.2023</p>
+                            <p class="concert-past">Duo ViA! Die 8 Jahreszeiten  - #muttertagskonzert</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Keller Z87, Würzburg</p>
+                            <p class="concert-info">Duo ViA! <a target="_blank" href="https://www.sinnyang.com">Sinn Yang</a> (Violine), Harald Oeler (Akordeon)</p>
+                            <a target="_blank" class="mehrinfo" href="https://z87.de/event/8-jahreszeiten-mit-duo-via-muttertagskonzert/">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Dienstag, 19:30 Uhr</p>
+                            <p class="datum">18.04.2023</p>
+                            <p class="concert-past">"Die Weisse Rose"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal Theater, Selb</p>
+                            <p class="concert-info">Oper von Udo Zimmermann
+                                                    Libretto von Ingo Zimmermann
+                                                    Neufassung für das Theater Hof
+                                                    von Arno Waschk und Lothar Krause</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/termine/detail/die-weisse-rose">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 19:30 Uhr</p>
+                            <p class="datum">15.04.2023</p>
+                            <p class="concert-past">"Die Weisse Rose"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</p>
+                            <p class="concert-info">Oper von Udo Zimmermann
+                                                    Libretto von Ingo Zimmermann
+                                                    Neufassung für das Theater Hof
+                                                    von Arno Waschk und Lothar Krause</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/termine/detail/die-weisse-rose">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Sonntag, 19:30 Uhr</p>
+                            <p class="datum">02.04.2023</p>
+                            <p class="concert-past">"Die Weisse Rose"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</p>
+                            <p class="concert-info">Oper von Udo Zimmermann
+                                                    Libretto von Ingo Zimmermann
+                                                    Neufassung für das Theater Hof
+                                                    von Arno Waschk und Lothar Krause</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/termine/detail/die-weisse-rose">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Freitag, 18:00 Uhr</p>
+                            <p class="datum">31.03.2023</p>
+                            <p class="concert-past">AkkordeonPlus Akkordeon - und Theorieklassen</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> KlangManufaktur, Hof</p>
+                            <p class="concert-info">Schülerinnen und Schüler der Akkordeon- und Theorieklassen Harald Oeler spielen Werke von J.S. Bach, A. Bruckner, J.A. Andiessen, M. Moszkowski, F. Hoppert u.a.
+                            </p>
+                            <a target="_blank" class="mehrinfo" href="https://www.hofer-symphoniker.de/konzerte-tickets/vorspiel-der-akkordeonklasse-harald-oeler/">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 19:30 Uhr</p>
+                            <p class="datum">11.03.2023</p>
+                            <p class="concert-past">"Die Weisse Rose"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</p>
+                            <p class="concert-info">Oper von Udo Zimmermann
+                                                    Libretto von Ingo Zimmermann
+                                                    Neufassung für das Theater Hof
+                                                    von Arno Waschk und Lothar Krause</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/termine/detail/die-weisse-rose">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 19:30 Uhr</p>
+                            <p class="datum">04.03.2023</p>
+                            <p class="concert-past">"Die Weisse Rose"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</p>
+                            <p class="concert-info">Oper von Udo Zimmermann
+                                                    Libretto von Ingo Zimmermann
+                                                    Neufassung für das Theater Hof
+                                                    von Arno Waschk und Lothar Krause</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/termine/detail/die-weisse-rose">mehr infos</a>
+                        </li>
+                        <li>
+                            <p class="uhr">Samstag, 19:30 Uhr</p>
+                            <p class="datum">25.02.2023</p>
+                            <p class="concert-past">PREMIERE "Die Weisse Rose"</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> <a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</p>
+                            <p class="concert-info">Oper von Udo Zimmermann
+                                                    Libretto von Ingo Zimmermann
+                                                    Neufassung für das Theater Hof
+                                                    von Arno Waschk und Lothar Krause</p>
+                            <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/termine/detail/die-weisse-rose">mehr infos</a>
+                        </li>
+                </ul>   
+            </div>
+            <div id="year2022">
+                <h2 class="year">2022</h2>
+                <button class="scroll-to-top" onclick="scrollToTop()">Up</button>
+                <ul class="past_list">
+                    <li>
+                        <p class="uhr">Mittwoch, 19:30 Uhr</p>
+                        <p class="datum">08.06.2022</p>
+                        <p class="concert-past">Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Kurtheater Bad Kissingen</p>
+                        <a class="mehrinfo" target="_blank" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Freitag, 19:30 Uhr</p>
+                        <p class="datum">18.03.2022</p>
+                        <p class="concert-past">Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal-Theater,Selb</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Freitag, 20:00 Uhr</p>
+                        <p class="datum">11.03.2022</p>
+                        <p class="concert-past">Joscho Stephan Trio</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Kulturhammer e.V., Thierstein</p>
+                        <p class="concert-info"><a target="_blank" href="https://joscho-stephan.de">Joscho Stephan</a> Trio feat. Harald Oeler</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.kulturhammer.de/veranstaltung/joscho-stephan-trio-mit-harald-oeler/">mehr infos</a> 
+                    </li>
+                    <li>
+                        <p class="uhr">Sonntag, 19:30 Uhr</p>
+                        <p class="datum">20.02.2022</p>
+                        <p class="concert-past">Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal-Theater,Selb</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Samstag, 19:30 Uhr</p>
+                        <p class="datum">19.02.2022</p>
+                        <p class="concert-past">Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal-Theater,Selb</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Donnerstag, 19:30 Uhr</p>
+                        <p class="datum">17.02.2022</p>
+                        <p class="concert-past">Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal-Theater,Selb</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Mittwoch, 19:30 Uhr</p>
+                        <p class="datum">16.02.2022</p>
+                        <p class="concert-past">Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Rosenthal-Theater,Selb</p>
+                        <p class="concert-info">weitere Auftritte : 16./ 17./ 19./ 20. Februar. 2022 / 18. März. 2022
+                        </p>
+                        <a target="_blank" class="mehrinfo" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Samstag, 19:30 Uhr</p>
+                        <p class="datum">29.01.2022</p>
+                        <p class="concert-past">PREMIERE Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Theater Hof, Hof</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/ballett/detail/maría-de-buenos-aires">mehr infos</a>
+                    </li>
+                    <li>
+                        <p class="uhr">Freitag, 19:30 Uhr</p>
+                        <p class="datum">28.01.2022</p>
+                        <p class="concert-past">PREMIERE Tango-Operita von Astor Piazzolla "MARÍA DE BUENOS AIRES"</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> Theater Hof, Hof</p>
+                        <a target="_blank" class="mehrinfo" href="https://www.theater-hof.de/ballett/detail/maría-de-buenos-aires">mehr infos</a>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+    </div>
+</section>
+    
+<!--termine END-->
+
+<script>
+    function showSelectedYear() {
+        var selectedYear = document.getElementById("yearSelector").value;
+        var year2023Div = document.getElementById("year2023");
+        var year2022Div = document.getElementById("year2022");
+
+        if (selectedYear === "2023") {
+            year2023Div.style.display = "block";
+            year2022Div.style.display = "none";
+        } else if (selectedYear === "2022") {
+            year2023Div.style.display = "none";
+            year2022Div.style.display = "block";
+        } else {
+            // Handle other cases if needed
+            year2023Div.style.display = "none";
+            year2022Div.style.display = "none";
+        }
+
+    }
+
+    document.getElementById("year2023").style.display = "block";
+    document.getElementById("year2022").style.display = "none";
+    
+</script>
+
+  <!-- kontakt Section -->
+  <section id="kontakt" class="page">
+    <h2 class="section-title">kontakt</h2>
+    <div class="projectbox">
+        <div class="col-left">
+            <img loading="lazy" src="/image/contact-profile.webp" alt="Your Image" class="circular-image">
+        </div>
+        <div class="col-right"> 
+            <h2 class="contact-name">HARALD OELER</h2>
+            <p><i class="fa-regular fa-envelope"></i> 
+                <a href="mailto:harald.oeler@gmx.de">harald.oeler@gmx.de</a></p>
+            <p><i class="fa-solid fa-phone"></i> +49 176 70004842</p>
+            <p><i class="fa-solid fa-house"></i> Hof, Deutschland</p>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/harald.oeler" target="_blank"><i class="fab fa-facebook-f"></i></a></li>     
+                <li><a href="https://www.instagram.com/haraldoeler/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="https://de.linkedin.com/in/harald-oeler-8794ab40" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA?si=LIB75TGVRfeaCtZJyJBd0Q" target="_blank"><i class="fa-brands fa-spotify"></i></a></li>
+            </ul>
+            <div class="footer">
+                <p><a onclick="showPage('impressum')">IMPRESSUM</a> |<a onclick="showPage('privacypolicy')"> PRIVACY POLICY</a>
+                <br>copyright © 2024 Harald Oeler designed by studio kimi</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="impressum" class="page">
+<a  onclick="showPage('kontakt'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+
+<h2 class="section-title">impressum</h2>
+<div class="info">
+</div>
+</section>
+<section id="privacypolicy" class="page">
+<a onclick="showPage('kontakt'); return false;" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
+<h2 class="section-title">Datenschutzerklärung</h2>
+<div class="info">
+    <br> 
+    <h3>Allgemeine Hinweise</h3>
+    <br> 
+    <p>Diese Datenschutzerklärung enthält ausführliche Informationen darüber, was mit Ihren persönlichen Daten passiert, wenn Sie unsere Website www.haraldoeler.com besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie sich persönlich identifizieren können. Wir halten uns bei der Verarbeitung Ihrer Daten streng an die gesetzlichen Bestimmungen, insbesondere die Datenschutzgrundverordnung („DSGVO“), und legen großen Wert darauf, dass Ihr Besuch auf unserer Website absolut sicher ist.</p>
+    <br> 
+<h3>Verantwortliche Stelle</h3>
+<br> 
+<p>Datenschutzrechtlich verantwortlich für die Erhebung und Verarbeitung von personenbezogenen Daten auf dieser Website ist:</p>
+<br> 
+<p>Vorname, Name: Harald, Oeler
+    <br>Straße, Hausnummer: Am Otterberg 13 Postleitzahl, Ort: 95032, Hof
+    <br>Land: Deutschland
+    <br>E-Mail: harald.oeler@gmx.de
+    <br>Tel.: 0176 70004842</p>
+<br> 
+<h3>§1</h3>
+<h3>Webanalyse Tools und Werbung</h3>
+<br> 
+<h3>1.1 Google Ads und Google Conversion-Tracking</h3>
+<br> 
+
+<p>Unsere Website verwendet Google Ads (vormals Google AdWords). Google Ads ist ein Online- Werbeprogramm der Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Ireland („Google“).
+</p>
+<br>Unsere Website verwendet Google Ads (vormals Google AdWords). Google Ads ist ein Online- Werbeprogramm der Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Ireland („Google“).
+<br> 
+<br>Google Ads ermöglicht uns, mit Hilfe von Werbemitteln auf externen Webseiten auf unsere Angebote aufmerksam zu machen und zu ermitteln, wie erfolgreich einzelne Werbemaßnahmen sind. Dies hilft uns, Ihnen Werbung anzuzeigen, die für Sie von Interesse ist, unsere Website für Sie interessanter zu gestalten und eine faire Berechnung von Werbekosten zu erreichen.
+<br> 
+<br>Im Rahmen von Google Ads nutzen wir das sogenannte Conversion-Tracking. Die Werbemittel werden durch Google über sogenannte „AdServer“ ausgeliefert. Hierfür verwenden wir sogenannte AdServer-Cookies, durch die bestimmte Parameter zur Erfolgsmessung, wie Einblendung der Anzeigen oder Klicks durch die Nutzer, gemessen werden können. Wenn Sie auf eine von Google geschaltete Anzeige klicken, wird ein Cookie für das Conversion-Tracking gesetzt. Bei Cookies handelt es sich um kleine Textdateien, die der Internet-Browser auf dem Computer des Nutzers ablegt. Diese Cookies verlieren nach 30 Tagen ihre Gültigkeit und dienen nicht der persönlichen Identifizierung der Nutzer. Diese Cookies ermöglichen Google eine Wiedererkennung Ihres Webbrowsers. Besuchen Sie bestimmte Seiten unseres Webauftritts, wenn das Cookie noch nicht abgelaufen ist, können Google und wir erkennen, dass Sie auf die konkrete Anzeige geklickt haben und zu dieser Seite weitergeleitet wurden.
+<br> 
+<br>Jeder Google Ads-Kunde erhält ein anderes Cookie. Die Cookies können somit nicht über die Websites von Ads-Kunden nachverfolgt werden. Zum Cookie werden in der Regel als Analysewerte folgende Informationen gespeichert: Unique-Cookie-ID, Anzahl Ad Impressions pro Platzierung (Frequency), letzte Impression (relevant für Post-View-Conversions), Opt-out- Informationen (Markierung, dass der Nutzer nicht mehr angesprochen werden möchte). Die mithilfe des Conversion-Cookies eingeholten Informationen dienen dazu, Conversion-Statistiken für Ads-Kunden zu erstellen, die sich für Conversion-Tracking entschieden haben. Die Ads- Kunden erfahren die Gesamtanzahl der Nutzer, die auf ihre Anzeige geklickt haben und zu einer mit einem Conversion-Tracking-Tag versehenen Seite weitergeleitet wurden. Sie erhalten jedoch keine Informationen, mit denen sich Nutzer persönlich identifizieren lassen. Wenn Sie nicht am Tracking teilnehmen möchten, können Sie dieser Nutzung widersprechen, indem Sie das Cookie des Google Conversion-Trackings über ihren Internet-Browser unter Nutzereinstellungen leicht deaktivieren. Sie werden sodann nicht in die Conversion-Tracking Statistiken aufgenommen.
+<br> 
+<br>Die Zusammenfassung der erfassten Daten in Ihrem Google-Konto erfolgt ausschließlich auf Grundlage Ihrer Einwilligung, die Sie bei Google abgeben oder widerrufen können (Art. 6 Abs. 1 lit. a DSGVO). Bei Datenerfassungsvorgängen, die nicht in Ihrem Google-Konto zusammengeführt werden (z.B., weil Sie kein Google-Konto haben oder der Zusammenführung widersprochen haben), beruht die Erfassung der Daten auf Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse ergibt sich daraus, dass wir ein Interesse an der anonymisierten Analyse der Besucher unserer Website zu Werbezwecken haben, um sowohl unser Webangebot als auch unsere Werbung zu optimieren.
+<br> 
+<br>Weitergehende Informationen und die Datenschutzbestimmungen finden Sie in der Datenschutzerklärung von Google unter: https://policies.google.com/technologies/ads?hl=de. 
+<br> 
+<br> 
+<h3>Soziale Medien</h3>
+<br> 
+
+<h3>1.1 Facebook-Plugins (Like & Share-Button)</h3>
+<br> 
+
+<p>Auf unserer Website sind Plugins des sozialen Netzwerks Facebook, Anbieter Facebook Inc., 1 Hacker Way, Menlo Park, California 94025, USA, integriert („Facebook“). Die Facebook Plugins erkennen Sie an dem Facebook-Logo oder dem „Like-Button“ („Gefällt mir“) auf unserer Website. Eine Übersicht über die Facebook Plugins finden Sie hier: https://developers.facebook.com/docs/plugins/?locale=de_DE.
+<br> Um den Schutz Ihrer Daten beim Besuch unserer Website zu erhöhen, sind die Facebook- Plugins nicht uneingeschränkt, sondern lediglich unter Verwendung eines HTML-Links (sogenannte „Shariff“-Lösung von c‘t) in die Seite eingebunden. Diese Einbindung gewährleistet, dass beim Aufruf einer Seite unseres Webauftritts, die solche Plugins enthält, noch keine Verbindung mit den Servern von Facebook hergestellt wird. Erst wenn Sie auf den Facebook Button klicken, öffnet sich ein neues Fenster Ihres Browsers und ruft die Seite von Facebook auf, auf der Sie den Like- oder Share-Button betätigen können.
+<br>Informationen über den Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch Facebook sowie Ihre diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz Ihrer Privatsphäre finden Sie in der Datenschutzerklärung von Facebook unter: https://de-de.facebook.com/privacy/explanation.
+<br> 
+<br> 
+<h3>1.2 Instagram Plugin </h3>
+<br> 
+
+<p>Auf unseren Seiten sind Funktionen des Dienstes Instagram eingebunden. Diese Funktionen werden durch die Instagram Inc., 1601 Willow Road, Menlo Park, CA 94025, USA, („Instagram“) angeboten. Die Plugins sind mit einem Instagram-Logo beispielsweise in Form einer „Instagram-Kamera“ gekennzeichnet. Eine Übersicht über die Instagram Plugins und deren Aussehen finden Sie hier: http://blog.instagram.com/post/36222022872/introducing-instagram- badges
+    <br>Um den Schutz Ihrer Daten beim Besuch unserer Website zu erhöhen, sind die Instagram- Plugins nicht uneingeschränkt, sondern lediglich unter Verwendung eines HTML-Links (sogenannte „Shariff“-Lösung von c‘t) in die Seite eingebunden. Diese Einbindung gewährleistet, dass beim Aufruf einer Seite unseres Webauftritts, die solche Plugins enthält, noch keine Verbindung mit den Servern von Instagram hergestellt wird. Erst wenn Sie auf den Instagram Button klicken, öffnet sich ein neues Fenster Ihres Browsers und ruft die Seite von Instagram auf.
+    <br>Informationen über den Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch Instagram sowie Ihre diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz Ihrer Privatsphäre finden Sie in der Datenschutzerklärung von Instagram unter: https://instagram.com/about/legal/privacy/.</p>
+    <br> 
+    <br> 
+    <h3>1.3 LinkedIn Plugin</h3>
+    <br> 
+
+    <p>Unsere Website benutzt Funktionen des Netzwerks LinkedIn. Anbieter ist die LinkedIn Corporation, 2029 Stierlin Court, Mountain View, CA 94043, USA („LinkedIn“).
+    </p>
+    <br>Um den Schutz Ihrer Daten beim Besuch unserer Website zu erhöhen, sind die LinkedIn- Plugins nicht uneingeschränkt, sondern lediglich unter Verwendung eines HTML-Links (sogenannte „Shariff“-Lösung von c‘t) in die Seite eingebunden. Diese Einbindung gewährleistet, dass beim Aufruf einer Seite unseres Webauftritts, die solche Plugins enthält, noch keine Verbindung mit den Servern von LinkedIn hergestellt wird. Erst wenn Sie auf den LinkedIn Button klicken, öffnet sich ein neues Fenster Ihres Browsers und ruft die Seite von LinkedIn auf.
+    <br>Informationen über den Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch LinkedIn sowie Ihre diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz Ihrer Privatsphäre finden Sie in der Datenschutzerklärung von LinkedIn unter: https://www.linkedin.com/legal/privacy-policy.
+    <br> 
+    <br> 
+    <h3>1.4 YouTube Plugin</h3>
+    <br> 
+
+    <p>Für Integration und Darstellung von Videoinhalten benutzt unsere Website Plugins von YouTube. Anbieter des Videoportals ist die YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA („YouTube“).</p>
+    <br>Um den Schutz Ihrer Daten beim Besuch unserer Website zu erhöhen, sind die YouTube- Plugins nicht uneingeschränkt, sondern lediglich unter Verwendung eines HTML-Links (sogenannte „Shariff“-Lösung von c‘t) in die Seite eingebunden. Diese Einbindung gewährleistet, dass beim Aufruf einer Seite unseres Webauftritts, die solche Plugins enthält, noch keine Verbindung mit den Servern von YouTube hergestellt wird. Erst wenn Sie auf den YouTube Button klicken, öffnet sich ein neues Fenster Ihres Browsers und ruft die Seite von YouTube auf, auf der Sie den Like-Button betätigen können.
+    <br>Informationen über den Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch YouTube sowie Ihre diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz Ihrer Privatsphäre finden Sie in der Datenschutzerklärung von YouTube unter: https://www.google.de/intl/de/policies/privacy.
+    <br> 
+    <br> 
+    <h3>Kontaktformular</h3>
+    <br> 
+    <p>Sofern Sie mit uns Kontakt per E-Mail oder über ein Kontaktformular aufnehmen, werden übermittelte Daten einschließlich Ihrer Kontaktdaten gespeichert, um Ihre Anfrage bearbeiten zu können oder um für Anschlussfragen bereitzustehen. Eine Weitergabe dieser Daten findet ohne Ihre Einwilligung nicht statt.</p>
+    <br>Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Ein Widerruf Ihrer bereits erteilten Einwilligung ist jederzeit möglich. Für den Widerruf genügt eine formlose Mitteilung per E-Mail. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.
+    <br>Über das Kontaktformular übermittelte Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder keine Notwendigkeit der Datenspeicherung mehr besteht. Zwingende gesetzliche Bestimmungen - insbesondere Aufbewahrungsfristen - bleiben unberührt.
+    <br> 
+    <br> 
+    <h3>Datenverwendung und -weitergabe</h3>
+    <br> 
+    <p>Die personenbezogenen Daten, die Sie uns z.B. per E-Mail mitteilen (z.B. Ihr Name und Ihre Adresse oder Ihre E-Mail-Adresse), werden wir weder an Dritte verkaufen noch anderweitig vermarkten. Ihre personenbezogenen Daten werden nur zur Korrespondenz mit Ihnen und nur für den Zweck verarbeitet, zu dem Sie uns die Daten zur Verfügung gestellt haben. Zur Abwicklung von Zahlungen geben wir Ihre Zahlungsdaten an das mit der Zahlung beauftragte Kreditinstitut weiter.</p>
+    <br>Die Verwendung von Daten, die bei Ihrem Besuch unserer Website automatisch erhoben werden, erfolgt nur zu den vorstehend genannten Zwecken. Eine anderweitige Verwendung der Daten findet nicht statt.
+    <br>Wir versichern, dass wir Ihre personenbezogenen Daten im Übrigen nicht an Dritte weitergeben, es sei denn, dass wir dazu gesetzlich verpflichtet wären oder Sie uns vorher Ihre Zustimmung gegeben haben.
+    <br> 
+    <br> 
+    <h3>SSL- bzw. TLS-Verschlüsselung</h3>
+    <br> 
+    <p>Unsere Website benutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://” auf „https://” wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+    <br>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
+    <br> 
+    <br> 
+    <h3>§2</h3>
+    <h3>Speicherdauer</h3> 
+    <br> 
+        <p>Personenbezogene Daten, die uns über unsere Website mitgeteilt worden sind, werden nur so lange gespeichert, bis der Zweck erfüllt ist, zu dem sie uns anvertraut wurden. Soweit handels- und steuerrechtliche Aufbewahrungsfristen zu beachten sind, kann die Speicherdauer zu bestimmten Daten bis zu 10 Jahre betragen.</p>
+        <br> 
+        <br> 
+    <h3>§3 Betroffenenrechte</h3>
+    <br> 
+    <p>Hinsichtlich der Sie betreffenden personenbezogenen Daten haben als Betroffener der Datenverarbeitung nach Maßgabe der gesetzlichen Bestimmungen folgende Rechte gegenüber dem Verantwortlichen:</p>
+    <br> 
+    <br> 
+        <h3>3.1 Widerrufsrecht</h3>
+        <br> 
+    <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sofern die Verarbeitung Ihrer Daten auf Ihrer Einwilligung beruht, haben Sie das Recht, eine einmal erteilte Einwilligung in die Verarbeitung von Daten gemäß Art. 7 Abs. 3 DSGVO jederzeit mit Wirkung für die Zukunft zu widerrufen. Durch den Widerruf der Einwilligung wird die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung nicht berührt. Speicherung der Daten für Abrechnungs- und buchhalterische Zwecke bleibt von einem Widerruf nicht berührt.</p>
+    <br> 
+    <br> 
+        <h3>3.2 Auskunftsrecht</h3>
+        <br> 
+    <p>
+        Sie haben das Recht, gemäß Art. 15 DSGVO von uns eine Bestätigung darüber zu verlangen, ob wir personenbezogene Daten verarbeiten, die Sie betreffen. Liegt eine solche Verarbeitung vor, haben Sie das Recht auf Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten, die Verarbeitungszwecke, die Kategorien der verarbeiteten personenbezogenen Daten, die Empfänger oder Kategorien von Empfängern, gegenüber denen Ihre Daten offengelegt wurden oder werden, die geplante Speicherdauer bzw. die Kriterien für die Festlegung der Speicherdauer, das Bestehen eines Rechts auf Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch gegen die Verarbeitung, Beschwerde bei einer Aufsichtsbehörde, die Herkunft Ihrer Daten, wenn diese nicht durch uns bei Ihnen erhoben wurden, das Bestehen einer automatisierten Entscheidungsfindung einschließlich Profiling und ggf. aussagekräftige Informationen über die involvierte Logik und die Sie betreffende Tragweite und die angestrebten Auswirkungen einer solchen Verarbeitung, sowie Ihr Recht auf Unterrichtung, welche Garantien gemäß Art. 46 DSGVO bei Weiterleitung Ihrer Daten in Drittländer bestehen.
+        <br> 
+        <br> 
+        <h3>3.3 Recht auf Berichtigung</h3>
+        <br> 
+        <p>Sie haben das Recht, gemäß Art. 16 DSGVO jederzeit unverzügliche Berichtigung Sie betreffender unrichtiger personenbezogener Daten und/oder die Vervollständigung Ihrer unvollständigen Daten zu verlangen.</p>
+        <br> 
+        <br> 
+        <h3>3.4 Recht auf Löschung</h3>
+        <br> 
+        <p>Sie haben das Recht, gemäß Art. 17 DSGVO die Löschung Ihrer personenbezogenen Daten zu verlangen, sofern einer der folgenden Gründe zutrifft:</p>
+        <br>a) Ihre personenbezogenen Daten sind für die Zwecke, für die sie erhoben oder auf sonstige Weise verarbeitet wurden, nicht mehr notwendig.
+        <br>b) Sie widerrufen Ihre Einwilligung, auf die sich die Verarbeitung gemäß Art. 6 Abs. 1 lit. a oder Art. 9 Abs. 2 lit. a DSGVO stützte, und es fehlt an einer anderweitigen Rechtsgrundlage für die Verarbeitung.
+        <br>c) Sie legen gemäß Art. 21 Abs. 1 DSGVO Widerspruch gegen die Verarbeitung ein und es liegen keine vorrangigen berechtigten Gründe für die Verarbeitung vor, oder Sie legen gemäß Art. 21 Abs. 2 DSGVO Widerspruch gegen die Verarbeitung ein.
+        <br>d) Die personenbezogenen Daten wurden unrechtmäßig verarbeitet.
+        <br>e) Die Löschung der personenbezogenen Daten ist zur Erfüllung einer rechtlichen Verpflichtung nach dem Unionsrecht oder dem Recht des Mitgliedstaates erforderlich, dem wir unterliegen.
+        <br>f) Die personenbezogenen Daten wurden in Bezug auf angebotene Dienste der Informationsgesellschaft gemäß Art. 8 Abs. 1 DSGVO erhoben.
+Verpflichtung nach dem Unionsrecht oder dem Recht des Mitgliedstaates erforderlich, dem wir unterliegen.
+        <br>Dieses Recht besteht jedoch nicht, soweit die Verarbeitung erforderlich ist:
+        <br>a) zur Ausübung des Rechts auf freie Meinungsäußerung und Information;
+        <br>b) zur Erfüllung einer rechtlichen Verpflichtung, die die Verarbeitung nach dem Recht der Union oder des Mitgliedstaates, dem wir unterliegen, erfordert, oder zur Wahrnehmung einer Aufgabe, die im öffentlichen Interesse liegt oder in Ausübung öffentlicher Gewalt erfolgt, die uns übertragen wurde;
+        <br>c) aus Gründen des öffentlichen Interesses im Bereich der öffentlichen Gesundheit gemäß Art. 9 Abs. 2 lit. h und i sowie Art. 9 Abs. 3 DSGVO;
+        <br>d) für im öffentlichen Interesse liegende Archivzwecke, wissenschaftliche oder historische Forschungszwecke oder für statistische Zwecke gemäß Art. 89 Abs. 1 DSGVO, soweit das Betroffenenrecht voraussichtlich die Verwirklichung der Ziele dieser Verarbeitung unmöglich macht oder ernsthaft beeinträchtigt, oder
+        <br>e) zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.
+        <br>Haben wir Ihre personenbezogenen Daten öffentlich gemacht und sind wir nach Vorstehendem zu deren Löschung verpflichtet, so treffen wir unter Berücksichtigung der verfügbaren Technologie und der Implementierungskosten angemessene Maßnahmen, auch technischer Art, um für die Datenverarbeitung Verantwortliche, die die personenbezogenen Daten verarbeiten, darüber zu informieren, dass Sie als betroffene Person von ihnen die Löschung aller Links zu Ihren personenbezogenen Daten oder von Kopien oder Replikationen dieser personenbezogenen Daten verlangt haben.
+        <br> 
+        <br> 
+        <h3>3.5 Recht auf Einschränkung der Verarbeitung</h3>
+        <br> 
+        <br> Sie haben das Recht, gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung (Sperrung) Ihrer personenbezogenen Daten zu verlangen. Hierzu können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Das Recht auf Einschränkung der Verarbeitung besteht in folgenden Fällen:
+        <br> a) Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
+        <br> b) Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah / geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.
+        <br> c) Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
+        <br> d) Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
+        <br> Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten – von ihrer Speicherung abgesehen – nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden.
+        
+        <br> 
+        <br>  
+        <h3>3.6 Recht auf Unterrichtung</h3>
+        <br> 
+        <br> Haben Sie das Recht auf Berichtigung, Löschung oder Einschränkung der Verarbeitung gegenüber uns geltend gemacht, sind wir verpflichtet, allen Empfängern, denen Ihre personenbezogenen Daten offengelegt wurden, diese Berichtigung oder Löschung der Daten oder Einschränkung der Verarbeitung mitzuteilen, es sei denn, dies erweist sich als unmöglich oder ist mit einem unverhältnismäßigen Aufwand verbunden. Ihnen steht gemäß Art. 19 DSGVO das Recht zu, nach Verlangen über diese Empfänger unterrichtet zu werden.
+        <br> 
+        <br>  
+        <h3>3.7 Recht, nicht einer ausschließlich auf einer automatisierten Verarbeitung – einschließlich Profiling – beruhenden Entscheidung unterworfen zu werden</h3>
+        <br> 
+        <br>  Sie haben das Recht, gemäß Art. 22 DSGVO nicht einer ausschließlich auf einer automatisierten Verarbeitung – einschließlich Profiling – beruhenden Entscheidung unterworfen zu werden, die Ihnen gegenüber rechtliche Wirkung entfaltet oder Sie in ähnlicher Weise erheblich beeinträchtigt.
+        <br>  Dies gilt nicht, wenn die Entscheidung
+        <br> a) für den Abschluss oder die Erfüllung eines Vertrags zwischen Ihnen und uns erforderlich ist,
+        <br>b) aufgrund von Rechtsvorschriften der Union oder der Mitgliedstaaten, denen der Verantwortliche unterliegt, zulässig ist und diese Rechtsvorschriften angemessene Maßnahmen zur Wahrung Ihrer Rechte und Freiheiten sowie Ihrer berechtigten Interessen enthalten oder
+        <br>c) mit Ihrer ausdrücklichen Einwilligung erfolgt.
+Allerdings dürfen die Entscheidungen in den in (a) bis (c) genannten Fällen nicht auf besonderen Kategorien personenbezogener Daten nach Art. 9 Abs. 1 DSGVO beruhen, sofern nicht Art. 9 Abs. 2 lit. a oder lit. g gilt und angemessene Maßnahmen zum Schutz der Rechte und Freiheiten sowie Ihrer berechtigten Interessen getroffen wurden.
+<br> 
+<br>In den in (a) und (c) genannten Fällen treffen wir angemessene Maßnahmen, um Ihre Rechte und Freiheiten sowie Ihre berechtigten Interessen zu wahren, wozu mindestens das Recht auf Erwirkung des Eingreifens einer Person seitens des Verantwortlichen, auf Darlegung des eigenen Standpunkts und auf Anfechtung der Entscheidung gehört.
+<br> 
+<br> 
+<h3>3.8 Recht auf Datenübertragbarkeit</h3>
+<br> 
+<br> Sofern die Verarbeitung auf Ihrer Einwilligung gem. Art. 6 Abs. 1 lit. a DSGVO oder Art. 9 Abs. 2 lit. a DSGVO oder auf einem Vertrag gemäß Art. 6 Abs. 1 lit. b DSGVO beruht und mithilfe automatisierter Verfahren erfolgt, haben Sie das Recht, gemäß Art. 20 DSGVO Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesebaren Format zu erhalten und einem anderen Verantwortlichen zu übermitteln oder die Übermittlung an einen anderen Verantwortlichen zu verlangen, soweit dies technisch machbar ist.
+<br>  
+<h3>3.9 Widerspruchsrecht</h3>
+<br> 
+<br> Soweit wir die Verarbeitung Ihrer personenbezogenen Daten auf die Interessenabwägung nach Art. 6 Abs. 1 lit. f DSGVO stützen, haben Sie jederzeit das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, gegen die Verarbeitung Ihrer personenbezogenen Daten Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmung gestütztes Profiling. Die jeweilige Rechtsgrundlage, auf der eine Verarbeitung beruht, entnehmen Sie dieser Datenschutzerklärung. Wenn Sie Widerspruch einlegen, werden wir Ihre betroffenen personenbezogenen Daten nicht mehr verarbeiten, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen (Widerspruch nach Art. 21 Abs. 1 DSGVO).
+<br> Werden Ihre personenbezogenen Daten verarbeitet, um Direktwerbung zu betreiben, so haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung Sie betreffender personenbezogener Daten zum Zwecke derartiger Werbung einzulegen; dies gilt auch für das Profiling, soweit es mit solcher Direktwerbung in Verbindung steht. Wenn Sie widersprechen, werden Ihre personenbezogenen Daten anschließend nicht mehr zum Zwecke der Direktwerbung verwendet (Widerspruch nach Art. 21 Abs. 2 DSGVO).
+Sie haben die Möglichkeit, im Zusammenhang mit der Nutzung von Diensten der Informationsgesellschaft – ungeachtet der Richtlinie 2002/58/EG - Ihr Widerspruchsrecht mittels automatisierter Verfahren auszuüben, bei denen technische Spezifikationen verwendet werden.
+<br> 3.10 Beschwerderecht bei der zuständigen Aufsichtsbehörde gemäß Art. 77 DSGVO
+Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.
+<br> 
+<br> 
+Bayerisches Landesamt für Datenschutzaufsicht
+<br> Promenade 18 91522 Ansbach
+<br> Postanschrift:
+<br> Postfach 1349, 91504 Ansbach
+<br> Telefon: 0981/180093-0
+<br> E-Mail: poststelle@lda.bayern.de Internet: https://www.lda.bayern.de
+<br> Gültigkeit und Änderung dieser Datenschutzerklärung
+<br> 
+<br> 
+Diese Datenschutzerklärung gilt ab dem 1. Januar 2024. Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit unter Beachtung der geltenden Datenschutzvorschriften zu ändern. Dies kann z.B. zur Einhaltung neuer Gesetzesbestimmungen oder zur Berücksichtigung der Änderungen unserer Website bzw. neuer Dienstleistungen auf unserer Website erforderlich sein. Es gilt die zum Zeitpunkt Ihres Besuchs abrufbare Fassung.
+<br> 
+<br> Sollte diese Datenschutzerklärung geändert werden, beabsichtigen wir, Änderungen an unserer Datenschutzerklärung auf dieser Seite bekannt zu geben, sodass Sie umfassend darüber informiert sind, welche personenbezogene Daten wir sammeln, wie wir sie verarbeiten und unter welchen Umständen sie weitergegeben werden können.
+</div>
+</section>
+</body>
+</html>
+

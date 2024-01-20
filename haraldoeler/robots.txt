@@ -1,3 +1,0 @@
-User-agent: * 
-Disallow: *.pdf
-Sitemap : https://www.haraldoeler.com/sitemap.xml

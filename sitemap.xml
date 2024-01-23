@@ -8,19 +8,64 @@
 
 
 <url>
-  <loc>http://www.haraldoeler.com/</loc>
-  <lastmod>2024-01-02T11:15:06+00:00</lastmod>
+  <loc>https://haraldoeler.com/</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.haraldoeler.com/VITA%20DE.pdf</loc>
-  <lastmod>2024-01-02T11:15:04+00:00</lastmod>
+  <loc>https://haraldoeler.com/index</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.haraldoeler.com/VITA%20EN.pdf</loc>
-  <lastmod>2024-01-02T11:15:04+00:00</lastmod>
+  <loc>https://haraldoeler.com/about</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/projekte</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/termine</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/news</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/unterricht</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/discographie</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/media</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/kontakt</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/impressum</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haraldoeler.com/privacy</loc>
+  <lastmod>2024-01-23T15:36:18+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 

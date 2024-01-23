@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta data-vue-meta="1" name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist ">
+    <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta property="og:title" content="HARALD OELER | accordionist">
+    <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
+    <meta property="og:image" content="https://www.haraldoeler.com/image/slide1.webp">
+    <meta property="og:url" content="https://www.haraldoeler.com/">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.haraldoeler.com/">
+    <title>HARALD OELER | accordionist </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <link rel="stylesheet" href="toggle.css">
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script  src="app.js"></script>
+    <script  src="header.js"></script>
+    <script  src="toggle.js"></script>
+    <script  src="server.js"></script>
+
+</head>
+<body>
+    <section id="header">
+        <div class="header container">
+            <div class="brand">
+                <a href="index">
+                    <h1>HARALD<span style="color: transparent;">_</span>OELER</h1>
+                    <span class="logo">H</span>
+                </a>            
+            </div>
+            <input id="toggle" type="checkbox">
+            <label for="toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+            <div class="nav-bar">
+                <div class="nav-list">
+                    <ul class="vertical">
+                        <li><a href="about">about</a></li>
+                        <li><a href="projekte">projekte</a></li>
+                    </ul>
+                    <ul class="horizontal">
+                        <li class="noshown"><a href="about">about</a></li>
+                        <li class="noshown"><a href="projekte">projekte</a></li>
+                        <li><a href="termine" >termine</a></li>
+                        <li><a href="news">news</a></li>
+                        <li><a href="unterricht">unterricht</a></li>
+                        <li><a href="discographie">discographie</a></li>                    
+                        <li><a href="media">media</a></li>
+                        <li><a href="kontakt">kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="media" class="page">
+        <h2 class="section-title">media</h2>
+        <p class="info"><i class="fa-solid fa-camera"></i> Kat Schulz & <a target="_blank" href="https://www.schwarzenbach-fotografie.de">Schwarzenbach Fotografie</a></p>   
+        <div class="row">
+              <div class="column">
+                <img loading="lazy" src="image/slide1.webp" alt="slide" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide2.webp" alt="slide" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide3.webp" alt="slide" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide4.webp" alt="slide" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide5.webp" alt="slide" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide6.webp" alt="slide" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide7.webp" alt="slide" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+              </div>
+              <div class="column">
+                <img loading="lazy" src="image/slide8.webp" alt="slide" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+              </div>
+        </div>
+        <div id="myModal" class="modal">
+              <span class="close cursor" onclick="closeModal()">&times;</span>
+              <div class="modal-content">
+                <div class="mySlides">
+                  <div class="numbertext">1 / 8</div>
+                  <img loading="lazy" src="image/slide1.webp" alt="slide" style="width:100%" >
+                </div>
+                <div class="mySlides">
+                  <div class="numbertext">2 / 8</div>
+                  <img loading="lazy" src="image/slide2.webp" alt="slide" style="width:100%">
+                </div>
+                <div class="mySlides">
+                  <div class="numbertext">3 / 8</div>
+                  <img loading="lazy" src="image/slide3.webp" alt="slide" style="width:100%">
+                </div> 
+                <div class="mySlides">
+                  <div class="numbertext">4 / 8 </div>
+                  <img loading="lazy" src="image/slide4.webp" alt="slide" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">5 / 8 </div>
+                    <img loading="lazy" src="image/slide5.webp" alt="slide" style="width:100%">
+                </div>
+                    <div class="mySlides">
+                    <div class="numbertext">6 / 8 </div>
+                    <img loading="lazy" src="image/slide6.webp" alt="slide" style="width:100%">
+                </div>
+                    <div class="mySlides">
+                    <div class="numbertext">7 / 8 </div>
+                    <img loading="lazy" src="image/slide7.webp" alt="slide" style="width:100%">
+                </div>
+                <div class="mySlides">
+                    <div class="numbertext">8 / 8 </div>
+                    <img loading="lazy" src="image/slide8.webp" alt="slide" style="width:100%">
+                </div>
+            </div>
+                  
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </section>
+</body>
+</html>

@@ -32,13 +32,7 @@ li {
 	list-style: none;
 	color: black;
 }
-.container {
-	min-height: 100vh;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+
 img {
 	height: 100%;
 	width: 100%;
@@ -50,11 +44,7 @@ img {
 .uppercase {
     text-transform: uppercase;
 }
-.page {
-    display: none;
-    width: 100vw;
-    height: 100vh;
-}
+
 
 /* Header section */
 #toggle {
@@ -142,7 +132,12 @@ img {
     justify-content: flex-start;
     padding-top: 300px;
     animation: slide 2s ease-out;
-}
+    min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 @keyframes slide {
     from {
         opacity:0 ;
@@ -231,6 +226,9 @@ img {
 #about .about {
 	max-width: 1400px;
 	margin: 0 auto;
+    display: flex;
+        align-items: center;
+        justify-content: center;
 }
 .check {
     position: relative;
@@ -940,7 +938,6 @@ select {
 #past {
     width: 100%;
     height: auto;
-    letter-spacing: 2px;
     color: black;
 }   
 #past .back {
@@ -954,6 +951,7 @@ select {
 }
 #past .past_list {
     max-width:auto;
+    letter-spacing: 2px;
 }
 
 #year2023, #year2022 {
@@ -1087,3 +1085,4 @@ select {
 	}
 }
 /* End Keyframes */
+

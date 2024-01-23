@@ -60,36 +60,10 @@
             </div>
         </div>
     </section>
-    <section id="home">
-        <div class="home container">
-          <div>
-            <h1 class="name">HARALD <br>OELER
-                <span class="disappear-word">_</span><span class="namespan"></span>
-            </h1>
-            <h2 class="instrument">
-                AKKODEONIST & LEHRER & KOMPONIST <i id="play" class="fa-solid fa-circle-play" style="color: #ffffff;"></i>
-            </h2>
-            <audio id="audio">
-                <source src="MarktVonLimoges.mp3" type="audio/mp3">
-            </audio>
-            <script>
-            var audio = document.getElementById("audio");
-            var play = document.getElementById("play");
-    
-            play.onclick = function () {
-            if (audio.paused) {
-            audio.play();
-            play.classList.remove("fa-circle-play");
-            play.classList.add("fa-pause-circle", "bouncing");
-            } else {
-            audio.pause();
-            play.classList.remove("fa-pause-circle", "bouncing");
-            play.classList.add("fa-circle-play");
-            }
-            }
-            </script>
-          </div>
-        </div> 
+    <section id="impressum" class="page">
+        <h2 class="section-title">impressum</h2>
+        <div class="info">
+        </div>
     </section>
 </body>
 </html>

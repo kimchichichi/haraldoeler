@@ -1,0 +1,538 @@
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+	#about .swiper {
+		width: 600px;
+	}
+	
+	.projectbox img {
+		width: 600px;
+	}
+	.youtube {
+		width:400px;
+		height:225px;
+	}
+	.spotify {
+		width: 400px;
+	}
+	#projekte .projectbox,
+	#discographie .projectbox {
+		grid-template-columns: repeat(3,1fr);
+
+	}
+	#hof .projectbox {
+		height: 75%;
+		}
+	.box{
+	width: 370px;
+	height: 370px;
+	} 
+	.news-projectbox {
+		width: 1000px;
+	}
+	#termine .upcoming_list {
+		max-width: 1100px;
+		margin-bottom: 50px;
+	}
+
+	#kontakt {
+		height: auto;
+	}
+	#kontakt img {
+		width: 600px;
+	}
+	#kontakt .contact-name {
+		font-size: 100px;
+	}
+}
+	/* Media Query For Medium Tablets */
+	@media only screen and (min-width: 992px) and (max-width: 1199px) {
+		
+		#home .home {
+			padding-top: 600px;
+		}
+		#header .nav-list .vertical {
+			padding-bottom: 20px;
+			padding-top: 30px;
+		}
+		#header h1 {
+			display: none;
+		}
+		#header .logo {
+			display: block;
+			font-weight: bold;
+			font-size: 40px;
+			padding-left: 20px;
+			top: 40px;left: 0;
+			position: fixed;
+			color: red;
+		}	
+		.instrument {
+			font-size: 45px;
+		}	
+		.container {
+			flex-direction: column;
+		}
+		#about .about-bottom {
+			margin-top: 0;
+			margin-right: 0;
+			margin-bottom: 50px;
+		}
+		#about .swiper {
+			width: 900px;
+		}
+		#projekte .projekte,
+		#discographie .projekte {
+			max-width: auto;
+			margin: 0 auto;
+		}
+		#projekte .projectbox,
+		#discographie .projectbox {
+			grid-template-columns: repeat(2,1fr);
+		}
+		.box {
+		width: 450px;
+		height: 450px;
+		}  
+		.projectbox {
+			flex-direction: column;
+		}
+		.projectbox img {
+			width: 900px;
+		}
+		.youtube {
+			width:900px;
+			height:506px;
+		}
+		.spotify {
+			width: 900px;
+		}
+		#termine .upcoming_list {
+			grid-template-columns: repeat(1,1fr);
+			max-width: 800px;
+		}
+		#news .news{
+			flex-direction: row;
+		}
+		#news .news-column {
+			width: calc(50% - 20px);
+		}
+		.news-projectbox {
+			width: 900px;
+		}
+		.column {
+			width: 300px;
+			height: 300px;
+		  }
+		.column img:hover {
+			  opacity: .5;
+			  width: 400px;
+		}
+		#kontakt .container {
+			flex-direction: row;
+			max-width: 1199px;
+		}
+		#kontakt img {
+			width: 500px;
+		}
+		#kontakt .contact-name {
+			font-size: 100px;
+		}
+	}
+
+	/* Media Query For Small Tablets */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+	#home .home {
+		padding-top: 500px;
+	}
+	.container {
+		flex-direction: column;
+	}
+	#about .about-bottom {
+		margin-top: 0;
+		margin-right: 0;
+		margin-bottom: 50px;
+	}
+	#about .swiper {
+		width: 700px;
+	}
+	#projekte .projekte,
+	#discographie .projekte {
+		max-width: 991px;
+		margin: 0 auto;
+	}
+	#projekte .projectbox,
+	#discographie .projectbox {
+		grid-template-columns: repeat(2,1fr);
+	}
+	#solo .solo-top {
+		text-align: center;
+	} 
+	#triofussissimo .section-title {
+		font-size: 70px;
+	}
+	#discographie .section-title {
+		padding-left: 20px;
+		font-size: 90px;
+	}
+	.projectbox {
+		flex-direction: column;
+		max-width: 991px;
+	}
+	.box {
+		width: 370px;
+		height: 370px;
+	}
+	.projectbox img {
+		width: 700px;
+	}
+	.youtube {
+		width:700px;
+		height: 393.75px;
+	}
+	.spotify {
+		width: 700px;
+	}
+	#news .news{
+		flex-direction: row;
+	}
+	#news .news-column {
+		width: calc(50% - 20px);
+		height: 600px;
+	}
+	.news-projectbox {
+		width: 700px;
+	}
+	#termine .upcoming_list {
+		grid-template-columns: repeat(1,1fr);
+		max-width: 900px;
+		font-size: 20px;
+	}
+	.vergangens{
+		margin-bottom: 10px;
+	}
+	.searchbox i{
+		right: 533px;
+	}
+	#media .section-title {
+		padding-top: 70px;
+	}
+	#media .row { 
+		display: grid;
+		grid-template-columns: repeat(2,1fr);
+	}
+	#media .column {
+		margin-bottom: 50px;
+	  }
+
+	#termine .info {
+		display: flex;
+		flex-direction: column;
+		padding: 20px 0;
+	}
+	.swiper {
+		width: 700px;
+		height: 700px;
+	}
+  }
+  /* Media Query For Phones */
+  @media only screen and (min-width:480px) and (max-width: 767px) {
+	#home {
+		background-size: cover;	
+	}
+	#home .home {
+		padding-top: 400px;
+	}
+	.name {
+		font-size: 100px;
+		padding-left: 20px;
+	}
+	.instrument {
+		font-size: 35px;
+	}
+	.section-title {
+		padding-top: 150px;
+		padding-left: 50px;
+		font-size: 90px;
+	}
+	.info {
+		padding-left: 70px;
+	}
+	.container {
+		flex-direction: column;
+	}
+	#about .about-bottom {
+		margin-top: 0;
+		margin-right: 0;
+		margin-bottom: 50px;
+	}   
+	#about .swiper {
+		width: 500px;
+	}
+	#termine .upcoming_list {
+		grid-template-columns: repeat(1,1fr);
+		max-width: 480px;
+		font-size: 20px;
+	}
+	#termine .info {
+		display: flex;
+		flex-direction: column;
+		padding: 20px 0;
+	}
+	.calendar-container li {
+		font-size: 15px;
+	}
+	.vergangens{
+		margin-bottom: 10px;
+	}
+	.searchbox i{
+		position: absolute;
+		top: 50%;
+		right: 427px;
+	}
+	#discographie .section-title {
+		padding-left: 20px;
+		font-size: 70px;
+	}
+	#projekte .projekte,
+	#discographie .projekte {
+		max-width: 767px;
+	}
+	#projekte .projectbox,
+	#discographie .projectbox {
+		grid-template-columns: repeat(1,1fr);
+	}
+	#solo .solo-top {
+		text-align: center;
+	} 
+	#orchester .section-title {
+		font-size: 80px;
+	}
+	#hof .section-title,
+	#unterricht .section-title,
+	#triofussissimo .section-title {
+		font-size: 70px;
+	}
+	.projectbox {
+		flex-direction: column;
+		max-width: 767px;
+	}
+	.projectbox img {
+		width: 500px;
+	}
+	.youtube {
+		width:500px;
+		height: 281.25px;
+	}
+	.spotify {
+		width: 500px;
+	}
+	#news .news-column {
+		width: calc(80% - 20px);
+	}
+	#news .news{
+		justify-content: center;
+		align-items: center;
+	}
+	#vortrag-readmore .readmore-title,
+	#kinderkonzert-readmore .readmore-title  {
+		font-size: 50px;
+		padding-left: 5px;
+	}
+	.news-projectbox {
+		width: 500px;
+	}
+	#media .section-title {
+		padding-top: 70px;
+	}
+	#media .row { 
+		display: grid;
+		grid-template-columns: repeat(1,1fr);
+	}
+	#termine .upcoming_list {
+		grid-template-columns: repeat(1,1fr);
+		max-width: 480px;
+	}
+	#termine .info {
+		display: flex;
+		flex-direction: column;
+		padding: 20px 0;
+	}
+	#kontakt img {
+		width: 500px;
+	}
+	#kontakt .contact-name {
+		font-size: 100px;
+	}
+}
+@media only  screen and (min-width:320px)and (max-width: 479px) {
+	#home {
+		background-size: cover;	
+	}
+	#home .home {
+		padding-top: 400px;
+	}
+	.name {
+		font-size: 80px;
+		padding-left: 10px;
+	}
+	.instrument {
+		padding-left: 10px;
+		font-size: 16px;
+	}
+	.section-title {
+		padding-top: 100px;
+		padding-left: 20px;
+		font-size: 80px;
+	}
+	.info {
+		padding-left: 20px;
+		font-size: 20px;
+	}
+	.container {
+		flex-direction: column;
+	}
+	#about .about-bottom {
+		margin-top: 0;
+		margin-right: 0;
+		margin-bottom: 50px;
+	}   
+	#about .swiper {
+		width: 350px;
+	}
+	.box {
+		width: 350px;
+		height: 350px;
+	}	
+
+	#projekte .projectbox,
+	#discographie .projectbox {
+		grid-template-columns: repeat(1,1fr);
+		padding-bottom: 30px;
+	}
+	#solo .projectbox {
+		max-width: 100%;
+	}
+	#duoklakk .section-title,
+	#duovia .section-title {
+		font-size: 70px;
+	}
+	#projekte .section-title {
+		font-size: 65px;
+		padding-left:10px;
+	}
+	#orchester .section-title,
+	#kontakt .section-title{
+		font-size: 50px;
+		padding-left:10px;
+	}
+	#hof .section-title,
+	#unterricht .section-title {
+		font-size: 55px;
+		padding-left:10px;
+	}
+	#triofussissimo .section-title{
+		font-size: 45px;
+		padding-left:10px;
+	}
+	#discographie .section-title {
+		font-size: 45px;
+		padding-left:10px;
+	}
+	.projectbox {
+		flex-direction: column;
+		max-width: 479px;
+	}
+	.projectbox img {
+		width: 350px;
+	}
+	.youtube {
+		width:350px;
+		height: 196.875px;
+	}
+	.spotify {
+		width: 350px;
+	}
+	.back {
+		margin-top: 150px;
+		margin-right: 30px; /* Adjust the margin as needed */
+		float: right;
+	}
+	.review {
+		font-size: 15px;
+	}
+	#news .news-column {
+		width: calc(100%);
+		height: 600px;
+	}
+	#vortrag-readmore .readmore-title,
+	#kinderkonzert-readmore .readmore-title  {
+		font-size: 35px;
+	}
+	.newsback {
+		position: absolute;	
+		top: 120px;
+		right: 35px;
+		}
+	.news-projectbox {
+		width: 350px;
+	}
+	#termine .section-title {
+		font-size: 75px;
+	}
+	#termine .upcoming_list {
+		grid-template-columns: repeat(1,1fr);
+		max-width: 300px;	
+		margin: 30px 50px;
+	}
+	.searchbox {
+		display: none;
+	}
+	.vergangens{
+		margin: 10px;
+		}
+	#termine .info {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+	}
+/*media*/
+	#media .info {
+		padding-left: 20px;
+		font-size: 18px;
+	}
+	.row { 
+		grid-template-columns: repeat(1,1fr);
+	}
+	.modal {
+		padding-top: 100px;
+	}
+	.close {
+		top: 60px;
+	  }
+	#kontakt img {
+		width: 350px;
+	}
+	#kontakt .contact-name {
+		font-size: 60px;
+	}
+	#kontakt .col-right {
+		font-size: 20px;
+	}
+	.footer {
+		font-size:10px ;
+	}
+
+}@media only  screen and (min-width:320px)and (max-width: 352px){
+	#home {
+		background-size: cover;	
+	}
+	#home .home {
+		padding-top: 300px;
+	}
+	.name {
+		font-size: 70px;
+	}
+	.instrument {
+		font-size: 14px;
+	}
+}

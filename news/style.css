@@ -368,7 +368,6 @@ img {
     height: 300px;
     margin-bottom: 10px;
     border-radius: 5px;
-    filter: grayscale(100%);
 }
 #news .date {
     color: #888;

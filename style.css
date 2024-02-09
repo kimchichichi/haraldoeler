@@ -565,18 +565,23 @@ img {
     font-weight:lighter;
     font-size: 20px;
     position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 .news-image {
     width: 100%;
     height: 300px;
     margin-bottom: 10px;
     border-radius: 5px;
+
 }
 #news .date {
     color: #888;
     padding: 5px 0px;
     font-weight: bold;
     text-transform: uppercase;
+    text-align: right;
 }
 .mehrinfo {
     text-decoration: none;
@@ -653,6 +658,7 @@ img {
     font-weight:lighter;
     text-align: justify;
     padding-bottom: 50px;
+    
 }
 .newsback {
     display: flex;

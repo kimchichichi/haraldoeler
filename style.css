@@ -943,7 +943,10 @@ select {
     max-width:auto;
     letter-spacing: 2px;
 }
-
+#year{
+    max-width: 800px;
+    padding: 50px;
+}
 
 .scroll-to-top {
     position: fixed;

@@ -925,28 +925,6 @@ select {
     -webkit-appearance: none; /* Remove default arrow in older WebKit browsers */
     -moz-appearance: none; /* Remove default arrow in older Firefox */
 }
-#past {
-    width: 100%;
-    height: auto;
-    color: black;
-}   
-#past .back {
-    margin-top: 90px;
-    margin-right: 10px; /* Adjust the margin as needed */
-    float: right;
-}
-#past .section-title {
-    padding-left: 10px;
-    color: var(--whitesmoke);
-}
-#past .past_list {
-    max-width:auto;
-    letter-spacing: 2px;
-}
-#year{
-    max-width: 800px;
-    padding: 50px;
-}
 
 .scroll-to-top {
     position: fixed;

@@ -837,8 +837,9 @@ img.hover-shadow {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     max-width: 1200px;
-
+    gap: 70px;
 }
+
 #unterricht .mehrinfo,
 #termine .mehrinfo,
 #past .mehrinfo {
@@ -897,15 +898,7 @@ img.hover-shadow {
     text-transform: uppercase;
     margin: 10px 0px;
 }
-.concert-past {
-    width: fit-content;
-    height: auto;
-    background-color:black;
-    color: var(--secondary-color);
-    padding:5px 10px;
-    text-transform: uppercase;
-    margin: 10px 0px;
-}
+
 .datum {
     font-size: 40px;
     font-weight: bold;
@@ -951,10 +944,7 @@ select {
     letter-spacing: 2px;
 }
 
-#year2023, #year2022 {
-    max-width: 800px;
-    padding: 50px;
-}
+
 .scroll-to-top {
     position: fixed;
     bottom: 20px;

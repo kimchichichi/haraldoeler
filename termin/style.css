@@ -891,15 +891,7 @@ img.hover-shadow {
     text-transform: uppercase;
     margin: 10px 0px;
 }
-.concert-past {
-    width: fit-content;
-    height: auto;
-    background-color:black;
-    color: var(--secondary-color);
-    padding:5px 10px;
-    text-transform: uppercase;
-    margin: 10px 0px;
-}
+
 .datum {
     font-size: 40px;
     font-weight: bold;
@@ -930,7 +922,7 @@ select {
     width: 100%;
     height: auto;
     color: black;
-}   
+} 
 #past .back {
     margin-top: 90px;
     margin-right: 10px; /* Adjust the margin as needed */
@@ -945,7 +937,7 @@ select {
     letter-spacing: 2px;
 }
 
-#year2023, #year2022 {
+#year{
     max-width: 800px;
     padding: 50px;
 }

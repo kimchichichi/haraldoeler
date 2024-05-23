@@ -246,7 +246,7 @@ img {
     border-radius: 25px;
 }
 .check:checked:before {
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
 }
 .check:after {
     content: "";

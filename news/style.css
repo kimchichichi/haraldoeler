@@ -370,6 +370,14 @@ img {
     margin-bottom: 10px;
     border-radius: 5px;
 }
+
+.news-video {
+    width: 100%;
+    height: 800px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    object-fit: cover;
+}
 #news .date {
     color: #888;
     padding: 5px 0px;

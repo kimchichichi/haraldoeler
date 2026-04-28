@@ -1,79 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta data-vue-meta="1" name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist ">
-    <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta property="og:title" content="HARALD OELER | accordionist">
-    <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta property="og:image" content="https://www.haraldoeler.com/image/slide1.webp">
-    <meta property="og:url" content="https://www.haraldoeler.com/">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.haraldoeler.com/">
-    <title>HARALD OELER | accordionist </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media.css">
-    <link rel="stylesheet" href="toggle.css">
-    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script  src="app.js"></script>
-    <script  src="header.js"></script>
-    <script  src="toggle.js"></script>
-    <script  src="server.js"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Harald Oeler — Solo: Mein neues, eigenkomponiertes Soloprogramm 'Remembering' auf YouTube">
+  <meta name="robots" content="index, follow">
+  <title>HERALD OELER — Solo | Remembering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+  <style>
+:root{--ink:#0e0d0c;--paper:#f4f1ec;--paper-2:#ebe6dd;--muted:#6b655c;--accent:#6b1d1a;--accent-soft:#8a2a26;--serif:'Cormorant Garamond',serif;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+.site-header{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);backdrop-filter:saturate(140%)}
+.header-inner{max-width:1480px;margin:0 auto;padding:22px 48px;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:48px}
+.wordmark{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:0.32em;text-transform:uppercase}
+.wordmark .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin:0 10px 2px;vertical-align:middle}
+.wordmark small{font-family:var(--serif);font-style:italic;font-weight:400;font-size:13px;letter-spacing:0.04em;text-transform:none;color:var(--muted)}
+nav.primary{display:flex;gap:28px;font-size:12px;letter-spacing:0.18em;text-transform:lowercase}
+nav.primary a{color:var(--muted);position:relative;padding:4px 0;transition:color .25s ease}
+nav.primary a.active{color:var(--ink)}
+nav.primary a:hover{color:var(--ink)}
+nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--accent)}
+.article-nav{max-width:1480px;margin:0 auto;padding:32px 48px 0}
+.back-link{font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:10px;transition:color .2s}
+.back-link:hover{color:var(--accent)}
+.back-link::before{content:"←";font-size:14px}
+.article-head{max-width:1480px;margin:0 auto;padding:40px 48px 48px;border-bottom:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+.article-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.article-title{font-family:var(--serif);font-weight:400;font-size:clamp(40px,7vw,96px);line-height:0.95;letter-spacing:-0.02em}
+.article-title em{font-style:italic;color:var(--accent)}
+.article-subtitle{margin-top:18px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:var(--muted)}
+.article-body{max-width:1480px;margin:0 auto;padding:64px 48px 120px;display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start}
+.article-info{}
+.info-section{margin-bottom:40px}
+.info-section:last-child{margin-bottom:0}
+.info-label{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+.embed-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#1a1816}
+.embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.body-text{font-family:var(--serif);font-weight:300;font-size:19px;line-height:1.6;color:color-mix(in srgb,var(--ink) 85%,transparent)}
+.body-text p+p{margin-top:20px}
+.site-footer{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);padding:32px 48px;font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1fr auto 1fr;gap:24px;max-width:1480px;margin:0 auto}
+.site-footer .center{text-align:center}
+.site-footer .right{text-align:right}
+@media(max-width:1100px){.article-body{grid-template-columns:1fr;gap:48px}}
+@media(max-width:720px){.header-inner{padding:18px 24px;gap:16px}nav.primary{display:none}.article-nav,.article-head{padding-left:24px;padding-right:24px}.article-body{padding:40px 24px 80px}.site-footer{padding:24px;grid-template-columns:1fr;gap:8px}.site-footer .center,.site-footer .right{text-align:left}}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
 </head>
 <body>
-    <section id="header">
-        <div class="header container">
-            <div class="brand">
-                <a href="../index">
-                    <h1>HARALD<span style="color: transparent;">_</span>OELER</h1>
-                    <span class="logo">H</span>
-                </a>            
-            </div>
-            <input id="toggle" type="checkbox">
-            <label for="toggle" class="hamburger">
-                <div class="top-bun"></div>
-                <div class="meat"></div>
-                <div class="bottom-bun"></div>
-            </label>
-            <div class="nav-bar">
-                <div class="nav-list">
-                    <ul class="vertical">
-                        <li><a href="../about">about</a></li>
-                        <li><a href="../projekte">projekte</a></li>
-                    </ul>
-                    <ul class="horizontal">
-                        <li class="noshown"><a href="../about">about</a></li>
-                        <li class="noshown"><a href="../projekte">projekte</a></li>
-                        <li><a href="../termine">termine</a></li>
-                        <li><a href="../news">news</a></li>
-                        <li><a href="../unterricht">unterricht</a></li>
-                        <li><a href="../discographie">discographie</a></li>
-                        <li><a href="../media">media</a></li>
-                        <li><a href="../kontakt">kontakt</a></li>
-                    </ul>
-                </div>
-            </div>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="../index.html">HARALD<span class="dot"></span>OELER<small>· accordionist &amp; composer</small></a>
+      <nav class="primary">
+        <a href="../about.html">about</a>
+        <a href="../projekte.html">projekte</a>
+        <a href="../termine.html">termine</a>
+        <a href="../news.html" class="active">news</a>
+        <a href="../unterricht.html">unterricht</a>
+        <a href="../medien.html">medien</a>
+        <a href="../kontakt.html">kontakt</a>
+      </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    </div>
+  </header>
+
+  <div class="article-nav">
+    <a class="back-link" href="../news.html">news</a>
+  </div>
+
+  <section class="article-head">
+    <div class="article-eyebrow">— Solo · 2023</div>
+    <h1 class="article-title">Solo — <em>Remembering</em></h1>
+    <p class="article-subtitle">Mein neues, eigenkomponiertes Soloprogramm auf YouTube</p>
+  </section>
+
+  <main class="article-body">
+    <div class="embed-wrap">
+      <iframe src="https://www.youtube.com/embed/AH1Bj1WaY8o?si=Wx8lpr16ceukDC3j" title="Solo — Remembering" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="info-section">
+        <div class="info-label">Info</div>
+        <div class="body-text">
+          <p>Mein neues Konzertprogramm spiegelt mich erstmalig als Komponist, Arrangeur und Akkordeonist wider. Die Erkenntnisse und Erfahrungen physischen und mentalen Reisens waren die Hauptquellen meiner kompositorischen Inspiration. Zwei Städte und zwei Komponisten erwiesen sich während des Kompositionsprozesses als besonders wertvoll und bilden die Hauptsäulen meines Konzertprogrammes: Paris, Tokio, Johann Sebastian Bach und Astor Piazzolla.</p>
+          <p>„Remembering" umfasst daher vier große Werke für Akkordeon-Solo, welche das Publikum auf eine multi-stilistische, musikalische Weltreise entführen. Freie improvisierte Musik, streng kontrapunktische Satztechniken, Alte und Neue Musik, aber auch jazzige Sounds, südamerikanische „Tango-Fetzen" und eine „Anime-Sonate" ziehen das Publikum vom ersten bis zum letzten Ton in ihren Bann.</p>
+          <p>It represents me as a composer, arranger and of course as an accordionist. "Remembering" includes four big pieces which leads you through the past years of my life. The insight and knowledge of physical and mental traveling were the main sources of my inspiration. During this many years lasting process, two cities and two composers proved to be essential: Paris, Tokyo, Johann Sebastian Bach and Astor Piazzolla.</p>
         </div>
-    </section>
-    <section id="solo-readmore" class="page">
-        <div class="news-projectbox">
-            <h2 class="readmore-title">SOLO</h2>
-            <a href="../news" class="newsback"><i class="fa-solid fa-circle-chevron-left"></i><span style="color: white;">.</span> BACK</a>
-            <h3 class="theme">Mein neues, eigenkomponiertes Soloprogramm auf YouTube</h3>
-            <iframe loading="lazy" src="https://www.youtube.com/embed/AH1Bj1WaY8o?si=Wx8lpr16ceukDC3j" title="YouTube video player" class="youtube no-border" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <div class="newsinfo artist">
-                <p><span class="bold">Akkordeon </span>Harald Oeler</p>
-                <br>
-                <p>It represents me as a composer, arranger and of course as an accordionist. "Remembering" includes four big pieces which leads you through the past years of my life. The insight and knowledge of physical and mental traveling were the main sources of my inspiration. During this many years lasting process, two cities and two composers proved to be essential: Paris, Tokyo, Johann Sebastian Bach and Astor Piazzolla.</p>
-                <br>
-                
-            </div>
-        </div>
-    </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="left">© Harald Oeler · 2026</div>
+    <div class="center">Hof · München · Wien</div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var d=document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme',d?'dark':'light');
+  });
 </body>
 </html>

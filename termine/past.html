@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Past concerts of accordionist Harald Oeler — vergangene Termine.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="HARALD OELER | vergangene Termine">
+  <meta property="og:type" content="website">
+  <title>HARALD OELER — vergangene Termine</title>
+  <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+  <style>
+:root {
+  --ink:         #0e0d0c;
+  --paper:       #f4f1ec;
+  --paper-2:     #ebe6dd;
+  --muted:       #6b655c;
+  --accent:      #6b1d1a;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: var(--muted);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+nav.primary a.active { color: var(--ink); }
+nav.primary a:hover  { color: var(--ink); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ─── Page header band ───────────────────────────────────────────────────── */
+.page-head {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 64px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.page-title em { font-style: italic; color: var(--accent); }
+.page-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ─── Wrapper ────────────────────────────────────────────────────────────── */
+.termine-wrapper {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 48px 120px;
+}
+
+/* ─── Controls bar ───────────────────────────────────────────────────────── */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 32px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  gap: 24px;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .25s ease;
+}
+.back-link:hover { color: var(--accent); }
+.back-link svg { transition: transform .35s ease; }
+.back-link:hover svg { transform: translateX(-5px); }
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  padding: 7px 14px;
+  background: transparent;
+  transition: border-color .25s;
+}
+.search-wrap:focus-within { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+.search-wrap input {
+  border: none;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  outline: none;
+  width: 180px;
+}
+.search-wrap input::placeholder { color: var(--muted); }
+.search-wrap .fa-search { font-size: 11px; color: var(--muted); }
+
+/* ─── Year filters ───────────────────────────────────────────────────────── */
+.year-filters {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.yr-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: color .25s, border-color .25s;
+  line-height: 1;
+}
+.yr-btn:hover { color: var(--ink); }
+.yr-btn.active {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 22%, transparent);
+}
+
+/* ─── Year group ─────────────────────────────────────────────────────────── */
+.year-group { margin-top: 56px; }
+.year-label {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  margin-bottom: 0;
+}
+.year-label h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: color-mix(in srgb, var(--ink) 35%, transparent);
+}
+.year-label .eyebrow { margin-bottom: 0; }
+
+/* ─── Concert list ───────────────────────────────────────────────────────── */
+.concert-list { list-style: none; }
+
+.concert-item {
+  display: grid;
+  grid-template-columns: 148px 1fr auto;
+  gap: 0 40px;
+  padding: 24px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  align-items: start;
+  transition: padding-left .35s ease;
+}
+.concert-item:hover { padding-left: 10px; }
+
+.c-left { display: flex; flex-direction: column; gap: 6px; padding-top: 3px; }
+.c-date {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.c-day {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 70%, transparent);
+  white-space: nowrap;
+}
+
+.c-middle { min-width: 0; }
+.c-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  margin-bottom: 4px;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+.c-title small {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+.c-title small a { color: var(--muted); border-bottom: 1px solid color-mix(in srgb, var(--muted) 30%, transparent); }
+.c-title small a:hover { color: var(--accent); }
+.c-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 80%, transparent);
+  margin-top: 8px;
+}
+.c-location i { font-size: 10px; color: color-mix(in srgb, var(--muted) 60%, transparent); flex-shrink: 0; }
+.c-location a { color: color-mix(in srgb, var(--muted) 80%, transparent); transition: color .25s; }
+.c-location a:hover { color: var(--accent); }
+
+.c-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+.c-info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 12px;
+  border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  transition: background .25s, color .25s, border-color .25s;
+}
+.c-info-link:hover {
+  background: var(--muted);
+  color: var(--paper);
+  border-color: var(--muted);
+}
+.c-cal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+}
+.c-cal span { opacity: 0.4; }
+.c-cal a { color: color-mix(in srgb, var(--muted) 60%, transparent); transition: color .25s; }
+.c-cal a:hover { color: var(--ink); }
+
+/* ─── Search highlight ───────────────────────────────────────────────────── */
+mark.search-hl {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* ABGESAGT badge */
+.badge-abgesagt {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: color-mix(in srgb, var(--muted) 70%, transparent);
+  padding: 2px 7px;
+  margin-bottom: 4px;
+}
+
+/* ─── Scroll to top ──────────────────────────────────────────────────────── */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  background: var(--paper);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  transition: background .25s, color .25s, border-color .25s;
+}
+.scroll-top-btn.visible { display: flex; }
+.scroll-top-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.site-footer .center { text-align: center; }
+.site-footer .right  { text-align: right; }
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .concert-item { grid-template-columns: 120px 1fr; }
+  .c-right { grid-column: 2; align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+  .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
+  .page-meta { text-align: left; margin-top: 16px; }
+  .termine-wrapper { padding: 0 24px 80px; }
+  .controls-bar { flex-direction: column; align-items: flex-start; }
+  .concert-item { grid-template-columns: 1fr; gap: 8px; padding-left: 0 !important; }
+  .c-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+  .scroll-top-btn { bottom: 16px; right: 16px; }
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
+</head>
+<body>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="../index.html">
+        HARALD<span class="dot"></span>OELER
+        <small>· accordionist &amp; composer</small>
+      </a>
+      <nav class="primary">
+        <a href="../bio.html">bio</a>
+        <a href="../projekte.html">projekte</a>
+        <a href="../termine.html" class="active">termine</a>
+        <a href="../news.html">news</a>
+        <a href="../unterricht.html">unterricht</a>
+        <a href="../medien.html">medien</a>
+        <a href="../kontakt.html">kontakt</a>
+      </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    </div>
+  </header>
+
+  <!-- ═══ PAGE HEAD ════════════════════════════════════════════════════════ -->
+  <section class="page-head">
+    <div>
+      <div class="eyebrow">— Vergangene Termine</div>
+      <h1 class="page-title"><em>past events</em></h1>
+    </div>
+    <div class="page-meta">
+      <div>archiv</div>
+      <div>2022 – 2025</div>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN ══════════════════════════════════════════════════════════════ -->
+  <div class="termine-wrapper">
+
+    <div class="controls-bar">
+      <a class="back-link" href="../termine.html">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M18 7H2M8 1l-6 6 6 6"/>
+        </svg>
+        Kommende Termine
+      </a>
+      <div class="year-filters">
+        <button class="yr-btn active" data-yr="all">Alle</button>
+        <button class="yr-btn" data-yr="2025">2025</button>
+        <button class="yr-btn" data-yr="2024">2024</button>
+        <button class="yr-btn" data-yr="2023">2023</button>
+        <button class="yr-btn" data-yr="2022">2022</button>
+      </div>
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="past-search" placeholder="Suche …" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- ══ 2025 ════════════════════════════════════════════════════════════ -->
+    <div class="year-group">
+      <div class="year-label">
+        <span class="eyebrow">—</span>
+        <h2>2025</h2>
+      </div>
+      <ul class="concert-list">
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">29.11.2025</span><span class="c-day">Sa · 18:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAkk! goes BACH</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Evangelische+Kirche,+Kirchheim+am+Neckar" target="_blank">Evangelische Kirche, Kirchheim am Neckar</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DUO%20KlAkk!%20goes%20BACH&details=DUO%20KlAkk!%20Konzert%20in%20der%20Evangelischen%20Kirche%20Kirchheim%20am%20Neckar&location=Evangelische%20Kirche%2C%20Kirchheim%20am%20Neckar&dates=20251129T170000Z/20251129T190000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:DUO%20KlAkk!%20goes%20BACH%0D%0ADESCRIPTION:DUO%20KlAkk!%20Konzert%20in%20der%20Evangelischen%20Kirche%20Kirchheim%20am%20Neckar%0D%0ADTSTART:20251129T170000Z%0D%0ADTEND:20251129T190000Z%0D%0ALOCATION:Evangelische%20Kirche,%20Kirchheim%20am%20Neckar%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="DUO_KlAkk_goes_BACH_2025-11-29_KirchheimNeckar.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">04.11.2025</span><span class="c-day">Di · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Solokonzert | REMEMBERING</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Geberplatz+1,+Bayreuth" target="_blank">Kunst- und Kulturhaus Neuneinhalb, Bayreuth</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.neuneinhalb.org/veranstaltungen/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Solokonzert%20%7C%20REMEMBERING&details=Solokonzert%20REMEMBERING%20im%20Kunst-%20und%20Kulturhaus%20Neuneinhalb,%20Bayreuth&location=Kunst-%20und%20Kulturhaus%20Neuneinhalb,%20Geberplatz%201,%20Bayreuth&dates=20251104T191500Z/20251104T211500Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Solokonzert%20%7C%20REMEMBERING%0D%0ADTSTART:20251104T191500Z%0D%0ADTEND:20251104T211500Z%0D%0ALOCATION:Kunst-%20und%20Kulturhaus%20Neuneinhalb,%20Bayreuth%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Solokonzert_REMEMBERING_2025-11-04_Bayreuth.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">29.10.2025</span><span class="c-day">Mi · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Singer-Songwriter-Konzert<small>mit Christopher von Mammen und Markus Jung</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>KunstKaufHaus, Königsstraße 25, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://christophervonmammen.de/?page_id=4279" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">25.10.2025</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Solokonzert | REMEMBERING</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Schulgasse+3a,+92637+Weiden+in+der+Oberpfalz" target="_blank">Kultursaal Hansbauer, Weiden in der Oberpfalz</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Solokonzert%20%7C%20REMEMBERING&location=Schulgasse%203a%2C%2092637%20Weiden%20in%20der%20Oberpfalz&dates=20251025T170000Z/20251025T190000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Solokonzert%20%7C%20REMEMBERING%0D%0ADTSTART:20251025T170000Z%0D%0ADTEND:20251025T190000Z%0D%0ALOCATION:Schulgasse%203a%2C%2092637%20Weiden%20in%20der%20Oberpfalz%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Solokonzert_REMEMBERING_2025-10-25_Weiden.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">17.10.2025</span><span class="c-day">Fr · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Solokonzert | REMEMBERING</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Untertorstraße+6,+97828+Marktheidenfeld" target="_blank">Franck-Haus, Marktheidenfeld</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Solokonzert%20%7C%20REMEMBERING&location=Franck-Haus,%20Untertorstraße%206,%2097828%20Marktheidenfeld&dates=20251017T173000Z/20251017T193000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Solokonzert%20%7C%20REMEMBERING%0D%0ADTSTART:20251017T173000Z%0D%0ADTEND:20251017T193000Z%0D%0ALOCATION:Franck-Haus,%20Untertorstraße%206,%2097828%20Marktheidenfeld%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Solokonzert_REMEMBERING_2025-10-17_Marktheidenfeld.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">12.10.2025</span><span class="c-day">So · 17:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAkk! goes BACH</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Schlosskapelle, Schloss Johannisburg Aschaffenburg</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">11.10.2025</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAkk! goes BACH</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Rathauskeller,+Marktplatz+2,+97246+Eibelstadt" target="_blank">Rathauskeller Eibelstadt</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DUO%20KlAkk!%20goes%20BACH&location=Rathauskeller%2C%20Marktplatz%202%2C%2097246%20Eibelstadt&dates=20251011T173000Z/20251011T193000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:DUO%20KlAkk!%20goes%20BACH%0D%0ADTSTART:20251011T173000Z%0D%0ADTEND:20251011T193000Z%0D%0ALOCATION:Rathauskeller,%20Marktplatz%202,%2097246%20Eibelstadt%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="DUO_KlAkk_2025-10-11.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">28.09.2025</span><span class="c-day">So · 18:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Solokonzert | REMEMBERING</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//ars+musica,+Marktplatz+3,+97239+Aub" target="_blank">Ars Musica, Marktplatz 3, Aub</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Solokonzert%20%7C%20REMEMBERING&location=ars%20musica%2C%20Marktplatz%203%2C%2097239%20Aub&dates=20250928T160000Z/20250928T180000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Solokonzert%20%7C%20REMEMBERING%0D%0ADTSTART:20250928T160000Z%0D%0ADTEND:20250928T180000Z%0D%0ALOCATION:ars%20musica,%20Marktplatz%203,%2097239%20Aub%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Solokonzert_REMEMBERING_2025-09-28_Aub.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">27.09.2025</span><span class="c-day">Sa · 21:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAKK! HALLERSTEINER NACHTKONZERT</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Dorfkirche, Hallerstein</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">20.09.2025</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Solokonzert | REMEMBERING</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Arche,+Friedrich-Ebert-Straße+20,+97421+Schweinfurt" target="_blank">Arche, Friedrich-Ebert-Straße 20, Schweinfurt</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Soloabend&location=Arche%2C%20Friedrich-Ebert-Stra%C3%9Fe%2020%2C%2097421%20Schweinfurt&dates=20250920T173000Z/20250920T193000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Soloabend%0D%0ADTSTART:20250920T173000Z%0D%0ADTEND:20250920T193000Z%0D%0ALOCATION:Arche,%20Friedrich-Ebert-Stra%C3%9Fe%2020,%2097421%20Schweinfurt%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Soloabend_2025-09-20.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">23.07.2025</span><span class="c-day">Mi · 12:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Orgelduo mit Michael Dorn</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Stadtkirche,+Kirchpl.+1,+95444+Bayreuth" target="_blank">Stadtkirche Bayreuth</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Orgelduo%20mit%20Michael%20Dorn&location=Stadtkirche%2C%20Kirchplatz%201%2C%2095444%20Bayreuth&dates=20250723T100000Z/20250723T110000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Orgelduo%20mit%20Michael%20Dorn%0D%0ADTSTART:20250723T100000Z%0D%0ADTEND:20250723T110000Z%0D%0ALOCATION:Stadtkirche,%20Kirchplatz%201,%2095444%20Bayreuth%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Orgelduo_2025-07-23.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">13.07.2025</span><span class="c-day">So · 17:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAkk! goes BACH</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Weytterturm,+In+der+B%C3%BCrg+34,+94315+Straubing" target="_blank">Weytterturm, Straubing</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="DUO KLAKK! STRAUBING.pdf" download="STRAUBING">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DUO%20KlAkk!%20goes%20BACH&location=Weytterturm%2C%20In%20der%20B%C3%BCrg%2034%2C%2094315%20Straubing&dates=20250713T150000Z/20250713T170000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:DUO%20KlAkk!%20goes%20BACH%0D%0ADTSTART:20250713T150000Z%0D%0ADTEND:20250713T170000Z%0D%0ALOCATION:Weytterturm,%20In%20der%20B%C3%BCrg%2034,%2094315%20Straubing%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="DUO_KlAkk_2025-07-13.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">05.07.2025</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAkk! goes BACH</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Johanniskirche,+74376+Gemmrigheim" target="_blank">Johanneskirche, Gemmrigheim</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="DUO KlAKK! GEMMIRGHEIM.pdf" download="GEMMRIGHEIM">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DUO%20KlAkk!%20goes%20BACH&location=Johanniskirche%2C%2074376%20Gemmrigheim&dates=20250705T173000Z/20250705T193000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:DUO%20KlAkk!%20goes%20BACH%0D%0ADTSTART:20250705T173000Z%0D%0ADTEND:20250705T193000Z%0D%0ALOCATION:Johanniskirche%2C%2074376%20Gemmrigheim%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="DUO_KlAkk_2025-07-05.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">01.03.2025</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DUO KlAkk! | alte x neue</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Spit%C3%A4le,+Zeller+Str.+1,+97082+W%C3%BCrzburg" target="_blank">Spitäle, Zeller Str. 1, Würzburg</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DUO%20KlAkk!%20|%20alte%20x%20neue&location=Spit%C3%A4le,%20Zeller%20Str.%201,%2097082%20W%C3%BCrzburg&dates=20250301T190000Z/20250301T210000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:DUO%20KlAkk!%20|%20alte%20x%20neue%0D%0ADTSTART:20250301T183000Z%0D%0ADTEND:20250301T203000Z%0D%0ALOCATION:Spit%C3%A4le,%20Zeller%20Str.%201,%2097082%20W%C3%BCrzburg%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="DUO_KlAkk_event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">16.02.2025</span><span class="c-day">So · 17:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Tango : Nuevo!<small>komponiert und gespielt von Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Deutschordensm%C3%BCnster+St.+Peter+und+Paul,+Heilbronn" target="_blank">St. Peter und Paul, Heilbronn</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">25.01.2025</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Neuköllner Kultur &amp; Debattiersalon<small>komponiert und gespielt von Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://maps.app.goo.gl/C7nBztJ6b2g3ZWtCA" target="_blank">Dr. Martina Rummel, Karl-Marx-Straße 162, Berlin</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://schloss-gutshof-britz.de/schloss-britz" target="_blank">mehr Infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">25.01.2025</span><span class="c-day">Sa · 16:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Tango : Nuevo!<small>komponiert und gespielt von Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Schloss+Britz+Berlin" target="_blank">Schloss Britz, Berlin</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://schloss-gutshof-britz.de/schloss-britz" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /.year-group 2025 -->
+
+    <!-- ══ 2024 ════════════════════════════════════════════════════════════ -->
+    <div class="year-group">
+      <div class="year-label">
+        <span class="eyebrow">—</span>
+        <h2>2024</h2>
+      </div>
+      <ul class="concert-list">
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">08.12.2024</span><span class="c-day">So · 17:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Akkordeon &amp; Cello Konzert<small><a href="https://www.ivanturkalj.com" target="_blank">mit Ivan Turkalj</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/place/Siebold-Museum/@49.7937474,9.8943951,17z" target="_blank">Siebold Museum, Würzburg</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">30.11.2024</span><span class="c-day">Sa · 18:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Tango : Nuevo!<small>komponiert und gespielt von Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Evangelische+Kirche+Gemmrigheim" target="_blank">Evangelische Kirche, Gemmrigheim</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">10.11.2024</span><span class="c-day">So · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Hofer Symphoniker – Abschlusskonzert<small><a href="https://www.projects4cellos.de" target="_blank">mit projects4cellos</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//KlangManufaktur+Kulmbacher+Straße+1+95030+Hof" target="_blank">Kulmbacher Straße 1, Hof</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.hofer-symphoniker.de" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=music4cellos%20Abschlusskonzert&location=Kulmbacher%20Straße%201,%2095030%20Hof&dates=20241110T183000Z/20241110T203000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:music4cellos%20Abschlusskonzert%0D%0ADTSTART:20241110T183000Z%0D%0ADTEND:20241110T203000Z%0D%0ALOCATION:Kulmbacher%20Straße%201,%2095030%20Hof%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">18.10.2024</span><span class="c-day">Fr · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Duo KlAkk! | alte x neue</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Stadtkirche+Bayreuth" target="_blank">Kirchpl. 1, Bayreuth</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Duo%20KlAkk!%20|%20alte%20x%20neue&location=Kirchpl.%201,%2095444%20Bayreuth&dates=20241018T180000Z/20241018T200000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Duo%20KlAkk!%20|%20alte%20x%20neue%0D%0ADTSTART:20241018T180000Z%0D%0ADTEND:20241018T200000Z%0D%0ALOCATION:Kirchpl.%201,%2095444%20Bayreuth%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">11.10.2024</span><span class="c-day">Fr · 19:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Duo KlAkk! | alte x neue</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//vhs+hoferland" target="_blank">Ludwigstraße 7, Hof</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Duo%20KlAkk!%20|%20alte%20x%20neue&location=Ludwigstraße%207,%2095028%20Hof&dates=20241011T170000Z/20241011T190000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Duo%20KlAkk!%20|%20alte%20x%20neue%0D%0ADTSTART:20241011T170000Z%0D%0ADTEND:20241011T190000Z%0D%0ALOCATION:Ludwigstraße%207,%2095028%20Hof%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">10.10.2024</span><span class="c-day">Do · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Jazz im Schlösschen<small><a href="https://haraldoeler.com/projekte/triofussissimo" target="_blank">Trio Fussissimo</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps?q=Helmut-Sch%C3%B6ler-Saal+im+Schl%C3%B6sschen" target="_blank">Helmut-Schöler-Saal im Schlösschen</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="http://www.kulturkreis-wertheim.de" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Jazz%20im%20Schl%C3%B6sschen&location=Helmut-Sch%C3%B6ler-Saal%20im%20Schl%C3%B6sschen&dates=20241010T173000Z/20241010T213000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Jazz%20im%20Schl%C3%B6sschen%20(Trio%20Fussissimo)%0D%0ADTSTART:20241010T173000Z%0D%0ADTEND:20241010T213000Z%0D%0ALOCATION:Helmut-Sch%C3%B6ler-Saal%20im%20Schl%C3%B6sschen%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">28.09.2024</span><span class="c-day">Sa</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Werner Richter"-Wettbewerb<small>Jury des Sächsischen "Werner Richter"-Wettbewerbs für Akkordeon und Bandoneon</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Städtische+Musikschule+Chemnitz" target="_blank">Städtische Musikschule, Chemnitz</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.musikschule-chemnitz.de/projekte-wettbewerbe/werner-richter-wettbewerb" target="_blank">mehr infos | anmeldung</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">22.09.2024</span><span class="c-day">So · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"DUO KLAKK! | ALTE X NEUE"</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Kurstraße+5,+83435+Bad+Reichenhall" target="_blank">Kurstraße 5, Bad Reichenhall</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DUO%20KLAKK!%20|%20ALTE%20X%20NEUE&location=Kurstraße%205,%2083435%20Bad%20Reichenhall&dates=20240922T173000Z/20240922T193000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:DUO%20KLAKK!%20|%20ALTE%20X%20NEUE%0D%0ADTSTART:20240922T173000Z%0D%0ADTEND:20240922T193000Z%0D%0ALOCATION:Kurstraße%205,%2083435%20Bad%20Reichenhall%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">15.09.2024</span><span class="c-day">So · 17:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Warning to the rich"<small><a href="https://kammerchor-hof.de/konzerte/" target="_blank">Kammerchor Hof</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps?q=Kreuzkirche+Hof" target="_blank">Kreuzkirche, Hof</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://kammerchor-hof.de/konzerte/" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Warning%20to%20the%20rich&location=Kreuzkirche,%20Hof&dates=20240915T150000Z/20240915T170000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Warning%20to%20the%20rich%0D%0ADTSTART:20240915T150000Z%0D%0ADTEND:20240915T170000Z%0D%0ALOCATION:Kreuzkirche,%20Hof%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">14.09.2024</span><span class="c-day">Sa · 21:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Die Hallersteiner Nachtkonzerte<small>Kammermusikalischer Jazz-Abend</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps?ll=50.184221,11.922303&z=16&t=m&hl=en-GB&gl=US&mapclient=embed&q=Hallerstein+95126+Schwarzenbach+an+der+Saale" target="_blank">Evangelische Kirchengemeinde, Hallerstein</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.hallerstein.de/vereine/heimat-und-kulturverein/nachtkonzerte/" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Die%20Hallersteiner%20Nachtkonzerte&location=Evangelischen%20Kirchengemeinde%20Hallerstein&dates=20240914T190000Z/20240914T210000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Die%20Hallersteiner%20Nachtkonzerte%0D%0ADTSTART:20240914T190000Z%0D%0ADTEND:20240914T210000Z%0D%0ALOCATION:Evangelischen%20Kirchengemeinde%20Hallerstein%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">14.09.2024</span><span class="c-day">Sa · 18:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Warning to the rich"<small><a href="https://kammerchor-hof.de" target="_blank">Kammerchor Hof</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Auferstehungskirche" target="_blank">Auferstehungskirche, Bamberg</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://kammerchor-hof.de" target="_blank">mehr infos | ticket</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Warning%20to%20the%20rich&location=Auferstehungskirche,%20Bamberg&dates=20240914T160000Z/20240914T180000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Warning%20to%20the%20rich%0D%0ADTSTART:20240914T160000Z%0D%0ADTEND:20240914T180000Z%0D%0ALOCATION:Auferstehungskirche,%20Bamberg%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">13.09.2024</span><span class="c-day">Fr · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Cello x Accordion<small>cellist: <a href="https://www.ivanturkalj.com" target="_blank">Ivan Turkalj</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Kreuzkirche%2C%20Spitalgasse%2C%20Ochsenfurt%2C%20Germany" target="_blank">Kreuzkirche, Spitalgasse, Ochsenfurt</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://kammerchor-hof.de" target="_blank">mehr infos</a>
+            <div class="c-cal"><span>📅</span><a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Cello%20x%20Accordion&location=Kreuzkirche%2C%20Spitalgasse%2C%20Ochsenfurt&dates=20240913T180000Z/20240913T200000Z" target="_blank">Google</a><span>|</span><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Cello%20x%20Accordion%0D%0ADTSTART:20240913T180000Z%0D%0ADTEND:20240913T200000Z%0D%0ALOCATION:Kreuzkirche%2C%20Spitalgasse%2C%20Ochsenfurt%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="event.ics">iCal</a></div>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">16.06.2024</span><span class="c-day">So · 17:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">projects4cellos &amp; friends<small>Eine Veranstaltung des Tonkünstlerverbands Hochfranken e.V.</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Haus+Marteau" target="_blank">Haus Marteau, Lichtenberg</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://evangcellisten.de/neuigkeiten/627-projects4cellos-friends-kommen-nach-lichtenberg" target="_blank">mehr infos | ticket</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">11.05.2024</span><span class="c-day">Sa · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Benefizkonzert ZONTA Würzburg<small><a href="https://www.zonta-wuerzburg.de/wp-content/uploads/2024/04/20240511_Zonta-benefiz_flyer.pdf" target="_blank">Duo ViA!</a> – 8 Jahreszeiten von Vivaldi und Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.residenz-wuerzburg.de" target="_blank">Kaisersaal der Residenz, Würzburg</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.zonta-wuerzburg.de/wp-content/uploads/2024/04/20240511_Zonta-benefiz_flyer.pdf" target="_blank">mehr infos | ticket</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">28.01.2024</span><span class="c-day">So · 19:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Gipsy Swing | Bistro Abend<small><a href="https://joscho-stephan.de" target="_blank">Joscho Stephan</a> Trio feat. Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/place/Kelter+Gemmrigheim" target="_blank">Kelter, Gemmrigheim</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.gemmrigheim.de/start/kultur_+bildung+_+einrichtungen/Vereine" target="_blank">mehr infos | ticket</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">27.01.2024</span><span class="c-day">Sa · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Gipsy Swing | Bistro Abend<small><a href="https://joscho-stephan.de" target="_blank">Joscho Stephan</a> Trio feat. Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps?q=Seminarturnhalle+Nagold" target="_blank">Seminarturnhalle, Nagold</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://alte-seminarturnhalle.reservix.de/tickets-joscho-stephan-trio-harald-oeler-gipsy-swing-bistroabend-in-nagold-alte-seminarturnhalle-nagold-am-27-1-2024/e2147903" target="_blank">mehr infos | ticket</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">26.01.2024</span><span class="c-day">Fr · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Kammerkonzert | Hot Club Swing<small><a href="https://joscho-stephan.de" target="_blank">Joscho Stephan</a> Trio feat. Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/dir//Klangmanufaktur+hof" target="_blank">Klangmanufaktur, Hof</a></div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.hofer-symphoniker.de/konzerte-tickets/kammerkonzert-5/" target="_blank">mehr infos | ticket</a>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /.year-group 2024 -->
+
+    <!-- ══ 2023 ════════════════════════════════════════════════════════════ -->
+    <div class="year-group">
+      <div class="year-label">
+        <span class="eyebrow">—</span>
+        <h2>2023</h2>
+      </div>
+      <ul class="concert-list">
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">12.11.2023</span><span class="c-day">So · 18:00 Uhr</span></div>
+          <div class="c-middle">
+            <span class="badge-abgesagt">Abgesagt</span>
+            <div class="c-title">Duo Klakk! | Double Dobbing<small>Harald Oeler (Bajan) &amp; Ji Eun Kim (Klarinette)</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>KlangManufaktur, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/duoklakk" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">10.11.2023</span><span class="c-day">So · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">„NEU | START | JAZZ"<small>feat. <a href="https://christophervonmammen.de/?page_id=4279" target="_blank">Christopher von Mammen</a>, Markus Jung, Harald Oeler, <a href="https://www.samueljersak.com" target="_blank">Samuel Jersak</a>, Peter Nitsch, <a href="https://julianfau.com" target="_blank">Julian Fau</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>VHS Hofer Land, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.tkv-hochfranken.de/index.php/2023/11/08/neustart-jazz-in-der-glashalle-der-volkshochschule-hof/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">05.11.2023</span><span class="c-day">So · 09:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Referat<small>SynapsePlus – mehr als nur 5 Töne! Neurologische Grundlagen und musikalische Beweglichkeit im Anfängerunterricht</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Musikschule Kunsthalle Schirn, Frankfurt</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://dalv-online.de/wp-content/uploads/2023/08/DALV_Flyer-Symposium_RZ_23-07-24.pdf" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">29.10.2023</span><span class="c-day">So · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Trio Fussissimo<small>Gypsy-Ethno-Jazz</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Musik Butik, Darstadt / Ochsenfurt</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://musik-butik.de/tag/fussissimo/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">22.10.2023</span><span class="c-day">So · 15:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Kinderkonzert „Fingerspiel und Wirbelwind"<small><a href="https://www.hofer-symphoniker.de" target="_blank">Hofer Symphoniker</a></small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Festsaal, Freiheitshalle, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.hofer-symphoniker.de/konzerte-tickets/kinderkonzert-2/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">07.10.2023</span><span class="c-day">Sa · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Trio Fussissimo<small>Gypsy-Ethno-Jazz</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Klangmanufaktur der Hofer Symphoniker, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/triofussissimo" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">06.10.2023</span><span class="c-day">Fr · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Trio Fussissimo<small>Gypsy-Ethno-Jazz</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Caleidoskop, Schweinfurt</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://caleidoskop-schweinfurt.de/#veranstaltungen" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">05.10.2023</span><span class="c-day">Do · 19:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Trio Fussissimo<small>Gypsy-Ethno-Jazz</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Wohnst. Hallerwiese, Nürnberg</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/projekte/triofussissimo" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">30.09.2023</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Projects 4 Cellos – die vier Evangelisten und Gäste<small>Release-Konzert der neuen CD zum 15-jährigen Bühnenjubiläum</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.tkv-hochfranken.de/index.php/2023/09/22/projects4cellos-im-rosenthal-theater-selb/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">23.09.2023</span><span class="c-day">Sa · 21:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Hallersteiner Nachtkonzerte 2023<small><a href="https://christophervonmammen.de" target="_blank">Christopher von Mammen</a> (Saxophon), Harald Oeler (Akkordeon), Peter Nitsch (Bass)</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Evangelische Kirchengemeinde Hallerstein</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">16.09.2023</span><span class="c-day">Sa · 19:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DIE 8 JAHRESZEITEN<small>Vivaldi &amp; Piazzolla / <a href="https://www.myvanwy.de" target="_blank">Myvanwy-Ella Penny</a> (Violine), Harald Oeler (Akkordeon)</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Christkönig Kirche Titisee, Titisee-Neustadt</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.regio.de/homepagebaukasten_config/userfiles/16796/uploadbilder/druck-marschner-festival-2023-plakat-a4_ohne-anschnitt.pdf" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">19.07.2023</span><span class="c-day">Mi · 20:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Rehan Syed Trio<small>Rehan Syed (Gitarre), Hyunbin Park (Gitarre), Harald Oeler (Akkordeon)</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Schloss, Bad Mergentheim</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://haraldoeler.com/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">26.05.2023</span><span class="c-day">Fr · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Das Auftaktkonzert der HofJazzNights<small>Swing · Jazz · Groove · Bossa · Blues</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Theater Hof, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.hofjazznights.com/programm" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">21.05.2023</span><span class="c-day">So · 14:45 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">DCZ-Jazzfrühling<small>KKH-Session Group</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Musikpavillon des Theresiensteins, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.infranken.de/lk/hof/ausflug/hof-jazzfruehling-findet-statt-deutsche-und-tschechische-bands-kommen-zusammen-art-5687455" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">14.05.2023</span><span class="c-day">So · 19:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Duo ViA! Die 8 Jahreszeiten – #muttertagskonzert<small>Duo ViA! – <a href="https://www.sinnyang.com" target="_blank">Sinn Yang</a> (Violine), Harald Oeler (Akkordeon)</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Keller Z87, Würzburg</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://z87.de/event/8-jahreszeiten-mit-duo-via-muttertagskonzert/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">18.04.2023</span><span class="c-day">Di · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Die Weisse Rose"<small>Oper von Udo Zimmermann · Neufassung für das Theater Hof von Arno Waschk und Lothar Krause</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/termine/detail/die-weisse-rose" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">15.04.2023</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Die Weisse Rose"<small>Oper von Udo Zimmermann · Neufassung für das Theater Hof</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/termine/detail/die-weisse-rose" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">02.04.2023</span><span class="c-day">So · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Die Weisse Rose"</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/termine/detail/die-weisse-rose" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">31.03.2023</span><span class="c-day">Fr · 18:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">AkkordeonPlus – Akkordeon- und Theorieklassen<small>Schülerinnen und Schüler der Akkordeon- und Theorieklassen Harald Oeler spielen Werke von J.S. Bach, A. Bruckner u.a.</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>KlangManufaktur, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.hofer-symphoniker.de/konzerte-tickets/vorspiel-der-akkordeonklasse-harald-oeler/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">11.03.2023</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Die Weisse Rose"</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/termine/detail/die-weisse-rose" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">04.03.2023</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"Die Weisse Rose"</div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/termine/detail/die-weisse-rose" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">25.02.2023</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">PREMIERE "Die Weisse Rose"<small>Oper von Udo Zimmermann · Neufassung für das Theater Hof von Arno Waschk und Lothar Krause</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i><a href="https://www.theater-hof.de" target="_blank">Theater Hof</a>, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/termine/detail/die-weisse-rose" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /.year-group 2023 -->
+
+    <!-- ══ 2022 ════════════════════════════════════════════════════════════ -->
+    <div class="year-group">
+      <div class="year-label">
+        <span class="eyebrow">—</span>
+        <h2>2022</h2>
+      </div>
+      <ul class="concert-list">
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">08.06.2022</span><span class="c-day">Mi · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Kurtheater Bad Kissingen</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">18.03.2022</span><span class="c-day">Fr · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal-Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">11.03.2022</span><span class="c-day">Fr · 20:00 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">Joscho Stephan Trio<small><a href="https://joscho-stephan.de" target="_blank">Joscho Stephan</a> Trio feat. Harald Oeler</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Kulturhammer e.V., Thierstein</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.kulturhammer.de/veranstaltung/joscho-stephan-trio-mit-harald-oeler/" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">20.02.2022</span><span class="c-day">So · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal-Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">19.02.2022</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal-Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">17.02.2022</span><span class="c-day">Do · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal-Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">16.02.2022</span><span class="c-day">Mi · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">"MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Rosenthal-Theater, Selb</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.operabase.com/productions/maria-de-buenos-aires-145250/de" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">29.01.2022</span><span class="c-day">Sa · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">PREMIERE "MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Theater Hof, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/ballett/detail/maría-de-buenos-aires" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+        <li class="concert-item">
+          <div class="c-left"><span class="c-date">28.01.2022</span><span class="c-day">Fr · 19:30 Uhr</span></div>
+          <div class="c-middle">
+            <div class="c-title">PREMIERE "MARÍA DE BUENOS AIRES"<small>Tango-Operita von Astor Piazzolla</small></div>
+            <div class="c-location"><i class="fa-solid fa-location-dot"></i>Theater Hof, Hof</div>
+          </div>
+          <div class="c-right">
+            <a class="c-info-link" href="https://www.theater-hof.de/ballett/detail/maría-de-buenos-aires" target="_blank">mehr infos</a>
+          </div>
+        </li>
+
+      </ul>
+    </div><!-- /.year-group 2022 -->
+
+  </div><!-- /.termine-wrapper -->
+
+  <!-- Scroll to top -->
+  <button class="scroll-top-btn" id="scrollTopBtn" title="Nach oben">↑</button>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="left">© Harald Oeler · 2026</div>
+    <div class="center">Hof · München · Wien</div>
+    <div class="right"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('past-search');
+    const items = document.querySelectorAll('.concert-item');
+    const originals = Array.from(items).map(function (item) { return item.innerHTML; });
+    const yearGroups = document.querySelectorAll('.year-group');
+    let activeYear = 'all';
+
+    function escapeRe(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function highlightIn(html, q) {
+      return html.replace(/>([^<]*)</g, function (match, text) {
+        var highlighted = text.replace(
+          new RegExp('(' + escapeRe(q) + ')', 'gi'),
+          '<mark class="search-hl">$1</mark>'
+        );
+        return '>' + highlighted + '<';
+      });
+    }
+
+    function getGroupYear(group) {
+      var h2 = group.querySelector('h2');
+      return h2 ? h2.textContent.trim() : null;
+    }
+
+    function applyFilters() {
+      var q = searchInput.value.trim();
+
+      // Filter individual items by search, respecting year group visibility
+      items.forEach(function (item, i) {
+        item.innerHTML = originals[i];
+        var group = item.closest('.year-group');
+        var groupYear = group ? getGroupYear(group) : null;
+        var yearMatch = activeYear === 'all' || groupYear === activeYear;
+        var textMatch = q === '' || item.textContent.toLowerCase().includes(q.toLowerCase());
+        item.style.display = (yearMatch && textMatch) ? '' : 'none';
+        if (yearMatch && textMatch && q !== '') {
+          item.innerHTML = highlightIn(originals[i], q);
+        }
+      });
+
+      // Hide year-group sections that have no visible items
+      yearGroups.forEach(function (group) {
+        var groupYear = getGroupYear(group);
+        var yearMatch = activeYear === 'all' || groupYear === activeYear;
+        if (!yearMatch) {
+          group.style.display = 'none';
+          return;
+        }
+        var anyVisible = Array.from(group.querySelectorAll('.concert-item')).some(function (it) {
+          return it.style.display !== 'none';
+        });
+        group.style.display = anyVisible ? '' : 'none';
+      });
+    }
+
+    document.querySelectorAll('.yr-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.yr-btn').forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        activeYear = this.dataset.yr;
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+
+    // Scroll to top
+    const btn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function () {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var d=document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme',d?'dark':'light');
+  });
+</body>
+</html>

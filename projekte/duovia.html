@@ -1,107 +1,321 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta data-vue-meta="1" name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist ">
-    <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta property="og:title" content="HARALD OELER | accordionist">
-    <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta property="og:image" content="https://www.haraldoeler.com/image/slide1.webp">
-    <meta property="og:url" content="https://www.haraldoeler.com/">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.haraldoeler.com/">
-    <title>HARALD OELER | accordionist </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media.css">
-    <link rel="stylesheet" href="toggle.css">
-    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script  src="app.js"></script>
-    <script  src="header.js"></script>
-    <script  src="toggle.js"></script>
-    <script  src="server.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HARALD OELER — Duo ViA!</title>
+  <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+  <style>
+/* Harald OELER — projekte / duovia */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --ink: #0e0d0c; --paper: #f4f1ec; --paper-2: #ebe6dd; --rule: #1a1816;
+  --muted: #6b655c; --accent: #6b1d1a; --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-weight: 400; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { color: inherit; text-decoration: none; }
+
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); backdrop-filter: saturate(140%); }
+.header-inner { max-width: 1480px; margin: 0 auto; padding: 22px 48px; display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 48px; }
+.wordmark { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; }
+.wordmark .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin: 0 10px 2px; vertical-align: middle; }
+.wordmark small { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 13px; letter-spacing: 0.04em; text-transform: none; color: var(--muted); }
+nav.primary { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.18em; text-transform: lowercase; font-weight: 400; }
+nav.primary a { color: var(--muted); position: relative; padding: 4px 0; transition: color .25s ease; }
+nav.primary a.active { color: var(--ink); }
+nav.primary a:hover { color: var(--ink); }
+nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--accent); }
+
+.projects-subnav { background: var(--paper); border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
+.projects-subnav-inner { max-width: 1480px; margin: 0 auto; padding: 0 48px; display: flex; gap: 28px; overflow-x: auto; scrollbar-width: none; }
+.projects-subnav-inner::-webkit-scrollbar { display: none; }
+.projects-subnav-inner a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); padding: 10px 0; white-space: nowrap; position: relative; transition: color .25s ease; flex-shrink: 0; }
+.projects-subnav-inner a:hover { color: var(--ink); }
+.projects-subnav-inner a.active { color: var(--ink); }
+.projects-subnav-inner a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--accent); }
+
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+
+.detail .hero { position: relative; height: 78vh; min-height: 560px; overflow: hidden; background: var(--ink); }
+.detail .hero img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.detail .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,13,12,0.25) 0%, transparent 30%, rgba(14,13,12,0.85) 100%); }
+.detail .hero-meta { position: absolute; left: 48px; right: 48px; bottom: 48px; z-index: 2; color: var(--paper); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; }
+.detail .hero-meta .eyebrow { color: rgba(244,241,236,0.65); }
+.detail .hero-meta h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(72px, 12vw, 200px); line-height: 0.9; letter-spacing: -0.02em; }
+.detail .hero-meta .runtime { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-align: right; line-height: 1.8; color: rgba(244,241,236,0.8); }
+
+.detail-body { max-width: 1480px; margin: 0 auto; padding: 96px 48px 80px; display: grid; grid-template-columns: 280px 1fr; gap: 80px; }
+.detail-body aside { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); line-height: 1.9; }
+.detail-body aside dt { color: var(--muted); margin-top: 18px; font-size: 10px; }
+.detail-body aside dd { color: var(--ink); font-family: var(--serif); font-style: italic; font-size: 17px; letter-spacing: 0; text-transform: none; line-height: 1.5; margin-top: 4px; }
+.detail-body .lede { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 2.6vw, 40px); line-height: 1.22; letter-spacing: -0.01em; text-wrap: pretty; max-width: 22ch; margin-bottom: 56px; }
+.detail-body .lede em { font-style: italic; color: var(--accent); }
+.detail-body .body-copy { font-size: 16px; line-height: 1.65; max-width: 62ch; color: color-mix(in srgb, var(--ink) 80%, transparent); }
+.detail-body .body-copy p + p { margin-top: 1.1em; }
+
+.repertoire { margin-top: 72px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+.repertoire h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 24px 0 8px; }
+.repertoire ul { list-style: none; }
+.repertoire li { display: grid; grid-template-columns: 60px 1fr auto; gap: 32px; padding: 18px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); align-items: baseline; transition: padding-left .35s ease; }
+.repertoire li:hover { padding-left: 14px; }
+.repertoire li .num { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+.repertoire li .work { font-family: var(--serif); font-size: 22px; letter-spacing: -0.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.repertoire li .work em { font-style: italic; color: var(--muted); font-size: 16px; margin-left: 10px; }
+.repertoire li .dur { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--muted); }
+
+.rep-zone { cursor: none; } .rep-zone * { cursor: none; }
+.rep-cursor { position: fixed; pointer-events: none; z-index: 9000; transform: translate(-50%,-50%); opacity: 0; transition: opacity .18s ease; }
+.rep-cursor.visible { opacity: 1; }
+.rep-cursor-circle { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; }
+.rep-cursor-icon { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--paper); line-height: 1; user-select: none; }
+.rep-cursor-sub { font-family: var(--mono); font-size: 5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,241,236,.7); line-height: 1; user-select: none; }
+.repertoire-row-link { grid-column: 1/-1; display: grid; grid-template-columns: 60px 1fr auto; gap: 32px; align-items: baseline; color: inherit; width: 100%; }
+button.repertoire-row-link { background: none; border: none; cursor: pointer; font: inherit; text-align: left; padding: 0; }
+.repertoire li .toggle-icon { font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--muted); letter-spacing: 0; line-height: 1; user-select: none; }
+
+.quotes { margin-top: 96px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; padding-top: 48px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+.quote { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.4; text-wrap: pretty; }
+.quote::before { content: "\201C"; display: block; font-family: var(--serif); font-size: 80px; line-height: 0.6; color: var(--accent); margin-bottom: 16px; }
+.quote cite { display: block; margin-top: 18px; font-family: var(--mono); font-style: normal; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+
+.media { margin-top: 96px; padding-top: 56px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+.media h3 { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+.media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 32px; }
+.media-item { display: flex; flex-direction: column; gap: 14px; }
+.media-item .frame { position: relative; width: 100%; background: var(--ink); border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); overflow: hidden; }
+.media-item.youtube .frame { aspect-ratio: 16/9; }
+.media-item.spotify .frame { aspect-ratio: 5/2; background: transparent; border: none; }
+.media-item .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.media-item figcaption { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+.back-link { display: inline-flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding: 24px 48px; max-width: 1480px; margin: 0 auto; width: 100%; transition: color .25s ease; }
+.back-link:hover { color: var(--accent); } .back-link svg { transition: transform .35s ease; } .back-link:hover svg { transform: translateX(-6px); }
+.site-footer { border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); padding: 32px 48px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; max-width: 1480px; margin: 0 auto; }
+.site-footer .center { text-align: center; } .site-footer .right { text-align: right; }
+
+@media (max-width: 1100px) { .detail-body { grid-template-columns: 1fr; gap: 40px; } .quotes { grid-template-columns: 1fr; } .media-grid { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; } nav.primary { display: none; }
+  .projects-subnav-inner { padding: 0 24px; }
+  .detail .hero-meta { left: 24px; right: 24px; bottom: 24px; grid-template-columns: 1fr; }
+  .detail-body { padding: 56px 24px; } .back-link { padding: 18px 24px; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
 </head>
 <body>
-    <section id="header">
-        <div class="header container">
-            <div class="brand">
-                <a href="../index">
-                    <h1>HARALD<span style="color: transparent;">_</span>OELER</h1>
-                    <span class="logo">H</span>
-                </a>            
-            </div>
-            <input id="toggle" type="checkbox">
-            <label for="toggle" class="hamburger">
-                <div class="top-bun"></div>
-                <div class="meat"></div>
-                <div class="bottom-bun"></div>
-            </label>
-            <div class="nav-bar">
-                <div class="nav-list">
-                    <ul class="vertical">
-                        <li><a href="../about">about</a></li>
-                        <li><a href="../projekte">projekte</a></li>
-                    </ul>
-                    <ul class="horizontal">
-                        <li class="noshown"><a href="../about">about</a></li>
-                        <li class="noshown"><a href="../projekte">projekte</a></li>
-                        <li><a href="../termine">termine</a></li>
-                        <li><a href="../news">news</a></li>
-                        <li><a href="../unterricht">unterricht</a></li>
-                        <li><a href="../discographie">discographie</a></li>
-                        <li><a href="../media">media</a></li>
-                        <li><a href="../kontakt">kontakt</a></li>
-                    </ul>
-                </div>
-            </div>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" data-presets="react">
+
+const PROJECT_ID = "duovia";
+
+const PROJECTS = [
+  { id: "solo",       num: "01", title: "Solo",             role: "Akkordeon — solo",           image: "../image/project/solo.webp",       variant: "tall" },
+  { id: "orchester",  num: "02", title: "Orchester",        role: "Akkordeon & Orchester",      image: "../image/project/orchester.webp",  variant: "wide" },
+  { id: "fussissimo", num: "03", title: "Fussissimo",       role: "Trio — gypsy · ethno · jazz", image: "../image/project/fussissimo.webp", variant: "default" },
+  { id: "duovia",     num: "04", title: "Duo ViA!",         role: "Akkordeon & Violine",        image: "../image/project/duovia.webp",     imagePos: "44% center", variant: "default" },
+  { id: "duoklakk",   num: "05", title: "Duo KlAkk!",      role: "Akkordeon & Klarinette",     image: "../image/project/duoklakk.webp",   imagePos: "44% center", variant: "tall" },
+  { id: "hof",        num: "06", title: "Hofer Musikscene", role: "Lokales · regional",         image: "../image/project/hof.webp",        variant: "wide" },
+];
+
+const DETAILS = {
+  duovia: {
+    title: "Duo ViA!",
+    eyebrow: "Projekt 04 · Akkordeon & Violine",
+    image: "../image/project/page/duovia.webp",
+    runtime: ["Sinn Yang · Violine", "Harald Oeler · Akkordeon", "Album · 8 Jahreszeiten · OehmsClassics"],
+    lede: ["Vivaldi & Piazzolla — ", { em: "ein kühnes Wagnis" }, " der Harmonie und der Erfindung."],
+    body: [
+      "Neue Klangwelten entdecken — ein Ziel, das sich mit der außergewöhnlichen Besetzung aus Violine und Akkordeon spielerisch erreichen lässt.",
+      "Duo ViA!s CD der »8 Jahreszeiten« von Vivaldi und Piazzolla erschien 2014 bei OehmsClassics und erhielt begeisterte Kritiken. Mit Neugierde und Experimentierlust erkunden beide Künstler in ihrer exotischen Besetzung Meisterwerke der zeitgenössischen Musik, Bach, Chick Corea u.a. und traten erfolgreich auf — beim Heidelberger Frühling, in Berlin, München, Bracciano / Italien und Helsinki.",
+      "The Duo made their debut in 2009 with the programme »Seasons« at the Heidelberg Spring Festival — a sold-out hall, Vivaldi's Quattro Stagioni in combination with Piazzolla's Cuatro Estaciones Porteñas.",
+    ],
+    repertoire: [
+      { num: "I.",  work: "Trailer über das Programm 8 Jahreszeiten von Vivaldi und Piazzolla", note: "", id: "AJ6uhwH7-gI", dur: "02:46" },
+      { num: "II.", work: "Antonio Vivaldi",          note: "Le quattro stagioni",              dur: "" },
+      { num: "III.", work: "Astor Piazzolla",         note: "Las cuatro estaciones porteñas",   dur: "" },
+      { num: "IV.", work: "J. S. Bach · Chick Corea u.a.", note: "im Wechselspiel",            dur: "" },
+    ],
+    quotes: [
+      { text: "Yang und Oeler spielen wie aufeinander eingeschworen — sie bilden nicht nur rhythmisch eine Einheit. Der Dauerbrenner von Vivaldi erscheint hier stellenweise wie unter dem Mikroskop.", cite: "NDR" },
+      { text: "Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.", cite: "NDR Kultur" },
+    ],
+    media: [
+      { kind: "youtube", id: "AJ6uhwH7-gI", caption: "Duo ViA! · live" },
+      { kind: "youtube", id: "kw7_NO-klxM", caption: "Duo ViA! · concert highlight" },
+      { kind: "spotify", url: "https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0", caption: "8 Jahreszeiten · OehmsClassics" },
+    ],
+    tour: [
+      { date: "25. Apr 2026", venue: "Heidelberger Frühling", city: "Heidelberg", program: "8 Jahreszeiten" },
+      { date: "12. Jun 2026", venue: "Kulturbahnhof",         city: "Berlin",     program: "Bach · Corea · Piazzolla" },
+      { date: "18. Sep 2026", venue: "Musikhalle",            city: "Helsinki",   program: "8 Jahreszeiten" },
+      { date: "29. Nov 2026", venue: "Bracciano Festival",    city: "Bracciano",  program: "Duo ViA! · live" },
+    ],
+  },
+};
+
+function Header({ active = "projekte" }) {
+  const [dark, setDark] = React.useState(() => document.body.classList.contains('dark'));
+  const toggleTheme = () => {
+    const d = document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme', d ? 'dark' : 'light');
+    setDark(d);
+  };
+    return (
+    <header className="site-header">
+      <div className="header-inner">
+        <a className="wordmark" href="../index.html">HARALD<span className="dot"></span>OELER{" "}<small>· accordionist & composer</small></a>
+        <nav className="primary">
+          {["about","projekte","termine","news","unterricht","medien","kontakt"].map(item => (
+            <a key={item} href={`../${item}.html`} className={active === item ? "active" : ""}>{item}</a>
+          ))}
+        </nav>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Farbschema wechseln" title="Dark / Light">
+          {dark
+            ? <svg className="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            : <svg className="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          }
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (<footer className="site-footer"><div className="left">© Harald Oeler · 2026</div><div className="center">Hof · München · Wien</div>
+    <div className="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div></footer>);
+}
+
+function Arrow({ dir = "right" }) {
+  const path = dir === "right" ? "M0 8 L18 8 M12 2 L18 8 L12 14" : "M18 8 L0 8 M6 2 L0 8 L6 14";
+  return <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" strokeWidth="1.2"><path d={path} /></svg>;
+}
+
+function ProjectsSubnav({ current }) {
+  return (
+    <nav className="projects-subnav">
+      <div className="projects-subnav-inner">
+        {PROJECTS.map(p => <a key={p.id} href={`${p.id}.html`} className={current === p.id ? "active" : ""}>{p.title}</a>)}
+      </div>
+    </nav>
+  );
+}
+
+function ProjektDetail({ id }) {
+  const proj = PROJECTS.find(p => p.id === id);
+  const cursorRef = React.useRef(null);
+  const handleRepMove = React.useCallback((e) => {
+    const el = cursorRef.current; if (!el) return;
+    el.style.left = e.clientX + 'px'; el.style.top = e.clientY + 'px';
+    const isLink = !!e.target.closest('a[href]');
+    const icon = el.querySelector('.rep-cursor-icon'); const sub = el.querySelector('.rep-cursor-sub');
+    if (icon) icon.textContent = isLink ? '▶' : '·'; if (sub) sub.textContent = isLink ? 'play' : '';
+  }, []);
+  const handleRepEnter = React.useCallback(() => { cursorRef.current && cursorRef.current.classList.add('visible'); }, []);
+  const handleRepLeave = React.useCallback(() => { cursorRef.current && cursorRef.current.classList.remove('visible'); }, []);
+  const detail = DETAILS[id];
+
+  return (
+    <div className="detail">
+      <div ref={cursorRef} className="rep-cursor"><div className="rep-cursor-circle"><span className="rep-cursor-icon">·</span><span className="rep-cursor-sub"></span></div></div>
+      <Header active="projekte" />
+      <ProjectsSubnav current={id} />
+      <a className="back-link" href="../projekte.html"><Arrow dir="left" /> zurück zu projekte</a>
+      <section className="hero">
+        <img src={detail.image} alt={detail.title} style={detail.imagePos ? { objectPosition: detail.imagePos } : {}} />
+        <div className="hero-meta">
+          <div><div className="eyebrow">{detail.eyebrow}</div><h1>{detail.title}</h1></div>
+          <div className="runtime">{detail.runtime.map((r, i) => <div key={i}>{r}</div>)}</div>
         </div>
-    </section>
-    <section id="duovia" class="page">
-        <a href="../projekte" class="back"><i class="fa-solid fa-circle-chevron-left"></i> BACK</a>
-        <h2 class="section-title">DUO ViA!</h2>
-        <p class="info"><a target="_blank" href="https://sinn-yang.webflow.io">Sinn Yang</a> (Violine) & Harald Oeler (Akkordeon)</p>
-        <div class="projectbox">
-            <div class="col-left">
-                    <img loading="lazy" src="image/residenz1.webp" alt="duovia">
-                    <img loading="lazy" src="image/residenz2.webp" alt="slide1">
-                    <img loading="lazy" src="image/residenz3.webp" alt="slide2">
-                    <img loading="lazy" src="image/residenz4.webp" alt="duovia">
-                    <br>
-                    <p>© <a href="https://jiranikolaus.de">Nikolaus Jira</a></p>   
-            </div>
-    
-            <div class="col-right">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/AJ6uhwH7-gI?si=_O4ldoopTOJFV-Av" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <br>
-                <iframe loading="lazy" class="youtube no-border" src="https://www.youtube.com/embed/kw7_NO-klxM?si=WMlvblSPOAOChYwY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <iframe loading="lazy" class="spotify no-border" src="https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0" height="200" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    
-                <div class="content content-en">
-                    Neue Klangwelten entdecken – ein Ziel, das sich mit der außergewöhnlichen Besetzung aus Violin und Akkordeon spielerisch erreichen lässt.
-                    <br>„Duo ViA!“s CD der „8 Jahreszeiten“ von Vivaldi und Piazzolla erschien 2014 bei <a href="https://www.oehmsclassics.de/interpret/6934/DuoVia" target="_blank">OehmsClassics</a> und erhielt begeisterte Kritiken. Mit Neugierde und Experimentierlust erkunden beide Künstler in ihrer exotischen Besetzung Meisterwerke der zeitgenössischen Musik, Bach, Chick Corea u.a. und traten erfolgreich in Konzerten, wie z.B. beim Festival <a href="https://www.heidelberger-fruehling.de" target="_blank">„Heidelberger Frühling“</a>, Berlin, München, Bracciano / Italien und Helsinki auf.
-                    <br>
-                    <br>The Duo ViA! made their debut in 2009 with the programme Seasons at the Heidelberg Spring Festival. At that time, it required a great deal of courage to present to the public, in a sold-out hall, one of the most popular and most frequently played classical works, Vivaldi’s I quattro stagioni in combination with Astor Piazzolla’s Las cuatro portenas. For the Duo, the programme Seasons was might have felt similarly when he designated his Four Seasons in the series of twelve violin concertos as “a bold adventure of harmony and invention” (“Il Cimento dell’Armonia e dell’Invenzione”).</p>
-                </div>
-                <div class="content content-de">
-                    
-                </div>
-                <br>
-                
-                <div class="review">
-                    <ul>
-                        <li>"Yang und Oeler spielen wie aufeinander eingeschworen, sie bilden nicht nur rhythmisch eine Einheit. Der Dauerbrenner von Vivaldi erscheint hier stellenweise wie unter dem Mikroskop." <span class="bold">NDR</span></li>
-                        <li>„Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.“ <span class="bold">NDR Kultur</span></li>
-                        <li>„Hier haben sich zwei Interpreten außergewöhnlichen Ranges zusammengefunden, um Altbewährtes in neuem Gewande und auf höchstem Niveau vorzustellen.” <span class="bold">Musikzeitung</span></li>
-                        <li>Booking : <a href="mailto:sinnyang@gmail.com">sinnyang@gmail.com</a></li>
-                    </ul>
-                </div>
-            </div>
+      </section>
+      <div className="detail-body">
+        <aside>
+          <dl>
+            <dt>Format</dt><dd>{proj.role}</dd>
+            <dt>Dauer</dt><dd>60–90 min</dd>
+            {detail.tour && detail.tour.length > 0 && (<><dt>Nächster Termin</dt><dd>{detail.tour[0].date} · {detail.tour[0].city}</dd></>)}
+          </dl>
+        </aside>
+        <div>
+          <p className="lede">
+            {detail.lede.map((part, i) => typeof part === "string" ? <React.Fragment key={i}>{part}</React.Fragment> : <em key={i}>{part.em}</em>)}
+          </p>
+          <div className="body-copy">{detail.body.map((p, i) => <p key={i}>{p}</p>)}</div>
         </div>
-    </section>
-    
+        <div style={{ gridColumn: "2" }}>
+          <div className="repertoire rep-zone" onMouseMove={handleRepMove} onMouseEnter={handleRepEnter} onMouseLeave={handleRepLeave}>
+            <h3>— Auswahl Repertoire</h3>
+            <ul>
+              {detail.repertoire.map((r, i) => (
+                <li key={i}>
+                  <a href={r.id ? `https://www.youtube.com/watch?v=${r.id}` : undefined} target={r.id ? "_blank" : undefined} rel={r.id ? "noopener noreferrer" : undefined} className="repertoire-row-link">
+                    <span className="num">{r.num}</span>
+                    <span className="work">{r.work}{r.note && <em>{r.note}</em>}</span>
+                    <span className="dur">{r.dur}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {detail.quotes && detail.quotes.length > 0 && (
+            <div className="quotes" style={detail.quotes.length === 1 ? { gridTemplateColumns: '1fr' } : {}}>
+              {detail.quotes.map((q, i) => (<blockquote key={i} className="quote">{q.text}<cite>— {q.cite}</cite></blockquote>))}
+            </div>
+          )}
+          {detail.media && detail.media.length > 0 && (
+            <div className="media">
+              <h3>— Hören &amp; sehen</h3>
+              <div className="media-grid">
+                {detail.media.map((m, i) => (
+                  <figure key={i} className={`media-item ${m.kind}`}>
+                    <div className="frame">
+                      {m.kind === "youtube"
+                        ? <iframe src={`https://www.youtube.com/embed/${m.id}`} title={m.caption} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+                        : <iframe src={m.url} title={m.caption} loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />}
+                    </div>
+                    <figcaption>{m.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<ProjektDetail id={PROJECT_ID} />);
+
+  </script>
 </body>
 </html>

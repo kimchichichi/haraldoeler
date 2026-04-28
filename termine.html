@@ -450,6 +450,11 @@ mark.search-hl {
   align-self: center; transition: opacity .2s;
 }
 .theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
 .icon-moon { display: none; }
 body.dark .icon-sun { display: none; }
 body.dark .icon-moon { display: inline; }
@@ -460,6 +465,24 @@ body.dark .site-header {
   border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
 }
 body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .site-header.scrolled .wordmark { color: var(--paper); }
+body.dark .site-header.scrolled .wordmark small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .site-header.scrolled nav.primary a.active { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a:hover { color: var(--paper); }
+body.dark nav.primary a.active { color: var(--paper); }
+body.dark nav.primary a:hover  { color: var(--paper); }
+body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+body.dark .page-meta b { color: var(--paper); }
+body.dark .controls-bar { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .search-wrap { border-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+body.dark .search-wrap:focus-within { border-color: color-mix(in srgb, var(--paper) 40%, transparent); }
+body.dark .search-wrap input { color: var(--paper); }
+body.dark .yr-btn:hover { color: var(--paper); }
+body.dark .yr-btn.active { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 22%, transparent); }
+body.dark .concert-item { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .c-title small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .c-cal a:hover { color: var(--paper); }
+
 </style>
 </head>
 
@@ -1568,9 +1591,11 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
 
     searchInput.addEventListener('input', applyFilters);
   </script>
+  <script>
   document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
+  </script>
 </body>
 </html>

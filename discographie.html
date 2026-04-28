@@ -1,157 +1,723 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta data-vue-meta="1" name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist ">
-    <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta property="og:title" content="HARALD OELER | accordionist">
-    <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta property="og:image" content="https://www.haraldoeler.com/image/slide1.webp">
-    <meta property="og:url" content="https://www.haraldoeler.com/">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.haraldoeler.com/">
-    <title>HARALD OELER | accordionist </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media.css">
-    <link rel="stylesheet" href="toggle.css">
-    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script  src="app.js"></script>
-    <script  src="header.js"></script>
-    <script  src="toggle.js"></script>
-    <script  src="server.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta property="og:title" content="HARALD OELER | discographie" />
+  <meta property="og:description" content="Discography of accordionist Harald Oeler — recordings, albums, and collaborations." />
+  <meta property="og:image" content="image/discography1.webp" />
+  <meta property="og:url" content="https://www.haraldoeler.com/discographie" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://www.haraldoeler.com/discographie" />
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon" />
+  <title>HARALD OELER — discographie</title>
+  <style>
+/* HARALD OELER — discographie */
+/* Head, CSS variables, typography, layout extracted from Projekte.html */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --ink: #0e0d0c;
+  --paper: #f4f1ec;
+  --paper-2: #ebe6dd;
+  --rule: #1a1816;
+  --muted: #6b655c;
+  --accent: #6b1d1a;
+  --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Header (extracted from Projekte.html) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: var(--muted);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+nav.primary a.active { color: var(--ink); }
+nav.primary a:hover { color: var(--ink); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ---------- Page header band (extracted from Projekte.html) ---------- */
+.page-head {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 64px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.page-head > div:first-child { min-width: 0; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(64px, 10vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-feature-settings: "lnum";
+}
+.page-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.page-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.page-meta b { color: var(--ink); font-weight: 500; }
+
+/* ---------- Disc grid ---------- */
+.disc-grid {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 56px 48px 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px 40px;
+}
+
+/* ---------- Card components (extracted from Projekte.html) ---------- */
+.card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.card .index {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+.card .index .role {
+  text-align: right;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.image-and-overlay {
+  position: relative;
+  margin-top: 14px;
+}
+.card .image-wrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #1a1816;
+  position: relative;
+}
+.card .image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 1.2s cubic-bezier(.2,.7,.1,1), filter .6s ease;
+  transform-origin: center;
+}
+.card:hover .image-wrap img {
+  transform: scale(1.04);
+  filter: grayscale(1) contrast(1.12) brightness(1.02);
+}
+.card .image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,0.55) 100%);
+  pointer-events: none;
+}
+.card .meta {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.card h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+.card p.subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  max-width: 38ch;
+  text-wrap: pretty;
+}
+.card .arrow {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.card .arrow svg { transition: transform .35s ease; }
+.card:hover .arrow svg { transform: translateX(6px); }
+
+/* ---------- Footer (extracted from Projekte.html) ---------- */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.site-footer .center { text-align: center; }
+.site-footer .right { text-align: right; }
+
+/* ---------- View Transitions (extracted from Projekte.html) ---------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(.7,0,.2,1);
+}
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.7,0,.2,1);
+}
+
+/* ---------- Responsive (extracted from Projekte.html) ---------- */
+@media (max-width: 1100px) {
+  .disc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+  .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
+  .page-meta { text-align: left; }
+  .disc-grid { grid-template-columns: 1fr; padding: 32px 24px 80px; gap: 48px; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+
+/* ---------- Spotify preview overlay ---------- */
+.spotify-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 13, 12, 0.90);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(.4,0,.2,1);
+}
+.spotify-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+.sp-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 1px solid rgba(244, 241, 236, 0.25);
+  border-radius: 50%;
+  color: rgba(244, 241, 236, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.sp-close:hover {
+  background: rgba(244, 241, 236, 0.12);
+  border-color: rgba(244, 241, 236, 0.5);
+}
+.sp-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 236, 0.45);
+}
+.sp-iframe-container { width: 100%; }
+.sp-iframe-container iframe {
+  width: 100%;
+  height: 80px;
+  border: none;
+  border-radius: 8px;
+  display: block;
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
 </head>
 <body>
-    <section id="header">
-        <div class="header container">
-            <div class="brand">
-                <a href="index">
-                    <h1>HARALD<span style="color: transparent;">_</span>OELER</h1>
-                    <span class="logo">H</span>
-                </a>            
-            </div>
-            <input id="toggle" type="checkbox">
-            <label for="toggle" class="hamburger">
-                <div class="top-bun"></div>
-                <div class="meat"></div>
-                <div class="bottom-bun"></div>
-            </label>
-            <div class="nav-bar">
-                <div class="nav-list">
-                    <ul class="vertical">
-                        <li><a href="about">about</a></li>
-                        <li><a href="projekte">projekte</a></li>
-                    </ul>
-                    <ul class="horizontal">
-                        <li class="noshown"><a href="about">about</a></li>
-                        <li class="noshown"><a href="projekte">projekte</a></li>
-                        <li><a href="termine">termine</a></li>
-                        <li><a href="news">news</a></li>
-                        <li><a href="unterricht">unterricht</a></li>
-                        <li><a href="discographie">discographie</a></li>
-                        <li><a href="media">media</a></li>
-                        <li><a href="kontakt">kontakt</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="discographie" class="page">
-    <div class="projekte-header">
-        <h1 class="section-title">discographie</h1>
-    </div>
-    <div class="discographie container">
-        <div class="projectbox">
-            <div class="box">
-                <img loading="lazy" src="image/discography1.webp" alt="disco1">
-                <div class="card-body">
-                <a href="#duovia" class="mehrinfo" onclick="showPage('duovia')">
-                    <h2 class="card-title">Antonio Vivaldi & Astor Piazzolla: <br>8 Jahreszeiten / 8 Seasons</h2>
-                    <p>Geige - Sinn Yang</p>
-                    <p>Akkoredeon - Harald Oeler</p>
-                    <br>
-                    <p>mehr infos</p>
-                </a>
-                </div>
-            </div>
-            <div class="box">
-                <img loading="lazy" src="image/discography2.webp" alt="disco2">
-                <div class="card-body">
-                    <a href="#solo" class="mehrinfo" onclick="showPage('solo')">
-                    <h2 class="card-title">Pictures at an Exhibition</h2>
-                    <p>Solo Album</p>
-                    <br>
-                    <p>mehr infos | spotify</p>
-                    </a>
-                </div>
-            </div>
-            <div class="box">
-                <img loading="lazy" src="image/discography3.webp" alt="disco3">
-                <div class="card-body">
-                <a target="_blank" href="https://open.spotify.com/track/1IN4tB0kw6RFMCooRCFrTB?si=ccb05c31fc3e4cc8" class="mehrinfo">
-                    <h2 class="card-title">Sinn Yang, Violin</h2>
-                    <p class="card-info">Le Grand Tango for Cello & Piano</p>
-                    <p>(Arr. S.Gubaiduina & Harald Oeler)</p>
-                    <br>
-                    <p>spotify</p>
-                </a>
-                </div>
-            </div>
-            <div class="box">
-                <img loading="lazy" src="image/discography4.webp" alt="disco4">
-                <div class="card-body">
-                    <a target="_blank" href="https://www.marcoboettger.de/cds/" class="mehrinfo">
-                    <h2 class="card-title">En Avril</h2>
-                    <p class="card-info">Marco Böttger Quartett</p>
-                    <p>Eigenkompositionen im Stile des legendären Gitarristen Django Reinhardt</p>
-                    <br>
-                    <p>mehr infos</p>
-                    </a>
-                </div>
-            </div>
-            <div class="box">
-                <img loading="lazy" src="image/discography5.jpg.webp" alt="disco5">
-                <div class="card-body">
-                    <a target="_blank" href="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE?si=p32xdQhxT-ay_mZrtjE3kA" class="mehrinfo">
-                    <h2 class="card-title">Parisian Melange</h2>
-                    <p class="card-info">von Hans Peter Salentin und ensemble</p>
-                    <br>
-                    <p>spotify</p>       
-                    </a>
-                </div>
-            </div>
-            <div class="box">
-                <img loading="lazy" src="image/discography6.webp" alt="disco6">
-                <div class="card-body">
-                    <a target="_blank" href="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm?si=AivXlng3TdmAjQ8DD_bW3A" class="mehrinfo">
-                    <h2 class="card-title">Al Son del Tango</h2>
-                    <p class="card-info">EP von Die Vier Evangcellisten</p>
-                    <br>
-                    <p>spotify</p>
-                    </a>
-                </div>
-            </div>
-            <div class="box">
-                <img loading="lazy" src="image/discpgraphy7.webp" alt="disco7">
-                <div class="card-body">
-                    <a target="_blank" href="https://www.tkv-hochfranken.de/index.php/diskografie/" class="mehrinfo">
-                    <h2 class="card-title">Musikalisches Kaleidoskop Hochfränkischer Künstler</h2>
-                    <p class="card-info">volume 1</p>
-                    <br>
-                    <p>mehr infos</p>
-                </a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
-<!-- end Discographie-->
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
 
 
+<!-- Nav extracted from Projekte.html -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">
+      HARALD<span class="dot"></span>OELER
+      <small>· accordionist &amp; composer</small>
+    </a>
+    <nav class="primary">
+      <a href="about.html">about</a>
+      <a href="projekte.html">projekte</a>
+      <a href="termine.html">termine</a>
+      <a href="news.html">news</a>
+      <a href="unterricht.html">unterricht</a>
+      <a href="medien.html">medien</a>
+      <a href="kontakt.html">kontakt</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- PAGE CONTENT HERE -->
+
+  <!-- Page header band -->
+  <div class="page-head">
+    <div>
+      <p class="eyebrow">Harald Oeler</p>
+      <h1 class="page-title"><em>Discographie</em></h1>
+    </div>
+    <div class="page-meta">
+      <b>7</b> Veröffentlichungen<br>
+      Alben · EPs · Kollaborationen
+    </div>
+  </div>
+
+  <!-- Discography album grid -->
+  <div class="disc-grid">
+
+    <!-- 01 — 8 Jahreszeiten -->
+    <a class="card" href="https://www.oehmsclassics.de/artikel.aspx?voeid=11598&sprache=de" rel="noopener"
+       data-spotify="https://open.spotify.com/embed/album/2R13eJFfucYq5JX0kbZxK7?utm_source=generator">
+      <div class="index">
+        <span>01</span>
+        <span class="role">Duo · Vivaldi &amp; Piazzolla</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/1.webp" alt="8 Jahreszeiten / 8 Seasons" />
+        <div class="spotify-overlay" aria-hidden="true">
+          <button class="sp-close" aria-label="Schließen">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <span class="sp-label">Vorschau</span>
+          <div class="sp-iframe-container"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <h2>Antonio Vivaldi &amp; Astor Piazzolla:<br>8 Jahreszeiten / 8 Seasons</h2>
+        <p class="subtitle">DuoVia!: Harald Oeler & Sinn Yang</p>
+      </div>
+      <span class="arrow">
+        mehr infos · spotify
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- 02 — Pictures at an Exhibition -->
+    <a class="card" href="https://www.genuin.de/gen87523-pictures-at-an-exhibition" rel="noopener" 
+       data-spotify="https://open.spotify.com/embed/album/6iE9xs5JK1EYZEthUNs93A?utm_source=generator">
+      <div class="index">
+        <span>02</span>
+        <span class="role">Solo</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/2.webp" alt="Pictures at an Exhibition" />
+        <div class="spotify-overlay" aria-hidden="true">
+          <button class="sp-close" aria-label="Schließen">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <span class="sp-label">Vorschau</span>
+          <div class="sp-iframe-container"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <h2>Pictures at an Exhibition</h2>
+        <p class="subtitle">Modest Mussorgsky - Pictures at an Exhibition Sofia Gubaidulina - Et expecto</p>
+      </div>
+      <span class="arrow">
+        mehr infos · spotify
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- 03 — Sinn Yang, Violin -->
+    <a class="card" href="https://open.spotify.com/track/1IN4tB0kw6RFMCooRCFrTB?si=ccb05c31fc3e4cc8" target="_blank" rel="noopener"
+       data-spotify="https://open.spotify.com/embed/track/1IN4tB0kw6RFMCooRCFrTB?utm_source=generator">
+      <div class="index">
+        <span>03</span>
+        <span class="role">Duo · Violine</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/3.webp" alt="Sinn Yang, Violin" />
+        <div class="spotify-overlay" aria-hidden="true">
+          <button class="sp-close" aria-label="Schließen">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <span class="sp-label">Vorschau</span>
+          <div class="sp-iframe-container"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <h2>Sinn Yang, Violin</h2>
+        <p class="subtitle">Le Grand Tango for Cello &amp; Piano · Arr. S.Gubaiduina &amp; Harald Oeler</p>
+      </div>
+      <span class="arrow">
+        spotify
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- 04 — En Avril -->
+    <a class="card" href="https://www.marcoboettger.de/cds/" target="_blank" rel="noopener">
+      <div class="index">
+        <span>04</span>
+        <span class="role">Quartett · Jazz</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/4.webp" alt="En Avril" />
+      </div>
+      <div class="meta">
+        <h2>En Avril</h2>
+        <p class="subtitle">Marco Böttger Quartett · Eigenkompositionen im Stile von Django Reinhardt</p>
+      </div>
+      <span class="arrow">
+        mehr infos
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- 05 — Parisian Melange -->
+    <a class="card" href="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE?si=p32xdQhxT-ay_mZrtjE3kA" target="_blank" rel="noopener"
+       data-spotify="https://open.spotify.com/embed/album/6dCfC6P2IDvmhqgAmXcEIE?utm_source=generator">
+      <div class="index">
+        <span>05</span>
+        <span class="role">Ensemble</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/5.webp" alt="Parisian Melange" />
+        <div class="spotify-overlay" aria-hidden="true">
+          <button class="sp-close" aria-label="Schließen">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <span class="sp-label">Vorschau</span>
+          <div class="sp-iframe-container"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <h2>Parisian Melange</h2>
+        <p class="subtitle">Hans Peter Salentin und Ensemble</p>
+      </div>
+      <span class="arrow">
+        spotify
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- 06 — Al Son del Tango -->
+    <a class="card" href="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm?si=AivXlng3TdmAjQ8DD_bW3A" target="_blank" rel="noopener"
+       data-spotify="https://open.spotify.com/embed/album/4rIVPs4byzEmpyjqtrHbnm?utm_source=generator">
+      <div class="index">
+        <span>06</span>
+        <span class="role">Quartett · EP</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/6.webp" alt="Al Son del Tango" />
+        <div class="spotify-overlay" aria-hidden="true">
+          <button class="sp-close" aria-label="Schließen">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <span class="sp-label">Vorschau</span>
+          <div class="sp-iframe-container"></div>
+        </div>
+      </div>
+      <div class="meta">
+        <h2>Al Son del Tango</h2>
+        <p class="subtitle">EP · Die Vier Evangcellisten</p>
+      </div>
+      <span class="arrow">
+        spotify
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- 07 — Musikalisches Kaleidoskop -->
+    <a class="card" href="https://www.tkv-hochfranken.de/index.php/diskografie/" target="_blank" rel="noopener">
+      <div class="index">
+        <span>07</span>
+        <span class="role">Kompilation</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/7.webp" alt="Musikalisches Kaleidoskop Hochfränkischer Künstler" />
+      </div>
+      <div class="meta">
+        <h2>Musikalisches Kaleidoskop Hochfränkischer Künstler 2020</h2>
+        <p class="subtitle">Volume 1</p>
+      </div>
+      <span class="arrow">
+        mehr infos
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+    <!-- 08 — Musikalisches Kaleidoskop -->
+    <a class="card" href="https://tkv-hochfranken.de/index.php/2025/12/20/neue-cd-des-verbandes/" target="_blank" rel="noopener">
+      <div class="index">
+        <span>08</span>
+        <span class="role">Kompilation</span>
+      </div>
+      <div class="image-wrap">
+        <img loading="lazy" src="image/discography/8.webp" alt="Musikalisches Kaleidoskop Hochfränkischer Künstler" />
+      </div>
+      <div class="meta">
+        <h2>Musikalisches Kaleidoskop Hochfränkischer Künstler 2025</h2>
+        <p class="subtitle">Volume 2</p>
+      </div>
+      <span class="arrow">
+        mehr infos
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
+          <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+  <!-- END PAGE CONTENT -->
+</main>
+
+<!-- Footer extracted from Projekte.html -->
+<footer class="site-footer">
+  <div class="left">© Harald Oeler · 2026</div>
+  <div class="center">Hof · München · Wien</div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+</footer>
+
+<script>
+(function () {
+  var activeOverlay = null;
+
+  function closeAll() {
+    if (!activeOverlay) return;
+    activeOverlay.classList.remove('is-open');
+    activeOverlay.setAttribute('aria-hidden', 'true');
+    var container = activeOverlay.querySelector('.sp-iframe-container');
+    if (container) container.innerHTML = '';
+    activeOverlay = null;
+  }
+
+  function openOverlay(card) {
+    var embedUrl = card.dataset.spotify;
+    var overlay = card.querySelector('.spotify-overlay');
+    if (!overlay || !embedUrl) return;
+
+    if (activeOverlay === overlay) { closeAll(); return; }
+    closeAll();
+
+    var iframe = document.createElement('iframe');
+    iframe.src = embedUrl + '&autoplay=1';
+    iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('loading', 'lazy');
+    iframe.setAttribute('frameborder', '0');
+
+    overlay.querySelector('.sp-iframe-container').appendChild(iframe);
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    activeOverlay = overlay;
+  }
+
+  document.querySelectorAll('.card[data-spotify]').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      e.preventDefault();
+      openOverlay(card);
+    });
+  });
+
+  document.querySelectorAll('.sp-close').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAll();
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();
+</script>
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var d=document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme',d?'dark':'light');
+  });
 </body>
 </html>

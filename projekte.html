@@ -1,141 +1,1892 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta data-vue-meta="1" name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist ">
-    <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta property="og:title" content="HARALD OELER | accordionist">
-    <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-    <meta property="og:image" content="https://www.haraldoeler.com/image/slide1.webp">
-    <meta property="og:url" content="https://www.haraldoeler.com/">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.haraldoeler.com/">
-    <title>HARALD OELER | accordionist </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media.css">
-    <link rel="stylesheet" href="toggle.css">
-    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <script  src="app.js"></script>
-    <script  src="header.js"></script>
-    <script  src="toggle.js"></script>
-    <script  src="server.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HARALD OELER — projekte</title>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <style>
+/* HARALD OELER — projekte */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --ink: #0e0d0c;
+  --paper: #f4f1ec;
+  --paper-2: #ebe6dd;
+  --rule: #1a1816;
+  --muted: #6b655c;
+  --accent: #6b1d1a;       /* oxblood — picks up the napkin */
+  --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: var(--muted);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+nav.primary a.active { color: var(--ink); }
+body.dark nav.primary a.active { color: var(--paper); }
+nav.primary a:hover { color: var(--ink); }
+body.dark nav.primary a:hover { color: var(--paper); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ---------- Page header band ---------- */
+.page-head {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 64px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.page-head > div:first-child { min-width: 0; }
+body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(64px, 10vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-feature-settings: "lnum";
+}
+.page-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.page-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.page-meta b { color: var(--ink); font-weight: 500; }
+body.dark .page-meta b { color: var(--paper); }
+
+/* ---------- Grid ---------- */
+.projects {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 56px 48px 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px 40px;
+}
+
+.card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  view-transition-name: var(--vt-name);
+}
+.card .index {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+.card .index .role {
+  text-align: right;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+body.dark .card .index { border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+
+.card .image-wrap {
+  margin-top: 14px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1a1816;
+  position: relative;
+}
+.card .image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 1.2s cubic-bezier(.2,.7,.1,1), filter .6s ease;
+  transform-origin: center;
+}
+.card:hover .image-wrap img {
+  transform: scale(1.04);
+  filter: grayscale(1) contrast(1.12) brightness(1.02);
+}
+
+.card .image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,0.55) 100%);
+  pointer-events: none;
+}
+
+.card .meta {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 24px;
+  align-items: baseline;
+}
+
+.card h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+.card .role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.card p.subtitle {
+  grid-column: 1 / -1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  max-width: 38ch;
+  text-wrap: pretty;
+  margin-bottom: 4px;
+}
+body.dark .card p.subtitle { color: color-mix(in srgb, var(--paper) 75%, transparent); }
+
+.card .arrow {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.card .arrow svg {
+  transition: transform .35s ease;
+}
+.card:hover .arrow svg { transform: translateX(6px); }
+
+/* All cards share the same image proportion */
+.card.tall .image-wrap,
+.card.wide .image-wrap,
+.card.default .image-wrap { aspect-ratio: 4 / 5; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.site-footer .center { text-align: center; }
+.site-footer .right { text-align: right; }
+
+/* ---------- Detail page ---------- */
+.detail {
+  view-transition-name: detail-root;
+}
+.detail .hero {
+  position: relative;
+  height: 78vh;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.detail .hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+.detail .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,13,12,0.25) 0%, transparent 30%, rgba(14,13,12,0.85) 100%);
+}
+.detail .hero-meta {
+  position: absolute;
+  left: 48px;
+  right: 48px;
+  bottom: 48px;
+  z-index: 2;
+  color: var(--paper);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+}
+.detail .hero-meta .eyebrow { color: rgba(244,241,236,0.65); }
+.detail .hero-meta h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(72px, 12vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.detail .hero-meta .runtime {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.8;
+  color: rgba(244,241,236,0.8);
+}
+
+.detail-body {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 96px 48px 80px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+}
+.detail-body aside {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.9;
+}
+.detail-body aside dt {
+  color: var(--muted);
+  margin-top: 18px;
+  font-size: 10px;
+}
+.detail-body aside dd {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+body.dark .detail-body aside dd { color: var(--paper); }
+
+.detail-body .lede {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 2.6vw, 40px);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  max-width: 22ch;
+  margin-bottom: 56px;
+}
+
+
+.detail-body .lede em { font-style: italic; color: var(--accent); }
+
+.detail-body .body-copy {
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 62ch;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+body.dark .detail-body .body-copy { color: color-mix(in srgb, var(--paper) 78%, transparent); }
+.detail-body .body-copy p + p { margin-top: 1.1em; }
+
+/* Repertoire list */
+.repertoire {
+  margin-top: 72px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+body.dark .repertoire { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.repertoire h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  padding: 24px 0 8px;
+}
+.repertoire ul { list-style: none; }
+.repertoire li {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 32px;
+  padding: 18px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  align-items: baseline;
+  transition: padding-left .35s ease;
+}
+body.dark .repertoire li { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+.repertoire li:hover { padding-left: 14px; }
+.repertoire li .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.repertoire li .work {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.repertoire li .work em {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 16px;
+  margin-left: 10px;
+}
+.repertoire li .dur {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+.repertoire li.big {
+  padding: 22px 0 22px 0;
+  border-bottom-width: 2px;
+  border-bottom-color: color-mix(in srgb, var(--ink) 18%, transparent);
+}
+body.dark .repertoire li.big { border-bottom-color: color-mix(in srgb, var(--paper) 22%, transparent); }
+.repertoire li.big .num { font-size: 12px; letter-spacing: 0.14em; }
+.repertoire li.big .work { font-size: 26px; }
+.repertoire li.big .work em { font-size: 19px; }
+.repertoire li.indent {
+  padding: 13px 0 13px 24px;
+  border-bottom-color: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+body.dark .repertoire li.indent { border-bottom-color: color-mix(in srgb, var(--paper) 9%, transparent); }
+.repertoire li.indent .num { font-size: 10px; }
+.repertoire li.indent .work { font-size: 19px; }
+.repertoire li.sub {
+  padding: 10px 0 10px 44px;
+  border-bottom-style: dashed;
+  border-bottom-color: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+body.dark .repertoire li.sub { border-bottom-color: color-mix(in srgb, var(--paper) 8%, transparent); }
+.repertoire li.sub .num { font-size: 10px; }
+.repertoire li.sub .work { font-size: 17px; }
+.repertoire li.sub .work em { font-size: 14px; }
+
+/* — Repertoire hover cursor — */
+.rep-zone { cursor: none; }
+.rep-zone * { cursor: none; }
+.rep-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9000;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.rep-cursor.visible { opacity: 1; }
+.rep-cursor-circle {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+.rep-cursor-icon {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--paper);
+  line-height: 1;
+  user-select: none;
+}
+.rep-cursor-sub {
+  font-family: var(--mono);
+  font-size: 5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(244,241,236,.7);
+  line-height: 1;
+  user-select: none;
+}
+
+.repertoire-row-link {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 32px;
+  align-items: baseline;
+  color: inherit;
+  width: 100%;
+}
+button.repertoire-row-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  padding: 0;
+}
+.repertoire li .toggle-icon {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Press quotes */
+.quotes {
+  margin-top: 96px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  padding-top: 48px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+body.dark .quotes { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.quote::before {
+  content: "“";
+  display: block;
+  font-family: var(--serif);
+  font-size: 80px;
+  line-height: 0.6;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.quote cite {
+  display: block;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Media (YouTube + Spotify) */
+.media {
+  margin-top: 96px;
+  padding-top: 56px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+body.dark .media { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.media h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 32px;
+}
+.media-item { display: flex; flex-direction: column; gap: 14px; }
+.media-item .frame {
+  position: relative;
+  width: 100%;
+  background: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  overflow: hidden;
+}
+body.dark .media-item .frame { border-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+.media-item.youtube .frame { aspect-ratio: 16 / 9; }
+.media-item.spotify .frame { aspect-ratio: 5 / 2; background: transparent; border: none; }
+.media-item .frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.media-item figcaption {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Tour dates */
+.tour-dates {
+  margin-top: 72px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+body.dark .tour-dates { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.tour-dates h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  padding: 24px 0 8px;
+}
+.tour-dates ul { list-style: none; }
+.tour-date-item {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  align-items: baseline;
+  transition: padding-left .35s ease;
+}
+body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+.tour-date-item:hover { padding-left: 14px; cursor: pointer; }
+.tour-date-item .t-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+.tour-date-item .t-venue {
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: -0.005em;
+}
+.tour-date-item .t-venue em {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 15px;
+  margin-left: 10px;
+}
+.tour-date-item .t-city {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 24px 48px;
+  max-width: 1480px;
+  margin: 0 auto;
+  width: 100%;
+  transition: color .25s ease;
+}
+.back-link:hover { color: var(--accent); }
+.back-link svg { transition: transform .35s ease; }
+.back-link:hover svg { transform: translateX(-6px); }
+
+/* ---------- View Transitions ---------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(.7,0,.2,1);
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.7,0,.2,1);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .projects { grid-template-columns: repeat(2, 1fr); }
+  .detail-body { grid-template-columns: 1fr; gap: 40px; }
+  .quotes { grid-template-columns: 1fr; }
+  .media-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+  .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
+  .page-meta { text-align: left; }
+  .projects { grid-template-columns: 1fr; padding: 32px 24px 80px; gap: 48px; }
+  .detail .hero-meta { left: 24px; right: 24px; bottom: 24px; grid-template-columns: 1fr; }
+  .detail-body { padding: 56px 24px; }
+  .back-link { padding: 18px 24px; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+
+/* ---------- Projects Sub-navigation ---------- */
+.projects-subnav {
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+}
+body.dark .projects-subnav {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent);
+}
+.projects-subnav-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.projects-subnav-inner::-webkit-scrollbar { display: none; }
+.projects-subnav-inner a {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 0;
+  white-space: nowrap;
+  position: relative;
+  transition: color .25s ease;
+  flex-shrink: 0;
+}
+.projects-subnav-inner a:hover { color: var(--ink); }
+body.dark .projects-subnav-inner a:hover { color: var(--paper); }
+.projects-subnav-inner a.active { color: var(--ink); }
+body.dark .projects-subnav-inner a.active { color: var(--paper); }
+.projects-subnav-inner a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--accent);
+}
+@media (max-width: 720px) {
+  .projects-subnav-inner { padding: 0 24px; }
+}
+
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+</style>
 </head>
 <body>
-    <section id="header">
-        <div class="header container">
-            <div class="brand">
-                <a href="index">
-                    <h1>HARALD<span style="color: transparent;">_</span>OELER</h1>
-                    <span class="logo">H</span>
-                </a>            
-            </div>
-            <input id="toggle" type="checkbox">
-            <label for="toggle" class="hamburger">
-                <div class="top-bun"></div>
-                <div class="meat"></div>
-                <div class="bottom-bun"></div>
-            </label>
-            <div class="nav-bar">
-                <div class="nav-list">
-                    <ul class="vertical">
-                        <li><a href="about">about</a></li>
-                        <li><a href="projekte">projekte</a></li>
-                    </ul>
-                    <ul class="horizontal">
-                        <li class="noshown"><a href="about">about</a></li>
-                        <li class="noshown"><a href="projekte">projekte</a></li>
-                        <li><a href="termine">termine</a></li>
-                        <li><a href="news">news</a></li>
-                        <li><a href="unterricht">unterricht</a></li>
-                        <li><a href="discographie">discographie</a></li>
-                        <li><a href="media">media</a></li>
-                        <li><a href="kontakt">kontakt</a></li>
-                    </ul>
-                </div>
-            </div>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" data-presets="react">
+
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel"
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
         </div>
-    </section>
-    <section id="projekte" class="page">
-        <div class="projekte-header">
-            <h1 class="section-title">projekte</h1>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+function TweakColor({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <input type="color" className="twk-swatch" value={value}
+             onChange={(e) => onChange(e.target.value)} />
+    </div>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+
+// Project data + small components
+const PROJECTS = [
+  {
+    id: "solo",
+    num: "01",
+    title: "Solo",
+    role: "Akkordeon — solo",
+    subtitle: "Einzigartige Akkordeonmusik der Klassik, Neuen Musik und des Jazz.",
+    image: "image/project/solo.webp",
+    variant: "tall",
+  },
+  {
+    id: "orchester",
+    num: "02",
+    title: "Orchester",
+    role: "Akkordeon & Orchester",
+    subtitle: "Solistisches Repertoire mit Sinfonie- und Kammerorchester.",
+    image: "image/project/orchester.webp",
+    variant: "wide",
+  },
+  {
+    id: "fussissimo",
+    num: "03",
+    title: "Fussissimo",
+    role: "Trio — gypsy · ethno · jazz",
+    subtitle: "Gypsy-Ethno-Jazz Ensemble",
+    image: "image/project/fussissimo.webp",
+    variant: "default",
+  },
+  {
+    id: "duovia",
+    num: "04",
+    title: "Duo ViA!",
+    role: "Akkordeon & Violine",
+    subtitle: "Transkriptionen aus vier Jahrhunderten",
+    image: "image/project/duovia.webp",
+    imagePos: "44% center",
+    variant: "default",
+  },
+  {
+    id: "duoklakk",
+    num: "05",
+    title: "Duo KlAkk!",
+    role: "Akkordeon & Klarinette",
+    subtitle: "Resonanzen zwischen Neuer und Alter Musik.",
+    image: "image/project/duoklakk.webp",
+    imagePos: "44% center",
+    variant: "tall",
+  },
+  {
+    id: "hof",
+    num: "06",
+    title: "Hofer Musikscene",
+    role: "Lokales · regional",
+    subtitle: "Projekte und Begegnungen im Hofer Land.",
+    image: "image/project/hof.webp",
+    variant: "wide",
+  },
+];
+
+const DETAILS = {
+  solo: {
+    title: "Solo",
+    eyebrow: "Projekt 01 · Akkordeon solo",
+    image: "image/project/page/solo.webp",
+    runtime: ["Programm · »Remembering«", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
+    lede: ["Die Präzision des Klaviers. Die Sogkraft des Orchesters. ", { em: "Eine Stimme." }],
+    body: [
+  'Künstlerisch bewegt sich Harald Oeler in einem weiten Feld, welches von der (Ur-) Aufführung zeitgenössischer Werke, über die Transkription klassischer Werke für das Akkordeon, bis hin zum Jazz reicht.',
+  'Harald Oeler wirkte bei verschiedenen Projekten und Festivals mit, darunter der "Heidelberger Frühling", das "Literaturfest Niedersachsen", die "Sommerlichen Musiktage Hitzacker", der Frankfurter "MuseumsSalon" und Jazzfestivals wie das "Django Memorial Augsburg" und das "Frankfurter Jazzfestival".',
+  'Konzertreisen führten Harald Oeler bereits nach China, Korea, Rumänien, Finnland, Schweden, Italien, Österreich, Schweiz und Polen. Zahlreiche CD-Produktionen bei OehmsClassics, Genuin und Thorofon/Bella Musica repräsentieren sein breitgefächertes Konzertleben.'],
+    
+  remembering: {
+      lede: [
+        "Neues Konzertprogramm ",
+        { em: "Remembering" },
+        " stellt Paris und Tokio in den Mittelpunkt."
+      ],
+      body: [
+        "Das Programm spiegelt ihn erstmalig als Komponist, Arrangeur und Akkordeonist wider. Zwei Städte und zwei Komponisten erwiesen sich während des Kompositionsprozesses als besonders wertvoll und bilden die Hauptsäulen seines Konzertprogrammes: Paris, Tokio, Johann Sebastian Bach und Astor Piazzolla.",
+        "„Remembering“ umfasst daher vier große Werke für Akkordeon-Solo, die das Publikum auf eine multi-stilistische, musikalische Weltreise entführen.",
+        "Zu hören sind freie improvisierte Musik, streng kontrapunktische Satztechniken, Alte und Neue Musik, aber auch jazzige Sounds, südamerikanische „Tango-Fetzen“ und eine „Anime-Sonate“."
+      ]
+    },
+    repertoire: [
+      { num: "I.", work: "Modest Mussorgsky", note: "Pictures at an Exhibition", dur: "—" },
+      { num: "II.", work: "Sofia Gubaidulina", note: "Et expecto", dur: "—" },
+      { num: "III.", work: "Harald Oeler", note: "»Remembering« — eigene Werke", dur: "—", big: true, id: "AH1Bj1WaY8o" },
+
+      { num: "I.", work: "Harald Oeler", note: "Remembering Bach — Fantasy and Fugue on two themes by Astor Piazzolla", dur: "—", indent: true, link: "news/remembering.html" },
+      { num: "I.1", work: "Harald Oeler", note: "Fantasy (La misma pena)", dur: "—" },
+      { num: "I.2", work: "Harald Oeler", note: "Fugue (Luz y sombra)", dur: "—" },
+
+      { num: "II.", work: "Harald Oeler", note: "Remembering Paris", dur: "—", indent: true },
+      { num: "III.", work: "Harald Oeler", note: "Remembering Tokyo", dur: "—", indent: true, link: "news/siebold.html" },
+
+      { num: "IV.", work: "Harald Oeler", note: "Remembering Piazzolla — Five Tango-Jamsations", dur: "—", indent: true },
+      { num: "IV.1", work: "Harald Oeler", note: "Bando", dur: "—" },
+      { num: "IV.2", work: "Harald Oeler", note: "Adios Nonino", dur: "—" },
+      { num: "IV.3", work: "Harald Oeler", note: "Saint Louis en l'île", dur: "—" },
+      { num: "IV.4", work: "Harald Oeler", note: "Imperial", dur: "—" },
+      { num: "IV.5", work: "Harald Oeler", note: "S.V.P.", dur: "—", link: "news/remembering.html" }
+    ],
+    quotes: [
+      { text: "Oeler's transcription unites the advantages of the original piano version and Ravel's orchestral adaptation — an astounding range of colours and dynamics.", cite: "Nordwest-Radio" },
+    ],
+    media: [
+      { kind: "youtube", id: "AH1Bj1WaY8o", caption: "Solo · »Remembering«" },
+      { kind: "spotify", url: "https://open.spotify.com/embed/album/02LouxvRMRz0bj5etTqFpL?utm_source=generator&theme=0", caption: "Pictures at an Exhibition · Et expecto" },
+    ],
+    tour: [
+      { date: "21. Mär 2026",  venue: "Jakobus-Stadtkirche",       city: "Brackenheim", program: "Solo Akkordeon · Instrument des Jahres 2026" },
+      { date: "25. Jul 2026",  venue: "Evangelische Kirche",       city: "Berg",        program: "Solo Akkordeon" },
+      { date: "19. Nov 2026",  venue: "Würzburger Bachtage",       city: "Würzburg",    program: "Solo" },
+    ],
+  },
+  orchester: {
+    title: "Orchester",
+    eyebrow: "Projekt 02 · Akkordeon & Orchester",
+    image: "image/project/page/orchester.webp",
+    runtime: ["Solistisches Repertoire", "Besetzung · Sinfonie- / Streichorchester", "auf Anfrage"],
+    lede: ["Das Akkordeon als ", { em: "Solostimme" }, " im großen Apparat — von Bach bis Galliano."],
+    body: [
+      "Solistisches Repertoire mit Sinfonie- und Streichorchester. Programme werden gemeinsam mit Veranstalter:innen und Dirigent:innen kuratiert — von Barockkonzerten bis zu modernen Konzertwerken speziell für das Akkordeon.",
+    ],
+    repertoire: [
+      { num: "I.", work: "J. S. Bach", note: "Cembalokonzert d-Moll, BWV 1052", id:"WFCRiyENZxk", dur: "08:35" },
+      { num: "II.", work: "J. S. Bach", note: "Konzert für zwei Cembali, BWV 1061", dur: "" },
+      { num: "III.", work: "Václav Trojan", note: "»Pohádky« — Märchen für Akkordeon und Orchester", dur: "" },
+      { num: "IV.", work: "Richard Galliano", note: "»Opale Concerto«", id: "WPMtnt0PfY0", dur: "08:30" },
+      { num: "V.", work: "Astor Piazzolla", note: "»Ballet-Tango«",id: "2OJ2BstBZCw", id: "2OJ2BstBZCw", dur: "08:17" },
+      { num: "VI.", work: "Erhard Cotta (arr.)", note: "»Philharmonic Gypsy-Swing«", id:"GATut_MZPHY", dur: "07:27" },
+      { num: "VII.", work: "Ole Schmidt", note: "»Symphonic Fantasy and Allegro«", dur: "" },
+      { num: "VIII.", work: "Richard Galliano", note: "»Opale Concerto, 3ème Mouvement«", id: "yQ-Xje5yJIg", dur: "09:08" },
+    ],
+    quotes: [],
+    media: [
+      { kind: "youtube", id: "WPMtnt0PfY0", caption: "Galliano · Opale Concerto" },
+      { kind: "youtube", id: "WFCRiyENZxk", caption: "Bach · Cembalokonzert d-Moll, BWV 1052" },
+      { kind: "youtube", id: "2OJ2BstBZCw", caption: "Piazzolla · Ballet-Tango" },
+      { kind: "youtube", id: "GATut_MZPHY", caption: "Erhard Cotta · Philharmonic Gypsy-Swing" },
+    ],
+    tour: [
+      { date: "17. Mai 2026",  venue: "Philharmonie",              city: "Berlin",     program: "Galliano · Opale Concerto" },
+      { date: "28. Jun 2026",  venue: "Konzerthaus",               city: "Wien",       program: "Bach · BWV 1052" },
+      { date: "19. Sep 2026",  venue: "Laeiszhalle",               city: "Hamburg",    program: "Piazzolla · Ballet-Tango" },
+      { date: "07. Nov 2026",  venue: "Gasteig HP8",               city: "München",    program: "Galliano · Opale Concerto" },
+    ],
+  },
+  fussissimo: {
+    title: "Fussissimo",
+    eyebrow: "Projekt 03 · Gypsy · Ethno · Jazz",
+    image:"image/project/page/fussissimo.webp",
+    imagePos: "center 20%",
+    runtime: ["Trio · seit fast 20 Jahren", "Rehan Syed · Gitarre", "Simon Ort · Bass", "Harald Oeler · Akkordeon"],
+    lede: ["Tango, Bossa, Musette, Orient — ", { em: "alles in einem Atemzug." }],
+    body: [
+      "Virtuose Spieltechnik und jede Menge Inspirationen aus Jazz und Weltmusik. Diese Kombination macht das Trio zu einem besonders interessanten Gypsy-Ethno-Jazz Ensemble.",
+      "Seit fast 20 Jahren hat sich der Gitarrist und Komponist Rehan Syed mit seinen Projekten einen wohlklingenden Namen in der Gypsy-Jazz-Szene erspielt — und ist nun mit dem erstklassigen Bassisten Simon Ort am Kontrabass und dem preisgekrönten Akkordeonisten Harald Oeler in einer Trio-Besetzung zu hören, die es in sich hat.",
+      "Zum Programm gehören originelle Eigenkompositionen von Rehan Syed mit Einflüssen von Tango, Bossa, französischer Musette und orientalischer Musik, sowie Perlen aus dem Gypsy-Jazz- und Weltmusik-Repertoire.",
+    ],
+    repertoire: [
+      { num: "I.", work: "Bossa 9", note: "Fussissimo", dur: "06:24",id: "j1U5qDVxmUQ", kind: "youtube" },
+      { num: "II.", work: "Für Mara", note: "Fussissimo", dur: "04:17",id: "0TYQhb9glyc", kind: "youtube" },
+      { num: "III.", work: "Ani Suni", note: "live in der musik-butik", dur: "07:18",id: "05HxYd95Phw", kind: "youtube" },
+      { num: "IV.", work: "Made in France", note: "live in der musik-butik", dur: "04:15",id: "TsTN3AgrpbU", kind: "youtube" },
+      { num: "V.", work: "Aman", note: "Fussissimo", dur: "05:19",id: "WkxEwOPyBnw", kind: "youtube" },
+    ],
+    quotes: [],
+    media: [
+      { kind: "youtube", id: "j1U5qDVxmUQ", caption: "Bossa 9 · live in der musik-butik" },
+      { kind: "youtube", id: "05HxYd95Phw", caption: "Ani Suni · live in der musik-butik" },
+    ],
+    tour: [
+      { date: "23. Mai 2026",  venue: "Schloss Eyrichshos, Gartenfest",     city: "Ebern",   program: "Gypsy · Ethno · Jazz" },
+      { date: "20. Jun 2026",  venue: "Huttenschloss",    city: "Gemünden",   program: "Fussissimo" },
+      { date: "21. Jun 2026",  venue: "Umsonst & Draussen Festival",        city: "Würzburg",   program: "Fussissimo" },
+      { date: "03. Juli 2026",  venue: "Disharmonie",           city: "Schweinfurt",   program: "Gypsy · Ethno · Jazz" },
+    ],
+  },
+  duovia: {
+    title: "Duo ViA!",
+    eyebrow: "Projekt 04 · Akkordeon & Violine",
+    image: "image/project/page/duovia.webp",
+    runtime: ["Sinn Yang · Violine", "Harald Oeler · Akkordeon", "Album · 8 Jahreszeiten · OehmsClassics"],
+    lede: ["Vivaldi & Piazzolla — ", { em: "ein kühnes Wagnis" }, " der Harmonie und der Erfindung."],
+    body: [
+      "Neue Klangwelten entdecken — ein Ziel, das sich mit der außergewöhnlichen Besetzung aus Violine und Akkordeon spielerisch erreichen lässt.",
+      "Duo ViA!s CD der »8 Jahreszeiten« von Vivaldi und Piazzolla erschien 2014 bei OehmsClassics und erhielt begeisterte Kritiken. Mit Neugierde und Experimentierlust erkunden beide Künstler in ihrer exotischen Besetzung Meisterwerke der zeitgenössischen Musik, Bach, Chick Corea u.a. und traten erfolgreich auf — beim Heidelberger Frühling, in Berlin, München, Bracciano / Italien und Helsinki.",
+      "The Duo made their debut in 2009 with the programme »Seasons« at the Heidelberg Spring Festival — a sold-out hall, Vivaldi's Quattro Stagioni in combination with Piazzolla's Cuatro Estaciones Porteñas.",
+    ],
+    repertoire: [
+      { num: "I.", work: "Trailer über das Programm 8 Jahreszeiten von Vivaldi und Piazzolla", note: "", id: "AJ6uhwH7-gI", dur: "02:46" },
+      { num: "II.", work: "Antonio Vivaldi", note: "Le quattro stagioni", dur: "" },
+      { num: "III.", work: "Astor Piazzolla", note: "Las cuatro estaciones porteñas", dur: "" },
+      { num: "IV.", work: "J. S. Bach · Chick Corea u.a.", note: "im Wechselspiel", dur: "" },
+    ],
+    quotes: [
+      { text: "Yang und Oeler spielen wie aufeinander eingeschworen — sie bilden nicht nur rhythmisch eine Einheit. Der Dauerbrenner von Vivaldi erscheint hier stellenweise wie unter dem Mikroskop.", cite: "NDR" },
+      { text: "Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.", cite: "NDR Kultur" },
+    ],
+    media: [
+      { kind: "youtube", id: "AJ6uhwH7-gI", caption: "Duo ViA! · live" },
+      { kind: "youtube", id: "kw7_NO-klxM", caption: "Duo ViA! · concert highlight" },
+      { kind: "spotify", url: "https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0", caption: "8 Jahreszeiten · OehmsClassics" },
+    ],
+    tour: [
+      { date: "25. Apr 2026",  venue: "Heidelberger Frühling",     city: "Heidelberg", program: "8 Jahreszeiten" },
+      { date: "12. Jun 2026",  venue: "Kulturbahnhof",             city: "Berlin",     program: "Bach · Corea · Piazzolla" },
+      { date: "18. Sep 2026",  venue: "Musikhalle",                city: "Helsinki",   program: "8 Jahreszeiten" },
+      { date: "29. Nov 2026",  venue: "Bracciano Festival",        city: "Bracciano",  program: "Duo ViA! · live" },
+    ],
+  },
+  duoklakk: {
+    title: "Duo KlAkk!",
+    eyebrow: "Projekt 05 · Akkordeon & Klarinette",
+    image: "image/project/page/duoklakk.webp",
+    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes BACH!«"],
+    lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
+    body: [
+      "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
+      "Was passiert, wenn die zeitlose Genialität Johann Sebastian Bachs auf die spielerische Energie von Duo KlAkk! trifft? Ein Konzert voller Überraschungen, Kontraste und einer Prise Augenzwinkern. Das Duo nimmt das Publikum mit auf eine Reise durch Bachs zwei Sonaten für Viola da Gamba — Meisterwerke voller Eleganz, Tiefe und musikalischem Dialog.",
+    ],
+    repertoire: [
+      { num: "I.", work: "J. S. Bach", note: "Sonate D-Dur, BWV 1028", dur: "15:00" },
+      { num: "II.", work: "J. S. Bach", note: "Sonate g-Moll, BWV 1029", dur: "13:30" },
+      { num: "III.", work: "Joseph Haydn", note: "Divertimento G-Dur, op. 100 Nr. 2 (Arr. Oeler)", dur: "" },
+      { num: "IV.", work: "Harald Oeler", note: "Remembering Paris", dur: "8:00" },
+      { num: "V.", work: "Harald Oeler", note: "Remembering Tokyo", dur: "" }, 
+      { num: "VI.", work: "Johan Svensson", note: "Double Dubbing (firefly song), 2020", dur: "11:30" }, 
+    ],
+    quotes: [
+      { text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
+    ],
+    media: [
+      { kind: "youtube", id: "4NPvdif9o6M", caption: "Bach · Sonate g-Moll, BWV 1029" },
+      { kind: "youtube", id: "-z40QlQ-QYg", caption: "Oeler · “Remembering Paris” für Klarinette in B und Akkordeon" },
+    ],
+    tour: [
+      { date: "05. Mai 2026",  venue: "Weytterturm (Innenhof)",    city: "Straubing",  program: "Remembering" },
+      { date: "13. Sep 2026",  venue: "Künzelsau",     city: "Künzelsau",  program: "Remembering" },
+      { date: "18. Sep 2026",  venue: "Neuneinhalb im Gerberhaus",  city: "Bayreuth",   program: "Pictures at an Exhibition" },
+      { date: "11. Okt 2026",  venue: "Tonhalle",                  city: "München",    program: "Remembering" },
+    ],
+  },
+
+  hof: {
+    title: "Hofer Musikscene",
+    eyebrow: "Projekt 06 · Hofer Land",
+    image:"image/project/page/hof.webp",
+    runtime: ["Jam · jeden ersten Dienstag", "KunstKaufHaus Hof · 20 Uhr", "VHS Hofer Land · Konzertreihe"],
+    lede: ["Begegnungen, Reibungen, Reisen — ", { em: "Musik im Hofer Land." }],
+    body: [
+      "Drei laufende Formate, die das musikalische Leben in Hof und Umgebung mitprägen — vom offenen Jam bis zum kuratierten Konzert mit Streichquartett.",
+    ],
+    repertoire: [
+      { num: "I.", work: "Jazz Jam Session", note: "KunstKaufHaus Hof · jeden ersten Dienstag, 20 Uhr · Schricker / von Mammen / Oeler / Motschmann / Auer / Tröger", dur: "" },
+      { num: "II.", work: "»NEU | START | JAZZ«", note: "VHS Hofer Land · in Kooperation mit dem Tonkünstlerverband Bayern · von Mammen / Jung / Oeler / Jersak / Nitsch / Fau", dur: "" },
+      { num: "III.", work: "Streichquartett & Harald Oeler", note: "Werke von Barock über Jazz und Tango bis zur Moderne", dur: "" },
+    ],
+    quotes: [],
+    tour: [
+      { date: "Jeden 1. Di.",  venue: "KunstKaufHaus Hof",         city: "Hof",        program: "Jazz Jam · 20 Uhr" },
+      { date: "18. Mai 2026",  venue: "VHS Hofer Land",            city: "Hof",        program: "NEU | START | JAZZ" },
+      { date: "06. Sep 2026",  venue: "VHS Hofer Land",            city: "Hof",        program: "NEU | START | JAZZ" },
+      { date: "15. Nov 2026",  venue: "Kulturforum Hof",           city: "Hof",        program: "Streichquartett & Oeler" },
+    ],
+  },
+};
+
+function Header({ active = "projekte", basePath = "" }) {
+  const [dark, setDark] = React.useState(() => document.body.classList.contains('dark'));
+  const toggleTheme = () => {
+    const d = document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme', d ? 'dark' : 'light');
+    setDark(d);
+  };
+    return (
+    <header className="site-header">
+      <div className="header-inner">
+        <a className="wordmark" href={`${basePath}index.html`}>
+          HARALD<span className="dot"></span>OELER
+          {" "}<small>· accordionist & composer</small>
+        </a>
+        <nav className="primary">
+          {["about","projekte","termine","news","unterricht","medien","kontakt"].map(item => (
+            <a key={item} href={`${basePath}${item}.html`} className={active === item ? "active" : ""}>{item}</a>
+          ))}
+        </nav>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Farbschema wechseln" title="Dark / Light">
+          {dark
+            ? <svg className="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            : <svg className="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          }
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="site-footer">
+      <div className="left">© Harald Oeler · 2026</div>
+      <div className="center">Hof · München · Wien</div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    </footer>
+  );
+}
+
+function Arrow({dir = "right"}) {
+  const path = dir === "right"
+    ? "M0 8 L18 8 M12 2 L18 8 L12 14"
+    : "M18 8 L0 8 M6 2 L0 8 L6 14";
+  return (
+    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <path d={path}/>
+    </svg>
+  );
+}
+
+function ProjectsSubnav({ current = "", basePath = "projekte/" }) {
+  return (
+    <nav className="projects-subnav">
+      <div className="projects-subnav-inner">
+        {PROJECTS.map(p => (
+          <a
+            key={p.id}
+            href={`${basePath}${p.id}.html`}
+            className={current === p.id ? "active" : ""}
+          >
+            {p.title}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+window.PROJECTS = PROJECTS;
+window.DETAILS = DETAILS;
+window.Header = Header;
+window.Footer = Footer;
+window.Arrow = Arrow;
+window.ProjectsSubnav = ProjectsSubnav;
+
+
+// Main app — projekte overview
+const { useState, useEffect, useCallback } = React;
+
+function ProjekteOverview({ tweaks }) {
+  return (
+    <>
+      <Header active="projekte" />
+      <ProjectsSubnav />
+      <section className="page-head">
+        <div>
+          <div className="eyebrow">— Projekte</div>
+          <h1 className="page-title">{tweaks.italicTitle ? <em>projekte</em> : "projekte"}</h1>
         </div>
-        <div class="projekte container">
-            <div class="projectbox">
-                <div class="box">
-                    <img loading="lazy" class="img1" src="image/project1.webp" alt="Project 1">
-                    <div class="card-body">
-                        <a class="mehrinfo" href="projekte/solo">
-                            <h2 class="card-title">SOLO</h2>
-                            <p class="card-info">Einzigartige Akkordeonmusik 
-                            <br class="card-info">der Klassik, Neuen Musik und dem Jazz</p>
-                            <br>
-                            <p>mehr infos</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img loading="lazy" class="img2" src="image/project5.webp" alt="Project 5">
-                    <div class="card-body">
-                        <a class="mehrinfo" href="projekte/orchester">
-                            <h2 class="card-title">ORCHESTER</h2>
-                            <p class="card-info">Solistisches Repertoire mit Orchester</p>
-                            <br>
-                            <p>mehr infos</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img loading="lazy" class="img3" src="image/project2.webp" alt="Project 2">
-                    <div class="card-body">
-                        <a class="mehrinfo" href="projekte/triofussissimo">
-                            <h2 class="card-title">FUSSISSIMO</h2>
-                            <p class="card-info">Gypsy-Ethno-Jazz Ensemble</p>
-                            <br>
-                            <p>mehr infos</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img loading="lazy" class="img4" src="image/project3.webp" alt="Project 3">
-                    <div class="card-body">
-                    <a class="mehrinfo" href="projekte/duovia">
-                        <h2 class="card-title">DUO ViA!</h2>
-                        <p class="card-info">Transkriptionen aus vier Jahrhunderten</p>
-                        <br>
-                        <p>mehr infos</p>
-                    </a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img loading="lazy" class="img5" src="image/project4.webp" alt="Project 4">
-                    <div class="card-body">
-                        <a class="mehrinfo" href="projekte/duoklakk">
-                            <h2 class="card-title">DUO KlAkk!</h2>
-                            <p class="card-info">Resonanzen zwischen Neuer und Alter Musik</p>
-                            <p>neue musik x alte musik</p>
-                            <br>
-                            <p>mehr infos</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="box">
-                    <img  loading="lazy" class="img6" src="image/project6.webp" alt="Project 6">
-                    <div class="card-body">
-                        <a class="mehrinfo" href="projekte/hof">
-                            <h2 class="card-title"> HOFER MUSIKSCENE</h2>
-                            <p class="card-info">Projekte in Hofer Land</p>
-                            <br>
-                            <p>mehr infos</p>
-                        </a>
-                    </div>
-                </div>
+        <div className="page-meta">
+          <div>haraldoeler@gmx.de</div>
+          <div>booking · 2026 / 2027</div>
+        </div>
+      </section>
+
+      <section className="projects">
+        {PROJECTS.map((p) => (
+          <a
+            key={p.id}
+            className={`card ${p.variant}`}
+            style={{ "--vt-name": `card-${p.id}` }}
+            href={`projekte/${p.id}.html`}
+          >
+            <div className="index">
+              <span>{p.num}</span>
+              <span className="role">{p.role}</span>
             </div>
+            <div className="image-wrap" style={{ viewTransitionName: `image-${p.id}` }}>
+              <img src={p.image} alt={p.title} loading="lazy" style={p.imagePos ? {objectPosition: p.imagePos} : {}} />
+            </div>
+            <div className="meta">
+              <h2 style={{ viewTransitionName: `title-${p.id}` }}>{p.title}</h2>
+            </div>
+            <p className="subtitle">{p.subtitle}</p>
+            <span className="arrow">
+              mehr infos <Arrow />
+            </span>
+          </a>
+        ))}
+      </section>
+
+      <Footer />
+    </>
+  );
+}
+
+function ProjektDetail({ id, onBack }) {
+  const proj = PROJECTS.find(p => p.id === id);
+  const [expanded, setExpanded] = React.useState(new Set());
+  const toggle = (num) => setExpanded(prev => { const n = new Set(prev); n.has(num) ? n.delete(num) : n.add(num); return n; });
+
+  const cursorRef = React.useRef(null);
+  const handleRepMove = React.useCallback((e) => {
+    const el = cursorRef.current;
+    if (!el) return;
+    el.style.left = e.clientX + 'px';
+    el.style.top = e.clientY + 'px';
+    const isLink = !!e.target.closest('a[href]');
+    const icon = el.querySelector('.rep-cursor-icon');
+    const sub  = el.querySelector('.rep-cursor-sub');
+    if (icon) icon.textContent = isLink ? '▶' : '·';
+    if (sub)  sub.textContent  = isLink ? 'play' : '';
+  }, []);
+  const handleRepEnter = React.useCallback(() => {
+    cursorRef.current && cursorRef.current.classList.add('visible');
+  }, []);
+  const handleRepLeave = React.useCallback(() => {
+    cursorRef.current && cursorRef.current.classList.remove('visible');
+  }, []);
+  const parentOf = (num) => num.replace(/\.\d+$/, '.');
+  const detail = DETAILS[id] || {
+    title: proj.title,
+    eyebrow: `Projekt ${proj.num} · ${proj.role}`,
+    image: proj.image,
+    runtime: ["Programmlänge · 60–90 min", "Besetzung · auf Anfrage", "Verfügbar · 2026 / 2027"],
+    lede: [proj.subtitle.split("—")[0] || proj.subtitle],
+    body: [
+      proj.subtitle + " Ausführliche Programminformationen, Besetzungen und technische Anforderungen werden auf Anfrage bereitgestellt.",
+      "Konzerte in Konzertsälen, Kirchen und Festivals — Programmgestaltung individuell mit dem Veranstalter.",
+    ],
+    repertoire: [
+      { num: "I.", work: "Programm", note: "auf Anfrage", dur: "—" },
+    ],
+    quotes: [
+      { text: "Ein Klangkosmos, in dem Stille und Atem ebenso wichtig werden wie die Töne selbst.", cite: "Süddeutsche Zeitung" },
+    ],
+  };
+
+  return (
+    <div className="detail">
+      <div ref={cursorRef} className="rep-cursor">
+        <div className="rep-cursor-circle">
+          <span className="rep-cursor-icon">·</span>
+          <span className="rep-cursor-sub"></span>
         </div>
-    </section>
+      </div>
+      <Header active="projekte" />
+      <a className="back-link" href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
+        <Arrow dir="left" /> zurück zu projekte
+      </a>
+      <section className="hero" style={{ viewTransitionName: `image-${id}` }}>
+        <img src={detail.image} alt={detail.title} style={detail.imagePos ? {objectPosition: detail.imagePos} : {}} />
+        <div className="hero-meta">
+          <div>
+            <div className="eyebrow">{detail.eyebrow}</div>
+            <h1 style={{ viewTransitionName: `title-${id}` }}>{detail.title}</h1>
+          </div>
+          <div className="runtime">
+            {detail.runtime.map((r, i) => <div key={i}>{r}</div>)}
+          </div>
+        </div>
+      </section>
+
+      <div className="detail-body">
+        <aside>
+          <dl>
+            <dt>Format</dt>
+            <dd>{proj.role}</dd>
+            <dt>Dauer</dt>
+            <dd>60–90 min</dd>
+            {detail.tour && detail.tour.length > 0 && (
+              <>
+                <dt>Nächster Termin</dt>
+                <dd>{detail.tour[0].date} · {detail.tour[0].city}</dd>
+              </>
+            )}
+          </dl>
+        </aside>
+
+        <div>
+          <p className="lede">
+            {detail.lede.map((part, i) =>
+              typeof part === "string"
+                ? <React.Fragment key={i}>{part}</React.Fragment>
+                : <em key={i}>{part.em}</em>
+            )}
+          </p>
+          <div className="body-copy">
+            {detail.body.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+        </div>
+
+        {detail.remembering && (
+          <>
+            <p className="lede">
+              {detail.remembering.lede.map((part, i) =>
+                typeof part === "string"
+                  ? <React.Fragment key={i}>{part}</React.Fragment>
+                  : <em key={i}>{part.em}</em>
+              )}
+            </p>
+
+            <div className="body-copy">
+              {detail.remembering.body.map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+          </>
+        )}
+
+        <div style={{gridColumn: "2"}}>
+          <div className="repertoire rep-zone"
+               onMouseMove={handleRepMove}
+               onMouseEnter={handleRepEnter}
+               onMouseLeave={handleRepLeave}>
+          <h3>— Auswahl Repertoire</h3>
+          <ul>
+            {detail.repertoire.map((r, i) => {
+              const isSub = /\.\d/.test(r.num);
+              if (isSub && !expanded.has(parentOf(r.num))) return null;
+              const nextIsSub = detail.repertoire[i + 1] && /\.\d/.test(detail.repertoire[i + 1].num);
+              const isExpandable = r.indent && nextIsSub;
+              const isOpen = expanded.has(r.num);
+              const cls = r.big ? 'big' : r.indent ? 'indent' : isSub ? 'sub' : '';
+              if (isExpandable) {
+                return (
+                  <li key={i} className={cls}>
+                    <button className="repertoire-row-link" onClick={() => toggle(r.num)}>
+                      <span className="num">{r.num}</span>
+                      <span className="work">{r.note}</span>
+                      <span className="toggle-icon">{isOpen ? '−' : '+'}</span>
+                    </button>
+                  </li>
+                );
+              }
+              return (
+                <li key={i} className={cls}>
+                  <a
+                    href={r.id ? `https://www.youtube.com/watch?v=${r.id}` : r.link ? r.link : undefined}
+                    target={r.id ? "_blank" : undefined}
+                    rel={r.id ? "noopener noreferrer" : undefined}
+                    className="repertoire-row-link"
+                  >
+                    <span className="num">{r.num}</span>
+                    <span className="work">
+                      {(r.indent || isSub)
+                        ? r.note
+                        : <>{r.work}{r.note && <em>{r.note}</em>}</>
+                      }
+                    </span>
+                    <span className="dur">{r.dur}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+          {detail.quotes && detail.quotes.length > 0 && (
+            <div className="quotes" style={detail.quotes.length === 1 ? {gridTemplateColumns: '1fr'} : {}}>
+              {detail.quotes.map((q, i) => (
+                <blockquote key={i} className="quote">
+                  {q.text}
+                  <cite>— {q.cite}</cite>
+                </blockquote>
+              ))}
+            </div>
+          )}
+
+          {detail.media && detail.media.length > 0 && (
+            <div className="media">
+              <h3>— Hören & sehen</h3>
+              <div className="media-grid">
+                {detail.media.map((m, i) => (
+                  <figure key={i} className={`media-item ${m.kind}`}>
+                    <div className="frame">
+                      {m.kind === "youtube" ? (
+                        <iframe
+                          src={`https://www.youtube.com/embed/${m.id}`}
+                          title={m.caption}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        />
+                      ) : (
+                        <iframe
+                          src={m.url}
+                          title={m.caption}
+                          loading="lazy"
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          allowFullScreen
+                        />
+                      )}
+                    </div>
+                    <figcaption>{m.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "darkMode": false,
+  "italicTitle": false,
+  "accent": "#6b1d1a"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", tweaks.darkMode);
+    document.documentElement.style.setProperty("--accent", tweaks.accent);
+  }, [tweaks.darkMode, tweaks.accent]);
+
+  return (
+    <>
+      <ProjekteOverview tweaks={tweaks} />
+
+      <TweaksPanel>
+        <TweakSection label="Theme" />
+        <TweakToggle label="Dark mode" value={tweaks.darkMode} onChange={(v) => setTweak("darkMode", v)} />
+        <TweakToggle label="Italic title" value={tweaks.italicTitle} onChange={(v) => setTweak("italicTitle", v)} />
+        <TweakSection label="Accent color" />
+        <TweakColor label="Accent" value={tweaks.accent} onChange={(v) => setTweak("accent", v)} />
+        <TweakSelect
+          label="Preset"
+          value={tweaks.accent}
+          onChange={(v) => setTweak("accent", v)}
+          options={[
+            { label: "Oxblood", value: "#6b1d1a" },
+            { label: "Ink", value: "#0e0d0c" },
+            { label: "Sage", value: "#3a4a3c" },
+            { label: "Mustard", value: "#a07a16" },
+          ]}
+        />
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+  </script>
 </body>
 </html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist">
+  <meta name="description" content="Official website of the German accordionist Harald Oeler. Biography, awards and musical career.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="HARALD OELER | about">
+  <meta property="og:image" content="https://www.haraldoeler.com/image/1.webp">
+  <meta property="og:url" content="https://www.haraldoeler.com/about">
+  <meta property="og:type" content="website">
+  <title>HARALD OELER — about</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+
+  <style>
+:root {
+  --ink:         #0e0d0c;
+  --paper:       #f4f1ec;
+  --paper-2:     #ebe6dd;
+  --muted:       #6b655c;
+  --accent:      #6b1d1a;
+  --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: var(--muted);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+nav.primary a.active { color: var(--ink); }
+nav.primary a:hover  { color: var(--ink); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ─── Page head ──────────────────────────────────────────────────────────── */
+.page-head {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 64px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(64px, 10vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.page-title em { font-style: italic; color: var(--accent); }
+.page-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.page-meta b { color: var(--ink); font-weight: 500; }
+
+/* ─── About body ─────────────────────────────────────────────────────────── */
+.about-body {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 72px 48px 120px;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ─── Text side ──────────────────────────────────────────────────────────── */
+.about-text { min-width: 0; }
+
+/* Language toggle */
+.lang-toggle {
+  display: inline-flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.lang-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 7px 18px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.lang-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.lang-btn:not(.active):hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+
+/* Bio text */
+.bio-content { display: none; }
+.bio-content.visible { display: block; }
+
+.bio-content p {
+  font-size: 16px;
+  line-height: 1.72;
+  color: color-mix(in srgb, var(--ink) 82%, transparent);
+  max-width: 66ch;
+  text-wrap: pretty;
+}
+.bio-content p + p { margin-top: 1.2em; }
+
+.bio-content a {
+  color: var(--ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  transition: color .2s, border-color .2s;
+}
+.bio-content a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Awards / highlights pulled out */
+.bio-highlights {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.highlight-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.h-year {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.h-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+
+/* CV downloads */
+.cv-downloads {
+  display: flex;
+  gap: 12px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 8px 16px;
+  border: 1px solid var(--accent);
+  transition: background .25s, color .25s;
+}
+.cv-link:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+.cv-link svg { flex-shrink: 0; }
+
+/* ─── Image side ─────────────────────────────────────────────────────────── */
+.about-images { position: sticky; top: 88px; }
+
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+  background: #1a1816;
+}
+.swiper-container .swiper-slide img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter .6s ease;
+}
+.swiper-container:hover .swiper-slide img {
+  filter: grayscale(0.4) contrast(1.02);
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--paper) !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+}
+.swiper-pagination-bullet {
+  background: var(--paper);
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--paper);
+}
+
+/* Image caption row */
+.image-caption {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.site-footer .center { text-align: center; }
+.site-footer .right  { text-align: right; }
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .about-body { grid-template-columns: 1fr; gap: 56px; }
+  .about-images { position: static; }
+  .swiper-container .swiper-slide img { aspect-ratio: 3 / 2; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+  .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
+  .page-meta { text-align: left; margin-top: 16px; }
+  .about-body { padding: 48px 24px 80px; }
+  .highlight-item { grid-template-columns: 44px 1fr; gap: 16px; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+</style>
+</head>
+
+<body>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">
+      HARALD<span class="dot"></span>OELER
+      <small>· accordionist &amp; composer</small>
+    </a>
+    <nav class="primary">
+      <a href="bio.html" class="active">bio</a>
+      <a href="projekte.html">projekte</a>
+      <a href="termine.html">termine</a>
+      <a href="news.html">news</a>
+      <a href="unterricht.html">unterricht</a>
+      <a href="medien.html">medien</a>
+      <a href="kontakt.html">kontakt</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+  <!-- ═══ PAGE HEAD ════════════════════════════════════════════════════════ -->
+  <section class="page-head">
+    <div>
+      <div class="eyebrow">— Biography</div>
+      <h1 class="page-title"><em>bio</em></h1>
+    </div>
+    <div class="page-meta">
+      <div>accordionist &amp; composer</div>
+      <div>Hof · <b>Germany</b></div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT BODY ═══════════════════════════════════════════════════════ -->
+  <div class="about-body">
+
+    <!-- Text column -->
+    <div class="about-text">
+
+      <!-- Language toggle -->
+      <div class="lang-toggle" role="group" aria-label="Sprache wählen">
+        <button class="lang-btn active" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+
+      <!-- German bio -->
+      <div class="bio-content visible" id="bio-de">
+        <p>Bereits als Jugendlicher ausgebildet in Komposition, Orgel- und Klavierspiel, erhielt Harald Oeler seine entscheidenden musikalischen Impulse von Hans Bogner an der Musikschule Gaggenau. Erste Preise bei nationalen Wettbewerben und die Vorbereitung auf das bevorstehende Musikstudium, waren der Nährboden einer äußerst wertvollen Unterrichtszeit bei Hans Bogner.</p>
+
+        <p>Nach dem Abitur folgte ein Musikstudium im Hauptfach Akkordeon, zunächst bei Prof Hugo Noth, später bei <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> an der <a href="https://hfm-wuerzburg.de" target="_blank">Hochschule für Musik in Würzburg</a>. Die eindrucksvollen Studienjahre formten einen Musiker, welcher heute in einem breitgefächerten musikalisch-künstlerischen Aufgabenfeld von Jazz, Transkriptionsmusik und zeitgenössischer Musik aktiv ist.</p>
+
+        <p>Zahlreiche nationale und internationale Wettbewerbserfolge festigten, auf dem Weg zum Meisterklassendiplom, 2008, die Bühnenreife und künstlerische Individualität Harald Oelers. Ein 3. Preis beim 3rd <a href="https://www.npo-jaa.jp/what-s-jaa/" target="_blank">Internationale Accordion Competition JAA Tokio/Japan</a> 2002, ein 2. Preis beim bedeutendsten <a href="https://hauspoz.org/arrasate-accordion-competitions/" target="_blank">internationalen Akkordeonwettbewerb in Arrasate</a> 2007 und ein 1. Preis beim 45. <a href="https://accordion-competition.de/index" target="_blank">Internationalen Akkordeonwettbewerb Klingenthal</a> mit dem <a href="https://nachrichten.idw-online.de/2008/06/12/1-preis-bei-internat-akkordeonwettbewerb-fuer-2-musiker-der-hochschule-fuer-musik-wuerzburg" target="_blank">Akkordeonduo Animé</a> 2008, belegen dies eindrucksvoll.</p>
+
+        <p>Gefördert wurde Harald Oeler während seines Studiums als Stipendiat der Studienstiftung des <a href="https://www.studienstiftung.de" target="_blank">deutschen Volkes</a> und der <a href="https://livemusicnow.de" target="_blank">Yehudi Menuhin Stiftung „Live Music Now"</a>. Konzerte bei renomierten Klassik- und Jazzfestivals wie dem Heidelberger Frühling, dem Literaturfest Niedersachsen, den Sommerlichen Musiktagen Hitzacker und dem 41. Frankfurter Jazzfestival folgten.</p>
+
+        <p>Neben zahlreichen Rundfunkaufnahmen ist sein weitgefächertes künstlerisches Schaffen auf CDs von <a href="https://www.genuin.de/de/0403.php" target="_blank">Genuin</a>, Thorofon, <a href="https://www.oehmsclassics.de" target="_blank">OehmsClassics</a> und Dewey Records dokumentiert.</p>
+
+        <p>Im Sommer 2012 lehrte Harald Oeler als Gastdozent an der „Normal Shenzhen University" in China. Als Lehrbeauftragter für Akkordeon arbeitet Harald Oeler seit 2007 an der <a href="https://www.lmu.de" target="_blank">Ludwig-Maximilians-Universität München</a>. Weiterhin ist er hauptamtlicher Akkordeondozent und Leiter der Theorie- und Förderklasse an der Musikschule der „Hofer Symphoniker".</p>
+
+        <p>Unter seinen Schülern befinden sich zahlreiche Preisträger verschiedener Wettbewerbe, darunter vierzehn 1. Bundespreisträger bei Jugend musiziert, 1. Preisträger des Deutschen Akkordeon Musikpreis und Preisträger des Internationalen Akkordeonfestivals in Innsbruck.</p>
+
+        <!-- Award highlights -->
+        <div class="bio-highlights">
+          <div class="highlight-item">
+            <span class="h-year">2002</span>
+            <span class="h-text">3. Preis — International Accordion Competition JAA, Tokio</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2007</span>
+            <span class="h-text">2. Preis — Internationaler Akkordeonwettbewerb Arrasate</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2008</span>
+            <span class="h-text">1. Preis — 45. Internationaler Akkordeonwettbewerb Klingenthal · Meisterklassendiplom</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">—</span>
+            <span class="h-text">Stipendiat der Studienstiftung des deutschen Volkes &amp; Yehudi Menuhin Stiftung</span>
+          </div>
+        </div>
+
+        <div class="cv-downloads">
+          <a class="cv-link" href="VITA_DE.pdf" download="CV_Deutsch.pdf">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
+            </svg>
+            CV Deutsch
+          </a>
+          <a class="cv-link" href="VITA_EN.pdf" download="CV_English.pdf">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
+            </svg>
+            CV English
+          </a>
+        </div>
+      </div><!-- /#bio-de -->
+
+      <!-- English bio -->
+      <div class="bio-content" id="bio-en">
+        <p>Harald Oeler is a German accordionist. He received his first lessons on the accordion as a six-year-old. After completing organ studies, he received instruction on the accordion from Hans Bogner in Gaggenau, Germany in preparation for conservatory study.</p>
+
+        <p>After successfully competing in Jugend musiziert and Jugend komponiert competitions, he began studying with Prof. Hugo Noth. He continued his studies with <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> at the <a href="https://hfm-wuerzburg.de" target="_blank">Würzburg Musikhochschule</a> in 2001, where, upon completing his performing arts degree (künstlerisches Diplom) with distinction in 2005, he was accepted into the master class.</p>
+
+        <p>During his studies, Harald Oeler won prizes at national and international competitions, including 3rd Prize at the Third International Accordion Competition JAA Tokyo / Japan and 2nd Prize at the 2005 German Music Conservatory Competition. Harald Oeler was awarded a scholarship by the German National Merit Foundation and has received support from <a href="https://livemusicnow.de" target="_blank">"Live Music Now"</a> (Yehudi Menuhin Program for Supporting Young Musicians).</p>
+
+        <p>Harald Oeler pursues a very active career as a concert artist in Germany and internationally, performing as a soloist and in various ensembles.</p>
+
+        <!-- Award highlights -->
+        <div class="bio-highlights">
+          <div class="highlight-item">
+            <span class="h-year">2002</span>
+            <span class="h-text">3rd Prize — International Accordion Competition JAA, Tokyo</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2007</span>
+            <span class="h-text">2nd Prize — International Accordion Competition Arrasate</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2008</span>
+            <span class="h-text">1st Prize — 45th International Accordion Competition Klingenthal · Master Class Diploma</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">—</span>
+            <span class="h-text">Scholar, German National Merit Foundation &amp; Yehudi Menuhin Foundation</span>
+          </div>
+        </div>
+
+        <div class="cv-downloads">
+          <a class="cv-link" href="VITA_EN.pdf" download="CV_English.pdf">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
+            </svg>
+            CV English
+          </a>
+          <a class="cv-link" href="VITA_DE.pdf" download="CV_Deutsch.pdf">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
+            </svg>
+            CV Deutsch
+          </a>
+        </div>
+      </div><!-- /#bio-en -->
+
+    </div><!-- /.about-text -->
+
+    <!-- Image column -->
+    <div class="about-images">
+      <div class="swiper-container swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="image/media/1.webp" alt="Harald Oeler — solo">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/media/2.webp" alt="Harald Oeler — solo">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/media/3.webp" alt="Harald Oeler — solo">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/media/4.webp" alt="Harald Oeler — solo">
+          </div>
+          <div class="swiper-slide">
+            <img src="image/media/5.webp" alt="Harald Oeler — solo">
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="image-caption">
+        <span>Harald Oeler</span>
+        <span>© photos</span>
+      </div>
+    </div>
+
+  </div><!-- /.about-body -->
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="left">© Harald Oeler · 2026</div>
+    <div class="center">Hof · München · Wien</div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Swiper
+    new Swiper('.mySwiper', {
+      spaceBetween: 0,
+      centeredSlides: true,
+      loop: true,
+      autoplay: { delay: 3500, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+    });
+
+    // Language toggle
+    const btns = document.querySelectorAll('.lang-btn');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const lang = this.dataset.lang;
+        btns.forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        document.querySelectorAll('.bio-content').forEach(function (el) {
+          el.classList.remove('visible');
+        });
+        document.getElementById('bio-' + lang).classList.add('visible');
+      });
+    });
+  </script>
+
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var d=document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme',d?'dark':'light');
+  });
+</body>
+</html>

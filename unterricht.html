@@ -326,6 +326,11 @@ nav.primary a.active::after {
   align-self: center; transition: opacity .2s;
 }
 .theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
 .icon-moon { display: none; }
 body.dark .icon-sun { display: none; }
 body.dark .icon-moon { display: inline; }
@@ -336,6 +341,19 @@ body.dark .site-header {
   border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
 }
 body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .site-header.scrolled .wordmark { color: var(--paper); }
+body.dark .site-header.scrolled .wordmark small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .site-header.scrolled nav.primary a.active { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a:hover { color: var(--paper); }
+body.dark nav.primary a.active { color: var(--paper); }
+body.dark nav.primary a:hover  { color: var(--paper); }
+body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+body.dark .page-meta b { color: var(--paper); }
+body.dark .intro-text { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+body.dark .teaching-item { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .teaching-item:first-child { border-top-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .teaching-item-body { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+
 </style>
 </head>
 <body>
@@ -403,12 +421,7 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
           2025 erhältlich sein wird.
         </p>
 
-        <a href="news/akkordeonschule.html" class="mehr-infos">
-          mehr infos
-          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M0 8 L18 8 M12 2 L18 8 L12 14"/>
-          </svg>
-        </a>
+        <!-- mehr-infos link removed: news/akkordeonschule.html needs content first -->
       </aside>
 
       <!-- Right column: teaching positions -->
@@ -468,9 +481,11 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 
+  <script>
   document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
+  </script>
 </body>
 </html>

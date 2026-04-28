@@ -375,6 +375,11 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
   align-self: center; transition: opacity .2s;
 }
 .theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
 .icon-moon { display: none; }
 body.dark .icon-sun { display: none; }
 body.dark .icon-moon { display: inline; }

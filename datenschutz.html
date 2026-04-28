@@ -294,6 +294,11 @@ address.contact-block {
   align-self: center; transition: opacity .2s;
 }
 .theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
 .icon-moon { display: none; }
 body.dark .icon-sun { display: none; }
 body.dark .icon-moon { display: inline; }
@@ -304,6 +309,20 @@ body.dark .site-header {
   border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
 }
 body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .site-header.scrolled .wordmark { color: var(--paper); }
+body.dark .site-header.scrolled .wordmark small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .site-header.scrolled nav.primary a.active { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a:hover { color: var(--paper); }
+body.dark nav.primary a.active { color: var(--paper); }
+body.dark nav.primary a:hover  { color: var(--paper); }
+body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+body.dark .page-meta b { color: var(--paper); }
+body.dark .legal-section { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .legal-section p,
+body.dark .legal-section address,
+body.dark .legal-section li { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+body.dark address.contact-block { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+
 </style>
 </head>
 <body>
@@ -521,12 +540,13 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
     <div class="left">© Harald Oeler · 2026</div>
     <div class="center">Hof · München · Wien</div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
 
-c  </footer>
-
+  <script>
   document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
+  </script>
 </body>
 </html>

@@ -563,16 +563,40 @@ nav.primary a.active::after {
   align-self: center; transition: opacity .2s;
 }
 .theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
 .icon-moon { display: none; }
 body.dark .icon-sun { display: none; }
 body.dark .icon-moon { display: inline; }
 /* ── Dark mode base ────────────────────────────────── */
 body.dark { background: var(--ink); color: var(--paper); }
 body.dark .site-header {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+body.dark .site-header.scrolled {
   background: var(--ink);
   border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
 }
 body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+/* scrolled header text in dark mode */
+body.dark .site-header.scrolled .wordmark { color: var(--paper); }
+body.dark .site-header.scrolled .wordmark small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .site-header.scrolled nav.primary a { color: color-mix(in srgb, var(--paper) 55%, transparent); }
+body.dark .site-header.scrolled nav.primary a.active { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a:hover { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a.active::after { background: var(--accent); }
+/* content text in dark mode */
+body.dark .home-teasers { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .hc-item { border-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .home-pullquote { color: color-mix(in srgb, var(--paper) 85%, transparent); }
+body.dark .teaser-cta { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 30%, transparent); }
+body.dark .teaser-cta:hover { color: var(--ink); background: var(--paper); }
+body.dark .proj-card p.subtitle { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+body.dark .proj-card .card-index { border-bottom-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 </style>
 </head>
 <body>
@@ -630,34 +654,34 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
 
           <li class="hc-item">
             <div class="hc-date">
-              01.01.2026
-              <small>Do · 17:00 Uhr</small>
+              07.05.2026
+              <small>Do · 19:30 Uhr</small>
             </div>
             <div>
-              <div class="hc-title">Neujahrskonzert Besigheim</div>
-              <div class="hc-location">Gemeindehalle Walheim</div>
+              <div class="hc-title">Duo ViA! – „Four Seasons – One World"</div>
+              <div class="hc-location">Mozartareal, Würzburg</div>
             </div>
           </li>
 
           <li class="hc-item">
             <div class="hc-date">
-              11.01.2026
-              <small>So · 17:00 Uhr</small>
+              09.05.2026
+              <small>Sa · 13:00 Uhr</small>
             </div>
             <div>
-              <div class="hc-title">DUO KlAkk! goes BACH</div>
-              <div class="hc-location">Christuskirche Kronach</div>
+              <div class="hc-title">Duo ViA! – „Four Seasons – One World"</div>
+              <div class="hc-location">Mühlenforum Glattbach</div>
             </div>
           </li>
 
           <li class="hc-item">
             <div class="hc-date">
-              21.03.2026
-              <small>Sa · 19:00 Uhr</small>
+              13.05.2026
+              <small>Mi · 19:30 Uhr</small>
             </div>
             <div>
-              <div class="hc-title">„Remembering" – Solo</div>
-              <div class="hc-location">Jakobus-Stadtkirche Brackenheim</div>
+              <div class="hc-title">Duo ViA! – 4. Meisterkonzert</div>
+              <div class="hc-location">Teo Otto Theater, Remscheid</div>
             </div>
           </li>
 
@@ -675,7 +699,7 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
           Preisträger des <em>Internationalen Akkordeonwettbewerbs Klingenthal</em> —
           Solist, Kammermusiker und Komponist zwischen Klassik, Jazz und Weltmusik.
         </p>
-        <a class="teaser-cta" href="about.html">
+        <a class="teaser-cta" href="bio.html">
           Biographie
           <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
@@ -696,7 +720,7 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
       <div class="home-projects-grid">
 
         <!-- DUO KlAkk! -->
-        <a class="proj-card" href="Projekte">
+        <a class="proj-card" href="projekte/duoklakk.html">
           <div class="card-index">
             <span>01</span>
             <span class="card-role">Duo · Kammermusik</span>
@@ -716,7 +740,7 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
         </a>
 
         <!-- Duo ViA! -->
-        <a class="proj-card" href="Projekte">
+        <a class="proj-card" href="projekte/duovia.html">
           <div class="card-index">
             <span>02</span>
             <span class="card-role">Duo · Kammermusik</span>
@@ -736,7 +760,7 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
         </a>
 
         <!-- FUSSISSIMO -->
-        <a class="proj-card" href="Projekte">
+        <a class="proj-card" href="projekte/fussissimo.html">
           <div class="card-index">
             <span>03</span>
             <span class="card-role">Ensemble · Jazz &amp; World</span>
@@ -777,9 +801,11 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
     onScroll();
   </script>
 
+  <script>
   document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
+  </script>
 </body>
 </html>

@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Projekte des Akkordeonisten Harald Oeler: DUO KlAkk!, Duo ViA!, Fussissimo und Solo. Kammermusik, Jazz und Weltmusik." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta property="og:title" content="HARALD OELER | projekte" />
+  <meta property="og:description" content="Projekte des Akkordeonisten Harald Oeler: DUO KlAkk!, Duo ViA!, Fussissimo und Solo." />
+  <meta property="og:image" content="https://www.haraldoeler.com/projekte/image/page/duoklakk.webp" />
+  <meta property="og:url" content="https://www.haraldoeler.com/projekte" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://www.haraldoeler.com/projekte" />
   <title>HARALD OELER — projekte</title>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <style>
@@ -32,6 +40,7 @@ html, body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body.dark {
@@ -112,6 +121,42 @@ nav.primary a.active::after {
   bottom: -2px;
   height: 1px;
   background: var(--accent);
+}
+
+/* ── Mobile nav toggle ─────────────────────────────── */
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  flex-shrink: 0;
+  align-self: center;
+  line-height: 0;
+  z-index: 10001;
+  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  opacity: 0.92;
+}
+.nav-toggle svg { display: block; }
+.nav-toggle:hover {
+  background: var(--paper-2);
+  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.nav-toggle:active { transform: translateY(0); }
+.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body.dark .nav-toggle {
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+}
+body.dark .nav-toggle:hover {
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 26%, transparent);
 }
 
 /* ---------- Page header band ---------- */
@@ -736,6 +781,51 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
 @media (max-width: 720px) {
   .header-inner { padding: 18px 24px; gap: 16px; }
   nav.primary { display: none; }
+  .header-inner { grid-template-columns: 1fr auto auto; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  nav.primary.open {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    padding-top: max(24px, env(safe-area-inset-top));
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-left: 24px;
+    padding-right: 24px;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3.6vh, 26px);
+    z-index: 10000;
+    overflow: hidden;
+  }
+  body.dark nav.primary.open { background: color-mix(in srgb, var(--ink) 92%, transparent); }
+  nav.primary.open a {
+    font-family: var(--mono);
+    font-size: clamp(14px, 2.4vh, 18px);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 8px 0;
+    transition: color .2s ease;
+  }
+  body.dark nav.primary.open a { color: var(--paper); }
+  nav.primary.open a.active,
+  nav.primary.open a:hover { color: var(--accent); }
+
+  body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
+  body.nav-open .wordmark,
+  body.nav-open .theme-toggle { visibility: hidden; pointer-events: none; }
+  body.nav-open .nav-toggle {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+  }
+  body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
+  body.dark.nav-open nav.primary.open { background: var(--ink); }
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
   .page-meta { text-align: left; }
   .projects { grid-template-columns: 1fr; padding: 32px 24px 80px; gap: 48px; }
@@ -744,6 +834,11 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   .back-link { padding: 18px 24px; }
   .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
   .site-footer .center, .site-footer .right { text-align: left; }
+}
+
+@media (max-width: 720px) and (max-height: 560px) {
+  nav.primary.open { gap: 14px; }
+  nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
 }
 
 /* ---------- Projects Sub-navigation ---------- */
@@ -1365,7 +1460,7 @@ const DETAILS = {
     eyebrow: "Projekt 02 · Akkordeon & Orchester",
     image: "/projekte/image/page/orchester.webp",
     runtime: ["Solistisches Repertoire", "Besetzung · Sinfonie- / Streichorchester", "auf Anfrage"],
-    lede: ["Das Akkordeon als ", { em: "Solostimme" }, " im großen Apparat — von Bach bis Galliano."],
+    lede: ["Das Akkordeon als ", { em: "Solostimme" }, " im großen Orchester — von Bach bis Galliano."],
     body: [
       "Solistisches Repertoire mit Sinfonie- und Streichorchester. Programme werden gemeinsam mit Veranstalter:innen und Dirigent:innen kuratiert — von Barockkonzerten bis zu modernen Konzertwerken speziell für das Akkordeon.",
     ],
@@ -1539,6 +1634,9 @@ function Header({ active = "projekte", basePath = "" }) {
             : <svg className="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           }
         </button>
+    <button className="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
+</button>
       </div>
     </header>
   );
@@ -1549,7 +1647,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="left">© Harald Oeler · 2026</div>
       <div className="center">Hof · München · Wien</div>
-    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    <div className="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
     </footer>
   );
 }
@@ -1896,5 +1994,45 @@ function App() {
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
   </script>
+<script>
+(function(){
+  function init(){
+    var t = document.getElementById('navToggle');
+    var n = document.querySelector('nav.primary');
+    if (!t || !n) return false;
+    if (t.__navBound) return true;
+    t.__navBound = true;
+
+    var OPEN = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
+    var CLOSED = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
+
+    function close(){
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('nav-open');
+      document.body.style.overflow='';
+      t.innerHTML=CLOSED;
+    }
+
+    t.addEventListener('click', function(){
+      var o = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', o);
+      document.body.classList.toggle('nav-open', o);
+      document.body.style.overflow = o ? 'hidden' : '';
+      t.innerHTML = o ? OPEN : CLOSED;
+    });
+    n.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    return true;
+  }
+
+  if (init()) return;
+  var tries = 0;
+  var iv = setInterval(function(){
+    tries++;
+    if (init() || tries > 80) clearInterval(iv);
+  }, 50);
+})();
+</script>
 </body>
 </html>

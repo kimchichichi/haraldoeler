@@ -787,7 +787,7 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
     display: flex !important;
     position: fixed;
     inset: 0;
-    width: 100%;
+    width: 100vw;
     height: 100dvh;
     padding-top: max(24px, env(safe-area-inset-top));
     padding-bottom: max(24px, env(safe-area-inset-bottom));
@@ -810,11 +810,31 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
     text-transform: uppercase;
     color: var(--ink);
     padding: 8px 0;
-    transition: color .2s ease;
+    display: inline-block;
+    position: relative;
+    transition: color .2s ease, transform .2s ease;
+  }
+  nav.primary.open a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease, opacity .25s ease;
   }
   body.dark nav.primary.open a { color: var(--paper); }
   nav.primary.open a.active,
   nav.primary.open a:hover { color: var(--accent); }
+  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.55; }
+  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.65; }
+  @media (hover: hover) {
+    nav.primary.open a:hover { transform: translateY(-2px); }
+    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.55; }
+  }
 
   body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
   body.nav-open .wordmark,
@@ -826,6 +846,8 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   }
   body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
   body.dark.nav-open nav.primary.open { background: var(--ink); }
+  body.nav-open { overscroll-behavior: none; }
+  body.nav-open nav.primary.open { overscroll-behavior: none; touch-action: none; }
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
   .page-meta { text-align: left; }
   .projects { grid-template-columns: 1fr; padding: 32px 24px 80px; gap: 48px; }
@@ -834,6 +856,34 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   .back-link { padding: 18px 24px; }
   .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
   .site-footer .center, .site-footer .right { text-align: left; }
+
+  /* Repertoire: smaller + wrap so everything fits */
+  .repertoire li,
+  .repertoire-row-link {
+    grid-template-columns: 44px 1fr;
+    gap: 14px;
+  }
+  .repertoire li { padding: 14px 0; }
+  .repertoire li:hover { padding-left: 0; }
+  .repertoire li .num { font-size: 10px; letter-spacing: 0.14em; }
+  .repertoire li .dur { display: none; }
+  .repertoire li .work {
+    font-size: 16px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.2;
+    text-wrap: pretty;
+    hyphens: auto;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .repertoire li .work em { font-size: 13px; margin-left: 6px; }
+  .repertoire li.big { padding: 16px 0; }
+  .repertoire li.big .work { font-size: 17px; }
+  .repertoire li.big .work em { font-size: 13px; }
+  .repertoire li.indent { padding: 12px 0 12px 14px; }
+  .repertoire li.sub { padding: 10px 0 10px 28px; }
 }
 
 @media (max-width: 720px) and (max-height: 560px) {
@@ -908,1093 +958,9 @@ body,
 <script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
 
   <div id="root"></div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-  <script type="text/babel" data-presets="react">
+  <script type="module" src="assets/projekte.bundle.js"></script>
 
-// tweaks-panel.jsx
-// Reusable Tweaks shell + form-control helpers.
-//
-// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
-// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
-// individual prototypes don't re-roll it. Ships a consistent set of controls so you
-// don't hand-draw <input type="range">, segmented radios, steppers, etc.
-//
-// Usage (in an HTML file that loads React + Babel):
-//
-//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-//     "primaryColor": "#D97757",
-//     "fontSize": 16,
-//     "density": "regular",
-//     "dark": false
-//   }/*EDITMODE-END*/;
-//
-//   function App() {
-//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-//     return (
-//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
-//         Hello
-//         <TweaksPanel>
-//           <TweakSection label="Typography" />
-//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
-//                        onChange={(v) => setTweak('fontSize', v)} />
-//           <TweakRadio  label="Density" value={t.density}
-//                        options={['compact', 'regular', 'comfy']}
-//                        onChange={(v) => setTweak('density', v)} />
-//           <TweakSection label="Theme" />
-//           <TweakColor  label="Primary" value={t.primaryColor}
-//                        onChange={(v) => setTweak('primaryColor', v)} />
-//           <TweakToggle label="Dark mode" value={t.dark}
-//                        onChange={(v) => setTweak('dark', v)} />
-//         </TweaksPanel>
-//       </div>
-//     );
-//   }
-//
-// ─────────────────────────────────────────────────────────────────────────────
-
-const __TWEAKS_STYLE = `
-  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
-    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
-    background:rgba(250,249,247,.78);color:#29261b;
-    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
-    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
-    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
-    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
-  .twk-hd{display:flex;align-items:center;justify-content:space-between;
-    padding:10px 8px 10px 14px;cursor:move;user-select:none}
-  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
-  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
-    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
-  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
-  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
-    overflow-y:auto;overflow-x:hidden;min-height:0;
-    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
-  .twk-body::-webkit-scrollbar{width:8px}
-  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
-  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
-    border:2px solid transparent;background-clip:content-box}
-  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
-    border:2px solid transparent;background-clip:content-box}
-  .twk-row{display:flex;flex-direction:column;gap:5px}
-  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
-  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
-    color:rgba(41,38,27,.72)}
-  .twk-lbl>span:first-child{font-weight:500}
-  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
-
-  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-    color:rgba(41,38,27,.45);padding:10px 0 0}
-  .twk-sect:first-child{padding-top:0}
-
-  .twk-field{appearance:none;width:100%;height:26px;padding:0 8px;
-    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
-    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
-  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
-  select.twk-field{padding-right:22px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
-    background-repeat:no-repeat;background-position:right 8px center}
-
-  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
-    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
-  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
-    width:14px;height:14px;border-radius:50%;background:#fff;
-    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
-  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
-    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
-
-  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
-    background:rgba(0,0,0,.06);user-select:none}
-  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
-    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
-    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
-  .twk-seg.dragging .twk-seg-thumb{transition:none}
-  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
-    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
-    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
-    overflow-wrap:anywhere}
-
-  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
-    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
-  .twk-toggle[data-on="1"]{background:#34c759}
-  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
-    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
-  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
-
-  .twk-num{display:flex;align-items:center;height:26px;padding:0 0 0 8px;
-    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
-  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
-    user-select:none;padding-right:8px}
-  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
-    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
-    outline:none;color:inherit;-moz-appearance:textfield}
-  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
-    -webkit-appearance:none;margin:0}
-  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
-
-  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
-    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
-  .twk-btn:hover{background:rgba(0,0,0,.88)}
-  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
-  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
-
-  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
-    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
-    background:transparent;flex-shrink:0}
-  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
-  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
-  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
-`;
-
-// ── useTweaks ───────────────────────────────────────────────────────────────
-// Single source of truth for tweak values. setTweak persists via the host
-// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
-function useTweaks(defaults) {
-  const [values, setValues] = React.useState(defaults);
-  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
-  // useState-style call doesn't write a "[object Object]" key into the persisted
-  // JSON block.
-  const setTweak = React.useCallback((keyOrEdits, val) => {
-    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
-      ? keyOrEdits : { [keyOrEdits]: val };
-    setValues((prev) => ({ ...prev, ...edits }));
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
-  }, []);
-  return [values, setTweak];
-}
-
-// ── TweaksPanel ─────────────────────────────────────────────────────────────
-// Floating shell. Registers the protocol listener BEFORE announcing
-// availability — if the announce ran first, the host's activate could land
-// before our handler exists and the toolbar toggle would silently no-op.
-// The close button posts __edit_mode_dismissed so the host's toolbar toggle
-// flips off in lockstep; the host echoes __deactivate_edit_mode back which
-// is what actually hides the panel.
-function TweaksPanel({ title = 'Tweaks', children }) {
-  const [open, setOpen] = React.useState(false);
-  const dragRef = React.useRef(null);
-  const offsetRef = React.useRef({ x: 16, y: 16 });
-  const PAD = 16;
-
-  const clampToViewport = React.useCallback(() => {
-    const panel = dragRef.current;
-    if (!panel) return;
-    const w = panel.offsetWidth, h = panel.offsetHeight;
-    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
-    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
-    offsetRef.current = {
-      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
-      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
-    };
-    panel.style.right = offsetRef.current.x + 'px';
-    panel.style.bottom = offsetRef.current.y + 'px';
-  }, []);
-
-  React.useEffect(() => {
-    if (!open) return;
-    clampToViewport();
-    if (typeof ResizeObserver === 'undefined') {
-      window.addEventListener('resize', clampToViewport);
-      return () => window.removeEventListener('resize', clampToViewport);
-    }
-    const ro = new ResizeObserver(clampToViewport);
-    ro.observe(document.documentElement);
-    return () => ro.disconnect();
-  }, [open, clampToViewport]);
-
-  React.useEffect(() => {
-    const onMsg = (e) => {
-      const t = e?.data?.type;
-      if (t === '__activate_edit_mode') setOpen(true);
-      else if (t === '__deactivate_edit_mode') setOpen(false);
-    };
-    window.addEventListener('message', onMsg);
-    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-    return () => window.removeEventListener('message', onMsg);
-  }, []);
-
-  const dismiss = () => {
-    setOpen(false);
-    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
-  };
-
-  const onDragStart = (e) => {
-    const panel = dragRef.current;
-    if (!panel) return;
-    const r = panel.getBoundingClientRect();
-    const sx = e.clientX, sy = e.clientY;
-    const startRight = window.innerWidth - r.right;
-    const startBottom = window.innerHeight - r.bottom;
-    const move = (ev) => {
-      offsetRef.current = {
-        x: startRight - (ev.clientX - sx),
-        y: startBottom - (ev.clientY - sy),
-      };
-      clampToViewport();
-    };
-    const up = () => {
-      window.removeEventListener('mousemove', move);
-      window.removeEventListener('mouseup', up);
-    };
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', up);
-  };
-
-  if (!open) return null;
-  return (
-    <>
-      <style>{__TWEAKS_STYLE}</style>
-      <div ref={dragRef} className="twk-panel"
-           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
-        <div className="twk-hd" onMouseDown={onDragStart}>
-          <b>{title}</b>
-          <button className="twk-x" aria-label="Close tweaks"
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onClick={dismiss}>✕</button>
-        </div>
-        <div className="twk-body">{children}</div>
-      </div>
-    </>
-  );
-}
-
-// ── Layout helpers ──────────────────────────────────────────────────────────
-
-function TweakSection({ label, children }) {
-  return (
-    <>
-      <div className="twk-sect">{label}</div>
-      {children}
-    </>
-  );
-}
-
-function TweakRow({ label, value, children, inline = false }) {
-  return (
-    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
-      <div className="twk-lbl">
-        <span>{label}</span>
-        {value != null && <span className="twk-val">{value}</span>}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-// ── Controls ────────────────────────────────────────────────────────────────
-
-function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
-  return (
-    <TweakRow label={label} value={`${value}${unit}`}>
-      <input type="range" className="twk-slider" min={min} max={max} step={step}
-             value={value} onChange={(e) => onChange(Number(e.target.value))} />
-    </TweakRow>
-  );
-}
-
-function TweakToggle({ label, value, onChange }) {
-  return (
-    <div className="twk-row twk-row-h">
-      <div className="twk-lbl"><span>{label}</span></div>
-      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
-              role="switch" aria-checked={!!value}
-              onClick={() => onChange(!value)}><i /></button>
-    </div>
-  );
-}
-
-function TweakRadio({ label, value, options, onChange }) {
-  const trackRef = React.useRef(null);
-  const [dragging, setDragging] = React.useState(false);
-  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
-  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
-  const n = opts.length;
-
-  // The active value is read by pointer-move handlers attached for the lifetime
-  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
-  const valueRef = React.useRef(value);
-  valueRef.current = value;
-
-  const segAt = (clientX) => {
-    const r = trackRef.current.getBoundingClientRect();
-    const inner = r.width - 4;
-    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
-    return opts[Math.max(0, Math.min(n - 1, i))].value;
-  };
-
-  const onPointerDown = (e) => {
-    setDragging(true);
-    const v0 = segAt(e.clientX);
-    if (v0 !== valueRef.current) onChange(v0);
-    const move = (ev) => {
-      if (!trackRef.current) return;
-      const v = segAt(ev.clientX);
-      if (v !== valueRef.current) onChange(v);
-    };
-    const up = () => {
-      setDragging(false);
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-  };
-
-  return (
-    <TweakRow label={label}>
-      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
-           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
-        <div className="twk-seg-thumb"
-             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
-                      width: `calc((100% - 4px) / ${n})` }} />
-        {opts.map((o) => (
-          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
-            {o.label}
-          </button>
-        ))}
-      </div>
-    </TweakRow>
-  );
-}
-
-function TweakSelect({ label, value, options, onChange }) {
-  return (
-    <TweakRow label={label}>
-      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
-        {options.map((o) => {
-          const v = typeof o === 'object' ? o.value : o;
-          const l = typeof o === 'object' ? o.label : o;
-          return <option key={v} value={v}>{l}</option>;
-        })}
-      </select>
-    </TweakRow>
-  );
-}
-
-function TweakText({ label, value, placeholder, onChange }) {
-  return (
-    <TweakRow label={label}>
-      <input className="twk-field" type="text" value={value} placeholder={placeholder}
-             onChange={(e) => onChange(e.target.value)} />
-    </TweakRow>
-  );
-}
-
-function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
-  const clamp = (n) => {
-    if (min != null && n < min) return min;
-    if (max != null && n > max) return max;
-    return n;
-  };
-  const startRef = React.useRef({ x: 0, val: 0 });
-  const onScrubStart = (e) => {
-    e.preventDefault();
-    startRef.current = { x: e.clientX, val: value };
-    const decimals = (String(step).split('.')[1] || '').length;
-    const move = (ev) => {
-      const dx = ev.clientX - startRef.current.x;
-      const raw = startRef.current.val + dx * step;
-      const snapped = Math.round(raw / step) * step;
-      onChange(clamp(Number(snapped.toFixed(decimals))));
-    };
-    const up = () => {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', up);
-  };
-  return (
-    <div className="twk-num">
-      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
-      <input type="number" value={value} min={min} max={max} step={step}
-             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
-      {unit && <span className="twk-num-unit">{unit}</span>}
-    </div>
-  );
-}
-
-function TweakColor({ label, value, onChange }) {
-  return (
-    <div className="twk-row twk-row-h">
-      <div className="twk-lbl"><span>{label}</span></div>
-      <input type="color" className="twk-swatch" value={value}
-             onChange={(e) => onChange(e.target.value)} />
-    </div>
-  );
-}
-
-function TweakButton({ label, onClick, secondary = false }) {
-  return (
-    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
-            onClick={onClick}>{label}</button>
-  );
-}
-
-Object.assign(window, {
-  useTweaks, TweaksPanel, TweakSection, TweakRow,
-  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
-  TweakText, TweakNumber, TweakColor, TweakButton,
-});
-
-
-// Project data + small components
-const PROJECTS = [
-  {
-    id: "solo",
-    num: "01",
-    title: "Solo",
-    role: "Akkordeon — solo",
-    subtitle: "Einzigartige Akkordeonmusik der Klassik, Neuen Musik und des Jazz.",
-    image: "/projekte/image/solo.webp",
-    variant: "tall",
-  },
-  {
-    id: "orchester",
-    num: "02",
-    title: "Orchester",
-    role: "Akkordeon & Orchester",
-    subtitle: "Solistisches Repertoire mit Sinfonie- und Kammerorchester.",
-    image: "/projekte/image/orchester.webp",
-    variant: "wide",
-  },
-  {
-    id: "fussissimo",
-    num: "03",
-    title: "Fussissimo",
-    role: "Trio — gypsy · ethno · jazz",
-    subtitle: "Gypsy-Ethno-Jazz Ensemble",
-    image: "/projekte/image/fussissimo.webp",
-    variant: "default",
-  },
-  {
-    id: "duovia",
-    num: "04",
-    title: "Duo ViA!",
-    role: "Akkordeon & Violine",
-    subtitle: "Transkriptionen aus vier Jahrhunderten",
-    image: "/projekte/image/duovia.webp",
-    imagePos: "44% center",
-    variant: "default",
-  },
-  {
-    id: "duoklakk",
-    num: "05",
-    title: "Duo KlAkk!",
-    role: "Akkordeon & Klarinette",
-    subtitle: "Resonanzen zwischen Neuer und Alter Musik.",
-    image: "/projekte/image/duoklakk.webp",
-    imagePos: "44% center",
-    variant: "tall",
-  },
-  {
-    id: "hof",
-    num: "06",
-    title: "Hofer Musikscene",
-    role: "Lokales · regional",
-    subtitle: "Projekte und Begegnungen im Hofer Land.",
-    image: "/projekte/image/hof.webp",
-    variant: "wide",
-  },
-];
-
-const DETAILS = {
-  solo: {
-    title: "Solo",
-    eyebrow: "Projekt 01 · Akkordeon solo",
-    image: "/projekte/image/page/solo.webp",
-    runtime: ["Programm · »Remembering«", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
-    lede: ["Die Präzision des Klaviers. Die Sogkraft des Orchesters. ", { em: "Eine Stimme." }],
-    body: [
-  'Künstlerisch bewegt sich Harald Oeler in einem weiten Feld, welches von der (Ur-) Aufführung zeitgenössischer Werke, über die Transkription klassischer Werke für das Akkordeon, bis hin zum Jazz reicht.',
-  'Harald Oeler wirkte bei verschiedenen Projekten und Festivals mit, darunter der "Heidelberger Frühling", das "Literaturfest Niedersachsen", die "Sommerlichen Musiktage Hitzacker", der Frankfurter "MuseumsSalon" und Jazzfestivals wie das "Django Memorial Augsburg" und das "Frankfurter Jazzfestival".',
-  'Konzertreisen führten Harald Oeler bereits nach China, Korea, Rumänien, Finnland, Schweden, Italien, Österreich, Schweiz und Polen. Zahlreiche CD-Produktionen bei OehmsClassics, Genuin und Thorofon/Bella Musica repräsentieren sein breitgefächertes Konzertleben.'],
-    
-  remembering: {
-      lede: [
-        "Neues Konzertprogramm ",
-        { em: "Remembering" },
-        " stellt Paris und Tokio in den Mittelpunkt."
-      ],
-      body: [
-        "Das Programm spiegelt ihn erstmalig als Komponist, Arrangeur und Akkordeonist wider. Zwei Städte und zwei Komponisten erwiesen sich während des Kompositionsprozesses als besonders wertvoll und bilden die Hauptsäulen seines Konzertprogrammes: Paris, Tokio, Johann Sebastian Bach und Astor Piazzolla.",
-        "„Remembering“ umfasst daher vier große Werke für Akkordeon-Solo, die das Publikum auf eine multi-stilistische, musikalische Weltreise entführen.",
-        "Zu hören sind freie improvisierte Musik, streng kontrapunktische Satztechniken, Alte und Neue Musik, aber auch jazzige Sounds, südamerikanische „Tango-Fetzen“ und eine „Anime-Sonate“."
-      ]
-    },
-    repertoire: [
-      { num: "I.", work: "Modest Mussorgsky", note: "Pictures at an Exhibition", dur: "—" },
-      { num: "II.", work: "Sofia Gubaidulina", note: "Et expecto", dur: "—" },
-      { num: "III.", work: "Harald Oeler", note: "»Remembering« — eigene Werke", dur: "—", big: true, id: "AH1Bj1WaY8o" },
-
-      { num: "I.", work: "Harald Oeler", note: "Remembering Bach — Fantasy and Fugue on two themes by Astor Piazzolla", dur: "—", indent: true, link: "news/remembering.html" },
-      { num: "I.1", work: "Harald Oeler", note: "Fantasy (La misma pena)", dur: "—" },
-      { num: "I.2", work: "Harald Oeler", note: "Fugue (Luz y sombra)", dur: "—" },
-
-      { num: "II.", work: "Harald Oeler", note: "Remembering Paris", dur: "—", indent: true },
-      { num: "III.", work: "Harald Oeler", note: "Remembering Tokyo", dur: "—", indent: true, link: "news/siebold.html" },
-
-      { num: "IV.", work: "Harald Oeler", note: "Remembering Piazzolla — Five Tango-Jamsations", dur: "—", indent: true },
-      { num: "IV.1", work: "Harald Oeler", note: "Bando", dur: "—" },
-      { num: "IV.2", work: "Harald Oeler", note: "Adios Nonino", dur: "—" },
-      { num: "IV.3", work: "Harald Oeler", note: "Saint Louis en l'île", dur: "—" },
-      { num: "IV.4", work: "Harald Oeler", note: "Imperial", dur: "—" },
-      { num: "IV.5", work: "Harald Oeler", note: "S.V.P.", dur: "—", link: "news/remembering.html" }
-    ],
-    quotes: [
-      { text: "Oeler's transcription unites the advantages of the original piano version and Ravel's orchestral adaptation — an astounding range of colours and dynamics.", cite: "Nordwest-Radio" },
-    ],
-    media: [
-      { kind: "youtube", id: "AH1Bj1WaY8o", caption: "Solo · »Remembering«" },
-      { kind: "spotify", url: "https://open.spotify.com/embed/album/02LouxvRMRz0bj5etTqFpL?utm_source=generator&theme=0", caption: "Pictures at an Exhibition · Et expecto" },
-    ],
-    tour: [
-      { date: "21. Mär 2026",  venue: "Jakobus-Stadtkirche",       city: "Brackenheim", program: "Solo Akkordeon · Instrument des Jahres 2026" },
-      { date: "25. Jul 2026",  venue: "Evangelische Kirche",       city: "Berg",        program: "Solo Akkordeon" },
-      { date: "19. Nov 2026",  venue: "Würzburger Bachtage",       city: "Würzburg",    program: "Solo" },
-    ],
-  },
-  orchester: {
-    title: "Orchester",
-    eyebrow: "Projekt 02 · Akkordeon & Orchester",
-    image: "/projekte/image/page/orchester.webp",
-    runtime: ["Solistisches Repertoire", "Besetzung · Sinfonie- / Streichorchester", "auf Anfrage"],
-    lede: ["Das Akkordeon als ", { em: "Solostimme" }, " im großen Orchester — von Bach bis Galliano."],
-    body: [
-      "Solistisches Repertoire mit Sinfonie- und Streichorchester. Programme werden gemeinsam mit Veranstalter:innen und Dirigent:innen kuratiert — von Barockkonzerten bis zu modernen Konzertwerken speziell für das Akkordeon.",
-    ],
-    repertoire: [
-      { num: "I.", work: "J. S. Bach", note: "Cembalokonzert d-Moll, BWV 1052", id:"WFCRiyENZxk", dur: "08:35" },
-      { num: "II.", work: "J. S. Bach", note: "Konzert für zwei Cembali, BWV 1061", dur: "" },
-      { num: "III.", work: "Václav Trojan", note: "»Pohádky« — Märchen für Akkordeon und Orchester", dur: "" },
-      { num: "IV.", work: "Richard Galliano", note: "»Opale Concerto«", id: "WPMtnt0PfY0", dur: "08:30" },
-      { num: "V.", work: "Astor Piazzolla", note: "»Ballet-Tango«",id: "2OJ2BstBZCw", id: "2OJ2BstBZCw", dur: "08:17" },
-      { num: "VI.", work: "Erhard Cotta (arr.)", note: "»Philharmonic Gypsy-Swing«", id:"GATut_MZPHY", dur: "07:27" },
-      { num: "VII.", work: "Ole Schmidt", note: "»Symphonic Fantasy and Allegro«", dur: "" },
-      { num: "VIII.", work: "Richard Galliano", note: "»Opale Concerto, 3ème Mouvement«", id: "yQ-Xje5yJIg", dur: "09:08" },
-    ],
-    quotes: [],
-    media: [
-      { kind: "youtube", id: "WPMtnt0PfY0", caption: "Galliano · Opale Concerto" },
-      { kind: "youtube", id: "WFCRiyENZxk", caption: "Bach · Cembalokonzert d-Moll, BWV 1052" },
-      { kind: "youtube", id: "2OJ2BstBZCw", caption: "Piazzolla · Ballet-Tango" },
-      { kind: "youtube", id: "GATut_MZPHY", caption: "Erhard Cotta · Philharmonic Gypsy-Swing" },
-    ],
-    tour: [
-      { date: "17. Mai 2026",  venue: "Philharmonie",              city: "Berlin",     program: "Galliano · Opale Concerto" },
-      { date: "28. Jun 2026",  venue: "Konzerthaus",               city: "Wien",       program: "Bach · BWV 1052" },
-      { date: "19. Sep 2026",  venue: "Laeiszhalle",               city: "Hamburg",    program: "Piazzolla · Ballet-Tango" },
-      { date: "07. Nov 2026",  venue: "Gasteig HP8",               city: "München",    program: "Galliano · Opale Concerto" },
-    ],
-  },
-  fussissimo: {
-    title: "Fussissimo",
-    eyebrow: "Projekt 03 · Gypsy · Ethno · Jazz",
-    image:"/projekte/image/page/fussissimo.webp",
-    imagePos: "center 20%",
-    runtime: ["Trio · seit fast 20 Jahren", "Rehan Syed · Gitarre", "Simon Ort · Bass", "Harald Oeler · Akkordeon"],
-    lede: ["Tango, Bossa, Musette, Orient — ", { em: "alles in einem Atemzug." }],
-    body: [
-      "Virtuose Spieltechnik und jede Menge Inspirationen aus Jazz und Weltmusik. Diese Kombination macht das Trio zu einem besonders interessanten Gypsy-Ethno-Jazz Ensemble.",
-      "Seit fast 20 Jahren hat sich der Gitarrist und Komponist Rehan Syed mit seinen Projekten einen wohlklingenden Namen in der Gypsy-Jazz-Szene erspielt — und ist nun mit dem erstklassigen Bassisten Simon Ort am Kontrabass und dem preisgekrönten Akkordeonisten Harald Oeler in einer Trio-Besetzung zu hören, die es in sich hat.",
-      "Zum Programm gehören originelle Eigenkompositionen von Rehan Syed mit Einflüssen von Tango, Bossa, französischer Musette und orientalischer Musik, sowie Perlen aus dem Gypsy-Jazz- und Weltmusik-Repertoire.",
-    ],
-    repertoire: [
-      { num: "I.", work: "Bossa 9", note: "Fussissimo", dur: "06:24",id: "j1U5qDVxmUQ", kind: "youtube" },
-      { num: "II.", work: "Für Mara", note: "Fussissimo", dur: "04:17",id: "0TYQhb9glyc", kind: "youtube" },
-      { num: "III.", work: "Ani Suni", note: "live in der musik-butik", dur: "07:18",id: "05HxYd95Phw", kind: "youtube" },
-      { num: "IV.", work: "Made in France", note: "live in der musik-butik", dur: "04:15",id: "TsTN3AgrpbU", kind: "youtube" },
-      { num: "V.", work: "Aman", note: "Fussissimo", dur: "05:19",id: "WkxEwOPyBnw", kind: "youtube" },
-    ],
-    quotes: [],
-    media: [
-      { kind: "youtube", id: "j1U5qDVxmUQ", caption: "Bossa 9 · live in der musik-butik" },
-      { kind: "youtube", id: "05HxYd95Phw", caption: "Ani Suni · live in der musik-butik" },
-    ],
-    tour: [
-      { date: "23. Mai 2026",  venue: "Schloss Eyrichshos, Gartenfest",     city: "Ebern",   program: "Gypsy · Ethno · Jazz" },
-      { date: "20. Jun 2026",  venue: "Huttenschloss",    city: "Gemünden",   program: "Fussissimo" },
-      { date: "21. Jun 2026",  venue: "Umsonst & Draussen Festival",        city: "Würzburg",   program: "Fussissimo" },
-      { date: "03. Juli 2026",  venue: "Disharmonie",           city: "Schweinfurt",   program: "Gypsy · Ethno · Jazz" },
-    ],
-  },
-  duovia: {
-    title: "Duo ViA!",
-    eyebrow: "Projekt 04 · Akkordeon & Violine",
-    image: "/projekte/image/page/duovia.webp",
-    runtime: ["Sinn Yang · Violine", "Harald Oeler · Akkordeon", "Album · 8 Jahreszeiten · OehmsClassics"],
-    lede: ["Vivaldi & Piazzolla — ", { em: "ein kühnes Wagnis" }, " der Harmonie und der Erfindung."],
-    body: [
-      "Neue Klangwelten entdecken — ein Ziel, das sich mit der außergewöhnlichen Besetzung aus Violine und Akkordeon spielerisch erreichen lässt.",
-      "Duo ViA!s CD der »8 Jahreszeiten« von Vivaldi und Piazzolla erschien 2014 bei OehmsClassics und erhielt begeisterte Kritiken. Mit Neugierde und Experimentierlust erkunden beide Künstler in ihrer exotischen Besetzung Meisterwerke der zeitgenössischen Musik, Bach, Chick Corea u.a. und traten erfolgreich auf — beim Heidelberger Frühling, in Berlin, München, Bracciano / Italien und Helsinki.",
-      "The Duo made their debut in 2009 with the programme »Seasons« at the Heidelberg Spring Festival — a sold-out hall, Vivaldi's Quattro Stagioni in combination with Piazzolla's Cuatro Estaciones Porteñas.",
-    ],
-    repertoire: [
-      { num: "I.", work: "Trailer über das Programm 8 Jahreszeiten von Vivaldi und Piazzolla", note: "", id: "AJ6uhwH7-gI", dur: "02:46" },
-      { num: "II.", work: "Antonio Vivaldi", note: "Le quattro stagioni", dur: "" },
-      { num: "III.", work: "Astor Piazzolla", note: "Las cuatro estaciones porteñas", dur: "" },
-      { num: "IV.", work: "J. S. Bach · Chick Corea u.a.", note: "im Wechselspiel", dur: "" },
-    ],
-    quotes: [
-      { text: "Yang und Oeler spielen wie aufeinander eingeschworen — sie bilden nicht nur rhythmisch eine Einheit. Der Dauerbrenner von Vivaldi erscheint hier stellenweise wie unter dem Mikroskop.", cite: "NDR" },
-      { text: "Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.", cite: "NDR Kultur" },
-    ],
-    media: [
-      { kind: "youtube", id: "AJ6uhwH7-gI", caption: "Duo ViA! · live" },
-      { kind: "youtube", id: "kw7_NO-klxM", caption: "Duo ViA! · concert highlight" },
-      { kind: "spotify", url: "https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0", caption: "8 Jahreszeiten · OehmsClassics" },
-    ],
-    tour: [
-      { date: "25. Apr 2026",  venue: "Heidelberger Frühling",     city: "Heidelberg", program: "8 Jahreszeiten" },
-      { date: "12. Jun 2026",  venue: "Kulturbahnhof",             city: "Berlin",     program: "Bach · Corea · Piazzolla" },
-      { date: "18. Sep 2026",  venue: "Musikhalle",                city: "Helsinki",   program: "8 Jahreszeiten" },
-      { date: "29. Nov 2026",  venue: "Bracciano Festival",        city: "Bracciano",  program: "Duo ViA! · live" },
-    ],
-  },
-  duoklakk: {
-    title: "Duo KlAkk!",
-    eyebrow: "Projekt 05 · Akkordeon & Klarinette",
-    image: "/projekte/image/page/duoklakk.webp",
-    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes BACH!«"],
-    lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
-    body: [
-      "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
-      "Was passiert, wenn die zeitlose Genialität Johann Sebastian Bachs auf die spielerische Energie von Duo KlAkk! trifft? Ein Konzert voller Überraschungen, Kontraste und einer Prise Augenzwinkern. Das Duo nimmt das Publikum mit auf eine Reise durch Bachs zwei Sonaten für Viola da Gamba — Meisterwerke voller Eleganz, Tiefe und musikalischem Dialog.",
-    ],
-    repertoire: [
-      { num: "I.", work: "J. S. Bach", note: "Sonate D-Dur, BWV 1028", dur: "15:00" },
-      { num: "II.", work: "J. S. Bach", note: "Sonate g-Moll, BWV 1029", dur: "13:30" },
-      { num: "III.", work: "Joseph Haydn", note: "Divertimento G-Dur, op. 100 Nr. 2 (Arr. Oeler)", dur: "" },
-      { num: "IV.", work: "Harald Oeler", note: "Remembering Paris", dur: "8:00" },
-      { num: "V.", work: "Harald Oeler", note: "Remembering Tokyo", dur: "" }, 
-      { num: "VI.", work: "Johan Svensson", note: "Double Dubbing (firefly song), 2020", dur: "11:30" }, 
-    ],
-    quotes: [
-      { text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
-    ],
-    media: [
-      { kind: "youtube", id: "4NPvdif9o6M", caption: "Bach · Sonate g-Moll, BWV 1029" },
-      { kind: "youtube", id: "-z40QlQ-QYg", caption: "Oeler · “Remembering Paris” für Klarinette in B und Akkordeon" },
-    ],
-    tour: [
-      { date: "05. Mai 2026",  venue: "Weytterturm (Innenhof)",    city: "Straubing",  program: "Remembering" },
-      { date: "13. Sep 2026",  venue: "Künzelsau",     city: "Künzelsau",  program: "Remembering" },
-      { date: "18. Sep 2026",  venue: "Neuneinhalb im Gerberhaus",  city: "Bayreuth",   program: "Pictures at an Exhibition" },
-      { date: "11. Okt 2026",  venue: "Tonhalle",                  city: "München",    program: "Remembering" },
-    ],
-  },
-
-  hof: {
-    title: "Hofer Musikscene",
-    eyebrow: "Projekt 06 · Hofer Land",
-    image:"/projekte/image/page/hof.webp",
-    runtime: ["Jam · jeden ersten Dienstag", "KunstKaufHaus Hof · 20 Uhr", "VHS Hofer Land · Konzertreihe"],
-    lede: ["Begegnungen, Reibungen, Reisen — ", { em: "Musik im Hofer Land." }],
-    body: [
-      "Drei laufende Formate, die das musikalische Leben in Hof und Umgebung mitprägen — vom offenen Jam bis zum kuratierten Konzert mit Streichquartett.",
-    ],
-    repertoire: [
-      { num: "I.", work: "Jazz Jam Session", note: "KunstKaufHaus Hof · jeden ersten Dienstag, 20 Uhr · Schricker / von Mammen / Oeler / Motschmann / Auer / Tröger", dur: "" },
-      { num: "II.", work: "»NEU | START | JAZZ«", note: "VHS Hofer Land · in Kooperation mit dem Tonkünstlerverband Bayern · von Mammen / Jung / Oeler / Jersak / Nitsch / Fau", dur: "" },
-      { num: "III.", work: "Streichquartett & Harald Oeler", note: "Werke von Barock über Jazz und Tango bis zur Moderne", dur: "" },
-    ],
-    quotes: [],
-    tour: [
-      { date: "Jeden 1. Di.",  venue: "KunstKaufHaus Hof",         city: "Hof",        program: "Jazz Jam · 20 Uhr" },
-      { date: "18. Mai 2026",  venue: "VHS Hofer Land",            city: "Hof",        program: "NEU | START | JAZZ" },
-      { date: "06. Sep 2026",  venue: "VHS Hofer Land",            city: "Hof",        program: "NEU | START | JAZZ" },
-      { date: "15. Nov 2026",  venue: "Kulturforum Hof",           city: "Hof",        program: "Streichquartett & Oeler" },
-    ],
-  },
-};
-
-function Header({ active = "projekte", basePath = "" }) {
-  const [dark, setDark] = React.useState(() => document.body.classList.contains('dark'));
-  const toggleTheme = () => {
-    const d = document.body.classList.toggle('dark');
-    localStorage.setItem('ho-theme', d ? 'dark' : 'light');
-    setDark(d);
-  };
-    return (
-    <header className="site-header">
-      <div className="header-inner">
-        <a className="wordmark" href={`${basePath}index.html`}>
-          HARALD<span className="dot"></span>OELER
-          {" "}<small>· accordionist & composer</small>
-        </a>
-        <nav className="primary">
-          {["bio","projekte","termine","news","unterricht","medien","kontakt"].map(item => (
-            <a key={item} href={`${basePath}${item}.html`} className={active === item ? "active" : ""}>{item}</a>
-          ))}
-        </nav>
-        <button className="theme-toggle" onClick={toggleTheme} aria-label="Farbschema wechseln" title="Dark / Light">
-          {dark
-            ? <svg className="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            : <svg className="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          }
-        </button>
-    <button className="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
-  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
-</button>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="left">© Harald Oeler · 2026</div>
-      <div className="center">Hof · München · Wien</div>
-    <div className="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
-    </footer>
-  );
-}
-
-function Arrow({dir = "right"}) {
-  const path = dir === "right"
-    ? "M0 8 L18 8 M12 2 L18 8 L12 14"
-    : "M18 8 L0 8 M6 2 L0 8 L6 14";
-  return (
-    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" strokeWidth="1.2">
-      <path d={path}/>
-    </svg>
-  );
-}
-
-function ProjectsSubnav({ current = "", basePath = "projekte/" }) {
-  return (
-    <nav className="projects-subnav">
-      <div className="projects-subnav-inner">
-        {PROJECTS.map(p => (
-          <a
-            key={p.id}
-            href={`${basePath}${p.id}.html`}
-            className={current === p.id ? "active" : ""}
-          >
-            {p.title}
-          </a>
-        ))}
-      </div>
-    </nav>
-  );
-}
-
-window.PROJECTS = PROJECTS;
-window.DETAILS = DETAILS;
-window.Header = Header;
-window.Footer = Footer;
-window.Arrow = Arrow;
-window.ProjectsSubnav = ProjectsSubnav;
-
-
-// Main app — projekte overview
-const { useState, useEffect, useCallback } = React;
-
-function ProjekteOverview({ tweaks }) {
-  return (
-    <>
-      <Header active="projekte" />
-      <ProjectsSubnav />
-      <section className="page-head">
-        <div>
-          <div className="eyebrow">— Projekte</div>
-          <h1 className="page-title">{tweaks.italicTitle ? <em>projekte</em> : "projekte"}</h1>
-        </div>
-        <div className="page-meta">
-          <div>haraldoeler@gmx.de</div>
-          <div>booking · 2026 / 2027</div>
-        </div>
-      </section>
-
-      <section className="projects">
-        {PROJECTS.map((p) => (
-          <a
-            key={p.id}
-            className={`card ${p.variant}`}
-            style={{ "--vt-name": `card-${p.id}` }}
-            href={`projekte/${p.id}.html`}
-          >
-            <div className="index">
-              <span>{p.num}</span>
-              <span className="role">{p.role}</span>
-            </div>
-            <div className="image-wrap" style={{ viewTransitionName: `image-${p.id}` }}>
-              <img src={p.image} alt={p.title} loading="lazy" style={p.imagePos ? {objectPosition: p.imagePos} : {}} />
-            </div>
-            <div className="meta">
-              <h2 style={{ viewTransitionName: `title-${p.id}` }}>{p.title}</h2>
-            </div>
-            <p className="subtitle">{p.subtitle}</p>
-            <span className="arrow">
-              mehr infos <Arrow />
-            </span>
-          </a>
-        ))}
-      </section>
-
-      <Footer />
-    </>
-  );
-}
-
-function ProjektDetail({ id, onBack }) {
-  const proj = PROJECTS.find(p => p.id === id);
-  const [expanded, setExpanded] = React.useState(new Set());
-  const toggle = (num) => setExpanded(prev => { const n = new Set(prev); n.has(num) ? n.delete(num) : n.add(num); return n; });
-
-  const cursorRef = React.useRef(null);
-  const handleRepMove = React.useCallback((e) => {
-    const el = cursorRef.current;
-    if (!el) return;
-    el.style.left = e.clientX + 'px';
-    el.style.top = e.clientY + 'px';
-    const isLink = !!e.target.closest('a[href]');
-    const icon = el.querySelector('.rep-cursor-icon');
-    const sub  = el.querySelector('.rep-cursor-sub');
-    if (icon) icon.textContent = isLink ? '▶' : '·';
-    if (sub)  sub.textContent  = isLink ? 'play' : '';
-  }, []);
-  const handleRepEnter = React.useCallback(() => {
-    cursorRef.current && cursorRef.current.classList.add('visible');
-  }, []);
-  const handleRepLeave = React.useCallback(() => {
-    cursorRef.current && cursorRef.current.classList.remove('visible');
-  }, []);
-  const parentOf = (num) => num.replace(/\.\d+$/, '.');
-  const detail = DETAILS[id] || {
-    title: proj.title,
-    eyebrow: `Projekt ${proj.num} · ${proj.role}`,
-    image: proj.image,
-    runtime: ["Programmlänge · 60–90 min", "Besetzung · auf Anfrage", "Verfügbar · 2026 / 2027"],
-    lede: [proj.subtitle.split("—")[0] || proj.subtitle],
-    body: [
-      proj.subtitle + " Ausführliche Programminformationen, Besetzungen und technische Anforderungen werden auf Anfrage bereitgestellt.",
-      "Konzerte in Konzertsälen, Kirchen und Festivals — Programmgestaltung individuell mit dem Veranstalter.",
-    ],
-    repertoire: [
-      { num: "I.", work: "Programm", note: "auf Anfrage", dur: "—" },
-    ],
-    quotes: [
-      { text: "Ein Klangkosmos, in dem Stille und Atem ebenso wichtig werden wie die Töne selbst.", cite: "Süddeutsche Zeitung" },
-    ],
-  };
-
-  return (
-    <div className="detail">
-      <div ref={cursorRef} className="rep-cursor">
-        <div className="rep-cursor-circle">
-          <span className="rep-cursor-icon">·</span>
-          <span className="rep-cursor-sub"></span>
-        </div>
-      </div>
-      <Header active="projekte" />
-      <a className="back-link" href="#" onClick={(e) => { e.preventDefault(); onBack(); }}>
-        <Arrow dir="left" /> zurück zu projekte
-      </a>
-      <section className="hero" style={{ viewTransitionName: `image-${id}` }}>
-        <img src={detail.image} alt={detail.title} style={detail.imagePos ? {objectPosition: detail.imagePos} : {}} />
-        <div className="hero-meta">
-          <div>
-            <div className="eyebrow">{detail.eyebrow}</div>
-            <h1 style={{ viewTransitionName: `title-${id}` }}>{detail.title}</h1>
-          </div>
-          <div className="runtime">
-            {detail.runtime.map((r, i) => <div key={i}>{r}</div>)}
-          </div>
-        </div>
-      </section>
-
-      <div className="detail-body">
-        <aside>
-          <dl>
-            <dt>Format</dt>
-            <dd>{proj.role}</dd>
-            <dt>Dauer</dt>
-            <dd>60–90 min</dd>
-            {detail.tour && detail.tour.length > 0 && (
-              <>
-                <dt>Nächster Termin</dt>
-                <dd>{detail.tour[0].date} · {detail.tour[0].city}</dd>
-              </>
-            )}
-          </dl>
-        </aside>
-
-        <div>
-          <p className="lede">
-            {detail.lede.map((part, i) =>
-              typeof part === "string"
-                ? <React.Fragment key={i}>{part}</React.Fragment>
-                : <em key={i}>{part.em}</em>
-            )}
-          </p>
-          <div className="body-copy">
-            {detail.body.map((p, i) => <p key={i}>{p}</p>)}
-          </div>
-        </div>
-
-        {detail.remembering && (
-          <>
-            <p className="lede">
-              {detail.remembering.lede.map((part, i) =>
-                typeof part === "string"
-                  ? <React.Fragment key={i}>{part}</React.Fragment>
-                  : <em key={i}>{part.em}</em>
-              )}
-            </p>
-
-            <div className="body-copy">
-              {detail.remembering.body.map((p, i) => <p key={i}>{p}</p>)}
-            </div>
-          </>
-        )}
-
-        <div style={{gridColumn: "2"}}>
-          <div className="repertoire rep-zone"
-               onMouseMove={handleRepMove}
-               onMouseEnter={handleRepEnter}
-               onMouseLeave={handleRepLeave}>
-          <h3>— Auswahl Repertoire</h3>
-          <ul>
-            {detail.repertoire.map((r, i) => {
-              const isSub = /\.\d/.test(r.num);
-              if (isSub && !expanded.has(parentOf(r.num))) return null;
-              const nextIsSub = detail.repertoire[i + 1] && /\.\d/.test(detail.repertoire[i + 1].num);
-              const isExpandable = r.indent && nextIsSub;
-              const isOpen = expanded.has(r.num);
-              const cls = r.big ? 'big' : r.indent ? 'indent' : isSub ? 'sub' : '';
-              if (isExpandable) {
-                return (
-                  <li key={i} className={cls}>
-                    <button className="repertoire-row-link" onClick={() => toggle(r.num)}>
-                      <span className="num">{r.num}</span>
-                      <span className="work">{r.note}</span>
-                      <span className="toggle-icon">{isOpen ? '−' : '+'}</span>
-                    </button>
-                  </li>
-                );
-              }
-              return (
-                <li key={i} className={cls}>
-                  <a
-                    href={r.id ? `https://www.youtube.com/watch?v=${r.id}` : r.link ? r.link : undefined}
-                    target={r.id ? "_blank" : undefined}
-                    rel={r.id ? "noopener noreferrer" : undefined}
-                    className="repertoire-row-link"
-                  >
-                    <span className="num">{r.num}</span>
-                    <span className="work">
-                      {(r.indent || isSub)
-                        ? r.note
-                        : <>{r.work}{r.note && <em>{r.note}</em>}</>
-                      }
-                    </span>
-                    <span className="dur">{r.dur}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-          {detail.quotes && detail.quotes.length > 0 && (
-            <div className="quotes" style={detail.quotes.length === 1 ? {gridTemplateColumns: '1fr'} : {}}>
-              {detail.quotes.map((q, i) => (
-                <blockquote key={i} className="quote">
-                  {q.text}
-                  <cite>— {q.cite}</cite>
-                </blockquote>
-              ))}
-            </div>
-          )}
-
-          {detail.media && detail.media.length > 0 && (
-            <div className="media">
-              <h3>— Hören & sehen</h3>
-              <div className="media-grid">
-                {detail.media.map((m, i) => (
-                  <figure key={i} className={`media-item ${m.kind}`}>
-                    <div className="frame">
-                      {m.kind === "youtube" ? (
-                        <iframe
-                          src={`https://www.youtube.com/embed/${m.id}`}
-                          title={m.caption}
-                          loading="lazy"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                        />
-                      ) : (
-                        <iframe
-                          src={m.url}
-                          title={m.caption}
-                          loading="lazy"
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                          allowFullScreen
-                        />
-                      )}
-                    </div>
-                    <figcaption>{m.caption}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <Footer />
-    </div>
-  );
-}
-
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "darkMode": false,
-  "italicTitle": false,
-  "accent": "#6b1d1a"
-}/*EDITMODE-END*/;
-
-function App() {
-  const [tweaks, setTweak] = useTweaks({
-    ...TWEAK_DEFAULTS,
-    darkMode: document.body.classList.contains('dark')
-  });
-
-  useEffect(() => {
-    document.body.classList.toggle("dark", tweaks.darkMode);
-    document.documentElement.style.setProperty("--accent", tweaks.accent);
-  }, [tweaks.darkMode, tweaks.accent]);
-
-  return (
-    <>
-      <ProjekteOverview tweaks={tweaks} />
-
-      <TweaksPanel>
-        <TweakSection label="Theme" />
-        <TweakToggle label="Dark mode" value={tweaks.darkMode} onChange={(v) => setTweak("darkMode", v)} />
-        <TweakToggle label="Italic title" value={tweaks.italicTitle} onChange={(v) => setTweak("italicTitle", v)} />
-        <TweakSection label="Accent color" />
-        <TweakColor label="Accent" value={tweaks.accent} onChange={(v) => setTweak("accent", v)} />
-        <TweakSelect
-          label="Preset"
-          value={tweaks.accent}
-          onChange={(v) => setTweak("accent", v)}
-          options={[
-            { label: "Oxblood", value: "#6b1d1a" },
-            { label: "Ink", value: "#0e0d0c" },
-            { label: "Sage", value: "#3a4a3c" },
-            { label: "Mustard", value: "#a07a16" },
-          ]}
-        />
-      </TweaksPanel>
-    </>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
-  </script>
-<script>
+  <script>
 (function(){
   function init(){
     var t = document.getElementById('navToggle');
@@ -2034,5 +1000,62 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
   }, 50);
 })();
 </script>
+  <!-- Scroll to top button -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+  </button>
+  <style>
+    .scroll-top{
+      position:fixed; right:18px; bottom:18px; z-index:9999;
+      width:44px; height:44px; border-radius:999px;
+      display:grid; place-items:center;
+      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
+      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
+      color:var(--ink, #0e0d0c);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      backdrop-filter: blur(12px) saturate(140%);
+      box-shadow:0 10px 28px rgba(0,0,0,.14);
+      cursor:pointer;
+      opacity:0; transform:translateY(8px); pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    body.dark .scroll-top{
+      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
+      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
+      color: var(--paper, #f4f1ec);
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    }
+    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
+    .scroll-top:hover{
+      opacity:1; transform:translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
+    }
+    .scroll-top:focus-visible{
+      outline:2px solid var(--accent, #6b1d1a);
+      outline-offset:3px;
+      opacity:1;
+      pointer-events:auto;
+    }
+    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
+  </style>
+  <script>
+    (function(){
+      var btn = document.getElementById('scrollTopBtn');
+      if (!btn) return;
+      var showAt = 500;
+      function sync(){
+        btn.classList.toggle('is-visible', window.scrollY > showAt);
+      }
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    })();
+  </script>
 </body>
 </html>

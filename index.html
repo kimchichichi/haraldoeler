@@ -6,13 +6,13 @@
   <meta name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist">
   <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta property="og:title" content="HARALD OELER | accordionist">
+  <meta property="og:title" content="HARALD OELER — Akkordeonist &amp; Komponist · Hof">
   <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
   <meta property="og:image" content="https://www.haraldoeler.com/image/index/hero.webp">
   <meta property="og:url" content="https://www.haraldoeler.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.haraldoeler.com/">
-  <title>HARALD OELER — accordionist</title>
+  <title>HARALD OELER — Akkordeonist &amp; Komponist · Hof</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -231,6 +231,11 @@ nav.primary a.active::after {
   transition: color .3s ease;
 }
 .hero-scroll:hover { color: rgba(244,241,236,0.75); }
+
+/* Anchor target sits below fixed header when scrolling from hero CTA */
+#kommende-konzerte {
+  scroll-margin-top: clamp(72px, 12vw, 100px);
+}
 .scroll-arrow {
   animation: arrowBounce 1.6s ease-in-out infinite;
 }
@@ -398,6 +403,28 @@ nav.primary a.active::after {
 .teaser-cta svg { transition: transform .3s ease; }
 .teaser-cta:hover svg { transform: translateX(5px); }
 
+.home-bio-lang {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.home-bio-lang a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  transition: color .2s ease, border-color .2s ease;
+}
+.home-bio-lang a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+body.dark .home-bio-lang a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--paper);
+}
+
 /* ─── Featured Projects ─────────────────────────────────────────────────────── */
 .home-projects-section {
   max-width: 1480px;
@@ -406,13 +433,15 @@ nav.primary a.active::after {
 }
 .home-projects-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
+  gap: 16px 24px;
   margin-bottom: 48px;
 }
 .home-projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px;
 }
 
@@ -421,6 +450,7 @@ nav.primary a.active::after {
   display: block;
   position: relative;
   cursor: pointer;
+  min-width: 0;
 }
 .proj-card .card-index {
   font-family: var(--mono);
@@ -541,7 +571,18 @@ nav.primary a.active::after {
 /* ─── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .home-teasers { grid-template-columns: 1fr; gap: 64px; }
-  .home-projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .home-projects-section { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
+  .home-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3.5vw, 40px);
+  }
+  /* Three cards in two columns: keep third card same width as a column, centered */
+  .home-projects-grid .proj-card:nth-child(3) {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: calc((100% - clamp(24px, 3.5vw, 40px)) / 2);
+    justify-self: center;
+  }
 }
 
 @media (max-width: 720px) {
@@ -566,6 +607,12 @@ nav.primary a.active::after {
 
   .home-projects-section { padding: 56px 24px 80px; }
   .home-projects-grid { grid-template-columns: 1fr; }
+  .home-projects-grid .proj-card:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+    width: auto;
+    justify-self: stretch;
+  }
 
   .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
   .site-footer .center, .site-footer .right { text-align: left; }
@@ -760,7 +807,7 @@ body.dark .nav-toggle:hover {
         <h1 class="hero-name">Harald<br>Oeler</h1>
         <p class="hero-sub">Accordionist &amp; Composer</p>
       </div>
-      <button class="hero-scroll" aria-label="Nach unten scrollen" onclick="document.querySelector('.home-teasers').scrollIntoView({behavior:'smooth'})">
+      <button type="button" class="hero-scroll" id="hero-scroll-cta" aria-controls="kommende-konzerte" aria-label="Zu den kommenden Konzerten scrollen">
         scroll
         <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
           <path d="M4 7l6 6 6-6"/>
@@ -772,8 +819,12 @@ body.dark .nav-toggle:hover {
     <section class="home-teasers">
 
       <!-- Left: Kommende Konzerte -->
-      <div class="teaser-konzerte">
+      <div class="teaser-konzerte" id="kommende-konzerte">
         <p class="eyebrow">Kommende Konzerte</p>
+        <!--
+          Maintenance (no CMS): Keep this short list aligned with the next upcoming dates on termine.html.
+          Remove past concerts here when you refresh the homepage, or duplicate the next entries from Termine.
+        -->
         <ul class="home-concert-list">
 
           <li class="hc-item">
@@ -827,6 +878,7 @@ body.dark .nav-toggle:hover {
           Biographie
           <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
+        <p class="home-bio-lang" lang="en"><a href="bio-en.html">Biography in English</a></p>
       </div>
 
     </section>
@@ -911,8 +963,22 @@ body.dark .nav-toggle:hover {
   <!-- Footer (extracted from Projekte.html) -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
+    <div class="center"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
+
+  <script>
+    // Hero "scroll" CTA → smooth scroll to Kommende Konzerte (respect reduced motion)
+    (function(){
+      var btn = document.getElementById('hero-scroll-cta');
+      var target = document.getElementById('kommende-konzerte');
+      if (!btn || !target) return;
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+    })();
+  </script>
 
   <script>
     // Header scroll: transparent over hero, opaque when scrolled

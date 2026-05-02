@@ -8,7 +8,7 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta property="og:title" content="HARALD OELER | about">
   <meta property="og:image" content="https://www.haraldoeler.com/image/1.webp">
-  <meta property="og:url" content="https://www.haraldoeler.com/about">
+  <meta property="og:url" content="https://www.haraldoeler.com/bio.html">
   <meta property="og:type" content="website">
   <title>HARALD OELER — about</title>
 
@@ -18,6 +18,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="alternate" hreflang="de" href="https://www.haraldoeler.com/bio.html">
+  <link rel="alternate" hreflang="en" href="https://www.haraldoeler.com/bio-en.html">
+  <script>
+  (function () {
+    try {
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q === 'en' || /^#en$/i.test(location.hash || '')) {
+        document.documentElement.classList.add('bio-initial-en');
+      }
+    } catch (e) {}
+  })();
+  </script>
 
   <style>
 :root {
@@ -192,6 +204,26 @@ nav.primary a.active::after {
 .lang-btn:not(.active):hover {
   background: color-mix(in srgb, var(--ink) 8%, transparent);
   color: var(--ink);
+}
+
+/* Deep link ?lang=en or #en — correct tab + panel before first paint */
+html.bio-initial-en #bio-de { display: none !important; }
+html.bio-initial-en #bio-en.bio-content { display: block !important; }
+html.bio-initial-en .lang-btn[data-lang="de"].active {
+  background: transparent;
+  color: var(--muted);
+}
+html.bio-initial-en .lang-btn[data-lang="en"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+body.dark html.bio-initial-en .lang-btn[data-lang="de"].active {
+  background: transparent;
+  color: var(--muted);
+}
+body.dark html.bio-initial-en .lang-btn[data-lang="en"] {
+  background: color-mix(in srgb, var(--paper) 15%, transparent);
+  color: var(--paper);
 }
 
 /* Bio text */
@@ -568,9 +600,9 @@ body.dark .nav-toggle:hover {
     <div class="about-text">
 
       <!-- Language toggle -->
-      <div class="lang-toggle" role="group" aria-label="Sprache wählen">
-        <button class="lang-btn active" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+      <div class="lang-toggle" role="group" aria-label="Sprache wählen / Language">
+        <button type="button" class="lang-btn active" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en" title="English biography (shareable: bio-en.html)">EN</button>
       </div>
 
       <!-- German bio -->
@@ -579,7 +611,7 @@ body.dark .nav-toggle:hover {
 
         <p>Nach dem Abitur folgte ein Musikstudium im Hauptfach Akkordeon, zunächst bei Prof Hugo Noth, später bei <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> an der <a href="https://hfm-wuerzburg.de" target="_blank">Hochschule für Musik in Würzburg</a>. Die eindrucksvollen Studienjahre formten einen Musiker, welcher heute in einem breitgefächerten musikalisch-künstlerischen Aufgabenfeld von Jazz, Transkriptionsmusik und zeitgenössischer Musik aktiv ist.</p>
 
-        <p>Zahlreiche nationale und internationale Wettbewerbserfolge festigten, auf dem Weg zum Meisterklassendiplom, 2008, die Bühnenreife und künstlerische Individualität Harald Oelers. Ein 3. Preis beim 3rd <a href="https://www.npo-jaa.jp/what-s-jaa/" target="_blank">Internationale Accordion Competition JAA Tokio/Japan</a> 2002, ein 2. Preis beim bedeutendsten <a href="https://hauspoz.org/arrasate-accordion-competitions/" target="_blank">internationalen Akkordeonwettbewerb in Arrasate</a> 2007 und ein 1. Preis beim 45. <a href="https://accordion-competition.de/index" target="_blank">Internationalen Akkordeonwettbewerb Klingenthal</a> mit dem <a href="https://nachrichten.idw-online.de/2008/06/12/1-preis-bei-internat-akkordeonwettbewerb-fuer-2-musiker-der-hochschule-fuer-musik-wuerzburg" target="_blank">Akkordeonduo Animé</a> 2008, belegen dies eindrucksvoll.</p>
+        <p>Zahlreiche nationale und internationale Wettbewerbserfolge festigten, auf dem Weg zum Meisterklassendiplom, 2008, die Bühnenreife und künstlerische Individualität Harald Oelers. Ein 3. Preis beim 3rd <a href="https://www.npo-jaa.jp/what-s-jaa/" target="_blank">Internationale Accordion Competition JAA Tokio/Japan</a> 2002, ein 2. Preis beim bedeutendsten <a href="https://hauspoz.org/arrasate-accordion-competitions/" target="_blank">internationalen Akkordeonwettbewerb in Arrasate</a> 2007 und ein 1. Preis beim 45. <a href="https://www.accordion-competition.de/" target="_blank">Internationalen Akkordeonwettbewerb Klingenthal</a> mit dem <a href="https://nachrichten.idw-online.de/2008/06/12/1-preis-bei-internat-akkordeonwettbewerb-fuer-2-musiker-der-hochschule-fuer-musik-wuerzburg" target="_blank">Akkordeonduo Animé</a> 2008, belegen dies eindrucksvoll.</p>
 
         <p>Gefördert wurde Harald Oeler während seines Studiums als Stipendiat der Studienstiftung des <a href="https://www.studienstiftung.de" target="_blank">deutschen Volkes</a> und der <a href="https://livemusicnow.de" target="_blank">Yehudi Menuhin Stiftung „Live Music Now"</a>. Konzerte bei renomierten Klassik- und Jazzfestivals wie dem Heidelberger Frühling, dem Literaturfest Niedersachsen, den Sommerlichen Musiktagen Hitzacker und dem 41. Frankfurter Jazzfestival folgten.</p>
 
@@ -708,6 +740,7 @@ body.dark .nav-toggle:hover {
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
+    <div class="center"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 
@@ -723,17 +756,45 @@ body.dark .nav-toggle:hover {
       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
     });
 
-    // Language toggle
-    const btns = document.querySelectorAll('.lang-btn');
-    btns.forEach(function (btn) {
+    // Language toggle + shareable URLs (?lang=en, #en) and bio-en.html redirect target
+    function applyBioLang(lang) {
+      var btns = document.querySelectorAll('.lang-btn');
+      btns.forEach(function (b) {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      document.querySelectorAll('.bio-content').forEach(function (el) {
+        el.classList.remove('visible');
+      });
+      var panel = document.getElementById('bio-' + lang);
+      if (panel) panel.classList.add('visible');
+    }
+    function syncBioLangInUrl(lang) {
+      try {
+        var u = new URL(window.location.href);
+        if (lang === 'de') {
+          u.searchParams.delete('lang');
+        } else {
+          u.searchParams.set('lang', lang);
+        }
+        u.hash = '';
+        history.replaceState(null, '', u.pathname + u.search);
+      } catch (e) {}
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var hash = (window.location.hash || '').replace(/^#/, '').toLowerCase();
+    var startLang = (params.get('lang') === 'en' || hash === 'en') ? 'en' : 'de';
+    applyBioLang(startLang);
+    document.documentElement.classList.remove('bio-initial-en');
+    if (startLang === 'en' && (hash === 'en' || params.get('lang') === 'en')) {
+      syncBioLangInUrl('en');
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        const lang = this.dataset.lang;
-        btns.forEach(function (b) { b.classList.remove('active'); });
-        this.classList.add('active');
-        document.querySelectorAll('.bio-content').forEach(function (el) {
-          el.classList.remove('visible');
-        });
-        document.getElementById('bio-' + lang).classList.add('visible');
+        var lang = this.dataset.lang;
+        applyBioLang(lang);
+        syncBioLangInUrl(lang);
       });
     });
   </script>

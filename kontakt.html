@@ -241,6 +241,27 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
   color: var(--accent);
 }
 
+.contact-lang-note {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+  margin-top: -20px;
+  margin-bottom: 40px;
+  max-width: 42ch;
+}
+body.dark .contact-lang-note {
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+.contact-lang-note a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: border-color .2s ease, color .2s ease;
+}
+.contact-lang-note a:hover {
+  border-bottom-color: var(--accent);
+}
+
 .contact-block {
   border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   padding: 32px 0;
@@ -621,6 +642,13 @@ body.dark .nav-toggle:hover {
 
         <h2 class="contact-name">Harald<br><em>Oeler</em></h2>
 
+        <p class="contact-lang-note" lang="en">
+          Biography in English:
+          <a href="bio-en.html">bio-en.html</a>
+          · German:
+          <a href="bio.html">bio.html</a>
+        </p>
+
         <!-- Direct contact details -->
         <div class="contact-block">
           <div class="block-label">Direktkontakt</div>
@@ -710,6 +738,7 @@ body.dark .nav-toggle:hover {
   <!-- Extracted from Projekte.html — site-footer -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
+    <div class="center"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 

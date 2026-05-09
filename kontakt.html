@@ -696,7 +696,7 @@ body.dark .nav-toggle:hover {
         </div>
 
         <!-- Contact form -->
-        <form class="contact-form" action="https://formspree.io/f/xvgarlba" method="POST" novalidate>
+        <form class="contact-form" action="mailto:harald.oeler@gmx.de" method="POST" enctype="text/plain" novalidate>
 
           <div class="form-row">
             <div class="field-group">
@@ -781,33 +781,17 @@ body.dark .nav-toggle:hover {
       return;
     }
     var data=new FormData(form);
+    var recipient=form.action.replace(/^mailto:/i,'');
+    var subject=(data.get('subject') || 'Kontaktanfrage über haraldoeler.com').toString().trim();
+    var body=[
+      'Name: ' + (data.get('name') || ''),
+      'E-Mail: ' + (data.get('email') || ''),
+      '',
+      (data.get('message') || '')
+    ].join('\n');
     status.style.display='block';
-    status.textContent='Wird gesendet …';
-    fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
-      .then(function(r){
-        if(r.ok){
-          status.textContent='Nachricht gesendet. Vielen Dank!';
-          form.reset();
-          return null;
-        }
-        // Try to extract helpful error details from Formspree JSON responses
-        return r.json().catch(function(){ return null; }).then(function(payload){
-          var msg = 'Fehler beim Senden. Bitte versuchen Sie es erneut.';
-          if (payload) {
-            if (typeof payload.error === 'string' && payload.error.trim()) msg = payload.error.trim();
-            else if (Array.isArray(payload.errors) && payload.errors.length) {
-              var first = payload.errors[0];
-              if (first && typeof first.message === 'string' && first.message.trim()) msg = first.message.trim();
-            }
-          }
-          if (msg === 'Form not found') {
-            msg = 'Formspree: Form nicht gefunden. Bitte prüfe die Formular-URL in action: ' + form.action;
-          }
-          status.textContent = msg;
-          return null;
-        });
-      })
-      .catch(function(){status.textContent='Netzwerkfehler. Bitte versuchen Sie es erneut.';});
+    status.textContent='Ihr E-Mail-Programm wird geöffnet …';
+    window.location.href='mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 })();
 </script>

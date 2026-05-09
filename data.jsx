@@ -178,6 +178,8 @@ const DETAILS = {
     media: [
       { kind: "youtube", id: "4NPvdif9o6M", caption: "Duo KlAkk! goes BACH!" },
       { kind: "youtube", id: "xwVu6_XbiV0", caption: "Bach · Sonate g-Moll, BWV 1029" },
+      { kind: "youtube", id: "lYlqyNsLyYk", caption: "Bach · Sonate g-Moll, BWV 1028, iii. Andante" },
+      { kind: "youtube", id: "9WGPikQQlyw", caption: "Haydn · Divertimento in G Dur, Hob. IV Nr.7" },
     ],
   },
   hof: {

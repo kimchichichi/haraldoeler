@@ -276,10 +276,13 @@ body.dark .nav-toggle:hover {
   nav.primary.open { gap: 14px; }
   nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
 }
+
+/* Dark-mode contrast: lighter red accents on black backgrounds. */
+body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 </style>
 </head>
 <body>
-<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<script>var _t=sessionStorage.getItem('ho-theme');if(_t==='dark')document.body.classList.add('dark');</script>
 
   <div id="root"></div>
   <script type="module" src="../assets/projekte__duovia.bundle.js"></script>

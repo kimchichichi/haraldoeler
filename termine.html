@@ -616,11 +616,14 @@ body.dark .nav-toggle:hover {
   nav.primary.open { gap: 14px; }
   nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
 }
+
+/* Dark-mode contrast: lighter red accents on black backgrounds. */
+body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 </style>
 </head>
 
 <body>
-<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<script>var _t=sessionStorage.getItem('ho-theme');if(_t==='dark')document.body.classList.add('dark');</script>
 
 
   <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
@@ -947,6 +950,10 @@ body.dark .nav-toggle:hover {
           <div class="c-title">
             FUSSISSIMO – Gypsy-Ethno-Jazz
             <small>Rehan Syed (Guitar &amp; Komponist) &amp; Harald Oeler (Akkordeon) &amp; Simon Ort (Bass)<br></small>
+            <small>Seit über zwei Jahrzehnten ist das Gartenfest auf Schloss Eyrichshof ein fester Bestandteil des Pfingstwochenendes - weit über die Grenzen des Landkreises hinaus geschätzt und beliebt.
+
+Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebot rund um Gartenkunst und Botanik, stilvollen Wohn- und Lifestyle-Accessoires, edlen Schmuck, feine Mode und kulinarischen Köstlichkeiten auf dem gesamten Schlossareal.</small>
+
           </div>
           <div class="c-location">
             <i class="fa-solid fa-location-dot"></i>
@@ -1180,7 +1187,7 @@ body.dark .nav-toggle:hover {
       <li class="concert-item">
         <div class="c-left">
           <span class="c-date">25.07.2026</span>
-          <span class="c-day">Sa · 11:00 Uhr</span>
+          <span class="c-day">Sa · 19:30 Uhr</span>
         </div>
         <div class="c-middle">
           <div class="c-title">
@@ -1756,7 +1763,7 @@ body.dark .nav-toggle:hover {
   <script>
   document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
-    localStorage.setItem('ho-theme',d?'dark':'light');
+    sessionStorage.setItem('ho-theme',d?'dark':'light');
   });
   </script>
 <script>

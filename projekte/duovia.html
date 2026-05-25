@@ -70,6 +70,31 @@ nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0
 .repertoire li .work em { font-style: italic; color: var(--muted); font-size: 16px; margin-left: 10px; }
 .repertoire li .dur { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--muted); }
 
+/* ── Season badge (Piazzolla chapter marker) ── */
+.season-badge { display: inline-block; font-family: var(--mono); font-size: 8px; font-style: normal; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 2px 7px; border-radius: 2px; margin-left: 14px; vertical-align: middle; line-height: 2.2; }
+
+/* ── Chapter rows (4 Piazzolla pieces) ── */
+.repertoire li.chapter { border-top: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding-top: 24px; margin-top: 12px; }
+.repertoire li.chapter:first-child { border-top: none; margin-top: 0; padding-top: 18px; }
+.repertoire li.chapter .work { font-size: 23px; white-space: normal; overflow: visible; }
+
+/* ── Group header rows (Vivaldi concerto titles) ── */
+.repertoire li.group { border-bottom: none; padding: 26px 0 4px; }
+.repertoire li.group:hover { padding-left: 0; cursor: default; }
+.repertoire li.group .work { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: clip; }
+
+/* ── Movement rows (Vivaldi movements) ── */
+.repertoire li.movement { padding: 10px 0 10px 20px; }
+.repertoire li.movement:hover { padding-left: 20px; }
+.repertoire li.movement .work { font-size: 17px; font-style: italic; color: var(--muted); white-space: normal; overflow: visible; }
+.repertoire li.movement .num { font-size: 10px; }
+
+/* ── Total duration row ── */
+.repertoire li.total { border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); border-bottom: none; padding-top: 22px; margin-top: 10px; }
+.repertoire li.total:hover { padding-left: 0; }
+.repertoire li.total .work { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.repertoire li.total .dur { font-size: 13px; letter-spacing: 0.22em; color: var(--ink); }
+
 .rep-zone { cursor: none; } .rep-zone * { cursor: none; }
 .rep-cursor { position: fixed; pointer-events: none; z-index: 9000; transform: translate(-50%,-50%); opacity: 0; transition: opacity .18s ease; }
 .rep-cursor.visible { opacity: 1; }
@@ -128,11 +153,20 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
     word-break: break-word;
   }
   .repertoire li .work em { font-size: 13px; margin-left: 6px; }
-  .repertoire li.big { padding: 16px 0; }
-  .repertoire li.big .work { font-size: 17px; }
-  .repertoire li.big .work em { font-size: 13px; }
-  .repertoire li.indent { padding: 12px 0 12px 14px; }
-  .repertoire li.sub { padding: 10px 0 10px 28px; }
+  /* Chapter rows on mobile */
+  .repertoire li.chapter { padding: 16px 0 14px; margin-top: 8px; }
+  .repertoire li.chapter .work { font-size: 17px; }
+  .season-badge { font-size: 7px; padding: 2px 5px; margin-left: 10px; line-height: 2.4; }
+  /* Group header rows on mobile */
+  .repertoire li.group { padding: 20px 0 4px; }
+  .repertoire li.group .work { font-size: 9px; }
+  /* Movement rows on mobile: show duration */
+  .repertoire li.movement { padding: 9px 0 9px 14px; }
+  .repertoire li.movement .work { font-size: 14px; }
+  .repertoire li.movement .dur { display: block; font-size: 10px; }
+  /* Total row on mobile */
+  .repertoire li.total { padding-top: 16px; margin-top: 6px; }
+  .repertoire li.total .dur { display: block; font-size: 11px; }
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -165,6 +199,9 @@ body.dark .detail-body aside dd { color: var(--paper); }
 body.dark .detail-body .body-copy { color: color-mix(in srgb, var(--paper) 80%, transparent); }
 body.dark .repertoire { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .repertoire li { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .repertoire li.chapter { border-top-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+body.dark .repertoire li.total { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+body.dark .repertoire li.total .dur { color: var(--paper); }
 body.dark .quotes { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .media { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .media-item .frame { border-color: color-mix(in srgb, var(--paper) 14%, transparent); }

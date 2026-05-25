@@ -163,7 +163,7 @@ const DETAILS = {
       { text: "Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.", cite: "NDR Kultur" },
     ],
     media: [
-      { kind: "youtube", id: "AJ6uhwH7-gI", caption: "Duo ViA! · live" },
+      { kind: "youtube", id: "AJ6uhwH7-gI", caption: "Duo ViA! · Trailer" },
       { kind: "youtube", id: "kw7_NO-klxM", caption: "Duo ViA! · concert highlight" },
       { kind: "spotify", url: "https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0", caption: "8 Jahreszeiten · OehmsClassics" },
     ],

@@ -1,0 +1,37 @@
+name: Apply homepage title update
+
+on:
+  push:
+    paths:
+      - .github/workflows/codex-update-home-title.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Update homepage title and Safari icon declaration
+        shell: python
+        run: |
+          from pathlib import Path
+          page = Path('index.html')
+          html = page.read_text()
+          html = html.replace('HARALD OELER — Akkordeonist &amp; Komponist · Hof', 'HARALD OELER — Akkordeonist &amp; Komponist')
+          icon = '  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\n'
+          favicon = '  <link rel="icon" href="image/favicon.ico" type="image/x-icon">\n'
+          if icon not in html:
+              html = html.replace(favicon, favicon + icon)
+          page.write_text(html)
+      - name: Commit and publish homepage update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Remove Hof from homepage title"
+          git push origin HEAD:main

@@ -14,10 +14,12 @@
   <title>HARALD OELER — Duo KlAkk!</title>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <style>
 /* Harald OELER — projekte / duoklakk */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
 
 :root {
   --ink: #0e0d0c; --paper: #f4f1ec; --paper-2: #ebe6dd; --rule: #1a1816;
@@ -38,7 +40,7 @@ a { color: inherit; text-decoration: none; }
 .wordmark small { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 13px; letter-spacing: 0.04em; text-transform: none; color: var(--muted); }
 nav.primary { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.18em; text-transform: lowercase; font-weight: 400; }
 nav.primary a { color: var(--muted); position: relative; padding: 4px 0; transition: color .25s ease; }
-nav.primary a.active { color: var(--ink); } nav.primary a:hover { color: var(--ink); }
+nav.primary a.active { color: var(--ink); } body.dark nav.primary a.active { color: var(--paper); } nav.primary a:hover { color: var(--ink); } body.dark nav.primary a:hover { color: var(--paper); }
 nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--accent); }
 
 .projects-subnav { background: var(--paper); border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
@@ -171,8 +173,6 @@ body.dark .site-header {
 }
 body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
 /* ── Dark mode content ─────────────────────────────── */
-body.dark nav.primary a.active { color: var(--paper); }
-body.dark nav.primary a:hover  { color: var(--paper); }
 body.dark .projects-subnav { background: var(--ink); border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
 body.dark .projects-subnav-inner a:hover  { color: var(--paper); }
 body.dark .projects-subnav-inner a.active { color: var(--paper); }

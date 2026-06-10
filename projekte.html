@@ -894,6 +894,16 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
 }
 
+/* Very small screens: prevent wordmark overflow */
+@media (max-width: 420px) {
+  .header-inner { padding: 16px 18px; }
+  .wordmark { letter-spacing: 0.22em; }
+  .wordmark small { display: none; }
+}
+
+/* Dark-mode contrast: lighter red accents on black backgrounds. */
+body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
+
 /* ---------- Projects Sub-navigation ---------- */
 .projects-subnav {
   background: var(--paper);

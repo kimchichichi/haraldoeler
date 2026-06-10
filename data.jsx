@@ -1,5 +1,5 @@
 // Project data + small components
-const PROJECT_IMAGE_BASE = "projekte/image";
+const PROJECT_IMAGE_BASE = "/projekte/image";
 
 const PROJECTS = [
   {

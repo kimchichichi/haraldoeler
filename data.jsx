@@ -217,19 +217,19 @@ const DETAILS = {
 
 function Header({ active = "projekte" }) {
   const navItems = [
-    { id: "bio", label: "bio", href: "bio.html" },
-    { id: "projekte", label: "projekte", href: "projekte.html" },
-    { id: "termine", label: "termine", href: "termine.html" },
-    { id: "news", label: "news", href: "news.html" },
-    { id: "unterricht", label: "unterricht", href: "unterricht.html" },
-    { id: "medien", label: "medien", href: "medien.html" },
-    { id: "kontakt", label: "kontakt", href: "kontakt.html" },
+    { id: "bio", label: "bio", href: "/bio.html" },
+    { id: "projekte", label: "projekte", href: "/projekte.html" },
+    { id: "termine", label: "termine", href: "/termine.html" },
+    { id: "news", label: "news", href: "/news.html" },
+    { id: "unterricht", label: "unterricht", href: "/unterricht.html" },
+    { id: "medien", label: "medien", href: "/medien.html" },
+    { id: "kontakt", label: "kontakt", href: "/kontakt.html" },
   ];
 
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="wordmark" href="index.html">
+        <a className="wordmark" href="/index.html">
           HARALD<span className="dot"></span>OELER
           {" "}<small>· accordionist &amp; composer</small>
         </a>

@@ -28,7 +28,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/projekte.html</loc>
+    <loc>https://haraldoeler.com/projekte</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -69,37 +69,43 @@
   <!-- Individual ensemble / project detail pages         -->
   <!-- ================================================== -->
   <url>
-    <loc>https://haraldoeler.com/projekte/solo.html</loc>
+    <loc>https://haraldoeler.com/projekte/solo</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/projekte/duoklakk.html</loc>
+    <loc>https://haraldoeler.com/projekte/duoklakk</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/projekte/duovia.html</loc>
+    <loc>https://haraldoeler.com/projekte/duovia</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/projekte/fussissimo.html</loc>
+    <loc>https://haraldoeler.com/projekte/fussissimo</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/projekte/hof.html</loc>
+    <loc>https://haraldoeler.com/projekte/hof</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/projekte/orchester.html</loc>
+    <loc>https://haraldoeler.com/projekte/orchester</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/projekte/triofussissimo</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

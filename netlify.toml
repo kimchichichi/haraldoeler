@@ -41,6 +41,95 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# ── Clean URLs: projekte (extensionless) ──────────────
+[[redirects]]
+  from = "/projekte"
+  to = "/projekte.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte.html"
+  to = "/projekte"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/solo"
+  to = "/projekte/solo.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/solo.html"
+  to = "/projekte/solo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/orchester"
+  to = "/projekte/orchester.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/orchester.html"
+  to = "/projekte/orchester"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/fussissimo"
+  to = "/projekte/fussissimo.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/fussissimo.html"
+  to = "/projekte/fussissimo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/duovia"
+  to = "/projekte/duovia.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/duovia.html"
+  to = "/projekte/duovia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/duoklakk"
+  to = "/projekte/duoklakk.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/duoklakk.html"
+  to = "/projekte/duoklakk"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/hof"
+  to = "/projekte/hof.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/hof.html"
+  to = "/projekte/hof"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projekte/triofussissimo"
+  to = "/projekte/triofussissimo.html"
+  status = 200
+
+[[redirects]]
+  from = "/projekte/triofussissimo.html"
+  to = "/projekte/triofussissimo"
+  status = 301
+  force = true
+
 [[redirects]]
      from = "/*"
      to = "/index.html"

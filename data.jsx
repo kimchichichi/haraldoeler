@@ -267,7 +267,8 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="left">© Harald Oeler · 2026</div>
-      <div className="right">Impressum · Datenschutz</div>
+      <div className="center"></div>
+      <div className="right"><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div>
     </footer>
   );
 }

@@ -1,7 +1,7 @@
 // Main app — projekte overview + detail with View Transitions
 const { useState, useEffect, useCallback } = React;
 
-function ProjekteOverview({ onOpen, tweaks }) {
+function ProjekteOverview({ tweaks }) {
   return (
     <>
       <Header active="projekte" />
@@ -23,8 +23,7 @@ function ProjekteOverview({ onOpen, tweaks }) {
             key={p.id}
             className={`card ${p.variant}`}
             style={{ "--vt-name": `card-${p.id}` }}
-            onClick={(e) => { e.preventDefault(); onOpen(p.id); }}
-            href={`projekte/${p.id === "fussissimo" ? "fussissimo" : p.id}`}
+            href={`/projekte/${p.id}.html`}
           >
             <div className="index">
               <span>{p.num}</span>
@@ -213,7 +212,7 @@ function App() {
   return (
     <>
       {view.page === "overview"
-        ? <ProjekteOverview onOpen={open} tweaks={tweaks} />
+        ? <ProjekteOverview tweaks={tweaks} />
         : <ProjektDetail id={view.id} onBack={back} />}
 
       <TweaksPanel>

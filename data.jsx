@@ -1,4 +1,6 @@
 // Project data + small components
+const PROJECT_IMAGE_BASE = "projekte/image";
+
 const PROJECTS = [
   {
     id: "solo",
@@ -6,7 +8,7 @@ const PROJECTS = [
     title: "Solo",
     role: "Akkordeon — solo",
     subtitle: "Einzigartige Akkordeonmusik der Klassik, Neuen Musik und des Jazz.",
-    image: "p1.jpg",
+    image: `${PROJECT_IMAGE_BASE}/solo.webp`,
     variant: "tall",
   },
   {
@@ -15,7 +17,7 @@ const PROJECTS = [
     title: "Orchester",
     role: "Akkordeon + Orchester",
     subtitle: "Solistisches Repertoire mit Sinfonie- und Kammerorchester.",
-    image: "p5.jpg",
+    image: `${PROJECT_IMAGE_BASE}/orchester.webp`,
     variant: "wide",
   },
   {
@@ -24,7 +26,7 @@ const PROJECTS = [
     title: "Fussissimo",
     role: "Trio — gypsy · ethno · jazz",
     subtitle: "Gypsy-Ethno-Jazz Ensemble — drei Stimmen, ein gemeinsamer Atem.",
-    image: "p2.jpg",
+    image: `${PROJECT_IMAGE_BASE}/fussissimo.webp`,
     variant: "default",
   },
   {
@@ -33,7 +35,7 @@ const PROJECTS = [
     title: "Duo ViA!",
     role: "Akkordeon & Violine",
     subtitle: "Transkriptionen aus vier Jahrhunderten — Bach bis heute.",
-    image: "p4.jpg",
+    image: `${PROJECT_IMAGE_BASE}/duovia.webp`,
     variant: "default",
   },
   {
@@ -42,7 +44,7 @@ const PROJECTS = [
     title: "Duo KlAkk!",
     role: "neue musik × alte musik",
     subtitle: "Resonanzen zwischen Neuer und Alter Musik.",
-    image: "p6.jpg",
+    image: `${PROJECT_IMAGE_BASE}/duoklakk.webp`,
     variant: "tall",
   },
   {
@@ -51,7 +53,7 @@ const PROJECTS = [
     title: "Hofer Musikscene",
     role: "Lokales · regional",
     subtitle: "Projekte und Begegnungen im Hofer Land.",
-    image: "p2.jpg",
+    image: `${PROJECT_IMAGE_BASE}/hof.webp`,
     variant: "wide",
   },
 ];
@@ -60,7 +62,7 @@ const DETAILS = {
   solo: {
     title: "Solo",
     eyebrow: "Projekt 01 · Akkordeon solo",
-    image: "p1.jpg",
+    image: `${PROJECT_IMAGE_BASE}/solo.webp`,
     runtime: ["Programm · »Remembering«", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
     lede: ["Die Präzision des Klaviers. Die Sogkraft des Orchesters. ", { em: "Eine Stimme." }],
     body: [
@@ -84,7 +86,7 @@ const DETAILS = {
   orchester: {
     title: "Orchester",
     eyebrow: "Projekt 02 · Akkordeon + Orchester",
-    image: "p5.jpg",
+    image: `${PROJECT_IMAGE_BASE}/orchester.webp`,
     runtime: ["Solistisches Repertoire", "Besetzung · Sinfonie- / Streichorchester", "Tour · auf Anfrage"],
     lede: ["Das Akkordeon als ", { em: "Solostimme" }, " im großen Apparat — von Bach bis Galliano."],
     body: [
@@ -110,7 +112,7 @@ const DETAILS = {
   fussissimo: {
     title: "Fussissimo",
     eyebrow: "Projekt 03 · Gypsy · Ethno · Jazz",
-    image: "p2.jpg",
+    image: `${PROJECT_IMAGE_BASE}/fussissimo.webp`,
     runtime: ["Trio · seit fast 20 Jahren", "Rehan Syed · Gitarre", "Simon Ort · Bass · Harald Oeler · Akkordeon"],
     lede: ["Tango, Bossa, Musette, Orient — ", { em: "alles in einem Atemzug." }],
     body: [
@@ -132,7 +134,7 @@ const DETAILS = {
   duovia: {
     title: "Duo ViA!",
     eyebrow: "Projekt 04 · Akkordeon & Violine",
-    image: "p4.jpg",
+    image: `${PROJECT_IMAGE_BASE}/duovia.webp`,
     runtime: ["Sinn Yang · Violine", "Harald Oeler · Akkordeon", "Album · 8 Jahreszeiten · OehmsClassics"],
     lede: ["Vivaldi & Piazzolla — ", { em: "ein kühnes Wagnis" }, " der Harmonie und der Erfindung."],
     body: [
@@ -171,7 +173,7 @@ const DETAILS = {
   duoklakk: {
     title: "Duo KlAkk!",
     eyebrow: "Projekt 05 · neue musik × alte musik",
-    image: "p6.jpg",
+    image: `${PROJECT_IMAGE_BASE}/duoklakk.webp`,
     runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes BACH!«"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
@@ -198,7 +200,7 @@ const DETAILS = {
   hof: {
     title: "Hofer Musikscene",
     eyebrow: "Projekt 06 · Hofer Land",
-    image: "p2.jpg",
+    image: `${PROJECT_IMAGE_BASE}/hof.webp`,
     runtime: ["Jam · jeden ersten Dienstag", "KunstKaufHaus Hof · 20 Uhr", "VHS Hofer Land · Konzertreihe"],
     lede: ["Begegnungen, Reibungen, Reisen — ", { em: "Musik im Hofer Land." }],
     body: [
@@ -214,18 +216,36 @@ const DETAILS = {
 };
 
 function Header({ active = "projekte" }) {
+  const navItems = [
+    { id: "about", label: "about", href: "bio.html" },
+    { id: "projekte", label: "projekte", href: "projekte.html" },
+    { id: "termine", label: "termine", href: "termine.html" },
+    { id: "news", label: "news", href: "news.html" },
+    { id: "unterricht", label: "unterricht", href: "unterricht.html" },
+    { id: "discographie", label: "discographie", href: "discographie.html" },
+    { id: "media", label: "media", href: "medien.html" },
+    { id: "kontakt", label: "kontakt", href: "kontakt.html" },
+  ];
+
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="wordmark" href="#">
+        <a className="wordmark" href="index.html">
           HARALD<span className="dot"></span>OELER
           {" "}<small>· accordionist</small>
         </a>
         <nav className="primary">
-          {["about","projekte","termine","news","unterricht","discographie","media","kontakt"].map(item => (
-            <a key={item} href="#" className={active === item ? "active" : ""}>{item}</a>
+          {navItems.map(item => (
+            <a key={item.id} href={item.href} className={active === item.id ? "active" : ""}>{item.label}</a>
           ))}
         </nav>
+        <button className="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+            <line x1="0" y1="1" x2="22" y2="1" />
+            <line x1="0" y1="7" x2="22" y2="7" />
+            <line x1="0" y1="13" x2="22" y2="13" />
+          </svg>
+        </button>
       </div>
     </header>
   );

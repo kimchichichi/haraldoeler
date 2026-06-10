@@ -24,7 +24,7 @@ function ProjekteOverview({ onOpen, tweaks }) {
             className={`card ${p.variant}`}
             style={{ "--vt-name": `card-${p.id}` }}
             onClick={(e) => { e.preventDefault(); onOpen(p.id); }}
-            href={`#${p.id}`}
+            href={`projekte/${p.id === "fussissimo" ? "fussissimo" : p.id}.html`}
           >
             <div className="index">
               <span>{p.num}</span>

@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:projekte": "node scripts/build-projekte.mjs"
+    "build:projekte": "node scripts/build-projekte.mjs",
+    "rebuild:projekte": "node scripts/rebuild-projekte.mjs"
   },
   "dependencies": {
     "react": "18.3.1",

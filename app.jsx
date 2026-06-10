@@ -23,7 +23,7 @@ function ProjekteOverview({ tweaks }) {
             key={p.id}
             className={`card ${p.variant}`}
             style={{ "--vt-name": `card-${p.id}` }}
-            href={`/projekte/${p.id}.html`}
+            href={`/projekte/${p.id}`}
           >
             <div className="index">
               <span>{p.num}</span>

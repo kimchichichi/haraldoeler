@@ -219,7 +219,7 @@ const DETAILS = {
 function Header({ active = "projekte" }) {
   const navItems = [
     { id: "bio", label: "bio", href: "/bio.html" },
-    { id: "projekte", label: "projekte", href: "/projekte.html" },
+    { id: "projekte", label: "projekte", href: "/projekte" },
     { id: "termine", label: "termine", href: "/termine.html" },
     { id: "news", label: "news", href: "/news.html" },
     { id: "unterricht", label: "unterricht", href: "/unterricht.html" },

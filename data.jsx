@@ -1,5 +1,6 @@
 // Project data + small components
 const PROJECT_IMAGE_BASE = "/projekte/image";
+const PROJECT_HERO_IMAGE_BASE = "/projekte/image/page";
 
 const PROJECTS = [
   {
@@ -62,7 +63,7 @@ const DETAILS = {
   solo: {
     title: "Solo",
     eyebrow: "Projekt 01 · Akkordeon solo",
-    image: `${PROJECT_IMAGE_BASE}/solo.webp`,
+    image: `${PROJECT_HERO_IMAGE_BASE}/solo.webp`,
     runtime: ["Programm · »Remembering«", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
     lede: ["Die Präzision des Klaviers. Die Sogkraft des Orchesters. ", { em: "Eine Stimme." }],
     body: [
@@ -86,7 +87,7 @@ const DETAILS = {
   orchester: {
     title: "Orchester",
     eyebrow: "Projekt 02 · Akkordeon + Orchester",
-    image: `${PROJECT_IMAGE_BASE}/orchester.webp`,
+    image: `${PROJECT_HERO_IMAGE_BASE}/orchester.webp`,
     runtime: ["Solistisches Repertoire", "Besetzung · Sinfonie- / Streichorchester", "Tour · auf Anfrage"],
     lede: ["Das Akkordeon als ", { em: "Solostimme" }, " im großen Apparat — von Bach bis Galliano."],
     body: [
@@ -112,7 +113,7 @@ const DETAILS = {
   fussissimo: {
     title: "Fussissimo",
     eyebrow: "Projekt 03 · Gypsy · Ethno · Jazz",
-    image: `${PROJECT_IMAGE_BASE}/fussissimo.webp`,
+    image: `${PROJECT_HERO_IMAGE_BASE}/fussissimo.webp`,
     runtime: ["Trio · seit fast 20 Jahren", "Rehan Syed · Gitarre", "Simon Ort · Bass · Harald Oeler · Akkordeon"],
     lede: ["Tango, Bossa, Musette, Orient — ", { em: "alles in einem Atemzug." }],
     body: [
@@ -134,7 +135,7 @@ const DETAILS = {
   duovia: {
     title: "Duo ViA!",
     eyebrow: "Projekt 04 · Akkordeon & Violine",
-    image: `${PROJECT_IMAGE_BASE}/duovia.webp`,
+    image: `${PROJECT_HERO_IMAGE_BASE}/duovia.webp`,
     runtime: ["Sinn Yang · Violine", "Harald Oeler · Akkordeon", "Album · 8 Jahreszeiten · OehmsClassics"],
     lede: ["Vivaldi & Piazzolla — ", { em: "ein kühnes Wagnis" }, " der Harmonie und der Erfindung."],
     body: [
@@ -173,7 +174,7 @@ const DETAILS = {
   duoklakk: {
     title: "Duo KlAkk!",
     eyebrow: "Projekt 05 · neue musik × alte musik",
-    image: `${PROJECT_IMAGE_BASE}/duoklakk.webp`,
+    image: `${PROJECT_HERO_IMAGE_BASE}/duoklakk.webp`,
     runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes BACH!«"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
@@ -200,7 +201,7 @@ const DETAILS = {
   hof: {
     title: "Hofer Musikscene",
     eyebrow: "Projekt 06 · Hofer Land",
-    image: `${PROJECT_IMAGE_BASE}/hof.webp`,
+    image: `${PROJECT_HERO_IMAGE_BASE}/hof.webp`,
     runtime: ["Jam · jeden ersten Dienstag", "KunstKaufHaus Hof · 20 Uhr", "VHS Hofer Land · Konzertreihe"],
     lede: ["Begegnungen, Reibungen, Reisen — ", { em: "Musik im Hofer Land." }],
     body: [

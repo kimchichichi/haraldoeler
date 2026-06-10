@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta property="og:title" content="HARALD OELER | accordionist" />
+  <meta property="og:description" content="Official website of the German accordionist Harald Oeler." />
+  <meta property="og:image" content="https://www.haraldoeler.com/image/index/hero.webp" />
+  <meta property="og:url" content="https://www.haraldoeler.com/kontakt" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://www.haraldoeler.com/kontakt" />
+  <title>HARALD OELER — kontakt</title>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <!-- Extracted from Projekte.html — design system styles -->
+  <style>
+/* HARALD OELER — kontakt */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --ink: #0e0d0c;
+  --paper: #f4f1ec;
+  --paper-2: #ebe6dd;
+  --rule: #1a1816;
+  --muted: #6b655c;
+  --accent: #6b1d1a;
+  --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body.dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Header (extracted from Projekte.html) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: var(--muted);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+nav.primary a.active { color: var(--ink); }
+body.dark nav.primary a.active { color: var(--paper); }
+nav.primary a:hover { color: var(--ink); }
+body.dark nav.primary a:hover { color: var(--paper); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ---------- Page header band (extracted from Projekte.html) ---------- */
+.page-head {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 64px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.page-head > div:first-child { min-width: 0; }
+body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(64px, 10vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-feature-settings: "lnum";
+}
+.page-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.page-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.page-meta b { color: var(--ink); font-weight: 500; }
+body.dark .page-meta b { color: var(--paper); }
+
+/* ---------- Footer (extracted from Projekte.html) ---------- */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.site-footer .center { text-align: center; }
+.site-footer .right { text-align: right; }
+
+/* ---------- View Transitions (extracted from Projekte.html) ---------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(.7,0,.2,1);
+}
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.7,0,.2,1);
+}
+
+/* ---------- Contact page layout ---------- */
+.contact-wrap {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-portrait {
+  position: sticky;
+  top: 100px;
+}
+.contact-portrait img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  display: block;
+  border-radius: 50%;
+}
+
+.contact-info {
+  padding-top: 8px;
+}
+
+.contact-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+}
+.contact-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.contact-lang-note {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+  margin-top: -20px;
+  margin-bottom: 40px;
+  max-width: 42ch;
+}
+body.dark .contact-lang-note {
+  color: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+.contact-lang-note a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: border-color .2s ease, color .2s ease;
+}
+.contact-lang-note a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.contact-block {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 0;
+}
+body.dark .contact-block { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+
+.contact-block:last-of-type {
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  margin-bottom: 56px;
+}
+body.dark .contact-block:last-of-type { border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+
+.contact-block .block-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.contact-item:last-child { margin-bottom: 0; }
+
+.contact-item .ci-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.contact-item .ci-value {
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+.contact-item a {
+  transition: color .25s ease;
+}
+.contact-item a:hover { color: var(--accent); }
+
+/* Social links row */
+.contact-socials {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+  position: relative;
+  transition: color .25s ease;
+}
+.social-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 4px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+.social-link:hover { color: var(--ink); }
+.social-link:hover::after { transform: scaleX(1); }
+body.dark .social-link:hover { color: var(--paper); }
+
+/* Contact form */
+.contact-form {
+  margin-top: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+}
+
+.field-group {
+  margin-bottom: 28px;
+}
+
+.field-group label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.field-group input,
+.field-group textarea,
+.field-group select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  padding: 10px 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .25s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+body.dark .field-group input,
+body.dark .field-group textarea,
+body.dark .field-group select {
+  color: var(--paper);
+  border-bottom-color: color-mix(in srgb, var(--paper) 22%, transparent);
+}
+.field-group input:focus,
+.field-group textarea:focus,
+.field-group select:focus {
+  border-bottom-color: var(--accent);
+}
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+  color: color-mix(in srgb, var(--muted) 55%, transparent);
+  font-style: italic;
+}
+.field-group textarea {
+  resize: none;
+  height: 120px;
+  line-height: 1.5;
+}
+
+.btn-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+}
+body.dark .btn-send {
+  background: var(--paper);
+  color: var(--ink);
+}
+.btn-send:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+.btn-send svg { transition: transform .35s ease; }
+.btn-send:hover svg { transform: translateX(6px); }
+
+/* ---------- Responsive (extracted from Projekte.html) ---------- */
+@media (max-width: 1100px) {
+  .contact-wrap { grid-template-columns: 260px 1fr; gap: 48px; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+  .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
+  .page-meta { text-align: left; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+  .contact-wrap { grid-template-columns: 1fr; padding: 40px 24px 80px; gap: 40px; }
+  .contact-portrait { position: static; }
+  .contact-portrait img { aspect-ratio: 1 / 1; }
+  .form-row { grid-template-columns: 1fr; }
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+
+/* ── Mobile nav toggle ─────────────────────────────── */
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  flex-shrink: 0;
+  align-self: center;
+  line-height: 0;
+  z-index: 10001;
+  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  opacity: 0.92;
+}
+.nav-toggle svg { display: block; }
+.nav-toggle:hover {
+  background: var(--paper-2);
+  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.nav-toggle:active { transform: translateY(0); }
+.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body.dark .nav-toggle {
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+}
+body.dark .nav-toggle:hover {
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 26%, transparent);
+}
+@media (max-width: 720px) {
+  .header-inner { grid-template-columns: 1fr auto auto; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  nav.primary.open {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    padding-top: max(24px, env(safe-area-inset-top));
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-left: 24px;
+    padding-right: 24px;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3.6vh, 26px);
+    z-index: 10000;
+    overflow: hidden;
+  }
+  body.dark nav.primary.open { background: color-mix(in srgb, var(--ink) 92%, transparent); }
+  nav.primary.open a {
+    font-family: var(--mono);
+    font-size: clamp(14px, 2.4vh, 18px);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 8px 0;
+    display: inline-block;
+    position: relative;
+    transition: color .2s ease, transform .2s ease;
+  }
+  nav.primary.open a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  body.dark nav.primary.open a { color: var(--paper); }
+  nav.primary.open a.active,
+  nav.primary.open a:hover { color: var(--accent); }
+  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.55; }
+  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.65; }
+  @media (hover: hover) {
+    nav.primary.open a:hover { transform: translateY(-2px); }
+    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.55; }
+  }
+
+  body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
+  body.nav-open .wordmark,
+  body.nav-open .theme-toggle { visibility: hidden; pointer-events: none; }
+  body.nav-open .nav-toggle {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+  }
+  body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
+  body.dark.nav-open nav.primary.open { background: var(--ink); }
+  body.nav-open { overscroll-behavior: none; }
+  body.nav-open nav.primary.open { overscroll-behavior: none; touch-action: none; }
+}
+
+@media (max-width: 720px) and (max-height: 560px) {
+  nav.primary.open { gap: 14px; }
+  nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
+}
+</style>
+</head>
+<body>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">
+      HARALD<span class="dot"></span>OELER
+      <small>· accordionist &amp; composer</small>
+    </a>
+    <nav class="primary">
+      <a href="bio.html">bio</a>
+      <a href="projekte.html">projekte</a>
+      <a href="termine.html" >termine</a>
+      <a href="news.html">news</a>
+      <a href="unterricht.html">unterricht</a>
+      <a href="medien.html">medien</a>
+      <a href="kontakt.html" class="active">kontakt</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
+</button>
+  </div>
+</header>
+
+  <main>
+
+    <!-- Page header band — same pattern as Projekte.html -->
+    <div class="page-head">
+      <div>
+        <div class="eyebrow">— Kontakt</div>
+        <h1 class="page-title"><em>kontakt</em></h1>
+      </div>
+      <div class="page-meta">
+        <b>Harald Oeler</b><br>
+        Akkordeonist &amp; Komponist<br>
+        Hof · Deutschland
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT HERE -->
+    <div class="contact-wrap">
+
+      <!-- Portrait column -->
+      <aside class="contact-portrait">
+        <img src="image/contact-profile.webp" alt="Harald Oeler" loading="lazy" />
+      </aside>
+
+      <!-- Info + form column -->
+      <div class="contact-info">
+
+        <h2 class="contact-name">Harald<br><em>Oeler</em></h2>
+
+        <p class="contact-lang-note" lang="en">
+          Biography in English:
+          <a href="bio-en.html">bio-en.html</a>
+          · German:
+          <a href="bio.html">bio.html</a>
+        </p>
+
+        <!-- Direct contact details -->
+        <div class="contact-block">
+          <div class="block-label">Direktkontakt</div>
+
+          <div class="contact-item">
+            <span class="ci-label">E-Mail</span>
+            <span class="ci-value">
+              <a href="mailto:harald.oeler@gmx.de">harald.oeler@gmx.de</a>
+            </span>
+          </div>
+
+          <div class="contact-item">
+            <span class="ci-label">Telefon</span>
+            <span class="ci-value">
+              <a href="tel:+4917670004842">+49 176 700 048 42</a>
+            </span>
+          </div>
+
+          <div class="contact-item">
+            <span class="ci-label">Standort</span>
+            <span class="ci-value">Hof, Deutschland</span>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="contact-block">
+          <div class="block-label">Social &amp; Streaming</div>
+          <div class="contact-socials">
+            <a class="social-link" href="https://www.facebook.com/harald.oeler" target="_blank" rel="noopener">
+              Facebook
+            </a>
+            <a class="social-link" href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">
+              Instagram
+            </a>
+            <a class="social-link" href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">
+              YouTube
+            </a>
+            <a class="social-link" href="https://de.linkedin.com/in/harald-oeler-8794ab40" target="_blank" rel="noopener">
+              LinkedIn
+            </a>
+            <a class="social-link" href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA?si=LIB75TGVRfeaCtZJyJBd0Q" target="_blank" rel="noopener">
+              Spotify
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form class="contact-form" action="mailto:harald.oeler@gmx.de" method="POST" enctype="text/plain" novalidate>
+
+          <div class="form-row">
+            <div class="field-group">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Ihr Name" autocomplete="name" required />
+            </div>
+            <div class="field-group">
+              <label for="cf-email">E-Mail</label>
+              <input type="email" id="cf-email" name="email" placeholder="ihre@email.de" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="cf-subject">Betreff</label>
+            <input type="text" id="cf-subject" name="subject" placeholder="Konzertanfrage, Unterricht, Kollaboration …" />
+          </div>
+
+          <div class="field-group">
+            <label for="cf-message">Nachricht</label>
+            <textarea id="cf-message" name="message" placeholder="Ihre Nachricht …" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-send">
+            Senden
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M0 8 L18 8 M12 2 L18 8 L12 14"/>
+            </svg>
+          </button>
+          <p class="form-status" id="formStatus" aria-live="polite" style="margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);display:none;"></p>
+
+        </form>
+
+      </div><!-- /contact-info -->
+    </div><!-- /contact-wrap -->
+    <!-- END PAGE CONTENT -->
+
+  </main>
+
+  <!-- Extracted from Projekte.html — site-footer -->
+  <footer class="site-footer">
+    <div class="left">© Harald Oeler · 2026</div>
+    <div class="center"></div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  <script>
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var d=document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme',d?'dark':'light');
+  });
+  </script>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),n=document.querySelector('nav.primary');
+  if(!t||!n)return;
+  var OPEN='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
+  var CLOSED='<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
+  function close(){n.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');document.body.style.overflow='';t.innerHTML=CLOSED;}
+  t.addEventListener('click',function(){
+    var o=n.classList.toggle('open');
+    t.setAttribute('aria-expanded',o);
+    document.body.classList.toggle('nav-open', o);
+    document.body.style.overflow=o?'hidden':'';
+    t.innerHTML=o?OPEN:CLOSED;
+  });
+  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+<script>
+(function(){
+  var form=document.querySelector('.contact-form');
+  var status=document.getElementById('formStatus');
+  if(!form||!status)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    // Re-enable a11y-friendly validation even with `novalidate`
+    if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+      if (typeof form.reportValidity === 'function') form.reportValidity();
+      status.style.display='block';
+      status.textContent='Bitte Pflichtfelder korrekt ausfüllen.';
+      return;
+    }
+    var data=new FormData(form);
+    var recipient=form.action.replace(/^mailto:/i,'');
+    var subject=(data.get('subject') || 'Kontaktanfrage über haraldoeler.com').toString().trim();
+    var body=[
+      'Name: ' + (data.get('name') || ''),
+      'E-Mail: ' + (data.get('email') || ''),
+      '',
+      (data.get('message') || '')
+    ].join('\n');
+    status.style.display='block';
+    status.textContent='Ihr E-Mail-Programm wird geöffnet …';
+    window.location.href='mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+  <!-- Scroll to top button -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+  </button>
+  <style>
+    .scroll-top{
+      position:fixed; right:18px; bottom:18px; z-index:9999;
+      width:44px; height:44px; border-radius:999px;
+      display:grid; place-items:center;
+      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
+      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
+      color:var(--ink, #0e0d0c);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      backdrop-filter: blur(12px) saturate(140%);
+      box-shadow:0 10px 28px rgba(0,0,0,.14);
+      cursor:pointer;
+      opacity:0; transform:translateY(8px); pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    body.dark .scroll-top{
+      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
+      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
+      color: var(--paper, #f4f1ec);
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    }
+    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
+    .scroll-top:hover{
+      opacity:1; transform:translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
+    }
+    .scroll-top:focus-visible{
+      outline:2px solid var(--accent, #6b1d1a);
+      outline-offset:3px;
+      opacity:1;
+      pointer-events:auto;
+    }
+    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
+  </style>
+  <script>
+    (function(){
+      var btn = document.getElementById('scrollTopBtn');
+      if (!btn) return;
+      var showAt = 500;
+      function sync(){
+        btn.classList.toggle('is-visible', window.scrollY > showAt);
+      }
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

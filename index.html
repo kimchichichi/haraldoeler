@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist">
+  <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="HARALD OELER — Akkordeonist &amp; Komponist">
+  <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
+  <meta property="og:image" content="https://www.haraldoeler.com/image/index/hero.webp">
+  <meta property="og:url" content="https://www.haraldoeler.com/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.haraldoeler.com/">
+  <title>HARALD OELER — Akkordeonist &amp; Komponist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <style>
+:root {
+  --ink:         #0e0d0c;
+  --paper:       #f4f1ec;
+  --paper-2:     #ebe6dd;
+  --rule:        #1a1816;
+  --muted:       #6b655c;
+  --accent:      #6b1d1a;
+  --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Header (extracted from Projekte.html) ─────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .4s ease, border-color .4s ease;
+}
+.site-header.scrolled {
+  background: var(--paper);
+  border-bottom-color: color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--paper);
+  transition: color .4s ease;
+}
+
+.wordmark:hover {
+  color:  var(--ink);    
+  cursor: pointer;
+}
+
+.site-header.scrolled .wordmark { color: var(--ink); }
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--paper);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+  transition: background .4s ease;
+}
+
+.site-header.scrolled .wordmark .dot { background: var(--accent); }
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(244,241,236,0.65);
+  transition: color .4s ease;
+}
+.site-header.scrolled .wordmark small { color: var(--muted); }
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: rgba(244,241,236,0.7);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+.site-header.scrolled nav.primary a { color: var(--muted); }
+nav.primary a.active { color: var(--paper); }
+.site-header.scrolled nav.primary a.active { color: var(--ink); }
+nav.primary a:hover { color: var(--paper); }
+.site-header.scrolled nav.primary a:hover { color: var(--ink); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: rgba(244,241,236,0.6);
+}
+.site-header.scrolled nav.primary a.active::after { background: var(--accent); }
+
+/* ─── Hero ──────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 12% 20%;
+  filter: grayscale(1) contrast(1.05);
+  transform-origin: center;
+  transition: transform 8s ease;
+}
+.hero:hover .hero-img { transform: scale(1.02); }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14,13,12,0.35) 0%,
+    rgba(14,13,12,0.05) 35%,
+    rgba(14,13,12,0.6) 75%,
+    rgba(14,13,12,0.88) 100%
+  );
+  pointer-events: none;
+}
+.hero-content {
+  position: absolute;
+  right: 48px;
+  bottom: 72px;
+  z-index: 2;
+  color: var(--paper);
+  text-align: right;
+  max-width: 680px;
+}
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244,241,236,0.55);
+  margin-bottom: 20px;
+}
+.hero-name {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(72px, 13vw, 196px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 28px;
+}
+.hero-sub {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(244,241,236,0.6);
+}
+.hero-scroll {
+  position: absolute;
+  left: 48px;
+  bottom: 72px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgba(244,241,236,0.4);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color .3s ease;
+}
+.hero-scroll:hover { color: rgba(244,241,236,0.75); }
+
+/* Anchor target sits below fixed header when scrolling from hero CTA */
+#kommende-konzerte {
+  scroll-margin-top: clamp(72px, 12vw, 100px);
+}
+.scroll-arrow {
+  animation: arrowBounce 1.6s ease-in-out infinite;
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+.hero-scroll::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 56px;
+  background: rgba(244,241,236,0.25);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.25; transform: scaleY(1); transform-origin: top; }
+  50%       { opacity: 0.7;  transform: scaleY(1); }
+}
+
+/* ─── Hero entrance animations ───────────────────────────────────────────────── */
+@keyframes heroImgReveal {
+  from { opacity: 0; transform: scale(1.06); filter: grayscale(1) contrast(1.05) brightness(0.6); }
+  to   { opacity: 1; transform: scale(1);    filter: grayscale(1) contrast(1.05) brightness(1); }
+}
+@keyframes heroFadeSlide {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroNameReveal {
+  from { opacity: 0; transform: translateY(48px) skewY(2deg); }
+  to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
+}
+@keyframes heroSubFade {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroScrollAppear {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-img {
+  animation: heroImgReveal 2.2s cubic-bezier(.4,0,.15,1) both;
+}
+.hero-eyebrow {
+  animation: heroFadeSlide .75s .55s cubic-bezier(.4,0,.2,1) both;
+}
+.hero-name {
+  animation: heroNameReveal 1.1s .65s cubic-bezier(.22,1,.36,1) both;
+}
+.hero-sub {
+  animation: heroSubFade .75s 1.1s cubic-bezier(.4,0,.2,1) both;
+}
+.hero-scroll {
+  animation: heroScrollAppear .6s 1.5s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* ─── Eyebrow label ─────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+/* ─── Home teasers grid ─────────────────────────────────────────────────────── */
+.home-teasers {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 88px 48px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 80px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+/* Konzerte teaser */
+.home-concert-list {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.hc-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  align-items: baseline;
+  transition: padding-left .3s ease;
+}
+.hc-item:first-child { border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
+.hc-item:hover { padding-left: 10px; }
+.hc-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.hc-date small {
+  display: block;
+  color: var(--muted);
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.hc-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+.hc-location {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* About teaser */
+.teaser-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+.home-pullquote {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(26px, 2.8vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+  max-width: 28ch;
+  text-wrap: pretty;
+  margin-bottom: 32px;
+}
+.home-pullquote em { font-style: italic; color: var(--accent); }
+
+/* Teaser CTA link */
+.teaser-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  padding: 10px 18px;
+  transition: color .25s ease, border-color .25s ease, background .25s ease;
+  align-self: flex-start;
+}
+.teaser-cta:hover {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.teaser-cta svg { transition: transform .3s ease; }
+.teaser-cta:hover svg { transform: translateX(5px); }
+
+.home-bio-lang {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.home-bio-lang a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  transition: color .2s ease, border-color .2s ease;
+}
+.home-bio-lang a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+body.dark .home-bio-lang a:hover {
+  color: var(--paper);
+  border-bottom-color: var(--paper);
+}
+
+/* ─── Featured Projects ─────────────────────────────────────────────────────── */
+.home-projects-section {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 100px;
+}
+.home-projects-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin-bottom: 48px;
+}
+.home-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+/* Project card (from Projekte.html) */
+.proj-card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  min-width: 0;
+}
+.proj-card .card-index {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+.proj-card .card-index .card-role {
+  text-align: right;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.proj-card .image-wrap {
+  margin-top: 14px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1a1816;
+  position: relative;
+}
+.proj-card .image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position:  center;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 1.2s cubic-bezier(.2,.7,.1,1), filter .6s ease;
+  transform-origin: center;
+}
+
+/* Per-card crop tweak: DUO KlAkk! */
+.proj-card[href="projekte/duoklakk.html"] .image-wrap img {
+  object-position: 35% center;
+}
+.proj-card:hover .image-wrap img {
+  transform: scale(1.04);
+  filter: grayscale(1) contrast(1.12) brightness(1.02);
+}
+.proj-card .image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,0.55) 100%);
+  pointer-events: none;
+}
+.proj-card .card-meta {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 24px;
+  align-items: baseline;
+}
+.proj-card h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -0.005em;
+}
+.proj-card .card-role-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.proj-card p.subtitle {
+  grid-column: 1 / -1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  max-width: 38ch;
+  text-wrap: pretty;
+  margin-bottom: 4px;
+}
+.proj-card .arrow {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.proj-card .arrow svg { transition: transform .35s ease; }
+.proj-card:hover .arrow svg { transform: translateX(6px); }
+
+/* ─── Footer (extracted from Projekte.html) ─────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.site-footer .center { text-align: center; }
+.site-footer .right  { text-align: right; }
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .home-teasers { grid-template-columns: 1fr; gap: 64px; }
+  .home-projects-section { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
+  .home-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3.5vw, 40px);
+  }
+  /* Three cards in two columns: keep third card same width as a column, centered */
+  .home-projects-grid .proj-card:nth-child(3) {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: calc((100% - clamp(24px, 3.5vw, 40px)) / 2);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+
+  .hero-content { left: 24px; right: 24px; bottom: 48px; }
+  /* Show hero scroll hint on mobile */
+  .hero-scroll {
+    display: flex;
+    left: 24px;
+    bottom: 18px;
+    transform: none;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    color: rgba(244,241,236,0.5);
+  }
+  .hero-scroll::before { height: 42px; }
+
+  .home-teasers { padding: 56px 24px 56px; }
+  .hc-item { grid-template-columns: 100px 1fr; gap: 16px; }
+
+  .home-projects-section { padding: 56px 24px 80px; }
+  .home-projects-grid { grid-template-columns: 1fr; }
+  .home-projects-grid .proj-card:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+    width: auto;
+    justify-self: stretch;
+  }
+
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+body.dark .site-header.scrolled {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+/* scrolled header text in dark mode */
+body.dark .site-header.scrolled .wordmark { color: var(--paper); }
+body.dark .site-header.scrolled .wordmark small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .site-header.scrolled nav.primary a { color: color-mix(in srgb, var(--paper) 55%, transparent); }
+body.dark .site-header.scrolled nav.primary a.active { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a:hover { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a.active::after { background: var(--accent); }
+/* content text in dark mode */
+body.dark .home-teasers { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .hc-item { border-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .home-pullquote { color: color-mix(in srgb, var(--paper) 85%, transparent); }
+body.dark .teaser-cta { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 30%, transparent); }
+body.dark .teaser-cta:hover { color: var(--ink); background: var(--paper); }
+body.dark .proj-card p.subtitle { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+body.dark .proj-card .card-index { border-bottom-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+
+/* ── Mobile nav toggle ─────────────────────────────── */
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: none; border: none; cursor: pointer; color: inherit;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  flex-shrink: 0;
+  align-self: center;
+  line-height: 0;
+  z-index: 10001;
+  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  opacity: 0.92;
+}
+.nav-toggle svg { display: block; }
+.nav-toggle:hover {
+  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.nav-toggle:active { transform: translateY(0); }
+.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body.dark .nav-toggle {
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+}
+body.dark .nav-toggle:hover {
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 26%, transparent);
+}
+@media (max-width: 720px) {
+  .header-inner { grid-template-columns: 1fr auto auto; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  nav.primary.open {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    padding-top: max(24px, env(safe-area-inset-top));
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-left: 24px;
+    padding-right: 24px;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3.6vh, 26px);
+    z-index: 10000;
+    overflow: hidden;
+  }
+  body.dark nav.primary.open { background: color-mix(in srgb, var(--ink) 92%, transparent); }
+  nav.primary.open a {
+    font-family: var(--mono);
+    font-size: clamp(14px, 2.4vh, 18px);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 8px 0;
+    display: inline-block;
+    position: relative;
+    transition: color .2s ease, transform .2s ease;
+  }
+  nav.primary.open a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  body.dark nav.primary.open a { color: var(--paper); }
+  nav.primary.open a.active,
+  nav.primary.open a:hover { color: var(--accent); }
+  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.55; }
+  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.65; }
+  @media (hover: hover) {
+    nav.primary.open a:hover { transform: translateY(-2px); }
+    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.55; }
+  }
+
+  body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
+  body.nav-open .wordmark,
+  body.nav-open .theme-toggle { visibility: hidden; pointer-events: none; }
+  body.nav-open .nav-toggle {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+  }
+  body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
+  body.dark.nav-open nav.primary.open { background: var(--ink); }
+}
+
+@media (max-width: 720px) and (max-height: 560px) {
+  nav.primary.open { gap: 14px; }
+  nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
+  
+}
+</style>
+</head>
+<body>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">
+      HARALD<span class="dot"></span>OELER
+      <small>· accordionist &amp; composer</small>
+    </a>
+    <nav class="primary">
+      <a href="bio.html">bio</a>
+      <a href="projekte.html">projekte</a>
+      <a href="termine.html" >termine</a>
+      <a href="news.html">news</a>
+      <a href="unterricht.html">unterricht</a>
+      <a href="medien.html">medien</a>
+      <a href="kontakt.html" >kontakt</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
+</button>
+  </div>
+</header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero-img" src="image/hero.webp" alt="Harald Oeler — accordionist">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Akkordeon · Komposition · Arrangement</p>
+        <h1 class="hero-name">Harald<br>Oeler</h1>
+        <p class="hero-sub">Accordionist &amp; Composer</p>
+      </div>
+      <button type="button" class="hero-scroll" id="hero-scroll-cta" aria-controls="kommende-konzerte" aria-label="Zu den kommenden Konzerten scrollen">
+        scroll
+        <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <path d="M4 7l6 6 6-6"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- Upcoming Concerts + Bio teasers -->
+    <section class="home-teasers">
+
+      <!-- Left: Kommende Konzerte -->
+      <div class="teaser-konzerte" id="kommende-konzerte">
+        <p class="eyebrow">Kommende Konzerte</p>
+        <!--
+          Maintenance (no CMS): Keep this short list aligned with the next upcoming dates on termine.html.
+          Remove past concerts here when you refresh the homepage, or duplicate the next entries from Termine.
+        -->
+        <ul class="home-concert-list">
+
+          <li class="hc-item">
+            <div class="hc-date">
+              07.05.2026
+              <small>Do · 19:30 Uhr</small>
+            </div>
+            <div>
+              <div class="hc-title">Duo ViA! – „Four Seasons – One World"</div>
+              <div class="hc-location">Mozartareal, Würzburg</div>
+            </div>
+          </li>
+
+          <li class="hc-item">
+            <div class="hc-date">
+              09.05.2026
+              <small>Sa · 13:00 Uhr</small>
+            </div>
+            <div>
+              <div class="hc-title">Duo ViA! – „Four Seasons – One World"</div>
+              <div class="hc-location">Mühlenforum Glattbach</div>
+            </div>
+          </li>
+
+          <li class="hc-item">
+            <div class="hc-date">
+              13.05.2026
+              <small>Mi · 19:30 Uhr</small>
+            </div>
+            <div>
+              <div class="hc-title">Duo ViA! – 4. Meisterkonzert</div>
+              <div class="hc-location">Teo Otto Theater, Remscheid</div>
+            </div>
+          </li>
+
+        </ul>
+        <a class="teaser-cta" href="termine.html">
+          Alle Termine
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: Bio pullquote -->
+      <div class="teaser-about">
+        <p class="eyebrow">Über Harald Oeler</p>
+        <p class="home-pullquote">
+          Preisträger des <em>Internationalen Akkordeonwettbewerbs Klingenthal</em> —
+          Solist, Kammermusiker und Komponist zwischen Klassik, Jazz und Weltmusik.
+        </p>
+        <a class="teaser-cta" href="bio.html">
+          Biographie
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+        </a>
+        <p class="home-bio-lang" lang="en"><a href="bio-en.html">Biography in English</a></p>
+      </div>
+
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="home-projects-section">
+      <div class="home-projects-header">
+        <p class="eyebrow" style="margin-bottom:0">Aktuelle Projekte</p>
+        <a class="teaser-cta" href="projekte.html">
+          Alle Projekte
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+        </a>
+      </div>
+
+      <div class="home-projects-grid">
+
+        <!-- DUO KlAkk! -->
+        <a class="proj-card" href="projekte/duoklakk.html">
+          <div class="card-index">
+            <span>01</span>
+            <span class="card-role">Duo · Kammermusik</span>
+          </div>
+          <div class="image-wrap">
+            <img src="projekte/image/page/duoklakk.webp" alt="DUO KlAkk!" loading="lazy">
+          </div>
+          <div class="card-meta">
+            <h2>Duo KlAkk!</h2>
+            <span class="card-role-tag">Klarinette &amp; Akkordeon</span>
+            <p class="subtitle">Ji Eun Kim &amp; Harald Oeler — zwischen Bach und Neuem</p>
+          </div>
+          <div class="arrow">
+            mehr
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+          </div>
+        </a>
+
+        <!-- Duo ViA! -->
+        <a class="proj-card" href="projekte/duovia.html">
+          <div class="card-index">
+            <span>02</span>
+            <span class="card-role">Duo · Kammermusik</span>
+          </div>
+          <div class="image-wrap">
+            <img src="projekte/image/page/duovia.webp" alt="Duo ViA!" loading="lazy">
+          </div>
+          <div class="card-meta">
+            <h2>Duo ViA!</h2>
+            <span class="card-role-tag">Violine &amp; Akkordeon</span>
+            <p class="subtitle">Sinn Yang &amp; Harald Oeler — Musik aus allen Kulturen</p>
+          </div>
+          <div class="arrow">
+            mehr
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+          </div>
+        </a>
+
+        <!-- FUSSISSIMO -->
+        <a class="proj-card" href="projekte/fussissimo.html">
+          <div class="card-index">
+            <span>03</span>
+            <span class="card-role">Ensemble · Jazz &amp; World</span>
+          </div>
+          <div class="image-wrap">
+            <img src="projekte/image/page/fussissimo.webp" alt="FUSSISSIMO" loading="lazy">
+          </div>
+          <div class="card-meta">
+            <h2>FUSSISSIMO</h2>
+            <span class="card-role-tag">Gypsy · Ethno · Jazz</span>
+            <p class="subtitle">Energie, Virtuosität und die Freiheit der Improvisation</p>
+          </div>
+          <div class="arrow">
+            mehr
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (extracted from Projekte.html) -->
+  <footer class="site-footer">
+    <div class="left">© Harald Oeler · 2026</div>
+    <div class="center"></div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  <script>
+    // Hero "scroll" CTA → smooth scroll to Kommende Konzerte (respect reduced motion)
+    (function(){
+      var btn = document.getElementById('hero-scroll-cta');
+      var target = document.getElementById('kommende-konzerte');
+      if (!btn || !target) return;
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+    })();
+  </script>
+
+  <script>
+    // Header scroll: transparent over hero, opaque when scrolled
+    const header = document.querySelector('.site-header');
+    function onScroll() {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+
+  <script>
+  (function(){
+    var btn = document.getElementById('theme-toggle');
+    function syncPressed(){
+      var dark = document.body.classList.contains('dark');
+      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      btn.setAttribute('aria-label', dark ? 'Zu Hellmodus wechseln' : 'Zu Dunkelmodus wechseln');
+    }
+    syncPressed();
+    btn.addEventListener('click', function(){
+      var d = document.body.classList.toggle('dark');
+      localStorage.setItem('ho-theme', d ? 'dark' : 'light');
+      syncPressed();
+    });
+  })();
+  </script>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),n=document.querySelector('nav.primary');
+  if(!t||!n)return;
+  var OPEN='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
+  var CLOSED='<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
+
+  function getFocusable(){
+    return Array.from(n.querySelectorAll('a[href],button:not([disabled])'));
+  }
+
+  function open(){
+    n.classList.add('open');
+    t.setAttribute('aria-expanded','true');
+    t.setAttribute('aria-label','Menü schließen');
+    document.body.classList.add('nav-open');
+    document.body.style.overflow='hidden';
+    t.innerHTML=OPEN;
+    var first=getFocusable()[0];
+    if(first) setTimeout(function(){ first.focus(); }, 50);
+  }
+
+  function close(){
+    n.classList.remove('open');
+    t.setAttribute('aria-expanded','false');
+    t.setAttribute('aria-label','Menü öffnen');
+    document.body.classList.remove('nav-open');
+    document.body.style.overflow='';
+    t.innerHTML=CLOSED;
+    t.focus();
+  }
+
+  t.addEventListener('click',function(){
+    n.classList.contains('open') ? close() : open();
+  });
+
+  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+
+  document.addEventListener('keydown',function(e){
+    if(!n.classList.contains('open')) return;
+    if(e.key==='Escape'){ close(); return; }
+    if(e.key!=='Tab') return;
+    var items=getFocusable();
+    if(!items.length) return;
+    var first=items[0], last=items[items.length-1];
+    if(e.shiftKey){
+      if(document.activeElement===first){ e.preventDefault(); last.focus(); }
+    } else {
+      if(document.activeElement===last){ e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+</script>
+
+  <!-- Scroll to top button -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben" tabindex="-1">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+  </button>
+  <style>
+    .scroll-top{
+      position:fixed; right:18px; bottom:18px; z-index:9999;
+      width:44px; height:44px; border-radius:999px;
+      display:grid; place-items:center;
+      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
+      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
+      color:var(--ink, #0e0d0c);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      backdrop-filter: blur(12px) saturate(140%);
+      box-shadow:0 10px 28px rgba(0,0,0,.14);
+      cursor:pointer;
+      opacity:0; transform:translateY(8px); pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    body.dark .scroll-top{
+      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
+      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
+      color: var(--paper, #f4f1ec);
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    }
+    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
+    .scroll-top:hover{
+      opacity:1; transform:translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
+    }
+    .scroll-top:focus-visible{
+      outline:2px solid var(--accent, #6b1d1a);
+      outline-offset:3px;
+      opacity:1;
+      pointer-events:auto;
+    }
+    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
+  </style>
+  <script>
+    (function(){
+      var btn = document.getElementById('scrollTopBtn');
+      if (!btn) return;
+      var showAt = 500;
+      function sync(){
+        var visible = window.scrollY > showAt;
+        btn.classList.toggle('is-visible', visible);
+        btn.tabIndex = visible ? 0 : -1;
+      }
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+:root {
+    --main-color: rgb(232,0,0);
+    --secondary-color: white;
+    --whitesmoke:whitesmoke;
+  }
+
+@media only  screen and (min-width:320px)and (max-width: 991px) {
+    .text-column,
+	.projectbox,
+    #termine .upcoming_list,
+    .newsinfo {
+		font-size: 20px;
+	}
+    #toggle {
+        display: none;
+      }
+    #header .brand h1 {
+        display: none;
+    }
+    #header .logo {
+        display: block;
+        font-weight: bold;
+        font-size: 40px;
+        position: fixed;
+        top: 0.2em;
+        color: var(--whitesmoke);
+    }
+    #header .header {
+        max-height: auto;
+        align-items: flex-start;
+        background-color: transparent;
+    }
+    
+    #header .nav-list .horizontal .noshown {
+        display: block;
+    }
+    #header .nav-list .vertical {
+        display: none;
+    }
+    #header .nav-list .horizontal li {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+     /**
+    Hamburger
+    **/
+    .hamburger {
+    position: absolute;
+    top: 3em;
+    right: 10px;
+    margin-left:0px;
+    margin-top: -45px;
+    z-index: 5;
+    cursor: pointer;
+    }
+    
+    .hamburger div {
+    position: relative;
+    width: 2em;
+    height: 7px;
+    border-radius: 3px;
+    margin-top: 8px;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--whitesmoke);
+    }
+    
+    /**
+    Nav Styles
+    **/
+    .nav-bar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    top: -100%; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0);
+    }
+    .nav-list {
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    }
+    .horizontal {
+    text-align: left;
+    margin-left: 25%;
+    }
+    .horizontal a {
+    position: relative;
+    display: inline-block;
+    text-align: left; /* 지그재그 모양 */
+    margin-top: 1.25em;
+    transition: color 0.2s ease-in-out;
+    color: var(--whitesmoke);
+}
+    .horizontal a:before {
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 0.25em;
+    background-color: var(--whitesmoke);
+    left: -0.5em;
+    transition: all 0.2s ease-in-out;
+    }
+    .horizontal a:hover {
+    color: white;
+    }
+    .horizontal a:hover:before {
+    height: 100%;
+    }
+    
+    /**
+    Animations
+    **/
+    #toggle:checked + .hamburger .top-bun {
+    transform: rotate(-45deg);
+    margin-top: 25px;
+    }
+    #toggle:checked + .hamburger .bottom-bun {
+    opacity: 0;
+    transform: rotate(45deg);
+    }
+    #toggle:checked + .hamburger .meat {
+    transform: rotate(45deg);
+    margin-top: -7px;
+    }
+    
+    #toggle:checked + .hamburger + .nav-bar {
+    top: 0;
+    transform: scale(1);
+    }
+}
+

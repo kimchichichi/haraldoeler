@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keyword" content="accordion, akkordeon, harald oeler, news, presse, aktuell">
+  <meta name="description" content="News and events from accordionist Harald Oeler — concerts, tours, solo programmes and more.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="HARALD OELER | news">
+  <meta property="og:image" content="https://www.haraldoeler.com/image/1.webp">
+  <meta property="og:url" content="https://www.haraldoeler.com/news">
+  <meta property="og:type" content="website">
+  <title>HARALD OELER — news</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Extracted from Projekte.html -->
+  <style>
+:root {
+  --ink:         #0e0d0c;
+  --paper:       #f4f1ec;
+  --paper-2:     #ebe6dd;
+  --muted:       #6b655c;
+  --accent:      #6b1d1a;
+  --accent-soft: #8a2a26;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:  'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── Header (extracted from Projekte.html) ──────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  backdrop-filter: saturate(140%);
+}
+.header-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 22px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 48px;
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 10px 2px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+nav.primary {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+nav.primary a {
+  color: var(--muted);
+  position: relative;
+  padding: 4px 0;
+  transition: color .25s ease;
+}
+nav.primary a.active { color: var(--ink); }
+nav.primary a:hover  { color: var(--ink); }
+nav.primary a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ─── Page head (extracted from Projekte.html) ───────────────────────────── */
+.page-head {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 80px 48px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 64px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.page-head > div:first-child { min-width: 0; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.page-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(64px, 10vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.page-title em { font-style: italic; color: var(--accent); }
+.page-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.page-meta b { color: var(--ink); font-weight: 500; }
+
+/* ─── News grid (card style from Projekte.html) ──────────────────────────── */
+.news-wrap {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 56px 48px 120px;
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 56px;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  width: fit-content;
+}
+.filter-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 7px 20px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  border-right: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.filter-btn:last-child { border-right: none; }
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.filter-btn:not(.active):hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+
+/* Card grid */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px 40px;
+}
+
+/* Card (extracted from Projekte.html) */
+.card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.card.hidden { display: none; }
+
+.card .index {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+.card .index .cat {
+  text-align: right;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.card .image-wrap {
+  margin-top: 14px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1a1816;
+  position: relative;
+}
+.card .image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  transition: transform 1.2s cubic-bezier(.2,.7,.1,1), filter .6s ease;
+  transform-origin: center;
+}
+.card:hover .image-wrap img {
+  transform: scale(1.04);
+  filter: grayscale(0.4) contrast(1.02);
+}
+.card .image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,0.55) 100%);
+  pointer-events: none;
+}
+
+/* Placeholder for cards without images */
+.card .image-wrap.no-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card .image-wrap.no-img::before {
+  content: attr(data-icon);
+  font-size: 48px;
+  opacity: 0.18;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+.card .meta {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 24px;
+  align-items: baseline;
+}
+.card h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+}
+.card h2 em { font-style: italic; }
+.card .role {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.card p.subtitle {
+  grid-column: 1 / -1;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  max-width: 38ch;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.card .arrow {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: gap .25s ease;
+}
+.card:hover .arrow { gap: 18px; }
+.card .arrow::after {
+  content: "→";
+  font-size: 14px;
+}
+
+/* ─── Footer (extracted from Projekte.html) ──────────────────────────────── */
+.site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  padding: 32px 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.site-footer .center { text-align: center; }
+.site-footer .right  { text-align: right; }
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none; }
+  .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
+  .page-meta { text-align: left; margin-top: 16px; }
+  .news-wrap { padding: 40px 24px 80px; }
+  .news-grid { grid-template-columns: 1fr; gap: 40px; }
+  .card .image-wrap { aspect-ratio: 3 / 2; }
+  .filter-bar { width: 100%; flex-wrap: wrap; }
+  .filter-btn { flex: 1 1 auto; text-align: center; border-right: none; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+  
+/* ── Theme toggle ──────────────────────────────────── */
+.header-inner { grid-template-columns: 1fr auto auto; }
+.theme-toggle {
+  background: none; border: none; cursor: pointer; color: inherit;
+  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
+  align-self: center; transition: opacity .2s;
+}
+.theme-toggle:hover { opacity: 1; }
+/* ── Dark mode transition ─────────────────────────── */
+body,
+.site-header,
+.site-footer,
+.projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: inline; }
+/* ── Dark mode base ────────────────────────────────── */
+body.dark { background: var(--ink); color: var(--paper); }
+body.dark .site-header {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent);
+}
+body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .site-header.scrolled .wordmark { color: var(--paper); }
+body.dark .site-header.scrolled .wordmark small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
+body.dark .site-header.scrolled nav.primary a.active { color: var(--paper); }
+body.dark .site-header.scrolled nav.primary a:hover { color: var(--paper); }
+body.dark nav.primary a.active { color: var(--paper); }
+body.dark nav.primary a:hover  { color: var(--paper); }
+body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+body.dark .page-meta b { color: var(--paper); }
+body.dark .filter-bar { border-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .filter-btn { border-right-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .filter-btn.active { background: color-mix(in srgb, var(--paper) 15%, transparent); color: var(--paper); }
+body.dark .filter-btn:not(.active):hover { background: color-mix(in srgb, var(--paper) 8%, transparent); color: var(--paper); }
+body.dark .card .index { border-bottom-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+body.dark .card p.subtitle { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+
+
+/* ── Mobile nav toggle ─────────────────────────────── */
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  flex-shrink: 0;
+  align-self: center;
+  line-height: 0;
+  z-index: 10001;
+  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  opacity: 0.92;
+}
+.nav-toggle svg { display: block; }
+.nav-toggle:hover {
+  background: var(--paper-2);
+  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.nav-toggle:active { transform: translateY(0); }
+.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+body.dark .nav-toggle {
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+}
+body.dark .nav-toggle:hover {
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 26%, transparent);
+}
+@media (max-width: 720px) {
+  .header-inner { grid-template-columns: 1fr auto auto; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  nav.primary.open {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    padding-top: max(24px, env(safe-area-inset-top));
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-left: 24px;
+    padding-right: 24px;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3.6vh, 26px);
+    z-index: 10000;
+    overflow: hidden;
+  }
+  body.dark nav.primary.open { background: color-mix(in srgb, var(--ink) 92%, transparent); }
+  nav.primary.open a {
+    font-family: var(--mono);
+    font-size: clamp(14px, 2.4vh, 18px);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 8px 0;
+    display: inline-block;
+    position: relative;
+    transition: color .2s ease, transform .2s ease;
+  }
+  nav.primary.open a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  body.dark nav.primary.open a { color: var(--paper); }
+  nav.primary.open a.active,
+  nav.primary.open a:hover { color: var(--accent); }
+  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.55; }
+  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.65; }
+  @media (hover: hover) {
+    nav.primary.open a:hover { transform: translateY(-2px); }
+    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.55; }
+  }
+
+  body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
+  body.nav-open .wordmark,
+  body.nav-open .theme-toggle { visibility: hidden; pointer-events: none; }
+  body.nav-open .nav-toggle {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+  }
+  body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
+  body.dark.nav-open nav.primary.open { background: var(--ink); }
+  body.nav-open { overscroll-behavior: none; }
+  body.nav-open nav.primary.open { overscroll-behavior: none; touch-action: none; }
+}
+
+@media (max-width: 720px) and (max-height: 560px) {
+  nav.primary.open { gap: 14px; }
+  nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
+}
+</style>
+</head>
+
+<body>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href="index.html">
+      HARALD<span class="dot"></span>OELER
+      <small>· accordionist &amp; composer</small>
+    </a>
+    <nav class="primary">
+      <a href="bio.html">bio</a>
+      <a href="projekte.html">projekte</a>
+      <a href="termine.html">termine</a>
+      <a href="news.html" class="active">news</a>
+      <a href="unterricht.html">unterricht</a>
+      <a href="medien.html">medien</a>
+      <a href="kontakt.html">kontakt</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+  <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
+</button>
+  </div>
+</header>
+
+
+  <!-- ═══ PAGE HEAD ════════════════════════════════════════════════════════ -->
+  <section class="page-head">
+    <div>
+      <div class="eyebrow">— Aktuelles</div>
+      <h1 class="page-title"><em>news</em></h1>
+    </div>
+    <div class="page-meta">
+      <div>konzerte &amp; programme</div>
+      <div>Hof · <b>Germany</b></div>
+    </div>
+  </section>
+
+  <!-- ═══ PAGE CONTENT HERE ════════════════════════════════════════════════ -->
+  <main class="news-wrap">
+
+    <div class="filter-bar" role="group" aria-label="Kategorie filtern">
+      <button class="filter-btn active" data-filter="all">Alle</button>
+      <button class="filter-btn" data-filter="konzert">Konzert</button>
+      <button class="filter-btn" data-filter="solo">Solo</button>
+      <button class="filter-btn" data-filter="unterricht">Unterricht</button>
+      <button class="filter-btn" data-filter="media">Media</button>
+    </div>
+
+    <div class="news-grid">
+      <!-- neu website 2 -->
+      <a class="card" href="news/website2.html" data-cat="media">
+        <div class="index">
+          <span>2026</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/website2.webp" alt="website2" loading="eager" fetchpriority="high">
+        </div>
+        <div class="meta">
+          <h2><em>NEU</em> — Website II</h2>
+          <span class="role">Media</span>
+          <p class="subtitle">Version II</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <a class="card" href="news/duovia_1.html" data-cat="konzert">
+        <div class="index">
+          <span>2026</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/zontaclub.webp" alt="Duo viA 2026" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Duo | <em>Neues Programm</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.</p>
+
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 1 · SOLO | REMEMBERING BACH! — TKVL 2025 -->
+      <a class="card" href="news/tkvlsolo.html" data-cat="solo">
+        <div class="index">
+          <span>2025</span>
+          <span class="cat">Solo</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/tkvlsolo.webp" alt="TKVL Konzerte 2025" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Solo | <em>Remembering Bach!</em></h2>
+          <span class="role">Solo</span>
+          <p class="subtitle">TKVL Konzerte 2025</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+            <!-- 4 · Tour | Duo Klakk! — Gemmirgheim, Würzburg… -->
+      <a class="card" href="news/duoklakk_2.html" data-cat="konzert">
+        <div class="index">
+          <span>2025</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/duoklakk2.webp" alt="Duo Klakk! Tour" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Tour | <em>Duo Klakk! · 2025</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Gemmrigheim · Würzburg · Straubing · Hallerstein · Eibelstadt · Aschaffenburg· Kirchheim am Necker</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 2 · DUO ViA! | RESIDENZ WÜRZBURG — Zonta Club -->
+      <a class="card" href="news/zontaclub.html" data-cat="konzert">
+        <div class="index">
+          <span>Mai 2024</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/zontaclub.webp" alt="Zonta Club Würzburg" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Duo ViA! | <em>Residenz Würzburg</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Jubiläumskonzert 40 Jahre ZONTA CLUB WÜRZBURG — Vivaldi meets Piazzolla „Acht Jahreszeiten"</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 3 · Tour mit Joscho Stephan — Jan 2024 -->
+      <a class="card" href="news/joschostephan.html" data-cat="konzert">
+        <div class="index">
+          <span>Jan 2024</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/joschostephan.webp" alt="Joscho Stephan Tour" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2><em>Tour</em> mit Joscho Stephan</h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">Hot Swing Jazz in Hof, Nagold und Gemmrigheim — 26.–28.01.2024</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+
+      <!-- 5 · Tour | Duo Klakk! — Bad Reichenhall, Hof, Bayreuth -->
+      <a class="card" href="news/duoklakk_1.html" data-cat="konzert">
+        <div class="index">
+          <span>2024</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/duoklakk1.webp" alt="Duo Klakk! Bad Reichenhall" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Tour | <em>Duo Klakk!· 2024</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Bad Reichenhall · Hof · Bayreuth</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- 6 · SOLO — Soloprogramm "Remembering" -->
+      
+      <a class="card" href="news/solo.html" data-cat="solo">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Solo</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/remembering1.webp" alt="Remembering Solo" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Solo — <em>Remembering</em></h2>
+          <span class="role">Solo</span>
+          <p class="subtitle">Eigenkomponiertes Soloprogramm: Paris · Tokio · Bach · Piazzolla</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 7 · ORCHESTERWERK — Galliano Opale Concerto -->
+      <a class="card" href="news/kinderkonzert.html" data-cat="konzert">
+        <div class="index">
+          <span>Okt 2023</span>
+          <span class="cat">Orchester</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/kinderkonzert.webp" alt="Opale Concerto" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Kinderkonzert — Orchesterwerk</h2>
+          <span class="role">Konzert</span>
+          <p class="subtitle">Richard Galliano — „Opale Concerto" für Akkordeon und Streichorchester</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 8 · Tour mit Fussissimo — Okt 2023 -->
+      <a class="card" href="news/fussissimo_1.html" data-cat="konzert">
+        <div class="index">
+          <span>Okt 2023</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/fussissimo1.webp" alt="Trio Fussissimo" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2><em>Tour</em> mit Fussissimo</h2>
+          <span class="role">Trio</span>
+          <p class="subtitle">Gypsy-Ethno-Jazz — Darstadt · Hof · Schweinfurt</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 9 · DUO | Akkordeon & Cello — Ivan Turkalj -->
+      <a class="card" href="news/siebold.html" data-cat="konzert">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/siebold/1.webp" alt="Siebold" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Duo | <em>Akkordeon &amp; Cello</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Konzert mit Ivan Turkalj — „Remembering"</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+
+      <!-- 10 · SOLO | "REMEMBERING" — Video-Serie -->
+      <a class="card" href="news/remembering.html" data-cat="solo">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Solo</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/remembering2.webp" alt="Remembering Series" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Solo | <em>Remembering</em> — Videos</h2>
+          <span class="role">Solo</span>
+          <p class="subtitle">„Remembering Bach" &amp; „Remembering Piazzolla" — Video-Aufnahmen</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 11 · SOLO — Soloabend Gemmrigheim -->
+      <a class="card" href="news/solo_gemmirgheim.html" data-cat="solo">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Solo</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/solo_gemmirgheim.webp" alt="Soloabend Gemmrigheim" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Solo | <em>Gemmrigheim</em></h2>
+          <span class="role">Solo</span>
+          <p class="subtitle">Soloabend mit dem vollständigen „Remembering"-Programm</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 12 · Pittis's Podcast -->
+      <a class="card" href="news/podcast.html" data-cat="media">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/podcast.webp" alt="Pittis's Podcast" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2><em>Pittis's Podcast</em></h2>
+          <span class="role">Podcast</span>
+          <p class="subtitle">Akkordeonspecial — 40 Jahre und 200 Knöpfe. Mit Live-Musik!</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 13 · Musikalische Früherziehung -->
+      <a class="card" href="news/workshop.html" data-cat="unterricht">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Unterricht</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/workshop.webp" alt="Musikalische Früherziehung" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2>Musikalische <em>Früherziehung</em></h2>
+          <span class="role">Workshop</span>
+          <p class="subtitle">Workshops für Kinder in der Klangmanufaktur der Hofer Symphoniker</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- 14 · SynapsePlus — Vortrag -->
+      <a class="card" href="news/vortrag.html" data-cat="unterricht">
+        <div class="index">
+          <span>2023</span>
+          <span class="cat">Unterricht</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/vortrag.webp" alt="SynapsePlus Vortrag" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2><em>SynapsePlus</em> — mehr als nur 5 Töne!</h2>
+          <span class="role">Vortrag</span>
+          <p class="subtitle">Neurologische Grundlagen und musikalische Beweglichkeit im Anfängerunterricht</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+     <!-- 15 · neu website -->
+      <a class="card" href="news/website1.html" data-cat="media">
+        <div class="index">
+          <span>2022</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/main/website1.webp" alt="website1" loading="lazy">
+        </div>
+        <div class="meta">
+          <h2><em>NEU</em> — Website</h2>
+          <span class="role">Media</span>
+          <p class="subtitle">Version I</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+    </div><!-- /.news-grid -->
+  </main>
+  <!-- ═══ END PAGE CONTENT ═════════════════════════════════════════════════ -->
+
+  <!-- ═══ FOOTER (extracted from Projekte.html) ════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="left">© Harald Oeler · 2026</div>
+    <div class="center"></div>
+    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+  </footer>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards      = document.querySelectorAll('.card');
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+
+        const filter = this.dataset.filter;
+        cards.forEach(function (card) {
+          if (filter === 'all' || card.dataset.cat === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+  document.getElementById('theme-toggle').addEventListener('click',function(){
+    var d=document.body.classList.toggle('dark');
+    localStorage.setItem('ho-theme',d?'dark':'light');
+  });
+  </script>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),n=document.querySelector('nav.primary');
+  if(!t||!n)return;
+  var OPEN='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
+  var CLOSED='<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
+  function close(){n.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');document.body.style.overflow='';t.innerHTML=CLOSED;}
+  t.addEventListener('click',function(){
+    var o=n.classList.toggle('open');
+    t.setAttribute('aria-expanded',o);
+    document.body.classList.toggle('nav-open', o);
+    document.body.style.overflow=o?'hidden':'';
+    t.innerHTML=o?OPEN:CLOSED;
+  });
+  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+  <!-- Scroll to top button -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+  </button>
+  <style>
+    .scroll-top{
+      position:fixed; right:18px; bottom:18px; z-index:9999;
+      width:44px; height:44px; border-radius:999px;
+      display:grid; place-items:center;
+      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
+      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
+      color:var(--ink, #0e0d0c);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      backdrop-filter: blur(12px) saturate(140%);
+      box-shadow:0 10px 28px rgba(0,0,0,.14);
+      cursor:pointer;
+      opacity:0; transform:translateY(8px); pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    body.dark .scroll-top{
+      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
+      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
+      color: var(--paper, #f4f1ec);
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+    }
+    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
+    .scroll-top:hover{
+      opacity:1; transform:translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
+    }
+    .scroll-top:focus-visible{
+      outline:2px solid var(--accent, #6b1d1a);
+      outline-offset:3px;
+      opacity:1;
+      pointer-events:auto;
+    }
+    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
+  </style>
+  <script>
+    (function(){
+      var btn = document.getElementById('scrollTopBtn');
+      if (!btn) return;
+      var showAt = 500;
+      function sync(){
+        btn.classList.toggle('is-visible', window.scrollY > showAt);
+      }
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
+      btn.addEventListener('click', function(){
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

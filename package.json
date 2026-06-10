@@ -1,0 +1,16 @@
+{
+  "name": "harald-oeler-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:projekte": "node scripts/build-projekte.mjs"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.9"
+  }
+}
+

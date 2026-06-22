@@ -131,6 +131,11 @@ const DETAILS = {
       { kind: "youtube", id: "TsTN3AgrpbU", caption: "Made in France · live in der musik-butik" },
       { kind: "youtube", id: "05HxYd95Phw", caption: "Ani Suni · live in der musik-butik" },
     ],
+    termine: [
+      { date: "21. Juni 2026", time: "17:40 Uhr", title: "Umsonst & Draussen Festival", venue: "Draussen-Bühne", city: "Würzburg", note: "Freies Open-Air-Konzert" },
+      { date: "27. September 2026", time: "Uhrzeit folgt", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Huttenschloss", city: "Gemünden am Main", note: "" },
+      { date: "17. April 2027", time: "Uhrzeit folgt", title: "Fussissimo", venue: "Ort folgt", city: "", note: "" },
+    ],
   },
   duovia: {
     title: "Duo ViA!",
@@ -144,22 +149,38 @@ const DETAILS = {
       "The Duo made their debut in 2009 with the programme »Seasons« at the Heidelberg Spring Festival — a sold-out hall, Vivaldi's Quattro Stagioni in combination with Piazzolla's Cuatro Estaciones Porteñas.",
     ],
     repertoire: [
-      { num: "01", work: "Piazzolla – Primavera Porteño", note: " Frühling", dur: "05:24" },
-      { num: "02", work: "Vivaldi – L'Estate", note: " I. Allegro non molto", dur: "05:13" },
-      { num: "03", work: "Vivaldi – L'Estate", note: " II. Adagio", dur: "02:07" },
-      { num: "04", work: "Vivaldi – L'Estate", note: " III. Presto", dur: "02:54" },
-      { num: "05", work: "Piazzolla – Otoño Porteño", note: " Herbst", dur: "05:54" },
-      { num: "06", work: "Vivaldi – L'Inverno", note: " I. Allegro non molto", dur: "03:18" },
-      { num: "07", work: "Vivaldi – L'Inverno", note: " II. Largo", dur: "02:08" },
-      { num: "08", work: "Vivaldi – L'Inverno", note: " III. Allegro", dur: "03:33" },
-      { num: "09", work: "Vivaldi – La Primavera", note: " I. Allegro", dur: "03:21" },
-      { num: "10", work: "Vivaldi – La Primavera", note: " II. Largo", dur: "02:19" },
-      { num: "11", work: "Vivaldi – La Primavera", note: " III. Allegro", dur: "04:07" },
-      { num: "12", work: "Piazzolla – Verano Porteño", note: " Sommer", dur: "06:35" },
-      { num: "13", work: "Vivaldi – L'Autunno", note: " I. Allegro", dur: "05:34" },
-      { num: "14", work: "Vivaldi – L'Autunno", note: " II. Adagio molto", dur: "02:30" },
-      { num: "15", work: "Vivaldi – L'Autunno", note: " III. Allegro", dur: "03:07" },
-      { num: "16", work: "Piazzolla – Invierno Porteño", note: " Winter", dur: "07:11" },
+      { composer: "Piazzolla", work: "Primavera Porteña", season: "Frühling", tracks: [
+        { num: "01", dur: "05:24", spotifyId: "6jTPSqBO9hAmaJ053onuB0" },
+      ]},
+      { composer: "Vivaldi", work: "L'Estate", season: "Sommer", tracks: [
+        { num: "02", movement: "I. Allegro non molto", dur: "05:13", spotifyId: "1CKi98LJ9KFKykgLMD906o" },
+        { num: "03", movement: "II. Adagio", dur: "02:07", spotifyId: "7oSwDTIG3PtoGaN9U78DWB" },
+        { num: "04", movement: "III. Presto", dur: "02:54", spotifyId: "5pgzCPu8dlf6nVoU3mCdMn" },
+      ]},
+      { composer: "Piazzolla", work: "Otoño Porteño", season: "Herbst", tracks: [
+        { num: "05", dur: "05:54", spotifyId: "22sgmG0ZeED3A1UfzdxwFA" },
+      ]},
+      { composer: "Vivaldi", work: "L'Inverno", season: "Winter", tracks: [
+        { num: "06", movement: "I. Allegro non molto", dur: "03:18", spotifyId: "3upjT6qnIdWeDF1wjeYr3N" },
+        { num: "07", movement: "II. Largo", dur: "02:08", spotifyId: "2p3uK5ViWX8kBZT85NYlCj" },
+        { num: "08", movement: "III. Allegro", dur: "03:33", spotifyId: "5Sz9PbC57aigcfBwusTpES" },
+      ]},
+      { composer: "Vivaldi", work: "La Primavera", season: "Frühling", tracks: [
+        { num: "09", movement: "I. Allegro", dur: "03:21", spotifyId: "4mHOTaiMkbnISsGYEgPrYy" },
+        { num: "10", movement: "II. Largo", dur: "02:19", spotifyId: "0evX8OMy9qVKoaPCWyUZ12" },
+        { num: "11", movement: "III. Allegro", dur: "04:07", spotifyId: "7xKysomAax3mJFrMltzXLL" },
+      ]},
+      { composer: "Piazzolla", work: "Verano Porteño", season: "Sommer", tracks: [
+        { num: "12", dur: "06:35", spotifyId: "57mFS3ba9C4nITdRWzusXP" },
+      ]},
+      { composer: "Vivaldi", work: "L'Autunno", season: "Herbst", tracks: [
+        { num: "13", movement: "I. Allegro", dur: "05:34", spotifyId: "4P7S6wGMqo4jhCq2BhjKnU" },
+        { num: "14", movement: "II. Adagio molto", dur: "02:30", spotifyId: "26dlNnK1c1Dg70zC0UyMFP" },
+        { num: "15", movement: "III. Allegro", dur: "03:07", spotifyId: "1aDX0JP66bs6e8loJjDwHP" },
+      ]},
+      { composer: "Piazzolla", work: "Invierno Porteño", season: "Winter", tracks: [
+        { num: "16", dur: "07:11", spotifyId: "1DgQ33m7W556x2xZzhXYO5" },
+      ]},
     ],
     quotes: [
       { text: "Yang und Oeler spielen wie aufeinander eingeschworen — sie bilden nicht nur rhythmisch eine Einheit. Der Dauerbrenner von Vivaldi erscheint hier stellenweise wie unter dem Mikroskop.", cite: "NDR" },
@@ -190,6 +211,10 @@ const DETAILS = {
     ],
     quotes: [
       { text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
+    ],
+    termine: [
+      { date: "12. Mai 2026", time: "18:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
+      { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
     ],
     media: [
       { kind: "youtube", id: "4NPvdif9o6M", caption: "Duo KlAkk! goes BACH!" },

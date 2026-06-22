@@ -73,15 +73,53 @@ nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0
 .detail-body .body-copy { font-size: 16px; line-height: 1.65; max-width: 62ch; color: color-mix(in srgb, var(--ink) 80%, transparent); }
 .detail-body .body-copy p + p { margin-top: 1.1em; }
 
+/* ── Repertoire grouped playlist ───────────────────── */
 .repertoire { margin-top: 72px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
-.repertoire h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 24px 0 8px; }
-.repertoire ul { list-style: none; }
-.repertoire li { display: grid; grid-template-columns: 60px 1fr auto; gap: 32px; padding: 18px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); align-items: baseline; transition: padding-left .35s ease; }
-.repertoire li:hover { padding-left: 14px; }
-.repertoire li .num { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
-.repertoire li .work { font-family: var(--serif); font-size: 22px; letter-spacing: -0.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.repertoire li .work em { font-style: italic; color: var(--muted); font-size: 16px; margin-left: 10px; }
-.repertoire li .dur { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--muted); }
+.repertoire h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 24px 0 16px; }
+.rep-groups { display: flex; flex-direction: column; gap: 0; }
+
+/* Group container */
+.rep-group { border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
+
+/* Group header (composer + work title row) */
+.rep-group-header { display: grid; align-items: center; padding: 14px 0; gap: 0 20px; }
+.rep-group-header.single { grid-template-columns: 44px 1fr auto auto; cursor: pointer; transition: background .18s ease; border-radius: 4px; }
+.rep-group-header.single:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); }
+.rep-group-header.single.active { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.rep-group-header.single.active .rep-work,
+.rep-group-header.single.active .play-btn { color: var(--accent); }
+.rep-group-header.multi { grid-template-columns: 1fr auto; padding-left: 44px; padding-bottom: 6px; }
+
+/* Composer + work meta */
+.rep-meta { display: flex; flex-direction: column; gap: 2px; }
+.rep-composer { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.rep-work { font-family: var(--serif); font-size: 21px; letter-spacing: -0.01em; color: var(--ink); transition: color .18s ease; }
+.rep-season { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); text-align: right; }
+
+/* Play button */
+.play-btn { display: flex; align-items: center; justify-content: center; width: 44px; color: var(--muted); transition: color .18s ease; flex-shrink: 0; }
+.rep-group-header.single:hover .play-btn { color: var(--accent); }
+.rep-group-header.single.active .play-btn { color: var(--accent); }
+
+/* Duration */
+.dur { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); white-space: nowrap; }
+
+/* Movement sub-rows */
+.rep-movements { list-style: none; padding-bottom: 8px; }
+.rep-movements li { display: grid; grid-template-columns: 44px 36px 1fr auto; align-items: center; gap: 0 16px; padding: 7px 0; cursor: pointer; transition: background .15s ease; border-radius: 3px; }
+.rep-movements li:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); }
+.rep-movements li.active { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.rep-movements li.active .movement,
+.rep-movements li.active .play-btn { color: var(--accent); }
+.rep-movements li:hover .play-btn { color: var(--accent); }
+.track-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--muted); opacity: .7; }
+.movement { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink); letter-spacing: -0.01em; transition: color .15s ease; }
+
+/* Spotify embed */
+.spotify-preview { padding: 6px 0 10px 44px; animation: slideDown .22s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+/* embed inside movements: span all columns */
+.rep-movements li .spotify-preview { grid-column: 1 / -1; padding-left: 44px; }
 
 .rep-zone { cursor: none; } .rep-zone * { cursor: none; }
 .rep-cursor { position: fixed; pointer-events: none; z-index: 9000; transform: translate(-50%,-50%); opacity: 0; transition: opacity .18s ease; }
@@ -122,25 +160,15 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
   .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
   .site-footer .center, .site-footer .right { text-align: left; }
 
-  /* Repertoire: smaller + wrap so everything fits */
-  .repertoire li,
-  .repertoire-row-link { grid-template-columns: 44px 1fr; gap: 14px; }
-  .repertoire li { padding: 14px 0; }
-  .repertoire li:hover { padding-left: 0; }
-  .repertoire li .num { font-size: 10px; letter-spacing: 0.14em; }
-  .repertoire li .dur { display: none; }
-  .repertoire li .work {
-    font-size: 16px;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-    line-height: 1.2;
-    text-wrap: pretty;
-    hyphens: auto;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-  .repertoire li .work em { font-size: 13px; margin-left: 6px; }
+  /* Repertoire: mobile */
+  .rep-group-header.single { grid-template-columns: 36px 1fr auto; }
+  .rep-group-header.single .dur { display: none; }
+  .rep-group-header.multi { padding-left: 36px; }
+  .rep-movements li { grid-template-columns: 36px 28px 1fr; }
+  .rep-movements li .dur { display: none; }
+  .rep-work { font-size: 17px; }
+  .movement { font-size: 15px; }
+  .spotify-preview { padding-left: 36px; }
 }
   
 /* Very small screens: prevent wordmark overflow */
@@ -151,7 +179,7 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
 }
 
 /* ── Theme toggle ──────────────────────────────────── */
-.header-inner { grid-template-columns: 1fr auto auto; }
+.header-inner { grid-template-columns: 1fr auto; }
 .theme-toggle {
   background: none; border: none; cursor: pointer; color: inherit;
   padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
@@ -180,7 +208,13 @@ body.dark .projects-subnav-inner a.active { color: var(--paper); }
 body.dark .detail-body aside dd { color: var(--paper); }
 body.dark .detail-body .body-copy { color: color-mix(in srgb, var(--paper) 80%, transparent); }
 body.dark .repertoire { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
-body.dark .repertoire li { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .rep-group { border-bottom-color: color-mix(in srgb, var(--paper) 8%, transparent); }
+body.dark .rep-work { color: var(--paper); }
+body.dark .movement { color: var(--paper); }
+body.dark .rep-group-header.single:hover { background: color-mix(in srgb, var(--paper) 4%, transparent); }
+body.dark .rep-group-header.single.active { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+body.dark .rep-movements li:hover { background: color-mix(in srgb, var(--paper) 4%, transparent); }
+body.dark .rep-movements li.active { background: color-mix(in srgb, var(--accent) 12%, transparent); }
 body.dark .quotes { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .media { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .media-item .frame { border-color: color-mix(in srgb, var(--paper) 14%, transparent); }
@@ -221,8 +255,16 @@ body.dark .nav-toggle:hover {
   border-color: color-mix(in srgb, var(--paper) 26%, transparent);
 }
 @media (max-width: 720px) {
-  .header-inner { grid-template-columns: 1fr auto auto; }
-  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .header-inner { grid-template-columns: 1fr auto; }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: max(14px, env(safe-area-inset-top));
+    right: 18px;
+    z-index: 10002;
+  }
   nav.primary.open {
     display: flex !important;
     position: fixed;
@@ -243,25 +285,54 @@ body.dark .nav-toggle:hover {
     overflow: hidden;
   }
   body.dark nav.primary.open { background: color-mix(in srgb, var(--ink) 92%, transparent); }
+  @keyframes nav-link-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
   nav.primary.open a {
     font-family: var(--mono);
     font-size: clamp(14px, 2.4vh, 18px);
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--ink);
-    padding: 8px 0;
-    display: inline-block;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     position: relative;
+    opacity: 0;
+    animation: nav-link-in .32s ease forwards;
     transition: color .2s ease, transform .2s ease;
+  }
+  nav.primary.open a:nth-child(1) { animation-delay: .04s; }
+  nav.primary.open a:nth-child(2) { animation-delay: .09s; }
+  nav.primary.open a:nth-child(3) { animation-delay: .14s; }
+  nav.primary.open a:nth-child(4) { animation-delay: .19s; }
+  nav.primary.open a:nth-child(5) { animation-delay: .24s; }
+  nav.primary.open a:nth-child(6) { animation-delay: .29s; }
+  nav.primary.open a:nth-child(7) { animation-delay: .34s; }
+  nav.primary.open a::before {
+    content: "";
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity .2s ease, transform .2s ease;
+    flex-shrink: 0;
+  }
+  nav.primary.open a.active::before {
+    opacity: 1;
+    transform: scale(1);
   }
   nav.primary.open a::after {
     content: "";
     position: absolute;
-    left: 0; right: 0;
-    bottom: -6px;
+    left: 16px; right: 16px;
+    bottom: -2px;
     height: 1px;
     background: currentColor;
-    opacity: 0.35;
+    opacity: 0.2;
     transform: scaleX(0);
     transform-origin: center;
     transition: transform .25s ease, opacity .25s ease;
@@ -269,21 +340,18 @@ body.dark .nav-toggle:hover {
   body.dark nav.primary.open a { color: var(--paper); }
   nav.primary.open a.active,
   nav.primary.open a:hover { color: var(--accent); }
-  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.55; }
-  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.65; }
+  nav.primary.open a:hover::before { opacity: 0.4; transform: scale(1); }
+  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.4; }
+  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.55; }
   @media (hover: hover) {
-    nav.primary.open a:hover { transform: translateY(-2px); }
-    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.55; }
+    nav.primary.open a:hover { transform: translateX(4px); }
+    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.3; }
   }
 
   body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
   body.nav-open .wordmark,
   body.nav-open .theme-toggle { visibility: hidden; pointer-events: none; }
-  body.nav-open .nav-toggle {
-    position: fixed;
-    top: max(16px, env(safe-area-inset-top));
-    right: 16px;
-  }
+
   body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
   body.dark.nav-open nav.primary.open { background: var(--ink); }
   body.nav-open { overscroll-behavior: none; }
@@ -298,12 +366,22 @@ body.dark .nav-toggle:hover {
 /* Dark-mode contrast: lighter red accents on black backgrounds. */
 body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 </style>
+<!-- Spotify Embed SDK: stores API instance for React components -->
+<script>
+window._spotifyApiReady = [];
+window.onSpotifyIframeApiReady = function(IFrameAPI) {
+  window.SpotifyIframeApi = IFrameAPI;
+  window._spotifyApiReady.forEach(function(cb){ cb(IFrameAPI); });
+  window._spotifyApiReady = [];
+};
+</script>
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 </head>
 <body>
 <script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__duovia.bundle.js?v=3"></script>
+  <script type="module" src="../assets/projekte__duovia.bundle.js?v=11"></script>
 
   <script>
 (function(){

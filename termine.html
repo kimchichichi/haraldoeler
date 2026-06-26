@@ -396,6 +396,15 @@ mark.search-hl {
   margin-bottom: 4px;
 }
 
+/* ─── Bandsintown Follow Widget ──────────────────────────────────────────── */
+.bit-follow-section {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 72px 48px 48px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+}
+@media (max-width: 600px) { .bit-follow-section { padding: 48px 24px 32px; } }
+
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
@@ -1819,6 +1828,33 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </li>
 </ul>
   </div><!-- /.termine-wrapper -->
+
+  <!-- ═══ BANDSINTOWN FOLLOW WIDGET ══════════════════════════════════════════ -->
+  <div class="bit-follow-section">
+    <a class="bit-widget-initializer"
+       data-artist-name="Harald Oeler"
+       data-display-local-dates="false"
+       data-display-past-dates="false"
+       data-auto-style="false"
+       data-button-label-capitalization="capitalize"
+       data-background-color="#f4f1ec"
+       data-separator-color="#1a1816"
+       data-text-color="#0e0d0c"
+       data-button-color="#6b1d1a"
+       data-popup-background-color="#f4f1ec"
+       data-link-color="#6b1d1a"
+       data-display-limit="0"
+       data-language="de">
+    </a>
+    <script>
+      (function () {
+        var s = document.createElement('script');
+        s.src = 'https://widget.bandsintown.com/main.min.js';
+        s.async = true;
+        document.body.appendChild(s);
+      })();
+    </script>
+  </div>
 
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
   <footer class="site-footer">

@@ -403,10 +403,15 @@ mark.search-hl {
   padding: 72px 48px 64px;
   border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
 }
-@media (max-width: 600px) {
-  .bit-follow-section { padding: 48px 24px 40px; }
-  .bit-follow-label { font-size: 18px; }
-}
+/* Hide Bandsintown event listing UI — follow button only */
+.bit-follow-section .bit-events-section,
+.bit-follow-section .bit-header,
+.bit-follow-section .bit-logo,
+.bit-follow-section [class*="bit-upcoming"],
+.bit-follow-section [class*="bit-all-events"],
+.bit-follow-section [class*="eventList"],
+.bit-follow-section [class*="event-list"] { display: none !important; }
+@media (max-width: 600px) { .bit-follow-section { padding: 48px 24px 40px; } }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 .site-footer {

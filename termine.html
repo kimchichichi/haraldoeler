@@ -434,6 +434,7 @@ mark.search-hl {
 }
 .follow-btn:hover { background: var(--accent); }
 .follow-btn svg { flex-shrink: 0; }
+.follow-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 body.dark .follow-btn { background: var(--paper); color: var(--ink); }
 body.dark .follow-btn:hover { background: var(--accent); color: var(--paper); }
 @media (max-width: 600px) {
@@ -1867,10 +1868,16 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
   <!-- ═══ FOLLOW SECTION ══════════════════════════════════════════════════════ -->
   <div class="follow-section">
     <p>Folgen um Updates zu Shows, Tourdaten &amp; Live-Übertragungen zu erhalten.</p>
-    <a class="follow-btn" href="https://www.bandsintown.com/a/15654338/follow" target="_blank" rel="noopener">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-      Folgen &amp; Abonnieren
-    </a>
+    <div class="follow-btns">
+      <a class="follow-btn" href="https://www.bandsintown.com/a/15654338/follow" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+        Folgen
+      </a>
+      <a class="follow-btn" href="https://www.bandsintown.com/a/15654338/follow" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Abonnieren
+      </a>
+    </div>
   </div>
 
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->

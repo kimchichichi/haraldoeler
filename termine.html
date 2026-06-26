@@ -396,49 +396,14 @@ mark.search-hl {
   margin-bottom: 4px;
 }
 
-/* ─── Follow Section ──────────────────────────────────────────────────────── */
-.follow-section {
-  max-width: 1480px;
+/* ─── Bandsintown Follow Widget ──────────────────────────────────────────── */
+.bit-follow-section {
+  max-width: 560px;
   margin: 0 auto;
   padding: 72px 48px 64px;
   border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
 }
-.follow-section p {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--ink);
-  margin: 0;
-  flex: 1;
-  min-width: 200px;
-  letter-spacing: -0.01em;
-}
-.follow-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 14px 28px;
-  white-space: nowrap;
-  transition: background .25s ease, color .25s ease;
-}
-.follow-btn:hover { background: var(--accent); }
-.follow-btn svg { flex-shrink: 0; }
-body.dark .follow-btn { background: var(--paper); color: var(--ink); }
-body.dark .follow-btn:hover { background: var(--accent); color: var(--paper); }
-@media (max-width: 600px) {
-  .follow-section { padding: 48px 24px 40px; flex-direction: column; align-items: flex-start; gap: 24px; }
-}
+@media (max-width: 600px) { .bit-follow-section { padding: 48px 24px 40px; } }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 .site-footer {
@@ -1864,13 +1829,45 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
 </ul>
   </div><!-- /.termine-wrapper -->
 
-  <!-- ═══ FOLLOW SECTION ══════════════════════════════════════════════════════ -->
-  <div class="follow-section">
-    <p>Folgen um Updates zu Shows, Tourdaten &amp; Live-Übertragungen zu erhalten.</p>
-    <a class="follow-btn" href="https://www.bandsintown.com/a/15654338" target="_blank" rel="noopener">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-      Folgen
+  <!-- ═══ BANDSINTOWN FOLLOW WIDGET ══════════════════════════════════════════ -->
+  <div class="bit-follow-section">
+    <a class="bit-widget-initializer"
+       data-artist-name="Harald Oeler"
+       data-display-local-dates="false"
+       data-display-past-dates="false"
+       data-auto-style="true"
+       data-button-label-capitalization="capitalize"
+       data-display-limit="0"
+       data-language="de">
     </a>
+    <script>
+      (function () {
+        var s = document.createElement('script');
+        s.src = 'https://widget.bandsintown.com/main.min.js';
+        s.async = true;
+        document.body.appendChild(s);
+
+        /* Remove event-listing junk by matching text content */
+        function cleanWidget() {
+          var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+          var targets = ['ALLE TERMINE', 'Zukünftige Daten', 'Upcoming Dates', 'All Events'];
+          while (walker.nextNode()) {
+            var t = walker.currentNode.textContent.trim();
+            for (var i = 0; i < targets.length; i++) {
+              if (t === targets[i]) {
+                var el = walker.currentNode.parentElement;
+                while (el && !el.parentElement.classList.contains('bit-widget-container') && el !== document.body) {
+                  el = el.parentElement;
+                }
+                if (el) el.style.display = 'none';
+              }
+            }
+          }
+        }
+        setTimeout(cleanWidget, 800);
+        setTimeout(cleanWidget, 2000);
+      })();
+    </script>
   </div>
 
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->

@@ -400,10 +400,21 @@ mark.search-hl {
 .bit-follow-section {
   max-width: 1480px;
   margin: 0 auto;
-  padding: 72px 48px 48px;
+  padding: 72px 48px 64px;
   border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
 }
-@media (max-width: 600px) { .bit-follow-section { padding: 48px 24px 32px; } }
+.bit-follow-label {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 600px) {
+  .bit-follow-section { padding: 48px 24px 40px; }
+  .bit-follow-label { font-size: 18px; }
+}
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 .site-footer {
@@ -1831,18 +1842,13 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
 
   <!-- ═══ BANDSINTOWN FOLLOW WIDGET ══════════════════════════════════════════ -->
   <div class="bit-follow-section">
+    <p class="bit-follow-label">Updates zu neuen Konzerten.</p>
     <a class="bit-widget-initializer"
        data-artist-name="Harald Oeler"
        data-display-local-dates="false"
        data-display-past-dates="false"
-       data-auto-style="false"
+       data-auto-style="true"
        data-button-label-capitalization="capitalize"
-       data-background-color="#f4f1ec"
-       data-separator-color="#1a1816"
-       data-text-color="#0e0d0c"
-       data-button-color="#6b1d1a"
-       data-popup-background-color="#f4f1ec"
-       data-link-color="#6b1d1a"
        data-display-limit="0"
        data-language="de">
     </a>

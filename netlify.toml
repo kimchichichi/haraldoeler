@@ -21,10 +21,12 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
+# Bundles are cache-busted via a ?v= query string in the HTML, so they can
+# be cached long-term. Remember to bump ?v= whenever a bundle is rebuilt.
 [[headers]]
   for = "/assets/*.bundle.js"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/*.css"

@@ -1,4 +1,73 @@
 // Shared detail view for projekte subpages (bundled per project id).
+
+// Click-to-load facade for YouTube / Spotify embeds.
+// Avoids loading heavy third-party players (and their cookies/preconnects)
+// until the visitor actually wants to play the media — big perf win.
+function MediaEmbed({ m }) {
+  const [open, setOpen] = React.useState(false);
+  const isYouTube = m.kind === "youtube";
+
+  if (open) {
+    const src = isYouTube
+      ? `https://www.youtube.com/embed/${m.id}?autoplay=1`
+      : (m.url + (m.url.includes("?") ? "&" : "?") + "autoplay=1");
+    return (
+      <iframe
+        src={src}
+        title={m.caption}
+        loading="lazy"
+        allow={isYouTube
+          ? "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          : "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"}
+        allowFullScreen
+      />
+    );
+  }
+
+  const btnStyle = {
+    position: "absolute", inset: 0, width: "100%", height: "100%",
+    padding: 0, border: 0, margin: 0, cursor: "pointer",
+    background: "#0e0d0c", display: "block", overflow: "hidden",
+  };
+  const overlayStyle = {
+    position: "absolute", top: "50%", left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    pointerEvents: "none",
+  };
+
+  return (
+    <button type="button" style={btnStyle} onClick={() => setOpen(true)}
+      aria-label={`Abspielen: ${m.caption}`}>
+      {isYouTube && (
+        <img
+          src={`https://i.ytimg.com/vi/${m.id}/hqdefault.jpg`}
+          alt={m.caption}
+          loading="lazy"
+          width="480"
+          height="360"
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.94 }}
+        />
+      )}
+      <span style={overlayStyle}>
+        {isYouTube ? (
+          <svg viewBox="0 0 68 48" width="64" height="46" aria-hidden="true">
+            <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00" />
+            <path d="M45 24 27 14v20" fill="#fff" />
+          </svg>
+        ) : (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "10px", color: "#f4f1ec", fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            <span style={{ width: "34px", height: "34px", borderRadius: "50%", background: "#1DB954", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="#000" aria-hidden="true"><polygon points="0,0 12,7 0,14" /></svg>
+            </span>
+            Auf Spotify hören
+          </span>
+        )}
+      </span>
+    </button>
+  );
+}
+
 function ProjektDetail({ id, onBack }) {
   const [activeTrack, setActiveTrack] = React.useState(null);
   const playTrack = (id) => { try { flushSync(() => setActiveTrack(id)); } catch(e) { setActiveTrack(id); } };
@@ -50,7 +119,7 @@ function ProjektDetail({ id, onBack }) {
         <Arrow dir="left" /> zurück zu projekte
       </a>
       <section className="hero" style={{ viewTransitionName: `image-${id}` }}>
-        <img src={detail.image} alt={detail.title} />
+        <img src={detail.image} alt={detail.title} fetchpriority="high" decoding="async" />
         <div className="hero-meta">
           <div>
             <div className="eyebrow">{detail.eyebrow}</div>
@@ -248,23 +317,7 @@ function ProjektDetail({ id, onBack }) {
                 {detail.media.map((m, i) => (
                   <figure key={i} className={`media-item ${m.kind}`}>
                     <div className="frame">
-                      {m.kind === "youtube" ? (
-                        <iframe
-                          src={`https://www.youtube.com/embed/${m.id}`}
-                          title={m.caption}
-                          loading="lazy"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                        />
-                      ) : (
-                        <iframe
-                          src={m.url}
-                          title={m.caption}
-                          loading="lazy"
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                          allowFullScreen
-                        />
-                      )}
+                      <MediaEmbed m={m} />
                     </div>
                     <figcaption>{m.caption}</figcaption>
                   </figure>

@@ -574,12 +574,15 @@ body.dark .home-bio-lang a:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(24px, 3.5vw, 40px);
   }
-  /* Three cards in two columns: keep third card same width as a column, centered */
+  /* Three cards in two columns: third card spans the full row under the first two. */
   .home-projects-grid .proj-card:nth-child(3) {
     grid-column: 1 / -1;
     width: 100%;
-    max-width: calc((100% - clamp(24px, 3.5vw, 40px)) / 2);
-    justify-self: center;
+    max-width: none;
+    justify-self: stretch;
+  }
+  .home-projects-grid .proj-card:nth-child(3) .image-wrap {
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -610,6 +613,9 @@ body.dark .home-bio-lang a:hover {
     max-width: none;
     width: auto;
     justify-self: stretch;
+  }
+  .home-projects-grid .proj-card:nth-child(3) .image-wrap {
+    aspect-ratio: 4 / 5;
   }
 
   .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
@@ -820,41 +826,41 @@ body.dark .nav-toggle:hover {
       <div class="teaser-konzerte" id="kommende-konzerte">
         <p class="eyebrow">Kommende Konzerte</p>
         <!--
-          Maintenance (no CMS): Keep this short list aligned with the next upcoming dates on termine.html.
-          Remove past concerts here when you refresh the homepage, or duplicate the next entries from Termine.
+          Auto-updated from termine.html.
+          The static entries below are a fallback for browsers that cannot fetch local site files.
         -->
-        <ul class="home-concert-list">
+        <ul class="home-concert-list" id="home-concert-list">
 
           <li class="hc-item">
             <div class="hc-date">
-              07.05.2026
-              <small>Do · 19:30 Uhr</small>
+              03.07.2026
+              <small>Fr · 19:30 Uhr</small>
             </div>
             <div>
-              <div class="hc-title">Duo ViA! – „Four Seasons – One World"</div>
-              <div class="hc-location">Mozartareal, Würzburg</div>
+              <div class="hc-title">FUSSISSIMO – Gypsy-Ethno-Jazz</div>
+              <div class="hc-location">Kulturwerkstatt Disharmonie, Schweinfurt</div>
             </div>
           </li>
 
           <li class="hc-item">
             <div class="hc-date">
-              09.05.2026
-              <small>Sa · 13:00 Uhr</small>
+              05.07.2026
+              <small>So · 17:00 Uhr</small>
             </div>
             <div>
-              <div class="hc-title">Duo ViA! – „Four Seasons – One World"</div>
-              <div class="hc-location">Mühlenforum Glattbach</div>
+              <div class="hc-title">Duo KlAkk! goes Encore!</div>
+              <div class="hc-location">Weytterturm (Innenhof), Straubing</div>
             </div>
           </li>
 
           <li class="hc-item">
             <div class="hc-date">
-              13.05.2026
-              <small>Mi · 19:30 Uhr</small>
+              18.07.2026
+              <small>Sa · 19:30 Uhr</small>
             </div>
             <div>
-              <div class="hc-title">Duo ViA! – 4. Meisterkonzert</div>
-              <div class="hc-location">Teo Otto Theater, Remscheid</div>
+              <div class="hc-title">PHILHARMONIE UND FILM – Brahms und Blockbuster</div>
+              <div class="hc-location">Schlosshof Hohenschwangau</div>
             </div>
           </li>
 
@@ -975,6 +981,101 @@ body.dark .nav-toggle:hover {
         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
       });
+    })();
+  </script>
+
+  <script>
+    // Kommende Konzerte: keep homepage teaser aligned with the next dates in termine.html.
+    (function(){
+      var list = document.getElementById('home-concert-list');
+      if (!list || !window.fetch || !window.DOMParser) return;
+
+      function parseDate(value) {
+        var match = value.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+        if (!match) return null;
+        return new Date(Number(match[3]), Number(match[2]) - 1, Number(match[1]));
+      }
+
+      function cleanText(value) {
+        return value.replace(/\s+/g, ' ').trim();
+      }
+
+      function escapeHtml(value) {
+        return value.replace(/[&<>"']/g, function(char) {
+          return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+          }[char];
+        });
+      }
+
+      function getTitle(item) {
+        var title = item.querySelector('.c-title');
+        if (!title) return '';
+        var clone = title.cloneNode(true);
+        clone.querySelectorAll('small, .badge-abgesagt').forEach(function(node){ node.remove(); });
+        return cleanText(clone.textContent || title.textContent);
+      }
+
+      function getLocation(item) {
+        var location = item.querySelector('.c-location a') || item.querySelector('.c-location');
+        return location ? cleanText(location.textContent) : '';
+      }
+
+      function render(events) {
+        list.innerHTML = events.map(function(event) {
+          return [
+            '<li class="hc-item">',
+              '<div class="hc-date">',
+                escapeHtml(event.date),
+                '<small>' + escapeHtml(event.day) + '</small>',
+              '</div>',
+              '<div>',
+                '<div class="hc-title">' + escapeHtml(event.title) + '</div>',
+                '<div class="hc-location">' + escapeHtml(event.location) + '</div>',
+              '</div>',
+            '</li>'
+          ].join('');
+        }).join('');
+      }
+
+      fetch('termine.html', { cache: 'no-cache' })
+        .then(function(response) {
+          if (!response.ok) throw new Error('Termine konnten nicht geladen werden.');
+          return response.text();
+        })
+        .then(function(html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var today = new Date();
+          today.setHours(0, 0, 0, 0);
+
+          var events = Array.from(doc.querySelectorAll('.concert-item')).map(function(item) {
+            var dateEl = item.querySelector('.c-date');
+            var dayEl = item.querySelector('.c-day');
+            var date = dateEl ? cleanText(dateEl.textContent) : '';
+            var parsedDate = parseDate(date);
+            return {
+              date: date,
+              day: dayEl ? cleanText(dayEl.textContent) : '',
+              title: getTitle(item),
+              location: getLocation(item),
+              parsedDate: parsedDate,
+              cancelled: Boolean(item.querySelector('.badge-abgesagt'))
+            };
+          }).filter(function(event) {
+            return event.parsedDate && event.parsedDate >= today && !event.cancelled && event.title;
+          }).sort(function(a, b) {
+            return a.parsedDate - b.parsedDate;
+          }).slice(0, 3);
+
+          if (events.length) render(events);
+        })
+        .catch(function() {
+          // Keep the static fallback list in place.
+        });
     })();
   </script>
 

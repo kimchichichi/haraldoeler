@@ -356,6 +356,25 @@ nav.primary a.active::after {
 .c-info-link svg { transition: transform .35s ease; }
 .c-info-link:hover svg { transform: translateX(4px); }
 
+.c-poster-link {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 28%, transparent);
+}
+.c-poster-link:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+body.dark .c-poster-link {
+  color: var(--paper);
+  border-color: color-mix(in srgb, var(--paper) 28%, transparent);
+}
+body.dark .c-poster-link:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
+
 .c-cal {
   display: flex;
   align-items: center;
@@ -1149,7 +1168,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </li>
 
       <!-- 05.07.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/050726.pdf">
         <div class="c-left">
           <span class="c-date">05.07.2026</span>
           <span class="c-day">So · 17:00 Uhr</span>
@@ -1238,7 +1257,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
       <!-- 25.07.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/250726.pdf">
         <div class="c-left">
           <span class="c-date">25.07.2026</span>
           <span class="c-day">Sa · 19:00 Uhr</span>
@@ -1322,7 +1341,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </li>
 
       <!-- 18.09.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/180926.pdf">
         <div class="c-left">
           <span class="c-date">18.09.2026</span>
           <span class="c-day">Fr · 20:00 Uhr</span>
@@ -1352,10 +1371,10 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
       <!-- 19.09.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/190926.pdf">
         <div class="c-left">
           <span class="c-date">19.09.2026</span>
-          <span class="c-day">Sa · 19:30 Uhr</span>
+          <span class="c-day">Sa · 19:00 Uhr</span>
         </div>
         <div class="c-middle">
           <div class="c-title">            
@@ -1376,9 +1395,9 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </a>
           <div class="c-cal">
             <span class="cal-icon">📅</span>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo&details=Harald%20Oeler%20(Akkordeon)&location=Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn&dates=20260919T173000Z/20260919T193000Z" target="_blank">Google</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo&details=Harald%20Oeler%20(Akkordeon)&location=Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn&dates=20260919T170000Z/20260919T190000Z" target="_blank">Google</a>
             <span>|</span>
-            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo%0D%0ADESCRIPTION:Harald%20Oeler%20(Akkordeon)%0D%0ADTSTART:20260919T173000Z%0D%0ADTEND:20260919T193000Z%0D%0ALOCATION:Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Sonate_Akkordeon_Solo_2026-09-19_Dittelbrunn.ics">iCal</a>
+            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo%0D%0ADESCRIPTION:Harald%20Oeler%20(Akkordeon)%0D%0ADTSTART:20260919T170000Z%0D%0ADTEND:20260919T190000Z%0D%0ALOCATION:Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Sonate_Akkordeon_Solo_2026-09-19_Dittelbrunn.ics">iCal</a>
           </div>
         </div>
       </li>
@@ -1937,6 +1956,27 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
   <script>
     const searchInput = document.getElementById('concert-search');
     const items = document.querySelectorAll('.concert-item');
+
+    function addPosterButtons() {
+      items.forEach(function (item) {
+        var posterHref = item.dataset.poster;
+        if (!posterHref || item.querySelector('.c-poster-link')) return;
+
+        var actions = item.querySelector('.c-right');
+        var infoLink = item.querySelector('.c-info-link');
+        if (!actions || !infoLink) return;
+
+        var posterLink = document.createElement('a');
+        posterLink.className = 'c-info-link c-poster-link';
+        posterLink.href = posterHref;
+        posterLink.target = '_blank';
+        posterLink.rel = 'noopener';
+        posterLink.innerHTML = 'plakat <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>';
+        actions.insertBefore(posterLink, infoLink.nextSibling);
+      });
+    }
+
+    addPosterButtons();
     const originals = Array.from(items).map(function (item) { return item.innerHTML; });
     let activeYear = 'all';
 

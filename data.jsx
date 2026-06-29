@@ -67,6 +67,7 @@ const DETAILS = {
     runtime: ["Programm · »Remembering«", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
     lede: ["Die Präzision des Klaviers. Die Sogkraft des Orchesters. ", { em: "Eine Stimme." }],
     body: [
+      "Auf dem Instrument des Jahres 2026 präsentiert Harald Oeler sein neues Konzertprogramm „Remembering“. Reisen nach Paris und Tokio dienten ihm als Hauptquellen der kompositorischen Inspiration. Die Musik Johann Sebastian Bachs und Astor Piazzollas fließen in das Programm ein, welches das Publikum auf eine multi-stilistische Weltreise entführt. Mit freier Improvisation, jazzigen Sounds und südamerikanischem Tango zieht er das Publikum in seinen Bann.",
       "Künstlerisch bewegt sich Harald Oeler in einem weiten Feld, welches von der (Ur-)Aufführung zeitgenössischer Werke, über die Transkription klassischer Werke für das Akkordeon, bis hin zum Jazz reicht.",
       "Auftritte beim Heidelberger Frühling, Literaturfest Niedersachsen, Sommerliche Musiktage Hitzacker, Frankfurter MuseumsSalon, Django Memorial Augsburg und Frankfurter Jazzfestival. Konzertreisen führten Harald Oeler nach China, Korea, Rumänien, Finnland, Schweden, Italien, Österreich, Schweiz und Polen.",
       "Zahlreiche CD Produktionen bei OehmsClassics, Genuin und Thorofon / Bella Musica repräsentieren sein breitgefächertes Konzertleben.",

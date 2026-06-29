@@ -16,12 +16,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <!-- Fonts loaded non-render-blocking (media swap trick) to avoid blocking first paint -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
 
   <style>
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap');
 
 :root {
   --ink:         #0e0d0c;
@@ -222,7 +222,7 @@ nav.primary a.active::after {
   width: 180px;
 }
 .search-wrap input::placeholder { color: var(--muted); }
-.search-wrap .fa-search { font-size: 11px; color: var(--muted); }
+.search-wrap .search-icon { color: var(--muted); flex-shrink: 0; }
 
 /* ─── Year filters ───────────────────────────────────────────────────────── */
 .year-filters {
@@ -322,7 +322,7 @@ nav.primary a.active::after {
   color: var(--muted);
   margin-top: 8px;
 }
-.c-location i { font-size: 10px; color: var(--accent); flex-shrink: 0; }
+.c-location .loc-icon { color: var(--accent); flex-shrink: 0; }
 .c-location a { color: var(--muted); transition: color .25s; }
 .c-location a:hover { color: var(--accent); }
 
@@ -355,6 +355,25 @@ nav.primary a.active::after {
 }
 .c-info-link svg { transition: transform .35s ease; }
 .c-info-link:hover svg { transform: translateX(4px); }
+
+.c-poster-link {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 28%, transparent);
+}
+.c-poster-link:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+body.dark .c-poster-link {
+  color: var(--paper);
+  border-color: color-mix(in srgb, var(--paper) 28%, transparent);
+}
+body.dark .c-poster-link:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
 
 .c-cal {
   display: flex;
@@ -766,7 +785,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
         <button class="yr-btn" data-yr="2027">2027</button>
       </div>
       <div class="search-wrap">
-        <i class="fas fa-search"></i>
+        <svg class="search-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <input type="text" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off">
       </div>
     </div>
@@ -784,7 +803,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Das Akkordeon, das Instrument des Jahres 2026</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Gemeindehalle+Walheim+Paulinenstraße+3+74399+Walheim" target="_blank">
               Gemeindehalle Walheim, Walheim
             </a>
@@ -815,7 +834,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Ji Eun Kim (Klarinette) &amp; Harald Oeler (Akkordeon)<br></small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Christuskirche+Kronach" target="_blank">
               Christuskirche Kronach
             </a>
@@ -848,7 +867,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Sinn Yang (Violine) &amp; Harald Oeler (Akkordeon)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Obersdorf
           </div>
         </div>
@@ -874,7 +893,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Das Akkordeon, das Instrument des Jahres 2026</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Jakobus-Stadtkirche+Brackenheim" target="_blank">
               Jakobus-Stadtkirche Brackenheim
             </a>
@@ -908,7 +927,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Berlin-Neukölln" target="_blank">
               Berlin-Neukölln
             </a>
@@ -941,7 +960,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Im Programm „Four Seasons – One World“ vereint das Duo Musik aus verschiedenen Kulturen mit ihren ursprünglichen musikalischen Traditionen. Die vier Jahreszeiten erklingen in unterschiedlichen Musikstilen und werden von Violine und Akkordeon lebendig interpretiert – klassisch, modern und klanglich vielseitig zugleich. Von Barock-klassisch über Jazz-Bebop, Klezmer, Tango Nuevo, New Musette bis hin zur Orientalischen Melodie: Jedes Werk öffnet ein Fenster in eine andere Kultur und im Konzert verbinden sich die Einzigartigkeiten zu einem harmonischen Ganzen. So entsteht eine musikalische Reise, die Grenzen überwindet und die Welt in ihren Jahreszeiten hörbar macht.</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Mozartareal+Würzburg" target="_blank">
               Mozartareal, Würzburg
             </a>
@@ -974,7 +993,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Preis: 45€</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Mühlenforum+Glattbach+Hauptstraße+56+B+63864+Glattbach" target="_blank">
               Mühlenforum Glattbach
             </a>
@@ -1006,7 +1025,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
             <small>Preis: 20€</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Teo+Otto+Theater,+Remscheid" target="_blank">
               Remscheid, Teo Otto Theater
             </a>
@@ -1042,7 +1061,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
 
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Schloss+Eyrichshof" target="_blank">
               Schloss Eyrichshof
             </a>
@@ -1074,7 +1093,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Rehan Syed (Guitar &amp; Komponist) &amp; Harald Oeler (Akkordeon) &amp; Simon Ort (Bass)<br></small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Frankfurt
           </div>
         </div>
@@ -1099,7 +1118,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Rehan Syed (Guitar & Komponist) &amp; Harald Oeler (Akkordeon) &amp; Simon Ort (Bass)<br></small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Mainwiesen+Würzburg+Mainaustraße+19+97082+Würzburg" target="_blank">
               Mainwiesen (Talavera), Würzburg
             </a>
@@ -1128,7 +1147,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         <div class="c-middle">
           <div class="c-title">FUSSISSIMO – Gypsy-Ethno-Jazz</div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Kulturwerkstatt+Disharmonie+Gutermannpromenade+7+97421+Schweinfurt" target="_blank">
               Kulturwerkstatt Disharmonie, Schweinfurt
             </a>
@@ -1149,7 +1168,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </li>
 
       <!-- 05.07.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/050726.pdf">
         <div class="c-left">
           <span class="c-date">05.07.2026</span>
           <span class="c-day">So · 17:00 Uhr</span>
@@ -1159,7 +1178,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Ji Eun Kim (Klarinette) &amp; Harald Oeler (Akkordeon)<br></small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Weytterturm+In+der+Bürg+34+94315+Straubing" target="_blank">
               Weytterturm (Innenhof), Straubing
             </a>
@@ -1188,7 +1207,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Harald Oeler (Akkordeon), Solistenensemble D'Accord<br></small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/search/?api=1&query=Schlosshof+Hohenschwangau" target="_blank">
               Schlosshof Hohenschwangau
             </a>
@@ -1218,7 +1237,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/search/?api=1&query=Bergstation+Tegelberg+Ort+der+Besinnung" target="_blank">
               Bergstation Tegelberg / Ort der Besinnung
             </a>
@@ -1238,7 +1257,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
       <!-- 25.07.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/250726.pdf">
         <div class="c-left">
           <span class="c-date">25.07.2026</span>
           <span class="c-day">Sa · 19:00 Uhr</span>
@@ -1249,7 +1268,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Das Akkordeon, das Instrument des Jahres 2026</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Evangelische+Kirche+Berg" target="_blank">
               Evangelische Kirche, Berg
             </a>
@@ -1283,7 +1302,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             </small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Ort folgt
           </div>
         </div>
@@ -1308,7 +1327,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Ji Eun Kim (Klarinette) &amp; Harald Oeler (Akkordeon)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             Ort folgt
           </div>
         </div>
@@ -1322,7 +1341,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </li>
 
       <!-- 18.09.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/180926.pdf">
         <div class="c-left">
           <span class="c-date">18.09.2026</span>
           <span class="c-day">Fr · 20:00 Uhr</span>
@@ -1332,7 +1351,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Ji Eun Kim (Klarinette) &amp; Harald Oeler (Akkordeon)<br></small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Gerberplatz+1+95445+Bayreuth" target="_blank">
               Neuneinhalb im Gerberhaus, Bayreuth
             </a>
@@ -1352,10 +1371,10 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
       <!-- 19.09.2026 -->
-      <li class="concert-item">
+      <li class="concert-item" data-poster="pdf/190926.pdf">
         <div class="c-left">
           <span class="c-date">19.09.2026</span>
-          <span class="c-day">Sa · 19:30 Uhr</span>
+          <span class="c-day">Sa · 19:00 Uhr</span>
         </div>
         <div class="c-middle">
           <div class="c-title">            
@@ -1363,7 +1382,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Das Akkordeon, das Instrument des Jahres 2026</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Arche+Hauptstr.+64+97456+Dittelbrunn" target="_blank">
               Arche, Hauptstr. 64, 97456 Dittelbrunn
             </a>
@@ -1376,9 +1395,9 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </a>
           <div class="c-cal">
             <span class="cal-icon">📅</span>
-            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo&details=Harald%20Oeler%20(Akkordeon)&location=Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn&dates=20260919T173000Z/20260919T193000Z" target="_blank">Google</a>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo&details=Harald%20Oeler%20(Akkordeon)&location=Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn&dates=20260919T170000Z/20260919T190000Z" target="_blank">Google</a>
             <span>|</span>
-            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo%0D%0ADESCRIPTION:Harald%20Oeler%20(Akkordeon)%0D%0ADTSTART:20260919T173000Z%0D%0ADTEND:20260919T193000Z%0D%0ALOCATION:Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Sonate_Akkordeon_Solo_2026-09-19_Dittelbrunn.ics">iCal</a>
+            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:%E2%80%9ESonate%20f%C3%BCr%20Akkordeon%22%20-%20Solo%0D%0ADESCRIPTION:Harald%20Oeler%20(Akkordeon)%0D%0ADTSTART:20260919T170000Z%0D%0ADTEND:20260919T190000Z%0D%0ALOCATION:Arche%2C%20Hauptstr.%2064%2C%2097456%20Dittelbrunn%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Sonate_Akkordeon_Solo_2026-09-19_Dittelbrunn.ics">iCal</a>
           </div>
         </div>
       </li>
@@ -1395,7 +1414,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Rehan Syed (Guitar &amp; Komponist) &amp; Harald Oeler (Akkordeon) &amp; Simon Ort (Bass)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Huttenschloss+Gemünden+am+Main" target="_blank">
               Huttenschloss, Gemünden am Main
             </a>
@@ -1422,7 +1441,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Ivan Turkalj (Cello) &amp; Harald Oeler (Akkordeon)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Würzburger+Str.+48+91413+Neustadt+an+der+Aisch" target="_blank">
               NeuStadtHalle am Schloss · Würzburger Str. 48 · Neustadt an der Aisch
             </a>
@@ -1455,7 +1474,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Prof. Dr. Ulrich Konrad, Vortrag · Harald Oeler, Akkordeon</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Mozartareal+Würzburg" target="_blank">
               Bertold-Hummel-Saal im Mozartareal, Würzburg
             </a>
@@ -1490,7 +1509,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             </small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Berlin-Neukölln" target="_blank">
               Berlin-Neukölln
             </a>
@@ -1522,7 +1541,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Ji Eun Kim (Klarinette) &amp; Harald Oeler (Akkordeon)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Kirchgasse+6+74366+Kirchheim+am+Neckar" target="_blank">
               Mauritiuskirche · Kirchgasse 6 · 74366 Kirchheim am Neckar
             </a>
@@ -1555,7 +1574,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
 <br></small>
       </div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1583,7 +1602,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         <small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1607,7 +1626,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1629,7 +1648,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1651,7 +1670,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1673,7 +1692,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1695,7 +1714,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1720,7 +1739,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         <small>Ji Eun Kim (Klarinette) &amp; Harald Oeler (Akkordeon)</small>
       </div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.google.com/maps/dir//Alte+Kelter+Gemmrigheim" target="_blank">
           Alte Kelter, Gemmrigheim
         </a>
@@ -1744,7 +1763,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1766,7 +1785,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1788,7 +1807,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1813,7 +1832,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         <small>Rehan Syed (Guitar &amp; Komponist) &amp; Harald Oeler (Akkordeon) &amp; Simon Ort (Bass)</small>
       </div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         Ort folgt
       </div>
     </div>
@@ -1835,7 +1854,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1858,7 +1877,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       <div class="c-title">„Spatz und Engel": Theaterstück<small>Theaterstück mit Musik von Daniel Große Boymann und Thomas Kahry (in der Fassung für 4 Darsteller:innen, Klavier und Akkordeon)
 </small></div>
       <div class="c-location">
-        <i class="fa-solid fa-location-dot"></i>
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         <a href="https://www.theater-hof.de/" target="_blank">Theater Hof, Kulmbacher Str. 5, 95030 Hof</a>
       </div>
     </div>
@@ -1883,7 +1902,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
             <small>Sinn Yang (Violine) &amp; Harald Oeler (Akkordeon)</small>
           </div>
           <div class="c-location">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
             <a href="https://www.google.com/maps/dir//Josefskapelle+Oberstdorf" target="_blank">
               Josefskapelle, Oberstdorf
             </a>
@@ -1937,6 +1956,27 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
   <script>
     const searchInput = document.getElementById('concert-search');
     const items = document.querySelectorAll('.concert-item');
+
+    function addPosterButtons() {
+      items.forEach(function (item) {
+        var posterHref = item.dataset.poster;
+        if (!posterHref || item.querySelector('.c-poster-link')) return;
+
+        var actions = item.querySelector('.c-right');
+        var infoLink = item.querySelector('.c-info-link');
+        if (!actions || !infoLink) return;
+
+        var posterLink = document.createElement('a');
+        posterLink.className = 'c-info-link c-poster-link';
+        posterLink.href = posterHref;
+        posterLink.target = '_blank';
+        posterLink.rel = 'noopener';
+        posterLink.innerHTML = 'plakat <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>';
+        actions.insertBefore(posterLink, infoLink.nextSibling);
+      });
+    }
+
+    addPosterButtons();
     const originals = Array.from(items).map(function (item) { return item.innerHTML; });
     let activeYear = 'all';
 

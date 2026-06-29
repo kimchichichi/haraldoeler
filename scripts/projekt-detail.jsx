@@ -3,6 +3,19 @@ function ProjektDetail({ id, onBack }) {
   const [activeTrack, setActiveTrack] = React.useState(null);
   const playTrack = (id) => { try { flushSync(() => setActiveTrack(id)); } catch(e) { setActiveTrack(id); } };
   const proj = PROJECTS.find((p) => p.id === id);
+
+  const modalKey = activeTrack && String(activeTrack).startsWith("rep-") ? activeTrack : null;
+  React.useEffect(() => {
+    if (!modalKey) return;
+    const onKey = (e) => { if (e.key === "Escape") setActiveTrack(null); };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [modalKey]);
   const detail = DETAILS[id] || {
     title: proj.title,
     eyebrow: `Projekt ${proj.num} · ${proj.role}`,
@@ -165,13 +178,36 @@ function ProjektDetail({ id, onBack }) {
             ) : (
               /* Flat layout (all other projects) */
               <ul>
-                {detail.repertoire.map((r, i) => (
-                  <li key={i}>
-                    <span className="num">{r.num}</span>
-                    <span className="work">{r.work}<em>{r.note}</em></span>
-                    <span className="dur">{r.dur}</span>
-                  </li>
-                ))}
+                {detail.repertoire.map((r, i) => {
+                  if (r.embed) {
+                    const key = `rep-${i}`;
+                    const isOpen = activeTrack === key;
+                    return (
+                      <li key={i} className={r.className || undefined}>
+                        <button
+                          type="button"
+                          className="repertoire-row-link"
+                          aria-expanded={isOpen}
+                          onClick={() => setActiveTrack(isOpen ? null : key)}
+                        >
+                          <span className="num">{r.num}</span>
+                          <span className="work">
+                            {r.work}
+                            {r.note ? <em>{r.note}</em> : null}
+                            <span className="rep-play">▶ Hörbeispiel</span>
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={i} className={r.className || undefined}>
+                      <span className="num">{r.num}</span>
+                      <span className="work">{r.work}{r.note ? <em>{r.note}</em> : null}</span>
+                      <span className="dur">{r.dur}</span>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </div>
@@ -238,6 +274,46 @@ function ProjektDetail({ id, onBack }) {
           )}
         </div>
       </div>
+
+      {(() => {
+        if (!modalKey) return null;
+        const idx = parseInt(String(modalKey).slice(4), 10);
+        const r = detail.repertoire[idx];
+        if (!r || !r.embed) return null;
+        return (
+          <div className="rep-modal" onClick={() => setActiveTrack(null)} role="dialog" aria-modal="true">
+            <button
+              type="button"
+              className="rep-modal-close"
+              aria-label="Hörbeispiel schließen"
+              onClick={() => setActiveTrack(null)}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>
+            </button>
+            <div className={"rep-modal-inner " + r.embed.type} onClick={(e) => e.stopPropagation()}>
+              {r.embed.type === "instagram" && (
+                <iframe
+                  src={`https://www.instagram.com/reel/${r.embed.id}/embed`}
+                  title={`${r.work} — Hörbeispiel`}
+                  loading="lazy"
+                  scrolling="no"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              )}
+              {r.embed.type === "spotify" && (
+                <iframe
+                  src={`https://open.spotify.com/embed/${r.embed.media || "track"}/${r.embed.id}?utm_source=generator&theme=0`}
+                  title={`${r.work} — Hörbeispiel`}
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </div>
+        );
+      })()}
 
       <Footer />
     </div>

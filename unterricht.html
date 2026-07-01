@@ -269,7 +269,7 @@ nav.primary a.active::after {
 .teaching-item-body {
   font-size: 15px;
   line-height: 1.65;
-  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  color: color-mix(in srgb, var(--ink) 88%, transparent);
 }
 .teaching-item-body a {
   color: var(--accent);
@@ -294,8 +294,6 @@ nav.primary a.active::after {
   }
 }
 @media (max-width: 720px) {
-  .header-inner { padding: 18px 24px; gap: 16px; }
-  nav.primary { display: none; }
   .page-head {
     padding: 48px 24px 28px;
     grid-template-columns: 1fr;
@@ -364,9 +362,8 @@ body.dark .teaching-item-body { color: color-mix(in srgb, var(--paper) 72%, tran
   display: none;
   width: 40px;
   height: 40px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--paper) 78%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  background: none;
+  border: none;
   cursor: pointer;
   color: inherit;
   padding: 0;
@@ -374,30 +371,61 @@ body.dark .teaching-item-body { color: color-mix(in srgb, var(--paper) 72%, tran
   align-self: center;
   line-height: 0;
   z-index: 10001;
-  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  transition: opacity .2s ease, transform .15s ease;
   opacity: 0.92;
 }
 .nav-toggle svg { display: block; }
 .nav-toggle:hover {
-  background: var(--paper-2);
-  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
   opacity: 1;
   transform: translateY(-1px);
 }
 .nav-toggle:active { transform: translateY(0); }
 .nav-toggle:focus,
 .nav-toggle:focus-visible { outline: none; -webkit-tap-highlight-color: transparent; }
-body.dark .nav-toggle {
-  background: color-mix(in srgb, var(--ink) 70%, transparent);
-  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
-}
-body.dark .nav-toggle:hover {
-  background: color-mix(in srgb, var(--ink) 84%, transparent);
-  border-color: color-mix(in srgb, var(--paper) 26%, transparent);
-}
+body.dark .nav-toggle:hover { opacity: 1; }
 @media (max-width: 720px) {
-  .header-inner { grid-template-columns: 1fr auto auto; }
-  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .header-inner { padding: 18px 24px; gap: 16px; grid-template-columns: 1fr auto auto; }
+  .wordmark {
+    display: block;
+    line-height: 1.15;
+    letter-spacing: 0.24em;
+    white-space: nowrap;
+  }
+  .wordmark small {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    white-space: normal;
+    text-transform: none;
+  }
+  nav.primary { display: none; }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+    z-index: 10003;
+    pointer-events: auto;
+  }
+  .theme-toggle {
+    position: fixed;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 32px;
+    z-index: 10003;
+    opacity: 0.65;
+    pointer-events: auto;
+  }
+  .theme-toggle:hover { opacity: 1; }
+  .site-header,
+  .site-header.scrolled,
+  body.nav-open .site-header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
   @keyframes nav-drawer-in {
     from { transform: translateX(-100%); }
     to   { transform: translateX(0); }
@@ -412,6 +440,8 @@ body.dark .nav-toggle:hover {
     inset: 0;
     z-index: 9999;
     background: rgba(14, 13, 12, 0.38);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     border: 0;
     padding: 0;
     cursor: pointer;
@@ -419,6 +449,18 @@ body.dark .nav-toggle:hover {
   }
   body.nav-open .nav-backdrop { display: block; }
   body.dark.nav-open .nav-backdrop { background: rgba(0, 0, 0, 0.52); }
+  nav.primary.open::before {
+    content: "— navigation";
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: nav-link-in .32s ease forwards;
+  }
   nav.primary.open {
     display: flex !important;
     flex-direction: column;
@@ -433,6 +475,7 @@ body.dark .nav-toggle:hover {
     background: var(--paper);
     box-shadow: 4px 0 48px rgba(14, 13, 12, 0.1);
     z-index: 10000;
+    pointer-events: auto;
     overflow-y: auto;
     overflow-x: hidden;
     gap: 0;
@@ -444,13 +487,13 @@ body.dark .nav-toggle:hover {
   }
   nav.primary.open a {
     font-family: var(--serif);
-    font-size: clamp(30px, 7.5vw, 40px);
+    font-size: clamp(26px, 6.2vw, 34px);
     font-weight: 400;
     letter-spacing: -0.01em;
     text-transform: lowercase;
-    color: color-mix(in srgb, var(--ink) 88%, transparent);
-    padding: 10px 0;
-    min-height: 48px;
+    color: color-mix(in srgb, var(--ink) 72%, transparent);
+    padding: 8px 0;
+    min-height: 44px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -461,13 +504,13 @@ body.dark .nav-toggle:hover {
     transition: color .2s ease, transform .15s ease;
     -webkit-tap-highlight-color: transparent;
   }
-  nav.primary.open a:nth-child(1) { animation-delay: .06s; }
-  nav.primary.open a:nth-child(2) { animation-delay: .11s; }
-  nav.primary.open a:nth-child(3) { animation-delay: .16s; }
-  nav.primary.open a:nth-child(4) { animation-delay: .21s; }
-  nav.primary.open a:nth-child(5) { animation-delay: .26s; }
-  nav.primary.open a:nth-child(6) { animation-delay: .31s; }
-  nav.primary.open a:nth-child(7) { animation-delay: .36s; }
+  nav.primary.open a:nth-child(1) { animation-delay: .05s; }
+  nav.primary.open a:nth-child(2) { animation-delay: .09s; }
+  nav.primary.open a:nth-child(3) { animation-delay: .13s; }
+  nav.primary.open a:nth-child(4) { animation-delay: .17s; }
+  nav.primary.open a:nth-child(5) { animation-delay: .21s; }
+  nav.primary.open a:nth-child(6) { animation-delay: .25s; }
+  nav.primary.open a:nth-child(7) { animation-delay: .29s; }
   nav.primary.open a::before {
     content: "";
     width: 5px;
@@ -487,7 +530,10 @@ body.dark .nav-toggle:hover {
     opacity: 1;
     transform: scale(1);
   }
-  body.dark nav.primary.open a { color: color-mix(in srgb, var(--paper) 88%, transparent); }
+  nav.primary.open a::after {
+    display: none;
+  }
+  body.dark nav.primary.open a { color: color-mix(in srgb, var(--paper) 72%, transparent); }
   body.dark nav.primary.open a.active { color: var(--accent-soft); }
   nav.primary.open a:active { color: var(--accent); }
   @media (hover: hover) {
@@ -514,7 +560,6 @@ body.dark .nav-toggle:hover {
     z-index: 1;
     font-size: 11px;
   }
-  body.nav-open .wordmark small { display: none; }
   body.nav-open .theme-toggle {
     position: fixed;
     bottom: max(24px, env(safe-area-inset-bottom));
@@ -524,20 +569,16 @@ body.dark .nav-toggle:hover {
     pointer-events: auto;
   }
   body.nav-open .theme-toggle:hover { opacity: 1; }
-  body.nav-open .nav-toggle {
-    position: fixed;
-    top: max(16px, env(safe-area-inset-top));
-    right: 16px;
-    z-index: 10003;
-    pointer-events: auto;
-  }
   body.nav-open { overscroll-behavior: none; overflow: hidden; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
 }
 
 @media (max-width: 720px) and (max-height: 560px) {
   nav.primary.open { padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
-  nav.primary.open a { font-size: 26px; padding: 5px 0; min-height: 40px; }
+  nav.primary.open a { font-size: 24px; padding: 4px 0; min-height: 40px; }
 }
+
 </style>
 </head>
 <body>
@@ -752,5 +793,30 @@ body.dark .nav-toggle:hover {
       });
     })();
   </script>
+
+<script>
+(function(){
+  var mq = matchMedia('(max-width:720px)');
+  function pinThemeToggle(){
+    var btn = document.getElementById('theme-toggle');
+    var home = document.querySelector('.header-inner');
+    var nav = document.getElementById('navToggle');
+    if (!btn || !home) return false;
+    if (mq.matches) {
+      if (btn.parentElement !== document.body) document.body.appendChild(btn);
+    } else if (btn.parentElement === document.body) {
+      home.insertBefore(btn, nav || null);
+    }
+    return true;
+  }
+  function apply(){ pinThemeToggle(); }
+  apply();
+  mq.addEventListener('change', apply);
+  var tries = 0;
+  var iv = setInterval(function(){
+    if (pinThemeToggle() || ++tries > 80) clearInterval(iv);
+  }, 50);
+})();
+</script>
 </body>
 </html>

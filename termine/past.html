@@ -1418,5 +1418,30 @@ body.dark .scroll-top-btn:hover { background: var(--paper); color: var(--ink); b
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
   </script>
+
+<script>
+(function(){
+  var mq = matchMedia('(max-width:720px)');
+  function pinThemeToggle(){
+    var btn = document.getElementById('theme-toggle');
+    var home = document.querySelector('.header-inner');
+    var nav = document.getElementById('navToggle');
+    if (!btn || !home) return false;
+    if (mq.matches) {
+      if (btn.parentElement !== document.body) document.body.appendChild(btn);
+    } else if (btn.parentElement === document.body) {
+      home.insertBefore(btn, nav || null);
+    }
+    return true;
+  }
+  function apply(){ pinThemeToggle(); }
+  apply();
+  mq.addEventListener('change', apply);
+  var tries = 0;
+  var iv = setInterval(function(){
+    if (pinThemeToggle() || ++tries > 80) clearInterval(iv);
+  }, 50);
+})();
+</script>
 </body>
 </html>

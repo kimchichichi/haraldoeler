@@ -208,7 +208,8 @@ body.dark .repertoire li { border-bottom-color: color-mix(in srgb, var(--paper) 
   transform: translateY(-1px);
 }
 .nav-toggle:active { transform: translateY(0); }
-.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.nav-toggle:focus,
+.nav-toggle:focus-visible { outline: none; -webkit-tap-highlight-color: transparent; }
 body.dark .nav-toggle {
   background: color-mix(in srgb, var(--ink) 70%, transparent);
   border-color: color-mix(in srgb, var(--paper) 18%, transparent);

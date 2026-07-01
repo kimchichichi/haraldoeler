@@ -41,7 +41,7 @@ function MediaEmbed({ m }) {
       aria-label={`Abspielen: ${m.caption}`}>
       {isYouTube && (
         <img
-          src={`https://i.ytimg.com/vi/${m.id}/hqdefault.jpg`}
+          src={m.poster || `https://i.ytimg.com/vi/${m.id}/hqdefault.jpg`}
           alt={m.caption}
           loading="lazy"
           width="480"
@@ -85,6 +85,7 @@ function ProjektDetail({ id, onBack }) {
       document.body.style.overflow = prev;
     };
   }, [modalKey]);
+
   const detail = DETAILS[id] || {
     title: proj.title,
     eyebrow: `Projekt ${proj.num} · ${proj.role}`,
@@ -103,6 +104,42 @@ function ProjektDetail({ id, onBack }) {
         cite: "Süddeutsche Zeitung",
       },
     ],
+  };
+
+  const renderTermine = (className = "termine") => {
+    if (!detail.termine || detail.termine.length === 0) return null;
+    const previewCount = detail.terminePreview ?? detail.termine.length;
+    const shown = detail.termine.slice(0, previewCount);
+    const moreHref = detail.termine.length > previewCount
+      ? (detail.termineMoreHref || "/termine.html")
+      : null;
+    return (
+      <div className={className}>
+        <h3>— Nächste Konzerte</h3>
+        <ul className="termine-list">
+          {shown.map((t, i) => (
+            <li key={i} className="termin-item">
+              <div className="termin-date">{t.date}{t.time ? <span className="termin-time"> · {t.time}</span> : null}</div>
+              <div className="termin-info">
+                <span className="termin-title">{t.title}</span>
+                {(t.venue || t.city) && (
+                  <span className="termin-venue">{[t.venue, t.city].filter(Boolean).join(" · ")}</span>
+                )}
+                {t.note && <span className="termin-note">{t.note}</span>}
+              </div>
+            </li>
+          ))}
+        </ul>
+        {moreHref && (
+          <a className="termine-more" href={moreHref}>
+            alle termine
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+              <path d="M0 7H16M10 1l6 6-6 6"/>
+            </svg>
+          </a>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -145,8 +182,8 @@ function ProjektDetail({ id, onBack }) {
             <dt>Erste Aufführung</dt>
             <dd>München · 2024</dd>
             <dt>Tour</dt>
-            <dd></dd>
           </dl>
+          {detail.termineInAside && renderTermine("termine termine-aside")}
         </aside>
 
         <div>
@@ -290,20 +327,24 @@ function ProjektDetail({ id, onBack }) {
             ))}
           </div>
 
-          {detail.termine && detail.termine.length > 0 && (
-            <div className="termine">
-              <h3>— Nächste Konzerte</h3>
-              <ul className="termine-list">
-                {detail.termine.map((t, i) => (
-                  <li key={i} className="termin-item">
-                    <div className="termin-date">{t.date}{t.time ? <span className="termin-time"> · {t.time}</span> : null}</div>
-                    <div className="termin-info">
-                      <span className="termin-title">{t.title}</span>
-                      {(t.venue || t.city) && (
-                        <span className="termin-venue">{[t.venue, t.city].filter(Boolean).join(" · ")}</span>
-                      )}
-                      {t.note && <span className="termin-note">{t.note}</span>}
-                    </div>
+          {detail.termine && detail.termine.length > 0 && !detail.termineInAside && renderTermine()}
+
+          {detail.news && detail.news.length > 0 && (
+            <div className="project-news">
+              <h3>— News</h3>
+              <ul className="news-list">
+                {detail.news.map((n, i) => (
+                  <li key={i} className="news-item">
+                    <a className="news-link" href={n.href}>
+                      <span className="news-year">{n.year}</span>
+                      <span className="news-info">
+                        <span className="news-title">{n.title}</span>
+                        {n.subtitle ? <span className="news-subtitle">{n.subtitle}</span> : null}
+                      </span>
+                      <svg className="news-arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                        <path d="M0 7H16M10 1l6 6-6 6"/>
+                      </svg>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -360,6 +401,15 @@ function ProjektDetail({ id, onBack }) {
                   title={`${r.work} — Hörbeispiel`}
                   loading="lazy"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+              {r.embed.type === "youtube" && (
+                <iframe
+                  src={`https://www.youtube.com/embed/${r.embed.id}?autoplay=1`}
+                  title={`${r.work} — Hörbeispiel`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
               )}

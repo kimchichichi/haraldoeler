@@ -38,8 +38,9 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 .article-subtitle{margin-top:18px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:var(--muted)}
 .article-body{max-width:1480px;margin:0 auto;padding:64px 48px 120px;display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start}
 .media-gallery{display:grid;gap:12px}
-.media-gallery img{width:100%;display:block;filter:grayscale(0.5) contrast(1.05);transition:filter .5s ease}
-.media-gallery img:hover{filter:grayscale(0) contrast(1)}
+.media-gallery img{width:100%;display:block;transition:filter .5s ease}
+.embed-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#1a1816}
+.embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .article-info{}
 .info-section{margin-bottom:40px}
 .info-section:last-child{margin-bottom:0}
@@ -122,7 +123,8 @@ body.dark .article-section { border-top-color: color-mix(in srgb, var(--paper) 1
   transform: translateY(-1px);
 }
 .nav-toggle:active { transform: translateY(0); }
-.nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.nav-toggle:focus,
+.nav-toggle:focus-visible { outline: none; -webkit-tap-highlight-color: transparent; }
 body.dark .nav-toggle {
   background: color-mix(in srgb, var(--ink) 70%, transparent);
   border-color: color-mix(in srgb, var(--paper) 18%, transparent);
@@ -242,8 +244,8 @@ body.dark .nav-toggle:hover {
   </section>
 
   <main class="article-body">
-    <div class="media-gallery">
-      <img src="../news/image/zontaclub/5.webp" alt="ZONTA CLUB WÜRZBURG Konzert5" loading="lazy"/>   
+    <div class="embed-wrap">
+      <iframe src="https://www.youtube.com/embed/GfzeqN5tr98?si=C8MdudVFOF0ag2bc" title="Duo ViA! — Neues Programm" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
     </div>
     <div class="article-info">
       <div class="info-section">

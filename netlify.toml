@@ -137,6 +137,50 @@
   status = 301
   force = true
 
+# ── News: renamed Duo Klakk tour pages ───────────────
+[[redirects]]
+  from = "/news/duoklakk_1"
+  to = "/news/klakk24.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news/duoklakk_1.html"
+  to = "/news/klakk24.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news/duoklakk_2"
+  to = "/news/klakk25.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news/duoklakk_2.html"
+  to = "/news/klakk25.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news/duoklakk_3"
+  to = "/news/klakk26.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/news/duoklakk_3.html"
+  to = "/news/klakk26.html"
+  status = 301
+  force = true
+
+# ── Clean URL: home (strip index.html) ───────────────
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
 [[redirects]]
      from = "/*"
      to = "/index.html"

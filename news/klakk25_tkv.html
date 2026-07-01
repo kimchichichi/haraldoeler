@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Harald Oeler — Solo | Remembering! TKVL Konzerte 2025">
+  <meta name="description" content="Harald Oeler — Duo KlAkk! · Glückwunsch des Tonkünstlerverbands Hochfranken e.V. zum erfolgreichen Konzertjahr 2025">
   <meta name="robots" content="index, follow">
-  <title>HARALD OELER — Solo | Remembering!</title>
+  <title>HARALD OELER — Duo KlAkk! | Tonkünstlerverband Hochfranken</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" media="print" onload="this.media='all'">
@@ -45,10 +45,21 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 .concert-date{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;color:var(--muted);margin-bottom:6px}
 .concert-title{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:4px}
 .concert-venue{font-family:var(--sans);font-size:13px;color:var(--muted)}
-.body-text{font-family:var(--serif);font-weight:300;font-size:19px;line-height:1.6;color:color-mix(in srgb,var(--ink) 85%,transparent);overflow-wrap:anywhere;hyphens:auto}
-.body-text p+p{margin-top:20px}
-.media-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.concert-venue a:hover{color:var(--accent)}
+.media-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .media-gallery img{width:100%;height:auto;display:block;aspect-ratio:auto;object-fit:contain;transition:filter .5s ease}
+.cast-item{display:flex;gap:20px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 8%,transparent);font-size:14px;line-height:1.4}
+.cast-item:last-child{border-bottom:none}
+.cast-role{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);width:110px;flex-shrink:0;padding-top:1px}
+.cast-name a:hover{color:var(--accent);text-decoration:underline}
+.body-text{font-family:var(--serif);font-weight:300;font-size:19px;line-height:1.6;color:color-mix(in srgb,var(--ink) 85%,transparent)}
+.body-text p+p{margin-top:16px}
+.funding-note{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;line-height:1.7;color:var(--muted)}
+.article-photo img{width:100%;display:block}
+.press-quote{margin:0;padding:0;border:none;font-family:var(--serif);font-weight:300;font-size:clamp(20px,2.2vw,26px);line-height:1.55;font-style:italic;color:color-mix(in srgb,var(--ink) 88%,transparent)}
+.press-quote cite{display:block;margin-top:24px;font-family:var(--mono);font-size:11px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.press-quote a{transition:color .2s ease}
+.press-quote a:hover{color:var(--accent)}
 .site-footer{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);padding:32px 48px;font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1fr auto 1fr;gap:24px;max-width:1480px;margin:0 auto}
 .site-footer .center{text-align:center}
 .site-footer .right{text-align:right}
@@ -456,46 +467,33 @@ body.dark .nav-toggle:hover {
   </div>
 
   <section class="article-head">
-    <div class="article-eyebrow">— Solo · 2025</div>
-    <h1 class="article-title">Solo | <em>Remembering!</em></h1>
-    <p class="article-subtitle">TKVL Konzerte 2025</p>
+    <div class="article-eyebrow">— Duo · 2025</div>
+    <h1 class="article-title"><em>Herzlichen Glückwunsch!</em></h1>
+    <p class="article-subtitle">Tonkünstlerverband Hochfranken e.V. würdigt ein erfolgreiches Konzertjahr von Duo KlAkk!</p>
   </section>
 
   <main class="article-body">
-    <div class="media-gallery">
-      <img src="image/tkvlsolo/1.webp" alt="TKVL Konzerte 2025 Plakat 1" loading="lazy">
-      <img src="image/tkvlsolo/2.webp" alt="TKVL Konzerte 2025 Plakat 2" loading="lazy">
-      <img src="image/tkvlsolo/3.webp" alt="TKVL Konzerte 2025 Plakat 3" loading="lazy">
+    <div class="article-photo">
+      <img src="../projekte/image/page/duoklakk.webp" alt="Duo KlAkk!" loading="lazy">
     </div>
     <div class="article-info">
       <div class="info-section">
-        <div class="info-label">Info</div>
-        <div class="body-text">
-          <p>Das Programm spiegelt ihn erstmalig als Komponist, Arrangeur und Akkordeonist wider. Zwei Städte und zwei Komponisten erwiesen sich während des Kompositionsprozesses als besonders wertvoll und bilden die Hauptsäulen seines Konzertprogrammes: Paris, Tokio, Johann Sebastian Bach und Astor Piazzolla.</p>
-          <p>„Remembering“ umfasst daher vier große Werke für Akkordeon-Solo, die das Publikum auf eine multi-stilistische, musikalische Weltreise entführen. Zu hören sind freie improvisierte Musik, streng kontrapunktische Satztechniken, Alte und Neue Musik, aber auch jazzige Sounds, südamerikanische „Tango-Fetzen“ und eine „Anime-Sonate“.</p>
-        </div>
+        <div class="info-label">Presse</div>
+        <blockquote class="press-quote">
+          Der Tonkünstlerverband Hochfranken sagt „Herzlichen Glückwunsch“! Das Duo KlAkk!, bestehend aus Harald Oeler (Bajan / Akkordeon) und Ji Eun Kim (Klarinette), kann auf ein erfolgreiches Jahr mit Konzerten in ganz Deutschland verweisen. Das freut uns als Verband besonders und wir werden das Ensemble nächstes Jahr gerne weiter unterstützen. Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte. Alles Gute!
+          <cite>— <a href="https://tkv-hochfranken.de/index.php/2025/12/20/sehr-erfolgreiches-jahr-fuer-das-duo-klakk/" target="_blank" rel="noopener">Tonkünstlerverband Hochfranken e.V.</a></cite>
+        </blockquote>
       </div>
       <div class="info-section">
-        <div class="info-label">Konzertdaten</div>
-
-        <div class="concert-entry">
-          <div class="concert-date">DI 04.11.2025 · 20:00 Uhr</div>
-          <div class="concert-title">Solokonzert | REMEMBERING</div>
-          <div class="concert-venue">Kunst- und Kulturhaus Neuneinhalb, Bayreuth</div>
+        <div class="info-label">Besetzung</div>
+        <div class="cast-item">
+          <span class="cast-role">Klarinette</span>
+          <span class="cast-name">Ji Eun Kim</span>
         </div>
-
-        <div class="concert-entry">
-          <div class="concert-date">SA 25.10.2025 · 19:30 Uhr</div>
-          <div class="concert-title">Solokonzert | REMEMBERING</div>
-          <div class="concert-venue">Kultursaal Hansbauer, Weiden in der Oberpfalz</div>
+        <div class="cast-item">
+          <span class="cast-role">Akkordeon</span>
+          <span class="cast-name"><a href="https://haraldoeler.com" target="_blank" rel="noopener">Harald Oeler</a></span>
         </div>
-
-        <div class="concert-entry">
-          <div class="concert-date">FR 17.10.2025 · 19:30 Uhr</div>
-          <div class="concert-title">Solokonzert | REMEMBERING</div>
-          <div class="concert-venue">Franck-Haus, Marktheidenfeld</div>
-        </div>
-
       </div>
     </div>
   </main>

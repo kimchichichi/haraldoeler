@@ -146,14 +146,38 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/news/duoklakk_1.html</loc>
+    <loc>https://haraldoeler.com/news/klakk24.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://haraldoeler.com/news/duoklakk_2.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://haraldoeler.com/news/klakk25.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/klakk26.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/duovia_2.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/klakk25_eibelstadt.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/klakk25_tkv.html</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

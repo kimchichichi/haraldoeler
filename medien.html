@@ -467,6 +467,22 @@ body.dark .section-rule { background: color-mix(in srgb, var(--paper) 18%, trans
   color: rgba(244,241,236,0.45);
 }
 
+.lb-download {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244,241,236,0.72);
+  border-bottom: 1px solid rgba(244,241,236,0.28);
+  padding-bottom: 2px;
+  transition: color .25s ease, border-color .25s ease;
+}
+.lb-download:hover {
+  color: var(--paper);
+  border-color: var(--paper);
+}
+
 .lb-close {
   position: fixed;
   top: 28px;
@@ -1033,41 +1049,58 @@ body.dark .nav-toggle:hover {
       <p class="photo-credit">
         Fotos: Kat Schulze &amp;
         <a href="https://www.schwarzenbach-fotografie.de" target="_blank" rel="noopener">Schwarzenbach Fotografie</a>
+        · Für Presse &amp; Plakat: Foto öffnen → <em>Original herunterladen</em>
       </p>
 
-      <!-- Photo grid -->
+      <!-- Photo grid: preview = .webp (fast), download = image/media/download/ (PNG or JPG, full resolution) -->
       <div class="photo-grid" id="photoGrid">
-        <div class="photo-item" data-index="0">
-          <img src="image/media/1.webp" alt="Harald Oeler — Foto 1" loading="lazy" />
+        <div class="photo-item" data-index="0" data-preview="image/media/1.webp" data-download="image/media/download/01.png" data-download-name="Harald-Oeler_Pressefoto_01.png">
+          <img src="image/media/1.webp" alt="Harald Oeler — Foto 1" loading="lazy" decoding="async" />
           <span class="photo-index">01</span>
         </div>
-        <div class="photo-item" data-index="1">
-          <img src="image/media/2.webp" alt="Harald Oeler — Foto 2" loading="lazy" />
+        <div class="photo-item" data-index="1" data-preview="image/media/2.webp" data-download="image/media/download/02.png" data-download-name="Harald-Oeler_Pressefoto_02.png">
+          <img src="image/media/2.webp" alt="Harald Oeler — Foto 2" loading="lazy" decoding="async" />
           <span class="photo-index">02</span>
         </div>
-        <div class="photo-item" data-index="2">
-          <img src="image/media/3.webp" alt="Harald Oeler — Foto 3" loading="lazy" />
+        <div class="photo-item" data-index="2" data-preview="image/media/3.webp" data-download="image/media/download/03.png" data-download-name="Harald-Oeler_Pressefoto_03.png">
+          <img src="image/media/3.webp" alt="Harald Oeler — Foto 3" loading="lazy" decoding="async" />
           <span class="photo-index">03</span>
         </div>
-        <div class="photo-item" data-index="3">
-          <img src="image/media/4.webp" alt="Harald Oeler — Foto 4" loading="lazy" />
+        <div class="photo-item" data-index="3" data-preview="image/media/4.webp" data-download="image/media/download/04.png" data-download-name="Harald-Oeler_Pressefoto_04.png">
+          <img src="image/media/4.webp" alt="Harald Oeler — Foto 4" loading="lazy" decoding="async" />
           <span class="photo-index">04</span>
         </div>
-        <div class="photo-item" data-index="4">
-          <img src="image/media/5.webp" alt="Harald Oeler — Foto 5" loading="lazy" />
+        <div class="photo-item" data-index="4" data-preview="image/media/5.webp" data-download="image/media/download/05.png" data-download-name="Harald-Oeler_Pressefoto_05.png">
+          <img src="image/media/5.webp" alt="Harald Oeler — Foto 5" loading="lazy" decoding="async" />
           <span class="photo-index">05</span>
         </div>
-        <div class="photo-item" data-index="5">
-          <img src="image/media/6.webp" alt="Harald Oeler — Foto 6" loading="lazy" />
+        <div class="photo-item" data-index="5" data-preview="image/media/6.webp" data-download="image/media/download/06.png" data-download-name="Harald-Oeler_Pressefoto_06.png">
+          <img src="image/media/6.webp" alt="Harald Oeler — Foto 6" loading="lazy" decoding="async" />
           <span class="photo-index">06</span>
         </div>
-        <div class="photo-item" data-index="6">
-          <img src="image/media/7.webp" alt="Harald Oeler — Foto 7" loading="lazy" />
+        <div class="photo-item" data-index="6" data-preview="image/media/7.webp" data-download="image/media/download/07.png" data-download-name="Harald-Oeler_Pressefoto_07.png">
+          <img src="image/media/7.webp" alt="Harald Oeler — Foto 7" loading="lazy" decoding="async" />
           <span class="photo-index">07</span>
         </div>
-        <div class="photo-item" data-index="7">
-          <img src="image/media/8.webp" alt="Harald Oeler — Foto 8" loading="lazy" />
+        <div class="photo-item" data-index="7" data-preview="image/media/8.webp" data-download="image/media/download/08.png" data-download-name="Harald-Oeler_Duo-ViA_Pressefoto_08.png">
+          <img src="image/media/8.webp" alt="Duo ViA! — Pressefoto" loading="lazy" decoding="async" />
           <span class="photo-index">08</span>
+        </div>
+        <div class="photo-item" data-index="8" data-preview="image/media/9.webp" data-download="image/media/download/09.jpg" data-download-name="Harald-Oeler_Duo-KlAkk_Konzert.jpg">
+          <img src="image/media/9.webp" alt="Duo KlAkk! — Konzert" loading="lazy" decoding="async" />
+          <span class="photo-index">09</span>
+        </div>
+        <div class="photo-item" data-index="9" data-preview="image/media/10.webp" data-download="image/media/download/10.jpg" data-download-name="Harald-Oeler_Duo-KlAkk_Pressefoto.jpg">
+          <img src="image/media/10.webp" alt="Duo KlAkk! — Pressefoto" loading="lazy" decoding="async" />
+          <span class="photo-index">10</span>
+        </div>
+        <div class="photo-item" data-index="10" data-preview="image/media/11.webp" data-download="image/media/download/11.png" data-download-name="Harald-Oeler_Fussissimo_Trio.png">
+          <img src="image/media/11.webp" alt="Fussissimo — Trio" loading="lazy" decoding="async" />
+          <span class="photo-index">11</span>
+        </div>
+        <div class="photo-item" data-index="11" data-preview="image/media/12.webp" data-download="image/media/download/12.png" data-download-name="Harald-Oeler_Duo-ViA_Pressefoto_12.png">
+          <img src="image/media/12.webp" alt="Duo ViA! — Pressefoto" loading="lazy" decoding="async" />
+          <span class="photo-index">12</span>
         </div>
       </div>
 
@@ -1099,6 +1132,7 @@ body.dark .nav-toggle:hover {
     <div class="lb-inner">
       <img id="lbImg" src="image/media/1.webp" alt="Harald Oeler — Foto" />
       <div class="lb-counter" id="lbCounter"></div>
+      <a class="lb-download" id="lbDownload" href="image/media/download/01.png" download="Harald-Oeler_Pressefoto_01.png">Original herunterladen</a>
     </div>
 
     <button class="lb-next" id="lbNext" aria-label="Nächstes Foto">
@@ -1166,27 +1200,40 @@ body.dark .nav-toggle:hover {
 
   <!-- Lightbox JS (from media.html) -->
   <script>
-    var images = [
-      "image/media/1.webp",
-      "image/media/2.webp",
-      "image/media/3.webp",
-      "image/media/4.webp",
-      "image/media/5.webp",
-      "image/media/6.webp",
-      "image/media/7.webp",
-      "image/media/8.webp"
-    ];
+    var photos = Array.prototype.map.call(document.querySelectorAll(".photo-item"), function(item) {
+      var img = item.querySelector("img");
+      return {
+        preview: item.dataset.preview || img.getAttribute("src"),
+        alt: img.getAttribute("alt"),
+        download: item.dataset.download,
+        downloadName: item.dataset.downloadName
+      };
+    });
 
     var current = 0;
     var lightbox  = document.getElementById("lightbox");
     var lbImg     = document.getElementById("lbImg");
     var lbCounter = document.getElementById("lbCounter");
+    var lbDownload = document.getElementById("lbDownload");
+
+    function downloadLabel(name) {
+      var ext = (name || "").split(".").pop().toUpperCase();
+      return ext === "JPG" || ext === "JPEG" ? "JPG herunterladen" : "PNG herunterladen";
+    }
+
+    function updateLightbox() {
+      var photo = photos[current];
+      lbImg.src = photo.preview;
+      lbImg.alt = photo.alt;
+      lbCounter.textContent = (current + 1) + " / " + photos.length;
+      lbDownload.href = photo.download;
+      lbDownload.setAttribute("download", photo.downloadName);
+      lbDownload.textContent = downloadLabel(photo.downloadName);
+    }
 
     function openLightbox(idx) {
       current = idx;
-      lbImg.src = images[current];
-      lbImg.alt = "Harald Oeler — Foto " + (current + 1);
-      lbCounter.textContent = (current + 1) + " / " + images.length;
+      updateLightbox();
       lightbox.classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -1197,11 +1244,13 @@ body.dark .nav-toggle:hover {
     }
 
     function showSlide(idx) {
-      current = (idx + images.length) % images.length;
-      lbImg.src = images[current];
-      lbImg.alt = "Harald Oeler — Foto " + (current + 1);
-      lbCounter.textContent = (current + 1) + " / " + images.length;
+      current = (idx + photos.length) % photos.length;
+      updateLightbox();
     }
+
+    lbDownload.addEventListener("click", function(e) {
+      e.stopPropagation();
+    });
 
     document.querySelectorAll(".photo-item").forEach(function(item) {
       item.addEventListener("click", function() {

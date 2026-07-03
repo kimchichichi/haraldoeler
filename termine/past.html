@@ -10,6 +10,7 @@
   <title>HARALD OELER — vergangene Termine</title>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/site.css?v=1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +57,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
   padding: 22px 48px;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   align-items: baseline;
   gap: 48px;
 }
@@ -482,14 +483,15 @@ body.dark .scroll-top-btn:hover { background: var(--paper); color: var(--ink); b
 </head>
 <body>
 <script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
   <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
   <header class="site-header">
     <div class="header-inner">
-      <a class="wordmark" href="../index.html">
+      <a class="wordmark" href="/">
         HARALD<span class="dot"></span>OELER
-        <small>· accordionist &amp; composer</small>
+        <small>accordionist &amp; composer</small>
       </a>
       <nav class="primary">
         <a href="../bio.html">bio</a>
@@ -500,7 +502,7 @@ body.dark .scroll-top-btn:hover { background: var(--paper); color: var(--ink); b
         <a href="../medien.html">medien</a>
         <a href="../kontakt.html">kontakt</a>
       </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
       <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
@@ -1418,5 +1420,7 @@ body.dark .scroll-top-btn:hover { background: var(--paper); color: var(--ink); b
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
   </script>
+
+  <script src="../assets/site.js?v=1" defer></script>
 </body>
 </html>

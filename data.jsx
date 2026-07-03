@@ -315,7 +315,7 @@ function Header({ active = "projekte" }) {
       <div className="header-inner">
         <a className="wordmark" href="/index.html">
           HARALD<span className="dot"></span>OELER
-          {" "}<small>· accordionist &amp; composer</small>
+          {" "}<small>accordionist &amp; composer</small>
         </a>
         <nav className="primary">
           {navItems.map(item => (

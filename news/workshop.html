@@ -12,6 +12,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/site.css?v=1">
   <style>
 :root{--ink:#0e0d0c;--paper:#f4f1ec;--paper-2:#ebe6dd;--muted:#6b655c;--accent:#6b1d1a;--accent-soft:#8a2a26;--serif:'Cormorant Garamond',serif;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -424,6 +425,7 @@ body.dark .nav-toggle:hover {
 </head>
 <body>
 <script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
   <header class="site-header">
@@ -438,7 +440,7 @@ body.dark .nav-toggle:hover {
         <a href="../medien.html">medien</a>
         <a href="../kontakt.html">kontakt</a>
       </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
       <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
@@ -458,7 +460,7 @@ body.dark .nav-toggle:hover {
     <p class="article-subtitle">Workshops für Kinder in der Klangmanufaktur der Hofer Symphoniker</p>
   </section>
 
-  <main class="article-body">
+  <main id="main" class="article-body">
     <div class="media-gallery">
       <img src="image/main/workshop.webp" alt="Musikalische Früherziehung Workshop" loading="lazy">
     </div>
@@ -470,12 +472,12 @@ body.dark .nav-toggle:hover {
 
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
-    <div class="center"></div>
+    <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></div>
   </footer>
 
   <script>
-  document.getElementById('theme-toggle').addEventListener('click',function(){
+  window.__HO_THEME_CUSTOM=true;document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
@@ -499,6 +501,7 @@ body.dark .nav-toggle:hover {
   n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
   backdrop.addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  window.__HO_NAV_CUSTOM=true;
 })();
 </script>
   <!-- Scroll to top button -->
@@ -558,5 +561,6 @@ body.dark .nav-toggle:hover {
       });
     })();
   </script>
+  <script src="../assets/site.js?v=1" defer></script>
 </body>
 </html>

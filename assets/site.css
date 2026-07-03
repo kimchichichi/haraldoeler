@@ -263,6 +263,23 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
 }
 body.dark .hc-item-link { border-color: color-mix(in srgb, var(--paper) 10%, transparent); }
 
+/* Projekte detail pages (React bundles) */
+body.dark .projects-subnav {
+  background: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent);
+}
+body.dark .projects-subnav-inner a:hover,
+body.dark .projects-subnav-inner a.active { color: var(--paper); }
+body.dark .detail-body aside dd { color: var(--paper); }
+body.dark .detail-body .body-copy { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+body.dark .repertoire { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+body.dark .repertoire li { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .quotes,
+body.dark .media,
+body.dark .termine,
+body.dark .project-news { border-top-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+body.dark .media-item .frame { border-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+
 /* Termine */
 .concert-item {
   cursor: pointer;

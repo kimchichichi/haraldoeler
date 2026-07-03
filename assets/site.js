@@ -133,6 +133,18 @@
     initScrollTop();
     initHeroHeader();
     initFooterConcert();
+    bootReactPages();
+  }
+
+  function bootReactPages() {
+    if (!document.getElementById('root')) return;
+    var tries = 0;
+    var iv = setInterval(function () {
+      tries++;
+      initTheme();
+      initNav();
+      if (tries > 80) clearInterval(iv);
+    }, 50);
   }
 
   if (document.readyState === 'loading') {

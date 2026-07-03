@@ -493,6 +493,14 @@ body.dark .scroll-top {
     right: 18px;
     z-index: 10002;
   }
+  .theme-toggle {
+    position: fixed;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 32px;
+    z-index: 10003;
+    opacity: 0.65;
+  }
+  .theme-toggle:hover { opacity: 1; }
   @keyframes nav-drawer-in {
     from { transform: translateX(-100%); }
     to { transform: translateX(0); }

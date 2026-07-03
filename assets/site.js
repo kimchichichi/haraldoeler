@@ -2,18 +2,22 @@
 (function () {
   'use strict';
 
-  /* Theme */
+  /* Theme — event delegation works with React-rendered headers */
   function initTheme() {
-    var btn = document.getElementById('theme-toggle');
-    if (!btn || btn.__themeBound || window.__HO_THEME_CUSTOM) return !!btn;
-    btn.__themeBound = true;
+    if (window.__HO_THEME_BOUND || window.__HO_THEME_CUSTOM) return true;
+    window.__HO_THEME_BOUND = true;
 
     function syncPressed() {
-      btn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? 'true' : 'false');
+      var btn = document.getElementById('theme-toggle');
+      if (btn) {
+        btn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? 'true' : 'false');
+      }
     }
     syncPressed();
 
-    btn.addEventListener('click', function () {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('#theme-toggle');
+      if (!btn) return;
       var dark = document.body.classList.toggle('dark');
       localStorage.setItem('ho-theme', dark ? 'dark' : 'light');
       syncPressed();
@@ -142,6 +146,10 @@
     var iv = setInterval(function () {
       tries++;
       initTheme();
+      if (document.getElementById('theme-toggle')) {
+        var btn = document.getElementById('theme-toggle');
+        btn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? 'true' : 'false');
+      }
       initNav();
       if (tries > 80) clearInterval(iv);
     }, 50);

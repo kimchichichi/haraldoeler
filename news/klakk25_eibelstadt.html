@@ -19,7 +19,7 @@
 html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 .site-header{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid color-mix(in srgb,var(--ink) 12%,transparent);backdrop-filter:saturate(140%)}
-.header-inner{max-width:1480px;margin:0 auto;padding:22px 48px;display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:48px}
+.header-inner{max-width:1480px;margin:0 auto;padding:22px 48px;display:grid;grid-template-columns: 1fr auto auto;align-items:baseline;gap:48px}
 .wordmark{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:0.32em;text-transform:uppercase}
 .wordmark .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin:0 10px 2px;vertical-align:middle}
 .wordmark small{font-family:var(--serif);font-style:italic;font-weight:400;font-size:13px;letter-spacing:0.04em;text-transform:none;color:var(--muted)}
@@ -315,6 +315,38 @@ body.dark .nav-toggle:hover { opacity: 1; }
   .site-footer .center, .site-footer .right { text-align: left; }
 }
 
+
+@media (min-width: 721px) {
+  .header-inner {
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+  }
+  .theme-toggle {
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    opacity: 0.5;
+    pointer-events: auto;
+  }
+  .nav-toggle {
+    position: static;
+    top: auto;
+    right: auto;
+  }
+  .wordmark {
+    display: inline;
+    white-space: normal;
+    letter-spacing: 0.32em;
+  }
+  .wordmark small {
+    display: inline;
+    margin-top: 0;
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 720px) and (max-height: 560px) {
   nav.primary.open { padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
   nav.primary.open a { font-size: 24px; padding: 4px 0; min-height: 40px; }
@@ -491,30 +523,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     })();
   </script>
 
-<script>
-(function(){
-  var mq = matchMedia('(max-width:720px)');
-  function pinThemeToggle(){
-    var btn = document.getElementById('theme-toggle');
-    var home = document.querySelector('.header-inner');
-    var nav = document.getElementById('navToggle');
-    if (!btn || !home) return false;
-    if (mq.matches) {
-      if (btn.parentElement !== document.body) document.body.appendChild(btn);
-    } else if (btn.parentElement === document.body) {
-      home.insertBefore(btn, nav || null);
-    }
-    return true;
-  }
-  function apply(){ pinThemeToggle(); }
-  apply();
-  mq.addEventListener('change', apply);
-  var tries = 0;
-  var iv = setInterval(function(){
-    if (pinThemeToggle() || ++tries > 80) clearInterval(iv);
-  }, 50);
-})();
-</script>
   <script src="../assets/site.js?v=1" defer></script>
 </body>
 </html>

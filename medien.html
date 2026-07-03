@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://www.haraldoeler.com/medien" />
   <link rel="icon" href="image/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css?v=1">
   <title>HARALD OELER — medien</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -574,8 +575,9 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
   margin: 0 auto;
   padding: 48px 48px 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  position: relative;
 }
 body.dark .filter-bar { border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent); }
 .filter-btn {
@@ -587,7 +589,7 @@ body.dark .filter-bar { border-bottom-color: color-mix(in srgb, var(--paper) 18%
   background: none;
   border: none;
   cursor: pointer;
-  padding: 16px 32px 16px 0;
+  padding: 16px 32px 14px 0;
   position: relative;
   transition: color .25s ease;
 }
@@ -600,9 +602,10 @@ body.dark .filter-btn.active { color: var(--paper); }
   position: absolute;
   left: 0;
   right: 32px;
-  bottom: -1px;
-  height: 1px;
+  bottom: 0;
+  height: 2px;
   background: var(--accent);
+  z-index: 1;
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -848,6 +851,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 </head>
 <body>
 <script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
   <!-- Extracted from Projekte.html — site-header / nav -->
@@ -866,7 +870,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <a href="medien.html" class="active">medien</a>
         <a href="kontakt.html">kontakt</a>
       </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
       <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
@@ -876,7 +880,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
     <!-- Page header band — same pattern as Projekte.html -->
     <div class="page-head">
@@ -1224,7 +1228,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <!-- Extracted from Projekte.html — site-footer -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
-    <div class="center"></div>
+    <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 
@@ -1251,63 +1255,9 @@ body.dark .nav-toggle:hover { opacity: 1; }
     </button>
   </div>
 
-  <!-- Spotify overlay JS (from discographie.html) -->
-  <script>
-  (function () {
-    var activeOverlay = null;
-
-    function closeAll() {
-      if (!activeOverlay) return;
-      activeOverlay.classList.remove('is-open');
-      activeOverlay.setAttribute('aria-hidden', 'true');
-      var container = activeOverlay.querySelector('.sp-iframe-container');
-      if (container) container.innerHTML = '';
-      activeOverlay = null;
-    }
-
-    function openOverlay(card) {
-      var embedUrl = card.dataset.spotify;
-      var overlay = card.querySelector('.spotify-overlay');
-      if (!overlay || !embedUrl) return;
-
-      if (activeOverlay === overlay) { closeAll(); return; }
-      closeAll();
-
-      var iframe = document.createElement('iframe');
-      iframe.src = embedUrl + '&autoplay=1';
-      iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.setAttribute('loading', 'lazy');
-      iframe.setAttribute('frameborder', '0');
-
-      overlay.querySelector('.sp-iframe-container').appendChild(iframe);
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
-      activeOverlay = overlay;
-    }
-
-    document.querySelectorAll('.card[data-spotify]').forEach(function (card) {
-      card.addEventListener('click', function (e) {
-        e.preventDefault();
-        openOverlay(card);
-      });
-    });
-
-    document.querySelectorAll('.sp-close').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeAll();
-      });
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !lightbox.classList.contains('open')) closeAll();
-    });
-  })();
-  </script>
-
-  <!-- Lightbox JS (from media.html) -->
+  <script src="assets/medien.js?v=1" defer></script>
+  <script src="assets/site.js?v=1" defer></script>
+  <!-- Filter bar JS -->
   <script>
     var photos = Array.prototype.map.call(document.querySelectorAll(".photo-item"), function(item) {
       var img = item.querySelector("img");
@@ -1411,7 +1361,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   </script>
 
   <script>
-  document.getElementById('theme-toggle').addEventListener('click',function(){
+  window.__HO_THEME_CUSTOM=true;document.getElementById('theme-toggle').addEventListener('click',function(){
     var d=document.body.classList.toggle('dark');
     localStorage.setItem('ho-theme',d?'dark':'light');
   });
@@ -1435,6 +1385,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
   backdrop.addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  window.__HO_NAV_CUSTOM=true;
 })();
 </script>
   <!-- Scroll to top button -->

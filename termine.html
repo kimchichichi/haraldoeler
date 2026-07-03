@@ -13,6 +13,7 @@
   <title>HARALD OELER — termine</title>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css?v=1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,10 +262,7 @@ nav.primary a.active::after {
   padding: 28px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
   align-items: start;
-  transition: padding-left .35s ease;
-  cursor: default;
 }
-.concert-item:hover { padding-left: 12px; }
 
 /* Left column: date + day-time */
 .c-left { display: flex; flex-direction: column; gap: 6px; padding-top: 3px; }
@@ -830,7 +828,8 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 </head>
 
 <body>
-<script>var _t=sessionStorage.getItem('ho-theme');if(_t==='dark')document.body.classList.add('dark');</script>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
   <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
@@ -849,7 +848,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
       <a href="medien.html">medien</a>
       <a href="kontakt.html">kontakt</a>
     </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
       <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
@@ -871,6 +870,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
     </div>
   </section>
 
+  <main id="main">
   <!-- ═══ CONCERT LIST ══════════════════════════════════════════════════════ -->
   <div class="termine-wrapper">
 
@@ -893,8 +893,9 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
         <button class="yr-btn" data-yr="2027">2027</button>
       </div>
       <div class="search-wrap">
+        <label for="concert-search" class="visually-hidden">Konzerte suchen</label>
         <svg class="search-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off">
+        <input type="search" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off" aria-label="Konzerte suchen">
       </div>
     </div>
 
@@ -2030,6 +2031,11 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
 </ul>
+    <div class="termine-empty" id="termine-empty" role="status">
+      Keine Termine gefunden.
+      <br>
+      <button type="button" id="termine-reset">Filter zurücksetzen</button>
+    </div>
   </div><!-- /.termine-wrapper -->
 
   <!-- ═══ FOLLOW SECTION ══════════════════════════════════════════════════════ -->
@@ -2054,194 +2060,22 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
     </div>
   </div>
 
+  </main>
+
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
-    <div class="center"></div>
+    <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 
-  <script>
-    const searchInput = document.getElementById('concert-search');
-    const items = document.querySelectorAll('.concert-item');
-
-    function addPosterButtons() {
-      items.forEach(function (item) {
-        var posterHref = item.dataset.poster;
-        if (!posterHref || item.querySelector('.c-poster-link')) return;
-
-        var actions = item.querySelector('.c-right');
-        var infoLink = item.querySelector('.c-info-link');
-        if (!actions || !infoLink) return;
-
-        var posterLink = document.createElement('a');
-        posterLink.className = 'c-info-link c-poster-link';
-        posterLink.href = posterHref;
-        posterLink.target = '_blank';
-        posterLink.rel = 'noopener';
-        posterLink.innerHTML = 'plakat <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>';
-        actions.insertBefore(posterLink, infoLink.nextSibling);
-      });
-    }
-
-    addPosterButtons();
-    const originals = Array.from(items).map(function (item) { return item.innerHTML; });
-    let activeYear = 'all';
-
-    function escapeRe(s) {
-      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-
-    function highlightIn(html, q) {
-      return html.replace(/>([^<]*)</g, function (match, text) {
-        var highlighted = text.replace(
-          new RegExp('(' + escapeRe(q) + ')', 'gi'),
-          '<mark class="search-hl">$1</mark>'
-        );
-        return '>' + highlighted + '<';
-      });
-    }
-
-    function getItemYear(item) {
-      var el = item.querySelector('.c-date');
-      if (!el) return null;
-      var m = el.textContent.match(/\d{4}/);
-      return m ? m[0] : null;
-    }
-
-    function applyFilters() {
-      var q = searchInput.value.trim();
-      items.forEach(function (item, i) {
-        item.innerHTML = originals[i];
-        var year = getItemYear(item);
-        var yearMatch = activeYear === 'all' || year === activeYear;
-        var textMatch = q === '' || item.textContent.toLowerCase().includes(q.toLowerCase());
-        item.style.display = (yearMatch && textMatch) ? '' : 'none';
-        if (yearMatch && textMatch && q !== '') {
-          item.innerHTML = highlightIn(originals[i], q);
-        }
-      });
-    }
-
-    document.querySelectorAll('.yr-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.yr-btn').forEach(function (b) { b.classList.remove('active'); });
-        this.classList.add('active');
-        activeYear = this.dataset.yr;
-        applyFilters();
-      });
-    });
-
-    searchInput.addEventListener('input', applyFilters);
-  </script>
-  <script>
-  document.getElementById('theme-toggle').addEventListener('click',function(){
-    var d=document.body.classList.toggle('dark');
-    sessionStorage.setItem('ho-theme',d?'dark':'light');
-  });
-  </script>
-<script>
-(function(){
-  var t=document.getElementById('navToggle'),n=document.querySelector('nav.primary');
-  if(!t||!n)return;
-  var backdrop=document.querySelector('.nav-backdrop');
-  if(!backdrop){backdrop=document.createElement('button');backdrop.className='nav-backdrop';backdrop.type='button';backdrop.setAttribute('aria-label','Menü schließen');document.body.appendChild(backdrop);}
-  var OPEN='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
-  var CLOSED='<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
-  function close(){n.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');document.body.style.overflow='';t.innerHTML=CLOSED;}
-  t.addEventListener('click',function(){
-    var o=n.classList.toggle('open');
-    t.setAttribute('aria-expanded',o);
-    document.body.classList.toggle('nav-open', o);
-    document.body.style.overflow=o?'hidden':'';
-    t.innerHTML=o?OPEN:CLOSED;
-  });
-  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
-  backdrop.addEventListener('click',close);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-  <!-- Scroll to top button -->
+  <script src="assets/site.js?v=1" defer></script>
+  <script src="assets/termine.js?v=1" defer></script>
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 19V5" />
       <path d="M5 12l7-7 7 7" />
     </svg>
   </button>
-  <style>
-    .scroll-top{
-      position:fixed; right:18px; bottom:18px; z-index:9999;
-      width:44px; height:44px; border-radius:999px;
-      display:grid; place-items:center;
-      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
-      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
-      color:var(--ink, #0e0d0c);
-      -webkit-backdrop-filter: blur(12px) saturate(140%);
-      backdrop-filter: blur(12px) saturate(140%);
-      box-shadow:0 10px 28px rgba(0,0,0,.14);
-      cursor:pointer;
-      opacity:0; transform:translateY(8px); pointer-events:none;
-      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
-    }
-    body.dark .scroll-top{
-      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
-      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
-      color: var(--paper, #f4f1ec);
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
-    }
-    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
-    .scroll-top:hover{
-      opacity:1; transform:translateY(-1px);
-      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
-    }
-    .scroll-top:focus-visible{
-      outline:2px solid var(--accent, #6b1d1a);
-      outline-offset:3px;
-      opacity:1;
-      pointer-events:auto;
-    }
-    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
-  </style>
-  <script>
-    (function(){
-      var btn = document.getElementById('scrollTopBtn');
-      if (!btn) return;
-      var showAt = 500;
-      function sync(){
-        btn.classList.toggle('is-visible', window.scrollY > showAt);
-      }
-      window.addEventListener('scroll', sync, { passive: true });
-      sync();
-      btn.addEventListener('click', function(){
-        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      });
-    })();
-  </script>
-
-<script>
-(function(){
-  var mq = matchMedia('(max-width:720px)');
-  function pinThemeToggle(){
-    var btn = document.getElementById('theme-toggle');
-    var home = document.querySelector('.header-inner');
-    var nav = document.getElementById('navToggle');
-    if (!btn || !home) return false;
-    if (mq.matches) {
-      if (btn.parentElement !== document.body) document.body.appendChild(btn);
-    } else if (btn.parentElement === document.body) {
-      home.insertBefore(btn, nav || null);
-    }
-    return true;
-  }
-  function apply(){ pinThemeToggle(); }
-  apply();
-  mq.addEventListener('change', apply);
-  var tries = 0;
-  var iv = setInterval(function(){
-    if (pinThemeToggle() || ++tries > 80) clearInterval(iv);
-  }, 50);
-})();
-</script>
 </body>
 </html>

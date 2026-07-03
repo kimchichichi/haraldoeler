@@ -20,6 +20,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css?v=1">
 
   <style>
 :root {
@@ -318,17 +319,7 @@ nav.primary a.active::after {
   list-style: none;
   margin-bottom: 36px;
 }
-.hc-item {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 24px;
-  padding: 18px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
-  align-items: baseline;
-  transition: padding-left .3s ease;
-}
-.hc-item:first-child { border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
-.hc-item:hover { padding-left: 10px; }
+/* hc-item-link styles in assets/site.css */
 .hc-date {
   font-family: var(--mono);
   font-size: 11px;
@@ -602,7 +593,7 @@ body.dark .home-bio-lang a:hover {
   .hero-scroll::before { height: 42px; }
 
   .home-teasers { padding: 56px 24px 56px; }
-  .hc-item { grid-template-columns: 100px 1fr; gap: 16px; }
+  .hc-item-link { grid-template-columns: 100px 1fr auto; gap: 16px; }
 
   .home-projects-section { padding: 56px 24px 80px; }
   .home-projects-grid { grid-template-columns: 1fr; }
@@ -887,10 +878,11 @@ body.dark .nav-toggle:hover { opacity: 1; }
 </head>
 <body>
 <script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
   <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
-<header class="site-header">
+<header class="site-header hero-header">
   <div class="header-inner">
     <a class="wordmark" href="/">
       HARALD<span class="dot"></span>OELER
@@ -915,7 +907,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   </div>
 </header>
 
-  <main>
+  <main id="main">
 
     <!-- Hero -->
     <section class="hero">
@@ -945,37 +937,46 @@ body.dark .nav-toggle:hover { opacity: 1; }
         -->
         <ul class="home-concert-list" id="home-concert-list">
 
-          <li class="hc-item">
-            <div class="hc-date">
-              03.07.2026
-              <small>Fr · 19:30 Uhr</small>
-            </div>
-            <div>
-              <div class="hc-title">FUSSISSIMO – Gypsy-Ethno-Jazz</div>
-              <div class="hc-location">Kulturwerkstatt Disharmonie, Schweinfurt</div>
-            </div>
+          <li>
+            <a class="hc-item-link" href="termine.html#termin-2026-07-03">
+              <div class="hc-date">
+                03.07.2026
+                <small>Fr · 19:30 Uhr</small>
+              </div>
+              <div>
+                <div class="hc-title">FUSSISSIMO – Gypsy-Ethno-Jazz</div>
+                <div class="hc-location">Kulturwerkstatt Disharmonie, Schweinfurt</div>
+              </div>
+              <span class="hc-arrow" aria-hidden="true">Details →</span>
+            </a>
           </li>
 
-          <li class="hc-item">
-            <div class="hc-date">
-              05.07.2026
-              <small>So · 17:00 Uhr</small>
-            </div>
-            <div>
-              <div class="hc-title">Duo KlAkk! goes Encore!</div>
-              <div class="hc-location">Weytterturm (Innenhof), Straubing</div>
-            </div>
+          <li>
+            <a class="hc-item-link" href="termine.html#termin-2026-07-05">
+              <div class="hc-date">
+                05.07.2026
+                <small>So · 17:00 Uhr</small>
+              </div>
+              <div>
+                <div class="hc-title">Duo KlAkk! goes Encore!</div>
+                <div class="hc-location">Weytterturm (Innenhof), Straubing</div>
+              </div>
+              <span class="hc-arrow" aria-hidden="true">Details →</span>
+            </a>
           </li>
 
-          <li class="hc-item">
-            <div class="hc-date">
-              18.07.2026
-              <small>Sa · 19:30 Uhr</small>
-            </div>
-            <div>
-              <div class="hc-title">PHILHARMONIE UND FILM – Brahms und Blockbuster</div>
-              <div class="hc-location">Schlosshof Hohenschwangau</div>
-            </div>
+          <li>
+            <a class="hc-item-link" href="termine.html#termin-2026-07-18">
+              <div class="hc-date">
+                18.07.2026
+                <small>Sa · 19:30 Uhr</small>
+              </div>
+              <div>
+                <div class="hc-title">PHILHARMONIE UND FILM – Brahms und Blockbuster</div>
+                <div class="hc-location">Schlosshof Hohenschwangau</div>
+              </div>
+              <span class="hc-arrow" aria-hidden="true">Details →</span>
+            </a>
           </li>
 
         </ul>
@@ -1081,7 +1082,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <!-- Footer (extracted from Projekte.html) -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
-    <div class="center"></div>
+    <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 
@@ -1139,18 +1140,27 @@ body.dark .nav-toggle:hover { opacity: 1; }
         return location ? cleanText(location.textContent) : '';
       }
 
+      function getTerminId(date) {
+        var m = date.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+        return m ? 'termin-' + m[3] + '-' + m[2] + '-' + m[1] : '';
+      }
+
       function render(events) {
         list.innerHTML = events.map(function(event) {
+          var href = event.terminId ? 'termine.html#' + event.terminId : 'termine.html';
           return [
-            '<li class="hc-item">',
-              '<div class="hc-date">',
-                escapeHtml(event.date),
-                '<small>' + escapeHtml(event.day) + '</small>',
-              '</div>',
-              '<div>',
-                '<div class="hc-title">' + escapeHtml(event.title) + '</div>',
-                '<div class="hc-location">' + escapeHtml(event.location) + '</div>',
-              '</div>',
+            '<li>',
+              '<a class="hc-item-link" href="' + href + '">',
+                '<div class="hc-date">',
+                  escapeHtml(event.date),
+                  '<small>' + escapeHtml(event.day) + '</small>',
+                '</div>',
+                '<div>',
+                  '<div class="hc-title">' + escapeHtml(event.title) + '</div>',
+                  '<div class="hc-location">' + escapeHtml(event.location) + '</div>',
+                '</div>',
+                '<span class="hc-arrow" aria-hidden="true">Details →</span>',
+              '</a>',
             '</li>'
           ].join('');
         }).join('');
@@ -1177,6 +1187,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
               title: getTitle(item),
               location: getLocation(item),
               parsedDate: parsedDate,
+              terminId: item.id || getTerminId(date),
               cancelled: Boolean(item.querySelector('.badge-abgesagt'))
             };
           }).filter(function(event) {
@@ -1206,6 +1217,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <script>
   (function(){
     var btn = document.getElementById('theme-toggle');
+    window.__HO_THEME_CUSTOM = true;
     function syncPressed(){
       var dark = document.body.classList.contains('dark');
       btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
@@ -1273,6 +1285,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       if(document.activeElement===last){ e.preventDefault(); first.focus(); }
     }
   });
+  window.__HO_NAV_CUSTOM=true;
 })();
 </script>
 
@@ -1360,5 +1373,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
   }, 50);
 })();
 </script>
+  <script src="assets/site.js?v=1" defer></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+# Redirect legacy URLs to medien hub
+Redirect 301 /media.html /medien.html
+Redirect 301 /media /medien.html
+Redirect 301 /discographie.html /medien.html
+Redirect 301 /discographie /medien.html

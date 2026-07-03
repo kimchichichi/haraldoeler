@@ -13,6 +13,7 @@
   <title>HARALD OELER — termine</title>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/site.css?v=1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +65,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
   padding: 22px 48px;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   align-items: baseline;
   gap: 48px;
 }
@@ -261,10 +262,7 @@ nav.primary a.active::after {
   padding: 28px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
   align-items: start;
-  transition: padding-left .35s ease;
-  cursor: default;
 }
-.concert-item:hover { padding-left: 12px; }
 
 /* Left column: date + day-time */
 .c-left { display: flex; flex-direction: column; gap: 6px; padding-top: 3px; }
@@ -534,8 +532,6 @@ body.dark .follow-btn--secondary:hover { border-color: var(--paper); }
 }
 
 @media (max-width: 720px) {
-  .header-inner { padding: 18px 24px; gap: 16px; }
-  nav.primary { display: none; }
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
   .page-meta { text-align: left; margin-top: 16px; }
   .termine-wrapper { padding: 0 24px 80px; }
@@ -560,8 +556,6 @@ body.dark .follow-btn--secondary:hover { border-color: var(--paper); }
     white-space: normal;
     width: 100%;
   }
-  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
-  .site-footer .center, .site-footer .right { text-align: left; }
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -611,9 +605,8 @@ body.dark .c-cal a:hover { color: var(--paper); }
   display: none;
   width: 40px;
   height: 40px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--paper) 78%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  background: none;
+  border: none;
   cursor: pointer;
   color: inherit;
   padding: 0;
@@ -621,100 +614,244 @@ body.dark .c-cal a:hover { color: var(--paper); }
   align-self: center;
   line-height: 0;
   z-index: 10001;
-  transition: transform .15s ease, background-color .2s ease, border-color .2s ease, opacity .2s ease;
+  transition: opacity .2s ease, transform .15s ease;
   opacity: 0.92;
 }
 .nav-toggle svg { display: block; }
 .nav-toggle:hover {
-  background: var(--paper-2);
-  border-color: color-mix(in srgb, var(--ink) 20%, transparent);
   opacity: 1;
   transform: translateY(-1px);
 }
 .nav-toggle:active { transform: translateY(0); }
 .nav-toggle:focus,
 .nav-toggle:focus-visible { outline: none; -webkit-tap-highlight-color: transparent; }
-body.dark .nav-toggle {
-  background: color-mix(in srgb, var(--ink) 70%, transparent);
-  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
-}
-body.dark .nav-toggle:hover {
-  background: color-mix(in srgb, var(--ink) 84%, transparent);
-  border-color: color-mix(in srgb, var(--paper) 26%, transparent);
-}
+body.dark .nav-toggle:hover { opacity: 1; }
 @media (max-width: 720px) {
-  .header-inner { grid-template-columns: 1fr auto auto; }
-  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
-  nav.primary.open {
-    display: flex !important;
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100dvh;
-    padding-top: max(24px, env(safe-area-inset-top));
-    padding-bottom: max(24px, env(safe-area-inset-bottom));
-    padding-left: 24px;
-    padding-right: 24px;
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(14px) saturate(140%);
-    flex-direction: column;
+  .header-inner { padding: 18px 24px; gap: 16px; grid-template-columns: 1fr auto auto; }
+  .wordmark {
+    display: block;
+    line-height: 1.15;
+    letter-spacing: 0.24em;
+    white-space: nowrap;
+  }
+  .wordmark small {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    white-space: normal;
+    text-transform: none;
+  }
+  nav.primary { display: none; }
+  .nav-toggle {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(14px, 3.6vh, 26px);
-    z-index: 10000;
-    overflow: hidden;
-  }
-  body.dark nav.primary.open { background: color-mix(in srgb, var(--ink) 92%, transparent); }
-  nav.primary.open a {
-    font-family: var(--mono);
-    font-size: clamp(14px, 2.4vh, 18px);
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--ink);
-    padding: 8px 0;
-    display: inline-block;
-    position: relative;
-    transition: color .2s ease, transform .2s ease;
-  }
-  nav.primary.open a::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0;
-    bottom: -6px;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.35;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform .25s ease, opacity .25s ease;
-  }
-  body.dark nav.primary.open a { color: var(--paper); }
-  nav.primary.open a.active,
-  nav.primary.open a:hover { color: var(--accent); }
-  nav.primary.open a.active::after { transform: scaleX(1); opacity: 0.55; }
-  nav.primary.open a:focus-visible::after { transform: scaleX(1); opacity: 0.65; }
-  @media (hover: hover) {
-    nav.primary.open a:hover { transform: translateY(-2px); }
-    nav.primary.open a:hover::after { transform: scaleX(1); opacity: 0.55; }
-  }
-
-  body.nav-open .site-header { background: transparent; border-bottom-color: transparent; }
-  body.nav-open .wordmark,
-  body.nav-open .theme-toggle { visibility: hidden; pointer-events: none; }
-  body.nav-open .nav-toggle {
     position: fixed;
     top: max(16px, env(safe-area-inset-top));
     right: 16px;
+    z-index: 10003;
+    pointer-events: auto;
   }
-  body.nav-open nav.primary.open { background: var(--paper); backdrop-filter: none; }
-  body.dark.nav-open nav.primary.open { background: var(--ink); }
-  body.nav-open { overscroll-behavior: none; }
-  body.nav-open nav.primary.open { overscroll-behavior: none; touch-action: none; }
+  .theme-toggle {
+    position: fixed;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 32px;
+    z-index: 10003;
+    opacity: 0.65;
+    pointer-events: auto;
+  }
+  .theme-toggle:hover { opacity: 1; }
+  .site-header,
+  .site-header.scrolled,
+  body.nav-open .site-header {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @keyframes nav-drawer-in {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
+  }
+  @keyframes nav-link-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(14, 13, 12, 0.38);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body.nav-open .nav-backdrop { display: block; }
+  body.dark.nav-open .nav-backdrop { background: rgba(0, 0, 0, 0.52); }
+  nav.primary.open::before {
+    content: "— navigation";
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: nav-link-in .32s ease forwards;
+  }
+  nav.primary.open {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(100vw, 360px);
+    height: 100dvh;
+    padding: max(84px, calc(env(safe-area-inset-top) + 68px)) 32px max(32px, env(safe-area-inset-bottom));
+    background: var(--paper);
+    box-shadow: 4px 0 48px rgba(14, 13, 12, 0.1);
+    z-index: 10000;
+    pointer-events: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 0;
+    animation: nav-drawer-in .34s cubic-bezier(.22, 1, .36, 1);
+  }
+  body.dark nav.primary.open {
+    background: var(--ink);
+    box-shadow: 4px 0 48px rgba(0, 0, 0, 0.35);
+  }
+  nav.primary.open a {
+    font-family: var(--serif);
+    font-size: clamp(26px, 6.2vw, 34px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-transform: lowercase;
+    color: color-mix(in srgb, var(--ink) 72%, transparent);
+    padding: 8px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    position: relative;
+    opacity: 0;
+    animation: nav-link-in .36s ease forwards;
+    transition: color .2s ease, transform .15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  nav.primary.open a:nth-child(1) { animation-delay: .05s; }
+  nav.primary.open a:nth-child(2) { animation-delay: .09s; }
+  nav.primary.open a:nth-child(3) { animation-delay: .13s; }
+  nav.primary.open a:nth-child(4) { animation-delay: .17s; }
+  nav.primary.open a:nth-child(5) { animation-delay: .21s; }
+  nav.primary.open a:nth-child(6) { animation-delay: .25s; }
+  nav.primary.open a:nth-child(7) { animation-delay: .29s; }
+  nav.primary.open a::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity .2s ease, transform .2s ease;
+    flex-shrink: 0;
+  }
+  nav.primary.open a.active {
+    color: var(--accent);
+    font-style: italic;
+  }
+  nav.primary.open a.active::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  nav.primary.open a::after {
+    display: none;
+  }
+  body.dark nav.primary.open a { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+  body.dark nav.primary.open a.active { color: var(--accent-soft); }
+  nav.primary.open a:active { color: var(--accent); }
+  @media (hover: hover) {
+    nav.primary.open a:hover { color: var(--accent); transform: translateX(4px); }
+    nav.primary.open a:hover::before { opacity: 0.4; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    nav.primary.open, nav.primary.open a { animation: none; opacity: 1; transform: none; }
+  }
+  body.nav-open .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10002;
+    background: transparent;
+    border-bottom-color: transparent;
+    pointer-events: none;
+  }
+  body.nav-open .header-inner { pointer-events: none; }
+  body.nav-open .wordmark {
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+    font-size: 11px;
+  }
+  body.nav-open .theme-toggle {
+    position: fixed;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: 32px;
+    z-index: 10003;
+    opacity: 0.65;
+    pointer-events: auto;
+  }
+  body.nav-open .theme-toggle:hover { opacity: 1; }
+  body.nav-open { overscroll-behavior: none; overflow: hidden; }
+  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
+  .site-footer .center, .site-footer .right { text-align: left; }
+}
+
+
+@media (min-width: 721px) {
+  .header-inner {
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+  }
+  .theme-toggle {
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    opacity: 0.5;
+    pointer-events: auto;
+  }
+  .nav-toggle {
+    position: static;
+    top: auto;
+    right: auto;
+  }
+  .wordmark {
+    display: inline;
+    white-space: normal;
+    letter-spacing: 0.32em;
+  }
+  .wordmark small {
+    display: inline;
+    margin-top: 0;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 720px) and (max-height: 560px) {
-  nav.primary.open { gap: 14px; }
-  nav.primary.open a { font-size: 14px; letter-spacing: 0.22em; }
+  nav.primary.open { padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
+  nav.primary.open a { font-size: 24px; padding: 4px 0; min-height: 40px; }
 }
 
 /* Dark-mode contrast: lighter red accents on black backgrounds. */
@@ -723,7 +860,8 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 </head>
 
 <body>
-<script>var _t=sessionStorage.getItem('ho-theme');if(_t==='dark')document.body.classList.add('dark');</script>
+<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
   <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
@@ -731,7 +869,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
   <div class="header-inner">
     <a class="wordmark" href="/">
       HARALD<span class="dot"></span>OELER
-      <small>· accordionist &amp; composer</small>
+      <small>accordionist &amp; composer</small>
     </a>
     <nav class="primary">
       <a href="bio.html">bio</a>
@@ -742,7 +880,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
       <a href="medien.html">medien</a>
       <a href="kontakt.html">kontakt</a>
     </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" title="Dark / Light">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
       <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
@@ -764,6 +902,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
     </div>
   </section>
 
+  <main id="main">
   <!-- ═══ CONCERT LIST ══════════════════════════════════════════════════════ -->
   <div class="termine-wrapper">
 
@@ -786,8 +925,9 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
         <button class="yr-btn" data-yr="2027">2027</button>
       </div>
       <div class="search-wrap">
+        <label for="concert-search" class="visually-hidden">Konzerte suchen</label>
         <svg class="search-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off">
+        <input type="search" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off" aria-label="Konzerte suchen">
       </div>
     </div>
 
@@ -1923,6 +2063,11 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
 </ul>
+    <div class="termine-empty" id="termine-empty" role="status">
+      Keine Termine gefunden.
+      <br>
+      <button type="button" id="termine-reset">Filter zurücksetzen</button>
+    </div>
   </div><!-- /.termine-wrapper -->
 
   <!-- ═══ FOLLOW SECTION ══════════════════════════════════════════════════════ -->
@@ -1947,166 +2092,22 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
     </div>
   </div>
 
+  </main>
+
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
-    <div class="center"></div>
+    <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
   </footer>
 
-  <script>
-    const searchInput = document.getElementById('concert-search');
-    const items = document.querySelectorAll('.concert-item');
-
-    function addPosterButtons() {
-      items.forEach(function (item) {
-        var posterHref = item.dataset.poster;
-        if (!posterHref || item.querySelector('.c-poster-link')) return;
-
-        var actions = item.querySelector('.c-right');
-        var infoLink = item.querySelector('.c-info-link');
-        if (!actions || !infoLink) return;
-
-        var posterLink = document.createElement('a');
-        posterLink.className = 'c-info-link c-poster-link';
-        posterLink.href = posterHref;
-        posterLink.target = '_blank';
-        posterLink.rel = 'noopener';
-        posterLink.innerHTML = 'plakat <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>';
-        actions.insertBefore(posterLink, infoLink.nextSibling);
-      });
-    }
-
-    addPosterButtons();
-    const originals = Array.from(items).map(function (item) { return item.innerHTML; });
-    let activeYear = 'all';
-
-    function escapeRe(s) {
-      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-
-    function highlightIn(html, q) {
-      return html.replace(/>([^<]*)</g, function (match, text) {
-        var highlighted = text.replace(
-          new RegExp('(' + escapeRe(q) + ')', 'gi'),
-          '<mark class="search-hl">$1</mark>'
-        );
-        return '>' + highlighted + '<';
-      });
-    }
-
-    function getItemYear(item) {
-      var el = item.querySelector('.c-date');
-      if (!el) return null;
-      var m = el.textContent.match(/\d{4}/);
-      return m ? m[0] : null;
-    }
-
-    function applyFilters() {
-      var q = searchInput.value.trim();
-      items.forEach(function (item, i) {
-        item.innerHTML = originals[i];
-        var year = getItemYear(item);
-        var yearMatch = activeYear === 'all' || year === activeYear;
-        var textMatch = q === '' || item.textContent.toLowerCase().includes(q.toLowerCase());
-        item.style.display = (yearMatch && textMatch) ? '' : 'none';
-        if (yearMatch && textMatch && q !== '') {
-          item.innerHTML = highlightIn(originals[i], q);
-        }
-      });
-    }
-
-    document.querySelectorAll('.yr-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.yr-btn').forEach(function (b) { b.classList.remove('active'); });
-        this.classList.add('active');
-        activeYear = this.dataset.yr;
-        applyFilters();
-      });
-    });
-
-    searchInput.addEventListener('input', applyFilters);
-  </script>
-  <script>
-  document.getElementById('theme-toggle').addEventListener('click',function(){
-    var d=document.body.classList.toggle('dark');
-    sessionStorage.setItem('ho-theme',d?'dark':'light');
-  });
-  </script>
-<script>
-(function(){
-  var t=document.getElementById('navToggle'),n=document.querySelector('nav.primary');
-  if(!t||!n)return;
-  var OPEN='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
-  var CLOSED='<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
-  function close(){n.classList.remove('open');t.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');document.body.style.overflow='';t.innerHTML=CLOSED;}
-  t.addEventListener('click',function(){
-    var o=n.classList.toggle('open');
-    t.setAttribute('aria-expanded',o);
-    document.body.classList.toggle('nav-open', o);
-    document.body.style.overflow=o?'hidden':'';
-    t.innerHTML=o?OPEN:CLOSED;
-  });
-  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-  <!-- Scroll to top button -->
+  <script src="assets/site.js?v=1" defer></script>
+  <script src="assets/termine.js?v=1" defer></script>
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 19V5" />
       <path d="M5 12l7-7 7 7" />
     </svg>
   </button>
-  <style>
-    .scroll-top{
-      position:fixed; right:18px; bottom:18px; z-index:9999;
-      width:44px; height:44px; border-radius:999px;
-      display:grid; place-items:center;
-      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
-      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
-      color:var(--ink, #0e0d0c);
-      -webkit-backdrop-filter: blur(12px) saturate(140%);
-      backdrop-filter: blur(12px) saturate(140%);
-      box-shadow:0 10px 28px rgba(0,0,0,.14);
-      cursor:pointer;
-      opacity:0; transform:translateY(8px); pointer-events:none;
-      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
-    }
-    body.dark .scroll-top{
-      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
-      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
-      color: var(--paper, #f4f1ec);
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
-    }
-    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
-    .scroll-top:hover{
-      opacity:1; transform:translateY(-1px);
-      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
-    }
-    .scroll-top:focus-visible{
-      outline:2px solid var(--accent, #6b1d1a);
-      outline-offset:3px;
-      opacity:1;
-      pointer-events:auto;
-    }
-    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
-  </style>
-  <script>
-    (function(){
-      var btn = document.getElementById('scrollTopBtn');
-      if (!btn) return;
-      var showAt = 500;
-      function sync(){
-        btn.classList.toggle('is-visible', window.scrollY > showAt);
-      }
-      window.addEventListener('scroll', sync, { passive: true });
-      sync();
-      btn.addEventListener('click', function(){
-        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      });
-    })();
-  </script>
 </body>
 </html>

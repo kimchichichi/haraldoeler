@@ -115,13 +115,15 @@ body.dark .site-header.hero-header.scrolled {
   max-width: 1480px;
   margin: 0 auto;
   padding: 22px 48px;
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  align-items: baseline;
+  display: flex;
+  align-items: center;
   gap: 48px;
 }
 
 .wordmark {
+  flex: 1 1 auto;
+  min-width: 0;
+}
   font-family: var(--sans);
   font-weight: 500;
   font-size: 13px;
@@ -149,6 +151,8 @@ body.dark .site-header.hero-header.scrolled {
 nav.primary {
   display: flex;
   gap: 28px;
+  flex: 0 1 auto;
+  margin-left: auto;
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: lowercase;
@@ -181,7 +185,7 @@ nav.primary a.active::after {
   padding: 3px;
   opacity: 0.5;
   line-height: 0;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   align-self: center;
   transition: opacity .2s;
 }
@@ -199,7 +203,7 @@ body.dark .icon-moon { display: inline; }
   cursor: pointer;
   color: inherit;
   padding: 0;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   align-self: center;
   line-height: 0;
   z-index: 10001;
@@ -482,12 +486,13 @@ body.dark .scroll-top {
 
 /* Tablet + mobile nav */
 @media (max-width: 1024px) {
-  .header-inner { padding: 18px 24px; gap: 16px; grid-template-columns: 1fr auto; }
-  nav.primary { display: none; }
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none !important; }
   .nav-toggle {
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
     position: fixed;
     top: max(14px, env(safe-area-inset-top));
     right: 18px;

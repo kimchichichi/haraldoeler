@@ -510,8 +510,8 @@ body.dark .scroll-top {
     to { transform: translateX(0); }
   }
   @keyframes nav-link-in {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
+    from { transform: translateX(-10px); }
+    to { transform: translateX(0); }
   }
   .nav-backdrop {
     display: none;
@@ -540,11 +540,14 @@ body.dark .scroll-top {
     padding: max(84px, calc(env(safe-area-inset-top) + 68px)) 32px max(32px, env(safe-area-inset-bottom));
     background: var(--paper);
     box-shadow: 4px 0 48px rgba(14, 13, 12, 0.1);
-    z-index: 10000;
+    z-index: 10005;
+    pointer-events: auto;
     overflow-y: auto;
     overflow-x: hidden;
     gap: 0;
     animation: nav-drawer-in .34s cubic-bezier(.22, 1, .36, 1);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   body.dark nav.primary.open {
     background: var(--ink);
@@ -564,10 +567,13 @@ body.dark .scroll-top {
     gap: 12px;
     width: 100%;
     position: relative;
-    opacity: 0;
+    opacity: 1;
     animation: nav-link-in .36s ease forwards;
     transition: color .2s ease, transform .15s ease;
     -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+    touch-action: manipulation;
   }
   nav.primary.open a:nth-child(1) { animation-delay: .05s; }
   nav.primary.open a:nth-child(2) { animation-delay: .09s; }
@@ -609,7 +615,7 @@ body.dark .scroll-top {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10002;
+    z-index: 10004;
     pointer-events: none;
     background: transparent;
     border-bottom-color: transparent;

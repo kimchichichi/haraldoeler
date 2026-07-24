@@ -126,6 +126,8 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
 .termin-info { display: flex; flex-direction: column; gap: 4px; }
 .termin-title { font-family: var(--serif); font-size: 20px; letter-spacing: -0.005em; }
 .termin-venue { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+.termin-venue a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.termin-venue a:hover { color: var(--accent); }
 .termin-note { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); }
 .termine-more { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); transition: color .25s ease; }
 .termine-more:hover { color: var(--accent); }
@@ -171,7 +173,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=14"></script>
+  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=16"></script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">

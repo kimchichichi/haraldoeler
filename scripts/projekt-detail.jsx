@@ -123,7 +123,16 @@ function ProjektDetail({ id, onBack }) {
               <div className="termin-info">
                 <span className="termin-title">{t.title}</span>
                 {(t.venue || t.city) && (
-                  <span className="termin-venue">{[t.venue, t.city].filter(Boolean).join(" · ")}</span>
+                  <span className="termin-venue">
+                    {t.link && t.venue ? (
+                      <>
+                        <a href={t.link} target="_blank" rel="noopener noreferrer">{t.venue}</a>
+                        {t.city ? ` · ${t.city}` : null}
+                      </>
+                    ) : (
+                      [t.venue, t.city].filter(Boolean).join(" · ")
+                    )}
+                  </span>
                 )}
                 {t.note && <span className="termin-note">{t.note}</span>}
               </div>

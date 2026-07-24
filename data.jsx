@@ -240,7 +240,7 @@ const DETAILS = {
     title: "Duo KlAkk!",
     eyebrow: "Projekt 05 · neue musik × alte musik",
     image: `${PROJECT_HERO_IMAGE_BASE}/duoklakk.webp`,
-    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes BACH!«"],
+    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes Encore!«"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
       "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
@@ -265,7 +265,7 @@ const DETAILS = {
       { year: "2026", title: "Hohenschwangau Klassik · Bergkonzert Duo KlAkk!", subtitle: "Tegelberg · Schwangau · 19. Juli 2026", href: "/news/hohenschwangau_bergkonzert.html" },
       { year: "2026", title: "Musik aus dem Moment heraus", subtitle: "Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026", href: "/news/straubing2.html" },
       { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Bergkonzert Duo KlAkk! · Füssener Zeitung", href: "/news/hohenschwangau.html" },
-      { year: "2026", title: "Tour · Duo KlAkk! · 2026", subtitle: "Walheim · Kronach · Straubing · Tegelberg · Künzelsau · Bayreuth · Kirchheim am Neckar", href: "/news/klakk26.html" },
+      { year: "2026", title: "Tour · Duo KlAkk! · 2026", subtitle: "Walheim · Kronach · Straubing · Tegelberg · Dörzbach · Bayreuth · Kirchheim am Neckar", href: "/news/klakk26.html" },
       { year: "2025", title: "Herzlichen Glückwunsch!", subtitle: "Tonkünstlerverband Hochfranken e.V. · Rückblick 2025", href: "/news/klakk25_tkv.html" },
       { year: "2025", title: "Tour · Duo KlAkk! · 2025", subtitle: "Gemmrigheim · Würzburg · Straubing · Hallerstein · Eibelstadt · Aschaffenburg · Kirchheim am Neckar", href: "/news/klakk25.html" },
       { year: "2025", title: "Duo KlAkk! · Eibelstadt", subtitle: "Rathauskeller Eibelstadt · 11. Oktober 2025", href: "/news/klakk25_eibelstadt.html" },
@@ -273,7 +273,7 @@ const DETAILS = {
       { year: "2024", title: "Tour · Duo KlAkk! · 2024", subtitle: "Bad Reichenhall · Hof · Bayreuth", href: "/news/klakk24.html" },
     ],
     termine: [
-      { date: "13. September 2026", time: "17:00 Uhr", title: "Duo KlAkk! goes BACH!", venue: "Künzelsau", city: "", note: "" },
+      { date: "13. September 2026", time: "17:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Schloß Eyb", city: "Dörzbach", note: "Bachs barocke Gambensonate, Haydns elegantes Divertimento und Piazzollas leidenschaftliche Klänge auf Klarinette und Akkordeon, so noch nie gehört! Dazu freche Eigenkompositionen aus der Komponierwerkstatt. Duo KlAkk! – Encores! Kommen Sie und lassen Sie sich verblüffen!", link: "http://schubertiade-schloss-eyb.de/programm2017.html" },
       { date: "18. September 2026", time: "20:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Neuneinhalb im Gerberhaus", city: "Bayreuth", note: "Gerberplatz 1 · 95445 Bayreuth" },
       { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
       { date: "27. Februar 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! goes Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },

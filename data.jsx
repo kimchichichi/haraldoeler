@@ -130,6 +130,10 @@ const DETAILS = {
       { num: "VII.", work: "Ole Schmidt", note: "»Symphonic Fantasy and Allegro«", dur: "" },
     ],
     quotes: [],
+    news: [
+      { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Brahms und Blockbuster · Füssener Zeitung", href: "/news/hohenschwangau.html" },
+      { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Richard Galliano — „Opale Concerto\" für Akkordeon und Streichorchester", href: "/news/kinderkonzert.html" },
+    ],
     media: [
       { kind: "youtube", id: "WPMtnt0PfY0", caption: "Galliano · Opale Concerto" },
       { kind: "youtube", id: "WFCRiyENZxk", caption: "Bach · Cembalokonzert d-Moll, BWV 1052" },
@@ -255,6 +259,7 @@ const DETAILS = {
     ],
     quotes: [
       { text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
+      { text: "Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ von Harald Oeler als Zugabe belohnt.", cite: "Klaus Wankmiller · Füssener Zeitung" },
     ],
     terminePreview: 2,
     termineMoreHref: "/termine.html",

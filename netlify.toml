@@ -1,20 +1,27 @@
 [build]
      publish = "."
 
+# Cache notes:
+# Live site is on GitHub Pages, which forces Cache-Control: max-age=600 on all
+# assets (PSI "efficient cache lifetimes"). These [[headers]] apply only when
+# deploying to Netlify/Cloudflare Pages — not on raw GitHub Pages.
+# Fix options: (1) deploy via Netlify, (2) put Cloudflare proxy in front and
+# set Browser Cache TTL / Cache Rules for /assets/* /news/image/* /image/*.
+
 [[headers]]
   for = "/image/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/projekte/image/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/projekte/image/page/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/assets/*"
@@ -36,7 +43,7 @@
 [[headers]]
   for = "/news/image/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/news/*"

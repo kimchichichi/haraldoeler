@@ -1,0 +1,26 @@
+# Cloudflare Pages / Netlify-compatible headers.
+# GitHub Pages ignores this file (forces max-age=600).
+
+/assets/*
+  Cache-Control: public, max-age=31536000
+
+/image/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/news/image/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/projekte/image/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000
+
+/*.js
+  Cache-Control: public, max-age=31536000
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate

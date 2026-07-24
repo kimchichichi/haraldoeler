@@ -18,7 +18,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=2">
+  <link rel="stylesheet" href="assets/site.css?v=8">
   <style>
 /* Extracted from Projekte.html */
 
@@ -511,44 +511,6 @@ body.dark .scroll-top {
 </script>
 <script>
 (function() {
-  var t = document.getElementById('navToggle'), n = document.querySelector('nav.primary');
-  if (!t || !n) return;
-  var backdrop = document.querySelector('.nav-backdrop');
-  if (!backdrop) {
-    backdrop = document.createElement('button');
-    backdrop.className = 'nav-backdrop';
-    backdrop.type = 'button';
-    backdrop.setAttribute('aria-label', 'Menü schließen');
-    document.body.appendChild(backdrop);
-  }
-  var OPEN = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
-  var CLOSED = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
-  function close() {
-    n.classList.remove('open');
-    t.setAttribute('aria-expanded', 'false');
-    t.setAttribute('aria-label', 'Menü öffnen');
-    document.body.classList.remove('nav-open');
-    document.body.style.overflow = '';
-    t.innerHTML = CLOSED;
-  }
-  function open() {
-    n.classList.add('open');
-    t.setAttribute('aria-expanded', 'true');
-    t.setAttribute('aria-label', 'Menü schließen');
-    document.body.classList.add('nav-open');
-    document.body.style.overflow = 'hidden';
-    t.innerHTML = OPEN;
-  }
-  t.addEventListener('click', function() {
-    n.classList.contains('open') ? close() : open();
-  });
-  backdrop.addEventListener('click', close);
-  n.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', close); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
-})();
-</script>
-<script>
-(function() {
   var btn = document.getElementById('scrollTopBtn');
   if (!btn) return;
   function sync() { btn.classList.toggle('is-visible', window.scrollY > 500); }
@@ -561,6 +523,6 @@ body.dark .scroll-top {
 })();
 </script>
 
-  <script src="assets/site.js?v=2" defer></script>
+  <script src="assets/site.js?v=6" defer></script>
 </body>
 </html>

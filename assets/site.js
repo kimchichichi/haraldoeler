@@ -45,25 +45,73 @@
     var OPEN = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
     var CLOSED = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>';
 
+    function navAnchor() {
+      var headerInner = document.querySelector('.header-inner');
+      if (!headerInner) return null;
+      return { parent: headerInner, before: toggle };
+    }
+
+    function mountNav() {
+      if (nav.parentElement === document.body) return;
+      var anchor = navAnchor();
+      if (!anchor) return;
+      nav.__hoAnchor = anchor;
+      document.body.appendChild(nav);
+    }
+
+    function restoreNav() {
+      var anchor = nav.__hoAnchor;
+      if (!anchor || nav.parentElement !== document.body) return;
+      anchor.parent.insertBefore(nav, anchor.before || null);
+    }
+
     function close() {
       nav.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('nav-open');
       document.body.style.overflow = '';
       toggle.innerHTML = CLOSED;
+      restoreNav();
+    }
+
+    function open() {
+      mountNav();
+      nav.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('nav-open');
+      document.body.style.overflow = 'hidden';
+      toggle.innerHTML = OPEN;
     }
 
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.classList.toggle('nav-open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-      toggle.innerHTML = open ? OPEN : CLOSED;
+      nav.classList.contains('open') ? close() : open();
     });
 
-    nav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', close);
+    var navLinkTouched = false;
+
+    document.addEventListener('click', function (e) {
+      if (!document.body.classList.contains('nav-open')) return;
+      var link = e.target.closest && e.target.closest('nav.primary.open a[href]');
+      if (!link) return;
+      if (navLinkTouched) {
+        e.preventDefault();
+        return;
+      }
+      close();
     });
+
+    /* iOS/iPadOS: synthesized click often fails after menu DOM changes — navigate on touchend */
+    document.addEventListener('touchend', function (e) {
+      if (!document.body.classList.contains('nav-open')) return;
+      var link = e.target.closest && e.target.closest('nav.primary.open a[href]');
+      if (!link) return;
+      navLinkTouched = true;
+      setTimeout(function () { navLinkTouched = false; }, 500);
+      var url = link.href;
+      close();
+      window.location.assign(url);
+    }, { passive: true });
+
     backdrop.addEventListener('click', close);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close();

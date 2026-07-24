@@ -329,27 +329,42 @@ function ProjektDetail({ id, onBack }) {
 
           {detail.termine && detail.termine.length > 0 && !detail.termineInAside && renderTermine()}
 
-          {detail.news && detail.news.length > 0 && (
-            <div className="project-news">
-              <h3>— News</h3>
-              <ul className="news-list">
-                {detail.news.map((n, i) => (
-                  <li key={i} className="news-item">
-                    <a className="news-link" href={n.href}>
-                      <span className="news-year">{n.year}</span>
-                      <span className="news-info">
-                        <span className="news-title">{n.title}</span>
-                        {n.subtitle ? <span className="news-subtitle">{n.subtitle}</span> : null}
-                      </span>
-                      <svg className="news-arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
-                        <path d="M0 7H16M10 1l6 6-6 6"/>
-                      </svg>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {detail.news && detail.news.length > 0 && (() => {
+            const previewCount = detail.newsPreview ?? detail.news.length;
+            const shown = detail.news.slice(0, previewCount);
+            const moreHref = detail.news.length > previewCount
+              ? (detail.newsMoreHref || "/news.html")
+              : null;
+            return (
+              <div className="project-news">
+                <h3>— News</h3>
+                <ul className="news-list">
+                  {shown.map((n, i) => (
+                    <li key={i} className="news-item">
+                      <a className="news-link" href={n.href}>
+                        <span className="news-year">{n.year}</span>
+                        <span className="news-info">
+                          <span className="news-title">{n.title}</span>
+                          {n.subtitle ? <span className="news-subtitle">{n.subtitle}</span> : null}
+                        </span>
+                        <svg className="news-arrow" width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                          <path d="M0 7H16M10 1l6 6-6 6"/>
+                        </svg>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                {moreHref && (
+                  <a className="termine-more" href={moreHref}>
+                    alle news
+                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                      <path d="M0 7H16M10 1l6 6-6 6"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            );
+          })()}
 
           {detail.media && detail.media.length > 0 && (
             <div className="media">

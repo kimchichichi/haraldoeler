@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Harald Oeler — Tour | Duo Klakk! 2026 — Walheim, Kronach, Straubing, Tegelberg, Künzelsau, Bayreuth, Kirchheim am Neckar">
+  <meta name="description" content="Harald Oeler — Duo KlAkk! · Musik aus dem Moment heraus · Weytterturm Straubing · Straubinger Tagblatt · 5. Juli 2026">
   <meta name="robots" content="index, follow">
-  <title>HARALD OELER — Tour | Duo Klakk!</title>
+  <title>HARALD OELER — Duo KlAkk! | Musik aus dem Moment heraus · Straubing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" media="print" onload="this.media='all'">
@@ -37,10 +37,8 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 .article-title{font-family:var(--serif);font-weight:400;font-size:clamp(40px,7vw,96px);line-height:0.95;letter-spacing:-0.02em}
 .article-title em{font-style:italic;color:var(--accent)}
 .article-subtitle{margin-top:18px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:20px;color:var(--muted)}
-.article-body--wide-photo{display:flex;flex-direction:column;gap:56px}
-.article-hero-photo{width:100%;margin:0}
-.article-hero-photo img{width:100%;height:auto;display:block;transition:filter .5s ease}
 .article-body{max-width:1480px;margin:0 auto;padding:64px 48px 120px;display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start;overflow-wrap:anywhere;hyphens:auto}
+.media-col{display:grid;gap:0}
 .article-info{}
 .info-section{margin-bottom:40px}
 .info-section:last-child{margin-bottom:0}
@@ -50,16 +48,32 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 .concert-title{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:4px}
 .concert-venue{font-family:var(--sans);font-size:13px;color:var(--muted)}
 .concert-venue a:hover{color:var(--accent)}
-.media-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.media-gallery img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;transition:filter .5s ease}
+.media-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
+.media-gallery img{width:100%;height:auto;display:block;aspect-ratio:auto;object-fit:contain;transition:filter .5s ease}
+.photo-credit{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
 .cast-item{display:flex;gap:20px;padding:10px 0;border-bottom:1px solid color-mix(in srgb,var(--ink) 8%,transparent);font-size:14px;line-height:1.4}
 .cast-item:last-child{border-bottom:none}
 .cast-role{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);width:110px;flex-shrink:0;padding-top:1px}
 .cast-name a:hover{color:var(--accent);text-decoration:underline}
+.body-text{font-family:var(--serif);font-weight:300;font-size:19px;line-height:1.6;color:color-mix(in srgb,var(--ink) 85%,transparent)}
+.body-text p+p{margin-top:16px}
+.funding-note{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;line-height:1.7;color:var(--muted)}
+.funding-logo{display:block;margin-top:28px;width:100%;max-width:100%;height:auto}
+.article-photo img{width:100%;display:block}
+.press-quote{margin:0;padding:0;border:none;font-family:var(--serif);font-weight:300;font-size:clamp(20px,2.2vw,26px);line-height:1.55;font-style:italic;color:color-mix(in srgb,var(--ink) 88%,transparent)}
+.press-quote + .press-quote{margin-top:36px}
+.press-quote cite{display:block;margin-top:24px;font-family:var(--mono);font-size:11px;font-style:normal;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.press-quote a{transition:color .2s ease}
+.press-quote a:hover{color:var(--accent)}
+.press-docs{list-style:none;display:flex;flex-direction:column;gap:0}
+.press-docs li{border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+.press-docs a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;font-family:var(--sans);font-size:14px;line-height:1.45;transition:color .2s ease}
+.press-docs a:hover{color:var(--accent)}
+.press-docs .press-meta{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
 .site-footer{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);padding:32px 48px;font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1fr auto 1fr;gap:24px;max-width:1480px;margin:0 auto}
 .site-footer .center{text-align:center}
 .site-footer .right{text-align:right}
-@media(max-width:720px){.header-inner{padding:18px 24px;gap:16px}nav.primary{display:none}.article-nav,.article-head{padding-left:24px;padding-right:24px}.article-body{padding:40px 24px 80px;grid-template-columns:1fr;gap:28px}.article-body--wide-photo{gap:36px}.media-gallery{grid-template-columns:1fr}.site-footer{padding:24px;grid-template-columns:1fr;gap:8px}.site-footer .center,.site-footer .right{text-align:left}}
+@media(max-width:720px){.header-inner{padding:18px 24px;gap:16px}nav.primary{display:none}.article-nav,.article-head{padding-left:24px;padding-right:24px}.article-body{padding:40px 24px 80px;grid-template-columns:1fr;gap:28px}.media-gallery{grid-template-columns:1fr}.site-footer{padding:24px;grid-template-columns:1fr;gap:8px}.site-footer .center,.site-footer .right{text-align:left}}
   
 /* ── Theme toggle ──────────────────────────────────── */
 .header-inner { grid-template-columns: 1fr auto auto; }
@@ -96,6 +110,12 @@ body.dark .article-body p,
 body.dark .article-body li { color: color-mix(in srgb, var(--paper) 82%, transparent); }
 body.dark .article-body a { color: var(--paper); }
 body.dark .article-section { border-top-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .press-quote { color: color-mix(in srgb, var(--paper) 88%, transparent); }
+body.dark .press-docs li { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .concert-entry { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .cast-item { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
+body.dark .info-label { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+body.dark .media-gallery img { filter: brightness(0.92); }
 
 
 /* ── Mobile nav toggle ─────────────────────────────── */
@@ -464,63 +484,46 @@ body.dark .nav-toggle:hover {
   </div>
 
   <section class="article-head">
-    <div class="article-eyebrow">— Duo · 2026</div>
-    <h1 class="article-title">Tour | <em>Duo Klakk! · 2026</em></h1>
-    <p class="article-subtitle">Walheim · Kronach · Straubing · Tegelberg · Künzelsau · Bayreuth · Kirchheim am Neckar</p>
+    <div class="article-eyebrow">— Duo · Juli 2026</div>
+    <h1 class="article-title"><em>Musik aus dem Moment heraus</em></h1>
+    <p class="article-subtitle">Duo KlAkk! · Weytterturm Straubing · Straubinger Tagblatt</p>
   </section>
 
-  <main id="main" class="article-body article-body--wide-photo">
-    <figure class="article-hero-photo">
-      <img src="image/duoklakk/duoklakk%20gpt.webp" alt="Duo Klakk!" width="1267" height="734" loading="lazy">
-    </figure>
+  <main id="main" class="article-body">
+    <div class="media-col">
+      <div class="media-gallery">
+        <img src="image/straubing2/straubing2.webp" alt="Duo KlAkk! im Weytterturm Straubing" width="1131" height="1600" loading="lazy">
+      </div>
+      <img class="funding-logo" src="image/logo-tonkuenstlerlivespecial-gross.webp" alt="Tonkünstler Live Special — Tonkünstlerverband Bayern" width="1920" height="730" loading="lazy">
+    </div>
     <div class="article-info">
-  <div class="info-section">
-    <div class="info-label">Konzertdaten</div>
-    
-    <div class="concert-entry">
-      <div class="concert-date">SA 05.12.2026 · 18:00 Uhr</div>
-      <div class="concert-title">Duo KlAkk! goes Encore!</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/gemeinde_kirchheim.neckar/" target="_blank" rel="noopener">Mauritiuskirche, Kirchheim am Neckar</a></div>
-    </div>
-
-    <div class="concert-entry">
-      <div class="concert-date">FR 18.09.2026 · 20:00 Uhr</div>
-      <div class="concert-title">Duo KlAkk! goes Encore!</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/kulturhaus.neuneinhalb/" target="_blank" rel="noopener">Neuneinhalb im Gerberhaus, Bayreuth</a></div>
-    </div>
-
-    <div class="concert-entry">
-      <div class="concert-date">SO 13.09.2026 · 17:00 Uhr</div>
-      <div class="concert-title">Duo KlAkk! goes BACH!</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/kuenzelsau.meinestadt/" target="_blank" rel="noopener">Künzelsau</a></div>
-    </div>
-
-    <div class="concert-entry">
-      <div class="concert-date">SO 19.07.2026 · 09:00 Uhr</div>
-      <div class="concert-title">Duo KlAkk! — Bergkonzert: Zauber des Akkordeons</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/hgau_klassik/" target="_blank" rel="noopener">Bergstation Tegelberg, Schwangau</a></div>
-    </div>
-
-    <div class="concert-entry">
-      <div class="concert-date">SO 05.07.2026 · 17:00 Uhr</div>
-      <div class="concert-title">Duo KlAkk! goes Encore!</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/gbk_straubing/" target="_blank" rel="noopener">Weytterturm, Straubing</a></div>
-    </div>
-
-    <div class="concert-entry">
-      <div class="concert-date">SO 11.01.2026 · 17:00 Uhr</div>
-      <div class="concert-title">DUO KlAkk! goes BACH</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/stadtkronach/" target="_blank" rel="noopener">Christuskirche, Kronach</a></div>
-    </div>
-
-    <div class="concert-entry">
-      <div class="concert-date">DO 01.01.2026 · 17:00 Uhr</div>
-      <div class="concert-title">DUO KlAkk!</div>
-      <div class="concert-venue"><a href="https://www.instagram.com/musikschulebesigheim/" target="_blank" rel="noopener">Gemeindehalle Walheim</a></div>
-    </div>
-
-  </div>
-  <div class="info-section">
+      <div class="info-section">
+        <div class="info-label">Konzert</div>
+        <div class="concert-entry">
+          <div class="concert-date">SO 05.07.2026 · 17:00 Uhr</div>
+          <div class="concert-title">Duo KlAkk! goes Encore!</div>
+          <div class="concert-venue"><a href="https://www.instagram.com/gbk_straubing/" target="_blank" rel="noopener">Weytterturm (Innenhof)</a> · Straubing</div>
+        </div>
+      </div>
+      <div class="info-section">
+        <div class="info-label">Presse</div>
+        <blockquote class="press-quote">
+          Mit aller Deutlichkeit hatte das Duo KlAkk! Gelegenheit, zu beweisen, dass das Konzert vom letzten Jahr kein vereinzelter Höhepunkt war, sondern sich auch im Freien fortsetzte. Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Kim und Oeler ließen keine Wünsche offen. Die Gleichzeitigkeit schneller Läufe und die Harmonie zwischenmenschlichen Agierens faszinierten auch dieses Mal. Die Musik lebte stets aus dem Moment heraus. Sie sprach die Zuhörer direkt an. Der große Applaus bewies es.
+          <cite>— Kristian Kuhnle · <a href="image/straubing2/2026-07-08_Straubinger_Tagblatt_Musik_aus_dem_Moment_heraus.jpg" target="_blank" rel="noopener">Straubinger Tagblatt, 08.07.2026</a></cite>
+        </blockquote>
+      </div>
+      <div class="info-section">
+        <div class="info-label">Artikel</div>
+        <ul class="press-docs">
+          <li>
+            <a href="image/straubing2/2026-07-08_Straubinger_Tagblatt_Musik_aus_dem_Moment_heraus.jpg" target="_blank" rel="noopener">
+              <span>Musik aus dem Moment heraus</span>
+              <span class="press-meta">Presse · 08.07.2026</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="info-section">
         <div class="info-label">Besetzung</div>
         <div class="cast-item">
           <span class="cast-role">Klarinette</span>
@@ -528,9 +531,14 @@ body.dark .nav-toggle:hover {
         </div>
         <div class="cast-item">
           <span class="cast-role">Akkordeon</span>
-          <span class="cast-name"><a href="https://haraldoeler.com" target="_blank">Harald Oeler</a></span>
+          <span class="cast-name"><a href="https://haraldoeler.com" target="_blank" rel="noopener">Harald Oeler</a></span>
         </div>
-</div>
+      </div>
+      <div class="info-section">
+        <div class="info-label">Förderung</div>
+        <p class="funding-note">Diese Veranstaltung/dieses Projekt wird ermöglicht durch den Tonkünstlerverband Bayern e.&nbsp;V. aus dem Förderpaket FREIE KUNST des Bayerischen Staatsministeriums für Wissenschaft und Kunst.</p>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">

@@ -158,6 +158,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://haraldoeler.com/news/straubing2.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/straubing1.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/hohenschwangau_bergkonzert.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://haraldoeler.com/news/hohenschwangau.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://haraldoeler.com/news/klakk26.html</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>

@@ -136,8 +136,6 @@ const DETAILS = {
       { year: "2023", title: "Die Vier EvangCellisten & friends — 15-Jahre-Jubiläum", subtitle: "Rosenthal-Theater Selb · Opale Concerto & Tango de las Profundidades", href: "/news/selb.html" },
       { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Richard Galliano — „Opale Concerto\" für Akkordeon und Streichorchester", href: "/news/kinderkonzert.html" },
       { year: "2016", title: "Bach geht auch mit Knöpfen", subtitle: "Clavierkonzert am Knopfakkordeon · Selb & Münchberg · Frankenpost", href: "/news/bach_knoepfen.html" },
-      { year: "2015", title: "Nürnberg · Armonica", subtitle: "Jörg Widmann · Nürnberger Symphoniker · Meistersingerhalle · 31.10.2015", href: "/news/armonica.html" },
-      { year: "2011", title: "Licht & Leben", subtitle: "Con Brio · Bach BWV 1052 Akkordeon · Leporello", href: "/news/con_brio.html" },
     ],
     media: [
       { kind: "youtube", id: "yQ-Xje5yJIg", caption: "Galliano · Opale Concerto III · New York Tango · live in Selb" },
@@ -172,7 +170,6 @@ const DETAILS = {
     news: [
       { year: "2026", title: "Tour | Fussissimo · 2026", subtitle: "Eyrichshof · Frankfurt · Würzburg · Schweinfurt · Gemünden", href: "/news/fussissimo26.html" },
       { year: "2023", title: "Tour mit Fussissimo", subtitle: "Gypsy-Ethno-Jazz · Darstadt · Hof · Schweinfurt", href: "/news/fussissimo_1.html" },
-      { year: "2009", title: "Swing mit dem Rehan Syed-Ensemble", subtitle: "klang-räume · Convenartis Keller Wertheim · Main-Echo", href: "/news/rehan_syed.html" },
     ],
     termineInAside: true,
     terminePreview: 2,
@@ -253,6 +250,7 @@ const DETAILS = {
       { kind: "youtube", id: "kw7_NO-klxM", caption: "Duo ViA! · concert highlight" },
       { kind: "spotify", url: "https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0", caption: "8 Jahreszeiten · OehmsClassics" },
     ],
+    newsMoreHref: "/news.html",
   },
   duoklakk: {
     title: "Duo KlAkk!",

@@ -20,7 +20,7 @@
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <!-- LCP: first card image -->
-  <link rel="preload" as="image" href="news/image/cards/hohenschwangau-bergkonzert.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="news/image/cards/duoklakk-gpt.webp" fetchpriority="high">
   <link rel="stylesheet" href="assets/site.css?v=9">
 
   <!-- Extracted from Projekte.html -->
@@ -163,13 +163,27 @@ nav.primary a.active::after {
   padding: 56px 48px 120px;
 }
 
-/* Filter bar */
+/* Filter row: category + year on one line */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  column-gap: 24px;
+  row-gap: 12px;
+  margin-bottom: 56px;
+}
 .filter-bar {
   display: flex;
   gap: 0;
-  margin-bottom: 56px;
+  margin-bottom: 0;
   border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
   width: fit-content;
+}
+.filter-sep {
+  width: 1px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
 }
 .filter-btn {
   appearance: none;
@@ -200,6 +214,80 @@ nav.primary a.active::after {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 56px 40px;
+}
+.year-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: 0;
+  margin-left: auto;
+}
+.year-select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 7px 28px 7px 20px;
+  cursor: pointer;
+  line-height: inherit;
+  align-self: stretch;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b655c' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 8px 5px;
+  transition: background-color .2s, color .2s;
+}
+.year-select:hover {
+  background-color: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+.year-select:focus {
+  outline: none;
+  color: var(--ink);
+}
+.year-select.is-active {
+  background-color: var(--ink);
+  color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23f4f1ec' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+}
+.year-select option {
+  background: var(--paper);
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.news-load-more-wrap {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+.news-load-more-wrap.hidden { display: none; }
+.news-load-more {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.news-load-more:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 40%, transparent);
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
 }
 
 /* Card (extracted from Projekte.html) */
@@ -247,6 +335,9 @@ nav.primary a.active::after {
 }
 .card.card--klakk26 .image-wrap img {
   object-position: 28% top;
+}
+.card.card--klakk25 .image-wrap img {
+  object-position: center top;
 }
 .card:hover .image-wrap img {
   transform: scale(1.04);
@@ -351,14 +442,38 @@ nav.primary a.active::after {
 @media (max-width: 1100px) {
   .news-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
 }
+@media (max-width: 980px) {
+  .filter-sep { display: none; }
+}
 @media (max-width: 720px) {
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
   .page-meta { text-align: left; margin-top: 16px; }
   .news-wrap { padding: 40px 24px 80px; }
   .news-grid { grid-template-columns: 1fr; gap: 40px; }
   .card .image-wrap { aspect-ratio: 3 / 2; }
+  .filter-row { width: 100%; }
   .filter-bar { width: 100%; flex-wrap: wrap; }
   .filter-btn { flex: 1 1 auto; text-align: center; border-right: none; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
+  .year-bar .filter-btn,
+  .year-bar .year-select {
+    flex: 0 1 auto;
+    min-width: 4.5em;
+    border-right: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+  .year-bar .year-select {
+    text-align: center;
+    text-align-last: center;
+  }
+  .year-bar .filter-btn:last-child,
+  .year-bar .year-select:last-child {
+    border-right: none;
+  }
+  body.dark .year-bar .filter-btn,
+  body.dark .year-bar .year-select {
+    border-right-color: color-mix(in srgb, var(--paper) 18%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent);
+  }
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -393,9 +508,37 @@ body.dark nav.primary a:hover  { color: var(--paper); }
 body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
 body.dark .page-meta b { color: var(--paper); }
 body.dark .filter-bar { border-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .filter-sep { background: color-mix(in srgb, var(--paper) 18%, transparent); }
 body.dark .filter-btn { border-right-color: color-mix(in srgb, var(--paper) 18%, transparent); }
 body.dark .filter-btn.active { background: color-mix(in srgb, var(--paper) 15%, transparent); color: var(--paper); }
 body.dark .filter-btn:not(.active):hover { background: color-mix(in srgb, var(--paper) 8%, transparent); color: var(--paper); }
+body.dark .year-select {
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23a8a29a' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+}
+body.dark .year-select:hover {
+  background-color: color-mix(in srgb, var(--paper) 8%, transparent);
+  color: var(--paper);
+}
+body.dark .year-select:focus { color: var(--paper); }
+body.dark .year-select.is-active {
+  background-color: color-mix(in srgb, var(--paper) 15%, transparent);
+  color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23f4f1ec' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+}
+body.dark .year-select option {
+  background: var(--ink);
+  color: var(--paper);
+}
+body.dark .news-load-more {
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
+}
+body.dark .news-load-more:hover {
+  color: var(--paper);
+  border-color: color-mix(in srgb, var(--paper) 40%, transparent);
+  background: color-mix(in srgb, var(--paper) 8%, transparent);
+}
 body.dark .card .index { border-bottom-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .card p.subtitle { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 
@@ -703,15 +846,37 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <!-- ═══ PAGE CONTENT HERE ════════════════════════════════════════════════ -->
   <main id="main" class="news-wrap">
 
-    <div class="filter-bar" role="group" aria-label="Kategorie filtern">
-      <button class="filter-btn active" data-filter="all">Alle</button>
-      <button class="filter-btn" data-filter="konzert">Konzert</button>
-      <button class="filter-btn" data-filter="solo">Solo</button>
-      <button class="filter-btn" data-filter="unterricht">Unterricht</button>
-      <button class="filter-btn" data-filter="medien">Medien</button>
+    <div class="filter-row">
+      <div class="filter-bar" role="group" aria-label="Kategorie filtern">
+        <button class="filter-btn active" data-filter="all">Alle</button>
+        <button class="filter-btn" data-filter="konzert">Konzert</button>
+        <button class="filter-btn" data-filter="solo">Solo</button>
+        <button class="filter-btn" data-filter="unterricht">Unterricht</button>
+        <button class="filter-btn" data-filter="medien">Medien</button>
+      </div>
+      <div class="filter-sep" aria-hidden="true"></div>
+      <div class="filter-bar year-bar" id="year-bar" role="group" aria-label="Jahr filtern"></div>
     </div>
 
     <div class="news-grid">
+
+      <!-- Würzburger Bachtage 2026 · Eröffnungsakt -->
+      <a class="card" href="news/bachtage26.html" data-cat="solo">
+        <div class="index">
+          <span>Nov 2026</span>
+          <span class="cat">Solo</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/bachtage26.webp" alt="Würzburger Bachtage 2026 — Eröffnungsakt · Harald Oeler und Prof. Dr. Ulrich Konrad" width="900" height="1125" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Würzburger Bachtage</em> — Eröffnungsakt</h2>
+          <span class="role">Solo</span>
+          <p class="subtitle">Bach und die Zukunft · Bertold-Hummel-Saal · 19. November 2026</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
 
       <!-- Hohenschwangau Klassik — Bergkonzert Duo KlAkk! -->
       <a class="card" href="news/hohenschwangau_bergkonzert.html" data-cat="konzert">
@@ -730,6 +895,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
       <!-- Hohenschwangau Klassik 2026 -->
       <a class="card" href="news/hohenschwangau.html" data-cat="konzert">
         <div class="index">
@@ -747,56 +913,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
-      <!-- neu website 2 -->
-      <a class="card" href="news/website2.html" data-cat="medien">
-        <div class="index">
-          <span>2026</span>
-          <span class="cat">Media</span>
-        </div>
-        <div class="image-wrap">
-          <img src="news/image/cards/website2.webp" alt="website2" width="532" height="900" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
-        </div>
-        <div class="meta">
-          <h2><em>NEU</em> — Website II</h2>
-          <span class="role">Media</span>
-          <p class="subtitle">Version II</p>
-        </div>
-        <span class="arrow">mehr lesen</span>
-      </a>
-
-      <!-- Duo KlAkk! · Straubing · Musik aus dem Moment heraus -->
-      <a class="card" href="news/straubing2.html" data-cat="konzert">
-        <div class="index">
-          <span>2026</span>
-          <span class="cat">Konzert</span>
-        </div>
-        <div class="image-wrap">
-          <img src="news/image/cards/straubing2.webp" alt="Duo KlAkk! — Musik aus dem Moment heraus · Straubing" width="900" height="1273" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
-        </div>
-        <div class="meta">
-          <h2><em>Musik aus dem Moment heraus</em></h2>
-          <span class="role">Duo</span>
-          <p class="subtitle">Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026</p>
-        </div>
-        <span class="arrow">mehr lesen</span>
-      </a>
-
-      <a class="card" href="news/duovia_1.html" data-cat="konzert">
-        <div class="index">
-          <span>2026</span>
-          <span class="cat">Konzert</span>
-        </div>
-        <div class="image-wrap">
-          <img src="news/image/cards/zontaclub.webp" alt="Duo viA 2026" width="900" height="506" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
-        </div>
-        <div class="meta">
-          <h2>Duo | <em>Neues Programm</em></h2>
-          <span class="role">Duo</span>
-          <p class="subtitle">Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.</p>
-
-        </div>
-        <span class="arrow">mehr lesen</span>
-      </a>
 
       <!-- Tour | Duo Klakk! — Tour 2026 -->
       <a class="card card--klakk26" href="news/klakk26.html" data-cat="konzert">
@@ -815,24 +931,115 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
-      <a class="card" href="news/klakk25_tkv.html" data-cat="konzert">
+      <!-- Tour | Fussissimo — Tour 2026 -->
+      <a class="card" href="news/fussissimo26.html" data-cat="konzert">
         <div class="index">
-          <span>2025</span>
-          <span class="cat">Presse</span>
+          <span>2026</span>
+          <span class="cat">Konzert</span>
         </div>
         <div class="image-wrap">
-          <img src="news/image/cards/duoklakk-page.webp" alt="Duo KlAkk! — Tonkünstlerverband Hochfranken" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+          <img src="news/image/cards/fussissimo26.webp" alt="Trio Fussissimo Tour 2026" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
         </div>
         <div class="meta">
-          <h2>Duo KlAkk! | <em>Herzlichen Glückwunsch!</em></h2>
+          <h2>Tour | <em>Fussissimo · 2026</em></h2>
+          <span class="role">Trio</span>
+          <p class="subtitle">Eyrichshof · Frankfurt · Würzburg · Schweinfurt · Gemünden</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo KlAkk! · Straubing · Musik aus dem Moment heraus -->
+      <a class="card" href="news/straubing2.html" data-cat="konzert">
+        <div class="index">
+          <span>2026</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/straubing2.webp" alt="Duo KlAkk! — Musik aus dem Moment heraus · Straubing" width="900" height="1273" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Musik aus dem Moment heraus</em></h2>
           <span class="role">Duo</span>
-          <p class="subtitle">Tonkünstlerverband Hochfranken e.V. · Rückblick 2025</p>
+          <p class="subtitle">Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- neu website 2 -->
+      <a class="card" href="news/website2.html" data-cat="medien">
+        <div class="index">
+          <span>2026</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/website2.webp" alt="website2" width="532" height="900" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>NEU</em> — Website II</h2>
+          <span class="role">Media</span>
+          <p class="subtitle">Version II</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <a class="card" href="news/duovia_1.html" data-cat="konzert">
+        <div class="index">
+          <span>2026</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/zontaclub.webp" alt="Duo viA 2026" width="900" height="506" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Duo | <em>Neues Programm</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.</p>
+
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · Kammermusik Festival Würzburg · Mai 2026 -->
+      <a class="card" href="news/kmf_via.html" data-cat="konzert">
+        <div class="index">
+          <span>Mai 2026</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/kmf_via.webp" alt="Duo ViA! — Kammermusik Festival Würzburg" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Reise durch die <em>Jahreszeiten</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Duo ViA! · Kammermusik Festival Würzburg · Facebook</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo KlAkk! · Neujahrskonzert Walheim · Jan 2026 · LKZ -->
+      <a class="card" href="news/walheim.html" data-cat="konzert">
+        <div class="index">
+          <span>Jan 2026</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/walheim.webp" alt="Steinhaus-Orchester Besigheim Neujahrskonzert Walheim" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Heiße Klänge in kalten <em>Gefilden</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Neujahrskonzert · Duo KlAkk! · Walheim · LKZ</p>
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
 
       <!-- 4 · Tour | Duo Klakk! — Gemmirgheim, Würzburg… -->
-      <a class="card" href="news/klakk25.html" data-cat="konzert">
+      <a class="card card--klakk25" href="news/klakk25.html" data-cat="konzert">
         <div class="index">
           <span>2025</span>
           <span class="cat">Konzert</span>
@@ -847,6 +1054,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
 
       <!-- 1 · SOLO | REMEMBERING BACH! — TKVL 2025 -->
       <a class="card" href="news/tkvlsolo.html" data-cat="solo">
@@ -865,6 +1073,25 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
+      <!-- Singer-Songwriter · Mammen & Jung — Okt 2025 -->
+      <a class="card" href="news/mammen_jung.html" data-cat="konzert">
+        <div class="index">
+          <span>Okt 2025</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/mammen_jung.webp" alt="Singer-Songwriter-Abend Mammen &amp; Jung" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Singer-Songwriter — <em>Mammen &amp; Jung</em></h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">KunstKaufHaus Hof · 29. Oktober 2025 · Tonkünstler Live Special</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
       <a class="card" href="news/klakk25_eibelstadt.html" data-cat="konzert">
         <div class="index">
           <span>2025</span>
@@ -880,6 +1107,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
 
       <!-- Duo KlAkk! · Straubing · Ein instrumentales Wunder -->
       <a class="card" href="news/straubing1.html" data-cat="konzert">
@@ -898,6 +1126,24 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
+      <a class="card" href="news/klakk25_tkv.html" data-cat="konzert">
+        <div class="index">
+          <span>2025</span>
+          <span class="cat">Presse</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/duoklakk-page.webp" alt="Duo KlAkk! — Tonkünstlerverband Hochfranken" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Duo KlAkk! | <em>Herzlichen Glückwunsch!</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Tonkünstlerverband Hochfranken e.V. · Rückblick 2025</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
       <a class="card" href="news/duovia_2.html" data-cat="konzert">
         <div class="index">
           <span>2025</span>
@@ -913,6 +1159,42 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
+
+      <!-- Duo KlAkk! · Spitäle Würzburg · VKU · März 2025 -->
+      <a class="card" href="news/klakk25_vku.html" data-cat="konzert">
+        <div class="index">
+          <span>März 2025</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/klakk25_vku.webp" alt="Duo KlAkk! — Spitäle Würzburg · VKU" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Duo KlAkk! | <em>Spitäle Würzburg</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">VKU · 1. März 2025</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <!-- projects4cellos · Haus Marteau Lichtenberg — Juni 2024 -->
+      <a class="card" href="news/lichtenberg.html" data-cat="konzert">
+        <div class="index">
+          <span>Jun 2024</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/lichtenberg.webp" alt="projects4cellos &amp; friends · Haus Marteau" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>projects4cellos — <em>Haus Marteau</em></h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">Die Vier EvangCellisten &amp; friends · Lichtenberg · 16. Juni 2024</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
 
       <!-- 5 · Tour | Duo Klakk! — Bad Reichenhall, Hof, Bayreuth -->
       <a class="card" href="news/klakk24.html" data-cat="konzert">
@@ -931,6 +1213,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
       <!-- 2 · DUO ViA! | RESIDENZ WÜRZBURG — Zonta Club -->
       <a class="card" href="news/zontaclub.html" data-cat="konzert">
         <div class="index">
@@ -947,6 +1230,25 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
+
+      <!-- Main-Post · Violine und Akkordeon passten wunderbar zusammen · Mai 2024 -->
+      <a class="card" href="news/wunderbar_zusammen.html" data-cat="konzert">
+        <div class="index">
+          <span>Mai 2024</span>
+          <span class="cat">Presse</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/wunderbar_zusammen.webp" alt="Sinn Yang und Harald Oeler im Kaisersaal der Residenz Würzburg" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Violine und Akkordeon passten <em>wunderbar</em> zusammen</h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Duo ViA! · Kaisersaal Residenz Würzburg · Main-Post</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
 
       <!-- 3 · Tour mit Joscho Stephan — Jan 2024 -->
       <a class="card" href="news/joschostephan.html" data-cat="konzert">
@@ -982,6 +1284,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
       <!-- 14 · SynapsePlus — Vortrag -->
       <a class="card" href="news/vortrag.html" data-cat="unterricht">
         <div class="index">
@@ -999,22 +1302,24 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
-      <!-- 7 · ORCHESTERWERK — Galliano Opale Concerto -->
-      <a class="card" href="news/kinderkonzert.html" data-cat="konzert">
+
+      <!-- Neustart Jazz · Glashalle Hof — Nov 2023 -->
+      <a class="card" href="news/neustart_jazz.html" data-cat="konzert">
         <div class="index">
-          <span>Okt 2023</span>
-          <span class="cat">Orchester</span>
+          <span>Nov 2023</span>
+          <span class="cat">Konzert</span>
         </div>
         <div class="image-wrap">
-          <img src="news/image/cards/kinderkonzert.webp" alt="Opale Concerto" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+          <img src="news/image/cards/neustart_jazz.webp" alt="Neustart Jazz · Glashalle Hof" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
         </div>
         <div class="meta">
-          <h2>Kinderkonzert — Orchesterwerk</h2>
-          <span class="role">Konzert</span>
-          <p class="subtitle">Richard Galliano — „Opale Concerto" für Akkordeon und Streichorchester</p>
+          <h2><em>Neustart Jazz</em> — Glashalle Hof</h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">Christopher von Mammen · VHS Hofer Land · 10. November 2023</p>
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
 
       <!-- 8 · Tour mit Fussissimo — Okt 2023 -->
       <a class="card" href="news/fussissimo_1.html" data-cat="konzert">
@@ -1033,6 +1338,43 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
+      <!-- 7 · ORCHESTERWERK — Galliano Opale Concerto -->
+      <a class="card" href="news/kinderkonzert.html" data-cat="konzert">
+        <div class="index">
+          <span>Okt 2023</span>
+          <span class="cat">Orchester</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/kinderkonzert.webp" alt="Opale Concerto" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Kinderkonzert — Orchesterwerk</h2>
+          <span class="role">Konzert</span>
+          <p class="subtitle">Richard Galliano — „Opale Concerto" für Akkordeon und Streichorchester</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Selb · projects4cellos Jubiläum — Sep 2023 -->
+      <a class="card" href="news/selb.html" data-cat="konzert">
+        <div class="index">
+          <span>Sep 2023</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/selb.webp" alt="Opale Concerto live in Selb" width="1280" height="720" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Die Vier EvangCellisten &amp; friends — <em>15-Jahre-Jubiläum</em></h2>
+          <span class="role">Konzert</span>
+          <p class="subtitle">Rosenthal-Theater Selb · Opale Concerto &amp; Tango de las Profundidades</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
       <!-- 13 · Musikalische Früherziehung -->
       <a class="card" href="news/workshop.html" data-cat="unterricht">
         <div class="index">
@@ -1049,6 +1391,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
 
       <!-- 12 · Pittis's Podcast -->
       <a class="card" href="news/podcast.html" data-cat="medien">
@@ -1067,6 +1410,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
       <!-- 10 · SOLO | "REMEMBERING" — Video-Serie -->
       <a class="card" href="news/remembering.html" data-cat="solo">
         <div class="index">
@@ -1084,6 +1428,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
+
       <!-- 11 · SOLO — Soloabend Gemmrigheim -->
       <a class="card" href="news/solo_gemmirgheim.html" data-cat="solo">
         <div class="index">
@@ -1100,6 +1445,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+
 
       <!-- 6 · SOLO — Soloprogramm "Remembering" -->
       
@@ -1119,10 +1465,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <span class="arrow">mehr lesen</span>
       </a>
 
-      <!-- 15 · neu website -->
+      <!-- neu website -->
       <a class="card" href="news/website1.html" data-cat="medien">
         <div class="index">
-          <span>2022</span>
+          <span>Jan 2023</span>
           <span class="cat">Media</span>
         </div>
         <div class="image-wrap">
@@ -1131,10 +1477,494 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <div class="meta">
           <h2><em>NEU</em> — Website</h2>
           <span class="role">Media</span>
-          <p class="subtitle">Version I</p>
+          <p class="subtitle">Version I · Januar 2023</p>
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
+      <!-- Duo ViA! · Schloß Borbeck Essen · Juni 2019 -->
+      <a class="card" href="news/schloss_borbeck.html" data-cat="konzert">
+        <div class="index">
+          <span>2019</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/schloss_borbeck.webp" alt="Duo ViA! — Sinn Yang und Harald Oeler" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Duo ViA!</em> | Schloß Borbeck</h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">8 Jahreszeiten · Vivaldi &amp; Piazzolla · Stadt Essen</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Solo · Perspektiven Heilbronn · Mai 2019 -->
+      <a class="card" href="news/perspektiven_heilbronn.html" data-cat="solo">
+        <div class="index">
+          <span>2019</span>
+          <span class="cat">Solo</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/perspektiven_heilbronn.webp" alt="Harald Oeler — Perspektiven Heilbronn Deutschhof" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Aufmüpfigsein</em> als Geisteshaltung</h2>
+          <span class="role">Solo</span>
+          <p class="subtitle">Perspektiven Heilbronn · 1/4-Ton · Heilbronner Stimme</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- KlangSpuren · Klang-Manufaktur Hof · Jan 2019 -->
+      <a class="card" href="news/klang_manufaktur.html" data-cat="konzert">
+        <div class="index">
+          <span>2019</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/klang_manufaktur.webp" alt="KlangSpuren — Klang-Manufaktur Hof" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Selbst Züge können die <em>Klänge</em> nicht stören</h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">KlangSpuren · Klang-Manufaktur Hof · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Marco-Böttger-Quartett · Kulturkantine Hof · März 2017 · Frankenpost -->
+      <a class="card" href="news/lebensfreude.html" data-cat="konzert">
+        <div class="index">
+          <span>2017</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/lebensfreude.webp" alt="Marco-Böttger-Quartett in der Kulturkantine Hof" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Lebensfreude in jedem <em>Ton</em></h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">Marco-Böttger-Quartett · Kulturkantine Hof · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Orchester · Bach geht auch mit Knöpfen · Selb & Münchberg · Nov 2016 -->
+      <a class="card" href="news/bach_knoepfen.html" data-cat="konzert">
+        <div class="index">
+          <span>2016</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/bach_knoepfen.webp" alt="Harald Oeler mit den Symphonikern im Rosenthal-Theater Selb" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Bach geht auch mit <em>Knöpfen</em></h2>
+          <span class="role">Orchester</span>
+          <p class="subtitle">Clavierkonzert · Selb &amp; Münchberg · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · Korea Tour · Seoul & Daejeon · Aug 2016 -->
+      <a class="card" href="news/duovia_korea.html" data-cat="konzert">
+        <div class="index">
+          <span>2016</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/duovia_korea.webp" alt="Duo ViA! — Sinn Yang und Harald Oeler auf der Bühne in Korea" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Duo ViA!</em> · Korea Tour</h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">8 Seasons · Seoul &amp; Daejeon · August 2016</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · 8 Seasons Tour · Aug/Sep 2016 -->
+      <a class="card" href="news/duovia_8seasons.html" data-cat="konzert">
+        <div class="index">
+          <span>2016</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/duovia_8seasons.webp" alt="Duo ViA! — 8 Seasons Piazzolla/Vivaldi" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Duo ViA!</em> · 8 Seasons</h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Wechterswinkel · Bad Brückenau · Seoul · Oettingen</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Pigini · News and upcoming dates · Aug 2016 -->
+      <a class="card" href="news/pigini.html" data-cat="medien">
+        <div class="index">
+          <span>2016</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/pigini.webp" alt="Harald Oeler — Pigini Accordions" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>News and upcoming <em>dates</em></h2>
+          <span class="role">Medien</span>
+          <p class="subtitle">Harald Oeler · Pigini Accordions</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Orchester · Widmann Armonica · Meistersingerhalle · 31.10.2015 -->
+      <a class="card" href="news/armonica.html" data-cat="konzert">
+        <div class="index">
+          <span>2015</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/armonica.webp" alt="Jörg Widmann — Armonica · WDR Sinfonieorchester" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Nürnberg · <em>Armonica</em></h2>
+          <span class="role">Orchester</span>
+          <p class="subtitle">Widmann · Nürnberger Symphoniker · Meistersingerhalle</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · Villa Weiss Spatenstich · Sep 2015 -->
+      <a class="card" href="news/villa_weiss.html" data-cat="konzert">
+        <div class="index">
+          <span>2015</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/villa_weiss.webp" alt="Baustellenkonzert Duo ViA! in der Villa Weiss" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Erster Spatenstich mit <em>Baustellenkonzert</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Duo ViA! · Villa Weiss Helmbrechts</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Duo ViA! · CD 8 Jahreszeiten · Mai 2014 · OehmsClassics OC 429 -->
+      <a class="card" href="news/acht_jahreszeiten.html" data-cat="medien">
+        <div class="index">
+          <span>2014</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/acht_jahreszeiten.webp" alt="CD-Cover 8 Jahreszeiten — Duo ViA!" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>8 Jahreszeiten</em></h2>
+          <span class="role">Medien</span>
+          <p class="subtitle">Duo ViA! · OehmsClassics OC 429 · Naxos</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · 51. Akkordeonwettbewerb Klingenthal · 13. Mai 2014 -->
+      <a class="card" href="news/klingenthal14.html" data-cat="konzert">
+        <div class="index">
+          <span>2014</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/klingenthal14.webp" alt="Duo ViA! — Sinn Yang und Harald Oeler" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>8 Jahreszeiten</em> · Klingenthal</h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">CD-Präsentation · Duo ViA! · 51. Internationaler Akkordeonwettbewerb</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · Akkordeon grenzenlos Trossingen · April 2014 -->
+      <a class="card" href="news/trossingen.html" data-cat="konzert">
+        <div class="index">
+          <span>2014</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/trossingen.webp" alt="Festival Akkordeon grenzenlos Trossingen" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Ein internationales Festival der <em>Spitzenklasse</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Akkordeon grenzenlos · Duo ViA! · Trossingen</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Duo Animé · Abschlusskonzert Klingenthal · Mai 2013 -->
+      <a class="card" href="news/klingenthal13.html" data-cat="konzert">
+        <div class="index">
+          <span>2013</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/klingenthal13.webp" alt="Akkordeon Duo Animé — Lulu Wang und Harald Oeler · Klingenthal" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Abschlusskonzert in <em>Klingenthal</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Duo Animé · 50. Internationaler Akkordeonwettbewerb</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Duo fabula musica · Kursaal Bad Mergentheim · Feb 2013 · Fränkische Nachrichten -->
+      <a class="card" href="news/tibetisches_maerchen.html" data-cat="konzert">
+        <div class="index">
+          <span>2013</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/tibetisches_maerchen.webp" alt="Duo fabula musica — Tibetisches Märchen mit Musik · Bad Mergentheim" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Tibetisches Märchen mit <em>Musik</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Das kleine Hauskonzert · Kursaal Bad Mergentheim · Fränkische Nachrichten</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Duo ViA! · Wemmetsweiler · Nov 2012 · Saarbrücker Zeitung -->
+      <a class="card" href="news/wemmetsweiler.html" data-cat="konzert">
+        <div class="index">
+          <span>2012</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/wemmetsweiler.webp" alt="Duo ViA! — 8 Jahreszeiten Wemmetsweiler" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Piazzolla trifft auf <em>Vivaldi</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">8 Jahreszeiten · Wemmetsweiler · Saarbrücker Zeitung</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo Animé · Das Akkordeon verbindet · Juli 2012 -->
+      <a class="card" href="news/akkordeon_verbindet.html" data-cat="konzert">
+        <div class="index">
+          <span>2012</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/akkordeon_verbindet.webp" alt="Lulu Wang und Harald Oeler — Duo Animé" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Das Akkordeon <em>verbindet</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Duo Animé · Lulu Wang · Abschlusskonzert Hof · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Accordionduo ANIMÉ · Shenzhen Concert Hall · Mai 2012 -->
+      <a class="card" href="news/shenzhen.html" data-cat="konzert">
+        <div class="index">
+          <span>2012</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/shenzhen.webp" alt="Accordionduo ANIMÉ — Lulu Wang und Harald Oeler · Shenzhen Concert Hall" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Accordionduo <em>ANIMÉ</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Shenzhen Concert Hall · Live · Shenzhen Radio</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Unterricht · Sensationelles Ergebnis · Musikschule Hof · März 2012 -->
+      <a class="card" href="news/sensationelles_ergebnis.html" data-cat="unterricht">
+        <div class="index">
+          <span>2012</span>
+          <span class="cat">Unterricht</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/sensationelles_ergebnis.webp" alt="Harald Oeler — Fachbereich Akkordeon Musikschule Hofer Symphoniker" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Sensationelles</em> Ergebnis junger Musiker</h2>
+          <span class="role">Unterricht</span>
+          <p class="subtitle">Musikschule Hofer Symphoniker · Akkordeon-Wettbewerbe · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Benefiz · Stille Thränen · Marienkirche Hof · 2012 -->
+      <a class="card" href="news/stille_thraenen.html" data-cat="konzert">
+        <div class="index">
+          <span>2012</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/stille_thraenen.webp" alt="Stille Thränen für die Opfer — Marienkirche Hof" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Stille Thränen</em> für die Opfer</h2>
+          <span class="role">Benefiz</span>
+          <p class="subtitle">Marienkirche Hof · Benefizkonzert Japan · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Ensemble · Ein Jahr und noch eins · Haus der Musik Hof · März 2012 -->
+      <a class="card" href="news/ein_jahr.html" data-cat="konzert">
+        <div class="index">
+          <span>2012</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/ein_jahr.webp" alt="Sinn Yang und Harald Oeler — Acht Jahreszeiten" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Ein Jahr und noch <em>eins</em></h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">Acht Jahreszeiten · Haus der Musik Hof · Frankenpost</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Orchester · Con Brio Licht & Leben · Juli 2011 · Leporello -->
+      <a class="card" href="news/con_brio.html" data-cat="konzert">
+        <div class="index">
+          <span>2011</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/con_brio.webp" alt="Leporello — Licht &amp; Leben Con Brio" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Licht &amp; <em>Leben</em></h2>
+          <span class="role">Orchester</span>
+          <p class="subtitle">Con Brio · Bach BWV 1052 · Leporello</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- nmz · Seriöses CD-Recital · Sinn Yang Debüt · 2009 -->
+      <a class="card" href="news/serioeses_cd_recital.html" data-cat="medien">
+        <div class="index">
+          <span>2009</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/serioeses_cd_recital.webp" alt="Sinn Yang Violin — Oehms Classics CD" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Seriöses <em>CD-Recital</em></h2>
+          <span class="role">Medien</span>
+          <p class="subtitle">Sinn Yang · Oehms Classics · nmz</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Duo ViA! · Ars Musica Aub · April 2009 · Main-Post -->
+      <a class="card" href="news/aub.html" data-cat="konzert">
+        <div class="index">
+          <span>2009</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/aub.webp" alt="Duo ViA! — Acht Jahreszeiten Aub" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Vivaldi auf Akkordeon und <em>Geige</em></h2>
+          <span class="role">Duo</span>
+          <p class="subtitle">Acht Jahreszeiten · Ars Musica Aub · Main-Post</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Rehan Syed-Ensemble · Convenartis Keller Wertheim · März 2009 · Main-Echo -->
+      <a class="card" href="news/rehan_syed.html" data-cat="konzert">
+        <div class="index">
+          <span>2009</span>
+          <span class="cat">Konzert</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/rehan_syed.webp" alt="Rehan Syed-Ensemble — Convenartis Keller Wertheim" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Swing mit dem <em>Rehan Syed</em>-Ensemble</h2>
+          <span class="role">Ensemble</span>
+          <p class="subtitle">klang-räume · Convenartis Keller Wertheim · Main-Echo</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Solo · Kulturpreis Bayern · Oktober 2008 · GENUIN -->
+      <a class="card" href="news/kulturpreis_bayern.html" data-cat="medien">
+        <div class="index">
+          <span>2008</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/kulturpreis_bayern.webp" alt="Harald Oeler — Kulturpreis Bayern" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Kulturpreis <em>Bayern</em></h2>
+          <span class="role">Auszeichnung</span>
+          <p class="subtitle">Dreiländerhalle Passau · GENUIN · 30.10.2008</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+      <!-- Solo · Arrasate Hiria · Dezember 2007 · 2. Preis -->
+      <a class="card" href="news/arrasate.html" data-cat="medien">
+        <div class="index">
+          <span>2007</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/arrasate.webp" alt="Harald Oeler — Arrasate Hiria 2. Preis" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>Arrasate <em>Hiria</em></h2>
+          <span class="role">Auszeichnung</span>
+          <p class="subtitle">XV Certamen Internacional · 2. Preis · Arrasate / Mondragón</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- Solo · Pictures at an Exhibition · Mai 2007 · GENUIN GEN 87523 -->
+      <a class="card" href="news/pictures_exhibition.html" data-cat="medien">
+        <div class="index">
+          <span>2007</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/pictures_exhibition.webp" alt="CD-Cover Pictures at an Exhibition — Harald Oeler" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2><em>Pictures at an Exhibition</em></h2>
+          <span class="role">Medien</span>
+          <p class="subtitle">Mussorgsky · Gubaidulina · GENUIN GEN 87523</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+      <div class="news-load-more-wrap" id="news-load-more-wrap">
+        <button type="button" class="news-load-more" id="news-load-more">Mehr laden</button>
+      </div>
     </div><!-- /.news-grid -->
   </main>
   <!-- ═══ END PAGE CONTENT ═════════════════════════════════════════════════ -->
@@ -1147,24 +1977,142 @@ body.dark .nav-toggle:hover { opacity: 1; }
   </footer>
 
   <script>
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards      = document.querySelectorAll('.card');
+    (function () {
+      var INITIAL = 12;
+      var filterBtns = document.querySelectorAll('.filter-bar:not(.year-bar) .filter-btn');
+      var yearBar = document.getElementById('year-bar');
+      var grid = document.querySelector('.news-grid');
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+      var loadWrap = document.getElementById('news-load-more-wrap');
+      var loadBtn = document.getElementById('news-load-more');
+      var expanded = false;
+      var activeYear = 'all';
 
-    filterBtns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        filterBtns.forEach(function (b) { b.classList.remove('active'); });
-        this.classList.add('active');
+      function activeFilter() {
+        var active = document.querySelector('.filter-bar:not(.year-bar) .filter-btn.active');
+        return active ? active.dataset.filter : 'all';
+      }
 
-        const filter = this.dataset.filter;
+      function cardYear(card) {
+        var span = card.querySelector('.index span');
+        if (!span) return '';
+        var m = span.textContent.match(/(20\d{2}|19\d{2})/);
+        return m ? m[1] : '';
+      }
+
+      function buildYearBar() {
+        if (!yearBar) return;
+        var years = {};
         cards.forEach(function (card) {
-          if (filter === 'all' || card.dataset.cat === filter) {
+          var y = cardYear(card);
+          if (y) years[y] = true;
+        });
+        var fixedVisible = [2026, 2025, 2024, 2023];
+        var visible = fixedVisible.filter(function (y) {
+          return years[String(y)];
+        }).map(String);
+        var older = Object.keys(years)
+          .filter(function (y) { return visible.indexOf(y) === -1; })
+          .sort(function (a, b) { return b - a; });
+        var html = '<button class="filter-btn active" type="button" data-year="all">Alle</button>';
+        visible.forEach(function (y) {
+          html += '<button class="filter-btn" type="button" data-year="' + y + '">' + y + '</button>';
+        });
+        if (older.length) {
+          html += '<select class="year-select" aria-label="Ältere Jahre" title="Ältere Jahre">';
+          html += '<option value="">Älter…</option>';
+          older.forEach(function (y) {
+            html += '<option value="' + y + '">' + y + '</option>';
+          });
+          html += '</select>';
+        }
+        yearBar.innerHTML = html;
+
+        var yearSelect = yearBar.querySelector('.year-select');
+
+        yearBar.querySelectorAll('.filter-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            yearBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            if (yearSelect) {
+              yearSelect.value = '';
+              yearSelect.classList.remove('is-active');
+            }
+            activeYear = btn.dataset.year || 'all';
+            expanded = false;
+            sync();
+          });
+        });
+
+        if (yearSelect) {
+          yearSelect.addEventListener('change', function () {
+            var val = yearSelect.value;
+            if (!val) {
+              yearSelect.classList.remove('is-active');
+              yearBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+              var alle = yearBar.querySelector('.filter-btn[data-year="all"]');
+              if (alle) alle.classList.add('active');
+              activeYear = 'all';
+            } else {
+              yearBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+              yearSelect.classList.add('is-active');
+              activeYear = val;
+            }
+            expanded = false;
+            sync();
+          });
+        }
+      }
+
+      function sync() {
+        var filter = activeFilter();
+        var shown = 0;
+        var matched = 0;
+
+        cards.forEach(function (card) {
+          var catOk = filter === 'all' || card.dataset.cat === filter;
+          var year = cardYear(card);
+          var yearOk = activeYear === 'all' || year === activeYear;
+          if (!catOk || !yearOk) {
+            card.classList.add('hidden');
+            return;
+          }
+          matched += 1;
+          var reveal = expanded || shown < INITIAL;
+          if (reveal) {
             card.classList.remove('hidden');
+            shown += 1;
           } else {
             card.classList.add('hidden');
           }
         });
+
+        if (loadWrap) {
+          var showBtn = !expanded && matched > INITIAL;
+          loadWrap.classList.toggle('hidden', !showBtn);
+        }
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          expanded = false;
+          sync();
+        });
       });
-    });
+
+      if (loadBtn) {
+        loadBtn.addEventListener('click', function () {
+          expanded = true;
+          sync();
+        });
+      }
+
+      buildYearBar();
+      sync();
+    })();
   </script>
 
   <script>

@@ -40,6 +40,8 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 .article-body{max-width:1480px;margin:0 auto;padding:64px 48px 120px;display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start}
 .embed-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#1a1816}
 .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.media-col{display:flex;flex-direction:column;gap:28px;min-width:0}
+.partner-logo{display:block;width:100%;max-width:100%;height:auto}
 .article-info{}
 .info-section{margin-bottom:40px}
 .info-section:last-child{margin-bottom:0}
@@ -468,8 +470,11 @@ body.dark .nav-toggle:hover {
   </section>
 
   <main id="main" class="article-body">
-    <div class="embed-wrap">
-      <iframe src="https://www.youtube.com/embed/WPMtnt0PfY0?si=z159fgFsJrimDiE7" title="Richard Galliano — Opale Concerto" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    <div class="media-col">
+      <div class="embed-wrap">
+        <iframe src="https://www.youtube.com/embed/WPMtnt0PfY0?si=z159fgFsJrimDiE7" title="Richard Galliano — Opale Concerto" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <img class="partner-logo" src="image/kinderkonzert/Hofer_Symphoniker_Logo.webp" alt="Hofer Symphoniker" width="708" height="397" loading="lazy">
     </div>
 <div class="article-info">
   <div class="info-section">

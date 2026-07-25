@@ -123,7 +123,16 @@ function ProjektDetail({ id, onBack }) {
               <div className="termin-info">
                 <span className="termin-title">{t.title}</span>
                 {(t.venue || t.city) && (
-                  <span className="termin-venue">{[t.venue, t.city].filter(Boolean).join(" · ")}</span>
+                  <span className="termin-venue">
+                    {t.link && t.venue ? (
+                      <>
+                        <a href={t.link} target="_blank" rel="noopener noreferrer">{t.venue}</a>
+                        {t.city ? ` · ${t.city}` : null}
+                      </>
+                    ) : (
+                      [t.venue, t.city].filter(Boolean).join(" · ")
+                    )}
+                  </span>
                 )}
                 {t.note && <span className="termin-note">{t.note}</span>}
               </div>
@@ -179,8 +188,12 @@ function ProjektDetail({ id, onBack }) {
             <dd>60–90 min</dd>
             <dt>Sprache</dt>
             <dd>instrumental</dd>
-            <dt>Erste Aufführung</dt>
-            <dd>München · 2024</dd>
+            {detail.premiere !== false && (
+              <>
+                <dt>Erste Aufführung</dt>
+                <dd>{detail.premiere || "München · 2024"}</dd>
+              </>
+            )}
             <dt>Tour</dt>
           </dl>
           {detail.termineInAside && renderTermine("termine termine-aside")}
@@ -332,9 +345,8 @@ function ProjektDetail({ id, onBack }) {
           {detail.news && detail.news.length > 0 && (() => {
             const previewCount = detail.newsPreview ?? detail.news.length;
             const shown = detail.news.slice(0, previewCount);
-            const moreHref = detail.news.length > previewCount
-              ? (detail.newsMoreHref || "/news.html")
-              : null;
+            const moreHref = detail.newsMoreHref
+              || (detail.news.length > previewCount ? "/news.html" : null);
             return (
               <div className="project-news">
                 <h3>— News</h3>

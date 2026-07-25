@@ -125,10 +125,20 @@
     if (!btn || btn.__scrollBound) return;
     btn.__scrollBound = true;
     var showAt = 500;
+    var ticking = false;
     function sync() {
-      btn.classList.toggle('is-visible', window.scrollY > showAt);
+      var show = window.scrollY > showAt;
+      if (btn.classList.contains('is-visible') !== show) {
+        btn.classList.toggle('is-visible', show);
+      }
+      ticking = false;
     }
-    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(sync);
+      }
+    }, { passive: true });
     sync();
     btn.addEventListener('click', function () {
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -140,10 +150,20 @@
   function initHeroHeader() {
     var header = document.querySelector('.site-header.hero-header');
     if (!header) return;
+    var ticking = false;
     function onScroll() {
-      header.classList.toggle('scrolled', window.scrollY > 60);
+      var scrolled = window.scrollY > 60;
+      if (header.classList.contains('scrolled') !== scrolled) {
+        header.classList.toggle('scrolled', scrolled);
+      }
+      ticking = false;
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(onScroll);
+      }
+    }, { passive: true });
     onScroll();
   }
 

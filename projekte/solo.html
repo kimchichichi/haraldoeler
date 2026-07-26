@@ -254,6 +254,28 @@ nav.primary a.active::after {
 }
 .detail-body .body-copy p + p { margin-top: 1.1em; }
 
+/* Konzertprogramme — extracted from projekte/duoklakk.html */
+.programs { margin-top: 72px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+.programs > h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 24px 0 8px; }
+.programs-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.program { padding: 32px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); max-width: 62ch; }
+.program:last-child { border-bottom: none; padding-bottom: 8px; }
+.program-header { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: baseline; margin-bottom: 18px; }
+.program-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--muted); }
+.program-title { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); letter-spacing: -0.01em; line-height: 1.2; }
+.program-subtitle { margin-top: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.program-body { font-size: 16px; line-height: 1.65; color: color-mix(in srgb, var(--ink) 80%, transparent); }
+.program-body p + p { margin-top: 1.1em; }
+.program-styles { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.program-styles li { display: grid; grid-template-columns: minmax(7rem, 9rem) 1fr; gap: 16px 24px; align-items: baseline; padding-left: 14px; border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.program-style-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.program-style-text { font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+.program-closing { margin-top: 18px; font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.45; color: color-mix(in srgb, var(--ink) 85%, transparent); }
+@media (max-width: 600px) {
+  .program-header { grid-template-columns: 1fr; gap: 8px; }
+  .program-styles li { grid-template-columns: 1fr; gap: 4px; }
+}
+
 /* Repertoire list */
 .repertoire {
   margin-top: 72px;
@@ -704,7 +726,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__solo.bundle.js?v=25"></script>
+  <script type="module" src="../assets/projekte__solo.bundle.js?v=26"></script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">

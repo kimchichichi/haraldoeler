@@ -64,13 +64,31 @@ const DETAILS = {
     title: "Solo",
     eyebrow: "Projekt 01 · Akkordeon solo",
     image: `${PROJECT_HERO_IMAGE_BASE}/solo.webp`,
-    runtime: ["Programm · »Remembering«", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
+    runtime: ["2 Konzertprogramme", "Besetzung · Akkordeon solo", "Album · Pictures at an Exhibition"],
     lede: ["Die Präzision des Klaviers. Die Sogkraft des Orchesters. ", { em: "Eine Stimme." }],
     body: [
-      "Auf dem Instrument des Jahres 2026 präsentiert Harald Oeler sein neues Konzertprogramm „Remembering“. Reisen nach Paris und Tokio dienten ihm als Hauptquellen der kompositorischen Inspiration. Die Musik Johann Sebastian Bachs und Astor Piazzollas fließen in das Programm ein, welches das Publikum auf eine multi-stilistische Weltreise entführt. Mit freier Improvisation, jazzigen Sounds und südamerikanischem Tango zieht er das Publikum in seinen Bann.",
       "Künstlerisch bewegt sich Harald Oeler in einem weiten Feld, welches von der (Ur-)Aufführung zeitgenössischer Werke, über die Transkription klassischer Werke für das Akkordeon, bis hin zum Jazz reicht.",
       "Auftritte beim Heidelberger Frühling, Literaturfest Niedersachsen, Sommerliche Musiktage Hitzacker, Frankfurter MuseumsSalon, Django Memorial Augsburg und Frankfurter Jazzfestival. Konzertreisen führten Harald Oeler nach China, Korea, Rumänien, Finnland, Schweden, Italien, Österreich, Schweiz und Polen.",
       "Zahlreiche CD Produktionen bei OehmsClassics, Genuin und Thorofon / Bella Musica repräsentieren sein breitgefächertes Konzertleben.",
+    ],
+    programs: [
+      {
+        num: "01",
+        title: "Remembering",
+        subtitle: "Paris und Tokio, Bach und Piazzolla",
+        body: [
+          "Das Programm spiegelt ihn erstmalig als Komponist, Arrangeur und Akkordeonist wider. Zwei Städte und zwei Komponisten erwiesen sich während des Kompositionsprozesses als besonders wertvoll und bilden die Hauptsäulen seines Konzertprogrammes: Paris, Tokio, Johann Sebastian Bach und Astor Piazzolla.",
+          "„Remembering“ umfasst daher vier große Werke für Akkordeon-Solo, die das Publikum auf eine multi-stilistische, musikalische Weltreise entführen. Zu hören sind freie improvisierte Musik, streng kontrapunktische Satztechniken, Alte und Neue Musik, aber auch jazzige Sounds, südamerikanische „Tango-Fetzen“ und eine „Anime-Sonate“.",
+        ],
+      },
+      {
+        num: "02",
+        title: "Sonate für Akkordeon",
+        subtitle: "Konzert für Akkordeon solo mit Werken von Scarlatti, Haydn, Mozart und Schubert",
+        body: [
+          "Das Akkordeon ist das Instrument des Jahres 2026. Anlass genug, zu zeigen, um was für ein vielseitiges Musikinstrument es sich handelt. Mit der wohl am häufigsten komponierten musikalischen Form, der Sonate, geht der international renommierte Solist Harald Oeler auf eine Zeitreise durch fast vier Jahrhunderte mit Werken u. a. von Scarlatti, Haydn, Mozart und Schubert. Freuen Sie sich auf ein Konzert voller farbiger, musikalischer Kontraste und Überraschungen.",
+        ],
+      },
     ],
     repertoire: [
       { num: "I.", work: "Modest Mussorgsky", note: "Pictures at an Exhibition", dur: "—", embed: { type: "spotify", media: "album", id: "02LouxvRMRz0bj5etTqFpL" } },
@@ -91,6 +109,7 @@ const DETAILS = {
     ],
     quotes: [
       { text: "Oeler's transcription unites the advantages of the original piano version and Ravel's orchestral adaptation — an astounding range of colours and dynamics.", cite: "Nordwest-Radio" },
+      { text: "Die Präzision des Klaviers und die Sogkraft des Orchesters: beides vereint das Akkordeon — genauer gesagt: der Bayan — von Harald Oeler aufs Schönste. … Da zischt der Gnom böse wie selten und die kleinen Küken flattern und piepen über die Knöpfe, dass es eine Freude ist!", cite: "GENUIN" },
     ],
     terminePreview: 2,
     termineMoreHref: "/termine.html",
@@ -98,7 +117,7 @@ const DETAILS = {
     newsMoreHref: "/news.html",
     termine: [
       { date: "25. Juli 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Evangelische Kirche", city: "Berg", note: "Das Akkordeon · Instrument des Jahres 2026" },
-      { date: "19. September 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Arche", city: "Dittelbrunn", note: "Hauptstr. 64 · 97456 Dittelbrunn" },
+      { date: "19. September 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Arche", city: "Dittelbrunn", note: "Hauptstr. 64 · 97456 Dittelbrunn", link: "https://termine.mainpost.de/veranstaltung/sonate-fur-akkordeon-2629896.html" },
       { date: "19. November 2026", time: "19:00 Uhr", title: "Würzburger Bachtage — Eröffnungsakt", venue: "Bertold-Hummel-Saal im Mozartareal", city: "Würzburg", note: "Opus ultimum et summum · Bach BWV 232 · Vortrag Prof. Dr. Ulrich Konrad", link: "https://www.bachtage-wuerzburg.de/bachtage-2026" },
     ],
     news: [
@@ -240,7 +259,6 @@ const DETAILS = {
     ],
     news: [
       { year: "2026", title: "Duo ViA! · Neues Programm", subtitle: "Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.", href: "/news/duovia_1.html" },
-      { year: "2026", title: "Reise durch die Jahreszeiten", subtitle: "Duo ViA! · Kammermusik Festival Würzburg · Facebook", href: "/news/kmf_via.html" },
       { year: "2025", title: "Duo ViA! · 8 Jahreszeiten", subtitle: "Trailer — Vivaldi & Piazzolla · Bearbeitung für Violine und Akkordeon", href: "/news/duovia_2.html" },
       { year: "2024", title: "Duo ViA! · Residenz Würzburg", subtitle: "Jubiläumskonzert 40 Jahre ZONTA CLUB WÜRZBURG — Vivaldi meets Piazzolla „Acht Jahreszeiten“", href: "/news/zontaclub.html" },
       { year: "2024", title: "Violine und Akkordeon passten wunderbar zusammen", subtitle: "Duo ViA! · Kaisersaal Residenz Würzburg · Main-Post", href: "/news/wunderbar_zusammen.html" },

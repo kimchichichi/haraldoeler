@@ -188,12 +188,6 @@ function ProjektDetail({ id, onBack }) {
             <dd>60–90 min</dd>
             <dt>Sprache</dt>
             <dd>instrumental</dd>
-            {detail.premiere !== false && (
-              <>
-                <dt>Erste Aufführung</dt>
-                <dd>{detail.premiere || "München · 2024"}</dd>
-              </>
-            )}
           </dl>
           {detail.dossier && (
             <div className="dossier-aside">

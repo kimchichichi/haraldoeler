@@ -96,8 +96,6 @@ function ProjektDetail({ id, onBack }) {
             <dd>60–90 min</dd>
             <dt>Sprache</dt>
             <dd>instrumental</dd>
-            <dt>Erste Aufführung</dt>
-            <dd>München · 2024</dd>
             <dt>Tour</dt>
             <dd></dd>
           </dl>

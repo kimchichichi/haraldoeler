@@ -194,8 +194,14 @@ function ProjektDetail({ id, onBack }) {
                 <dd>{detail.premiere || "München · 2024"}</dd>
               </>
             )}
-            <dt>Tour</dt>
           </dl>
+          {detail.dossier && (
+            <div className="dossier-aside">
+              <h3>— Presse-Dossier</h3>
+              <a className="dossier-link dossier-pdf" href={detail.dossier.pdf} download>PDF herunterladen</a>
+              <a className="dossier-link dossier-online" href={detail.dossier.html}>Online-Dossier</a>
+            </div>
+          )}
           {detail.termineInAside && renderTermine("termine termine-aside")}
         </aside>
 
@@ -214,6 +220,41 @@ function ProjektDetail({ id, onBack }) {
               <p key={i}>{p}</p>
             ))}
           </div>
+
+          {detail.programs && detail.programs.length > 0 && (
+            <div className="programs">
+              <h3>— Konzertprogramme</h3>
+              <ol className="programs-list">
+                {detail.programs.map((prog, i) => (
+                  <li key={i} className="program">
+                    <div className="program-header">
+                      <span className="program-num">{prog.num || String(i + 1).padStart(2, "0")}</span>
+                      <div className="program-meta">
+                        <h4 className="program-title">{prog.title}</h4>
+                        {prog.subtitle ? <p className="program-subtitle">{prog.subtitle}</p> : null}
+                      </div>
+                    </div>
+                    <div className="program-body">
+                      {(prog.body || []).map((p, pi) => (
+                        <p key={pi}>{p}</p>
+                      ))}
+                    </div>
+                    {prog.styles && prog.styles.length > 0 && (
+                      <ul className="program-styles">
+                        {prog.styles.map((s, si) => (
+                          <li key={si}>
+                            <span className="program-style-label">{s.label}</span>
+                            <span className="program-style-text">{s.text}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {prog.closing ? <p className="program-closing">{prog.closing}</p> : null}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
 
           <div className="repertoire">
             <h3>— Auswahl Repertoire</h3>

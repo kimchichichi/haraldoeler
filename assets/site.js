@@ -144,11 +144,35 @@
     onScroll();
   }
 
+  /* Resolve ../ relative to how assets/site.js was loaded */
+  function sitePrefix() {
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].getAttribute('src') || '';
+      var m = src.match(/^(.*\/)?assets\/site\.js/);
+      if (m) return m[1] || '';
+    }
+    return '';
+  }
+
+  function isIncompleteConcert(item) {
+    if (item.querySelector('.badge-abgesagt')) return true;
+    if (item.querySelector('.c-tba')) return true;
+    var blob = item.textContent.replace(/\s+/g, ' ');
+    return /Uhrzeit folgt|Terminzeit TBA|Details TBA|Ort folgt/i.test(blob);
+  }
+
+  function concertIdFromDate(dateEl) {
+    var m = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+    if (!m) return '';
+    return 'termin-' + m[3] + '-' + m[2] + '-' + m[1];
+  }
+
   /* Footer next concert teaser */
   function initFooterConcert() {
     var el = document.getElementById('footer-next-concert');
     if (!el || !window.fetch) return;
-    var prefix = (location.pathname.indexOf('/news/') !== -1 || /\/news\/?$/.test(location.pathname)) ? '../' : '';
+    var prefix = sitePrefix();
     fetch(prefix + 'termine.html', { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
       .then(function (html) {
@@ -158,7 +182,7 @@
         var items = Array.from(doc.querySelectorAll('.concert-item'));
         for (var i = 0; i < items.length; i++) {
           var item = items[i];
-          if (item.querySelector('.badge-abgesagt')) continue;
+          if (isIncompleteConcert(item)) continue;
           var dateEl = item.querySelector('.c-date');
           if (!dateEl) continue;
           var m = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
@@ -169,7 +193,8 @@
           var locEl = item.querySelector('.c-location a') || item.querySelector('.c-location');
           var title = titleEl ? titleEl.childNodes[0].textContent.trim() : '';
           var loc = locEl ? locEl.textContent.replace(/\s+/g, ' ').trim() : '';
-          var href = prefix + 'termine.html' + (item.id ? '#' + item.id : '');
+          var id = item.id || concertIdFromDate(dateEl);
+          var href = prefix + 'termine.html' + (id ? '#' + id : '');
           el.innerHTML = '<a href="' + href + '">Nächstes Konzert: ' + dateEl.textContent.trim() + ' — ' + title + (loc ? ' · ' + loc : '') + '</a>';
           return;
         }

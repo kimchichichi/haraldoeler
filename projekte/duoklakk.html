@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="description" content="Duo KlAkk! — Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon). Neue Musik × Alte Musik. Transkriptionen und Uraufführungen." />
+  <meta name="description" content="Duo KlAkk! — Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon). Drei Konzertprogramme: goes Bach, ENCORES! und Von Bach bis Tango Nuevo." />
   <meta property="og:title" content="Duo KlAkk! | neue musik × alte musik" />
-  <meta property="og:description" content="Duo KlAkk! — Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon). Neue Musik trifft Alte Musik." />
+  <meta property="og:description" content="Duo KlAkk! — Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon). Drei Konzertprogramme zwischen Bach, Klezmer, Tango Nuevo und Jazz." />
   <meta property="og:image" content="https://www.haraldoeler.com/projekte/image/page/duoklakk.webp" />
   <meta property="og:url" content="https://www.haraldoeler.com/projekte/duoklakk" />
   <meta property="og:type" content="website" />
@@ -69,6 +69,27 @@ nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0
 .detail-body .lede em { font-style: italic; color: var(--accent); }
 .detail-body .body-copy { font-size: 16px; line-height: 1.65; max-width: 62ch; color: color-mix(in srgb, var(--ink) 80%, transparent); }
 .detail-body .body-copy p + p { margin-top: 1.1em; }
+
+.programs { margin-top: 72px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
+.programs > h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 24px 0 8px; }
+.programs-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.program { padding: 32px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); max-width: 62ch; }
+.program:last-child { border-bottom: none; padding-bottom: 8px; }
+.program-header { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: baseline; margin-bottom: 18px; }
+.program-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--muted); }
+.program-title { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); letter-spacing: -0.01em; line-height: 1.2; }
+.program-subtitle { margin-top: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.program-body { font-size: 16px; line-height: 1.65; color: color-mix(in srgb, var(--ink) 80%, transparent); }
+.program-body p + p { margin-top: 1.1em; }
+.program-styles { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.program-styles li { display: grid; grid-template-columns: minmax(7rem, 9rem) 1fr; gap: 16px 24px; align-items: baseline; padding-left: 14px; border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.program-style-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.program-style-text { font-size: 15px; line-height: 1.6; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+.program-closing { margin-top: 18px; font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.45; color: color-mix(in srgb, var(--ink) 85%, transparent); }
+@media (max-width: 600px) {
+  .program-header { grid-template-columns: 1fr; gap: 8px; }
+  .program-styles li { grid-template-columns: 1fr; gap: 4px; }
+}
 
 .repertoire { margin-top: 72px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
 .repertoire h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 24px 0 8px; }
@@ -133,9 +154,63 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
 .termine-more:hover { color: var(--accent); }
 .termine-more svg { transition: transform .35s ease; }
 .termine-more:hover svg { transform: translateX(5px); }
+.dossier-aside {
+  margin-top: 28px;
+  padding: 18px 16px 16px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, var(--paper));
+}
+.dossier-aside h3 {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.dossier-link {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; box-sizing: border-box;
+  margin-top: 8px; padding: 11px 14px;
+  font-family: var(--mono); font-style: normal; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none; text-align: center;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.dossier-link.dossier-pdf {
+  color: var(--paper); background: var(--ink);
+  border: 1px solid var(--ink);
+}
+.dossier-link.dossier-pdf:hover {
+  background: var(--accent); border-color: var(--accent); color: var(--paper);
+}
+.dossier-link.dossier-online {
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+}
+.dossier-link.dossier-online:hover {
+  border-color: var(--accent); color: var(--accent);
+}
+body.dark .dossier-aside {
+  background: color-mix(in srgb, var(--accent) 12%, var(--ink));
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+body.dark .dossier-link.dossier-pdf {
+  background: var(--paper); color: var(--ink); border-color: var(--paper);
+}
+body.dark .dossier-link.dossier-pdf:hover {
+  background: var(--accent); border-color: var(--accent); color: var(--paper);
+}
+body.dark .dossier-link.dossier-online {
+  color: var(--paper);
+  border-color: color-mix(in srgb, var(--paper) 28%, transparent);
+}
+body.dark .dossier-link.dossier-online:hover {
+  border-color: var(--accent); color: var(--accent);
+}
 .detail-body aside .termine-aside { margin-top: 8px; padding-top: 0; border-top: none; }
-.detail-body aside .termine-aside h3 { margin-bottom: 16px; padding-top: 0; font-size: 10px; letter-spacing: 0.22em; }
-.detail-body aside .termine-aside .termin-item { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
+.detail-body aside .termine-aside h3 { margin-bottom: 6px; padding-top: 0; font-size: 10px; letter-spacing: 0.22em; }
+.detail-body aside .termine-aside .termin-item { grid-template-columns: 1fr; gap: 4px; padding: 10px 0; }
+.detail-body aside .termine-aside .termin-item:first-child { padding-top: 4px; }
 .detail-body aside .termine-aside .termin-item:hover { padding-left: 8px; }
 .detail-body aside .termine-aside .termin-date { font-size: 10px; letter-spacing: 0.12em; }
 .detail-body aside .termine-aside .termin-title { font-size: 16px; line-height: 1.25; }
@@ -172,7 +247,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=25"></script>
+  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=32"></script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
@@ -231,6 +306,6 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
       });
     })();
   </script>
-  <script src="../assets/site.js?v=7" defer></script>
+  <script src="../assets/site.js?v=8" defer></script>
 </body>
 </html>

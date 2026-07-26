@@ -180,6 +180,192 @@
     });
   }
 
+  function pad2(n) {
+    return String(n).padStart(2, '0');
+  }
+
+  /** Convert Berlin wall-clock time to UTC YYYYMMDDTHHMMSSZ */
+  function berlinToUtcStamp(y, m, d, h, min) {
+    var want = Date.UTC(y, m - 1, d, h, min, 0);
+    var t = want;
+    var dtf = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Berlin',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23'
+    });
+    for (var i = 0; i < 4; i++) {
+      var parts = {};
+      dtf.formatToParts(new Date(t)).forEach(function (p) {
+        if (p.type !== 'literal') parts[p.type] = p.value;
+      });
+      var got = Date.UTC(
+        Number(parts.year),
+        Number(parts.month) - 1,
+        Number(parts.day),
+        Number(parts.hour),
+        Number(parts.minute),
+        Number(parts.second || 0)
+      );
+      t += want - got;
+    }
+    var dt = new Date(t);
+    return (
+      dt.getUTCFullYear() +
+      pad2(dt.getUTCMonth() + 1) +
+      pad2(dt.getUTCDate()) +
+      'T' +
+      pad2(dt.getUTCHours()) +
+      pad2(dt.getUTCMinutes()) +
+      pad2(dt.getUTCSeconds()) +
+      'Z'
+    );
+  }
+
+  function titleText(titleEl) {
+    if (!titleEl) return '';
+    var out = '';
+    var nodes = titleEl.childNodes;
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].nodeType === 3) out += nodes[i].textContent;
+    }
+    return out.replace(/\s+/g, ' ').trim();
+  }
+
+  function descriptionText(item, titleEl) {
+    var bits = [];
+    if (titleEl) {
+      titleEl.querySelectorAll('small').forEach(function (s) {
+        var t = s.textContent.replace(/\s+/g, ' ').trim();
+        if (t) bits.push(t);
+      });
+    }
+    var info = item.querySelector('.c-info-link');
+    if (info && info.href && !/haraldoeler\.com\/?$/.test(info.href)) {
+      bits.push(info.href);
+    }
+    return bits.join(' · ');
+  }
+
+  function locationText(item) {
+    var locEl = item.querySelector('.c-location');
+    if (!locEl) return '';
+    return locEl.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function parseConcertTime(dayEl) {
+    if (!dayEl) return null;
+    var t = dayEl.textContent.replace(/\s+/g, ' ').trim();
+    if (/uhrzeit folgt|tba/i.test(t)) return null;
+    var m = t.match(/(\d{1,2})[.:](\d{2})\s*Uhr/i);
+    if (!m) return null;
+    return { h: Number(m[1]), min: Number(m[2]) };
+  }
+
+  function icsEscape(s) {
+    return String(s)
+      .replace(/\\/g, '\\\\')
+      .replace(/\n/g, '\\n')
+      .replace(/,/g, '\\,')
+      .replace(/;/g, '\\;');
+  }
+
+  function slugifyFilename(s) {
+    return String(s)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9]+/g, '_')
+      .replace(/^_|_$/g, '')
+      .slice(0, 60) || 'konzert';
+  }
+
+  function encodeIcalDataUri(ics) {
+    // Keep structural colons readable; leave CRLF as %0D%0A from encodeURIComponent
+    return 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics).replace(/%3A/gi, ':');
+  }
+
+  function buildCalendarLinks() {
+    document.querySelectorAll('.concert-item').forEach(function (item) {
+      if (item.querySelector('.c-tba')) return;
+      var dateEl = item.querySelector('.c-date');
+      var dayEl = item.querySelector('.c-day');
+      var titleEl = item.querySelector('.c-title');
+      if (!dateEl) return;
+      var dm = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+      var time = parseConcertTime(dayEl);
+      if (!dm || !time) return;
+
+      var y = Number(dm[3]);
+      var mo = Number(dm[2]);
+      var d = Number(dm[1]);
+      var title = titleText(titleEl);
+      if (!title) return;
+      var details = descriptionText(item, titleEl);
+      var location = locationText(item);
+      if (/ort folgt/i.test(location)) return;
+
+      var start = berlinToUtcStamp(y, mo, d, time.h, time.min);
+      var end = berlinToUtcStamp(y, mo, d, time.h + 2, time.min);
+
+      var gParams = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: title,
+        details: details,
+        location: location,
+        dates: start + '/' + end
+      });
+      var googleHref = 'https://www.google.com/calendar/render?' + gParams.toString();
+
+      var ics =
+        'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n' +
+        'SUMMARY:' + icsEscape(title) + '\r\n' +
+        (details ? 'DESCRIPTION:' + icsEscape(details) + '\r\n' : '') +
+        'DTSTART:' + start + '\r\n' +
+        'DTEND:' + end + '\r\n' +
+        (location ? 'LOCATION:' + icsEscape(location) + '\r\n' : '') +
+        'END:VEVENT\r\nEND:VCALENDAR';
+
+      var icalHref = encodeIcalDataUri(ics);
+      var filename =
+        slugifyFilename(title) + '_' + y + '-' + pad2(mo) + '-' + pad2(d) + '.ics';
+
+      var cal = item.querySelector('.c-cal');
+      if (!cal) {
+        var right = item.querySelector('.c-right');
+        if (!right) return;
+        cal = document.createElement('div');
+        cal.className = 'c-cal';
+        right.appendChild(cal);
+      }
+
+      cal.innerHTML = '';
+      var icon = document.createElement('span');
+      icon.className = 'cal-icon';
+      cal.appendChild(icon);
+
+      var gLink = document.createElement('a');
+      gLink.href = googleHref;
+      gLink.target = '_blank';
+      gLink.rel = 'noopener';
+      gLink.textContent = 'Google';
+      cal.appendChild(gLink);
+
+      var sep = document.createElement('span');
+      sep.textContent = '|';
+      cal.appendChild(sep);
+
+      var iLink = document.createElement('a');
+      iLink.href = icalHref;
+      iLink.setAttribute('download', filename);
+      iLink.textContent = 'iCal';
+      cal.appendChild(iLink);
+    });
+  }
+
   function highlightFromHash() {
     if (!location.hash) return;
     var target = document.querySelector(location.hash);
@@ -193,6 +379,7 @@
 
   assignConcertIds();
   insertMonthDividers();
+  buildCalendarLinks();
   replaceCalIcons();
   initConcertClicks();
   initStickyControls();

@@ -256,11 +256,43 @@ const DETAILS = {
     title: "Duo KlAkk!",
     eyebrow: "Projekt 05 · neue musik × alte musik",
     image: `${PROJECT_HERO_IMAGE_BASE}/duoklakk.webp`,
-    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! Encore!«"],
+    premiere: false,
+    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "3 Konzertprogramme"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
       "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
-      "Was passiert, wenn die zeitlose Genialität Johann Sebastian Bachs auf die spielerische Energie von Duo KlAkk! trifft? Ein Konzert voller Überraschungen, Kontraste und einer Prise Augenzwinkern. Das Duo nimmt das Publikum mit auf eine Reise durch Bachs zwei Sonaten für Viola da Gamba — Meisterwerke voller Eleganz, Tiefe und musikalischem Dialog.",
+    ],
+    programs: [
+      {
+        num: "01",
+        title: "Duo KlAkk! goes Bach",
+        body: [
+          "Was passiert, wenn die zeitlose Genialität Johann Sebastian Bachs auf die spielerische Energie von Duo KlAkk! trifft? Ein Konzert voller Überraschungen, Kontraste und einer Prise Augenzwinkern. Das Duo nimmt das Publikum mit auf eine Reise durch Bachs zwei Sonaten für Viola da Gamba — Meisterwerke voller Eleganz, Tiefe und musikalischem Dialog.",
+        ],
+      },
+      {
+        num: "02",
+        title: "Duo KlAkk! ENCORES!",
+        body: [
+          "Wie bereits in den vergangenen Jahren widmet sich das Duo KlAkk! auch in diesem Programm einem besonderen musikalischen Schwerpunkt. „KlAkk! – Encores“ ist stilistisch von den vielfältigen Einflüssen verschiedener Musikkulturen inspiriert. Dabei werden die Stücke auf ganz „KlAkk-typische“ Weise weiterkomponiert, improvisiert und metamorphotisch verwandelt:",
+        ],
+        styles: [
+          { label: "Klezmer", text: "Aus einer schlichten Melodie erwachsen komplexe Klanglandschaften mit eigenständiger Motivik." },
+          { label: "Tango Nuevo", text: "Die feurige Melancholie entfaltet sich in durcharrangierten, vielschichtigen Improvisationsflächen." },
+          { label: "Jazz", text: "Groovende und jazzige Themen nehmen überraschende, konzertant-komponierte Formen an." },
+        ],
+        closing: "Ein farbenreiches Crossover-Programm voller Spielfreude, Intimität und klanglicher Entdeckungen.",
+      },
+      {
+        num: "03",
+        title: "Duo KlAkk! – Von Bach bis Tango Nuevo",
+        subtitle: "Bach & Encores",
+        body: [
+          "Was verbindet die klare, zeitlose Struktur der Barockmusik mit der Leidenschaft von Tango, Klezmer und Jazz? Das Duo KlAkk! schlägt in diesem abwechslungsreichen Konzertprogramm eine faszinierende Brücke zwischen den Epochen und Genregrenzen.",
+          "Im ersten Teil widmen sich die beiden Musiker der genialen Architektur Johann Sebastian Bachs. Seine Sonaten erstrahlen im frischen, transparenten Gewand von Klarinette und Akkordeon in ganz neuem Glanz. Im zweiten Teil verwandelt sich die Bühne in ein Spielfeld weltmusikalischer Farben: Traditionelle Klezmer-Motive, die feurige Melancholie des Tango Nuevo und spritzige Jazz-Elemente werden im einzigartigen „KlAkk-Stil“ neu interpretiert, weiterkomponiert und improvisiert.",
+          "Ein mitreißender Konzertabend zwischen barocker Tiefe und moderner Crossover-Energie — virtuos, überraschend und voller Poesie!",
+        ],
+      },
     ],
     repertoire: [
       { num: "I.", work: "J. S. Bach", note: "Sonate D-Dur, BWV 1028", dur: "", embed: { type: "youtube", id: "lYlqyNsLyYk" } },
@@ -271,8 +303,14 @@ const DETAILS = {
     ],
     quotes: [
       { text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
+      { text: "Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Die Musik lebte stets aus dem Moment heraus.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
       { text: "Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ von Harald Oeler als Zugabe belohnt.", cite: "Klaus Wankmiller · Füssener Zeitung" },
+      { text: "Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.", cite: "Tonkünstlerverband Hochfranken e.V." },
     ],
+    dossier: {
+      html: "/projekte/duoklakk-dossier.html",
+      pdf: "/projekte/Duo-KlAkk-Dossier.pdf",
+    },
     terminePreview: 2,
     termineMoreHref: "/termine.html",
     termineInAside: true,

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Duo KlAkk! — Presse- &amp; Booking-Dossier für Konzertveranstalter. Drei Programme: goes Bach, ENCORES!, Von Bach bis Tango Nuevo." />
+  <link rel="canonical" href="https://www.haraldoeler.com/projekte/duoklakk-dossier.html" />
+  <title>Duo KlAkk! — Presse- &amp; Booking-Dossier</title>
+  <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #0e0d0c;
+  --paper: #f4f1ec;
+  --paper-2: #ebe6dd;
+  --muted: #6b655c;
+  --accent: #6b1d1a;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --page-w: 210mm;
+  --page-h: 297mm;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #d9d4cb; }
+body {
+  background: #d9d4cb;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* —— Screen chrome —— */
+.screen-bar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 24px;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted);
+}
+.screen-bar a { text-decoration: none; transition: color .2s ease; }
+.screen-bar a:hover { color: var(--accent); }
+.screen-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.screen-btn {
+  appearance: none; border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  background: var(--paper); color: var(--ink);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 10px 14px; cursor: pointer; text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.screen-btn:hover { border-color: var(--accent); color: var(--accent); }
+.screen-btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.screen-btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+.dossier {
+  width: min(var(--page-w), 100%);
+  margin: 28px auto 64px;
+  display: flex; flex-direction: column; gap: 28px;
+}
+.page {
+  width: 100%;
+  min-height: var(--page-h);
+  background: var(--paper);
+  box-shadow: 0 18px 50px rgba(14,13,12,.12);
+  padding: 18mm 18mm 16mm;
+  position: relative;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.page-footer {
+  margin-top: auto; padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  display: flex; justify-content: space-between; gap: 16px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* —— Cover —— */
+.page.cover {
+  padding: 0;
+  background: var(--ink);
+  color: var(--paper);
+  justify-content: flex-end;
+}
+.cover-image {
+  position: absolute; inset: 0;
+  background: var(--ink);
+}
+.cover-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.88;
+}
+.cover-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,13,12,.25) 0%, transparent 35%, rgba(14,13,12,.88) 100%);
+}
+.cover-meta {
+  position: relative; z-index: 2;
+  padding: 18mm;
+  display: grid; gap: 18px;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+}
+.cover .eyebrow { color: rgba(244,241,236,.65); }
+.cover h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(56px, 12vw, 92px); line-height: 0.9; letter-spacing: -0.02em;
+}
+.cover-line {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(244,241,236,.78); line-height: 1.9;
+}
+.cover-tag {
+  font-family: var(--serif); font-style: italic; font-size: 22px;
+  color: rgba(244,241,236,.9);
+}
+
+/* —— Typography —— */
+.page-kicker {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
+}
+.page h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 5vw, 48px); line-height: 1.05; letter-spacing: -0.015em;
+  margin-bottom: 22px;
+}
+.lede {
+  font-family: var(--serif); font-weight: 300;
+  font-size: 26px; line-height: 1.28; letter-spacing: -0.01em;
+  max-width: 28ch; margin-bottom: 28px;
+}
+.lede em { font-style: italic; color: var(--accent); }
+.body { font-size: 14.5px; line-height: 1.65; color: color-mix(in srgb, var(--ink) 82%, transparent); max-width: 62ch; }
+.body p + p { margin-top: 1em; }
+
+.section-rule {
+  border: 0; border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  margin: 28px 0 22px;
+}
+
+.duo-photo {
+  width: 100%;
+  margin: 22px 0 0;
+  line-height: 0;
+}
+.duo-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* —— Contact —— */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+.contact-item dt {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 4px;
+}
+.contact-item dd {
+  font-family: var(--serif); font-size: 18px; font-style: italic; line-height: 1.45;
+  padding-bottom: 2px;
+}
+.contact-item a { text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+.contact-item a:hover { color: var(--accent); }
+
+/* —— Bios —— */
+.page.musiker {
+  padding: 18mm 18mm 16mm;
+}
+.musiker-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.musiker-hero {
+  width: 100%;
+  margin: 0 0 16px;
+  line-height: 0;
+}
+.musiker-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+}
+.bios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  margin: 0;
+}
+.bio h3 {
+  font-family: var(--serif); font-weight: 400; font-size: 26px; letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.bio .role {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.bio p {
+  font-size: 13px; line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+.bio p + p { margin-top: .75em; }
+.page.musiker .page-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* —— Programs —— */
+.prog-num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--muted);
+  margin-bottom: 8px;
+}
+.prog-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(30px, 4.2vw, 40px); line-height: 1.1; letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+.prog-sub {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+}
+.styles {
+  list-style: none; margin: 20px 0 0; display: flex; flex-direction: column; gap: 12px;
+}
+.styles li {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 14px;
+  padding-left: 12px; border-left: 2px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.style-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); padding-top: 2px;
+}
+.style-text { font-size: 13.5px; line-height: 1.55; color: color-mix(in srgb, var(--ink) 80%, transparent); }
+.closing {
+  margin-top: 18px;
+  font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.4;
+}
+
+/* —— Quotes —— */
+.quotes { margin-top: 26px; display: flex; flex-direction: column; gap: 20px; }
+.quote {
+  font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.4;
+  color: color-mix(in srgb, var(--ink) 90%, transparent);
+}
+.quote::before {
+  content: "\201C"; display: block;
+  font-size: 48px; line-height: 0.55; color: var(--accent); margin-bottom: 8px;
+}
+.quote cite {
+  display: block; margin-top: 12px;
+  font-family: var(--mono); font-style: normal; font-size: 9px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+}
+
+/* —— Links / Hörbeispiele —— */
+.links {
+  margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.links h3 {
+  font-family: var(--mono); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px;
+}
+.links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.links li {
+  display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: baseline;
+}
+.links .title { font-family: var(--serif); font-size: 16px; }
+.links .url {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+  color: var(--accent); word-break: break-all; text-align: right;
+}
+.links a { text-decoration: none; }
+.links a:hover .title { color: var(--accent); }
+
+.yt-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.yt-list li {
+  display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  align-items: baseline;
+}
+.yt-list .num { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+.yt-list .work { font-family: var(--serif); font-size: 20px; letter-spacing: -0.005em; }
+.yt-list .work em {
+  font-style: italic; color: var(--muted); font-size: 14px; margin-left: 8px;
+  font-weight: 400;
+}
+.yt-list .url-row {
+  grid-column: 2; margin-top: 4px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--accent);
+}
+.yt-list a { text-decoration: none; }
+.yt-list a:hover .work { color: var(--accent); }
+
+.final-contact {
+  margin-top: 28px; padding: 22px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px;
+}
+.final-contact h3 {
+  font-family: var(--mono); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 14px;
+}
+
+@media (max-width: 720px) {
+  .dossier { margin: 0; gap: 16px; }
+  .page { min-height: auto; padding: 28px 22px; box-shadow: none; }
+  .page.cover { min-height: 88vh; }
+  .bios, .contact-grid, .final-contact, .styles li, .links li { grid-template-columns: 1fr; }
+  .links .url { text-align: left; }
+  .screen-bar { flex-direction: column; align-items: flex-start; }
+}
+
+/* —— Print / PDF —— */
+@page { size: A4; margin: 0; }
+@media print {
+  html, body { background: white; }
+  .screen-bar { display: none !important; }
+  .dossier { margin: 0; width: 100%; gap: 0; }
+  .page {
+    width: 210mm; min-height: 297mm; height: 297mm;
+    box-shadow: none; margin: 0;
+    page-break-after: always; break-after: page;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  a { text-decoration: none; color: inherit; }
+  .links .url, .yt-list .url-row, .contact-item a {
+    color: var(--accent) !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="screen-bar">
+    <a href="duoklakk.html">← Duo KlAkk!</a>
+    <div class="screen-actions">
+      <a class="screen-btn" href="Duo-KlAkk-Dossier.pdf" download>PDF herunterladen</a>
+      <button class="screen-btn primary" type="button" onclick="window.print()">Drucken / Als PDF speichern</button>
+    </div>
+  </div>
+
+  <main class="dossier">
+
+    <!-- 1 · Cover -->
+    <section class="page cover" aria-label="Titelseite">
+      <div class="cover-image">
+        <img src="image/page/duoklakk-dossier.webp" alt="Duo KlAkk! — Ji Eun Kim und Harald Oeler" width="2400" height="1600" />
+      </div>
+      <div class="cover-meta">
+        <div class="eyebrow">Presse- &amp; Booking-Dossier · 2026</div>
+        <h1>Duo KlAkk!</h1>
+        <p class="cover-tag">Altes &amp; Neues</p>
+        <div class="cover-line">
+          Ji Eun Kim · Klarinette<br />
+          Harald Oeler · Akkordeon<br />
+          Drei Konzertprogramme
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Das Duo + Kontakt -->
+    <section class="page" aria-label="Das Duo">
+      <div class="page-kicker">01 · Das Duo</div>
+      <h2>Duo KlAkk!</h2>
+      <p class="lede">Neue Musik zeitgemäß vermitteln — und Transkriptionen Alter Musik <em>kontrapunktisch</em> dagegenstellen.</p>
+      <div class="body">
+        <p>Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.</p>
+        <p>Drei Programme stehen Veranstaltern zur Verfügung: die Bach-Reise <strong>Duo KlAkk! goes BACH!</strong>, das Crossover-Programm <strong>Duo KlAkk! ENCORES!</strong> und das gemischte Abendprogramm <strong>Duo KlAkk! Von Bach bis Tango Nuevo</strong>.</p>
+      </div>
+
+      <figure class="duo-photo">
+        <img src="image/page/duoklakk-duo.webp" alt="Duo KlAkk! — Harald Oeler und Ji Eun Kim" width="2400" height="1600" />
+      </figure>
+
+      <hr class="section-rule" />
+
+      <div class="page-kicker">Ansprechpartner</div>
+      <dl class="contact-grid">
+        <div class="contact-item">
+          <dt>Kontakt</dt>
+          <dd>Harald Oeler</dd>
+        </div>
+        <div class="contact-item">
+          <dt>Mobil</dt>
+          <dd><a href="tel:+491767004842">+49 176 7004842</a></dd>
+        </div>
+        <div class="contact-item">
+          <dt>E-Mail</dt>
+          <dd><a href="mailto:duoklakk@gmail.com">duoklakk@gmail.com</a></dd>
+        </div>
+        <div class="contact-item">
+          <dt>Instagram</dt>
+          <dd><a href="https://www.instagram.com/duoklakk/" target="_blank" rel="noopener">@duoklakk</a></dd>
+        </div>
+        <div class="contact-item">
+          <dt>YouTube</dt>
+          <dd><a href="https://www.youtube.com/@DUOKLAKK" target="_blank" rel="noopener">youtube.com/@DUOKLAKK</a></dd>
+        </div>
+        <div class="contact-item">
+          <dt>Web</dt>
+          <dd><a href="https://www.haraldoeler.com/projekte/duoklakk" target="_blank" rel="noopener">haraldoeler.com/projekte/duoklakk</a></dd>
+        </div>
+      </dl>
+
+      <div class="page-footer">
+        <span>Duo KlAkk!</span>
+        <span>Seite 2</span>
+      </div>
+    </section>
+
+    <!-- 3 · Die Musiker: photo + bios (one page) -->
+    <section class="page musiker" aria-label="Die Musiker">
+      <div class="page-kicker">02 · Die Musiker</div>
+      <h2>Klarinette &amp; Akkordeon</h2>
+      <div class="musiker-stack">
+        <figure class="musiker-hero">
+          <img src="image/page/duoklakk-musiker.webp" alt="Duo KlAkk! — Harald Oeler und Ji Eun Kim" width="2400" height="1600" />
+        </figure>
+        <div class="bios">
+          <article class="bio">
+            <h3>Ji Eun Kim</h3>
+            <div class="role">Klarinettistin</div>
+            <p>Mit klarer Linie und gesanglichem, warmen Ton prägt Ji Eun Kim den Klang von Duo KlAkk!: lyrische Ruhe und tröstende Melancholie in den langsamen Sätzen, dazu Virtuosität, die nie Selbstzweck bleibt — so hörte es die Presse in Straubing.</p>
+            <p>Ji Eun Kim ist eine Weltbürgerin, in vielen Kulturen zu Hause mit Stationen in Südkorea, Singapur, Kanada und Deutschland. Sie studierte Klarinette an der HMT Leipzig (Bachelor) und mit Schwerpunkt Aktuelle Musik an der Hochschule für Musik Nürnberg (Master); Stipendiatin von Live Music Now Leipzig.</p>
+          </article>
+          <article class="bio">
+            <h3>Harald Oeler</h3>
+            <div class="role">Akkordeonist</div>
+            <p>Erlebt man Harald Oeler am Akkordeon, so erlebt man Vielseitigkeit, Virtuosität und einen hoch entwickelten Sinn für Klangfarben. Mit seinem meisterlichen Spiel verleiht er der Musik ein besonderes Flair und hebt das Niveau auf eine neue Ebene.</p>
+            <p>Er war mehrfach Preisträger bei nationalen und internationalen Wettbewerben, darunter 2002 der 3.&nbsp;Preis des „3rd International Accordion Competition JAA“ Tokyo/Japan und 2005 der 2.&nbsp;Preis beim Deutschen Hochschulwettbewerb in Hamburg. Er war Stipendiat der Studienstiftung des deutschen Volkes und wurde von Live Music Now unterstützt. Ab Wintersemester 2026/27 übernimmt er einen Lehrauftrag für Akkordeon an der Hochschule für Musik Nürnberg.</p>
+          </article>
+        </div>
+      </div>
+      <div class="page-footer">
+        <span>Duo KlAkk!</span>
+        <span>Seite 3</span>
+      </div>
+    </section>
+
+    <!-- 4 · Program 01 -->
+    <section class="page" aria-label="Programm goes Bach">
+      <div class="prog-num">Programm 01</div>
+      <h2 class="prog-title">Duo KlAkk! goes Bach</h2>
+      <div class="body">
+        <p>Was passiert, wenn die zeitlose Genialität Johann Sebastian Bachs auf die spielerische Energie von Duo KlAkk! trifft? Ein Konzert voller Überraschungen, Kontraste und einer Prise Augenzwinkern. Das Duo nimmt das Publikum mit auf eine Reise durch Bachs zwei Sonaten für Viola da Gamba — Meisterwerke voller Eleganz, Tiefe und musikalischem Dialog.</p>
+      </div>
+
+      <div class="quotes">
+        <blockquote class="quote">
+          Was sich so bürokratisch anhört, wurde zum Fundament eines großartigen Konzerts im kleinsten Rahmen … Es wurde zum musikalischen Fest. Bei beiden Bach-Sonaten hatten die langsamen Sätze eine wohltuende Ruhe, eine tröstende Melancholie und ein sanftes Miteinander des Gesangs. Die schnellen Sätze gefielen unmittelbar durch ihre exzellente Virtuosität, die nie Selbstzweck blieb … Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.
+          <cite>— Kristian Kuhnle · Straubinger Tagblatt, 29.07.2025</cite>
+        </blockquote>
+        <blockquote class="quote">
+          Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Kim und Oeler ließen keine Wünsche offen. Die Gleichzeitigkeit schneller Läufe und die Harmonie zwischenmenschlichen Agierens faszinierten auch dieses Mal. Die Musik lebte stets aus dem Moment heraus.
+          <cite>— Kristian Kuhnle · Straubinger Tagblatt, 08.07.2026</cite>
+        </blockquote>
+      </div>
+
+      <div class="links">
+        <h3>Hörbeispiele · YouTube</h3>
+        <ul>
+          <li>
+            <a href="https://youtu.be/4NPvdif9o6M" target="_blank" rel="noopener">
+              <span class="title">J. S. Bach · Sonate g-Moll, BWV 1029</span>
+            </a>
+            <span class="url">youtu.be/4NPvdif9o6M</span>
+          </li>
+          <li>
+            <a href="https://youtu.be/lYlqyNsLyYk" target="_blank" rel="noopener">
+              <span class="title">J. S. Bach · Sonate D-Dur, BWV 1028</span>
+            </a>
+            <span class="url">youtu.be/lYlqyNsLyYk</span>
+          </li>
+          <li>
+            <a href="https://youtu.be/9WGPikQQlyw" target="_blank" rel="noopener">
+              <span class="title">Joseph Haydn · Divertimento G-Dur (Arr. Oeler)</span>
+            </a>
+            <span class="url">youtu.be/9WGPikQQlyw</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="page-footer">
+        <span>Duo KlAkk! · goes Bach</span>
+        <span>Seite 4</span>
+      </div>
+    </section>
+
+    <!-- 5 · Program 02 -->
+    <section class="page" aria-label="Programm ENCORES">
+      <div class="prog-num">Programm 02</div>
+      <h2 class="prog-title">Duo KlAkk! ENCORES!</h2>
+      <div class="body">
+        <p>Wie bereits in den vergangenen Jahren widmet sich das Duo KlAkk! auch in diesem Programm einem besonderen musikalischen Schwerpunkt. „KlAkk! – Encores“ ist stilistisch von den vielfältigen Einflüssen verschiedener Musikkulturen inspiriert. Dabei werden die Stücke auf ganz „KlAkk-typische“ Weise weiterkomponiert, improvisiert und metamorphotisch verwandelt:</p>
+      </div>
+      <ul class="styles">
+        <li>
+          <span class="style-label">Klezmer</span>
+          <span class="style-text">Aus einer schlichten Melodie erwachsen komplexe Klanglandschaften mit eigenständiger Motivik.</span>
+        </li>
+        <li>
+          <span class="style-label">Tango Nuevo</span>
+          <span class="style-text">Die feurige Melancholie entfaltet sich in durcharrangierten, vielschichtigen Improvisationsflächen.</span>
+        </li>
+        <li>
+          <span class="style-label">Jazz</span>
+          <span class="style-text">Groovende und jazzige Themen nehmen überraschende, konzertant-komponierte Formen an.</span>
+        </li>
+      </ul>
+      <p class="closing">Ein farbenreiches Crossover-Programm voller Spielfreude, Intimität und klanglicher Entdeckungen.</p>
+
+      <div class="quotes">
+        <blockquote class="quote">
+          Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ von Harald Oeler als Zugabe belohnt.
+          <cite>— Klaus Wankmiller · Füssener Zeitung, 22.07.2026</cite>
+        </blockquote>
+        <blockquote class="quote">
+          Das Duo KlAkk! … kann auf ein erfolgreiches Jahr mit Konzerten in ganz Deutschland verweisen. … Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.
+          <cite>— Tonkünstlerverband Hochfranken e.V., 2025</cite>
+        </blockquote>
+      </div>
+
+      <div class="links">
+        <h3>Hörbeispiele · YouTube</h3>
+        <ul>
+          <li>
+            <a href="https://youtu.be/-z40QlQ-QYg" target="_blank" rel="noopener">
+              <span class="title">Harald Oeler · Remembering Paris</span>
+            </a>
+            <span class="url">youtu.be/-z40QlQ-QYg</span>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@DUOKLAKK" target="_blank" rel="noopener">
+              <span class="title">Kanal · Duo KlAkk!</span>
+            </a>
+            <span class="url">youtube.com/@DUOKLAKK</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="page-footer">
+        <span>Duo KlAkk! · ENCORES!</span>
+        <span>Seite 5</span>
+      </div>
+    </section>
+
+    <!-- 6 · Program 03 -->
+    <section class="page" aria-label="Programm Von Bach bis Tango Nuevo">
+      <div class="prog-num">Programm 03</div>
+      <h2 class="prog-title">Duo KlAkk! – Von Bach bis Tango Nuevo</h2>
+      <p class="prog-sub">Bach &amp; Encores</p>
+      <div class="body">
+        <p>Was verbindet die klare, zeitlose Struktur der Barockmusik mit der Leidenschaft von Tango, Klezmer und Jazz? Das Duo KlAkk! schlägt in diesem abwechslungsreichen Konzertprogramm eine faszinierende Brücke zwischen den Epochen und Genregrenzen.</p>
+        <p>Im ersten Teil widmen sich die beiden Musiker der genialen Architektur Johann Sebastian Bachs. Seine Sonaten erstrahlen im frischen, transparenten Gewand von Klarinette und Akkordeon in ganz neuem Glanz. Im zweiten Teil verwandelt sich die Bühne in ein Spielfeld weltmusikalischer Farben: Traditionelle Klezmer-Motive, die feurige Melancholie des Tango Nuevo und spritzige Jazz-Elemente werden im einzigartigen „KlAkk-Stil“ neu interpretiert, weiterkomponiert und improvisiert.</p>
+        <p>Ein mitreißender Konzertabend zwischen barocker Tiefe und moderner Crossover-Energie — virtuos, überraschend und voller Poesie!</p>
+      </div>
+
+      <div class="quotes">
+        <blockquote class="quote">
+          Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.
+          <cite>— Kristian Kuhnle · Straubinger Tagblatt</cite>
+        </blockquote>
+        <blockquote class="quote">
+          Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ belohnt.
+          <cite>— Klaus Wankmiller · Füssener Zeitung</cite>
+        </blockquote>
+      </div>
+
+      <div class="links">
+        <h3>Hörbeispiele · YouTube</h3>
+        <ul>
+          <li>
+            <a href="https://youtu.be/4NPvdif9o6M" target="_blank" rel="noopener">
+              <span class="title">Bach · Sonate g-Moll, BWV 1029</span>
+            </a>
+            <span class="url">youtu.be/4NPvdif9o6M</span>
+          </li>
+          <li>
+            <a href="https://youtu.be/-z40QlQ-QYg" target="_blank" rel="noopener">
+              <span class="title">Remembering Paris</span>
+            </a>
+            <span class="url">youtu.be/-z40QlQ-QYg</span>
+          </li>
+          <li>
+            <a href="https://youtu.be/9WGPikQQlyw" target="_blank" rel="noopener">
+              <span class="title">Haydn · Divertimento G-Dur</span>
+            </a>
+            <span class="url">youtu.be/9WGPikQQlyw</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="page-footer">
+        <span>Duo KlAkk! · Bach &amp; Encores</span>
+        <span>Seite 6</span>
+      </div>
+    </section>
+
+    <!-- 7 · Hörbeispiele & Kontakt -->
+    <section class="page" aria-label="Hörbeispiele und Kontakt">
+      <div class="page-kicker">03 · Medien &amp; Kontakt</div>
+      <h2>Hörbeispiele</h2>
+      <p class="body" style="margin-bottom: 20px;">Auswahl aus dem Repertoire — direkt auf YouTube anhören:</p>
+
+      <ul class="yt-list">
+        <li>
+          <span class="num">I.</span>
+          <div>
+            <a href="https://youtu.be/lYlqyNsLyYk" target="_blank" rel="noopener">
+              <span class="work">J. S. Bach<em>Sonate D-Dur, BWV 1028</em></span>
+            </a>
+            <div class="url-row">https://youtu.be/lYlqyNsLyYk</div>
+          </div>
+        </li>
+        <li>
+          <span class="num">II.</span>
+          <div>
+            <a href="https://youtu.be/4NPvdif9o6M" target="_blank" rel="noopener">
+              <span class="work">J. S. Bach<em>Sonate g-Moll, BWV 1029</em></span>
+            </a>
+            <div class="url-row">https://youtu.be/4NPvdif9o6M</div>
+          </div>
+        </li>
+        <li>
+          <span class="num">III.</span>
+          <div>
+            <a href="https://youtu.be/9WGPikQQlyw" target="_blank" rel="noopener">
+              <span class="work">Joseph Haydn<em>Divertimento G-Dur (Arr. Oeler)</em></span>
+            </a>
+            <div class="url-row">https://youtu.be/9WGPikQQlyw</div>
+          </div>
+        </li>
+        <li>
+          <span class="num">IV.</span>
+          <div>
+            <a href="https://youtu.be/-z40QlQ-QYg" target="_blank" rel="noopener">
+              <span class="work">Harald Oeler<em>Remembering Paris · Remembering Tokyo</em></span>
+            </a>
+            <div class="url-row">https://youtu.be/-z40QlQ-QYg</div>
+          </div>
+        </li>
+        <li>
+          <span class="num">V.</span>
+          <div>
+            <a href="https://youtu.be/pcAmM4jVroQ" target="_blank" rel="noopener">
+              <span class="work">Johan Svensson<em>Double Dubbing (firefly song), 2020</em></span>
+            </a>
+            <div class="url-row">https://youtu.be/pcAmM4jVroQ</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="final-contact">
+        <div>
+          <h3>Buchung &amp; Presse</h3>
+          <dl class="contact-grid" style="grid-template-columns: 1fr;">
+            <div class="contact-item">
+              <dt>Harald Oeler</dt>
+              <dd><a href="tel:+491767004842">+49 176 7004842</a></dd>
+            </div>
+            <div class="contact-item">
+              <dt>E-Mail</dt>
+              <dd><a href="mailto:duoklakk@gmail.com">duoklakk@gmail.com</a></dd>
+            </div>
+          </dl>
+        </div>
+        <div>
+          <h3>Online</h3>
+          <dl class="contact-grid" style="grid-template-columns: 1fr;">
+            <div class="contact-item">
+              <dt>Projektseite</dt>
+              <dd><a href="https://www.haraldoeler.com/projekte/duoklakk">haraldoeler.com/projekte/duoklakk</a></dd>
+            </div>
+            <div class="contact-item">
+              <dt>YouTube</dt>
+              <dd><a href="https://www.youtube.com/@DUOKLAKK">youtube.com/@DUOKLAKK</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Duo KlAkk! · Dossier 2026</span>
+        <span>Seite 7</span>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

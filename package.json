@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "build:projekte": "node scripts/build-projekte.mjs",
-    "rebuild:projekte": "node scripts/rebuild-projekte.mjs"
+    "rebuild:projekte": "node scripts/rebuild-projekte.mjs",
+    "sync:termine": "node scripts/sync-termine.mjs",
+    "sync:termine:check": "node scripts/sync-termine.mjs --check",
+    "apply:site-assets": "python3 scripts/apply-site-assets.py"
   },
   "dependencies": {
     "react": "18.3.1",

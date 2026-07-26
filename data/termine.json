@@ -1,0 +1,141 @@
+{
+  "_meta": {
+    "description": "Canonical project-scoped concert lists used by data.jsx (React projekte pages). Edit this file, then run: node scripts/sync-termine.mjs  (optionally: npm run rebuild:projekte). termine.html remains the public full calendar and is not auto-generated from this file.",
+    "updated": "2026-07-26",
+    "rebuild": "npm run rebuild:projekte"
+  },
+  "byProject": {
+    "solo": [
+      {
+        "date": "25. Juli 2026",
+        "time": "19:00 Uhr",
+        "title": "Sonate für Akkordeon – Solo",
+        "venue": "Evangelische Kirche",
+        "city": "Berg",
+        "note": "Das Akkordeon · Instrument des Jahres 2026"
+      },
+      {
+        "date": "19. September 2026",
+        "time": "19:00 Uhr",
+        "title": "Sonate für Akkordeon – Solo",
+        "venue": "Arche",
+        "city": "Dittelbrunn",
+        "note": "Hauptstr. 64 · 97456 Dittelbrunn"
+      },
+      {
+        "date": "19. November 2026",
+        "time": "19:00 Uhr",
+        "title": "Würzburger Bachtage — Eröffnungsakt",
+        "venue": "Bertold-Hummel-Saal im Mozartareal",
+        "city": "Würzburg",
+        "note": "Opus ultimum et summum · Bach BWV 232 · Vortrag Prof. Dr. Ulrich Konrad",
+        "link": "https://www.bachtage-wuerzburg.de/bachtage-2026"
+      }
+    ],
+    "orchester": [],
+    "fussissimo": [
+      {
+        "date": "21. Juni 2026",
+        "time": "17:40 Uhr",
+        "title": "Umsonst & Draussen Festival",
+        "venue": "Draussen-Bühne",
+        "city": "Würzburg",
+        "note": "Freies Open-Air-Konzert"
+      },
+      {
+        "date": "27. September 2026",
+        "time": "19:30 Uhr",
+        "title": "Fussissimo – Gypsy-Ethno-Jazz",
+        "venue": "Huttenschloss",
+        "city": "Gemünden am Main",
+        "note": ""
+      },
+      {
+        "date": "17. April 2027",
+        "time": "Uhrzeit folgt",
+        "title": "Fussissimo",
+        "venue": "Ort folgt",
+        "city": "",
+        "note": ""
+      }
+    ],
+    "duovia": [
+      {
+        "date": "14. März 2026",
+        "time": "Uhrzeit folgt",
+        "title": "Duo ViA!",
+        "venue": "Obersdorf",
+        "city": "",
+        "note": "Abgesagt"
+      },
+      {
+        "date": "18. April 2026",
+        "time": "19:00 Uhr",
+        "title": "Duo ViA! · Four Seasons – One World",
+        "venue": "Berlin-Neukölln",
+        "city": "Berlin",
+        "note": "Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a."
+      },
+      {
+        "date": "7. Mai 2026",
+        "time": "19:30 Uhr",
+        "title": "Duo ViA! · Four Seasons – One World",
+        "venue": "Mozartareal",
+        "city": "Würzburg",
+        "note": ""
+      },
+      {
+        "date": "9. Mai 2026",
+        "time": "13:00 Uhr",
+        "title": "Duo ViA! · Four Seasons – One World",
+        "venue": "Mühlenforum Glattbach",
+        "city": "Glattbach",
+        "note": "Hauptstraße 56 B"
+      },
+      {
+        "date": "13. Mai 2026",
+        "time": "19:30 Uhr",
+        "title": "Duo ViA! · 4. Meisterkonzert",
+        "venue": "Teo Otto Theater",
+        "city": "Remscheid",
+        "note": ""
+      }
+    ],
+    "duoklakk": [
+      {
+        "date": "13. September 2026",
+        "time": "17:00 Uhr",
+        "title": "Duo KlAkk! goes BACH!",
+        "venue": "Schloß Eyb",
+        "city": "Dörzbach",
+        "note": "Bachs barocke Gambensonate, Haydns elegantes Divertimento und Piazzollas leidenschaftliche Klänge auf Klarinette und Akkordeon, so noch nie gehört! Dazu freche Eigenkompositionen aus der Komponierwerkstatt. Duo KlAkk! goes BACH! Kommen Sie und lassen Sie sich verblüffen!",
+        "link": "http://schubertiade-schloss-eyb.de/programm2017.html"
+      },
+      {
+        "date": "18. September 2026",
+        "time": "20:00 Uhr",
+        "title": "Duo KlAkk! Encore!",
+        "venue": "Neuneinhalb im Gerberhaus",
+        "city": "Bayreuth",
+        "note": "Gerberplatz 1 · 95445 Bayreuth"
+      },
+      {
+        "date": "5. Dezember 2026",
+        "time": "18:00 Uhr",
+        "title": "Duo KlAkk! Encore!",
+        "venue": "Mauritiuskirche",
+        "city": "Kirchheim am Neckar",
+        "note": "Kirchgasse 6 · 74366 Kirchheim am Neckar"
+      },
+      {
+        "date": "27. Februar 2027",
+        "time": "Uhrzeit folgt",
+        "title": "Duo KlAkk! Encore!",
+        "venue": "Alte Kelter",
+        "city": "Gemmrigheim",
+        "note": ""
+      }
+    ],
+    "hof": []
+  }
+}

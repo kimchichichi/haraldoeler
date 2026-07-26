@@ -148,7 +148,8 @@
   function initFooterConcert() {
     var el = document.getElementById('footer-next-concert');
     if (!el || !window.fetch) return;
-    fetch('termine.html', { cache: 'no-cache' })
+    var prefix = (location.pathname.indexOf('/news/') !== -1 || /\/news\/?$/.test(location.pathname)) ? '../' : '';
+    fetch(prefix + 'termine.html', { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
       .then(function (html) {
         var doc = new DOMParser().parseFromString(html, 'text/html');
@@ -168,8 +169,8 @@
           var locEl = item.querySelector('.c-location a') || item.querySelector('.c-location');
           var title = titleEl ? titleEl.childNodes[0].textContent.trim() : '';
           var loc = locEl ? locEl.textContent.replace(/\s+/g, ' ').trim() : '';
-          var anchor = item.id ? '#' + item.id : 'termine.html';
-          el.innerHTML = '<a href="termine.html' + anchor + '">Nächstes Konzert: ' + dateEl.textContent.trim() + ' — ' + title + (loc ? ' · ' + loc : '') + '</a>';
+          var href = prefix + 'termine.html' + (item.id ? '#' + item.id : '');
+          el.innerHTML = '<a href="' + href + '">Nächstes Konzert: ' + dateEl.textContent.trim() + ' — ' + title + (loc ? ' · ' + loc : '') + '</a>';
           return;
         }
       })

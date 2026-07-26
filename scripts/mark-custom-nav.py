@@ -15,12 +15,6 @@ def patch(path: Path):
     if old not in text:
         return False
     text = text.replace(old, NAV_END, 1)
-    # theme custom flag
-    text = text.replace(
-        "document.getElementById('theme-toggle').addEventListener('click',function(){",
-        "window.__HO_THEME_CUSTOM=true;document.getElementById('theme-toggle').addEventListener('click',function(){",
-        1,
-    )
     path.write_text(text, encoding='utf-8')
     return True
 

@@ -14,7 +14,7 @@
   <title>HARALD OELER — projekte</title>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=8">
+  <link rel="stylesheet" href="assets/site.css?v=9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -72,7 +72,7 @@ body.dark .site-header {
   margin: 0 auto;
   padding: 22px 48px;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   align-items: baseline;
   gap: 48px;
 }
@@ -774,7 +774,7 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   .media-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
-  .header-inner { padding: 18px 24px; gap: 16px; grid-template-columns: 1fr auto auto; }
+  .header-inner { padding: 18px 24px; gap: 16px; grid-template-columns: 1fr auto; }
   .wordmark {
     display: block;
     line-height: 1.15;
@@ -801,15 +801,6 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
     z-index: 10003;
     pointer-events: auto;
   }
-  .theme-toggle {
-    position: fixed;
-    bottom: max(24px, env(safe-area-inset-bottom));
-    left: 32px;
-    z-index: 10003;
-    opacity: 0.65;
-    pointer-events: auto;
-  }
-  .theme-toggle:hover { opacity: 1; }
   .site-header,
   .site-header.scrolled,
   body.nav-open .site-header {
@@ -950,15 +941,6 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
     z-index: 1;
     font-size: 11px;
   }
-  body.nav-open .theme-toggle {
-    position: fixed;
-    bottom: max(24px, env(safe-area-inset-bottom));
-    left: 32px;
-    z-index: 10003;
-    opacity: 0.65;
-    pointer-events: auto;
-  }
-  body.nav-open .theme-toggle:hover { opacity: 1; }
   body.nav-open { overscroll-behavior: none; overflow: hidden; }
   .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
   .site-footer .center, .site-footer .right { text-align: left; }
@@ -967,19 +949,10 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
 
 @media (min-width: 721px) {
   .header-inner {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
   }
-  .theme-toggle {
-    position: static;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    top: auto;
-    opacity: 0.5;
-    pointer-events: auto;
-  }
-  .nav-toggle {
+.nav-toggle {
     position: static;
     top: auto;
     right: auto;
@@ -1050,13 +1023,8 @@ body.dark .projects-subnav-inner a.active { color: var(--paper); }
 
   
 /* ── Theme toggle ──────────────────────────────────── */
-.header-inner { grid-template-columns: 1fr auto auto; }
-.theme-toggle {
-  background: none; border: none; cursor: pointer; color: inherit;
-  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
-  align-self: center; transition: opacity .2s;
-}
-.theme-toggle:hover { opacity: 1; }
+.header-inner { grid-template-columns: 1fr auto; }
+
 /* ── Dark mode transition ─────────────────────────── */
 body,
 .site-header,
@@ -1099,7 +1067,6 @@ body.dark .scroll-top{
 </style>
 </head>
 <body>
-<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <!-- Head, design tokens, CSS utilities, and layout component styles extracted from Projekte.html -->
@@ -1162,6 +1129,6 @@ body.dark .scroll-top{
     })();
   </script>
 
-  <script src="assets/site.js?v=6" defer></script>
+  <script src="assets/site.js?v=7" defer></script>
 </body>
 </html>

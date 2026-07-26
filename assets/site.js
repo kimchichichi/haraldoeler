@@ -2,29 +2,6 @@
 (function () {
   'use strict';
 
-  /* Theme — event delegation works with React-rendered headers */
-  function initTheme() {
-    if (window.__HO_THEME_BOUND || window.__HO_THEME_CUSTOM) return true;
-    window.__HO_THEME_BOUND = true;
-
-    function syncPressed() {
-      var btn = document.getElementById('theme-toggle');
-      if (btn) {
-        btn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? 'true' : 'false');
-      }
-    }
-    syncPressed();
-
-    document.addEventListener('click', function (e) {
-      var btn = e.target.closest && e.target.closest('#theme-toggle');
-      if (!btn) return;
-      var dark = document.body.classList.toggle('dark');
-      localStorage.setItem('ho-theme', dark ? 'dark' : 'light');
-      syncPressed();
-    });
-    return true;
-  }
-
   /* Mobile nav */
   function initNav() {
     var toggle = document.getElementById('navToggle');
@@ -200,7 +177,6 @@
   }
 
   function boot() {
-    initTheme();
     initNav();
     initScrollTop();
     initHeroHeader();
@@ -213,11 +189,6 @@
     var tries = 0;
     var iv = setInterval(function () {
       tries++;
-      initTheme();
-      if (document.getElementById('theme-toggle')) {
-        var btn = document.getElementById('theme-toggle');
-        btn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? 'true' : 'false');
-      }
       initNav();
       if (tries > 80) clearInterval(iv);
     }, 50);
@@ -230,5 +201,5 @@
   }
 
   /* Re-init for React-hydrated pages (projekte.html) */
-  window.HOSite = { initTheme: initTheme, initNav: initNav };
+  window.HOSite = { initNav: initNav };
 })();

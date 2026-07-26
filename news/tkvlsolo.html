@@ -12,7 +12,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/site.css?v=8">
+  <link rel="stylesheet" href="../assets/site.css?v=9">
   <style>
 :root{--ink:#0e0d0c;--paper:#f4f1ec;--paper-2:#ebe6dd;--muted:#6b655c;--accent:#6b1d1a;--accent-soft:#8a2a26;--serif:'Cormorant Garamond',serif;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -65,21 +65,15 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 @media(max-width:720px){.header-inner{padding:18px 24px;gap:16px}nav.primary{display:none}.article-nav,.article-head{padding-left:24px;padding-right:24px}.article-body{padding:40px 24px 80px;grid-template-columns:1fr;gap:28px}.media-gallery{grid-template-columns:1fr}.site-footer{padding:24px;grid-template-columns:1fr;gap:8px}.site-footer .center,.site-footer .right{text-align:left}}
   
 /* ── Theme toggle ──────────────────────────────────── */
-.header-inner { grid-template-columns: 1fr auto auto; }
-.theme-toggle {
-  background: none; border: none; cursor: pointer; color: inherit;
-  padding: 3px; opacity: 0.5; line-height: 0; flex-shrink: 0;
-  align-self: center; transition: opacity .2s;
-}
-.theme-toggle:hover { opacity: 1; }
+.header-inner { grid-template-columns: 1fr auto; }
+
 /* ── Dark mode transition ─────────────────────────── */
 body,
 .site-header,
 .site-footer,
 .projects-subnav { transition: background-color .3s ease, color .3s ease, border-color .3s ease; }
-.icon-moon { display: none; }
-body.dark .icon-sun { display: none; }
-body.dark .icon-moon { display: inline; }
+
+
 /* ── Dark mode base ────────────────────────────────── */
 body.dark { background: var(--ink); color: var(--paper); }
 body.dark .site-header {
@@ -139,7 +133,7 @@ body.dark .nav-toggle:hover {
   border-color: color-mix(in srgb, var(--paper) 26%, transparent);
 }
 @media (max-width: 720px) {
-  .header-inner { grid-template-columns: 1fr auto auto; }
+  .header-inner { grid-template-columns: 1fr auto; }
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   @keyframes nav-drawer-in {
     from { transform: translateX(-100%); }
@@ -258,15 +252,6 @@ body.dark .nav-toggle:hover {
     font-size: 11px;
   }
   body.nav-open .wordmark small { display: none; }
-  body.nav-open .theme-toggle {
-    position: fixed;
-    bottom: max(24px, env(safe-area-inset-bottom));
-    left: 32px;
-    z-index: 10003;
-    opacity: 0.65;
-    pointer-events: auto;
-  }
-  body.nav-open .theme-toggle:hover { opacity: 1; }
   body.nav-open .nav-toggle {
     position: fixed;
     top: max(16px, env(safe-area-inset-top));
@@ -392,15 +377,6 @@ body.dark .nav-toggle:hover {
     font-size: 11px;
   }
   body.nav-open .wordmark small { display: none; }
-  body.nav-open .theme-toggle {
-    position: fixed;
-    bottom: max(24px, env(safe-area-inset-bottom));
-    left: 32px;
-    z-index: 10003;
-    opacity: 0.65;
-    pointer-events: auto;
-  }
-  body.nav-open .theme-toggle:hover { opacity: 1; }
   body.nav-open .nav-toggle {
     position: fixed;
     top: max(16px, env(safe-area-inset-top));
@@ -436,7 +412,6 @@ body.dark .nav-toggle:hover {
 </style>
 </head>
 <body>
-<script>var _t=localStorage.getItem('ho-theme');if(_t==='dark'||(_t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.body.classList.add('dark');</script>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 
@@ -452,11 +427,7 @@ body.dark .nav-toggle:hover {
         <a href="../medien.html">medien</a>
         <a href="../kontakt.html">kontakt</a>
       </nav>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln" aria-pressed="false" title="Dark / Light">
-      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
+<button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
   <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
 </button>
     </div>
@@ -556,13 +527,6 @@ body.dark .nav-toggle:hover {
     <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></div>
   </footer>
-
-  <script>
-  window.__HO_THEME_CUSTOM=true;document.getElementById('theme-toggle').addEventListener('click',function(){
-    var d=document.body.classList.toggle('dark');
-    localStorage.setItem('ho-theme',d?'dark':'light');
-  });
-  </script>
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -620,6 +584,6 @@ body.dark .nav-toggle:hover {
       });
     })();
   </script>
-  <script src="../assets/site.js?v=6" defer></script>
+  <script src="../assets/site.js?v=7" defer></script>
 </body>
 </html>

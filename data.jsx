@@ -176,7 +176,7 @@ const DETAILS = {
     termineMoreHref: "/termine.html",
     termine: [
       { date: "21. Juni 2026", time: "17:40 Uhr", title: "Umsonst & Draussen Festival", venue: "Draussen-Bühne", city: "Würzburg", note: "Freies Open-Air-Konzert" },
-      { date: "27. September 2026", time: "Uhrzeit folgt", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Huttenschloss", city: "Gemünden am Main", note: "" },
+      { date: "27. September 2026", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Huttenschloss", city: "Gemünden am Main", note: "" },
       { date: "17. April 2027", time: "Uhrzeit folgt", title: "Fussissimo", venue: "Ort folgt", city: "", note: "" },
     ],
   },
@@ -256,7 +256,7 @@ const DETAILS = {
     title: "Duo KlAkk!",
     eyebrow: "Projekt 05 · neue musik × alte musik",
     image: `${PROJECT_HERO_IMAGE_BASE}/duoklakk.webp`,
-    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! goes Encore!«"],
+    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "Programm · »Duo KlAkk! Encore!«"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
       "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
@@ -291,10 +291,10 @@ const DETAILS = {
       { year: "2024", title: "Tour · Duo KlAkk! · 2024", subtitle: "Bad Reichenhall · Hof · Bayreuth", href: "/news/klakk24.html" },
     ],
     termine: [
-      { date: "13. September 2026", time: "17:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Schloß Eyb", city: "Dörzbach", note: "Bachs barocke Gambensonate, Haydns elegantes Divertimento und Piazzollas leidenschaftliche Klänge auf Klarinette und Akkordeon, so noch nie gehört! Dazu freche Eigenkompositionen aus der Komponierwerkstatt. Duo KlAkk! – Encores! Kommen Sie und lassen Sie sich verblüffen!", link: "http://schubertiade-schloss-eyb.de/programm2017.html" },
-      { date: "18. September 2026", time: "20:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Neuneinhalb im Gerberhaus", city: "Bayreuth", note: "Gerberplatz 1 · 95445 Bayreuth" },
-      { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! goes Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
-      { date: "27. Februar 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! goes Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
+      { date: "13. September 2026", time: "17:00 Uhr", title: "Duo KlAkk! goes BACH!", venue: "Schloß Eyb", city: "Dörzbach", note: "Bachs barocke Gambensonate, Haydns elegantes Divertimento und Piazzollas leidenschaftliche Klänge auf Klarinette und Akkordeon, so noch nie gehört! Dazu freche Eigenkompositionen aus der Komponierwerkstatt. Duo KlAkk! goes BACH! Kommen Sie und lassen Sie sich verblüffen!", link: "http://schubertiade-schloss-eyb.de/programm2017.html" },
+      { date: "18. September 2026", time: "20:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Neuneinhalb im Gerberhaus", city: "Bayreuth", note: "Gerberplatz 1 · 95445 Bayreuth" },
+      { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
+      { date: "27. Februar 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
     ],
     media: [
       { kind: "youtube", id: "4NPvdif9o6M", caption: "J.S. Bach · Sonate für Viola da Gamba und Cembalo in g-Moll, BWV 1029" },
@@ -355,18 +355,6 @@ function Header({ active = "projekte" }) {
             <a key={item.id} href={item.href} className={active === item.id ? "active" : ""}>{item.label}</a>
           ))}
         </nav>
-        <button className="theme-toggle" id="theme-toggle" type="button" aria-label="Farbschema wechseln" title="Dark / Light">
-          <svg className="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <svg className="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
         <button className="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
           <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
             <line x1="0" y1="1" x2="22" y2="1" />

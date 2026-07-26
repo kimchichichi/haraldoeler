@@ -30,15 +30,10 @@ def patch_file(path: Path) -> list[str]:
 
     skip = '<a class="skip-link" href="#main">Zum Inhalt springen</a>'
     if 'skip-link' not in text:
-        text = re.sub(
-            r'(<script>var _t=localStorage\.getItem\(\'ho-theme\'\);.*?</script>)',
-            r'\1\n' + skip,
-            text,
-            count=1,
-            flags=re.DOTALL,
-        )
+        text = text.replace('<body>', '<body>\n' + skip, 1)
         if skip not in text:
-            text = text.replace('<body>', '<body>\n' + skip, 1)
+            # fallback after opening body with attrs
+            text = re.sub(r'(<body[^>]*>)', r'\1\n' + skip, text, count=1)
         changes.append('skip')
 
     if 'id="main"' not in text:
@@ -52,12 +47,6 @@ def patch_file(path: Path) -> list[str]:
             '<div class="center" id="footer-next-concert"></div>',
         )
         changes.append('footer')
-
-    text = re.sub(
-        r'(<button class="theme-toggle" id="theme-toggle" aria-label="Farbschema wechseln")(?! aria-pressed)',
-        r'\1 aria-pressed="false"',
-        text,
-    )
 
     js_tag = f'<script src="{prefix}site.js?v=1" defer></script>'
     if 'site.js' not in text and '</body>' in text:

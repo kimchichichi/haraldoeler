@@ -192,6 +192,7 @@ function ProjektDetail({ id, onBack }) {
           {detail.dossier && (
             <div className="dossier-aside">
               <h3>— Presse-Dossier</h3>
+              <p className="dossier-aside-note">Booking &amp; Presse · Programme, Vita, Hörbeispiele</p>
               <a className="dossier-link dossier-pdf" href={detail.dossier.pdf} download>PDF herunterladen</a>
               <a className="dossier-link dossier-online" href={detail.dossier.html}>Online-Dossier</a>
             </div>
@@ -218,6 +219,12 @@ function ProjektDetail({ id, onBack }) {
           {detail.programs && detail.programs.length > 0 && (
             <div className="programs">
               <h3>— Konzertprogramme</h3>
+              {detail.programsQuote ? (
+                <blockquote className="quote programs-quote">
+                  {detail.programsQuote.text}
+                  <cite>— {detail.programsQuote.cite}</cite>
+                </blockquote>
+              ) : null}
               <ol className="programs-list">
                 {detail.programs.map((prog, i) => (
                   <li key={i} className="program">
@@ -244,6 +251,12 @@ function ProjektDetail({ id, onBack }) {
                       </ul>
                     )}
                     {prog.closing ? <p className="program-closing">{prog.closing}</p> : null}
+                    {prog.quote ? (
+                      <blockquote className="quote programs-quote">
+                        {prog.quote.text}
+                        <cite>— {prog.quote.cite}</cite>
+                      </blockquote>
+                    ) : null}
                   </li>
                 ))}
               </ol>
@@ -366,14 +379,16 @@ function ProjektDetail({ id, onBack }) {
             )}
           </div>
 
-          <div className="quotes">
-            {detail.quotes.map((q, i) => (
-              <blockquote key={i} className="quote">
-                {q.text}
-                <cite>— {q.cite}</cite>
-              </blockquote>
-            ))}
-          </div>
+          {detail.quotes && detail.quotes.length > 0 && (
+            <div className="quotes">
+              {detail.quotes.map((q, i) => (
+                <blockquote key={i} className="quote">
+                  {q.text}
+                  <cite>— {q.cite}</cite>
+                </blockquote>
+              ))}
+            </div>
+          )}
 
           {detail.termine && detail.termine.length > 0 && !detail.termineInAside && renderTermine()}
 

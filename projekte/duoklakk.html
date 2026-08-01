@@ -7,7 +7,7 @@
   <meta name="description" content="Duo KlAkk! — Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon). Drei Konzertprogramme: goes Bach, ENCORES! und Von Bach bis Tango Nuevo." />
   <meta property="og:title" content="Duo KlAkk! | neue musik × alte musik" />
   <meta property="og:description" content="Duo KlAkk! — Ji Eun Kim (Klarinette) & Harald Oeler (Akkordeon). Drei Konzertprogramme zwischen Bach, Klezmer, Tango Nuevo und Jazz." />
-  <meta property="og:image" content="https://www.haraldoeler.com/projekte/image/page/duoklakk.webp" />
+  <meta property="og:image" content="https://www.haraldoeler.com/projekte/image/cover-duoklakk.png" />
   <meta property="og:url" content="https://www.haraldoeler.com/projekte/duoklakk" />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://www.haraldoeler.com/projekte/duoklakk" />
@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/site.css?v=9">
   <!-- Preload the LCP hero image so it's discoverable before the JS bundle runs -->
-  <link rel="preload" as="image" href="/projekte/image/page/duoklakk.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/projekte/image/cover-duoklakk.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -125,6 +125,7 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
 
 .quotes { margin-top: 96px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; padding-top: 48px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
 .quote { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.4; text-wrap: pretty; }
+.programs-quote { margin: 20px 0 28px; max-width: 62ch; }
 .quote::before { content: "\201C"; display: block; font-family: var(--serif); font-size: 80px; line-height: 0.6; color: var(--accent); margin-bottom: 16px; }
 .quote cite { display: block; margin-top: 18px; font-family: var(--mono); font-style: normal; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
 
@@ -155,25 +156,35 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
 .termine-more svg { transition: transform .35s ease; }
 .termine-more:hover svg { transform: translateX(5px); }
 .dossier-aside {
-  margin-top: 28px;
-  padding: 18px 16px 16px;
-  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
-  border-left: 3px solid var(--accent);
-  background: color-mix(in srgb, var(--accent) 5%, var(--paper));
+  margin-top: 36px;
+  padding: 24px 20px 20px;
+  background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  position: relative;
+}
+.dossier-aside::before {
+  content: "";
+  position: absolute; left: 20px; right: 20px; top: 0;
+  height: 2px; background: var(--accent);
 }
 .dossier-aside h3 {
   font-family: var(--mono); font-size: 11px; font-weight: 500;
   letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 14px;
+  color: var(--ink); margin-bottom: 8px;
+}
+.dossier-aside-note {
+  font-family: var(--serif); font-style: italic; font-size: 16px;
+  line-height: 1.4; color: color-mix(in srgb, var(--ink) 88%, transparent);
+  margin: 0 0 18px;
 }
 .dossier-link {
   display: flex; align-items: center; justify-content: center;
   width: 100%; box-sizing: border-box;
-  margin-top: 8px; padding: 11px 14px;
-  font-family: var(--mono); font-style: normal; font-size: 10px;
-  letter-spacing: 0.16em; text-transform: uppercase;
+  margin-top: 8px; padding: 13px 16px;
+  font-family: var(--mono); font-style: normal; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
   text-decoration: none; text-align: center;
-  transition: background .25s ease, border-color .25s ease, color .25s ease;
+  transition: background .28s ease, border-color .28s ease, color .28s ease;
 }
 .dossier-link.dossier-pdf {
   color: var(--paper); background: var(--ink);
@@ -191,8 +202,14 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
   border-color: var(--accent); color: var(--accent);
 }
 body.dark .dossier-aside {
-  background: color-mix(in srgb, var(--accent) 12%, var(--ink));
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--paper) 8%, var(--ink));
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+}
+body.dark .dossier-aside h3 {
+  color: var(--paper);
+}
+body.dark .dossier-aside-note {
+  color: color-mix(in srgb, var(--paper) 88%, transparent);
 }
 body.dark .dossier-link.dossier-pdf {
   background: var(--paper); color: var(--ink); border-color: var(--paper);
@@ -202,7 +219,7 @@ body.dark .dossier-link.dossier-pdf:hover {
 }
 body.dark .dossier-link.dossier-online {
   color: var(--paper);
-  border-color: color-mix(in srgb, var(--paper) 28%, transparent);
+  border-color: color-mix(in srgb, var(--paper) 32%, transparent);
 }
 body.dark .dossier-link.dossier-online:hover {
   border-color: var(--accent); color: var(--accent);
@@ -247,7 +264,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=32"></script>
+  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=37"></script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
@@ -307,5 +324,72 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
     })();
   </script>
   <script src="../assets/site.js?v=8" defer></script>
+  <script>
+    (function(){
+      function ensurePrintImages(){
+        var selectors = ['.detail .hero img', '.page.cover .cover-image img', '.cover-image img'];
+        selectors.forEach(function(sel){
+          var img = document.querySelector(sel);
+          if(!img) return;
+          if(img.decode) img.decode().catch(function(){});
+        });
+      }
+      window.addEventListener('beforeprint', ensurePrintImages);
+      if(window.matchMedia){
+        var mq = window.matchMedia('print');
+        if(mq.addEventListener) mq.addEventListener('change', function(e){ if(e.matches) ensurePrintImages(); });
+        else if(mq.addListener) mq.addListener(function(e){ if(e.matches) ensurePrintImages(); });
+      }
+      document.addEventListener('DOMContentLoaded', ensurePrintImages);
+      // also attempt after a short delay in case the JS bundle renders the image later
+      setTimeout(ensurePrintImages, 1200);
+    })();
+  </script>
+  <script>
+    (function(){
+      function appendQuote(program, text, maxQuotes){
+        if (!program) return;
+        var quotes = program.querySelectorAll('.programs-quote');
+        if (maxQuotes && quotes.length >= maxQuotes) return;
+        var quote = document.createElement('blockquote');
+        quote.className = 'quote programs-quote';
+        quote.innerHTML = text;
+        program.appendChild(quote);
+      }
+
+      function injectQuotesIntoPrograms(){
+        var root = document.querySelector('.detail-body') || document.body;
+        var list = root.querySelector('.programs-list');
+        if (!list) return;
+
+        var programs = Array.prototype.slice.call(list.querySelectorAll('.program'));
+        if (!programs.length) return;
+
+        var firstProgram = programs[0];
+        var secondProgram = programs[1];
+
+        if (firstProgram) {
+          appendQuote(firstProgram, 'Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.<cite>— Kristian Kuhnle · Straubinger Tagblatt</cite>', 2);
+          appendQuote(firstProgram, 'Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Die Musik lebte stets aus dem Moment heraus.<cite>— Kristian Kuhnle · Straubinger Tagblatt 2026</cite>', 2);
+        }
+
+        if (secondProgram) {
+          appendQuote(secondProgram, 'Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ von Harald Oeler als Zugabe belohnt.<cite>— KLAUS WANKMILLER · FÜSSENER ZEITUNG</cite>', 1);
+        }
+      }
+
+      injectQuotesIntoPrograms();
+
+      if (typeof MutationObserver !== 'undefined') {
+        var observer = new MutationObserver(function(){
+          injectQuotesIntoPrograms();
+          if (document.querySelectorAll('.programs-quote').length >= 4) observer.disconnect();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+
+      window.addEventListener('load', injectQuotesIntoPrograms, { once: true });
+    })();
+  </script>
 </body>
 </html>

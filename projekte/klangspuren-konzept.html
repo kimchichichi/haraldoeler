@@ -91,21 +91,21 @@ img { max-width: 100%; display: block; }
 }
 .cover-image {
   position: absolute; inset: 0;
-  background: var(--ink);
-}
-.cover-image img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
   filter: grayscale(1) contrast(1.05);
-  opacity: 0.88;
+  opacity: 0.9;
+  display: block;
 }
 .cover-image::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(14,13,12,.3) 0%, transparent 32%, rgba(14,13,12,.9) 100%);
+  background: linear-gradient(180deg, rgba(14,13,12,.18) 0%, transparent 42%, rgba(14,13,12,.78) 100%);
 }
 .cover-meta {
   position: relative; z-index: 2;
-  padding: 18mm;
-  display: grid; gap: 16px;
+  padding: 14mm 18mm 16mm;
+  display: grid; gap: 12px;
 }
 .eyebrow {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
@@ -126,14 +126,6 @@ img { max-width: 100%; display: block; }
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
   color: rgba(244,241,236,.78); line-height: 1.9;
   margin-top: 8px;
-}
-.cover-badge {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 8px 0 0;
-  border-top: 1px solid rgba(244,241,236,.22);
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(244,241,236,.7);
 }
 
 /* —— Typography —— */
@@ -263,33 +255,47 @@ img { max-width: 100%; display: block; }
 }
 
 /* —— Visualisierung —— */
+.page.viz {
+  padding-top: 14mm;
+}
+.page.viz h2 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
 .viz-note {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--muted); margin: -6px 0 16px; line-height: 1.5;
+  color: var(--muted); margin: 0 0 14px; line-height: 1.5;
 }
-.viz-hero {
-  width: 100%;
-  margin: 0 0 16px;
+.viz-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+.viz-item {
+  margin: 0;
   background: transparent;
   overflow: visible;
 }
-.viz-hero .viz-frame {
+.viz-item .viz-frame {
   width: 100%;
-  height: 95mm;
   overflow: hidden;
   background: var(--ink);
   line-height: 0;
 }
-.viz-hero .viz-frame img {
+.viz-item .viz-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 32%;
-  filter: grayscale(0.3) contrast(1.04);
+  filter: grayscale(0.25) contrast(1.04);
 }
+.viz-item.tall .viz-frame { height: 198mm; }
+.viz-item.tall .viz-frame img { object-position: center 30%; }
+.viz-item.mid .viz-frame { height: 98mm; }
 .viz-caption {
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 0;
   font-family: var(--mono);
   font-size: 10px;
@@ -299,29 +305,9 @@ img { max-width: 100%; display: block; }
   line-height: 1.45;
   opacity: 0.72;
 }
-.viz-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px 16px;
-  margin-top: 2px;
-}
-.viz-grid figure {
-  margin: 0;
-  background: transparent;
-  overflow: visible;
-}
-.viz-grid .viz-frame {
-  width: 100%;
-  height: 58mm;
-  overflow: hidden;
-  background: var(--ink);
-  line-height: 0;
-}
-.viz-grid .viz-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.3) contrast(1.04);
+.page.viz .page-footer {
+  margin-top: 12px;
+  padding-top: 12px;
 }
 
 @media (max-width: 720px) {
@@ -335,7 +321,21 @@ img { max-width: 100%; display: block; }
 
 @page { size: A4; margin: 0; }
 @media print {
-  html, body { background: white; }
+  html, body {
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page.cover {
+    background: #0e0d0c;
+  }
+  .cover-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.95 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
   .screen-bar { display: none !important; }
   .dossier { margin: 0; width: 100%; gap: 0; }
   .page {
@@ -343,6 +343,24 @@ img { max-width: 100%; display: block; }
     box-shadow: none; margin: 0;
     page-break-after: always; break-after: page;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    overflow: visible;
+  }
+  .page.cover {
+    background: #0e0d0c;
+  }
+  .cover-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.95 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cover-meta {
+    position: relative;
+    z-index: 2;
   }
   .page:last-child { page-break-after: auto; break-after: auto; }
   a { text-decoration: none; color: inherit; }
@@ -353,20 +371,38 @@ img { max-width: 100%; display: block; }
   <div class="screen-bar">
     <span>Projektkonzept · Intern / Förderantrag</span>
     <div class="screen-actions">
-      <a class="screen-btn" href="KlangSpuren-Projektkonzept.pdf" download>PDF herunterladen</a>
-      <button class="screen-btn primary" type="button" onclick="window.print()">Drucken / Als PDF speichern</button>
+      <button class="screen-btn" type="button" onclick="exportPdf()">PDF exportieren</button>
+      <button class="screen-btn primary" type="button" onclick="window.print()">Drucken</button>
     </div>
   </div>
+
+  <script>
+    function exportPdf() {
+      const url = new URL(window.location.href);
+      url.searchParams.set('print', '1');
+      const printWindow = window.open(url.toString(), '_blank', 'noopener,noreferrer');
+
+      if (!printWindow) {
+        window.print();
+        return;
+      }
+
+      printWindow.addEventListener('load', () => {
+        setTimeout(() => {
+          printWindow.focus();
+          printWindow.print();
+        }, 250);
+      }, { once: true });
+    }
+  </script>
 
   <main class="dossier">
 
     <!-- 1 · Cover -->
     <section class="page cover" aria-label="Titelseite">
-      <div class="cover-image">
-        <img src="image/klangspuren/klangspuren-visual-rauminstallation.png" alt="KlangSpuren — Rauminstallation Visualisierung" width="2400" height="3200" />
-      </div>
+      <img class="cover-image" src="image/klangspuren/klangspuren-visual-rauminstallation.png" alt="KlangSpuren — Rauminstallation Visualisierung" />
       <div class="cover-meta">
-        <div class="eyebrow">Projektkonzept · Interdisziplinär · 2026</div>
+        <div class="eyebrow">Projektkonzept · Interdisziplinär · 2027</div>
         <h1>KlangSpuren</h1>
         <p class="cover-sub">Bach in Linie, Luft und Farbe</p>
         <div class="cover-line">
@@ -374,7 +410,6 @@ img { max-width: 100%; display: block; }
           Linda Schwarz · Bildende Kunst<br />
           Musik · Rauminstallation · Licht
         </div>
-        <div class="cover-badge">Förderdossier · Nicht zur Veröffentlichung</div>
       </div>
     </section>
 
@@ -385,8 +420,8 @@ img { max-width: 100%; display: block; }
       <p class="lede">Ein Gesamtkonzept aus Musik, Rauminstallation und Licht — zwischen <em>Konzertsaal</em> und Galerie.</p>
 
       <div class="body">
-        <p>Das interdisziplinäre Projekt »KlangSpuren – Bach in Linie, Luft und Farbe« vereint das musikalische Programm »Duo KlAkk! goes Bach« mit den bildenden Kunstwerken der renommierten Künstlerin Linda Schwarz. Im Zentrum steht die visuelle und akustische Dekonstruktion sowie die zeitgenössische Neuinterpretation der vielschichtigen Kontrapunkte Johann Sebastian Bachs.</p>
-        <p>Durch die Synthese von Holzblasinstrument (Klarinette), Balginstrument (Akkordeon) und bildender Kunst entsteht ein innovatives Raumkonzept, das Bachs mathematische und emotionale Strukturen in Musik, Linie und Farbe erlebbar macht. Das Projekt bricht traditionalistische Grenzen zwischen Konzertsaal und Galerie auf und bietet dem Publikum einen multisensorischen Zugang zur Musik der Gegenwart und Klassik.</p>
+        <p>Das interdisziplinäre Projekt »KlangSpuren – Bach in Linie, Luft und Farbe« vereint das musikalische Programm »Duo KlAkk! goes Bach« mit den bildenden Kunstwerken der renommierten Künstlerin Linda Schwarz. Im Zentrum steht die direkte, werkgetreue Interpretation der Gambensonate von Johann Sebastian Bach für Klarinette und Akkordeon.</p>
+        <p>Durch die Synthese von Klarinette, Akkordeon und bildender Kunst entsteht ein Raumkonzept, das die musikalische Klarheit und die emotionale Tiefe von Bachs Werk in Musik, Linie und Farbe erlebbar macht. Das Projekt verbindet Konzertsaal und Galerie und bietet dem Publikum einen multisensorischen Zugang zu Bachs Klassik.</p>
       </div>
 
       <hr class="section-rule" />
@@ -411,7 +446,7 @@ img { max-width: 100%; display: block; }
         </div>
         <div class="fact">
           <dt>Schwerpunkt</dt>
-          <dd>Partitur-Transformationen</dd>
+          <dd>Werkgetreue Interpretation</dd>
         </div>
         <div class="fact">
           <dt>Sparte</dt>
@@ -432,8 +467,9 @@ img { max-width: 100%; display: block; }
       <p class="lede">Bachs kontrapunktische Schichtung trifft auf die visuelle Schichtung in den Arbeiten von <em>Linda Schwarz</em>.</p>
 
       <div class="body" style="margin-bottom: 12px;">
-        <p>Während das Duo KlAkk! Bachs Werke in neuartigen Transkriptionen und zeitgenössischen Improvisationen zum Klingen bringt, tritt die bildende Kunst in einen direkten, strukturellen Dialog mit der Musik.</p>
-      </div>
+        <p>Während das Duo KlAkk! Bachs Gambensonate in einer klaren, werkgetreuen Interpretation zum Klingen bringt, erzeugt die bildende Künstlerin Linda Schwarz eine visuelle Entsprechung der musikalischen Linienführung. Die Partituren werden in grafische Strukturen transformiert und auf transparente Materialien gedruckt, die im Raum als vielschichtige Schichten (Layer) hängen. Durch gezielte Beleuchtung projizieren sich die Notenhandschriften und grafischen Strukturen direkt auf die Musiker, ihre Instrumente und die Raumwände.</p>
+        <p>Die Bewegung der Musiker und der gemeinsame Luftstrom von Klarinette und Akkordeon lassen die visuelle Ebene dynamisch im Raum resonieren. Die Musik wird zum Licht, der Schatten zum Raum — eine klare, lebendige Darstellung von Bach.</p>
+      </div>    
 
       <ul class="pillars">
         <li class="pillar">
@@ -528,32 +564,46 @@ img { max-width: 100%; display: block; }
       </div>
 
       <div class="page-footer">
-        <span>KlangSpuren · Projektkonzept 2026</span>
+        <span>KlangSpuren · Projektkonzept 2027</span>
         <span>Seite 4</span>
       </div>
     </section>
 
-    <!-- 5 · Visualisierung -->
-    <section class="page" aria-label="Konzeptvisualisierung">
+    <!-- 5 · Visualisierung · Raum -->
+    <section class="page viz" aria-label="Konzeptvisualisierung Rauminstallation">
       <div class="page-kicker">05 · Konzeptvisualisierung</div>
-      <h2>Raum · Licht · Galerie</h2>
+      <h2>Rauminstallation</h2>
       <p class="viz-note">Illustrative Visualisierungen · keine Aufführungsfotos</p>
 
-      <figure class="viz-hero">
-        <div class="viz-frame">
-          <img src="image/klangspuren/klangspuren-visual-rauminstallation.png" alt="Rauminstallation mit transparenten Partitur-Schichten und Duo" />
-        </div>
-        <figcaption class="viz-caption">I · Rauminstallation — transparente Partitur-Schichten im Bühnenraum</figcaption>
-      </figure>
+      <div class="viz-stack">
+        <figure class="viz-item tall">
+          <div class="viz-frame">
+            <img src="image/klangspuren/klangspuren-visual-rauminstallation.png" alt="Rauminstallation mit transparenten Partitur-Schichten und Duo" />
+          </div>
+          <figcaption class="viz-caption">I · Transparente Partitur-Schichten im Bühnenraum</figcaption>
+        </figure>
+      </div>
 
-      <div class="viz-grid">
-        <figure>
+      <div class="page-footer">
+        <span>KlangSpuren · Duo KlAkk! &amp; Linda Schwarz</span>
+        <span>Seite 5</span>
+      </div>
+    </section>
+
+    <!-- 6 · Visualisierung · Licht & Galerie -->
+    <section class="page viz" aria-label="Konzeptvisualisierung Licht und Galerie">
+      <div class="page-kicker">05 · Konzeptvisualisierung</div>
+      <h2>Licht · Galerie</h2>
+      <p class="viz-note">Schattenpartituren &amp; begehbare Installation</p>
+
+      <div class="viz-stack">
+        <figure class="viz-item mid">
           <div class="viz-frame">
             <img src="image/klangspuren/klangspuren-visual-schattenpartitur.png" alt="Schattenpartitur auf Instrument und Musiker" />
           </div>
           <figcaption class="viz-caption">II · Schattenpartituren — Licht durch die Kunstwerke</figcaption>
         </figure>
-        <figure>
+        <figure class="viz-item mid">
           <div class="viz-frame">
             <img src="image/klangspuren/klangspuren-visual-klanggalerie.png" alt="Begehbare Klang-Galerie mit hängenden Partituren" />
           </div>
@@ -563,7 +613,7 @@ img { max-width: 100%; display: block; }
 
       <div class="page-footer">
         <span>KlangSpuren · Duo KlAkk! &amp; Linda Schwarz</span>
-        <span>Seite 5</span>
+        <span>Seite 6</span>
       </div>
     </section>
 

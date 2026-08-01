@@ -310,8 +310,16 @@ const DETAILS = {
           "Im ersten Teil widmen sich die beiden Musiker der genialen Architektur Johann Sebastian Bachs. Seine Sonaten erstrahlen im frischen, transparenten Gewand von Klarinette und Akkordeon in ganz neuem Glanz. Im zweiten Teil verwandelt sich die Bühne in ein Spielfeld weltmusikalischer Farben: Traditionelle Klezmer-Motive, die feurige Melancholie des Tango Nuevo und spritzige Jazz-Elemente werden im einzigartigen „KlAkk-Stil“ neu interpretiert, weiterkomponiert und improvisiert.",
           "Ein mitreißender Konzertabend zwischen barocker Tiefe und moderner Crossover-Energie — virtuos, überraschend und voller Poesie!",
         ],
+        quote: {
+          text: "Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.",
+          cite: "Tonkünstlerverband Hochfranken e.V.",
+        },
       },
     ],
+    programsQuote: {
+      text: "Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Die Musik lebte stets aus dem Moment heraus.",
+      cite: "Kristian Kuhnle · Straubinger Tagblatt",
+    },
     repertoire: [
       { num: "I.", work: "J. S. Bach", note: "Sonate D-Dur, BWV 1028", dur: "", embed: { type: "youtube", id: "lYlqyNsLyYk" } },
       { num: "II.", work: "J. S. Bach", note: "Sonate g-Moll, BWV 1029", dur: "", embed: { type: "youtube", id: "4NPvdif9o6M" } },
@@ -319,12 +327,7 @@ const DETAILS = {
       { num: "IV.", work: "Harald Oeler", note: "Remembering Paris · Remembering Tokyo", dur: "", embed: { type: "youtube", id: "-z40QlQ-QYg" } },
       { num: "V.", work: "Johan Svensson", note: "Double Dubbing (firefly song), 2020", dur: "", embed: { type: "youtube", id: "pcAmM4jVroQ" } },
     ],
-    quotes: [
-      { text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
-      { text: "Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Die Musik lebte stets aus dem Moment heraus.", cite: "Kristian Kuhnle · Straubinger Tagblatt" },
-      { text: "Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ von Harald Oeler als Zugabe belohnt.", cite: "Klaus Wankmiller · Füssener Zeitung" },
-      { text: "Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.", cite: "Tonkünstlerverband Hochfranken e.V." },
-    ],
+    quotes: [],
     dossier: {
       html: "/projekte/duoklakk-dossier.html",
       pdf: "/projekte/Duo-KlAkk-Dossier.pdf",

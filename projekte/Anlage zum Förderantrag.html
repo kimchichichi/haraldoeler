@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>KlangSpuren — Projektkonzept · Duo KlAkk! &amp; Linda Schwarz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #0e0d0c;
+  --paper: #f4f1ec;
+  --paper-2: #ebe6dd;
+  --muted: #6b655c;
+  --accent: #6b1d1a;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --page-w: 210mm;
+  --page-h: 297mm;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #d9d4cb; }
+body {
+  background: #d9d4cb;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+.screen-bar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 24px;
+  background: rgba(244,241,236,0.92);
+  backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid rgba(14,13,12,0.12);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted);
+}
+.screen-bar a { text-decoration: none; transition: color .2s ease; }
+.screen-bar a:hover { color: var(--accent); }
+.screen-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.screen-btn {
+  appearance: none; border: 1px solid rgba(14,13,12,0.18);
+  background: var(--paper); color: var(--ink);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 10px 14px; cursor: pointer; text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.screen-btn:hover { border-color: var(--accent); color: var(--accent); }
+.screen-btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.screen-btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+.dossier {
+  width: min(var(--page-w), 100%);
+  margin: 28px auto 64px;
+  display: flex; flex-direction: column; gap: 28px;
+}
+.page {
+  width: 100%;
+  min-height: var(--page-h);
+  background: var(--paper);
+  box-shadow: 0 18px 50px rgba(14,13,12,.12);
+  padding: 18mm 18mm 16mm;
+  position: relative;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.page-footer {
+  margin-top: auto; padding-top: 18px;
+  border-top: 1px solid rgba(14,13,12,0.12);
+  display: flex; justify-content: space-between; gap: 16px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* —— Cover —— */
+.page.cover {
+  padding: 0;
+  background: var(--ink);
+  color: var(--paper);
+  justify-content: flex-end;
+}
+.cover-image {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.9;
+  display: block;
+}
+.cover-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(14,13,12,.18) 0%, transparent 42%, rgba(14,13,12,.78) 100%);
+}
+.cover-meta {
+  position: relative; z-index: 2;
+  padding: 14mm 18mm 16mm;
+  display: grid; gap: 12px;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+}
+.cover .eyebrow { color: rgba(244,241,236,.65); }
+.cover h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 64px; line-height: 0.92; letter-spacing: -0.02em;
+}
+.cover-sub {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 26px; line-height: 1.25;
+  color: rgba(244,241,236,.92);
+  max-width: 25ch;
+}
+.cover-description {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 18px; line-height: 1.28; letter-spacing: -0.01em;
+  color: rgba(244,241,236,.92);
+  max-width: 50ch; margin-top: 4px;
+}
+.cover-line {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(244,241,236,.78); line-height: 1.9;
+  margin-top: 8px;
+}
+
+/* —— Typography —— */
+.page-kicker {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
+}
+.page h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 40px; line-height: 1.05; letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.lede {
+  font-family: var(--serif); font-weight: 300;
+  font-size: 24px; line-height: 1.28; letter-spacing: -0.01em;
+  max-width: 30ch; margin-bottom: 24px;
+}
+.lede em { font-style: italic; color: var(--accent); }
+.body {
+  font-size: 13.5px; line-height: 1.62;
+  color: rgba(14,13,12,0.82);
+  max-width: 64ch;
+}
+.body p + p { margin-top: 0.95em; }
+.body strong { color: var(--ink); font-weight: 500; }
+
+.section-rule {
+  border: 0; border-top: 1px solid rgba(14,13,12,0.14);
+  margin: 24px 0 20px;
+}
+
+/* —— Meta / Facts —— */
+.facts {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px 28px;
+  margin: 8px 0 0;
+}
+.fact dt {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 4px;
+}
+.fact dd {
+  font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.4;
+}
+
+/* —— Concept pillars —— */
+.pillars {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 6px;
+}
+.pillar {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(14,13,12,0.1);
+}
+.pillar:last-child { border-bottom: none; padding-bottom: 4px; }
+.pillar-head {
+  display: grid; grid-template-columns: 36px 1fr; gap: 14px;
+  align-items: baseline; margin-bottom: 10px;
+}
+.pillar-num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--muted);
+}
+.pillar-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 22px; letter-spacing: -0.01em; line-height: 1.2;
+}
+.pillar-sub {
+  display: block; margin-top: 4px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); font-style: normal;
+}
+.pillar p {
+  font-size: 13.5px; line-height: 1.6;
+  color: rgba(14,13,12,0.8);
+  padding-left: 50px;
+}
+
+/* —— Accent callout —— */
+.callout {
+  margin-top: 22px;
+  padding: 18px 0 0;
+  border-top: 2px solid rgba(107,29,26,0.35);
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; line-height: 1.4;
+  color: rgba(14,13,12,0.88);
+  max-width: 36ch;
+}
+
+/* —— Vermittlung —— */
+.mediate {
+  list-style: none;
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.mediate li {
+  display: grid; grid-template-columns: 8.5rem 1fr; gap: 16px;
+  padding-left: 12px;
+  border-left: 2px solid rgba(107,29,26,0.4);
+}
+.mediate-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); padding-top: 2px;
+}
+.mediate-text {
+  font-size: 13.5px; line-height: 1.55;
+  color: rgba(14,13,12,0.8);
+}
+
+.contact-block {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(14,13,12,0.14);
+}
+.contact-block h3 {
+  font-family: var(--mono); font-size: 10px; font-weight: 400;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px;
+}
+.contact-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+.contact-row .fact dd a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(107,29,26,0.45);
+}
+
+/* —— Visualisierung —— */
+.page.viz {
+  padding-top: 14mm;
+}
+.page.viz h2 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+.viz-note {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 14px; line-height: 1.5;
+}
+.viz-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+.viz-item {
+  margin: 0;
+  background: transparent;
+  overflow: visible;
+}
+.viz-item .viz-frame {
+  width: 100%;
+  overflow: hidden;
+  background: var(--ink);
+  line-height: 0;
+}
+.viz-item .viz-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.25) contrast(1.04);
+}
+.viz-item.tall .viz-frame { height: 198mm; }
+.viz-item.tall .viz-frame img { object-position: center 30%; }
+.viz-item.mid .viz-frame { height: 98mm; }
+.viz-caption {
+  display: block;
+  margin-top: 8px;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.45;
+  opacity: 0.72;
+}
+.page.viz .page-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+@media (max-width: 720px) {
+  .dossier { margin: 0; gap: 16px; }
+  .page { min-height: auto; padding: 28px 22px; box-shadow: none; }
+  .page.cover { min-height: 88vh; }
+  .facts, .mediate li, .contact-row { grid-template-columns: 1fr; }
+  .pillar p { padding-left: 0; }
+  .screen-bar { flex-direction: column; align-items: flex-start; }
+}
+
+@page { size: A4; margin: 0; }
+@media print {
+  html, body {
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page.cover {
+    background: #0e0d0c;
+  }
+  .cover-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.95 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .screen-bar { display: none !important; }
+  .dossier { margin: 0; width: 100%; gap: 0; }
+  .page {
+    width: 210mm; min-height: 297mm; height: 297mm;
+    box-shadow: none; margin: 0;
+    page-break-after: always; break-after: page;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    overflow: visible;
+  }
+  .page.cover {
+    background: #0e0d0c;
+  }
+  .cover-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.95 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cover-meta {
+    position: relative;
+    z-index: 2;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  a { text-decoration: none; color: inherit; }
+}
+  </style>
+</head>
+<body>
+  <div class="screen-bar">
+    <span>Projektkonzept · Intern / Förderantrag</span>
+    <div class="screen-actions">
+      <button class="screen-btn" type="button" onclick="exportPdf()">PDF exportieren</button>
+      <button class="screen-btn primary" type="button" onclick="window.print()">Drucken</button>
+    </div>
+  </div>
+
+  <script>
+    function exportPdf() {
+      const url = new URL(window.location.href);
+      url.searchParams.set('print', '1');
+      const printWindow = window.open(url.toString(), '_blank', 'noopener,noreferrer');
+
+      if (!printWindow) {
+        window.print();
+        return;
+      }
+
+      printWindow.addEventListener('load', () => {
+        setTimeout(() => {
+          printWindow.focus();
+          printWindow.print();
+        }, 250);
+      }, { once: true });
+    }
+  </script>
+
+  <main class="dossier">
+
+    <!-- 1 · Cover -->
+    <section class="page cover" aria-label="Titelseite">
+      <img class="cover-image" src="image/klangspuren/klangspuren-visual-rauminstallation.png" alt="KlangSpuren — Rauminstallation Visualisierung" />
+      <div class="cover-meta">
+        <div class="eyebrow">ANLAGE ZUM ANTRAG AUF GEWÄHRUNG EINER ZUWENDUNG 
+          <br>Kulturfonds Bayern • Bezirk Unterfranken </div>
+        <h1>KlangSpuren</h1>
+        <p class="cover-sub">Bach in Linie, Luft und Farbe</p>
+        <p class="cover-description">Interdisziplinäres Raum- und Konzertprojekt 2027</p>
+        
+        <div class="cover-line">
+          Duo KlAkk! · Ji Eun Kim / Harald Oeler<br />
+          Linda Schwarz · Bildende Kunst<br />
+          Musik · Rauminstallation · Licht
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Hintergrund -->
+    <section class="page" aria-label="Projekthintergrund">
+      <div class="page-kicker">01 · Projektübersicht &amp; Kerngedanke </div>
+      <h2>Bach erlebbar machen — in Klang, Linie und Farbe</h2>
+      <p class="lede"><em>Ein interdisziplinäres Gesamtkonzept</em> aus Musik, Rauminstallation und Licht – zwischen Konzertsaal und Galerie.</p>
+
+      <div class="body">
+        <p>Das interdisziplinäre Projekt »KlangSpuren – Bach in Linie, Luft und Farbe« vereint das musikalische Programm »Duo KlAkk! goes Bach« mit den bildenden Kunstwerken der renommierten Künstlerin Linda Schwarz. Im Zentrum steht die direkte, werkgetreue Interpretation der Gambensonate von Johann Sebastian Bach für Klarinette und Akkordeon.</p>
+        <p>Durch die Synthese von Klarinette, Akkordeon und bildender Kunst entsteht ein Raumkonzept, das die musikalische Klarheit und die emotionale Tiefe von Bachs Werk in Musik, Linie und Farbe erlebbar macht. Das Projekt verbindet Konzertsaal und Galerie und bietet dem Publikum einen multisensorischen Zugang zu Bachs Klassik.</p>
+      </div>
+
+      <hr class="section-rule" />
+
+      <div class="page-kicker">Antragsteller &amp; Beteiligte</div>
+      <dl class="facts">
+        <div class="fact">
+          <dt>Projekt</dt>
+          <dd>KlangSpuren</dd>
+        </div>
+        <div class="fact">
+          <dt>Antragstellerin</dt>
+          <dd>Ji Eun Kim</dd>
+        </div>
+        <div class="fact">
+          <dt>Künstlerische Leitung</dt>
+          <dd>Duo KlAkk! 
+            <br>Ji Eun Kim / Harald Oeler &amp; Linda Schwarz</dd>
+        </div>
+        <div class="fact">
+          <dt>Sparte</dt>
+          <dd>Musik &amp; Bildende Kunst</dd>
+        </div>
+        <div class="fact">
+          <dt>Förderjahr</dt>
+          <dd>2027</dd>
+        </div>
+        <div class="fact">
+          <dt>Region</dt>
+          <dd>Unterfranken</dd>
+        </div>
+        
+      </dl>
+
+      <div class="page-footer">
+        <span>KlangSpuren · Duo KlAkk! &amp; Linda Schwarz</span>
+        <span>Seite 2</span>
+      </div>
+    </section>
+
+    <!-- 3 · Konzept & Inszenierung -->
+    <section class="page" aria-label="Künstlerisches Konzept">
+      <div class="page-kicker">02 · Künstlerisches Konzept &amp; Inszenierung</div>
+      <h2>Visuelle Polyphonie</h2>
+      <p class="lede">Bachs kontrapunktische Schichtung trifft auf die visuelle Schichtung in den Arbeiten von <em>Linda Schwarz</em>.</p>
+
+      <div class="body" style="margin-bottom: 12px;">
+        <p>Während das Duo KlAkk! die Gambensonaten Johann Sebastian Bachs in einer klaren, werkgetreuen Interpretation zum Klingen bringt, entwickelt die bildende Künstlerin Linda Schwarz eine eigenständige visuelle Ebene. Ausgehend von Bachs Partituren entstehen grafische Strukturen, die auf transparente Materialien übertragen und als mehrschichtige Installation im Raum angeordnet werden.</p>
+        <p>Durch gezielte Lichtführung entstehen Projektionen und Schattenpartituren, die sich über die Musiker, ihre Instrumente und die Architektur legen. Die Bewegungen der Ausführenden sowie der Luftstrom der Klarinette verleihen der Installation eine subtile Dynamik und verbinden Klang, Licht und Raum zu einem gemeinsamen künstlerischen Ausdruck.</p>
+        <p>Musik und bildende Kunst stehen dabei in einem gleichberechtigten Dialog. Die visuelle Ebene begleitet die Aufführung nicht lediglich, sondern bildet einen wesentlichen Bestandteil ihrer dramaturgischen und räumlichen Gestaltung.</p>
+      </div>    
+
+      <ul class="pillars">
+        <li class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">I</span>
+            <div>
+              <div class="pillar-title">Rauminstallation</div>
+              <span class="pillar-sub">Installation im Raum</span>
+            </div>
+          </div>
+          <p>Ausgehend von den Partituren Johann Sebastian Bachs entwickelt Linda Schwarz grafische Transformationen, die auf transparente Materialien (z.&nbsp;B. großformatiges Tracing-Papier oder Folien) übertragen und als mehrschichtige Installation im Bühnenraum angeordnet werden.</p>
+        </li>
+        <li class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">II</span>
+            <div>
+              <div class="pillar-title">Licht &amp; Projektion</div>
+              <span class="pillar-sub">Schattenpartituren</span>
+            </div>
+          </div>
+          <p>Durch gezielte Lichtführung entstehen Projektionen und Schattenpartituren, die die grafischen Strukturen auf die Musiker, ihre Instrumente und die Architektur übertragen. So wird der Aufführungsraum selbst zum Teil der künstlerischen Inszenierung.</p>
+        </li>
+        <li class="pillar">
+          <div class="pillar-head">
+            <span class="pillar-num">III</span>
+            <div>
+              <div class="pillar-title">Bewegung im Raum</div>
+              <span class="pillar-sub">Visuelle Polyphonie</span>
+            </div>
+          </div>
+          <p>Die Bewegungen der Musiker sowie der Luftstrom der Klarinette versetzen die transparenten Ebenen in eine subtile Dynamik. Klang, Licht und Raum treten in einen lebendigen Dialog und machen Bachs kontrapunktische Struktur auch visuell erfahrbar.</p>
+        </li>
+      </ul>
+
+      <p class="callout">Die Musik wird zum Licht, der Schatten zum Raum – ein multisensorisches Gesamtkunstwerk, das Polyphonie mit allen Sinnen erfahrbar macht.</p>
+
+      <div class="page-footer">
+        <span>KlangSpuren · Duo KlAkk! &amp; Linda Schwarz</span>
+        <span>Seite 3</span>
+      </div>
+    </section>
+
+    <!-- 4 · Alleinstellung + Vermittlung -->
+    <section class="page" aria-label="Alleinstellung und Vermittlung">
+      <div class="page-kicker">03 · Spartenübergreifende Synthese &amp; Förderrelevanz</div>
+      <h2>Zwei Kunstformen, ein Werk</h2>
+
+      <div class="body">
+        <p>Das Projekt zeichnet sich durch die gleichberechtigte Verbindung zweier eigenständiger Kunstformen aus: Die im professionellen Konzertbetrieb seltene kammermusikalische Besetzung von Klarinette und Akkordeon tritt in einen unmittelbaren Dialog mit zeitgenössischer bildender Kunst. Musik und visuelle Gestaltung werden dabei nicht nebeneinander präsentiert, sondern als gemeinsames künstlerisches Konzept entwickelt.</p>
+        <p>Die bildende Kunst übernimmt eine zentrale dramaturgische und räumliche Funktion. Die Rauminstallation, Lichtprojektionen und Schattenpartituren prägen den Verlauf der Aufführung ebenso wie die musikalische Interpretation. Erst das Zusammenspiel beider Ebenen ermöglicht das multisensorische Gesamtkunstwerk und eröffnet neue Perspektiven auf das Werk Johann Sebastian Bachs.</p>
+        <p>Die Gambensonaten Johann Sebastian Bachs wurden ursprünglich für Viola da Gamba und Cembalo komponiert. Mit ihrer Transkription für Klarinette und Akkordeon eröffnet das Duo KlAkk! eine ungewöhnliche klangliche Perspektive auf diese Werke. Da das originäre Repertoire der Klarinette im Barock naturgemäß begrenzt ist, schafft diese Besetzung einen innovativen Zugang zu zentralen Werken der Epoche. Historische Musik und zeitgenössische kammermusikalische Klangsprache treten dabei in einen spannungsreichen Dialog, ohne die musikalische Substanz der Originalwerke aus dem Blick zu verlieren.
+</p>
+      </div>
+
+      <hr class="section-rule" />
+
+      <div class="page-kicker">04 · Vermittlung &amp; Audience Development</div>
+      <h2 style="font-size: 32px; margin-bottom: 16px;">Nahbar, begehbar, dialogisch</h2>
+      <div class="body" style="margin-bottom: 16px;">
+        <p>Ziel ist ein niederschwelliger Zugang zu zeitgenössischen interdisziplinären Kunstformen. Um das Publikum aktiv einzubinden und Barrieren gegenüber zeitgenössischen Darstellungsformen abzubauen, integriert das Projekt nahbare Vermittlungselemente:</p>
+      </div>
+
+      <ul class="mediate">
+        <li>
+          <span class="mediate-label">Pre-Talk</span>
+          <span class="mediate-text">Einführendes Moderationsgespräch zwischen Duo KlAkk!, Linda Schwarz und dem Publikum — Einblicke in Entstehungsprozess, Werke und Transkriptionen.</span>
+        </li>
+        <li>
+          <span class="mediate-label">Klang-Galerie</span>
+          <span class="mediate-text">Vor und nach der Aufführung: begehbare Rauminstallation — das Publikum erkundet die visuellen Schichten der Partitur
+            en aus nächster Nähe.</span>
+        </li>
+        <li>
+          <span class="mediate-label">Regionale Verankerung</span>
+          <span class="mediate-text">Das Projekt ist für historische Kulturorte in Unterfranken konzipiert. Die Wechselwirkung zwischen historischer Architektur und zeitgenössischer Raumkunst schafft einen nachhaltigen Mehrwert für das regionale Kulturangebot.</span>
+      </ul>
+
+      
+
+      <div class="page-footer">
+        <span>KlangSpuren · Projektkonzept 2027</span>
+        <span>Seite 4</span>
+      </div>
+    </section>
+
+    <!-- 5 · Visualisierung · Raum -->
+    <section class="page viz" aria-label="Konzeptvisualisierung Rauminstallation">
+      <div class="page-kicker">05 · Konzeptvisualisierung</div>
+      <h2>Rauminstallation</h2>
+      <p class="viz-note">Illustrative Visualisierungen · keine Aufführungsfotos</p>
+
+      <div class="viz-stack">
+        <figure class="viz-item tall">
+          <div class="viz-frame">
+            <img src="image/klangspuren/klangspuren-visual-rauminstallation.png" alt="Rauminstallation mit transparenten Partitur-Schichten und Duo" />
+          </div>
+          <figcaption class="viz-caption">I · Transparente Partitur-Schichten im Bühnenraum</figcaption>
+        </figure>
+      </div>
+
+      <div class="page-footer">
+        <span>KlangSpuren · Duo KlAkk! &amp; Linda Schwarz</span>
+        <span>Seite 5</span>
+      </div>
+    </section>
+
+    <!-- 6 · Visualisierung · Licht & Galerie -->
+    <section class="page viz" aria-label="Konzeptvisualisierung Licht und Galerie">
+      <div class="page-kicker">05 · Konzeptvisualisierung</div>
+      <h2>Licht · Galerie</h2>
+      <p class="viz-note">Schattenpartituren &amp; begehbare Installation</p>
+
+      <div class="viz-stack">
+        <figure class="viz-item mid">
+          <div class="viz-frame">
+            <img src="image/klangspuren/klangspuren-visual-schattenpartitur.png" alt="Schattenpartitur auf Instrument und Musiker" />
+          </div>
+          <figcaption class="viz-caption">II · Schattenpartituren — Licht durch die Kunstwerke</figcaption>
+        </figure>
+        <figure class="viz-item mid">
+          <div class="viz-frame">
+            <img src="image/klangspuren/klangspuren-visual-klanggalerie.png" alt="Begehbare Klang-Galerie mit hängenden Partituren" />
+          </div>
+          <figcaption class="viz-caption">III · Klang-Galerie — begehbare Installation</figcaption>
+        </figure>
+      </div>
+
+      <div class="page-footer">
+        <span>KlangSpuren · Duo KlAkk! &amp; Linda Schwarz</span>
+        <span>Seite 6</span>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

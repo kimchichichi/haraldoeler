@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="image/coverduoklakk.png" fetchpriority="high">
   <style>
 :root {
   --ink: #0e0d0c;
@@ -340,16 +341,53 @@ img { max-width: 100%; display: block; }
 /* —— Print / PDF —— */
 @page { size: A4; margin: 0; }
 @media print {
-  html, body { background: white; }
+  html, body {
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
   .screen-bar { display: none !important; }
   .dossier { margin: 0; width: 100%; gap: 0; }
   .page {
-    width: 210mm; min-height: 297mm; height: 297mm;
+    position: relative;
+    width: 210mm; min-height: 297mm;
     box-shadow: none; margin: 0;
     page-break-after: always; break-after: page;
+    page-break-inside: avoid; break-inside: avoid;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    overflow: visible;
   }
-  .page:last-child { page-break-after: auto; break-after: auto; }
+  .page.cover {
+    background: var(--ink) !important;
+  }
+  .cover-image {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.98 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cover-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 28% !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .dossier > .page:last-child,
+  .dossier > .page:last-of-type {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+  .dossier > .page:first-child {
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
   a { text-decoration: none; color: inherit; }
   .links .url, .yt-list .url-row, .contact-item a {
     color: var(--accent) !important;
@@ -371,7 +409,7 @@ img { max-width: 100%; display: block; }
     <!-- 1 · Cover -->
     <section class="page cover" aria-label="Titelseite">
       <div class="cover-image">
-        <img src="image/page/duoklakk-dossier.webp" alt="Duo KlAkk! — Ji Eun Kim und Harald Oeler" width="2400" height="1600" />
+        <img src="image/coverduoklakk.png" alt="Duo KlAkk! — Ji Eun Kim und Harald Oeler" width="1587" height="2245" />
       </div>
       <div class="cover-meta">
         <div class="eyebrow">Presse- &amp; Booking-Dossier · 2026</div>
@@ -444,17 +482,18 @@ img { max-width: 100%; display: block; }
           <img src="image/page/duoklakk-musiker.webp" alt="Duo KlAkk! — Harald Oeler und Ji Eun Kim" width="2400" height="1600" />
         </figure>
         <div class="bios">
-          <article class="bio">
-            <h3>Ji Eun Kim</h3>
-            <div class="role">Klarinettistin</div>
-            <p>Mit klarer Linie und gesanglichem, warmen Ton prägt Ji Eun Kim den Klang von Duo KlAkk!: lyrische Ruhe und tröstende Melancholie in den langsamen Sätzen, dazu Virtuosität, die nie Selbstzweck bleibt — so hörte es die Presse in Straubing.</p>
-            <p>Ji Eun Kim ist eine Weltbürgerin, in vielen Kulturen zu Hause mit Stationen in Südkorea, Singapur, Kanada und Deutschland. Sie studierte Klarinette an der HMT Leipzig (Bachelor) und mit Schwerpunkt Aktuelle Musik an der Hochschule für Musik Nürnberg (Master); Stipendiatin von Live Music Now Leipzig.</p>
-          </article>
+          
           <article class="bio">
             <h3>Harald Oeler</h3>
             <div class="role">Akkordeonist</div>
             <p>Erlebt man Harald Oeler am Akkordeon, so erlebt man Vielseitigkeit, Virtuosität und einen hoch entwickelten Sinn für Klangfarben. Mit seinem meisterlichen Spiel verleiht er der Musik ein besonderes Flair und hebt das Niveau auf eine neue Ebene.</p>
             <p>Er war mehrfach Preisträger bei nationalen und internationalen Wettbewerben, darunter 2002 der 3.&nbsp;Preis des „3rd International Accordion Competition JAA“ Tokyo/Japan und 2005 der 2.&nbsp;Preis beim Deutschen Hochschulwettbewerb in Hamburg. Er war Stipendiat der Studienstiftung des deutschen Volkes und wurde von Live Music Now unterstützt. Ab Wintersemester 2026/27 übernimmt er einen Lehrauftrag für Akkordeon an der Hochschule für Musik Nürnberg.</p>
+          </article>
+          <article class="bio">
+            <h3>Ji Eun Kim</h3>
+            <div class="role">Klarinettistin</div>
+            <p>Mit klarer Linie und gesanglichem, warmen Ton prägt Ji Eun Kim den Klang von Duo KlAkk!: lyrische Ruhe und tröstende Melancholie in den langsamen Sätzen, dazu Virtuosität, die nie Selbstzweck bleibt — so hörte es die Presse in Straubing.</p>
+            <p>Ji Eun Kim ist eine Weltbürgerin, in vielen Kulturen zu Hause mit Stationen in Südkorea, Singapur, Kanada und Deutschland. Sie studierte Klarinette an der HMT Leipzig (Bachelor) und mit Schwerpunkt Aktuelle Musik an der Hochschule für Musik Nürnberg (Master); Stipendiatin von Live Music Now Leipzig.</p>
           </article>
         </div>
       </div>
@@ -591,6 +630,10 @@ img { max-width: 100%; display: block; }
           Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ belohnt.
           <cite>— Klaus Wankmiller · Füssener Zeitung</cite>
         </blockquote>
+        <blockquote class="quote">
+          Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.
+          <cite>— Tonkünstlerverband Hochfranken e.V.</cite>
+        </blockquote>
       </div>
 
       <div class="links">
@@ -713,5 +756,22 @@ img { max-width: 100%; display: block; }
     </section>
 
   </main>
+
+  <script>
+    (function(){
+      function ensureCoverLoaded(){
+        var img = document.querySelector('.page.cover .cover-image img');
+        if(!img) return;
+        if(img.decode) img.decode().catch(function(){});
+      }
+      window.addEventListener('beforeprint', ensureCoverLoaded);
+      if(window.matchMedia){
+        var mq = window.matchMedia('print');
+        if(mq.addEventListener) mq.addEventListener('change', function(e){ if(e.matches) ensureCoverLoaded(); });
+        else if(mq.addListener) mq.addListener(function(e){ if(e.matches) ensureCoverLoaded(); });
+      }
+      document.addEventListener('DOMContentLoaded', ensureCoverLoaded);
+    })();
+  </script>
 </body>
 </html>

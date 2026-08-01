@@ -287,6 +287,16 @@ const DETAILS = {
         body: [
           "Was passiert, wenn die zeitlose Genialität Johann Sebastian Bachs auf die spielerische Energie von Duo KlAkk! trifft? Ein Konzert voller Überraschungen, Kontraste und einer Prise Augenzwinkern. Das Duo nimmt das Publikum mit auf eine Reise durch Bachs zwei Sonaten für Viola da Gamba — Meisterwerke voller Eleganz, Tiefe und musikalischem Dialog.",
         ],
+        quotes: [
+          {
+            text: "Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.",
+            cite: "Kristian Kuhnle · Straubinger Tagblatt",
+          },
+          {
+            text: "Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Die Musik lebte stets aus dem Moment heraus.",
+            cite: "Kristian Kuhnle · Straubinger Tagblatt 2026",
+          },
+        ],
       },
       {
         num: "02",
@@ -300,6 +310,12 @@ const DETAILS = {
           { label: "Jazz", text: "Groovende und jazzige Themen nehmen überraschende, konzertant-komponierte Formen an." },
         ],
         closing: "Ein farbenreiches Crossover-Programm voller Spielfreude, Intimität und klanglicher Entdeckungen.",
+        quotes: [
+          {
+            text: "Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ von Harald Oeler als Zugabe belohnt.",
+            cite: "Klaus Wankmiller · Füssener Zeitung",
+          },
+        ],
       },
       {
         num: "03",
@@ -310,23 +326,30 @@ const DETAILS = {
           "Im ersten Teil widmen sich die beiden Musiker der genialen Architektur Johann Sebastian Bachs. Seine Sonaten erstrahlen im frischen, transparenten Gewand von Klarinette und Akkordeon in ganz neuem Glanz. Im zweiten Teil verwandelt sich die Bühne in ein Spielfeld weltmusikalischer Farben: Traditionelle Klezmer-Motive, die feurige Melancholie des Tango Nuevo und spritzige Jazz-Elemente werden im einzigartigen „KlAkk-Stil“ neu interpretiert, weiterkomponiert und improvisiert.",
           "Ein mitreißender Konzertabend zwischen barocker Tiefe und moderner Crossover-Energie — virtuos, überraschend und voller Poesie!",
         ],
-        quote: {
-          text: "Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.",
-          cite: "Tonkünstlerverband Hochfranken e.V.",
-        },
+        quotes: [
+          {
+            text: "Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.",
+            cite: "Tonkünstlerverband Hochfranken e.V.",
+          },
+        ],
       },
     ],
-    programsQuote: {
-      text: "Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Die Musik lebte stets aus dem Moment heraus.",
-      cite: "Kristian Kuhnle · Straubinger Tagblatt",
-    },
     repertoire: [
-      { num: "I.", work: "J. S. Bach", note: "Sonate D-Dur, BWV 1028", dur: "", embed: { type: "youtube", id: "lYlqyNsLyYk" } },
-      { num: "II.", work: "J. S. Bach", note: "Sonate g-Moll, BWV 1029", dur: "", embed: { type: "youtube", id: "4NPvdif9o6M" } },
-      { num: "III.", work: "Joseph Haydn", note: "Divertimento G-Dur, op. 100 Nr. 2 (Arr. Oeler)", dur: "", embed: { type: "youtube", id: "9WGPikQQlyw" } },
-      { num: "IV.", work: "Harald Oeler", note: "Remembering Paris · Remembering Tokyo", dur: "", embed: { type: "youtube", id: "-z40QlQ-QYg" } },
-      { num: "V.", work: "Johan Svensson", note: "Double Dubbing (firefly song), 2020", dur: "", embed: { type: "youtube", id: "pcAmM4jVroQ" } },
+      { num: "I.", work: "J. S. Bach", note: "Sonate D-Dur, BWV 1028", dur: "", filter: "bach", embed: { type: "youtube", id: "lYlqyNsLyYk" } },
+      { num: "II.", work: "J. S. Bach", note: "Sonate g-Moll, BWV 1029", dur: "", filter: "bach", embed: { type: "youtube", id: "4NPvdif9o6M" } },
+      { num: "III.", work: "Joseph Haydn", note: "Divertimento G-Dur, op. 100 Nr. 2 (Arr. Oeler)", dur: "", filter: "bach", embed: { type: "youtube", id: "9WGPikQQlyw" } },
+      { num: "IV.", work: "Harald Oeler", note: "Remembering Paris · Remembering Tokyo", dur: "", filter: "encores", embed: { type: "youtube", id: "-z40QlQ-QYg" } },
+      { num: "V.", work: "Johan Svensson", note: "Double Dubbing (firefly song), 2020", dur: "", filter: "encores", embed: { type: "youtube", id: "pcAmM4jVroQ" } },
     ],
+    repertoireFilters: [
+      { id: "bach", label: "Bach" },
+      { id: "encores", label: "Encores" },
+    ],
+    heroScrollCta: [
+      { label: "Programme ↓", target: "#programme" },
+      { label: "Dossier", target: "#dossier" },
+    ],
+    programNumMotion: true,
     quotes: [],
     dossier: {
       html: "/projekte/duoklakk-dossier.html",
@@ -335,12 +358,11 @@ const DETAILS = {
     terminePreview: 2,
     termineMoreHref: "/termine.html",
     termineInAside: true,
-    newsPreview: 6,
+    newsPreview: 3,
     newsMoreHref: "/news.html",
     news: [
       { year: "2026", title: "Hohenschwangau Klassik · Bergkonzert Duo KlAkk!", subtitle: "Tegelberg · Schwangau · 19. Juli 2026", href: "/news/hohenschwangau_bergkonzert.html" },
       { year: "2026", title: "Musik aus dem Moment heraus", subtitle: "Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026", href: "/news/straubing2.html" },
-      { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Bergkonzert Duo KlAkk! · Füssener Zeitung", href: "/news/hohenschwangau.html" },
       { year: "2026", title: "Tour · Duo KlAkk! · 2026", subtitle: "Walheim · Kronach · Straubing · Tegelberg · Dörzbach · Bayreuth · Kirchheim am Neckar", href: "/news/klakk26.html" },
       { year: "2025", title: "Herzlichen Glückwunsch!", subtitle: "Tonkünstlerverband Hochfranken e.V. · Rückblick 2025", href: "/news/klakk25_tkv.html" },
       { year: "2025", title: "Duo KlAkk! · Spitäle Würzburg", subtitle: "VKU · 1. März 2025", href: "/news/klakk25_vku.html" },
@@ -356,10 +378,10 @@ const DETAILS = {
       { date: "27. Februar 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
     ],
     media: [
-      { kind: "youtube", id: "4NPvdif9o6M", caption: "J.S. Bach · Sonate für Viola da Gamba und Cembalo in g-Moll, BWV 1029" },
-      { kind: "youtube", id: "-z40QlQ-QYg", caption: "Harald Oeler · Remembering Paris · Klarinette in B und Akkordeon" },
-      { kind: "youtube", id: "lYlqyNsLyYk", caption: "Bach · Sonate g-Moll, BWV 1028, iii. Andante" },
-      { kind: "youtube", id: "9WGPikQQlyw", caption: "Haydn · Divertimento in G Dur, Hob. IV Nr.7" },
+      { kind: "youtube", id: "4NPvdif9o6M", caption: "J.S. Bach · Sonate für Viola da Gamba und Cembalo in g-Moll, BWV 1029", filter: "bach" },
+      { kind: "youtube", id: "-z40QlQ-QYg", caption: "Harald Oeler · Remembering Paris · Klarinette in B und Akkordeon", filter: "encores" },
+      { kind: "youtube", id: "lYlqyNsLyYk", caption: "Bach · Sonate g-Moll, BWV 1028, iii. Andante", filter: "bach" },
+      { kind: "youtube", id: "9WGPikQQlyw", caption: "Haydn · Divertimento in G Dur, Hob. IV Nr.7", filter: "bach" },
     ],
   },
   hof: {

@@ -42,7 +42,7 @@ img { max-width: 100%; display: block; }
 /* —— Screen chrome —— */
 .screen-bar {
   position: sticky; top: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  display: flex; align-items: center; justify-content: center;
   padding: 14px 24px;
   background: color-mix(in srgb, var(--paper) 92%, transparent);
   backdrop-filter: blur(12px) saturate(140%);
@@ -97,6 +97,11 @@ img { max-width: 100%; display: block; }
 .cover-image {
   position: absolute; inset: 0;
   background: var(--ink);
+}
+.cover-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .cover-image img {
   width: 100%; height: 100%; object-fit: cover;
@@ -164,6 +169,52 @@ img { max-width: 100%; display: block; }
   height: auto;
   display: block;
   filter: grayscale(1) contrast(1.05);
+}
+
+/* —— Page 2: Das Duo (single A4) —— */
+.page.duo {
+  padding: 16mm 18mm 14mm;
+}
+.page.duo .page-kicker { margin-bottom: 6px; }
+.page.duo h2 {
+  font-size: clamp(32px, 4.5vw, 42px);
+  margin-bottom: 12px;
+}
+.page.duo .lede {
+  font-size: 22px;
+  line-height: 1.26;
+  margin-bottom: 14px;
+}
+.page.duo .body {
+  font-size: 13.5px;
+  line-height: 1.58;
+}
+.page.duo .body p + p { margin-top: .85em; }
+.page.duo .duo-photo {
+  margin-top: 10px;
+  max-height: 102mm;
+  overflow: hidden;
+}
+.page.duo .duo-photo img {
+  width: 100%;
+  height: 102mm;
+  object-fit: cover;
+  object-position: center bottom;
+}
+.page.duo .section-rule {
+  margin: 36px 0 8px;
+}
+.page.duo .contact-grid {
+  gap: 5px 22px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+.page.duo .contact-item dd {
+  font-size: 16px;
+  line-height: 1.35;
+}
+.page.duo .page-footer {
+  padding-top: 12px;
 }
 
 /* —— Contact —— */
@@ -264,7 +315,7 @@ img { max-width: 100%; display: block; }
 /* —— Quotes —— */
 .quotes { margin-top: 26px; display: flex; flex-direction: column; gap: 20px; }
 .quote {
-  font-family: var(--serif); font-style: italic; font-size: 17px; line-height: 1.4;
+  font-family: var(--serif); font-style: italic; font-size: 18px; line-height: 1.4;
   color: color-mix(in srgb, var(--ink) 90%, transparent);
 }
 .quote::before {
@@ -273,8 +324,27 @@ img { max-width: 100%; display: block; }
 }
 .quote cite {
   display: block; margin-top: 12px;
-  font-family: var(--mono); font-style: normal; font-size: 9px;
+  font-family: var(--mono); font-style: normal; font-size: 10px;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+}
+.quote--pull {
+  font-size: 24px; line-height: 1.35;
+  padding: 20px 22px 20px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--paper-2);
+}
+.quote--pull::before { display: none; }
+.quote--pull cite { margin-top: 14px; color: color-mix(in srgb, var(--ink) 55%, transparent); }
+.quote--secondary {
+  font-size: 18px; line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 84%, transparent);
+  padding-left: 14px;
+  border-left: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+}
+.quote--secondary::before {
+  font-size: 30px; line-height: 0.5;
+  color: color-mix(in srgb, var(--accent) 50%, transparent);
+  margin-bottom: 6px;
 }
 
 /* —— Links / Hörbeispiele —— */
@@ -366,7 +436,12 @@ img { max-width: 100%; display: block; }
     z-index: 0 !important;
     display: block !important;
     visibility: visible !important;
-    opacity: 0.98 !important;
+    background: transparent !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .cover-image::after {
+    /* Gradient scrim prints reliably; keep for legibility over photo */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -376,6 +451,8 @@ img { max-width: 100%; display: block; }
     height: 100% !important;
     object-fit: cover !important;
     object-position: center 28% !important;
+    filter: none !important;
+    opacity: 1 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -397,10 +474,8 @@ img { max-width: 100%; display: block; }
 </head>
 <body>
   <div class="screen-bar">
-    <a href="duoklakk.html">← Duo KlAkk!</a>
     <div class="screen-actions">
-      <a class="screen-btn" href="Duo-KlAkk-Dossier.pdf" download>PDF herunterladen</a>
-      <button class="screen-btn primary" type="button" onclick="window.print()">Drucken / Als PDF speichern</button>
+      <a class="screen-btn primary" href="Duo-KlAkk-Dossier.pdf" download>PDF herunterladen</a>
     </div>
   </div>
 
@@ -409,7 +484,10 @@ img { max-width: 100%; display: block; }
     <!-- 1 · Cover -->
     <section class="page cover" aria-label="Titelseite">
       <div class="cover-image">
-        <img src="image/coverduoklakk.png" alt="Duo KlAkk! — Ji Eun Kim und Harald Oeler" width="1587" height="2245" />
+        <picture>
+          <source media="print" srcset="../image/media/download/10.jpg" type="image/jpeg" />
+          <img src="image/coverduoklakk.png" alt="Duo KlAkk! — Ji Eun Kim und Harald Oeler" width="1587" height="2245" />
+        </picture>
       </div>
       <div class="cover-meta">
         <div class="eyebrow">Presse- &amp; Booking-Dossier · 2026</div>
@@ -424,7 +502,7 @@ img { max-width: 100%; display: block; }
     </section>
 
     <!-- 2 · Das Duo + Kontakt -->
-    <section class="page" aria-label="Das Duo">
+    <section class="page duo" aria-label="Das Duo">
       <div class="page-kicker">01 · Das Duo</div>
       <h2>Duo KlAkk!</h2>
       <p class="lede">Neue Musik zeitgemäß vermitteln — und Transkriptionen Alter Musik <em>kontrapunktisch</em> dagegenstellen.</p>
@@ -512,11 +590,15 @@ img { max-width: 100%; display: block; }
       </div>
 
       <div class="quotes">
-        <blockquote class="quote">
-          Was sich so bürokratisch anhört, wurde zum Fundament eines großartigen Konzerts im kleinsten Rahmen … Es wurde zum musikalischen Fest. Bei beiden Bach-Sonaten hatten die langsamen Sätze eine wohltuende Ruhe, eine tröstende Melancholie und ein sanftes Miteinander des Gesangs. Die schnellen Sätze gefielen unmittelbar durch ihre exzellente Virtuosität, die nie Selbstzweck blieb … Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.
+        <blockquote class="quote quote--pull">
+          Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.
           <cite>— Kristian Kuhnle · Straubinger Tagblatt, 29.07.2025</cite>
         </blockquote>
-        <blockquote class="quote">
+        <blockquote class="quote quote--secondary">
+          Was sich so bürokratisch anhört, wurde zum Fundament eines großartigen Konzerts im kleinsten Rahmen … Es wurde zum musikalischen Fest. Bei beiden Bach-Sonaten hatten die langsamen Sätze eine wohltuende Ruhe, eine tröstende Melancholie und ein sanftes Miteinander des Gesangs. Die schnellen Sätze gefielen unmittelbar durch ihre exzellente Virtuosität, die nie Selbstzweck blieb.
+          <cite>— Kristian Kuhnle · Straubinger Tagblatt, 29.07.2025</cite>
+        </blockquote>
+        <blockquote class="quote quote--secondary">
           Technische Perfektion einerseits, Musikalisches ineinander Aufgehen andererseits … Kim und Oeler ließen keine Wünsche offen. Die Gleichzeitigkeit schneller Läufe und die Harmonie zwischenmenschlichen Agierens faszinierten auch dieses Mal. Die Musik lebte stets aus dem Moment heraus.
           <cite>— Kristian Kuhnle · Straubinger Tagblatt, 08.07.2026</cite>
         </blockquote>
@@ -622,15 +704,7 @@ img { max-width: 100%; display: block; }
       </div>
 
       <div class="quotes">
-        <blockquote class="quote">
-          Ein Fest der Bach-Interpretation. Ein Höhepunkt im Straubinger Kulturleben 2025.
-          <cite>— Kristian Kuhnle · Straubinger Tagblatt</cite>
-        </blockquote>
-        <blockquote class="quote">
-          Dort bot das Duo „KlAkk“ Meisterwerke der Weltmusik für Klarinette und Akkordeon zum Besten … Das Publikum bedankte sich mit lang andauerndem Applaus und wurde mit der Eigenkomposition „Remembering Paris“ belohnt.
-          <cite>— Klaus Wankmiller · Füssener Zeitung</cite>
-        </blockquote>
-        <blockquote class="quote">
+        <blockquote class="quote quote--secondary">
           Vielen Dank für innovative Projekte und wie gewohnt anspruchsvolle, höchst professionelle Konzerte.
           <cite>— Tonkünstlerverband Hochfranken e.V.</cite>
         </blockquote>

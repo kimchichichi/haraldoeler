@@ -3,6 +3,27 @@
 // Click-to-load facade for YouTube / Spotify embeds.
 // Avoids loading heavy third-party players (and their cookies/preconnects)
 // until the visitor actually wants to play the media — big perf win.
+function TerminNote({ text }) {
+  const [expanded, setExpanded] = React.useState(false);
+  const ref = React.useRef(null);
+  const [truncated, setTruncated] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el || expanded) return;
+    setTruncated(el.scrollHeight > el.clientHeight + 1);
+  }, [text, expanded]);
+
+  return (
+    <span className={"termin-note-wrap" + (expanded ? " is-expanded" : "")}>
+      <span ref={ref} className="termin-note">{text}</span>
+      {!expanded && truncated && (
+        <button type="button" className="termin-note-more" onClick={() => setExpanded(true)}>mehr</button>
+      )}
+    </span>
+  );
+}
+
 function MediaEmbed({ m }) {
   const [open, setOpen] = React.useState(false);
   const isYouTube = m.kind === "youtube";
@@ -70,6 +91,7 @@ function MediaEmbed({ m }) {
 
 function ProjektDetail({ id, onBack }) {
   const [activeTrack, setActiveTrack] = React.useState(null);
+  const [repFilter, setRepFilter] = React.useState(null);
   const playTrack = (id) => { try { flushSync(() => setActiveTrack(id)); } catch(e) { setActiveTrack(id); } };
   const proj = PROJECTS.find((p) => p.id === id);
 
@@ -106,6 +128,45 @@ function ProjektDetail({ id, onBack }) {
     ],
   };
 
+  React.useEffect(() => {
+    if (!detail.programNumMotion) return;
+    const els = document.querySelectorAll(".program-num");
+    if (!els.length) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [id, detail.programNumMotion]);
+
+  const matchesRepFilter = (item) => {
+    if (!repFilter) return true;
+    const tags = item.filters ?? item.filter;
+    if (!tags) return true;
+    const arr = Array.isArray(tags) ? tags : [tags];
+    return arr.includes(repFilter);
+  };
+
+  const scrollToTarget = (target) => {
+    const el = document.querySelector(target);
+    if (!el) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  };
+
   const renderTermine = (className = "termine") => {
     if (!detail.termine || detail.termine.length === 0) return null;
     const previewCount = detail.terminePreview ?? detail.termine.length;
@@ -113,12 +174,20 @@ function ProjektDetail({ id, onBack }) {
     const moreHref = detail.termine.length > previewCount
       ? (detail.termineMoreHref || "/termine.html")
       : null;
+    const isAside = className.includes("termine-aside");
     return (
       <div className={className}>
         <h3>— Nächste Konzerte</h3>
         <ul className="termine-list">
           {shown.map((t, i) => (
-            <li key={i} className="termin-item">
+            <li
+              key={i}
+              className={
+                "termin-item" +
+                (isAside && i === 0 ? " termin-featured" : "") +
+                (isAside && i > 0 ? " termin-compact" : "")
+              }
+            >
               <div className="termin-date">{t.date}{t.time ? <span className="termin-time"> · {t.time}</span> : null}</div>
               <div className="termin-info">
                 <span className="termin-title">{t.title}</span>
@@ -134,7 +203,7 @@ function ProjektDetail({ id, onBack }) {
                     )}
                   </span>
                 )}
-                {t.note && <span className="termin-note">{t.note}</span>}
+                {t.note ? <TerminNote text={t.note} /> : null}
               </div>
             </li>
           ))}
@@ -175,6 +244,20 @@ function ProjektDetail({ id, onBack }) {
             {detail.runtime.map((r, i) => (
               <div key={i}>{r}</div>
             ))}
+            {detail.heroScrollCta && detail.heroScrollCta.length > 0 && (
+              <div className="hero-scroll-cta">
+                {detail.heroScrollCta.map((cta, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className="hero-scroll-btn"
+                    onClick={() => scrollToTarget(cta.target)}
+                  >
+                    {cta.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -190,11 +273,11 @@ function ProjektDetail({ id, onBack }) {
             <dd>instrumental</dd>
           </dl>
           {detail.dossier && (
-            <div className="dossier-aside">
+            <div className="dossier-aside" id="dossier">
               <h3>— Presse-Dossier</h3>
               <p className="dossier-aside-note">Booking &amp; Presse · Programme, Vita, Hörbeispiele</p>
               <a className="dossier-link dossier-pdf" href={detail.dossier.pdf} download>PDF herunterladen</a>
-              <a className="dossier-link dossier-online" href={detail.dossier.html}>Online-Dossier</a>
+              <a className="dossier-online-link" href={detail.dossier.html}>Online lesen →</a>
             </div>
           )}
           {detail.termineInAside && renderTermine("termine termine-aside")}
@@ -217,7 +300,7 @@ function ProjektDetail({ id, onBack }) {
           </div>
 
           {detail.programs && detail.programs.length > 0 && (
-            <div className="programs">
+            <div className="programs" id="programme">
               <h3>— Konzertprogramme</h3>
               {detail.programsQuote ? (
                 <blockquote className="quote programs-quote">
@@ -251,12 +334,12 @@ function ProjektDetail({ id, onBack }) {
                       </ul>
                     )}
                     {prog.closing ? <p className="program-closing">{prog.closing}</p> : null}
-                    {prog.quote ? (
-                      <blockquote className="quote programs-quote">
-                        {prog.quote.text}
-                        <cite>— {prog.quote.cite}</cite>
+                    {(prog.quotes || (prog.quote ? [prog.quote] : [])).map((q, qi) => (
+                      <blockquote key={qi} className="quote programs-quote">
+                        {q.text}
+                        <cite>— {q.cite}</cite>
                       </blockquote>
-                    ) : null}
+                    ))}
                   </li>
                 ))}
               </ol>
@@ -265,6 +348,27 @@ function ProjektDetail({ id, onBack }) {
 
           <div className="repertoire">
             <h3>— Auswahl Repertoire</h3>
+            {detail.repertoireFilters && detail.repertoireFilters.length > 0 && (
+              <div className="repertoire-filters" role="group" aria-label="Programmfilter">
+                <button
+                  type="button"
+                  className={!repFilter ? "active" : ""}
+                  onClick={() => setRepFilter(null)}
+                >
+                  Alle
+                </button>
+                {detail.repertoireFilters.map((f) => (
+                  <button
+                    key={f.id}
+                    type="button"
+                    className={repFilter === f.id ? "active" : ""}
+                    onClick={() => setRepFilter(f.id)}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            )}
             {detail.repertoire[0] && detail.repertoire[0].tracks ? (
               /* Grouped layout (duovia) */
               <div className="rep-groups">
@@ -345,11 +449,12 @@ function ProjektDetail({ id, onBack }) {
             ) : (
               /* Flat layout (all other projects) */
               <ul>
-                {detail.repertoire.map((r, i) => {
+                {detail.repertoire.flatMap((r, i) => {
+                  if (!matchesRepFilter(r)) return [];
                   if (r.embed) {
                     const key = `rep-${i}`;
                     const isOpen = activeTrack === key;
-                    return (
+                    return [(
                       <li key={i} className={r.className || undefined}>
                         <button
                           type="button"
@@ -365,15 +470,15 @@ function ProjektDetail({ id, onBack }) {
                           </span>
                         </button>
                       </li>
-                    );
+                    )];
                   }
-                  return (
+                  return [(
                     <li key={i} className={r.className || undefined}>
                       <span className="num">{r.num}</span>
                       <span className="work">{r.work}{r.note ? <em>{r.note}</em> : null}</span>
                       <span className="dur">{r.dur}</span>
                     </li>
-                  );
+                  )];
                 })}
               </ul>
             )}
@@ -428,11 +533,11 @@ function ProjektDetail({ id, onBack }) {
             );
           })()}
 
-          {detail.media && detail.media.length > 0 && (
+          {detail.media && detail.media.filter(matchesRepFilter).length > 0 && (
             <div className="media">
               <h3>— Hören & sehen</h3>
               <div className="media-grid">
-                {detail.media.map((m, i) => (
+                {detail.media.filter(matchesRepFilter).map((m, i) => (
                   <figure key={i} className={`media-item ${m.kind}`}>
                     <div className="frame">
                       <MediaEmbed m={m} />

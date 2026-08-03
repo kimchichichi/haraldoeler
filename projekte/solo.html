@@ -430,9 +430,12 @@ button.repertoire-row-link {
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: color-mix(in srgb, var(--accent) 55%, transparent);
   white-space: nowrap;
+  opacity: 0.45;
+  transition: color .25s ease, opacity .25s ease, transform .25s ease;
 }
+.repertoire li:hover .rep-play, .repertoire li:focus-within .rep-play { color: var(--accent); opacity: 1; transform: translateX(2px); }
 /* Hörbeispiel modal (transparent full-screen overlay) */
 .rep-modal {
   position: fixed;
@@ -726,7 +729,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__solo.bundle.js?v=26"></script>
+  <script type="module" src="../assets/projekte__solo.bundle.js?v=28"></script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">

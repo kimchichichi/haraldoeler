@@ -1,8 +1,19 @@
-/* Medien — Spotify preview + filter counts */
+/* Medien — Spotify preview + dual-link discography cards */
 (function () {
   'use strict';
 
   var activeOverlay = null;
+
+  function isSpotifyUrl(url) {
+    return !!url && /open\.spotify\.com/i.test(url);
+  }
+
+  function spotifyLinkFromEmbed(embedUrl) {
+    if (!embedUrl) return '';
+    return embedUrl
+      .replace('https://open.spotify.com/embed/', 'https://open.spotify.com/')
+      .replace(/\?utm_source=.*$/, '');
+  }
 
   function closeAll() {
     if (!activeOverlay) return;
@@ -39,9 +50,53 @@
     activeOverlay = overlay;
   }
 
+  function appendCardLink(linksWrap, text, url) {
+    var link = document.createElement('a');
+    link.className = 'arrow';
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = text;
+    linksWrap.appendChild(link);
+  }
+
+  function appendCardSep(linksWrap) {
+    var sep = document.createElement('span');
+    sep.className = 'card-links-sep';
+    sep.setAttribute('aria-hidden', 'true');
+    sep.textContent = '·';
+    linksWrap.appendChild(sep);
+  }
+
+  function buildCardLinks(div, linkItems, arrow) {
+    var svg = arrow.querySelector('svg');
+    var svgHtml = svg ? svg.outerHTML : '';
+    var linksWrap = document.createElement('div');
+    linksWrap.className = 'card-links';
+
+    linkItems.forEach(function (item, index) {
+      if (index > 0) appendCardSep(linksWrap);
+      appendCardLink(linksWrap, item.text, item.url);
+    });
+
+    if (svgHtml && linkItems.length) {
+      var trail = document.createElement('span');
+      trail.className = 'arrow arrow-icon';
+      trail.setAttribute('aria-hidden', 'true');
+      trail.innerHTML = svgHtml;
+      linksWrap.appendChild(trail);
+    }
+
+    arrow.replaceWith(linksWrap);
+  }
+
   function convertSpotifyCards() {
     document.querySelectorAll('a.card[data-spotify]').forEach(function (card) {
       var href = card.getAttribute('href');
+      var infoUrl = card.dataset.info || (href && !isSpotifyUrl(href) ? href : '');
+      var spotifyLink = card.dataset.spotifyLink
+        || (href && isSpotifyUrl(href) ? href : spotifyLinkFromEmbed(card.dataset.spotify));
+
       var div = document.createElement('div');
       div.className = card.className;
       Array.prototype.forEach.call(card.attributes, function (attr) {
@@ -49,7 +104,10 @@
           div.setAttribute(attr.name, attr.value);
         }
       });
-      if (href) div.dataset.href = href;
+      if (infoUrl) div.dataset.info = infoUrl;
+      if (spotifyLink) div.dataset.spotifyLink = spotifyLink;
+      if (card.dataset.appleLink) div.dataset.appleLink = card.dataset.appleLink;
+      if (card.dataset.youtubeLink) div.dataset.youtubeLink = card.dataset.youtubeLink;
       div.innerHTML = card.innerHTML;
 
       var wrap = div.querySelector('.image-wrap');
@@ -65,16 +123,13 @@
       }
 
       var arrow = div.querySelector('.arrow');
-      if (arrow && href) {
-        var link = document.createElement('a');
-        link.className = arrow.className;
-        link.href = href;
-        link.target = '_blank';
-        link.rel = 'noopener';
-        link.innerHTML = arrow.innerHTML
-          .replace(/mehr infos · spotify/i, 'mehr infos')
-          .replace(/^spotify$/i, 'mehr infos');
-        arrow.replaceWith(link);
+      if (arrow) {
+        var linkItems = [];
+        if (infoUrl) linkItems.push({ text: 'mehr infos', url: infoUrl });
+        if (spotifyLink) linkItems.push({ text: 'spotify', url: spotifyLink });
+        if (card.dataset.appleLink) linkItems.push({ text: 'apple music', url: card.dataset.appleLink });
+        if (card.dataset.youtubeLink) linkItems.push({ text: 'youtube', url: card.dataset.youtubeLink });
+        buildCardLinks(div, linkItems, arrow);
       }
 
       card.replaceWith(div);

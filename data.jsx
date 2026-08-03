@@ -126,6 +126,7 @@ const DETAILS = {
       { year: "2025", title: "Solo · Remembering!", subtitle: "TKVL Konzerte 2025", href: "/news/tkvlsolo.html" },
     ],
     media: [
+      { kind: "youtube", id: "P8dHtuQ0E1c", caption: "Remembering · Solo · whole program live" },
       { kind: "youtube", id: "AH1Bj1WaY8o", caption: "Solo · »Remembering«" },
       { kind: "spotify", url: "https://open.spotify.com/embed/album/02LouxvRMRz0bj5etTqFpL?utm_source=generator&theme=0", caption: "Pictures at an Exhibition · Et expecto" },
       { kind: "spotify", url: "https://open.spotify.com/embed/track/77B0zWaG2CeRMyhwRmfrr9?utm_source=generator&theme=0", caption: "Scarlatti · Sonate D-Dur, Kk. 29 · III. Presto" },
@@ -141,13 +142,14 @@ const DETAILS = {
       "Solistisches Repertoire mit Sinfonie- und Streichorchester. Programme werden gemeinsam mit Veranstalter:innen und Dirigent:innen kuratiert — von Barockkonzerten bis zu modernen Konzertwerken speziell für das Akkordeon.",
     ],
     repertoire: [
-      { num: "I.", work: "J. S. Bach", note: "Cembalokonzert d-Moll, BWV 1052", dur: "" },
+      { num: "I.", work: "J. S. Bach", note: "Cembalokonzert d-Moll, BWV 1052", dur: "", embed: { type: "youtube", id: "WFCRiyENZxk" } },
       { num: "II.", work: "J. S. Bach", note: "Konzert für zwei Cembali, BWV 1061", dur: "" },
       { num: "III.", work: "Václav Trojan", note: "»Pohádky« — Märchen für Akkordeon und Orchester", dur: "" },
-      { num: "IV.", work: "Richard Galliano", note: "»Opale Concerto«", dur: "" },
+      { num: "IV.", work: "Richard Galliano", note: "»Opale Concerto«", dur: "", embed: { type: "youtube", id: "WPMtnt0PfY0" } },
       { num: "V.", work: "Astor Piazzolla", note: "»Ballet-Tango«", dur: "" },
       { num: "VI.", work: "Erhard Cotta (arr.)", note: "»Philharmonic Gypsy-Swing«", dur: "" },
       { num: "VII.", work: "Ole Schmidt", note: "»Symphonic Fantasy and Allegro«", dur: "" },
+      { num: "VIII.", work: "Markus Jung", note: "»Tango de las Profundidades«", dur: "", embed: { type: "youtube", id: "OQSBTccC0YY" } },
     ],
     quotes: [],
     news: [
@@ -159,6 +161,8 @@ const DETAILS = {
     media: [
       { kind: "youtube", id: "yQ-Xje5yJIg", caption: "Galliano · Opale Concerto III · New York Tango · live in Selb" },
       { kind: "youtube", id: "OQSBTccC0YY", caption: "Jung · Tango de las Profundidades · live in Selb 2023" },
+      { kind: "spotify", url: "https://open.spotify.com/embed/track/7CMTpl5XDBMJwXlmya64CZ?utm_source=generator&theme=0", caption: "Markus Jung · Tango de las Profundidades (feat. Harald Oeler)" },
+      { kind: "apple", url: "https://embed.music.apple.com/de/album/tango-de-las-profundidades-feat-harald-oeler/1367546761?i=1367547589", caption: "Markus Jung · Tango de las Profundidades (feat. Harald Oeler)" },
       { kind: "youtube", id: "WPMtnt0PfY0", caption: "Galliano · Opale Concerto" },
       { kind: "youtube", id: "WFCRiyENZxk", caption: "Bach · Cembalokonzert d-Moll, BWV 1052" },
       { kind: "youtube", id: "2OJ2BstBZCw", caption: "Piazzolla · Ballet-Tango" },
@@ -187,6 +191,7 @@ const DETAILS = {
       { kind: "youtube", id: "05HxYd95Phw", caption: "Ani Suni · live in der musik-butik" },
     ],
     news: [
+      { year: "2026", title: "NEU — Website · Fussissimo", subtitle: "www.fussissimo.de · studio kimi", href: "/news/fussissimo_website.html" },
       { year: "2026", title: "Tour | Fussissimo · 2026", subtitle: "Eyrichshof · Frankfurt · Würzburg · Schweinfurt · Gemünden", href: "/news/fussissimo26.html" },
       { year: "2023", title: "Tour mit Fussissimo", subtitle: "Gypsy-Ethno-Jazz · Darstadt · Hof · Schweinfurt", href: "/news/fussissimo_1.html" },
     ],
@@ -275,10 +280,14 @@ const DETAILS = {
     eyebrow: "Projekt 05 · neue musik × alte musik",
     image: `${PROJECT_HERO_IMAGE_BASE}/duoklakk.webp`,
     premiere: false,
-    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "3 Konzertprogramme"],
+    runtime: [[{ a: { href: "https://www.sinnyang.com", text: "Ji Eun Kim" } }, " · Klarinette"], "Harald Oeler · Akkordeon", "3 Konzertprogramme"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
-      "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
+      [
+        "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und ",
+        { a: { href: "https://www.sinnyang.com", text: "Ji Eun Kim" } },
+        ", Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
+      ],
     ],
     programs: [
       {
@@ -410,6 +419,7 @@ const DETAILS = {
       { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Hofer Symphoniker · Galliano Opale Concerto · Freiheitshalle Hof", href: "/news/kinderkonzert.html" },
       { year: "2023", title: "Die Vier EvangCellisten & friends — 15-Jahre-Jubiläum", subtitle: "Rosenthal-Theater Selb · Opale Concerto & Tango de las Profundidades", href: "/news/selb.html" },
     ],
+    media: [],
   },
 };
 

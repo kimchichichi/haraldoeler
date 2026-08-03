@@ -1,5 +1,23 @@
 // Shared detail view for projekte subpages (bundled per project id).
 
+function renderRichPart(part, key) {
+  if (typeof part === "string") return <React.Fragment key={key}>{part}</React.Fragment>;
+  if (part.em) return <em key={key}>{part.em}</em>;
+  if (part.a) {
+    return (
+      <a key={key} href={part.a.href} target="_blank" rel="noopener noreferrer">
+        {part.a.text}
+      </a>
+    );
+  }
+  return null;
+}
+
+function renderRichContent(content) {
+  const parts = Array.isArray(content) ? content : [content];
+  return parts.map((part, i) => renderRichPart(part, i));
+}
+
 // Click-to-load facade for YouTube / Spotify embeds.
 // Avoids loading heavy third-party players (and their cookies/preconnects)
 // until the visitor actually wants to play the media — big perf win.
@@ -27,6 +45,7 @@ function TerminNote({ text }) {
 function MediaEmbed({ m }) {
   const [open, setOpen] = React.useState(false);
   const isYouTube = m.kind === "youtube";
+  const isApple = m.kind === "apple";
 
   if (open) {
     const src = isYouTube
@@ -78,10 +97,10 @@ function MediaEmbed({ m }) {
           </svg>
         ) : (
           <span style={{ display: "inline-flex", alignItems: "center", gap: "10px", color: "#f4f1ec", fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            <span style={{ width: "34px", height: "34px", borderRadius: "50%", background: "#1DB954", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg width="12" height="14" viewBox="0 0 12 14" fill="#000" aria-hidden="true"><polygon points="0,0 12,7 0,14" /></svg>
+            <span style={{ width: "34px", height: "34px", borderRadius: "50%", background: isApple ? "#FA243C" : "#1DB954", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="#fff" aria-hidden="true"><polygon points="0,0 12,7 0,14" /></svg>
             </span>
-            Auf Spotify hören
+            {isApple ? "Auf Apple Music hören" : "Auf Spotify hören"}
           </span>
         )}
       </span>
@@ -242,7 +261,7 @@ function ProjektDetail({ id, onBack }) {
           </div>
           <div className="runtime">
             {detail.runtime.map((r, i) => (
-              <div key={i}>{r}</div>
+              <div key={i}>{renderRichContent(r)}</div>
             ))}
             {detail.heroScrollCta && detail.heroScrollCta.length > 0 && (
               <div className="hero-scroll-cta">
@@ -285,17 +304,11 @@ function ProjektDetail({ id, onBack }) {
 
         <div>
           <p className="lede">
-            {detail.lede.map((part, i) =>
-              typeof part === "string" ? (
-                <React.Fragment key={i}>{part}</React.Fragment>
-              ) : (
-                <em key={i}>{part.em}</em>
-              )
-            )}
+            {renderRichContent(detail.lede)}
           </p>
           <div className="body-copy">
             {detail.body.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{renderRichContent(p)}</p>
             ))}
           </div>
 

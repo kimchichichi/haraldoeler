@@ -81,6 +81,15 @@ nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0
 .detail-body .lede { font-family: var(--serif); font-weight: 300; font-size: clamp(28px, 2.6vw, 40px); line-height: 1.22; letter-spacing: -0.01em; text-wrap: pretty; max-width: 22ch; margin-bottom: 56px; }
 .detail-body .lede em { font-style: italic; color: var(--accent); }
 .detail-body .body-copy { font-size: 16px; line-height: 1.65; max-width: 62ch; color: color-mix(in srgb, var(--ink) 80%, transparent); }
+.detail-body .body-copy a,
+.detail .hero-meta .runtime a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.detail-body .body-copy a:hover,
+.detail .hero-meta .runtime a:hover { color: var(--accent-soft); }
 .detail-body .body-copy p + p { margin-top: 1.1em; }
 
 .programs { margin-top: 72px; border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); }
@@ -313,7 +322,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
   <div id="root"></div>
-  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=44"></script>
+  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=45"></script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">

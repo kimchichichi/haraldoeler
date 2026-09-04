@@ -384,7 +384,7 @@ const DETAILS = {
       { date: "13. September 2026", time: "17:00 Uhr", title: "Duo KlAkk! goes BACH!", venue: "Schloß Eyb", city: "Dörzbach", note: "Bachs barocke Gambensonate, Haydns elegantes Divertimento und Piazzollas leidenschaftliche Klänge auf Klarinette und Akkordeon, so noch nie gehört! Dazu freche Eigenkompositionen aus der Komponierwerkstatt. Duo KlAkk! goes BACH! Kommen Sie und lassen Sie sich verblüffen!", link: "http://schubertiade-schloss-eyb.de/programm2017.html" },
       { date: "18. September 2026", time: "20:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Neuneinhalb im Gerberhaus", city: "Bayreuth", note: "Gerberplatz 1 · 95445 Bayreuth" },
       { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
-      { date: "27. Februar 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
+      { date: "27. Februar 2027", time: "19:30 Uhr", title: "Duo KlAkk! Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
     ],
     media: [
       { kind: "youtube", id: "4NPvdif9o6M", caption: "J.S. Bach · Sonate für Viola da Gamba und Cembalo in g-Moll, BWV 1029", filter: "bach" },

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Canonical project-scoped concert lists used by data.jsx (React projekte pages). Edit this file, then run: node scripts/sync-termine.mjs  (optionally: npm run rebuild:projekte). termine.html remains the public full calendar and is not auto-generated from this file.",
-    "updated": "2026-07-26",
+    "updated": "2026-09-04",
     "rebuild": "npm run rebuild:projekte"
   },
   "byProject": {
@@ -130,7 +130,7 @@
       },
       {
         "date": "27. Februar 2027",
-        "time": "Uhrzeit folgt",
+        "time": "19:30 Uhr",
         "title": "Duo KlAkk! Encore!",
         "venue": "Alte Kelter",
         "city": "Gemmrigheim",

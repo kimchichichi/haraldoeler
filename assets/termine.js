@@ -283,9 +283,71 @@
       .slice(0, 60) || 'konzert';
   }
 
+  function utcStampNow() {
+    return new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+
+  function buildIcs(title, details, location, start, end) {
+    var uid = start + '-' + slugifyFilename(title).toLowerCase() + '@haraldoeler.com';
+    return (
+      'BEGIN:VCALENDAR\r\n' +
+      'VERSION:2.0\r\n' +
+      'PRODID:-//Harald Oeler//Termine//DE\r\n' +
+      'CALSCALE:GREGORIAN\r\n' +
+      'METHOD:PUBLISH\r\n' +
+      'BEGIN:VEVENT\r\n' +
+      'UID:' + uid + '\r\n' +
+      'DTSTAMP:' + utcStampNow() + '\r\n' +
+      'SUMMARY:' + icsEscape(title) + '\r\n' +
+      (details ? 'DESCRIPTION:' + icsEscape(details) + '\r\n' : '') +
+      'DTSTART:' + start + '\r\n' +
+      'DTEND:' + end + '\r\n' +
+      (location ? 'LOCATION:' + icsEscape(location) + '\r\n' : '') +
+      'END:VEVENT\r\n' +
+      'END:VCALENDAR'
+    );
+  }
+
   function encodeIcalDataUri(ics) {
-    // Keep structural colons readable; leave CRLF as %0D%0A from encodeURIComponent
-    return 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics).replace(/%3A/gi, ':');
+    return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  }
+
+  function icsFromDataHref(href) {
+    if (!href) return '';
+    var comma = href.indexOf(',');
+    if (comma < 0) return '';
+    var payload = href.slice(comma + 1);
+    try {
+      return decodeURIComponent(payload);
+    } catch (err) {
+      return payload;
+    }
+  }
+
+  function downloadIcsFile(ics, filename) {
+    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'konzert.ics';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  function initIcalDownloads() {
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('.c-cal a[download]');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('data:text/calendar') !== 0) return;
+      var ics = icsFromDataHref(href);
+      if (!ics) return;
+      e.preventDefault();
+      downloadIcsFile(ics, link.getAttribute('download'));
+    });
   }
 
   function buildCalendarLinks() {
@@ -320,16 +382,7 @@
       });
       var googleHref = 'https://www.google.com/calendar/render?' + gParams.toString();
 
-      var ics =
-        'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\n' +
-        'SUMMARY:' + icsEscape(title) + '\r\n' +
-        (details ? 'DESCRIPTION:' + icsEscape(details) + '\r\n' : '') +
-        'DTSTART:' + start + '\r\n' +
-        'DTEND:' + end + '\r\n' +
-        (location ? 'LOCATION:' + icsEscape(location) + '\r\n' : '') +
-        'END:VEVENT\r\nEND:VCALENDAR';
-
-      var icalHref = encodeIcalDataUri(ics);
+      var ics = buildIcs(title, details, location, start, end);
       var filename =
         slugifyFilename(title) + '_' + y + '-' + pad2(mo) + '-' + pad2(d) + '.ics';
 
@@ -359,7 +412,7 @@
       cal.appendChild(sep);
 
       var iLink = document.createElement('a');
-      iLink.href = icalHref;
+      iLink.href = encodeIcalDataUri(ics);
       iLink.setAttribute('download', filename);
       iLink.textContent = 'iCal';
       cal.appendChild(iLink);
@@ -385,5 +438,6 @@
   initStickyControls();
   addPosterButtons();
   initFilters();
+  initIcalDownloads();
   highlightFromHash();
 })();

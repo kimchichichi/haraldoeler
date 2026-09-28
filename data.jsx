@@ -201,6 +201,7 @@ const DETAILS = {
     termine: [
       { date: "21. Juni 2026", time: "17:40 Uhr", title: "Umsonst & Draussen Festival", venue: "Draussen-Bühne", city: "Würzburg", note: "Freies Open-Air-Konzert" },
       { date: "27. September 2026", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Huttenschloss", city: "Gemünden am Main", note: "" },
+      { date: "23. Januar 2027", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Café Victoria · Münzmeisterhaus", city: "Coburg", note: "" },
       { date: "17. April 2027", time: "Uhrzeit folgt", title: "Fussissimo", venue: "Ort folgt", city: "", note: "" },
     ],
   },

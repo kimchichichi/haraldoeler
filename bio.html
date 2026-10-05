@@ -286,28 +286,49 @@ body.dark html.bio-initial-en .lang-btn[data-lang="en"] {
 /* CV downloads */
 .cv-downloads {
   display: flex;
-  gap: 12px;
-  margin-top: 48px;
+  gap: 10px;
+  margin-top: 40px;
   flex-wrap: wrap;
 }
-.cv-link {
+.cv-downloads a.cv-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 11px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
-  padding: 8px 16px;
-  border: 1px solid var(--accent);
-  transition: background .25s, color .25s;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 14px 18px 14px 16px;
+  border: none;
+  transition: background .25s ease, color .25s ease;
 }
-.cv-link:hover {
+.cv-downloads a.cv-link:hover {
   background: var(--accent);
   color: var(--paper);
 }
-.cv-link svg { flex-shrink: 0; }
+.cv-downloads a.cv-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.cv-lang {
+  color: color-mix(in srgb, var(--paper) 58%, transparent);
+  letter-spacing: 0.14em;
+}
+.cv-link:hover .cv-lang { color: var(--paper); }
+.cv-link svg {
+  flex-shrink: 0;
+  transition: transform .3s ease;
+}
+.cv-link:hover svg { transform: translateY(2px); }
+@media (prefers-reduced-motion: reduce) {
+  .cv-link, .cv-link svg { transition: none; }
+}
+@media (max-width: 720px) {
+  .cv-downloads { flex-direction: column; align-items: stretch; }
+  .cv-downloads a.cv-link { justify-content: space-between; }
+}
 
 /* ─── Image side ─────────────────────────────────────────────────────────── */
 .about-images { position: sticky; top: 88px; min-width: 0; }
@@ -431,6 +452,10 @@ body.dark .bio-content p { color: color-mix(in srgb, var(--paper) 82%, transpare
 body.dark .bio-content a { color: var(--paper); border-bottom-color: color-mix(in srgb, var(--paper) 28%, transparent); }
 body.dark .bio-highlights { border-top-color: color-mix(in srgb, var(--paper) 12%, transparent); }
 body.dark .h-text { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+body.dark .cv-downloads a.cv-link { background: var(--paper); color: var(--ink); }
+body.dark .cv-lang { color: color-mix(in srgb, var(--ink) 55%, transparent); }
+body.dark .cv-downloads a.cv-link:hover { background: var(--accent); color: var(--paper); }
+body.dark .cv-downloads a.cv-link:hover .cv-lang { color: var(--paper); }
 
 
 /* ── Mobile nav toggle ─────────────────────────────── */
@@ -724,7 +749,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
         <p>Neben zahlreichen Rundfunkaufnahmen ist sein weitgefächertes künstlerisches Schaffen auf CDs von <a href="https://www.genuin.de/de/0403.php" target="_blank">Genuin</a>, Thorofon, <a href="https://www.oehmsclassics.de" target="_blank">OehmsClassics</a> und Dewey Records dokumentiert.</p>
 
-        <p>Im Sommer 2012 lehrte Harald Oeler als Gastdozent an der „Normal Shenzhen University" in China. Als Lehrbeauftragter für Akkordeon arbeitet Harald Oeler seit 2007 an der <a href="https://www.lmu.de" target="_blank">Ludwig-Maximilians-Universität München</a>. Weiterhin ist er hauptamtlicher Akkordeondozent und Leiter der Theorie- und Förderklasse an der Musikschule der „Hofer Symphoniker". Ab 2026/27 unterrichtet er zudem an der <a href="https://musikschule.bayreuth.de/" target="_blank">Städtischen Musikschule Bayreuth</a> und übernimmt einen Lehrauftrag für Akkordeon an der <a href="https://www.hfm-nuernberg.de/" target="_blank">Hochschule für Musik Nürnberg</a>.</p>
+        <p>Im Sommer 2012 lehrte Harald Oeler als Gastdozent an der „Normal Shenzhen University" in China. Als Lehrbeauftragter für Akkordeon arbeitet Harald Oeler seit 2007 an der <a href="https://www.lmu.de" target="_blank">Ludwig-Maximilians-Universität München</a>. Weiterhin ist er hauptamtlicher Akkordeondozent und Leiter der Theorie- und Förderklasse an der Musikschule der „Hofer Symphoniker". Ab 2026/27 unterrichtet er zudem an der <a href="https://musikschule.bayreuth.de/" target="_blank">Städtischen Musikschule Bayreuth</a> und ist Lehrbeauftragter für Fachdidaktik Akkordeon an der <a href="https://www.hfm-nuernberg.de/personenverzeichnis/profil/harald-oeler" target="_blank">Hochschule für Musik Nürnberg</a>.</p>
 
         <p>Unter seinen Schülern befinden sich zahlreiche Preisträger verschiedener Wettbewerbe, darunter vierzehn 1. Bundespreisträger bei Jugend musiziert, 1. Preisträger des Deutschen Akkordeon Musikpreis und Preisträger des Internationalen Akkordeonfestivals in Innsbruck.</p>
 
@@ -750,16 +775,18 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
         <div class="cv-downloads">
           <a class="cv-link" href="VITA_DE.pdf" download="CV_Deutsch.pdf">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
-            </svg>
+            <span class="cv-lang">DE</span>
             CV Deutsch
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
           </a>
           <a class="cv-link" href="VITA_EN.pdf" download="CV_English.pdf">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
-            </svg>
+            <span class="cv-lang">EN</span>
             CV English
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
           </a>
         </div>
       </div><!-- /#bio-de -->
@@ -774,7 +801,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
         <p>Harald Oeler pursues a very active career as a concert artist in Germany and internationally, performing as a soloist and in various ensembles.</p>
 
-        <p>In summer 2012 he taught as a visiting lecturer at Shenzhen Normal University in China. Since 2007 he has held a teaching appointment in accordion at <a href="https://www.lmu.de" target="_blank">Ludwig Maximilian University of Munich</a>. He is also a full-time accordion lecturer and head of the theory and talent class at the music school of the Hofer Symphoniker. From 2026/27 he will additionally teach at the <a href="https://musikschule.bayreuth.de/" target="_blank">Städtische Musikschule Bayreuth</a> and take up a teaching appointment in accordion at the <a href="https://www.hfm-nuernberg.de/" target="_blank">Nuremberg University of Music</a>.</p>
+        <p>In summer 2012 he taught as a visiting lecturer at Shenzhen Normal University in China. Since 2007 he has held a teaching appointment in accordion at <a href="https://www.lmu.de" target="_blank">Ludwig Maximilian University of Munich</a>. He is also a full-time accordion lecturer and head of the theory and talent class at the music school of the Hofer Symphoniker. From 2026/27 he additionally teaches at the <a href="https://musikschule.bayreuth.de/" target="_blank">Städtische Musikschule Bayreuth</a> and holds a lectureship in accordion pedagogy at the <a href="https://www.hfm-nuernberg.de/personenverzeichnis/profil/harald-oeler" target="_blank">Nuremberg University of Music</a>.</p>
 
         <!-- Award highlights -->
         <div class="bio-highlights">
@@ -798,16 +825,18 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
         <div class="cv-downloads">
           <a class="cv-link" href="VITA_EN.pdf" download="CV_English.pdf">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
-            </svg>
+            <span class="cv-lang">EN</span>
             CV English
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
           </a>
           <a class="cv-link" href="VITA_DE.pdf" download="CV_Deutsch.pdf">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M2 1h6l3 3v9H2V1z M8 1v3h3 M6 6v5 M4 9l2 2 2-2"/>
-            </svg>
+            <span class="cv-lang">DE</span>
             CV Deutsch
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
           </a>
         </div>
       </div><!-- /#bio-en -->

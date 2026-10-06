@@ -21,7 +21,7 @@
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <!-- LCP: first card image -->
-  <link rel="preload" as="image" href="news/image/cards/bachtage26.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="news/image/hfm_nuernberg/logo.svg" fetchpriority="high">
   <link rel="stylesheet" href="assets/site.css?v=9">
 
   <!-- Extracted from Projekte.html -->
@@ -342,6 +342,19 @@ nav.primary a.active::after {
 }
 .card.card--arrasate .image-wrap img {
   object-position: left top;
+}
+.card.card--hfm .image-wrap {
+  background: var(--paper);
+}
+.card.card--hfm .image-wrap::after { display: none; }
+.card.card--hfm .image-wrap img {
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+  padding: 18% 10%;
+}
+.card.card--hfm:hover .image-wrap img {
+  filter: none;
 }
 .card:hover .image-wrap img {
   transform: scale(1.04);
@@ -826,14 +839,32 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
     <div class="news-grid">
 
+      <!-- Lehrbeauftragter · HfM Nürnberg · Fachdidaktik Akkordeon -->
+      <a class="card card--hfm" href="news/hfm_nuernberg.html" data-date="2026-10-05" data-featured="1" data-cat="unterricht">
+        <div class="index">
+          <span>Okt 2026</span>
+          <span class="cat">Unterricht</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/hfm_nuernberg/logo.svg" alt="Logo der Hochschule für Musik Nürnberg" width="380" height="46" loading="eager" fetchpriority="high" decoding="async">
+        </div>
+        <div class="meta">
+          <h2><em>Lehrbeauftragter</em> — Fachdidaktik Akkordeon</h2>
+          <span class="role">Unterricht</span>
+          <p class="subtitle">Hochschule für Musik Nürnberg · Studienjahr 2026/27</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
       <!-- Würzburger Bachtage 2026 · Eröffnungsakt -->
-      <a class="card" href="news/bachtage26.html" data-date="2026-11-19" data-featured="1" data-cat="solo">
+      <a class="card" href="news/bachtage26.html" data-date="2026-11-19" data-featured="2" data-cat="solo">
         <div class="index">
           <span>Nov 2026</span>
           <span class="cat">Solo</span>
         </div>
         <div class="image-wrap">
-          <img src="news/image/cards/bachtage26.webp" srcset="news/image/cards/bachtage26-640.webp 640w, news/image/cards/bachtage26.webp 900w" alt="Würzburger Bachtage 2026 — Eröffnungsakt · Harald Oeler und Prof. Dr. Ulrich Konrad" width="900" height="1125" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+          <img src="news/image/cards/bachtage26.webp" srcset="news/image/cards/bachtage26-640.webp 640w, news/image/cards/bachtage26.webp 900w" alt="Würzburger Bachtage 2026 — Eröffnungsakt · Harald Oeler und Prof. Dr. Ulrich Konrad" width="900" height="1125" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
         </div>
         <div class="meta">
           <h2><em>Würzburger Bachtage</em> — Eröffnungsakt</h2>
@@ -845,7 +876,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
 
       <!-- Hohenschwangau Klassik — Bergkonzert Duo KlAkk! -->
-      <a class="card" href="news/hohenschwangau_bergkonzert.html" data-date="2026-07-19" data-featured="2" data-cat="konzert">
+      <a class="card" href="news/hohenschwangau_bergkonzert.html" data-date="2026-07-19" data-featured="3" data-cat="konzert">
         <div class="index">
           <span>2026</span>
           <span class="cat">Konzert</span>
@@ -863,7 +894,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
 
       <!-- Hohenschwangau Klassik 2026 -->
-      <a class="card" href="news/hohenschwangau.html" data-date="2026-07-18" data-featured="3" data-cat="konzert">
+      <a class="card" href="news/hohenschwangau.html" data-date="2026-07-18" data-featured="4" data-cat="konzert">
         <div class="index">
           <span>2026</span>
           <span class="cat">Konzert</span>
@@ -881,7 +912,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
 
       <!-- NEU — Fussissimo Website · studio kimi -->
-      <a class="card" href="news/fussissimo_website.html" data-date="2026-08-03" data-featured="4" data-cat="medien">
+      <a class="card" href="news/fussissimo_website.html" data-date="2026-08-03" data-featured="5" data-cat="medien">
         <div class="index">
           <span>2026</span>
           <span class="cat">Media</span>
@@ -899,7 +930,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
 
       <!-- Duo KlAkk! · Straubing · Musik aus dem Moment heraus -->
-      <a class="card" href="news/straubing2.html" data-date="2026-07-05" data-featured="5" data-cat="konzert">
+      <a class="card" href="news/straubing2.html" data-date="2026-07-05" data-featured="6" data-cat="konzert">
         <div class="index">
           <span>2026</span>
           <span class="cat">Konzert</span>

@@ -118,6 +118,7 @@ const DETAILS = {
     termine: [
       { date: "25. Juli 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Evangelische Kirche", city: "Berg", note: "Das Akkordeon · Instrument des Jahres 2026" },
       { date: "19. September 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Arche", city: "Dittelbrunn", note: "Hauptstr. 64 · 97456 Dittelbrunn", link: "https://termine.mainpost.de/veranstaltung/sonate-fur-akkordeon-2629896.html" },
+      { date: "5. November 2026", time: "19:00 Uhr", title: "Akkordeon Solo", venue: "Martinskirche", city: "Kleingartach", note: "Das Akkordeon · Instrument des Jahres 2026" },
       { date: "19. November 2026", time: "19:00 Uhr", title: "Würzburger Bachtage — Eröffnungsakt", venue: "Bertold-Hummel-Saal im Mozartareal", city: "Würzburg", note: "Opus ultimum et summum · Bach BWV 232 · Vortrag Prof. Dr. Ulrich Konrad", link: "https://www.bachtage-wuerzburg.de/bachtage-2026" },
     ],
     news: [

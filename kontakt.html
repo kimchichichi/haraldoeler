@@ -28,9 +28,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesrcset="image/contact-profile-640.webp 640w, image/contact-profile-800.webp 800w" imagesizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) 260px, 340px">
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=10">
+  <link rel="stylesheet" href="assets/site.css?v=10" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/site.css?v=10"></noscript>
   <!-- Extracted from Projekte.html — design system styles -->
   <style>
 /* HARALD OELER — kontakt */
@@ -233,6 +235,7 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
 }
 .contact-portrait img {
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   filter: grayscale(1) contrast(1.05);
@@ -753,7 +756,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
       <!-- Portrait column -->
       <aside class="contact-portrait">
-        <img src="image/contact-profile.webp" alt="Harald Oeler" loading="lazy" />
+        <img src="image/contact-profile-640.webp" srcset="image/contact-profile-640.webp 640w, image/contact-profile-800.webp 800w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) 260px, 340px" width="800" height="800" alt="Harald Oeler" fetchpriority="high" decoding="async">
       </aside>
 
       <!-- Info + form column -->

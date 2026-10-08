@@ -299,11 +299,11 @@ body.dark .project-chip {
   color: var(--accent, #6b1d1a);
 }
 
-/* News sidebar: Info / Presse / Repertoire / Zum Konzert / Nachbericht — same compact body text */
+/* News sidebar body copy — keep readable article size */
 .article-info .body-text {
-  font-size: 13px !important;
-  font-weight: 400;
-  line-height: 1.55;
+  font-size: 19px !important;
+  font-weight: 300;
+  line-height: 1.6;
 }
 .article-info .concert-title {
   font-size: 16px;

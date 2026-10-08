@@ -424,6 +424,23 @@ body.dark html.bio-initial-en .lang-btn[data-lang="en"] {
   cursor: pointer;
 }
 .bio-dots button.is-active { opacity: 1; }
+.about-images .photo-credit {
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.about-images .photo-credit a {
+  color: var(--muted);
+  border-bottom: 1px solid color-mix(in srgb, var(--muted) 40%, transparent);
+  transition: color .25s ease, border-color .25s ease;
+}
+.about-images .photo-credit a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
 @media (prefers-reduced-motion: reduce) {
   .bio-track, .bio-slide img { transition: none; }
 }
@@ -512,6 +529,7 @@ body.dark .page-meta b { color: var(--paper); }
 body.dark .lang-toggle { border-color: color-mix(in srgb, var(--paper) 18%, transparent); }
 body.dark .lang-btn.active { background: color-mix(in srgb, var(--paper) 15%, transparent); color: var(--paper); }
 body.dark .lang-btn:not(.active):hover { background: color-mix(in srgb, var(--paper) 8%, transparent); color: var(--paper); }
+body.dark .about-images .photo-credit a:hover { color: var(--accent); border-color: var(--accent); }
 body.dark .bio-content p { color: color-mix(in srgb, var(--paper) 82%, transparent); }
 body.dark .bio-content a { color: var(--paper); border-bottom-color: color-mix(in srgb, var(--paper) 28%, transparent); }
 body.dark .bio-highlights { border-top-color: color-mix(in srgb, var(--paper) 12%, transparent); }
@@ -817,17 +835,21 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <p>Unter seinen Schülern befinden sich zahlreiche Preisträger verschiedener Wettbewerbe, darunter vierzehn 1. Bundespreisträger bei Jugend musiziert, 1. Preisträger des Deutschen Akkordeon Musikpreis und Preisträger des Internationalen Akkordeonfestivals in Innsbruck.</p>
       </div><!-- /#bio-de -->
 
-      <!-- English bio -->
+      <!-- English bio — same facts as #bio-de; toggle only switches language + URL -->
       <div class="bio-content" id="bio-en" data-lang="en">
-        <p>Harald Oeler is a German accordionist. He received his first lessons on the accordion as a six-year-old. After completing organ studies, he received instruction on the accordion from Hans Bogner in Gaggenau, Germany in preparation for conservatory study.</p>
+        <p>Already as a teenager trained in composition, organ and piano, Harald Oeler received his decisive musical impulses from Hans Bogner at the music school in Gaggenau. First prizes at national competitions and preparation for the forthcoming music studies formed the ground of an exceptionally valuable period of tuition with Hans Bogner.</p>
 
-        <p>After successfully competing in Jugend musiziert and Jugend komponiert competitions, he began studying with Prof. Hugo Noth. He continued his studies with <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> at the <a href="https://hfm-wuerzburg.de" target="_blank">Würzburg Musikhochschule</a> in 2001, where, upon completing his performing arts degree (künstlerisches Diplom) with distinction in 2005, he was accepted into the master class.</p>
+        <p>After school he studied accordion as his principal subject, first with Prof. Hugo Noth and later with <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank" rel="noopener">Prof. Stefan Hussong</a> at the <a href="https://hfm-wuerzburg.de" target="_blank" rel="noopener">University of Music Würzburg</a>. Those formative years shaped a musician who today works across a broad artistic field of jazz, transcription repertoire and contemporary music.</p>
 
-        <p>During his studies, Harald Oeler won prizes at national and international competitions, including 3rd Prize at the Third International Accordion Competition JAA Tokyo / Japan and 2nd Prize at the 2005 German Music Conservatory Competition. Harald Oeler was awarded a scholarship by the German National Merit Foundation and has received support from <a href="https://livemusicnow.de" target="_blank">"Live Music Now"</a> (Yehudi Menuhin Program for Supporting Young Musicians).</p>
+        <p>Numerous national and international competition successes consolidated, on the way to the master-class diploma in 2008, Harald Oeler’s stage readiness and artistic individuality. A 3rd prize at the 3rd <a href="https://www.npo-jaa.jp/what-s-jaa/" target="_blank" rel="noopener">International Accordion Competition JAA Tokyo / Japan</a> in 2002, a 2nd prize at the major <a href="https://hauspoz.org/arrasate-accordion-competitions/" target="_blank" rel="noopener">International Accordion Competition in Arrasate</a> in 2007, and a 1st prize at the 45th <a href="https://www.accordion-competition.de/" target="_blank" rel="noopener">International Accordion Competition Klingenthal</a> with the <a href="https://nachrichten.idw-online.de/2008/06/12/1-preis-bei-internat-akkordeonwettbewerb-fuer-2-musiker-der-hochschule-fuer-musik-wuerzburg" target="_blank" rel="noopener">accordion duo Animé</a> in 2008 document this vividly.</p>
 
-        <p>Harald Oeler pursues a very active career as a concert artist in Germany and internationally, performing as a soloist and in various ensembles.</p>
+        <p>During his studies he was supported as a scholar of the <a href="https://www.studienstiftung.de" target="_blank" rel="noopener">German Academic Scholarship Foundation</a> and of the <a href="https://livemusicnow.de" target="_blank" rel="noopener">Yehudi Menuhin Foundation “Live Music Now”</a>. Concerts followed at renowned classical and jazz festivals such as Heidelberger Frühling, Literaturfest Niedersachsen, the Sommerliche Musiktage Hitzacker and the 41st Frankfurt Jazz Festival.</p>
 
-        <p>In summer 2012 he taught as a visiting lecturer at Shenzhen Normal University in China. From 2007 to 2019 he held a teaching appointment in accordion at <a href="https://www.lmu.de" target="_blank">Ludwig Maximilian University of Munich</a>. He is also a full-time accordion lecturer and head of the theory and talent class at the music school of the Hofer Symphoniker. At the beginning of the 2026 school year he established accordion as a subject at the <a href="https://musikschule.bayreuth.de/" target="_blank">Städtische Musikschule Bayreuth</a>. From the winter semester 2026/2027 he additionally holds a lectureship in subject didactics, teaching practice and methodology in accordion at the <a href="https://www.hfm-nuernberg.de/personenverzeichnis/profil/harald-oeler" target="_blank">Nuremberg University of Music</a>.</p>
+        <p>Alongside numerous radio recordings, his wide-ranging artistic work is documented on CDs from <a href="https://www.genuin.de/de/0403.php" target="_blank" rel="noopener">Genuin</a>, Thorofon, <a href="https://www.oehmsclassics.de" target="_blank" rel="noopener">OehmsClassics</a> and Dewey Records.</p>
+
+        <p>In summer 2012 Harald Oeler taught as a visiting lecturer at Shenzhen Normal University in China. From 2007 to 2019 he held a teaching appointment in accordion at <a href="https://www.lmu.de" target="_blank" rel="noopener">Ludwig Maximilian University of Munich</a>. He is also a full-time accordion lecturer and head of the theory and talent class at the music school of the Hofer Symphoniker. At the beginning of the 2026 school year he established accordion as a subject at the <a href="https://musikschule.bayreuth.de/" target="_blank" rel="noopener">Städtische Musikschule Bayreuth</a>. From the winter semester 2026/2027 he additionally holds a lectureship in subject didactics, teaching practice and methodology in accordion at the <a href="https://www.hfm-nuernberg.de/personenverzeichnis/profil/harald-oeler" target="_blank" rel="noopener">Nuremberg University of Music</a>.</p>
+
+        <p>Among his students are numerous prize-winners of various competitions, including fourteen first-prize winners at Jugend musiziert at federal level, a first-prize winner of the Deutscher Akkordeon Musikpreis, and prize-winners of the International Accordion Festival in Innsbruck.</p>
       </div><!-- /#bio-en -->
 
     </div><!-- /.about-text -->
@@ -837,19 +859,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <div class="bio-slider" id="bioSlider" aria-roledescription="Karussell" aria-label="Fotos von Harald Oeler">
         <div class="bio-track">
           <div class="bio-slide" style="--bio-focus: top">
-            <img src="image/media/bio/1-1280.webp" srcset="image/media/bio/1-640.webp 640w, image/media/bio/1-1280.webp 1280w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1808" alt="Harald Oeler — solo" fetchpriority="high" decoding="async">
+            <img src="image/media/bio/1-1280.webp" srcset="image/media/bio/1-640.webp 640w, image/media/bio/1-1280.webp 1280w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1808" alt="Harald Oeler — Studio-Porträt vor heller Wand" fetchpriority="high" decoding="async">
           </div>
           <div class="bio-slide">
-            <img data-src="image/media/bio/2-1280.webp" data-srcset="image/media/bio/2-640.webp 640w, image/media/bio/2-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="853" alt="Harald Oeler — solo" decoding="async">
+            <img data-src="image/media/bio/2-1280.webp" data-srcset="image/media/bio/2-640.webp 640w, image/media/bio/2-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="853" alt="Harald Oeler mit Akkordeon im hellen Musikraum mit Paneeltüren" decoding="async">
           </div>
           <div class="bio-slide" style="--bio-focus: 18%">
-            <img data-src="image/media/bio/3-1280.webp" data-srcset="image/media/bio/3-640.webp 640w, image/media/bio/3-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler — solo" decoding="async">
+            <img data-src="image/media/bio/3-1280.webp" data-srcset="image/media/bio/3-640.webp 640w, image/media/bio/3-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler mit Akkordeon auf dunkler Bühne" decoding="async">
           </div>
           <div class="bio-slide" style="--bio-focus: top">
-            <img data-src="image/media/bio/4-1280.webp" data-srcset="image/media/bio/4-640.webp 640w, image/media/bio/4-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler — solo" decoding="async">
+            <img data-src="image/media/bio/4-1280.webp" data-srcset="image/media/bio/4-640.webp 640w, image/media/bio/4-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler mit Akkordeon auf der Bühne · Notenständer und Schlagzeug" decoding="async">
           </div>
           <div class="bio-slide" style="--bio-focus: 20%">
-            <img data-src="image/media/bio/5-1280.webp" data-srcset="image/media/bio/5-640.webp 640w, image/media/bio/5-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler — solo" decoding="async">
+            <img data-src="image/media/bio/5-1280.webp" data-srcset="image/media/bio/5-640.webp 640w, image/media/bio/5-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler mit Akkordeon vor Holzlamellenwand" decoding="async">
           </div>
         </div>
         <button type="button" class="bio-nav prev" aria-label="Vorheriges Foto">
@@ -866,6 +888,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
           <button type="button" aria-label="Foto 5"></button>
         </div>
       </div>
+      <p class="photo-credit">
+        Kat Schulze ·
+        <a href="https://www.schwarzenbach-fotografie.de" target="_blank" rel="noopener">Schwarzenbach Fotografie</a>
+      </p>
       <div class="bio-content visible" data-lang="de">
         <div class="bio-highlights">
           <div class="highlight-item">
@@ -1045,17 +1071,17 @@ body.dark .nav-toggle:hover { opacity: 1; }
       document.querySelectorAll('.bio-content').forEach(function (el) {
         el.classList.toggle('visible', el.dataset.lang === lang);
       });
+      document.documentElement.lang = lang === 'en' ? 'en' : 'de';
+      document.title = lang === 'en'
+        ? 'HARALD OELER — biography'
+        : 'HARALD OELER — biographie';
     }
     function syncBioLangInUrl(lang) {
       try {
-        var u = new URL(window.location.href);
-        if (lang === 'de') {
-          u.searchParams.delete('lang');
-        } else {
-          u.searchParams.set('lang', lang);
-        }
-        u.hash = '';
-        history.replaceState(null, '', u.pathname + u.search);
+        /* One page feeds DE and EN; /bio-en only redirects here. */
+        var path = '/bio';
+        var search = lang === 'en' ? '?lang=en' : '';
+        history.replaceState(null, '', path + search);
       } catch (e) {}
     }
 
@@ -1064,9 +1090,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     var startLang = (params.get('lang') === 'en' || hash === 'en') ? 'en' : 'de';
     applyBioLang(startLang);
     document.documentElement.classList.remove('bio-initial-en');
-    if (startLang === 'en' && (hash === 'en' || params.get('lang') === 'en')) {
-      syncBioLangInUrl('en');
-    }
+    syncBioLangInUrl(startLang);
 
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

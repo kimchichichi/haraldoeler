@@ -323,42 +323,6 @@ body.dark .contact-block:last-of-type { border-bottom-color: color-mix(in srgb, 
 }
 .contact-item a:hover { color: var(--accent); }
 
-/* Social links row */
-.contact-socials {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 4px;
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 8px 0;
-  position: relative;
-  transition: color .25s ease;
-}
-.social-link::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  bottom: 4px;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .35s ease;
-}
-.social-link:hover { color: var(--ink); }
-.social-link:hover::after { transform: scaleX(1); }
-body.dark .social-link:hover { color: var(--paper); }
-
 /* Contact form */
 .contact-form {
   margin-top: 0;
@@ -789,11 +753,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <!-- Info + form column -->
       <div class="contact-info">
 
-        <p class="contact-lang-note">
-          <a href="/bio-en" lang="en">Biography in English</a>
-          · <a href="/bio">Biographie</a>
-        </p>
-
         <!-- Direct contact details -->
         <div class="contact-block">
           <div class="block-label">Direktkontakt</div>
@@ -816,28 +775,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
           <div class="contact-item">
             <span class="ci-label">Standort</span>
             <span class="ci-value">Hof, Deutschland</span>
-          </div>
-        </div>
-
-        <!-- Social links -->
-        <div class="contact-block">
-          <div class="block-label">Social &amp; Streaming</div>
-          <div class="contact-socials">
-            <a class="social-link" href="https://www.facebook.com/harald.oeler" target="_blank" rel="noopener">
-              Facebook
-            </a>
-            <a class="social-link" href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">
-              Instagram
-            </a>
-            <a class="social-link" href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">
-              YouTube
-            </a>
-            <a class="social-link" href="https://de.linkedin.com/in/harald-oeler-8794ab40" target="_blank" rel="noopener">
-              LinkedIn
-            </a>
-            <a class="social-link" href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA?si=LIB75TGVRfeaCtZJyJBd0Q" target="_blank" rel="noopener">
-              Spotify
-            </a>
           </div>
         </div>
 

@@ -536,7 +536,7 @@ body.dark .home-bio-lang a:hover {
   text-wrap: pretty;
 }
 
-/* ─── Featured Projects — horizontal strips ─────────────────────────────────── */
+/* ─── Featured Projects — circular cards ────────────────────────────────────── */
 .home-projects-section {
   max-width: 1480px;
   margin: 0 auto;
@@ -548,73 +548,80 @@ body.dark .home-bio-lang a:hover {
   align-items: baseline;
   justify-content: space-between;
   gap: 16px 24px;
-  margin-bottom: 28px;
+  margin-bottom: 48px;
 }
-.home-proj-list {
+.home-proj-grid {
   list-style: none;
-  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
-}
-.home-proj-row {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1.1fr) minmax(0, 1.4fr) 88px 28px;
-  gap: 20px 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px 40px;
+  justify-items: center;
+}
+.home-proj-card {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 18px 12px;
-  margin: 0 -12px;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
-  min-width: 0;
-  transition: background .2s ease;
-}
-.home-proj-row:hover { background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
-.home-proj-index {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-}
-.home-proj-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(26px, 2.6vw, 34px);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
   min-width: 0;
 }
-.home-proj-cast {
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  min-width: 0;
-  text-wrap: pretty;
-}
-.home-proj-still {
-  width: 88px;
-  aspect-ratio: 4 / 3;
+.home-proj-circle {
+  width: min(100%, 240px);
+  aspect-ratio: 1;
+  border-radius: 50%;
   overflow: hidden;
   background: #1a1816;
-  justify-self: end;
+  position: relative;
 }
-.home-proj-still img {
+.home-proj-circle img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  filter: grayscale(0.85) contrast(1.05);
-  transition: transform .7s cubic-bezier(.2,.7,.1,1), filter .4s ease;
+  filter: grayscale(0.9) contrast(1.05);
+  transition: transform .9s cubic-bezier(.2,.7,.1,1), filter .5s ease;
 }
-.home-proj-row:hover .home-proj-still img {
-  transform: scale(1.04);
-  filter: grayscale(0.35) contrast(1.06);
+.home-proj-card[href="projekte/duoklakk"] .home-proj-circle img {
+  object-position: 35% center;
 }
-.home-proj-arrow {
+.home-proj-card:hover .home-proj-circle img {
+  transform: scale(1.05);
+  filter: grayscale(0.2) contrast(1.06);
+}
+.home-proj-meta {
+  margin-top: 22px;
+}
+.home-proj-index {
+  display: block;
   font-family: var(--sans);
-  font-size: 14px;
-  color: var(--accent);
-  justify-self: end;
-  transition: transform .3s ease;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
-.home-proj-row:hover .home-proj-arrow { transform: translateX(4px); }
+.home-proj-title {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  transition: color .25s ease;
+}
+.home-proj-card:hover .home-proj-title { color: var(--accent); }
+.home-proj-cast {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-wrap: pretty;
+  max-width: 28ch;
+  margin: 0 auto;
+}
 
 /* ─── Footer (extracted from Projekte.html) ─────────────────────────────────── */
 .site-footer {
@@ -640,13 +647,8 @@ body.dark .home-bio-lang a:hover {
   .home-news { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
   .home-news-link { grid-template-columns: minmax(120px, 180px) 1fr; gap: 24px; }
   .home-projects-section { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
-  .home-proj-row {
-    grid-template-columns: 40px minmax(0, 1fr) 72px 20px;
-    gap: 14px 18px;
-  }
-  .home-proj-cast { grid-column: 2 / 3; grid-row: 2; margin-top: -6px; }
-  .home-proj-still { width: 72px; grid-column: 3; grid-row: 1 / 3; }
-  .home-proj-arrow { grid-column: 4; grid-row: 1 / 3; }
+  .home-proj-grid { gap: 36px 20px; }
+  .home-proj-circle { width: min(100%, 200px); }
 }
 
 @media (max-width: 1100px) {
@@ -681,14 +683,11 @@ body.dark .home-bio-lang a:hover {
   .home-news-media { aspect-ratio: 16 / 10; max-width: 420px; }
 
   .home-projects-section { padding: 56px 24px 80px; }
-  .home-proj-row {
-    grid-template-columns: 32px minmax(0, 1fr) 64px 16px;
-    gap: 10px 12px;
-    padding: 14px 0;
+  .home-proj-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-  .home-proj-title { font-size: 24px; }
-  .home-proj-cast { font-size: 11px; letter-spacing: 0.06em; }
-  .home-proj-still { width: 64px; }
+  .home-proj-circle { width: min(72vw, 220px); }
 
 }
   
@@ -728,9 +727,7 @@ body.dark .teaser-cta { color: var(--paper); border-color: color-mix(in srgb, va
 body.dark .teaser-cta:hover { color: var(--ink); background: var(--paper); }
 body.dark .home-news { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
 body.dark .home-news-link:hover .home-news-title { color: var(--accent-soft); }
-body.dark .home-proj-list { border-top-color: color-mix(in srgb, var(--paper) 14%, transparent); }
-body.dark .home-proj-row { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
-body.dark .home-proj-row:hover { background: color-mix(in srgb, var(--paper) 5%, transparent); }
+body.dark .home-proj-card:hover .home-proj-title { color: var(--accent-soft); }
 
 /* ── Mobile nav toggle ─────────────────────────────── */
 .nav-toggle {
@@ -1153,7 +1150,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       </a>
     </section>
 
-    <!-- Featured Projects — horizontal strips -->
+    <!-- Featured Projects — circular cards -->
     <section class="home-projects-section">
       <div class="home-projects-header">
         <p class="eyebrow" style="margin-bottom:0">Projekte</p>
@@ -1163,38 +1160,41 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </a>
       </div>
 
-      <ul class="home-proj-list">
+      <ul class="home-proj-grid">
         <li>
-          <a class="home-proj-row" href="projekte/duoklakk">
-            <span class="home-proj-index">01</span>
-            <span class="home-proj-title">Duo KlAkk!</span>
-            <span class="home-proj-cast">Ji Eun Kim · Klarinette &amp; Akkordeon</span>
-            <span class="home-proj-still" aria-hidden="true">
-              <img src="projekte/image/page/duoklakk-640.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+          <a class="home-proj-card" href="projekte/duoklakk">
+            <span class="home-proj-circle">
+              <img src="projekte/image/page/duoklakk-640.webp" srcset="projekte/image/page/duoklakk-640.webp 640w, projekte/image/page/duoklakk-960.webp 960w" sizes="240px" width="640" height="640" alt="Duo KlAkk! — Ji Eun Kim und Harald Oeler" loading="lazy" decoding="async">
             </span>
-            <span class="home-proj-arrow" aria-hidden="true">→</span>
+            <span class="home-proj-meta">
+              <span class="home-proj-index">01</span>
+              <span class="home-proj-title">Duo KlAkk!</span>
+              <span class="home-proj-cast">Ji Eun Kim · Klarinette &amp; Akkordeon</span>
+            </span>
           </a>
         </li>
         <li>
-          <a class="home-proj-row" href="projekte/duovia">
-            <span class="home-proj-index">02</span>
-            <span class="home-proj-title">Duo ViA!</span>
-            <span class="home-proj-cast">Sinn Yang · Violine &amp; Akkordeon</span>
-            <span class="home-proj-still" aria-hidden="true">
-              <img src="projekte/image/page/duovia-640.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+          <a class="home-proj-card" href="projekte/duovia">
+            <span class="home-proj-circle">
+              <img src="projekte/image/page/duovia-640.webp" srcset="projekte/image/page/duovia-640.webp 640w, projekte/image/page/duovia-960.webp 960w" sizes="240px" width="640" height="640" alt="Duo ViA! — Sinn Yang und Harald Oeler" loading="lazy" decoding="async">
             </span>
-            <span class="home-proj-arrow" aria-hidden="true">→</span>
+            <span class="home-proj-meta">
+              <span class="home-proj-index">02</span>
+              <span class="home-proj-title">Duo ViA!</span>
+              <span class="home-proj-cast">Sinn Yang · Violine &amp; Akkordeon</span>
+            </span>
           </a>
         </li>
         <li>
-          <a class="home-proj-row" href="projekte/fussissimo">
-            <span class="home-proj-index">03</span>
-            <span class="home-proj-title">Fussissimo</span>
-            <span class="home-proj-cast">Gypsy · Ethno · Jazz — Trio</span>
-            <span class="home-proj-still" aria-hidden="true">
-              <img src="projekte/image/page/fussissimo-640.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+          <a class="home-proj-card" href="projekte/fussissimo">
+            <span class="home-proj-circle">
+              <img src="projekte/image/page/fussissimo-640.webp" srcset="projekte/image/page/fussissimo-640.webp 640w, projekte/image/page/fussissimo-960.webp 960w" sizes="240px" width="640" height="640" alt="Trio Fussissimo" loading="lazy" decoding="async">
             </span>
-            <span class="home-proj-arrow" aria-hidden="true">→</span>
+            <span class="home-proj-meta">
+              <span class="home-proj-index">03</span>
+              <span class="home-proj-title">Fussissimo</span>
+              <span class="home-proj-cast">Gypsy · Ethno · Jazz — Trio</span>
+            </span>
           </a>
         </li>
       </ul>

@@ -46,7 +46,7 @@
   --accent:      #6b1d1a;
   --accent-soft: #8a2a26;
   --serif: 'Cormorant Garamond', 'Times New Roman', serif;
-  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:  Avenir, 'Avenir Next', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --mono:  'JetBrains Mono', ui-monospace, monospace;
 }
 
@@ -176,13 +176,8 @@ nav.primary a.active::after {
   padding: 56px 48px 120px;
 }
 
-/* Filter row: category + year on one line */
+/* Filter bar */
 .filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  column-gap: 24px;
-  row-gap: 12px;
   margin-bottom: 56px;
 }
 .filter-bar {
@@ -191,12 +186,6 @@ nav.primary a.active::after {
   margin-bottom: 0;
   border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
   width: fit-content;
-}
-.filter-sep {
-  width: 1px;
-  flex-shrink: 0;
-  align-self: stretch;
-  background: color-mix(in srgb, var(--ink) 18%, transparent);
 }
 .filter-btn {
   appearance: none;
@@ -222,7 +211,6 @@ nav.primary a.active::after {
   color: var(--ink);
 }
 .filter-btn:focus-visible,
-.year-select:focus-visible,
 .news-load-more:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -233,55 +221,6 @@ nav.primary a.active::after {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 56px 40px;
-}
-.year-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  margin-top: 0;
-  margin-left: auto;
-}
-.year-select {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  border-radius: 0;
-  margin: 0;
-  box-sizing: border-box;
-  background-color: transparent;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 7px 28px 7px 20px;
-  cursor: pointer;
-  line-height: inherit;
-  align-self: stretch;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b655c' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 8px 5px;
-  transition: background-color .2s, color .2s;
-}
-.year-select:hover {
-  background-color: color-mix(in srgb, var(--ink) 8%, transparent);
-  color: var(--ink);
-}
-.year-select:focus {
-  outline: none;
-  color: var(--ink);
-}
-.year-select.is-active {
-  background-color: var(--ink);
-  color: var(--paper);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23f4f1ec' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-}
-.year-select option {
-  background: var(--paper);
-  color: var(--ink);
-  text-transform: none;
-  letter-spacing: 0;
 }
 .news-load-more-wrap {
   grid-column: 1 / -1;
@@ -472,9 +411,6 @@ nav.primary a.active::after {
 @media (max-width: 1100px) {
   .news-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
 }
-@media (max-width: 980px) {
-  .filter-sep { display: none; }
-}
 @media (max-width: 720px) {
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
   .page-meta { text-align: left; margin-top: 16px; }
@@ -483,26 +419,6 @@ nav.primary a.active::after {
   .filter-row { width: 100%; }
   .filter-bar { width: 100%; flex-wrap: wrap; }
   .filter-btn { flex: 1 1 auto; text-align: center; border-right: none; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
-  .year-bar .filter-btn,
-  .year-bar .year-select {
-    flex: 0 1 auto;
-    min-width: 4.5em;
-    border-right: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
-    border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
-  }
-  .year-bar .year-select {
-    text-align: center;
-    text-align-last: center;
-  }
-  .year-bar .filter-btn:last-child,
-  .year-bar .year-select:last-child {
-    border-right: none;
-  }
-  body.dark .year-bar .filter-btn,
-  body.dark .year-bar .year-select {
-    border-right-color: color-mix(in srgb, var(--paper) 18%, transparent);
-    border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent);
-  }
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -531,28 +447,9 @@ body.dark nav.primary a:hover  { color: var(--paper); }
 body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
 body.dark .page-meta b { color: var(--paper); }
 body.dark .filter-bar { border-color: color-mix(in srgb, var(--paper) 18%, transparent); }
-body.dark .filter-sep { background: color-mix(in srgb, var(--paper) 18%, transparent); }
 body.dark .filter-btn { border-right-color: color-mix(in srgb, var(--paper) 18%, transparent); }
 body.dark .filter-btn.active { background: color-mix(in srgb, var(--paper) 15%, transparent); color: var(--paper); }
 body.dark .filter-btn:not(.active):hover { background: color-mix(in srgb, var(--paper) 8%, transparent); color: var(--paper); }
-body.dark .year-select {
-  color: color-mix(in srgb, var(--paper) 70%, transparent);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23a8a29a' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-}
-body.dark .year-select:hover {
-  background-color: color-mix(in srgb, var(--paper) 8%, transparent);
-  color: var(--paper);
-}
-body.dark .year-select:focus { color: var(--paper); }
-body.dark .year-select.is-active {
-  background-color: color-mix(in srgb, var(--paper) 15%, transparent);
-  color: var(--paper);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23f4f1ec' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-}
-body.dark .year-select option {
-  background: var(--ink);
-  color: var(--paper);
-}
 body.dark .news-load-more {
   border-color: color-mix(in srgb, var(--paper) 18%, transparent);
   color: color-mix(in srgb, var(--paper) 70%, transparent);
@@ -839,33 +736,11 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
     <div class="filter-row">
       <div class="filter-bar" role="group" aria-label="Kategorie filtern">
-        <button class="filter-btn active" data-filter="all">Alle</button>
-        <button class="filter-btn" data-filter="konzert">Konzert</button>
-        <button class="filter-btn" data-filter="solo">Solo</button>
-        <button class="filter-btn" data-filter="unterricht">Unterricht</button>
-        <button class="filter-btn" data-filter="medien">Medien</button>
-      </div>
-      <div class="filter-sep" aria-hidden="true"></div>
-      <div class="filter-bar year-bar" id="year-bar" role="group" aria-label="Jahr filtern">
-        <button class="filter-btn active" type="button" data-year="all">Alle</button>
-        <button class="filter-btn" type="button" data-year="2026">2026</button>
-        <button class="filter-btn" type="button" data-year="2025">2025</button>
-        <button class="filter-btn" type="button" data-year="2024">2024</button>
-        <button class="filter-btn" type="button" data-year="2023">2023</button>
-        <select class="year-select" aria-label="Ältere Jahre" title="Ältere Jahre">
-          <option value="">Älter…</option>
-          <option value="2019">2019</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-          <option value="2009">2009</option>
-          <option value="2008">2008</option>
-          <option value="2007">2007</option>
-        </select>
+        <button class="filter-btn active" type="button" data-filter="all">Alle</button>
+        <button class="filter-btn" type="button" data-filter="konzert">Konzert</button>
+        <button class="filter-btn" type="button" data-filter="solo">Solo</button>
+        <button class="filter-btn" type="button" data-filter="unterricht">Unterricht</button>
+        <button class="filter-btn" type="button" data-filter="medien">Medien</button>
       </div>
     </div>
 
@@ -1976,8 +1851,8 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <script>
     (function () {
       var INITIAL = 12;
-      var filterBtns = document.querySelectorAll('.filter-bar:not(.year-bar) .filter-btn');
-      var yearBar = document.getElementById('year-bar');
+      var ROWS_PER_LOAD = 2;
+      var filterBtns = document.querySelectorAll('.filter-bar .filter-btn');
       var grid = document.querySelector('.news-grid');
       if (!grid) return;
       var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
@@ -1998,85 +1873,21 @@ body.dark .nav-toggle:hover { opacity: 1; }
       });
       cards.forEach(function (card) { grid.insertBefore(card, loadWrap || null); });
 
-      var expanded = false;
-      var activeYear = 'all';
+      var limit = INITIAL;
 
       function activeFilter() {
-        var active = document.querySelector('.filter-bar:not(.year-bar) .filter-btn.active');
+        var active = document.querySelector('.filter-bar .filter-btn.active');
         return active ? active.dataset.filter : 'all';
       }
 
-      function cardYear(card) {
-        var d = card.getAttribute('data-date');
-        if (d && /^\d{4}/.test(d)) return d.slice(0, 4);
-        var span = card.querySelector('.index span');
-        if (!span) return '';
-        var m = span.textContent.match(/(20\d{2}|19\d{2})/);
-        return m ? m[1] : '';
+      function pageSize() {
+        var cols = getComputedStyle(grid).gridTemplateColumns.split(/\s+/).filter(Boolean).length;
+        if (!cols) cols = 3;
+        return Math.max(2, cols * ROWS_PER_LOAD);
       }
 
-      function buildYearBar() {
-        if (!yearBar) return;
-        var years = {};
-        cards.forEach(function (card) {
-          var y = cardYear(card);
-          if (y) years[y] = true;
-        });
-        var fixedVisible = [2026, 2025, 2024, 2023];
-        var visible = fixedVisible.filter(function (y) {
-          return years[String(y)];
-        }).map(String);
-        var older = Object.keys(years)
-          .filter(function (y) { return visible.indexOf(y) === -1; })
-          .sort(function (a, b) { return b - a; });
-        var html = '<button class="filter-btn active" type="button" data-year="all">Alle</button>';
-        visible.forEach(function (y) {
-          html += '<button class="filter-btn" type="button" data-year="' + y + '">' + y + '</button>';
-        });
-        if (older.length) {
-          html += '<select class="year-select" aria-label="Ältere Jahre" title="Ältere Jahre">';
-          html += '<option value="">Älter…</option>';
-          older.forEach(function (y) {
-            html += '<option value="' + y + '">' + y + '</option>';
-          });
-          html += '</select>';
-        }
-        yearBar.innerHTML = html;
-
-        var yearSelect = yearBar.querySelector('.year-select');
-
-        yearBar.querySelectorAll('.filter-btn').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            yearBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            if (yearSelect) {
-              yearSelect.value = '';
-              yearSelect.classList.remove('is-active');
-            }
-            activeYear = btn.dataset.year || 'all';
-            expanded = false;
-            sync();
-          });
-        });
-
-        if (yearSelect) {
-          yearSelect.addEventListener('change', function () {
-            var val = yearSelect.value;
-            if (!val) {
-              yearSelect.classList.remove('is-active');
-              yearBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-              var alle = yearBar.querySelector('.filter-btn[data-year="all"]');
-              if (alle) alle.classList.add('active');
-              activeYear = 'all';
-            } else {
-              yearBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-              yearSelect.classList.add('is-active');
-              activeYear = val;
-            }
-            expanded = false;
-            sync();
-          });
-        }
+      function resetLimit() {
+        limit = INITIAL;
       }
 
       function sync() {
@@ -2086,15 +1897,12 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
         cards.forEach(function (card) {
           var catOk = filter === 'all' || card.dataset.cat === filter;
-          var year = cardYear(card);
-          var yearOk = activeYear === 'all' || year === activeYear;
-          if (!catOk || !yearOk) {
+          if (!catOk) {
             card.classList.add('hidden');
             return;
           }
           matched += 1;
-          var reveal = expanded || shown < INITIAL;
-          if (reveal) {
+          if (shown < limit) {
             card.classList.remove('hidden');
             shown += 1;
           } else {
@@ -2103,8 +1911,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         });
 
         if (loadWrap) {
-          var showBtn = !expanded && matched > INITIAL;
-          loadWrap.classList.toggle('hidden', !showBtn);
+          loadWrap.classList.toggle('hidden', matched <= limit);
         }
       }
 
@@ -2112,19 +1919,18 @@ body.dark .nav-toggle:hover { opacity: 1; }
         btn.addEventListener('click', function () {
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
-          expanded = false;
+          resetLimit();
           sync();
         });
       });
 
       if (loadBtn) {
         loadBtn.addEventListener('click', function () {
-          expanded = true;
+          limit += pageSize();
           sync();
         });
       }
 
-      buildYearBar();
       sync();
     })();
   </script>

@@ -111,11 +111,7 @@ body {
 }
 
 .head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 18px;
-  padding: 7mm 0 5.5mm;
+  padding: 6mm 0 8mm;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
 }
 .eyebrow {
@@ -126,34 +122,29 @@ body {
   color: var(--muted);
   margin-bottom: 3mm;
 }
+.head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8mm;
+  width: 100%;
+}
 h1 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 54px;
-  line-height: 0.88;
+  font-size: 68px;
+  line-height: 0.86;
   letter-spacing: -0.02em;
 }
 h1 em { font-style: italic; color: var(--accent); }
-.head-meta {
-  text-align: right;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  line-height: 1.75;
-  padding-bottom: 2px;
-}
-.head-meta b { color: var(--ink); font-weight: 500; }
 
 .copy {
-  padding-top: 6mm;
+  padding-top: 5.5mm;
 }
-.copy::after { content: ""; display: block; clear: both; }
 .portrait {
-  float: right;
-  width: 68mm;
-  margin: 0.5mm 0 4.5mm 6mm;
+  position: relative;
+  width: 48mm;
+  margin: 0;
 }
 .portrait img {
   width: 100%;
@@ -165,14 +156,14 @@ h1 em { font-style: italic; color: var(--accent); }
   background: #1a1816;
 }
 .image-caption {
-  margin-top: 2.4mm;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
+  position: absolute;
+  top: calc(100% + 1.6mm);
+  right: 0;
+  left: 0;
   font-family: var(--mono);
   font-size: 8px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: right;
   color: var(--muted);
 }
 .copy p {
@@ -262,21 +253,19 @@ h1 em { font-style: italic; color: var(--accent); }
     </header>
 
     <section class="head">
-      <div>
-        <div class="eyebrow">— Biografie</div>
-        <h1>Harald<br><em>Oeler</em></h1>
-      </div>
-      <div class="head-meta">
-        <div>Akkordeonist</div>
+      <div class="head-row">
+        <div>
+          <div class="eyebrow">— Biografie</div>
+          <h1>Harald<br><em>Oeler</em></h1>
+        </div>
+        <figure class="portrait">
+          <img src="portrait.jpg" alt="Harald Oeler">
+          <figcaption class="image-caption">© Schwarzenbach Fotografie</figcaption>
+        </figure>
       </div>
     </section>
 
     <div class="copy">
-      <figure class="portrait">
-        <img src="portrait.jpg" alt="Harald Oeler">
-        <figcaption class="image-caption"><span>Harald Oeler</span><span>Schwarzenbach Fotografie</span></figcaption>
-      </figure>
-
       <p>Bereits als Jugendlicher ausgebildet in Komposition, Orgel- und Klavierspiel, erhielt Harald Oeler seine entscheidenden musikalischen Impulse von Hans Bogner an der Musikschule Gaggenau. Erste Preise bei nationalen Wettbewerben und die Vorbereitung auf das bevorstehende Musikstudium, waren der Nährboden einer äußerst wertvollen Unterrichtszeit bei Hans Bogner.</p>
 
       <p>Nach dem Abitur folgte ein Musikstudium im Hauptfach Akkordeon, zunächst bei Prof Hugo Noth, später bei Prof. Stefan Hussong an der Hochschule für Musik in Würzburg. Die eindrucksvollen Studienjahre formten einen Musiker, welcher heute in einem breitgefächerten musikalisch-künstlerischen Aufgabenfeld von Jazz, Transkriptionsmusik und zeitgenössischer Musik aktiv ist.</p>

@@ -511,6 +511,21 @@ img { max-width: 100%; display: block; }
     color: #3c3935;
   }
   strong, b { font-weight: 500; }
+
+  /* Side-by-side style rows become column-major in Preview: labels and
+     wrapped second lines drop out of a drag. Stack each item so every word
+     sits in one top-to-bottom reading order. */
+  .styles li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    grid-template-columns: none;
+  }
+  .style-label {
+    letter-spacing: 0.1em;
+    padding-top: 0;
+  }
 }
   </style>
 </head>

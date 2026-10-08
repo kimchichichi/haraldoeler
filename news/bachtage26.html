@@ -76,7 +76,7 @@ nav.primary a.active::after{content:"";position:absolute;left:0;right:0;bottom:-
 .concert-title{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:4px}
 .concert-venue{font-family:var(--sans);font-size:13px;color:var(--muted)}
 .concert-venue a:hover{color:var(--accent)}
-.site-footer{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);padding:32px 48px;font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1fr auto 1fr;gap:24px;max-width:1480px;margin:0 auto}
+.site-footer{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);padding:32px 48px;font-family:var(--sans);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1fr auto 1fr;gap:24px;max-width:1480px;margin:0 auto}
 .site-footer .center{text-align:center}
 .site-footer .right{text-align:right}
 @media(max-width:1100px){.article-body{grid-template-columns:1fr;gap:48px}}
@@ -467,7 +467,9 @@ body.dark .nav-toggle:hover {
         <img src="image/bachtage26/start.webp" alt="Würzburger Bachtage 2026 — Eröffnungsakt mit Harald Oeler und Prof. Dr. Ulrich Konrad" width="1024" height="342" loading="lazy">
         <img src="image/bachtage26/2.webp" alt="Harald Oeler, Porträt zum Eröffnungsakt der Würzburger Bachtage" width="724" height="1024" loading="lazy">
       </div>
-      <img class="partner-logo" src="image/bachtage26/logo.webp" alt="Bachtage Würzburg" width="529" height="707" loading="lazy">
+      <a href="https://www.bachtage-wuerzburg.de/bachtage-2026" target="_blank" rel="noopener">
+        <img class="partner-logo" src="image/bachtage26/logo.webp" alt="Bachtage Würzburg" width="529" height="707" loading="lazy">
+      </a>
     </div>
     <div class="article-info">
       <div class="info-section">
@@ -477,6 +479,7 @@ body.dark .nav-toggle:hover {
           <div class="concert-title">1 · Eröffnungsakt</div>
           <div class="concert-venue"><a href="https://www.google.com/maps/dir//Mozartareal+W%C3%BCrzburg" target="_blank" rel="noopener">Bertold-Hummel-Saal im Mozartareal</a> · Würzburg</div>
         </div>
+        <p class="ticket-link"><a href="https://www.bachtage-wuerzburg.de/bachtage-2026" target="_blank" rel="noopener">Mehr Infos</a></p>
       </div>
       <div class="info-section">
         <div class="info-label">Programm</div>
@@ -570,6 +573,6 @@ body.dark .nav-toggle:hover {
       });
     })();
   </script>
-  <script src="../assets/site.js?v=18" defer></script>
+  <script src="../assets/site.js?v=22" defer></script>
 </body>
 </html>

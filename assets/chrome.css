@@ -36,7 +36,10 @@ a.card:focus-visible,
   outline-offset: 3px;
 }
 
-.site-footer { align-items: center; }
+.site-footer {
+  align-items: center;
+  font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
+}
 .site-footer .left {
   display: flex;
   flex-direction: column;
@@ -116,7 +119,7 @@ body.dark .project-chip {
   color: var(--accent, #6b1d1a);
 }
 
-/* News sidebar: keep Info / Repertoire / Zum Konzert / Nachbericht etc. compact */
+/* News sidebar: Info / Presse / Repertoire / Zum Konzert / Nachbericht — same compact body text */
 .article-info .info-label {
   font-size: 9px;
   letter-spacing: 0.16em;
@@ -140,6 +143,7 @@ body.dark .project-chip {
 .article-info .cast-item {
   font-size: 13px;
 }
+
 .partner-logo {
   display: block;
   align-self: flex-start;

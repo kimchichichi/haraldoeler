@@ -176,41 +176,6 @@ nav.primary a.active::after {
   padding: 56px 48px 120px;
 }
 
-/* Filter bar */
-.filter-row {
-  margin-bottom: 56px;
-}
-.filter-bar {
-  display: flex;
-  gap: 0;
-  margin-bottom: 0;
-  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
-  width: fit-content;
-}
-.filter-btn {
-  appearance: none;
-  border: none;
-  background: transparent;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 7px 20px;
-  cursor: pointer;
-  transition: background .2s, color .2s;
-  border-right: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
-}
-.filter-btn:last-child { border-right: none; }
-.filter-btn.active {
-  background: var(--ink);
-  color: var(--paper);
-}
-.filter-btn:not(.active):hover {
-  background: color-mix(in srgb, var(--ink) 8%, transparent);
-  color: var(--ink);
-}
-.filter-btn:focus-visible,
 .news-load-more:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -393,7 +358,7 @@ nav.primary a.active::after {
 .site-footer {
   border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   padding: 32px 48px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -416,9 +381,6 @@ nav.primary a.active::after {
   .page-meta { text-align: left; margin-top: 16px; }
   .news-wrap { padding: 40px 24px 80px; }
   .news-grid { grid-template-columns: 1fr; gap: 40px; }
-  .filter-row { width: 100%; }
-  .filter-bar { width: 100%; flex-wrap: wrap; }
-  .filter-btn { flex: 1 1 auto; text-align: center; border-right: none; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -446,10 +408,6 @@ body.dark nav.primary a.active { color: var(--paper); }
 body.dark nav.primary a:hover  { color: var(--paper); }
 body.dark .page-head { border-bottom-color: color-mix(in srgb, var(--paper) 14%, transparent); }
 body.dark .page-meta b { color: var(--paper); }
-body.dark .filter-bar { border-color: color-mix(in srgb, var(--paper) 18%, transparent); }
-body.dark .filter-btn { border-right-color: color-mix(in srgb, var(--paper) 18%, transparent); }
-body.dark .filter-btn.active { background: color-mix(in srgb, var(--paper) 15%, transparent); color: var(--paper); }
-body.dark .filter-btn:not(.active):hover { background: color-mix(in srgb, var(--paper) 8%, transparent); color: var(--paper); }
 body.dark .news-load-more {
   border-color: color-mix(in srgb, var(--paper) 18%, transparent);
   color: color-mix(in srgb, var(--paper) 70%, transparent);
@@ -733,16 +691,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
   <!-- ═══ PAGE CONTENT HERE ════════════════════════════════════════════════ -->
   <main id="main" class="news-wrap">
-
-    <div class="filter-row">
-      <div class="filter-bar" role="group" aria-label="Kategorie filtern">
-        <button class="filter-btn active" type="button" data-filter="all">Alle</button>
-        <button class="filter-btn" type="button" data-filter="konzert">Konzert</button>
-        <button class="filter-btn" type="button" data-filter="solo">Solo</button>
-        <button class="filter-btn" type="button" data-filter="unterricht">Unterricht</button>
-        <button class="filter-btn" type="button" data-filter="medien">Medien</button>
-      </div>
-    </div>
 
     <div class="news-grid">
 
@@ -1852,7 +1800,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     (function () {
       var INITIAL = 12;
       var ROWS_PER_LOAD = 2;
-      var filterBtns = document.querySelectorAll('.filter-bar .filter-btn');
       var grid = document.querySelector('.news-grid');
       if (!grid) return;
       var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
@@ -1875,33 +1822,15 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
       var limit = INITIAL;
 
-      function activeFilter() {
-        var active = document.querySelector('.filter-bar .filter-btn.active');
-        return active ? active.dataset.filter : 'all';
-      }
-
       function pageSize() {
         var cols = getComputedStyle(grid).gridTemplateColumns.split(/\s+/).filter(Boolean).length;
         if (!cols) cols = 3;
         return Math.max(2, cols * ROWS_PER_LOAD);
       }
 
-      function resetLimit() {
-        limit = INITIAL;
-      }
-
       function sync() {
-        var filter = activeFilter();
         var shown = 0;
-        var matched = 0;
-
         cards.forEach(function (card) {
-          var catOk = filter === 'all' || card.dataset.cat === filter;
-          if (!catOk) {
-            card.classList.add('hidden');
-            return;
-          }
-          matched += 1;
           if (shown < limit) {
             card.classList.remove('hidden');
             shown += 1;
@@ -1909,20 +1838,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
             card.classList.add('hidden');
           }
         });
-
         if (loadWrap) {
-          loadWrap.classList.toggle('hidden', matched <= limit);
+          loadWrap.classList.toggle('hidden', cards.length <= limit);
         }
       }
-
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          filterBtns.forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          resetLimit();
-          sync();
-        });
-      });
 
       if (loadBtn) {
         loadBtn.addEventListener('click', function () {
@@ -1942,6 +1861,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     </svg>
   </button>
 
-  <script src="assets/site.js?v=18" defer></script>
+  <script src="assets/site.js?v=22" defer></script>
 </body>
 </html>

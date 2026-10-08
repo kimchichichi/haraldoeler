@@ -536,7 +536,7 @@ body.dark .home-bio-lang a:hover {
   text-wrap: pretty;
 }
 
-/* ─── Featured Projects ─────────────────────────────────────────────────────── */
+/* ─── Featured Projects — horizontal strips ─────────────────────────────────── */
 .home-projects-section {
   max-width: 1480px;
   margin: 0 auto;
@@ -548,135 +548,73 @@ body.dark .home-bio-lang a:hover {
   align-items: baseline;
   justify-content: space-between;
   gap: 16px 24px;
-  margin-bottom: 48px;
+  margin-bottom: 28px;
 }
-.home-projects-grid {
+.home-proj-list {
+  list-style: none;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.home-proj-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px;
+  grid-template-columns: 48px minmax(0, 1.1fr) minmax(0, 1.4fr) 88px 28px;
+  gap: 20px 28px;
+  align-items: center;
+  padding: 18px 12px;
+  margin: 0 -12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  min-width: 0;
+  transition: background .2s ease;
 }
-.home-projects-more {
-  margin-top: 40px;
+.home-proj-row:hover { background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
+.home-proj-index {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--muted);
 }
-.home-projects-more a {
-  color: var(--ink);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
-  transition: color .2s ease, border-color .2s ease;
-}
-.home-projects-more a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
-/* Project card (from Projekte.html) */
-.proj-card {
-  display: block;
-  position: relative;
-  cursor: pointer;
+.home-proj-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   min-width: 0;
 }
-.proj-card .card-index {
+.home-proj-cast {
   font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   color: var(--muted);
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  min-width: 0;
+  text-wrap: pretty;
 }
-.proj-card .card-index .card-role {
-  text-align: right;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-.proj-card .image-wrap {
-  margin-top: 14px;
-  aspect-ratio: 4 / 5;
+.home-proj-still {
+  width: 88px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #1a1816;
-  position: relative;
+  justify-self: end;
 }
-.proj-card .image-wrap img {
+.home-proj-still img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position:  center;
   display: block;
-  filter: grayscale(1) contrast(1.05);
-  transition: transform 1.2s cubic-bezier(.2,.7,.1,1), filter .6s ease;
-  transform-origin: center;
+  filter: grayscale(0.85) contrast(1.05);
+  transition: transform .7s cubic-bezier(.2,.7,.1,1), filter .4s ease;
 }
-
-/* Per-card crop tweak: DUO KlAkk! */
-.proj-card[href="projekte/duoklakk"] .image-wrap img {
-  object-position: 35% center;
-}
-.proj-card:hover .image-wrap img {
+.home-proj-row:hover .home-proj-still img {
   transform: scale(1.04);
-  filter: grayscale(1) contrast(1.12) brightness(1.02);
+  filter: grayscale(0.35) contrast(1.06);
 }
-.proj-card .image-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(14,13,12,0.55) 100%);
-  pointer-events: none;
-}
-.proj-card .card-meta {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px 24px;
-  align-items: baseline;
-}
-.proj-card h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 38px;
-  line-height: 1;
-  letter-spacing: -0.005em;
-}
-.proj-card .card-role-tag {
+.home-proj-arrow {
   font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.proj-card p.subtitle {
-  grid-column: 1 / -1;
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1.35;
-  color: color-mix(in srgb, var(--ink) 88%, transparent);
-  max-width: 38ch;
-  text-wrap: pretty;
-  margin-bottom: 4px;
-}
-.proj-card .arrow {
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 14px;
   color: var(--accent);
-  white-space: nowrap;
+  justify-self: end;
+  transition: transform .3s ease;
 }
-.proj-card .arrow svg { transition: transform .35s ease; }
-.proj-card:hover .arrow svg { transform: translateX(6px); }
+.home-proj-row:hover .home-proj-arrow { transform: translateX(4px); }
 
 /* ─── Footer (extracted from Projekte.html) ─────────────────────────────────── */
 .site-footer {
@@ -702,20 +640,13 @@ body.dark .home-bio-lang a:hover {
   .home-news { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
   .home-news-link { grid-template-columns: minmax(120px, 180px) 1fr; gap: 24px; }
   .home-projects-section { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
-  .home-projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(24px, 3.5vw, 40px);
+  .home-proj-row {
+    grid-template-columns: 40px minmax(0, 1fr) 72px 20px;
+    gap: 14px 18px;
   }
-  /* Three cards in two columns: third card spans the full row under the first two. */
-  .home-projects-grid .proj-card:nth-child(3) {
-    grid-column: 1 / -1;
-    width: 100%;
-    max-width: none;
-    justify-self: stretch;
-  }
-  .home-projects-grid .proj-card:nth-child(3) .image-wrap {
-    aspect-ratio: 16 / 9;
-  }
+  .home-proj-cast { grid-column: 2 / 3; grid-row: 2; margin-top: -6px; }
+  .home-proj-still { width: 72px; grid-column: 3; grid-row: 1 / 3; }
+  .home-proj-arrow { grid-column: 4; grid-row: 1 / 3; }
 }
 
 @media (max-width: 1100px) {
@@ -750,16 +681,14 @@ body.dark .home-bio-lang a:hover {
   .home-news-media { aspect-ratio: 16 / 10; max-width: 420px; }
 
   .home-projects-section { padding: 56px 24px 80px; }
-  .home-projects-grid { grid-template-columns: 1fr; }
-  .home-projects-grid .proj-card:nth-child(3) {
-    grid-column: auto;
-    max-width: none;
-    width: auto;
-    justify-self: stretch;
+  .home-proj-row {
+    grid-template-columns: 32px minmax(0, 1fr) 64px 16px;
+    gap: 10px 12px;
+    padding: 14px 0;
   }
-  .home-projects-grid .proj-card:nth-child(3) .image-wrap {
-    aspect-ratio: 4 / 5;
-  }
+  .home-proj-title { font-size: 24px; }
+  .home-proj-cast { font-size: 11px; letter-spacing: 0.06em; }
+  .home-proj-still { width: 64px; }
 
 }
   
@@ -797,11 +726,11 @@ body.dark .hc-item { border-color: color-mix(in srgb, var(--paper) 10%, transpar
 body.dark .home-pullquote { color: color-mix(in srgb, var(--paper) 85%, transparent); }
 body.dark .teaser-cta { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 30%, transparent); }
 body.dark .teaser-cta:hover { color: var(--ink); background: var(--paper); }
-body.dark .proj-card p.subtitle { color: color-mix(in srgb, var(--paper) 72%, transparent); }
-body.dark .proj-card .card-index { border-bottom-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .home-news { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
 body.dark .home-news-link:hover .home-news-title { color: var(--accent-soft); }
-body.dark .home-projects-more a:hover { color: var(--paper); border-bottom-color: var(--paper); }
+body.dark .home-proj-list { border-top-color: color-mix(in srgb, var(--paper) 14%, transparent); }
+body.dark .home-proj-row { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .home-proj-row:hover { background: color-mix(in srgb, var(--paper) 5%, transparent); }
 
 /* ── Mobile nav toggle ─────────────────────────────── */
 .nav-toggle {
@@ -1224,87 +1153,84 @@ body.dark .nav-toggle:hover { opacity: 1; }
       </a>
     </section>
 
-    <!-- Featured Projects -->
+    <!-- Featured Projects — horizontal strips -->
     <section class="home-projects-section">
       <div class="home-projects-header">
-        <p class="eyebrow" style="margin-bottom:0">Aktuelle Projekte</p>
+        <p class="eyebrow" style="margin-bottom:0">Projekte</p>
         <a class="teaser-cta" href="/projekte">
           Alle Projekte
           <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
       </div>
 
-      <div class="home-projects-grid">
-
-        <!-- DUO KlAkk! -->
-        <a class="proj-card" href="projekte/duoklakk">
-          <div class="card-index">
-            <span>01</span>
-            <span class="card-role">Duo · Kammermusik</span>
-          </div>
-          <div class="image-wrap">
-            <img src="projekte/image/page/duoklakk-640.webp" srcset="projekte/image/page/duoklakk-640.webp 640w, projekte/image/page/duoklakk-960.webp 960w" sizes="(max-width: 1100px) calc(100vw - 48px), 440px" width="960" height="640" alt="DUO KlAkk!" loading="lazy" decoding="async">
-          </div>
-          <div class="card-meta">
-            <h2>Duo KlAkk!</h2>
-            <span class="card-role-tag">Klarinette &amp; Akkordeon</span>
-            <p class="subtitle">Ji Eun Kim &amp; Harald Oeler — zwischen Bach und Neuem</p>
-          </div>
-          <div class="arrow">
-            mehr
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
-          </div>
-        </a>
-
-        <!-- Duo ViA! -->
-        <a class="proj-card" href="projekte/duovia">
-          <div class="card-index">
-            <span>02</span>
-            <span class="card-role">Duo · Kammermusik</span>
-          </div>
-          <div class="image-wrap">
-            <img src="projekte/image/page/duovia-640.webp" srcset="projekte/image/page/duovia-640.webp 640w, projekte/image/page/duovia-960.webp 960w" sizes="(max-width: 1100px) calc(100vw - 48px), 440px" width="960" height="540" alt="Duo ViA!" loading="lazy" decoding="async">
-          </div>
-          <div class="card-meta">
-            <h2>Duo ViA!</h2>
-            <span class="card-role-tag">Violine &amp; Akkordeon</span>
-            <p class="subtitle">Sinn Yang &amp; Harald Oeler — Musik aus allen Kulturen</p>
-          </div>
-          <div class="arrow">
-            mehr
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
-          </div>
-        </a>
-
-        <!-- FUSSISSIMO -->
-        <a class="proj-card" href="projekte/fussissimo">
-          <div class="card-index">
-            <span>03</span>
-            <span class="card-role">Ensemble · Jazz &amp; World</span>
-          </div>
-          <div class="image-wrap">
-            <img src="projekte/image/page/fussissimo-640.webp" srcset="projekte/image/page/fussissimo-640.webp 640w, projekte/image/page/fussissimo-960.webp 960w" sizes="(max-width: 1100px) calc(100vw - 48px), 440px" width="960" height="639" alt="FUSSISSIMO" loading="lazy" decoding="async">
-          </div>
-          <div class="card-meta">
-            <h2>FUSSISSIMO</h2>
-            <span class="card-role-tag">Gypsy · Ethno · Jazz</span>
-            <p class="subtitle">Energie, Virtuosität und die Freiheit der Improvisation</p>
-          </div>
-          <div class="arrow">
-            mehr
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
-          </div>
-        </a>
-
-      </div>
-      <p class="home-projects-more">
-        auch:
-        <a href="projekte/solo">Solo</a>
-        ·
-        <a href="projekte/orchester">Orchester</a>
-        ·
-        <a href="projekte/hof">Hof</a>
-      </p>
+      <ul class="home-proj-list">
+        <li>
+          <a class="home-proj-row" href="projekte/solo">
+            <span class="home-proj-index">01</span>
+            <span class="home-proj-title">Solo</span>
+            <span class="home-proj-cast">Akkordeon solo — Klassik, Neue Musik und Jazz</span>
+            <span class="home-proj-still" aria-hidden="true">
+              <img src="projekte/image/page/solo.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="home-proj-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="home-proj-row" href="projekte/orchester">
+            <span class="home-proj-index">02</span>
+            <span class="home-proj-title">Orchester</span>
+            <span class="home-proj-cast">Akkordeon mit Sinfonie- und Kammerorchester</span>
+            <span class="home-proj-still" aria-hidden="true">
+              <img src="projekte/image/page/orchester.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="home-proj-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="home-proj-row" href="projekte/fussissimo">
+            <span class="home-proj-index">03</span>
+            <span class="home-proj-title">Fussissimo</span>
+            <span class="home-proj-cast">Gypsy · Ethno · Jazz — Trio</span>
+            <span class="home-proj-still" aria-hidden="true">
+              <img src="projekte/image/page/fussissimo-640.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="home-proj-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="home-proj-row" href="projekte/duovia">
+            <span class="home-proj-index">04</span>
+            <span class="home-proj-title">Duo ViA!</span>
+            <span class="home-proj-cast">Sinn Yang · Violine &amp; Akkordeon</span>
+            <span class="home-proj-still" aria-hidden="true">
+              <img src="projekte/image/page/duovia-640.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="home-proj-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="home-proj-row" href="projekte/duoklakk">
+            <span class="home-proj-index">05</span>
+            <span class="home-proj-title">Duo KlAkk!</span>
+            <span class="home-proj-cast">Ji Eun Kim · Klarinette &amp; Akkordeon</span>
+            <span class="home-proj-still" aria-hidden="true">
+              <img src="projekte/image/page/duoklakk-640.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="home-proj-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="home-proj-row" href="projekte/hof">
+            <span class="home-proj-index">06</span>
+            <span class="home-proj-title">Hofer Musikscene</span>
+            <span class="home-proj-cast">Projekte und Begegnungen im Hofer Land</span>
+            <span class="home-proj-still" aria-hidden="true">
+              <img src="projekte/image/page/hof.webp" width="176" height="132" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="home-proj-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
     </section>
 
   </main>

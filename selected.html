@@ -845,8 +845,8 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   nav.primary.open::before {
     content: "— navigation";
     font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0.22em;
+    font-size: 10px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 16px;
@@ -879,11 +879,11 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
     box-shadow: 4px 0 48px rgba(0, 0, 0, 0.35);
   }
   nav.primary.open a {
-    font-family: var(--serif);
-    font-size: clamp(26px, 6.2vw, 34px);
+    font-family: var(--sans);
+    font-size: clamp(18px, 4.5vw, 22px);
     font-weight: 400;
-    letter-spacing: -0.01em;
-    text-transform: lowercase;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: color-mix(in srgb, var(--ink) 72%, transparent);
     padding: 8px 0;
     min-height: 44px;
@@ -917,7 +917,7 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
   }
   nav.primary.open a.active {
     color: var(--accent);
-    font-style: italic;
+    font-style: normal;
   }
   nav.primary.open a.active::before {
     opacity: 1;
@@ -983,7 +983,7 @@ body.dark .tour-date-item { border-bottom-color: color-mix(in srgb, var(--paper)
 
 @media (max-width: 720px) and (max-height: 560px) {
   nav.primary.open { padding-top: max(64px, calc(env(safe-area-inset-top) + 48px)); }
-  nav.primary.open a { font-size: 24px; padding: 4px 0; min-height: 40px; }
+  nav.primary.open a { font-size: 16px; padding: 4px 0; min-height: 40px; }
 }
 
 /* ---------- Projects Sub-navigation ---------- */
@@ -1148,6 +1148,6 @@ body.dark .scroll-top{
     })();
   </script>
 
-  <script src="assets/site.js?v=24" defer></script>
+  <script src="assets/site.js?v=25" defer></script>
 </body>
 </html>

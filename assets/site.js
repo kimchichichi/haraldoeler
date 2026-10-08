@@ -158,7 +158,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=7';
+    link.href = sitePrefix() + 'assets/chrome.css?v=8';
     (document.body || document.head).appendChild(link);
   }
 

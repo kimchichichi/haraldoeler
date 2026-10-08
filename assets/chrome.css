@@ -116,28 +116,19 @@ body.dark .project-chip {
   color: var(--accent, #6b1d1a);
 }
 
-/* News sidebar: keep Info / Presse / Repertoire / Zum Konzert / Nachbericht etc. compact */
+/* News sidebar: keep Info / Repertoire / Zum Konzert / Nachbericht etc. compact */
 .article-info .info-label {
   font-size: 9px;
   letter-spacing: 0.16em;
 }
-.article-info .body-text,
-.article-info .press-quote {
-  font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
+.article-info .body-text {
   font-size: 14px;
   font-weight: 400;
-  font-style: normal;
   line-height: 1.55;
-  color: color-mix(in srgb, var(--ink, #0e0d0c) 85%, transparent);
 }
-.article-info .press-quote + .press-quote {
-  margin-top: 16px;
-}
-.article-info .info-source,
-.article-info .press-quote cite {
+.article-info .info-source {
   font-size: 10px;
   letter-spacing: 0.14em;
-  margin-top: 14px;
 }
 .article-info .concert-title {
   font-size: 16px;
@@ -148,9 +139,6 @@ body.dark .project-chip {
 }
 .article-info .cast-item {
   font-size: 13px;
-}
-body.dark .article-info .press-quote {
-  color: color-mix(in srgb, var(--paper, #f4f1ec) 85%, transparent);
 }
 .partner-logo {
   display: block;

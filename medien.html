@@ -225,7 +225,15 @@ body.dark .section-rule { background: color-mix(in srgb, var(--paper) 18%, trans
 .card {
   display: block;
   position: relative;
-  cursor: pointer;
+}
+.card h2 a {
+  color: inherit;
+}
+.card h2 a:hover { color: var(--accent); }
+.card h2 a:focus-visible,
+.card-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .card .index {
   font-family: var(--mono);
@@ -254,6 +262,7 @@ body.dark .section-rule { background: color-mix(in srgb, var(--paper) 18%, trans
   position: relative;
   margin-top: 14px;
 }
+.card .image-wrap:has(.sp-preview-btn) { cursor: pointer; }
 .card .image-wrap img {
   width: 100%;
   height: 100%;
@@ -297,6 +306,13 @@ body.dark .section-rule { background: color-mix(in srgb, var(--paper) 18%, trans
   color: color-mix(in srgb, var(--ink) 88%, transparent);
   max-width: 38ch;
   text-wrap: pretty;
+}
+.card p.edition {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 .card .arrow {
   margin-top: 14px;
@@ -414,6 +430,15 @@ body.dark .section-rule { background: color-mix(in srgb, var(--paper) 18%, trans
 .photo-credit a:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+.photo-note {
+  margin: -28px 0 40px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
 }
 
 /* Photo grid — same image treatment as Projekte.html cards */
@@ -604,46 +629,55 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
   .lb-prev { left: 8px; }
   .lb-next { right: 8px; }
-  .filter-bar { padding: 32px 24px 0; }
+  .filter-row { padding: 32px 24px 0; }
 }
 
-/* ---------- Filter bar ---------- */
-.filter-bar {
+/* ---------- Filter bar (same control as News) ---------- */
+.filter-row {
   max-width: 1480px;
   margin: 0 auto;
   padding: 48px 48px 0;
-  display: flex;
-  align-items: flex-end;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
-  position: relative;
 }
-body.dark .filter-bar { border-bottom-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+.filter-bar {
+  display: flex;
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
 .filter-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
-  background: none;
-  border: none;
+  padding: 0 18px;
+  min-height: 44px;
   cursor: pointer;
-  padding: 16px 32px 14px 0;
-  position: relative;
-  transition: color .25s ease;
+  transition: background .2s, color .2s;
+  border-right: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
 }
-.filter-btn:hover { color: var(--ink); }
-body.dark .filter-btn:hover { color: var(--paper); }
-.filter-btn.active { color: var(--ink); }
-body.dark .filter-btn.active { color: var(--paper); }
-.filter-btn.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 32px;
-  bottom: 0;
-  height: 2px;
-  background: var(--accent);
-  z-index: 1;
+.filter-btn:last-child { border-right: none; }
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.filter-btn:not(.active):hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  color: var(--ink);
+}
+body.dark .filter-bar { border-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .filter-btn { border-right-color: color-mix(in srgb, var(--paper) 18%, transparent); }
+body.dark .filter-btn.active { background: var(--paper); color: var(--ink); }
+body.dark .filter-btn:not(.active):hover {
+  background: color-mix(in srgb, var(--paper) 8%, transparent);
+  color: var(--paper);
+}
+@media (max-width: 720px) {
+  .filter-row { padding: 32px 24px 0; }
+  .filter-bar { max-width: 100%; }
+  .filter-btn { padding: 0 14px; }
 }
   
 /* ── Theme toggle ──────────────────────────────────── */
@@ -921,21 +955,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
       </div>
       <div class="page-meta">
         <b>9</b> Veröffentlichungen<br>
-        Alben · EPs · Kollaborationen<br>
-        <br>
-        <b>Fotografie</b><br>
-        Kat Schulze<br>
-        Schwarzenbach Fotografie
+        Alben · EPs · Kollaborationen
       </div>
     </div>
 
     <!-- PAGE CONTENT HERE -->
 
     <!-- Filter bar -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="alle">Alle</button>
-      <button class="filter-btn" data-filter="disc">Discographie</button>
-      <button class="filter-btn" data-filter="foto">Fotos</button>
+    <div class="filter-row">
+      <div class="filter-bar" role="group" aria-label="Medien filtern">
+        <button class="filter-btn active" data-filter="alle" type="button">Alle</button>
+        <button class="filter-btn" data-filter="disc" type="button">Discographie</button>
+        <button class="filter-btn" data-filter="foto" type="button">Fotos</button>
+      </div>
     </div>
 
     <div id="discSection">
@@ -948,7 +980,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <div class="disc-grid">
 
       <!-- 01 — 8 Jahreszeiten -->
-      <a class="card" href="https://www.oehmsclassics.de/artikel.aspx?voeid=11598&sprache=de" rel="noopener"
+      <article class="card"
          data-spotify="https://open.spotify.com/embed/album/2R13eJFfucYq5JX0kbZxK7?utm_source=generator"
          data-spotify-link="https://open.spotify.com/album/2R13eJFfucYq5JX0kbZxK7">
         <div class="index">
@@ -957,6 +989,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="image-wrap">
           <img src="image/discography/view/1-960.webp" srcset="image/discography/view/1-640.webp 640w, image/discography/view/1-960.webp 960w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(50vw - 68px), 420px" width="960" height="952" alt="8 Jahreszeiten / 8 Seasons" fetchpriority="high" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -969,20 +1002,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Antonio Vivaldi &amp; Astor Piazzolla:<br>8 Jahreszeiten / 8 Seasons</h2>
+          <h2><a href="https://www.oehmsclassics.de/artikel.aspx?voeid=11598&amp;sprache=de" target="_blank" rel="noopener">Antonio Vivaldi &amp; Astor Piazzolla:<br>8 Jahreszeiten / 8 Seasons</a></h2>
           <p class="subtitle">DuoVia!: Harald Oeler &amp; Sinn Yang</p>
+          <p class="edition">OehmsClassics · 2014</p>
         </div>
-        <span class="arrow">
-          mehr infos · spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://www.oehmsclassics.de/artikel.aspx?voeid=11598&amp;sprache=de" target="_blank" rel="noopener">Beim Label</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://open.spotify.com/album/2R13eJFfucYq5JX0kbZxK7" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 02 — Pictures at an Exhibition -->
-      <a class="card" href="https://www.genuin.de/gen87523-pictures-at-an-exhibition" rel="noopener"
+      <article class="card"
          data-spotify="https://open.spotify.com/embed/album/6iE9xs5JK1EYZEthUNs93A?utm_source=generator"
          data-spotify-link="https://open.spotify.com/album/6iE9xs5JK1EYZEthUNs93A">
         <div class="index">
@@ -991,6 +1023,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/2.webp" width="500" height="498" alt="Pictures at an Exhibition" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1003,20 +1036,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Pictures at an Exhibition</h2>
+          <h2><a href="https://www.genuin.de/gen87523-pictures-at-an-exhibition" target="_blank" rel="noopener">Pictures at an Exhibition</a></h2>
           <p class="subtitle">Modest Mussorgsky - Pictures at an Exhibition Sofia Gubaidulina - Et expecto</p>
+          <p class="edition">GENUIN · 2007</p>
         </div>
-        <span class="arrow">
-          mehr infos · spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://www.genuin.de/gen87523-pictures-at-an-exhibition" target="_blank" rel="noopener">Beim Label</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://open.spotify.com/album/6iE9xs5JK1EYZEthUNs93A" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 03 — Sinn Yang, Violin -->
-      <a class="card" href="https://www.naxos.com/CatalogueDetail/?id=OC729" target="_blank" rel="noopener"
+      <article class="card"
          data-spotify="https://open.spotify.com/embed/track/1IN4tB0kw6RFMCooRCFrTB?utm_source=generator"
          data-spotify-link="https://open.spotify.com/track/1IN4tB0kw6RFMCooRCFrTB">
         <div class="index">
@@ -1025,6 +1057,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/3.webp" width="600" height="598" alt="Sinn Yang, Violin" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1037,20 +1070,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Sinn Yang, Violin</h2>
+          <h2><a href="https://www.naxos.com/CatalogueDetail/?id=OC729" target="_blank" rel="noopener">Sinn Yang, Violin</a></h2>
           <p class="subtitle">Le Grand Tango for Cello &amp; Piano · Arr. S.Gubaiduina &amp; Harald Oeler</p>
+          <p class="edition">Oehms Classics · 2009</p>
         </div>
-        <span class="arrow">
-          mehr infos · spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://www.naxos.com/CatalogueDetail/?id=OC729" target="_blank" rel="noopener">Beim Label</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://open.spotify.com/track/1IN4tB0kw6RFMCooRCFrTB" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 04 — En Avril -->
-      <a class="card" href="https://www.marcoboettger.de/cds/" target="_blank" rel="noopener">
+      <article class="card">
         <div class="index">
           <span>04</span>
           <span class="role">Quartett · Jazz</span>
@@ -1059,27 +1091,25 @@ body.dark .nav-toggle:hover { opacity: 1; }
           <img loading="lazy" src="image/discography/view/4-960.webp" srcset="image/discography/view/4-640.webp 640w, image/discography/view/4-960.webp 960w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(50vw - 68px), 420px" width="960" height="858" alt="En Avril" decoding="async">
         </div>
         <div class="meta">
-          <h2>En Avril</h2>
+          <h2><a href="https://www.marcoboettger.de/cds/" target="_blank" rel="noopener">En Avril</a></h2>
           <p class="subtitle">Marco Böttger Quartett · Eigenkompositionen im Stile von Django Reinhardt</p>
         </div>
-        <span class="arrow">
-          mehr infos
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://www.marcoboettger.de/cds/" target="_blank" rel="noopener">Beim Label</a>
+        </div>
+      </article>
 
       <!-- 05 — Parisian Melange -->
-      <a class="card" href="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE?si=p32xdQhxT-ay_mZrtjE3kA" target="_blank" rel="noopener"
-         data-spotify="https://open.spotify.com/embed/album/6dCfC6P2IDvmhqgAmXcEIE?utm_source=generator">
+      <article class="card"
+         data-spotify="https://open.spotify.com/embed/album/6dCfC6P2IDvmhqgAmXcEIE?utm_source=generator"
+         data-spotify-link="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE">
         <div class="index">
           <span>05</span>
           <span class="role">Ensemble</span>
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/5.webp" width="500" height="500" alt="Parisian Melange" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1092,27 +1122,25 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Parisian Melange</h2>
+          <h2><a href="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE" target="_blank" rel="noopener">Parisian Melange</a></h2>
           <p class="subtitle">Hans Peter Salentin und Ensemble</p>
         </div>
-        <span class="arrow">
-          spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://open.spotify.com/album/6dCfC6P2IDvmhqgAmXcEIE" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 06 — Al Son del Tango -->
-      <a class="card" href="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm?si=AivXlng3TdmAjQ8DD_bW3A" target="_blank" rel="noopener"
-         data-spotify="https://open.spotify.com/embed/album/4rIVPs4byzEmpyjqtrHbnm?utm_source=generator">
+      <article class="card"
+         data-spotify="https://open.spotify.com/embed/album/4rIVPs4byzEmpyjqtrHbnm?utm_source=generator"
+         data-spotify-link="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm">
         <div class="index">
           <span>06</span>
           <span class="role">Quartett · EP</span>
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/view/6-640.webp" width="640" height="640" alt="Al Son del Tango" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1125,20 +1153,16 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Al Son del Tango</h2>
+          <h2><a href="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm" target="_blank" rel="noopener">Al Son del Tango</a></h2>
           <p class="subtitle">EP · Die Vier Evangcellisten</p>
         </div>
-        <span class="arrow">
-          spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://open.spotify.com/album/4rIVPs4byzEmpyjqtrHbnm" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 07 — Musikalisches Kaleidoskop 2020 -->
-      <a class="card" href="https://www.tkv-hochfranken.de/index.php/diskografie/" target="_blank" rel="noopener"
+      <article class="card"
          data-spotify="https://open.spotify.com/embed/album/7h0a2D1ukBQ9qYwYcmqw0N?utm_source=generator"
          data-spotify-link="https://open.spotify.com/album/7h0a2D1ukBQ9qYwYcmqw0N">
         <div class="index">
@@ -1147,6 +1171,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/7.webp" width="512" height="487" alt="Musikalisches Kaleidoskop Hochfränkischer Künstler" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1159,20 +1184,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Musikalisches Kaleidoskop Hochfränkischer Künstler 2020</h2>
+          <h2><a href="https://www.tkv-hochfranken.de/index.php/diskografie/" target="_blank" rel="noopener">Musikalisches Kaleidoskop Hochfränkischer Künstler 2020</a></h2>
           <p class="subtitle">Volume 1</p>
+          <p class="edition">TKV Hochfranken · 2020</p>
         </div>
-        <span class="arrow">
-          mehr infos · spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://www.tkv-hochfranken.de/index.php/diskografie/" target="_blank" rel="noopener">Beim Label</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://open.spotify.com/album/7h0a2D1ukBQ9qYwYcmqw0N" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 08 — Musikalisches Kaleidoskop 2025 -->
-      <a class="card" href="https://tkv-hochfranken.de/index.php/2025/12/20/neue-cd-des-verbandes/" target="_blank" rel="noopener"
+      <article class="card"
          data-spotify="https://open.spotify.com/embed/album/4SIv0vQidneiftaOjOaoCC?utm_source=generator"
          data-spotify-link="https://open.spotify.com/album/4SIv0vQidneiftaOjOaoCC">
         <div class="index">
@@ -1181,6 +1205,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/view/8-960.webp" srcset="image/discography/view/8-640.webp 640w, image/discography/view/8-960.webp 960w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(50vw - 68px), 420px" width="960" height="862" alt="Musikalisches Kaleidoskop Hochfränkischer Künstler" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1193,20 +1218,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Musikalisches Kaleidoskop Hochfränkischer Künstler 2025</h2>
+          <h2><a href="https://tkv-hochfranken.de/index.php/2025/12/20/neue-cd-des-verbandes/" target="_blank" rel="noopener">Musikalisches Kaleidoskop Hochfränkischer Künstler 2025</a></h2>
           <p class="subtitle">Volume 2</p>
+          <p class="edition">TKV Hochfranken · 2025</p>
         </div>
-        <span class="arrow">
-          mehr infos · spotify
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="https://tkv-hochfranken.de/index.php/2025/12/20/neue-cd-des-verbandes/" target="_blank" rel="noopener">Beim Label</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://open.spotify.com/album/4SIv0vQidneiftaOjOaoCC" target="_blank" rel="noopener">Auf Spotify</a>
+        </div>
+      </article>
 
       <!-- 09 — Tango de las Profundidades -->
-      <a class="card" href="/news/selb" rel="noopener"
+      <article class="card"
          data-spotify="https://open.spotify.com/embed/track/7CMTpl5XDBMJwXlmya64CZ?utm_source=generator"
          data-spotify-link="https://open.spotify.com/track/7CMTpl5XDBMJwXlmya64CZ"
          data-apple-link="https://music.apple.com/de/album/tango-de-las-profundidades-feat-harald-oeler/1367546761?i=1367547589"
@@ -1217,6 +1241,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="image-wrap">
           <img loading="lazy" src="image/discography/9.webp" width="640" height="640" alt="Cellism — Tango de las Profundidades (feat. Harald Oeler)" decoding="async">
+          <button type="button" class="sp-preview-btn" aria-expanded="false" aria-label="Spotify-Vorschau öffnen">Vorschau</button>
           <div class="spotify-overlay" aria-hidden="true">
             <button class="sp-close" aria-label="Schließen">
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1229,17 +1254,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           </div>
         </div>
         <div class="meta">
-          <h2>Tango de las Profundidades</h2>
+          <h2><a href="/news/selb">Tango de las Profundidades</a></h2>
           <p class="subtitle">Cellism · Markus Jung · feat. Harald Oeler</p>
         </div>
-        <span class="arrow">
-          mehr infos · spotify · apple music · youtube
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-            <line x1="0" y1="5" x2="15" y2="5" stroke="currentColor" stroke-width="1"/>
-            <polyline points="10,1 15,5 10,9" stroke="currentColor" stroke-width="1" fill="none"/>
-          </svg>
-        </span>
-      </a>
+        <div class="card-links">
+          <a class="arrow" href="/news/selb">News</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://open.spotify.com/track/7CMTpl5XDBMJwXlmya64CZ" target="_blank" rel="noopener">Auf Spotify</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://music.apple.com/de/album/tango-de-las-profundidades-feat-harald-oeler/1367546761?i=1367547589" target="_blank" rel="noopener">Apple Music</a>
+          <span class="card-links-sep" aria-hidden="true">·</span>
+          <a class="arrow" href="https://youtu.be/OQSBTccC0YY" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </article>
 
     </div>
     </div><!-- /discSection -->
@@ -1254,10 +1281,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <div class="media-wrap">
 
       <p class="photo-credit">
-        Fotos: Kat Schulze &amp;
+        Kat Schulze ·
         <a href="https://www.schwarzenbach-fotografie.de" target="_blank" rel="noopener">Schwarzenbach Fotografie</a>
-        · Für Presse &amp; Plakat: Foto öffnen → <em>Original herunterladen</em>
       </p>
+      <p class="photo-note">Für Presse und Plakat: Foto öffnen, dann Original herunterladen.</p>
 
       <!-- Photo grid: thumb + lightbox preview, download stays full resolution -->
       <div class="photo-grid" id="photoGrid">
@@ -1356,7 +1383,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     </button>
   </div>
 
-  <script src="assets/medien.js?v=3" defer></script>
+  <script src="assets/medien.js?v=4" defer></script>
   <script src="assets/site.js?v=11" defer></script>
   <!-- Filter bar JS -->
   <script>

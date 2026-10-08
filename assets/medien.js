@@ -54,8 +54,10 @@
     var link = document.createElement('a');
     link.className = 'arrow';
     link.href = url;
-    link.target = '_blank';
-    link.rel = 'noopener';
+    if (/^https?:/i.test(url)) {
+      link.target = '_blank';
+      link.rel = 'noopener';
+    }
     link.textContent = text;
     linksWrap.appendChild(link);
   }
@@ -117,7 +119,7 @@
         btn.className = 'sp-preview-btn';
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('aria-label', 'Spotify Vorschau abspielen');
-        btn.textContent = '▶ Vorschau';
+        btn.textContent = 'Vorschau';
         var overlay = wrap.querySelector('.spotify-overlay');
         wrap.insertBefore(btn, overlay || null);
       }
@@ -125,10 +127,13 @@
       var arrow = div.querySelector('.arrow');
       if (arrow) {
         var linkItems = [];
-        if (infoUrl) linkItems.push({ text: 'mehr infos', url: infoUrl });
-        if (spotifyLink) linkItems.push({ text: 'spotify', url: spotifyLink });
-        if (card.dataset.appleLink) linkItems.push({ text: 'apple music', url: card.dataset.appleLink });
-        if (card.dataset.youtubeLink) linkItems.push({ text: 'youtube', url: card.dataset.youtubeLink });
+        if (infoUrl) {
+          var labelText = infoUrl.charAt(0) === '/' ? 'News' : 'Beim Label';
+          linkItems.push({ text: labelText, url: infoUrl });
+        }
+        if (spotifyLink) linkItems.push({ text: 'Auf Spotify', url: spotifyLink });
+        if (card.dataset.appleLink) linkItems.push({ text: 'Apple Music', url: card.dataset.appleLink });
+        if (card.dataset.youtubeLink) linkItems.push({ text: 'YouTube', url: card.dataset.youtubeLink });
         buildCardLinks(div, linkItems, arrow);
       }
 
@@ -138,6 +143,14 @@
 
   function bindSpotify() {
     document.querySelectorAll('.card[data-spotify]').forEach(function (card) {
+      var wrap = card.querySelector('.image-wrap');
+      if (wrap && !wrap.__coverBound) {
+        wrap.__coverBound = true;
+        wrap.addEventListener('click', function (e) {
+          if (e.target.closest('.sp-close, .sp-preview-btn, .spotify-overlay')) return;
+          openOverlay(card);
+        });
+      }
       var btn = card.querySelector('.sp-preview-btn');
       if (btn && !btn.__bound) {
         btn.__bound = true;

@@ -349,6 +349,9 @@ const DETAILS = {
       { num: "III.", work: "Joseph Haydn", note: "Divertimento G-Dur, op. 100 Nr. 2 (Arr. Oeler)", dur: "", filter: "bach", embed: { type: "youtube", id: "9WGPikQQlyw" } },
       { num: "IV.", work: "Harald Oeler", note: "Remembering Paris · Remembering Tokyo", dur: "", filter: "encores", embed: { type: "youtube", id: "-z40QlQ-QYg" } },
       { num: "V.", work: "Johan Svensson", note: "Double Dubbing (firefly song), 2020", dur: "", filter: "encores", embed: { type: "youtube", id: "pcAmM4jVroQ" } },
+      { num: "VI.", work: "Astor Piazzolla", note: "S.V.P. · Oblivion · Libertango", dur: "", filter: "encores" },
+      { num: "VII.", work: "Scherele", note: "Klezmer · Trad.", dur: "", filter: "encores" },
+      { num: "VIII.", work: "Rehan Syed", note: "Schola", dur: "", filter: "encores" },
     ],
     repertoireFilters: [
       { id: "bach", label: "Bach" },

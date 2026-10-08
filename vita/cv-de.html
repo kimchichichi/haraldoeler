@@ -32,7 +32,10 @@ body {
   font-family: var(--sans);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "kern" 0, "liga" 0, "calt" 0;
 }
 .screen-bar {
   position: sticky; top: 0; z-index: 5;
@@ -176,8 +179,10 @@ h1 em { font-style: italic; color: var(--accent); }
   font-size: 11.15px;
   line-height: 1.55;
   color: #373634;
-  text-wrap: pretty;
-  hyphens: manual;
+  text-wrap: wrap;
+  hyphens: none;
+  font-kerning: none;
+  letter-spacing: 0;
 }
 .copy p + p { margin-top: 0.68em; }
 

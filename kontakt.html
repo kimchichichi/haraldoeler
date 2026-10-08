@@ -247,26 +247,12 @@ body.dark .site-footer { border-top-color: color-mix(in srgb, var(--paper) 18%, 
   padding-top: 8px;
 }
 
-.contact-name {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(48px, 6vw, 88px);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  margin-bottom: 48px;
-}
-.contact-name em {
-  font-style: italic;
-  color: var(--accent);
-}
-
 .contact-lang-note {
   font-family: var(--sans);
   font-size: 14px;
   line-height: 1.55;
   color: color-mix(in srgb, var(--ink) 68%, transparent);
-  margin-top: -20px;
-  margin-bottom: 40px;
+  margin: 0 0 28px;
   max-width: 42ch;
 }
 body.dark .contact-lang-note {
@@ -325,7 +311,20 @@ body.dark .contact-block:last-of-type { border-bottom-color: color-mix(in srgb, 
   font-size: 20px;
   letter-spacing: -0.005em;
   line-height: 1.3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
 }
+.ci-note {
+  flex-basis: 100%;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted);
+}
+.ci-value .btn-copy-email { margin: 0; }
 
 .contact-item a {
   transition: color .25s ease;
@@ -397,7 +396,7 @@ body.dark .social-link:hover { color: var(--paper); }
 .field-group textarea,
 .field-group select {
   width: 100%;
-  background: transparent;
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
   padding: 8px 0;
@@ -430,6 +429,22 @@ body.dark .field-group select {
   resize: none;
   height: 120px;
   line-height: 1.5;
+}
+.field-group select {
+  cursor: pointer;
+  padding-right: 28px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%236b655c' stroke-width='1.4'><path d='M1 1.5 6 6.5 11 1.5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  background-size: 12px 8px;
+}
+.form-status {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
 .btn-send {
@@ -762,13 +777,9 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <!-- Info + form column -->
       <div class="contact-info">
 
-        <h2 class="contact-name">Harald<br><em>Oeler</em></h2>
-
-        <p class="contact-lang-note" lang="en">
-          Biography in English:
-          <a href="/bio-en">/bio-en</a>
-          · German:
-          <a href="/bio">/bio</a>
+        <p class="contact-lang-note">
+          <a href="/bio-en" lang="en">Biography in English</a>
+          · <a href="/bio">Biographie</a>
         </p>
 
         <!-- Direct contact details -->
@@ -779,6 +790,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
             <span class="ci-label">E-Mail</span>
             <span class="ci-value">
               <a href="mailto:harald.oeler@gmx.de">harald.oeler@gmx.de</a>
+              <button type="button" class="btn-copy-email" id="copy-email-btn">E-Mail-Adresse kopieren</button>
             </span>
           </div>
 
@@ -786,6 +798,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
             <span class="ci-label">Telefon</span>
             <span class="ci-value">
               <a href="tel:+4917670004842">+49 176 700 048 42</a>
+              <span class="ci-note">für kurzfristige Rückfragen</span>
             </span>
           </div>
 
@@ -833,7 +846,13 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
           <div class="field-group">
             <label for="cf-subject">Betreff</label>
-            <input type="text" id="cf-subject" name="subject" placeholder="Konzertanfrage, Unterricht, Kollaboration …" />
+            <select id="cf-subject" name="subject" required>
+              <option value="">Bitte wählen</option>
+              <option value="Konzert">Konzert</option>
+              <option value="Unterricht">Unterricht</option>
+              <option value="Presse">Presse</option>
+              <option value="Sonstiges">Sonstiges</option>
+            </select>
           </div>
 
           <div class="field-group">
@@ -847,8 +866,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
               <path d="M0 8 L18 8 M12 2 L18 8 L12 14"/>
             </svg>
           </button>
-          <p class="form-status" id="formStatus" aria-live="polite" style="margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);display:none;"></p>
-          <button type="button" class="btn-copy-email" id="copy-email-btn">E-Mail-Adresse kopieren</button>
+          <p class="form-status" id="formStatus" aria-live="polite" hidden></p>
 
         </form>
 
@@ -860,7 +878,14 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
   <!-- Extracted from Projekte.html — site-footer -->
   <footer class="site-footer">
-    <div class="left">© Harald Oeler · 2026</div>
+    <div class="left">
+      <div>© Harald Oeler · 2026</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>
+      </div>
+    </div>
     <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
@@ -872,8 +897,8 @@ body.dark .nav-toggle:hover { opacity: 1; }
   /* kontakt.js handles submission */
 })();
 </script>
-<script src="assets/kontakt.js?v=2" defer></script>
-<script src="assets/site.js?v=9" defer></script>
+<script src="assets/kontakt.js?v=3" defer></script>
+<script src="assets/site.js?v=11" defer></script>
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

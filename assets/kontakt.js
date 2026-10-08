@@ -9,7 +9,16 @@
   var EMAIL = 'harald.oeler@gmx.de';
   var INACTIVE_KEY = 'kontakt-formsubmit-inactive';
 
+  var MESSAGE_PLACEHOLDERS = {
+    Konzert: 'Datum, Ort, Besetzung',
+    Unterricht: 'Instrument, Alter, Ort',
+    Presse: 'Medium, Termin, gewünschte Unterlagen',
+    Sonstiges: 'Ihre Nachricht …'
+  };
+  var DEFAULT_PLACEHOLDER = 'Ihre Nachricht …';
+
   function showStatus(msg, type) {
+    status.hidden = false;
     status.style.display = 'block';
     status.textContent = msg;
     status.className = 'form-status form-status--' + (type || 'info');
@@ -21,7 +30,8 @@
   }
 
   function mailtoHref() {
-    var subject = fieldValue('cf-subject') || 'Kontaktanfrage über haraldoeler.com';
+    var chosen = fieldValue('cf-subject');
+    var subject = chosen ? chosen + ' · haraldoeler.com' : 'Kontaktanfrage über haraldoeler.com';
     var body = 'Name: ' + fieldValue('cf-name')
       + '\nE-Mail: ' + fieldValue('cf-email')
       + '\n\n' + fieldValue('cf-message');
@@ -40,6 +50,7 @@
 
   function showMailtoFallback() {
     openMailto();
+    status.hidden = false;
     status.style.display = 'block';
     status.className = 'form-status form-status--info';
     status.textContent = '';
@@ -91,16 +102,32 @@
       setFieldError('cf-message', 'Bitte Nachricht eingeben.');
       ok = false;
     }
+    var subject = form.querySelector('#cf-subject');
+    if (subject && !subject.value) {
+      setFieldError('cf-subject', 'Bitte Betreff wählen.');
+      ok = false;
+    }
     return ok;
+  }
+
+  var subjectField = form.querySelector('#cf-subject');
+  var messageField = form.querySelector('#cf-message');
+  if (subjectField && messageField) {
+    subjectField.addEventListener('change', function () {
+      messageField.placeholder = MESSAGE_PLACEHOLDERS[subjectField.value] || DEFAULT_PLACEHOLDER;
+    });
   }
 
   var copyBtn = document.getElementById('copy-email-btn');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
+      var label = copyBtn.textContent;
+      function copied() {
+        copyBtn.textContent = 'Kopiert';
+        setTimeout(function () { copyBtn.textContent = label; }, 2000);
+      }
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(EMAIL).then(function () {
-          showStatus('E-Mail-Adresse kopiert.', 'success');
-        });
+        navigator.clipboard.writeText(EMAIL).then(copied);
       } else {
         window.location.href = 'mailto:' + EMAIL;
       }
@@ -129,7 +156,8 @@
     showStatus('Wird gesendet …', 'info');
 
     var replyTo = fieldValue('cf-email');
-    var subject = fieldValue('cf-subject') || 'Kontaktanfrage über haraldoeler.com';
+    var chosen = fieldValue('cf-subject');
+    var subject = chosen ? chosen + ' · haraldoeler.com' : 'Kontaktanfrage über haraldoeler.com';
 
     fetch('https://formsubmit.co/ajax/' + encodeURIComponent(EMAIL), {
       method: 'POST',
@@ -154,8 +182,9 @@
       .then(function (data) {
         if (data && (data.success === 'true' || data.success === true)) {
           try { sessionStorage.removeItem(INACTIVE_KEY); } catch (err) { /* ignore */ }
-          showStatus('Vielen Dank — Ihre Nachricht wurde gesendet.', 'success');
+          showStatus('Nachricht gesendet. Antwort in der Regel innerhalb weniger Tage.', 'success');
           form.reset();
+          if (messageField) messageField.placeholder = DEFAULT_PLACEHOLDER;
           return;
         }
         var message = (data && data.message) ? String(data.message) : '';

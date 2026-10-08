@@ -152,6 +152,74 @@
     onScroll();
   }
 
+  /* Loaded last so it beats the nav/footer rules copied into each page. */
+  function injectChromeCss() {
+    if (document.getElementById('ho-chrome')) return;
+    var link = document.createElement('link');
+    link.id = 'ho-chrome';
+    link.rel = 'stylesheet';
+    link.href = sitePrefix() + 'assets/chrome.css?v=1';
+    (document.body || document.head).appendChild(link);
+  }
+
+  function enhanceFooter(footer) {
+    if (!footer || footer.getAttribute('data-chrome') === '1') return;
+    var left = footer.querySelector(':scope > .left');
+    if (left && !left.querySelector('.footer-social')) {
+      var social = document.createElement('div');
+      social.className = 'footer-social';
+      social.innerHTML = [
+        '<a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>',
+        '<a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>',
+        '<a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>'
+      ].join('');
+      left.appendChild(social);
+    }
+    var center = footer.querySelector(':scope > .center');
+    if (center && !center.id && !cleanText(center.textContent)) {
+      center.id = 'footer-next-concert';
+    }
+    footer.setAttribute('data-chrome', '1');
+  }
+
+  function watchChrome() {
+    enhanceFooter(document.querySelector('.site-footer'));
+    var root = document.getElementById('root');
+    if (!root || typeof MutationObserver !== 'function') return;
+    if (document.querySelector('.site-footer')) return;
+    var obs = new MutationObserver(function () {
+      var footer = document.querySelector('.site-footer');
+      if (!footer) return;
+      enhanceFooter(footer);
+      obs.disconnect();
+      initConcertTeasers();
+    });
+    obs.observe(root, { childList: true, subtree: true });
+  }
+
+  function shortDate(date) {
+    var match = String(date || '').match(/^(\d{2})\.(\d{2})\./);
+    return match ? match[1] + '.' + match[2] + '.' : date;
+  }
+
+  function shortPlace(location) {
+    var raw = cleanText(location);
+    if (!raw) return '';
+    var parts = raw.split('·').map(function (part) { return part.trim(); }).filter(Boolean);
+    var last = parts.length ? parts[parts.length - 1] : raw;
+    if (/\d/.test(last) && parts.length > 1) last = parts[parts.length - 2];
+    if (last.indexOf(',') !== -1) {
+      var tail = last.split(',').pop().trim();
+      if (tail) last = tail;
+    }
+    var words = last.split(' ');
+    var small = { an: 1, der: 1, am: 1, im: 1, 'in': 1, bei: 1, und: 1 };
+    if (words.length > 1 && parts.length === 1 && !small[words[words.length - 2].toLowerCase()]) {
+      last = words[words.length - 1];
+    }
+    return last;
+  }
+
   /* Resolve ../ relative to how assets/site.js was loaded */
   function sitePrefix() {
     var scripts = document.getElementsByTagName('script');
@@ -258,10 +326,12 @@
         }
         if (next) {
           var href = '/termine' + (next.terminId ? '#' + next.terminId : '');
+          var place = shortPlace(next.location);
           footer.textContent = '';
           var link = document.createElement('a');
           link.href = href;
-          link.textContent = 'Nächstes Konzert: ' + next.date + ' — ' + next.title + (next.location ? ' · ' + next.location : '');
+          link.textContent = 'Nächster Termin · ' + shortDate(next.date) + (place ? ' · ' + place : '');
+          link.title = next.title + (next.location ? ' · ' + next.location : '');
           footer.appendChild(link);
         }
       }
@@ -296,6 +366,8 @@
   }
 
   function boot() {
+    injectChromeCss();
+    watchChrome();
     initScrollTop();
     initHeroHeader();
     initNav();

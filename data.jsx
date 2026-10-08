@@ -464,8 +464,15 @@ function Header({ active = "projekte" }) {
 function Footer() {
   return (
     <footer className="site-footer">
-      <div className="left">© Harald Oeler · 2026</div>
-      <div className="center"></div>
+      <div className="left">
+        <div>© Harald Oeler · 2026</div>
+        <div className="footer-social">
+          <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>
+        </div>
+      </div>
+      <div className="center" id="footer-next-concert"></div>
       <div className="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
     </footer>
   );

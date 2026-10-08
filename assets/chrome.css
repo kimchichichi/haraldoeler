@@ -1,0 +1,65 @@
+/* Shared chrome overrides. Loaded after each page's inline <style>
+   so nav hit area, footer, and focus win over duplicated rules. */
+
+@media (min-width: 1025px) {
+  nav.primary a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 12px 0;
+  }
+  nav.primary a.active::after { bottom: 10px; }
+  .header-inner { align-items: center; }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .header-inner { gap: 24px; }
+  nav.primary { gap: 20px; letter-spacing: 0.12em; }
+}
+
+.site-header.hero-header:not(.scrolled) .wordmark:hover,
+.site-header.hero-header:not(.scrolled) .wordmark:hover small {
+  color: var(--paper);
+}
+.site-header.hero-header:not(.scrolled) .wordmark:hover .dot {
+  background: var(--paper);
+}
+
+nav.primary a:focus-visible,
+.wordmark:focus-visible,
+.teaser-cta:focus-visible,
+.hc-item-link:focus-visible,
+.proj-card:focus-visible,
+a.card:focus-visible,
+.concert-item:focus-visible,
+.site-footer a:focus-visible {
+  outline: 2px solid var(--accent, #6b1d1a);
+  outline-offset: 3px;
+}
+
+.site-footer { align-items: center; }
+.site-footer .left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  letter-spacing: 0.14em;
+}
+.footer-social a { transition: color .2s; }
+.footer-social a:hover { color: var(--accent, #6b1d1a); }
+.site-footer .center { max-width: 36ch; }
+.site-footer .center a {
+  color: var(--ink, #0e0d0c);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+}
+body.dark .site-footer .center a { color: var(--paper, #f4f1ec); }
+.site-footer .center a:hover,
+.footer-social a:hover { color: var(--accent, #6b1d1a); }
+
+.hc-item-link .hc-arrow { opacity: 1; }

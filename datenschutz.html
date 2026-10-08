@@ -231,11 +231,29 @@ nav.primary a.active::after {
   margin: 28px 0 10px;
 }
 
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.legal-back::before { content: "←"; }
+.legal-back:hover { color: var(--accent); }
+.legal-back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .legal-section p,
 .legal-section address,
 .legal-section li {
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.6;
   color: color-mix(in srgb, var(--ink) 80%, transparent);
   font-style: normal;
   max-width: 68ch;
@@ -268,8 +286,8 @@ nav.primary a.active::after {
 }
 
 address.contact-block {
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 17px;
+  line-height: 1.6;
   color: color-mix(in srgb, var(--ink) 80%, transparent);
 }
 
@@ -595,6 +613,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <div>
         <div class="eyebrow">— Rechtliches</div>
         <h1 class="page-title"><em>Datenschutz</em></h1>
+        <a class="legal-back" href="/">Zurück</a>
       </div>
       <div class="page-meta">
         <div>DSGVO</div>
@@ -773,7 +792,14 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
   <!-- Footer — extracted verbatim from Projekte.html Footer component -->
   <footer class="site-footer">
-    <div class="left">© Harald Oeler · 2026</div>
+    <div class="left">
+      <div>© Harald Oeler · 2026</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>
+      </div>
+    </div>
     <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
@@ -835,6 +861,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     })();
   </script>
 
-  <script src="assets/site.js?v=9" defer></script>
+  <script src="assets/site.js?v=11" defer></script>
 </body>
 </html>

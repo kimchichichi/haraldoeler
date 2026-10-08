@@ -462,6 +462,8 @@ body.dark html.bio-initial-en .lang-btn[data-lang="en"] {
   .about-body { grid-template-columns: 1fr; gap: 56px; }
   .about-images { position: static; }
   .bio-slide { aspect-ratio: 3 / 2; }
+  /* Wide crop of portrait photos: --bio-focus keeps each face in frame */
+  .bio-slide img { object-position: center var(--bio-focus, center); }
 }
 @media (max-width: 720px) {
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
@@ -776,7 +778,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <!-- ═══ PAGE HEAD ════════════════════════════════════════════════════════ -->
   <section class="page-head">
     <div>
-      <div class="eyebrow">— Biography</div>
+      <div class="eyebrow">— Biographie</div>
       <h1 class="page-title"><em>bio</em></h1>
     </div>
     <div class="page-meta">
@@ -832,19 +834,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <div class="about-images">
       <div class="bio-slider" id="bioSlider" aria-roledescription="Karussell" aria-label="Fotos von Harald Oeler">
         <div class="bio-track">
-          <div class="bio-slide">
+          <div class="bio-slide" style="--bio-focus: top">
             <img src="image/media/bio/1-1280.webp" srcset="image/media/bio/1-640.webp 640w, image/media/bio/1-1280.webp 1280w" sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1808" alt="Harald Oeler — solo" fetchpriority="high" decoding="async">
           </div>
           <div class="bio-slide">
             <img data-src="image/media/bio/2-1280.webp" data-srcset="image/media/bio/2-640.webp 640w, image/media/bio/2-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="853" alt="Harald Oeler — solo" decoding="async">
           </div>
-          <div class="bio-slide">
+          <div class="bio-slide" style="--bio-focus: 18%">
             <img data-src="image/media/bio/3-1280.webp" data-srcset="image/media/bio/3-640.webp 640w, image/media/bio/3-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler — solo" decoding="async">
           </div>
-          <div class="bio-slide">
+          <div class="bio-slide" style="--bio-focus: top">
             <img data-src="image/media/bio/4-1280.webp" data-srcset="image/media/bio/4-640.webp 640w, image/media/bio/4-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler — solo" decoding="async">
           </div>
-          <div class="bio-slide">
+          <div class="bio-slide" style="--bio-focus: 20%">
             <img data-src="image/media/bio/5-1280.webp" data-srcset="image/media/bio/5-640.webp 640w, image/media/bio/5-1280.webp 1280w" data-sizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) calc(100vw - 96px), 480px" width="1280" height="1920" alt="Harald Oeler — solo" decoding="async">
           </div>
         </div>
@@ -940,7 +942,14 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
   <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
   <footer class="site-footer">
-    <div class="left">© Harald Oeler · 2026</div>
+    <div class="left">
+      <div>© Harald Oeler · 2026</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>
+      </div>
+    </div>
     <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
@@ -1123,6 +1132,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     })();
   </script>
 
-  <script src="assets/site.js?v=9" defer></script>
+  <script src="assets/site.js?v=11" defer></script>
 </body>
 </html>

@@ -955,8 +955,8 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <h1 class="hero-name">Harald<br>Oeler</h1>
         <p class="hero-sub">Accordionist &amp; Composer</p>
       </div>
-      <button type="button" class="hero-scroll" id="hero-scroll-cta" aria-controls="kommende-konzerte" aria-label="Zu den kommenden Konzerten scrollen">
-        scroll
+      <button type="button" class="hero-scroll" id="hero-scroll-cta" aria-controls="kommende-konzerte" aria-label="Zu den kommenden Konzerten">
+        weiter
         <svg class="scroll-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
           <path d="M4 7l6 6 6-6"/>
         </svg>
@@ -1119,7 +1119,14 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
   <!-- Footer (extracted from Projekte.html) -->
   <footer class="site-footer">
-    <div class="left">© Harald Oeler · 2026</div>
+    <div class="left">
+      <div>© Harald Oeler · 2026</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>
+      </div>
+    </div>
     <div class="center" id="footer-next-concert"></div>
     <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
@@ -1178,6 +1185,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
   </style>
-  <script src="assets/site.js?v=9" defer></script>
+  <script src="assets/site.js?v=11" defer></script>
 </body>
 </html>

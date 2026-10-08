@@ -28,39 +28,6 @@ await page.evaluate(async () => {
   if (img?.decode) await img.decode().catch(() => {});
 });
 const copyLines = await page.evaluate(() => {
-  const textOf = (el, skipCite) => {
-    let text = '';
-    for (const node of el.childNodes) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        const chunk = node.textContent || '';
-        if (text && /[\p{L}\p{N}]$/u.test(text) && /^[\p{L}\p{N}]/u.test(chunk.trimStart()) && !/[\s\n]$/.test(text)) {
-          text += ' ';
-        }
-        text += chunk;
-      } else if (node.nodeType === Node.ELEMENT_NODE) {
-        if (node.nodeName === 'BR') {
-          text += '\n';
-        } else if (node.nodeName === 'IMG' || node.nodeName === 'PICTURE' || node.nodeName === 'SOURCE' || node.nodeName === 'SVG') {
-          continue;
-        } else if (skipCite && node.nodeName === 'CITE') {
-          continue;
-        } else {
-          const inner = textOf(node, skipCite);
-          if (!inner) continue;
-          if (text && /[\p{L}\p{N}]$/u.test(text) && /^[\p{L}\p{N}]/u.test(inner) && !/[\s\n]$/.test(text)) {
-            text += ' ';
-          }
-          text += inner;
-        }
-      }
-    }
-    return text;
-  };
-  const clean = (value) => value
-    .replace(/\u00a0/g, ' ')
-    .replace(/[ \t\f\r]+/g, ' ')
-    .replace(/ *\n */g, '\n')
-    .trim();
   const selector = [
     '.eyebrow', 'h1', '.cover-tag', '.cover-line',
     '.page-kicker', 'h2', 'h3', '.lede', '.role', '.prog-num', '.prog-sub',
@@ -71,19 +38,71 @@ const copyLines = await page.evaluate(() => {
     '.links .title', '.links .url',
     '.page-footer',
   ].join(',');
+  const scale = 72 / 96;
+  const pageH = 841.92;
+
+  const linesOf = (el, pageRect, skipCite) => {
+    const chars = [];
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let node = walker.nextNode();
+    while (node) {
+      if (!(skipCite && node.parentElement && node.parentElement.closest('cite'))) {
+        const text = (node.textContent || '').replace(/\u00a0/g, ' ');
+        for (let i = 0; i < text.length; i += 1) {
+          const range = document.createRange();
+          range.setStart(node, i);
+          range.setEnd(node, i + 1);
+          const rect = range.getClientRects()[0];
+          if (!rect || (rect.width === 0 && text[i] !== ' ')) continue;
+          chars.push({
+            ch: text[i],
+            x: (rect.left - pageRect.left) * scale,
+            top: (rect.top - pageRect.top) * scale,
+            h: rect.height * scale,
+            w: rect.width * scale,
+          });
+        }
+      }
+      node = walker.nextNode();
+    }
+    const groups = [];
+    for (const item of chars) {
+      let group = groups.find((entry) => Math.abs(entry.top - item.top) < 1.5);
+      if (!group) {
+        group = { top: item.top, chars: [] };
+        groups.push(group);
+      }
+      group.chars.push(item);
+    }
+    return groups.map((group) => {
+      const sorted = group.chars.sort((a, b) => a.x - b.x);
+      const text = sorted.map((item) => item.ch).join('').replace(/[ \t]+/g, ' ').trim();
+      if (!text) return null;
+      const x = Math.min(...sorted.map((item) => item.x));
+      const right = Math.max(...sorted.map((item) => item.x + item.w));
+      const top = Math.min(...sorted.map((item) => item.top));
+      const bottom = Math.max(...sorted.map((item) => item.top + item.h));
+      return {
+        text,
+        x: Math.round(x * 100) / 100,
+        y: Math.round((pageH - (top + (bottom - top) * 0.8)) * 100) / 100,
+        w: Math.round((right - x) * 100) / 100,
+        h: Math.round((bottom - top) * 100) / 100,
+      };
+    }).filter(Boolean);
+  };
+
   return [...document.querySelectorAll('main.dossier > section.page')].map((section) => {
+    const pageRect = section.getBoundingClientRect();
     const nodes = [...section.querySelectorAll(selector)];
-    const lines = [];
+    const blocks = [];
     for (const el of nodes) {
       const parentBlock = nodes.find((other) => other !== el && other.contains(el));
       if (parentBlock && !(el.tagName === 'CITE' && parentBlock.tagName === 'BLOCKQUOTE')) continue;
-      const cleaned = clean(textOf(el, el.tagName === 'BLOCKQUOTE'));
-      for (const line of cleaned.split('\n')) {
-        const item = line.trim();
-        if (item) lines.push(item);
-      }
+      const lines = linesOf(el, pageRect, el.tagName === 'BLOCKQUOTE');
+      if (lines.length) blocks.push(lines);
     }
-    return lines;
+    return blocks;
   });
 });
 

@@ -132,9 +132,7 @@ a.card:focus-visible,
 .article-eyebrow,
 .back-link,
 .photo-credit,
-.info-label,
 .info-source,
-.cast-role,
 .concert-date,
 .h-year,
 .image-caption,
@@ -146,6 +144,14 @@ a.card:focus-visible,
 .cal-link,
 .ticket-link a {
   font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* News article sidebar labels — larger than footer meta */
+.info-label,
+.cast-role {
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }

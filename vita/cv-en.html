@@ -155,7 +155,7 @@ h1 em { font-style: italic; color: var(--accent); }
   width: 70mm;
   margin: 0.5mm 0 5mm 8mm;
 }
-.portrait img {
+.portrait > img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
@@ -175,9 +175,10 @@ h1 em { font-style: italic; color: var(--accent); }
   text-transform: uppercase;
   color: var(--muted);
 }
+.image-caption img { width: 100%; height: auto; display: block; }
 .copy p {
   font-size: 13px;
-  line-height: 1.64;
+  line-height: 1.15;
   color: #373634;
   text-wrap: wrap;
   hyphens: none;
@@ -274,7 +275,7 @@ h1 em { font-style: italic; color: var(--accent); }
     <div class="copy">
       <figure class="portrait">
         <img src="portrait.jpg" alt="Harald Oeler">
-        <figcaption class="image-caption"><span>Harald Oeler</span><span>Schwarzenbach Fotografie</span></figcaption>
+        <figcaption class="image-caption"><img src="photo-credit.png" alt=""></figcaption>
       </figure>
 
       <p>Harald Oeler is a German accordionist. He received his first lessons on the accordion as a six-year-old. After completing organ studies, he received instruction on the accordion from Hans Bogner in Gaggenau, Germany in preparation for conservatory study.</p>

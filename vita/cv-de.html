@@ -155,7 +155,7 @@ h1 em { font-style: italic; color: var(--accent); }
   width: 68mm;
   margin: 0.5mm 0 4.5mm 6mm;
 }
-.portrait img {
+.portrait > img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
@@ -175,16 +175,17 @@ h1 em { font-style: italic; color: var(--accent); }
   text-transform: uppercase;
   color: var(--muted);
 }
+.image-caption img { width: 100%; height: auto; display: block; }
 .copy p {
   font-size: 11.15px;
-  line-height: 1.55;
+  line-height: 1.15;
   color: #373634;
   text-wrap: wrap;
   hyphens: none;
   font-kerning: none;
   letter-spacing: 0;
 }
-.copy p + p { margin-top: 0.68em; }
+.copy p + p { margin-top: 0.85em; }
 
 .highlights {
   margin-top: 4.2mm;
@@ -274,7 +275,7 @@ h1 em { font-style: italic; color: var(--accent); }
     <div class="copy">
       <figure class="portrait">
         <img src="portrait.jpg" alt="Harald Oeler">
-        <figcaption class="image-caption"><span>Harald Oeler</span><span>Schwarzenbach Fotografie</span></figcaption>
+        <figcaption class="image-caption"><img src="photo-credit.png" alt=""></figcaption>
       </figure>
 
       <p>Bereits als Jugendlicher ausgebildet in Komposition, Orgel- und Klavierspiel, erhielt Harald Oeler seine entscheidenden musikalischen Impulse von Hans Bogner an der Musikschule Gaggenau. Erste Preise bei nationalen Wettbewerben und die Vorbereitung auf das bevorstehende Musikstudium, waren der Nährboden einer äußerst wertvollen Unterrichtszeit bei Hans Bogner.</p>

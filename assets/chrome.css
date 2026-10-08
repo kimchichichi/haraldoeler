@@ -276,7 +276,7 @@ body.dark .project-chip {
 
 /* News sidebar: Info / Presse / Repertoire / Zum Konzert / Nachbericht — same compact body text */
 .article-info .body-text {
-  font-size: 14px;
+  font-size: 13px !important;
   font-weight: 400;
   line-height: 1.55;
 }

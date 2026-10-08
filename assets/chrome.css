@@ -150,7 +150,7 @@ a.card:focus-visible,
 /* News article sidebar labels — larger than footer meta */
 .info-label,
 .cast-role {
-  font-size: 13px;
+  font-size: 15px !important;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }

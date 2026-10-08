@@ -282,13 +282,11 @@ const DETAILS = {
     eyebrow: "Projekt 05 · neue musik × alte musik",
     image: `${PROJECT_HERO_IMAGE_BASE}/duoklakk.webp`,
     premiere: false,
-    runtime: [[{ a: { href: "https://www.sinnyang.com", text: "Ji Eun Kim" } }, " · Klarinette"], "Harald Oeler · Akkordeon", "3 Konzertprogramme"],
+    runtime: ["Ji Eun Kim · Klarinette", "Harald Oeler · Akkordeon", "3 Konzertprogramme"],
     lede: ["Wenn die zeitlose Genialität Bachs auf die ", { em: "spielerische Energie" }, " des Duos trifft."],
     body: [
       [
-        "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und ",
-        { a: { href: "https://www.sinnyang.com", text: "Ji Eun Kim" } },
-        ", Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
+        "Das 2023 neu gegründete Duo KlAkk! (Harald Oeler, Akkordeon und Ji Eun Kim, Klarinette) machte sich von Anfang an zur Aufgabe, einerseits Neue Musik zeitgemäß und modern zu vermitteln und andererseits Transkriptionen Alter Musik kontrapunktisch gegenüberzustellen.",
       ],
     ],
     programs: [

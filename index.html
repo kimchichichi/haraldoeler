@@ -20,13 +20,13 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta property="og:title" content="HARALD OELER — Akkordeonist &amp; Komponist">
   <meta property="og:description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts.">
-  <meta property="og:image" content="https://www.haraldoeler.com/image/hero.webp">
+  <meta property="og:image" content="https://www.haraldoeler.com/image/hero.jpg">
   <meta property="og:url" content="https://www.haraldoeler.com/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://www.haraldoeler.com/">
   <title>HARALD OELER — Akkordeonist &amp; Komponist</title>
 
-  <link rel="preload" as="image" href="image/hero-960.webp" imagesrcset="image/hero-960.webp 960w, image/hero-1600.webp 1600w, image/hero.webp 1699w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" href="image/hero-960.webp" imagesrcset="image/hero-960.webp 960w, image/hero-1600.webp 1600w, image/hero.webp 2000w" imagesizes="100vw" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1034,7 +1034,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
     <!-- Hero -->
     <section class="hero">
-      <img class="hero-img" src="image/hero.webp" srcset="image/hero-960.webp 960w, image/hero-1600.webp 1600w, image/hero.webp 1699w" sizes="100vw" width="1699" height="2400" alt="Harald Oeler — accordionist" fetchpriority="high" decoding="async">
+      <picture>
+        <source type="image/webp" srcset="image/hero-960.webp 960w, image/hero-1600.webp 1600w, image/hero.webp 2000w" sizes="100vw">
+        <img class="hero-img" src="image/hero.jpg" srcset="image/hero-960.jpg 960w, image/hero-1600.jpg 1600w, image/hero.jpg 2000w" sizes="100vw" width="2000" height="2825" alt="Harald Oeler — accordionist" fetchpriority="high" decoding="async">
+      </picture>
       <div class="hero-content">
         <p class="hero-eyebrow">Akkordeon · Komposition · Arrangement</p>
         <h1 class="hero-name">Harald<br>Oeler</h1>

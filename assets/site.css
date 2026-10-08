@@ -334,19 +334,105 @@ body.dark .concert-item.is-highlighted {
   max-height: 200px;
 }
 .month-divider {
+  position: sticky;
+  top: calc(var(--header-h, 72px) + var(--controls-h, 0px));
+  z-index: 40;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
-  padding: 32px 0 12px;
+  padding: 20px 0 12px;
+  margin: 0;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(8px) saturate(140%);
   list-style: none;
 }
 body.dark .month-divider {
   border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent);
+  background: color-mix(in srgb, var(--ink) 94%, transparent);
 }
 .month-divider:first-child { padding-top: 8px; }
+
+.concert-item.is-cancelled {
+  opacity: 0.55;
+}
+.concert-item.is-cancelled .c-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--ink) 45%, transparent);
+}
+body.dark .concert-item.is-cancelled .c-title {
+  text-decoration-color: color-mix(in srgb, var(--paper) 45%, transparent);
+}
+
+.c-cal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+.cal-toggle {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .25s;
+}
+.cal-toggle:hover,
+.c-cal.is-open .cal-toggle { color: var(--ink); }
+body.dark .cal-toggle:hover,
+body.dark .c-cal.is-open .cal-toggle { color: var(--paper); }
+.cal-toggle:focus-visible {
+  outline: 2px solid var(--accent, #6b1d1a);
+  outline-offset: 3px;
+}
+.cal-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  min-width: 9rem;
+  padding: 6px 0;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  background: var(--paper);
+  box-shadow: 0 10px 28px rgba(14, 13, 12, 0.1);
+}
+body.dark .cal-menu {
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+  background: var(--ink);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+.c-cal.is-open .cal-menu { display: block; }
+.cal-menu a {
+  display: block;
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s, background .2s;
+}
+.cal-menu a:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+body.dark .cal-menu a:hover {
+  color: var(--paper);
+  background: color-mix(in srgb, var(--paper) 8%, transparent);
+}
 
 .controls-bar.is-sticky {
   position: sticky;

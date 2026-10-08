@@ -27,7 +27,7 @@
   <title>HARALD OELER — termine</title>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=9">
+  <link rel="stylesheet" href="assets/site.css?v=10">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,12 +188,20 @@ nav.primary a.active::after {
   padding: 28px 0 32px;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
   gap: 24px;
+  flex-wrap: wrap;
 }
-
-.controls-left {
+.controls-links {
   display: flex;
   align-items: center;
   gap: 28px;
+  order: 1;
+}
+.controls-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  order: 2;
 }
 .past-link, .notify-link {
   display: inline-flex;
@@ -388,22 +396,65 @@ body.dark .c-poster-link:hover {
 }
 
 .c-cal {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.cal-toggle {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
-}
-.c-cal span { opacity: 0.4; }
-.c-cal a {
-  color: var(--muted);
   transition: color .25s;
 }
-.c-cal a:hover { color: var(--ink); }
-.c-cal .cal-icon { font-size: 11px; }
+.cal-toggle:hover,
+.c-cal.is-open .cal-toggle { color: var(--ink); }
+.cal-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.cal-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  min-width: 9rem;
+  padding: 6px 0;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  background: var(--paper);
+  box-shadow: 0 10px 28px rgba(14, 13, 12, 0.1);
+}
+.c-cal.is-open .cal-menu { display: block; }
+.cal-menu a {
+  display: block;
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s, background .2s;
+}
+.cal-menu a:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+.concert-item.is-cancelled { opacity: 0.55; }
+.concert-item.is-cancelled .c-title {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--ink) 45%, transparent);
+}
 
 .c-tba {
   font-family: var(--mono);
@@ -549,8 +600,27 @@ body.dark .follow-btn--secondary:hover { border-color: var(--paper); }
   .page-head { padding: 48px 24px 28px; grid-template-columns: 1fr; }
   .page-meta { text-align: left; margin-top: 16px; }
   .termine-wrapper { padding: 0 24px 80px; }
-  .controls-bar { flex-direction: column; align-items: flex-start; }
-  .controls-left { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 20px 0 22px;
+  }
+  .controls-tools {
+    order: 1;
+    margin-left: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .controls-links {
+    order: 2;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+  .search-wrap { flex: 1 1 12rem; min-width: 0; }
+  .search-wrap input { width: 100%; }
   .concert-item {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -605,7 +675,20 @@ body.dark .yr-btn:hover { color: var(--paper); }
 body.dark .yr-btn.active { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 22%, transparent); }
 body.dark .concert-item { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
 body.dark .c-title small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
-body.dark .c-cal a:hover { color: var(--paper); }
+body.dark .cal-toggle:hover,
+body.dark .c-cal.is-open .cal-toggle { color: var(--paper); }
+body.dark .cal-menu {
+  border-color: color-mix(in srgb, var(--paper) 18%, transparent);
+  background: var(--ink);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+body.dark .cal-menu a:hover {
+  color: var(--paper);
+  background: color-mix(in srgb, var(--paper) 8%, transparent);
+}
+body.dark .concert-item.is-cancelled .c-title {
+  text-decoration-color: color-mix(in srgb, var(--paper) 45%, transparent);
+}
 
 
 /* ── Mobile nav toggle ─────────────────────────────── */
@@ -883,27 +966,29 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
   <div class="termine-wrapper">
 
     <div class="controls-bar">
-      <div class="controls-left">
+      <div class="controls-tools">
+        <div class="year-filters">
+          <button class="yr-btn active" type="button" data-yr="all">Alle</button>
+          <button class="yr-btn" type="button" data-yr="2026">2026</button>
+          <button class="yr-btn" type="button" data-yr="2027">2027</button>
+        </div>
+        <div class="search-wrap">
+          <label for="concert-search" class="visually-hidden">Konzerte suchen</label>
+          <svg class="search-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="search" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off" aria-label="Konzerte suchen">
+        </div>
+      </div>
+      <div class="controls-links">
         <a class="notify-link" href="#benachrichtigungen">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
           Benachrichtigungen
         </a>
         <a class="past-link" href="/termine/past">
           vergangene Termine
-          <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.2">
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
             <path d="M0 7H16M10 1l6 6-6 6"/>
           </svg>
         </a>
-      </div>
-      <div class="year-filters">
-        <button class="yr-btn active" data-yr="all">Alle</button>
-        <button class="yr-btn" data-yr="2026">2026</button>
-        <button class="yr-btn" data-yr="2027">2027</button>
-      </div>
-      <div class="search-wrap">
-        <label for="concert-search" class="visually-hidden">Konzerte suchen</label>
-        <svg class="search-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="search" placeholder="Suche …" name="txt" id="concert-search" autocomplete="off" aria-label="Konzerte suchen">
       </div>
     </div>
 
@@ -921,7 +1006,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Gemeindehalle+Walheim+Paulinenstraße+3+74399+Walheim" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Gemeindehalle+Walheim+Paulinenstraße+3+74399+Walheim" target="_blank" rel="noopener">
               Gemeindehalle Walheim, Walheim
             </a>
           </div>
@@ -952,7 +1037,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Christuskirche+Kronach" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Christuskirche+Kronach" target="_blank" rel="noopener">
               Christuskirche Kronach
             </a>
           </div>
@@ -1011,7 +1096,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Jakobus-Stadtkirche+Brackenheim" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Jakobus-Stadtkirche+Brackenheim" target="_blank" rel="noopener">
               Jakobus-Stadtkirche Brackenheim
             </a>
           </div>
@@ -1045,7 +1130,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Berlin-Neukölln" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Berlin-Neukölln" target="_blank" rel="noopener">
               Berlin-Neukölln
             </a>
           </div>
@@ -1078,7 +1163,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Mozartareal+Würzburg" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Mozartareal+Würzburg" target="_blank" rel="noopener">
               Mozartareal, Würzburg
             </a>
           </div>
@@ -1111,7 +1196,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Mühlenforum+Glattbach+Hauptstraße+56+B+63864+Glattbach" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Mühlenforum+Glattbach+Hauptstraße+56+B+63864+Glattbach" target="_blank" rel="noopener">
               Mühlenforum Glattbach
             </a>
           </div>
@@ -1143,7 +1228,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Teo+Otto+Theater,+Remscheid" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Teo+Otto+Theater,+Remscheid" target="_blank" rel="noopener">
               Remscheid, Teo Otto Theater
             </a>
           </div>
@@ -1179,7 +1264,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Schloss+Eyrichshof" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Schloss+Eyrichshof" target="_blank" rel="noopener">
               Schloss Eyrichshof
             </a>
           </div>
@@ -1236,7 +1321,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Mainwiesen+Würzburg+Mainaustraße+19+97082+Würzburg" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Mainwiesen+Würzburg+Mainaustraße+19+97082+Würzburg" target="_blank" rel="noopener">
               Mainwiesen (Talavera), Würzburg
             </a>
           </div>
@@ -1265,7 +1350,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           <div class="c-title">FUSSISSIMO – Gypsy-Ethno-Jazz</div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Kulturwerkstatt+Disharmonie+Gutermannpromenade+7+97421+Schweinfurt" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Kulturwerkstatt+Disharmonie+Gutermannpromenade+7+97421+Schweinfurt" target="_blank" rel="noopener">
               Kulturwerkstatt Disharmonie, Schweinfurt
             </a>
           </div>
@@ -1296,7 +1381,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Weytterturm+In+der+Bürg+34+94315+Straubing" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Weytterturm+In+der+Bürg+34+94315+Straubing" target="_blank" rel="noopener">
               Weytterturm (Innenhof), Straubing
             </a>
           </div>
@@ -1325,7 +1410,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/search/?api=1&query=Schlosshof+Hohenschwangau" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Schlosshof+Hohenschwangau" target="_blank" rel="noopener">
               Schlosshof Hohenschwangau
             </a>
           </div>
@@ -1356,7 +1441,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/search/?api=1&query=Bergstation+Tegelberg+Ort+der+Besinnung" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Bergstation+Tegelberg+Ort+der+Besinnung" target="_blank" rel="noopener">
               Bergstation Tegelberg / Ort der Besinnung
             </a>, Schwangau · bei Regen: Panoramarestaurant
           </div>
@@ -1387,7 +1472,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Evangelische+Kirche+Berg" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Evangelische+Kirche+Berg" target="_blank" rel="noopener">
               Evangelische Kirche, Berg
             </a>
           </div>
@@ -1421,7 +1506,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Gebr.-Hofmann-Ring+97246+Eibelstadt" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.google.com/maps/search/?api=1&query=Gebr.-Hofmann-Ring+97246+Eibelstadt" target="_blank" rel="noopener noreferrer">
               Barockgarten Eibelstadt · Gebr.-Hofmann-Ring · 97246 Eibelstadt
             </a>
           </div>
@@ -1483,7 +1568,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Gerberplatz+1+95445+Bayreuth" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Gerberplatz+1+95445+Bayreuth" target="_blank" rel="noopener">
               Neuneinhalb im Gerberhaus, Bayreuth
             </a>
           </div>
@@ -1514,7 +1599,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Arche+Hauptstr.+64+97456+Dittelbrunn" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Arche+Hauptstr.+64+97456+Dittelbrunn" target="_blank" rel="noopener">
               Arche, Hauptstr. 64, 97456 Dittelbrunn
             </a>
           </div>
@@ -1547,7 +1632,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Café+Victoria+Coburg+Münzmeisterhaus" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Café+Victoria+Coburg+Münzmeisterhaus" target="_blank" rel="noopener">
               Café Victoria · Münzmeisterhaus, Coburg
             </a>
           </div>
@@ -1579,7 +1664,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Huttenschloss+Gemünden+am+Main" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Huttenschloss+Gemünden+am+Main" target="_blank" rel="noopener">
               Huttenschloss, Gemünden am Main
             </a>
           </div>
@@ -1613,7 +1698,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Würzburger+Str.+48+91413+Neustadt+an+der+Aisch" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Würzburger+Str.+48+91413+Neustadt+an+der+Aisch" target="_blank" rel="noopener">
               NeuStadtHalle am Schloss · Würzburger Str. 48 · Neustadt an der Aisch
             </a>
           </div>
@@ -1645,7 +1730,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Martinskirche+Kleingartach" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Martinskirche+Kleingartach" target="_blank" rel="noopener">
               Martinskirche Kleingartach
             </a>
           </div>
@@ -1709,7 +1794,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Mozartareal+Würzburg" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Mozartareal+Würzburg" target="_blank" rel="noopener">
               Bertold-Hummel-Saal im Mozartareal, Würzburg
             </a>
           </div>
@@ -1746,7 +1831,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Berlin-Neukölln" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Berlin-Neukölln" target="_blank" rel="noopener">
               Berlin-Neukölln
             </a>
           </div>
@@ -1773,7 +1858,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Kirchgasse+6+74366+Kirchheim+am+Neckar" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Kirchgasse+6+74366+Kirchheim+am+Neckar" target="_blank" rel="noopener">
               Mauritiuskirche · Kirchgasse 6 · 74366 Kirchheim am Neckar
             </a>
           </div>
@@ -1836,7 +1921,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </div>
       <div class="c-location">
         <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-        <a href="https://www.google.com/maps/dir//Café+Victoria+Coburg+Münzmeisterhaus" target="_blank">
+        <a href="https://www.google.com/maps/search/?api=1&query=Café+Victoria+Coburg+Münzmeisterhaus" target="_blank" rel="noopener">
           Café Victoria · Münzmeisterhaus, Coburg
         </a>
       </div>
@@ -2003,7 +2088,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
       </div>
       <div class="c-location">
         <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-        <a href="https://www.google.com/maps/dir//Alte+Kelter+Gemmrigheim" target="_blank">
+        <a href="https://www.google.com/maps/search/?api=1&query=Alte+Kelter+Gemmrigheim" target="_blank" rel="noopener">
           Alte Kelter, Gemmrigheim
         </a>
       </div>
@@ -2171,7 +2256,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Josefskapelle+Oberstdorf" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Josefskapelle+Oberstdorf" target="_blank" rel="noopener">
               Josefskapelle, Oberstdorf
             </a>
           </div>
@@ -2203,7 +2288,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
           <div class="c-location">
             <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir//Petrikirche+Kulmbach" target="_blank">
+            <a href="https://www.google.com/maps/search/?api=1&query=Petrikirche+Kulmbach" target="_blank" rel="noopener">
               Petrikirche, Kulmbach
             </a>
           </div>
@@ -2262,8 +2347,8 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
     <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
 
-  <script src="assets/site.js?v=11" defer></script>
-  <script src="assets/termine.js?v=3" defer></script>
+  <script src="assets/site.js?v=14" defer></script>
+  <script src="assets/termine.js?v=4" defer></script>
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 19V5" />

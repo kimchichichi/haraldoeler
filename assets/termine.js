@@ -17,6 +17,7 @@
   function insertMonthDividers() {
     var list = document.querySelector('.concert-list');
     if (!list) return;
+    list.querySelectorAll('.month-divider').forEach(function (el) { el.remove(); });
     var items = Array.from(list.querySelectorAll('.concert-item'));
     var lastKey = '';
     items.forEach(function (item) {
@@ -35,10 +36,29 @@
     });
   }
 
-  function replaceCalIcons() {
-    var svg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
-    document.querySelectorAll('.cal-icon').forEach(function (el) {
-      el.innerHTML = svg;
+  function markCancelled() {
+    document.querySelectorAll('.concert-item').forEach(function (item) {
+      var badge = item.querySelector('.badge-abgesagt');
+      if (!badge || !/^\s*Abgesagt\s*$/i.test(badge.textContent || '')) return;
+      item.classList.add('is-cancelled');
+      item.querySelectorAll('.c-cal, .c-info-link, .c-poster-link, .c-tba').forEach(function (el) {
+        el.remove();
+      });
+    });
+  }
+
+  function fixMapLinks() {
+    document.querySelectorAll('.c-location a[href*="google.com/maps"]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      var dir = href.match(/maps\/dir\/\/(.+?)(?:[?#]|$)/i);
+      if (dir) {
+        var query = decodeURIComponent(dir[1].replace(/\+/g, ' '));
+        a.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+      }
+      a.target = '_blank';
+      var rel = (a.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+      if (rel.indexOf('noopener') === -1) rel.push('noopener');
+      a.setAttribute('rel', rel.join(' '));
     });
   }
 
@@ -61,7 +81,7 @@
       });
       item.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
-          if (e.target.closest('a')) return;
+          if (e.target.closest('a, button')) return;
           e.preventDefault();
           highlight();
         }
@@ -74,13 +94,17 @@
     if (!bar) return;
     bar.classList.add('is-sticky');
     var header = document.querySelector('.site-header');
-    function syncHeaderH() {
+    function syncOffsets() {
       if (header) {
         document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
       }
+      document.documentElement.style.setProperty('--controls-h', bar.offsetHeight + 'px');
     }
-    syncHeaderH();
-    window.addEventListener('resize', syncHeaderH, { passive: true });
+    syncOffsets();
+    window.addEventListener('resize', syncOffsets, { passive: true });
+    if (typeof ResizeObserver === 'function') {
+      new ResizeObserver(syncOffsets).observe(bar);
+    }
   }
 
   function initFilters() {
@@ -135,6 +159,7 @@
       });
 
       if (emptyEl) emptyEl.classList.toggle('is-visible', visible === 0);
+      closeCalMenus();
     }
 
     document.querySelectorAll('.yr-btn').forEach(function (btn) {
@@ -164,7 +189,7 @@
   }
 
   function addPosterButtons() {
-    document.querySelectorAll('.concert-item').forEach(function (item) {
+    document.querySelectorAll('.concert-item:not(.is-cancelled)').forEach(function (item) {
       var posterHref = item.dataset.poster;
       if (!posterHref || item.querySelector('.c-poster-link')) return;
       var actions = item.querySelector('.c-right');
@@ -260,7 +285,7 @@
   function parseConcertTime(dayEl) {
     if (!dayEl) return null;
     var t = dayEl.textContent.replace(/\s+/g, ' ').trim();
-    if (/uhrzeit folgt|tba/i.test(t)) return null;
+    if (/uhrzeit folgt|tba|verschoben|datum folgt/i.test(t)) return null;
     var m = t.match(/(\d{1,2})[.:](\d{2})\s*Uhr/i);
     if (!m) return null;
     return { h: Number(m[1]), min: Number(m[2]) };
@@ -350,25 +375,72 @@
     });
   }
 
+  function closeCalMenus(except) {
+    document.querySelectorAll('.c-cal.is-open').forEach(function (cal) {
+      if (except && cal === except) return;
+      cal.classList.remove('is-open');
+      var btn = cal.querySelector('.cal-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function initCalMenus() {
+    document.addEventListener('click', function (e) {
+      var toggle = e.target.closest('.cal-toggle');
+      if (toggle) {
+        e.preventDefault();
+        e.stopPropagation();
+        var wrap = toggle.closest('.c-cal');
+        if (!wrap) return;
+        var willOpen = !wrap.classList.contains('is-open');
+        closeCalMenus(willOpen ? wrap : null);
+        wrap.classList.toggle('is-open', willOpen);
+        toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        return;
+      }
+      if (!e.target.closest('.c-cal')) closeCalMenus();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeCalMenus();
+    });
+  }
+
   function buildCalendarLinks() {
     document.querySelectorAll('.concert-item').forEach(function (item) {
-      if (item.querySelector('.c-tba')) return;
+      if (item.classList.contains('is-cancelled')) return;
+
       var dateEl = item.querySelector('.c-date');
       var dayEl = item.querySelector('.c-day');
       var titleEl = item.querySelector('.c-title');
-      if (!dateEl) return;
-      var dm = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+      var existing = item.querySelector('.c-cal');
       var time = parseConcertTime(dayEl);
-      if (!dm || !time) return;
+
+      if (item.querySelector('.c-tba') || !time) {
+        if (existing) existing.remove();
+        return;
+      }
+      if (!dateEl) return;
+
+      var dm = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+      if (!dm) {
+        if (existing) existing.remove();
+        return;
+      }
 
       var y = Number(dm[3]);
       var mo = Number(dm[2]);
       var d = Number(dm[1]);
       var title = titleText(titleEl);
-      if (!title) return;
+      if (!title) {
+        if (existing) existing.remove();
+        return;
+      }
       var details = descriptionText(item, titleEl);
       var location = locationText(item);
-      if (/ort folgt/i.test(location)) return;
+      if (/ort folgt/i.test(location)) {
+        if (existing) existing.remove();
+        return;
+      }
 
       var start = berlinToUtcStamp(y, mo, d, time.h, time.min);
       var end = berlinToUtcStamp(y, mo, d, time.h + 2, time.min);
@@ -381,12 +453,11 @@
         dates: start + '/' + end
       });
       var googleHref = 'https://www.google.com/calendar/render?' + gParams.toString();
-
       var ics = buildIcs(title, details, location, start, end);
       var filename =
         slugifyFilename(title) + '_' + y + '-' + pad2(mo) + '-' + pad2(d) + '.ics';
 
-      var cal = item.querySelector('.c-cal');
+      var cal = existing;
       if (!cal) {
         var right = item.querySelector('.c-right');
         if (!right) return;
@@ -395,27 +466,37 @@
         right.appendChild(cal);
       }
 
+      cal.className = 'c-cal';
       cal.innerHTML = '';
-      var icon = document.createElement('span');
-      icon.className = 'cal-icon';
-      cal.appendChild(icon);
+
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'cal-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-haspopup', 'true');
+      toggle.textContent = 'Kalender';
+      cal.appendChild(toggle);
+
+      var menu = document.createElement('div');
+      menu.className = 'cal-menu';
+      menu.setAttribute('role', 'menu');
 
       var gLink = document.createElement('a');
       gLink.href = googleHref;
       gLink.target = '_blank';
       gLink.rel = 'noopener';
+      gLink.setAttribute('role', 'menuitem');
       gLink.textContent = 'Google';
-      cal.appendChild(gLink);
-
-      var sep = document.createElement('span');
-      sep.textContent = '|';
-      cal.appendChild(sep);
+      menu.appendChild(gLink);
 
       var iLink = document.createElement('a');
       iLink.href = encodeIcalDataUri(ics);
       iLink.setAttribute('download', filename);
+      iLink.setAttribute('role', 'menuitem');
       iLink.textContent = 'iCal';
-      cal.appendChild(iLink);
+      menu.appendChild(iLink);
+
+      cal.appendChild(menu);
     });
   }
 
@@ -431,13 +512,15 @@
   }
 
   assignConcertIds();
-  insertMonthDividers();
+  markCancelled();
+  fixMapLinks();
   buildCalendarLinks();
-  replaceCalIcons();
+  insertMonthDividers();
   initConcertClicks();
   initStickyControls();
   addPosterButtons();
   initFilters();
   initIcalDownloads();
+  initCalMenus();
   highlightFromHash();
 })();

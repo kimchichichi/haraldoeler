@@ -112,11 +112,35 @@
 
   var subjectField = form.querySelector('#cf-subject');
   var messageField = form.querySelector('#cf-message');
+
+  function applySubject(value) {
+    if (!subjectField || !value) return;
+    var wanted = String(value).toLowerCase();
+    var match = null;
+    for (var i = 0; i < subjectField.options.length; i++) {
+      var opt = subjectField.options[i];
+      if (opt.value && opt.value.toLowerCase() === wanted) {
+        match = opt;
+        break;
+      }
+    }
+    if (!match) return;
+    subjectField.value = match.value;
+    if (messageField) {
+      messageField.placeholder = MESSAGE_PLACEHOLDERS[match.value] || DEFAULT_PLACEHOLDER;
+    }
+  }
+
   if (subjectField && messageField) {
     subjectField.addEventListener('change', function () {
       messageField.placeholder = MESSAGE_PLACEHOLDERS[subjectField.value] || DEFAULT_PLACEHOLDER;
     });
   }
+
+  try {
+    var params = new URLSearchParams(window.location.search || '');
+    applySubject(params.get('betreff') || params.get('subject'));
+  } catch (err) { /* ignore */ }
 
   var copyBtn = document.getElementById('copy-email-btn');
   if (copyBtn) {

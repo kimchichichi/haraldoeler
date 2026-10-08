@@ -158,7 +158,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=14';
+    link.href = sitePrefix() + 'assets/chrome.css?v=15';
     (document.body || document.head).appendChild(link);
   }
 
@@ -218,6 +218,13 @@
       last = words[words.length - 1];
     }
     return last;
+  }
+
+  /* Homepage concert rows: venue name only (street detail stays on Termine). */
+  function venueOnly(location) {
+    var raw = cleanText(location);
+    if (!raw) return '';
+    return raw.split('·')[0].trim();
   }
 
   /* Resolve ../ relative to how assets/site.js was loaded */
@@ -351,7 +358,7 @@
               '</div>',
               '<div>',
                 '<div class="hc-title">' + escapeHtml(event.title) + '</div>',
-                '<div class="hc-location">' + escapeHtml(event.location) + '</div>',
+                '<div class="hc-location">' + escapeHtml(venueOnly(event.location)) + '</div>',
               '</div>',
               '<span class="hc-arrow" aria-hidden="true">Details →</span>',
             '</a>',

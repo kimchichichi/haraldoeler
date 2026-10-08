@@ -210,8 +210,28 @@ button.repertoire-row-link { background: none; border: none; cursor: pointer; fo
   .projects-subnav-inner { padding: 0 24px; }
   .detail .hero-meta { left: 24px; right: 24px; bottom: 24px; grid-template-columns: 1fr; }
   .detail-body { padding: 56px 24px; } .back-link { padding: 18px 24px; }
-  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
-  .site-footer .center, .site-footer .right { text-align: left; }
+  .site-footer {
+    padding: 24px;
+    padding-right: max(24px, calc(18px + 44px + 12px));
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "left center"
+      "right center";
+    gap: 12px 28px;
+    align-items: end;
+  }
+  .site-footer .left { grid-area: left; }
+  .site-footer .right {
+    grid-area: right;
+    text-align: left;
+  }
+  .site-footer .center {
+    grid-area: center;
+    text-align: right;
+    justify-self: end;
+    align-self: end;
+    max-width: min(36ch, 55vw);
+  }
 
   /* Repertoire: mobile */
   .rep-group-header.single { grid-template-columns: 36px 1fr auto; }
@@ -326,6 +346,6 @@ window.onSpotifyIframeApiReady = function(IFrameAPI) {
       });
     })();
   </script>
-  <script src="../assets/site.js?v=25" defer></script>
+  <script src="../assets/site.js?v=26" defer></script>
 </body>
 </html>

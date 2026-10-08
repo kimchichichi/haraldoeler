@@ -171,7 +171,8 @@ nav.primary a.active::after {
   height: 100%;
   object-fit: cover;
   object-position: 12% 20%;
-  filter: grayscale(1) contrast(1.05);
+  /* No forced grayscale — source is mono; colour portraits stay readable */
+  filter: contrast(1.05);
   transform-origin: center;
   transition: transform 8s ease;
 }
@@ -195,7 +196,7 @@ nav.primary a.active::after {
   bottom: 72px;
   z-index: 2;
   color: var(--paper);
-  text-align: right;
+  text-align: left;
   max-width: 680px;
 }
 .hero-eyebrow {
@@ -222,6 +223,41 @@ nav.primary a.active::after {
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: rgba(244,241,236,0.6);
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  border: 1px solid rgba(244,241,236,0.45);
+  color: var(--paper);
+  background: transparent;
+  transition: color .25s ease, background .25s ease, border-color .25s ease;
+}
+.hero-cta:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.hero-cta--solid {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.hero-cta--solid:hover {
+  background: transparent;
+  color: var(--paper);
+  border-color: rgba(244,241,236,0.55);
 }
 .hero-scroll {
   position: absolute;
@@ -275,16 +311,16 @@ nav.primary a.active::after {
   to   { transform: scale(1); }
 }
 @keyframes heroFadeSlide {
-  from { opacity: 0; transform: translateX(32px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroNameReveal {
   from { opacity: 0; transform: translateY(48px) skewY(2deg); }
   to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
 }
 @keyframes heroSubFade {
-  from { opacity: 0; transform: translateX(20px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroScrollAppear {
   from { opacity: 0; transform: translateY(12px); }
@@ -302,6 +338,9 @@ nav.primary a.active::after {
 }
 .hero-sub {
   animation: heroSubFade .75s 1.1s cubic-bezier(.4,0,.2,1) both;
+}
+.hero-actions {
+  animation: heroFadeSlide .7s 1.25s cubic-bezier(.4,0,.2,1) both;
 }
 .hero-scroll {
   animation: heroScrollAppear .6s 1.5s cubic-bezier(.4,0,.2,1) both;
@@ -428,6 +467,75 @@ body.dark .home-bio-lang a:hover {
   border-bottom-color: var(--paper);
 }
 
+/* ─── Home news teaser ──────────────────────────────────────────────────────── */
+.home-news {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 72px 48px 80px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.home-news-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin-bottom: 32px;
+}
+.home-news-link {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: 28px 40px;
+  align-items: center;
+  min-width: 0;
+}
+.home-news-media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1a1816;
+}
+.home-news-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.35) contrast(1.04);
+  transition: transform 1s cubic-bezier(.2,.7,.1,1), filter .5s ease;
+}
+.home-news-link:hover .home-news-media img {
+  transform: scale(1.03);
+  filter: grayscale(0.1) contrast(1.06);
+}
+.home-news-meta {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.home-news-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  transition: color .25s ease;
+}
+.home-news-link:hover .home-news-title { color: var(--accent); }
+.home-news-title em { font-style: italic; }
+.home-news-dek {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--ink) 78%, transparent);
+  max-width: 42ch;
+  text-wrap: pretty;
+}
+
 /* ─── Featured Projects ─────────────────────────────────────────────────────── */
 .home-projects-section {
   max-width: 1480px;
@@ -446,6 +554,23 @@ body.dark .home-bio-lang a:hover {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px;
+}
+.home-projects-more {
+  margin-top: 40px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.home-projects-more a {
+  color: var(--ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  transition: color .2s ease, border-color .2s ease;
+}
+.home-projects-more a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 /* Project card (from Projekte.html) */
@@ -574,6 +699,8 @@ body.dark .home-bio-lang a:hover {
 /* ─── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .home-teasers { grid-template-columns: 1fr; gap: 64px; }
+  .home-news { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
+  .home-news-link { grid-template-columns: minmax(120px, 180px) 1fr; gap: 24px; }
   .home-projects-section { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
   .home-projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -591,7 +718,12 @@ body.dark .home-bio-lang a:hover {
   }
 }
 
+@media (max-width: 1100px) {
+  .hero-img { object-position: 32% 18%; }
+}
+
 @media (max-width: 720px) {
+  .hero-img { object-position: 48% 16%; }
 
   .hero-content {
     text-align: left;
@@ -613,6 +745,9 @@ body.dark .home-bio-lang a:hover {
 
   .home-teasers { padding: 56px 24px 56px; }
   .hc-item-link { grid-template-columns: 100px 1fr auto; gap: 16px; }
+  .home-news { padding: 48px 24px 56px; }
+  .home-news-link { grid-template-columns: 1fr; gap: 20px; }
+  .home-news-media { aspect-ratio: 16 / 10; max-width: 420px; }
 
   .home-projects-section { padding: 56px 24px 80px; }
   .home-projects-grid { grid-template-columns: 1fr; }
@@ -664,6 +799,9 @@ body.dark .teaser-cta { color: var(--paper); border-color: color-mix(in srgb, va
 body.dark .teaser-cta:hover { color: var(--ink); background: var(--paper); }
 body.dark .proj-card p.subtitle { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 body.dark .proj-card .card-index { border-bottom-color: color-mix(in srgb, var(--paper) 16%, transparent); }
+body.dark .home-news { border-bottom-color: color-mix(in srgb, var(--paper) 12%, transparent); }
+body.dark .home-news-link:hover .home-news-title { color: var(--accent-soft); }
+body.dark .home-projects-more a:hover { color: var(--paper); border-bottom-color: var(--paper); }
 
 /* ── Mobile nav toggle ─────────────────────────────── */
 .nav-toggle {
@@ -860,8 +998,28 @@ body.dark .nav-toggle:hover { opacity: 1; }
     font-size: 11px;
   }
   body.nav-open { overscroll-behavior: none; overflow: hidden; }
-  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
-  .site-footer .center, .site-footer .right { text-align: left; }
+  .site-footer {
+    padding: 24px;
+    padding-right: max(24px, calc(18px + 44px + 12px));
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "left center"
+      "right center";
+    gap: 12px 28px;
+    align-items: end;
+  }
+  .site-footer .left { grid-area: left; }
+  .site-footer .right {
+    grid-area: right;
+    text-align: left;
+  }
+  .site-footer .center {
+    grid-area: center;
+    text-align: right;
+    justify-self: end;
+    align-self: end;
+    max-width: min(36ch, 55vw);
+  }
 }
 
 
@@ -910,6 +1068,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   .hero-eyebrow,
   .hero-name,
   .hero-sub,
+  .hero-actions,
   .hero-scroll {
     animation: none;
     opacity: 1;
@@ -954,6 +1113,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <p class="hero-eyebrow">Akkordeon · Komposition · Arrangement</p>
         <h1 class="hero-name">Harald<br>Oeler</h1>
         <p class="hero-sub">Accordionist &amp; Composer</p>
+        <div class="hero-actions">
+          <a class="hero-cta hero-cta--solid" href="/termine">Termine</a>
+          <a class="hero-cta" href="/kontakt?betreff=Konzert">Konzert anfragen</a>
+        </div>
       </div>
       <button type="button" class="hero-scroll" id="hero-scroll-cta" aria-controls="kommende-konzerte" aria-label="Zu den kommenden Konzerten">
         weiter
@@ -983,7 +1146,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
               </div>
               <div>
                 <div class="hc-title">Klassik im Dialog</div>
-                <div class="hc-location">NeuStadtHalle am Schloss · Würzburger Str. 48 · Neustadt an der Aisch</div>
+                <div class="hc-location">NeuStadtHalle am Schloss</div>
               </div>
               <span class="hc-arrow" aria-hidden="true">Details →</span>
             </a>
@@ -1038,6 +1201,27 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <p class="home-bio-lang" lang="en"><a href="/bio-en">Biography in English</a></p>
       </div>
 
+    </section>
+
+    <!-- Latest news teaser -->
+    <section class="home-news" aria-labelledby="home-news-heading">
+      <div class="home-news-header">
+        <p class="eyebrow" id="home-news-heading" style="margin-bottom:0">Aktuell</p>
+        <a class="teaser-cta" href="/news">
+          Alle News
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+        </a>
+      </div>
+      <a class="home-news-link" href="/news/bachtage26">
+        <div class="home-news-media">
+          <img src="news/image/cards/bachtage26-640.webp" srcset="news/image/cards/bachtage26-640.webp 640w, news/image/cards/bachtage26.webp 900w" sizes="(max-width: 720px) 92vw, 220px" width="640" height="800" alt="Würzburger Bachtage 2026 — Eröffnungsakt · Harald Oeler und Prof. Dr. Ulrich Konrad" loading="lazy" decoding="async">
+        </div>
+        <div>
+          <p class="home-news-meta">Nov 2026 · Solo</p>
+          <h2 class="home-news-title"><em>Würzburger Bachtage</em> — Eröffnungsakt</h2>
+          <p class="home-news-dek">Bach und die Zukunft · Bertold-Hummel-Saal · 19. November 2026</p>
+        </div>
+      </a>
     </section>
 
     <!-- Featured Projects -->
@@ -1113,6 +1297,14 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </a>
 
       </div>
+      <p class="home-projects-more">
+        auch:
+        <a href="projekte/solo">Solo</a>
+        ·
+        <a href="projekte/orchester">Orchester</a>
+        ·
+        <a href="projekte/hof">Hof</a>
+      </p>
     </section>
 
   </main>
@@ -1185,6 +1377,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
   </style>
-  <script src="assets/site.js?v=25" defer></script>
+  <script src="assets/site.js?v=27" defer></script>
 </body>
 </html>

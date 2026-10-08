@@ -27,7 +27,10 @@
 nav.primary a:focus-visible,
 .wordmark:focus-visible,
 .teaser-cta:focus-visible,
+.hero-cta:focus-visible,
 .hc-item-link:focus-visible,
+.home-news-link:focus-visible,
+.home-projects-more a:focus-visible,
 .proj-card:focus-visible,
 a.card:focus-visible,
 .concert-item:focus-visible,
@@ -39,6 +42,32 @@ a.card:focus-visible,
 .site-footer {
   align-items: center;
   font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
+}
+
+/* Mobile: Nächster Termin bottom-right */
+@media (max-width: 720px) {
+  .site-footer {
+    padding: 24px;
+    padding-right: max(24px, calc(18px + 44px + 12px));
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "left center"
+      "right center";
+    gap: 12px 28px;
+    align-items: end;
+  }
+  .site-footer .left { grid-area: left; }
+  .site-footer .right {
+    grid-area: right;
+    text-align: left;
+  }
+  .site-footer .center {
+    grid-area: center;
+    text-align: right;
+    justify-self: end;
+    align-self: end;
+    max-width: min(36ch, 55vw);
+  }
 }
 
 /* Labels / meta — same face & rhythm as footer */

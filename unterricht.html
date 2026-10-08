@@ -569,8 +569,28 @@ body.dark .nav-toggle:hover { opacity: 1; }
     font-size: 11px;
   }
   body.nav-open { overscroll-behavior: none; overflow: hidden; }
-  .site-footer { padding: 24px; grid-template-columns: 1fr; gap: 8px; }
-  .site-footer .center, .site-footer .right { text-align: left; }
+  .site-footer {
+    padding: 24px;
+    padding-right: max(24px, calc(18px + 44px + 12px));
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "left center"
+      "right center";
+    gap: 12px 28px;
+    align-items: end;
+  }
+  .site-footer .left { grid-area: left; }
+  .site-footer .right {
+    grid-area: right;
+    text-align: left;
+  }
+  .site-footer .center {
+    grid-area: center;
+    text-align: right;
+    justify-self: end;
+    align-self: end;
+    max-width: min(36ch, 55vw);
+  }
 }
 
 
@@ -790,6 +810,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
   </style>
-  <script src="assets/site.js?v=25" defer></script>
+  <script src="assets/site.js?v=26" defer></script>
 </body>
 </html>

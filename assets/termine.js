@@ -66,24 +66,22 @@
     document.querySelectorAll('.concert-item').forEach(function (item) {
       item.setAttribute('tabindex', '0');
       item.setAttribute('role', 'article');
-      function highlight() {
+      function focusRow() {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           item.scrollIntoView({ block: 'nearest' });
         } else {
           item.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        item.classList.add('is-highlighted');
-        window.setTimeout(function () { item.classList.remove('is-highlighted'); }, 1600);
       }
       item.addEventListener('click', function (e) {
         if (e.target.closest('a, button')) return;
-        highlight();
+        focusRow();
       });
       item.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           if (e.target.closest('a, button')) return;
           e.preventDefault();
-          highlight();
+          focusRow();
         }
       });
     });
@@ -505,7 +503,6 @@
     var target = document.querySelector(location.hash);
     if (target && target.classList.contains('concert-item')) {
       window.setTimeout(function () {
-        target.classList.add('is-highlighted');
         target.scrollIntoView({ block: 'center' });
       }, 300);
     }

@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Biography of German accordionist and composer Harald Oeler." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.haraldoeler.com/bio-en.html" />
-  <link rel="alternate" hreflang="de" href="https://www.haraldoeler.com/bio.html" />
-  <link rel="alternate" hreflang="en" href="https://www.haraldoeler.com/bio-en.html" />
+  <link rel="canonical" href="https://www.haraldoeler.com/bio-en" />
+  <link rel="alternate" hreflang="de" href="https://www.haraldoeler.com/bio" />
+  <link rel="alternate" hreflang="en" href="https://www.haraldoeler.com/bio-en" />
   <title>Harald Oeler — biography (English)</title>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/site.css?v=9">
   <script>
-    location.replace('bio.html?lang=en');
+    location.replace('/bio?lang=en');
   </script>
 </head>
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <p style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 40rem; line-height: 1.5;">
-    <a href="bio.html?lang=en">Continue to biography in English</a>
-    — or the <a href="bio.html">German biography</a>.
+    <a href="/bio?lang=en">Continue to biography in English</a>
+    — or the <a href="/bio">German biography</a>.
   </p>
-  <script src="assets/site.js?v=8" defer></script>
+  <script src="assets/site.js?v=9" defer></script>
 </body>
 </html>

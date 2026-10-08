@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist">
@@ -840,13 +852,13 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
       <small>accordionist &amp; composer</small>
     </a>
     <nav class="primary">
-      <a href="bio.html">bio</a>
-      <a href="projekte.html">projekte</a>
-      <a href="termine.html" class="active">termine</a>
-      <a href="news.html">news</a>
-      <a href="unterricht.html">unterricht</a>
-      <a href="medien.html">medien</a>
-      <a href="kontakt.html">kontakt</a>
+      <a href="/bio">bio</a>
+      <a href="/projekte">projekte</a>
+      <a href="/termine" class="active">termine</a>
+      <a href="/news">news</a>
+      <a href="/unterricht">unterricht</a>
+      <a href="/medien">medien</a>
+      <a href="/kontakt">kontakt</a>
     </nav>
 <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
   <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
@@ -876,7 +888,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
           Benachrichtigungen
         </a>
-        <a class="past-link" href="termine/past.html">
+        <a class="past-link" href="/termine/past">
           vergangene Termine
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M0 7H16M10 1l6 6-6 6"/>
@@ -1350,7 +1362,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
         </div>
         <div class="c-right">
-          <a class="c-info-link" href="news/hohenschwangau_bergkonzert.html">
+          <a class="c-info-link" href="/news/hohenschwangau_bergkonzert">
             mehr infos
             <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
           </a>
@@ -2240,10 +2252,10 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
     <div class="center" id="footer-next-concert"></div>
-    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
 
-  <script src="assets/site.js?v=8" defer></script>
+  <script src="assets/site.js?v=9" defer></script>
   <script src="assets/termine.js?v=3" defer></script>
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

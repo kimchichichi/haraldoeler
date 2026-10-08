@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist">
@@ -14,13 +26,15 @@
   <link rel="canonical" href="https://www.haraldoeler.com/">
   <title>HARALD OELER — Akkordeonist &amp; Komponist</title>
 
+  <link rel="preload" as="image" href="image/hero-960.webp" imagesrcset="image/hero-960.webp 960w, image/hero-1600.webp 1600w, image/hero.webp 1699w" imagesizes="100vw" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"></noscript>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=9">
+  <link rel="preload" href="assets/site.css?v=9" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/site.css?v=9"></noscript>
 
   <style>
 :root {
@@ -257,8 +271,8 @@ nav.primary a.active::after {
 
 /* ─── Hero entrance animations ───────────────────────────────────────────────── */
 @keyframes heroImgReveal {
-  from { opacity: 0; transform: scale(1.06); filter: grayscale(1) contrast(1.05) brightness(0.6); }
-  to   { opacity: 1; transform: scale(1);    filter: grayscale(1) contrast(1.05) brightness(1); }
+  from { transform: scale(1.03); }
+  to   { transform: scale(1); }
 }
 @keyframes heroFadeSlide {
   from { opacity: 0; transform: translateX(32px); }
@@ -579,12 +593,17 @@ body.dark .home-bio-lang a:hover {
 
 @media (max-width: 720px) {
 
-  .hero-content { left: 24px; right: 24px; bottom: 48px; }
+  .hero-content {
+    text-align: left;
+    left: 24px;
+    right: 24px;
+    bottom: max(88px, calc(env(safe-area-inset-bottom) + 72px));
+  }
   /* Show hero scroll hint on mobile */
   .hero-scroll {
     display: flex;
     left: 24px;
-    bottom: 18px;
+    bottom: max(20px, env(safe-area-inset-bottom));
     transform: none;
     font-size: 8px;
     letter-spacing: 0.18em;
@@ -873,6 +892,31 @@ body.dark .nav-toggle:hover { opacity: 1; }
   nav.primary.open a { font-size: 24px; padding: 4px 0; min-height: 40px; }
 }
 
+@media (max-width: 1024px) {
+  nav.primary:not(.open) { display: none; }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+    z-index: 10003;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-img,
+  .hero-eyebrow,
+  .hero-name,
+  .hero-sub,
+  .hero-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -887,13 +931,13 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <small>accordionist &amp; composer</small>
     </a>
     <nav class="primary">
-      <a href="bio.html">bio</a>
-      <a href="projekte.html">projekte</a>
-      <a href="termine.html" >termine</a>
-      <a href="news.html">news</a>
-      <a href="unterricht.html">unterricht</a>
-      <a href="medien.html">medien</a>
-      <a href="kontakt.html" >kontakt</a>
+      <a href="/bio">bio</a>
+      <a href="/projekte">projekte</a>
+      <a href="/termine" >termine</a>
+      <a href="/news">news</a>
+      <a href="/unterricht">unterricht</a>
+      <a href="/medien">medien</a>
+      <a href="/kontakt" >kontakt</a>
     </nav>
 <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
   <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
@@ -926,55 +970,55 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <div class="teaser-konzerte" id="kommende-konzerte">
         <p class="eyebrow">Kommende Konzerte</p>
         <!--
-          Auto-updated from termine.html.
+          Auto-updated from /termine.
           The static entries below are a fallback for browsers that cannot fetch local site files.
         -->
-        <ul class="home-concert-list" id="home-concert-list">
+        <ul class="home-concert-list" id="home-concert-list" data-concerts="25.10.2026|Klassik im Dialog||05.11.2026|Akkordeon Solo||07.11.2026|Landesmusiktag für Akkordeon">
 
           <li>
-            <a class="hc-item-link" href="termine.html#termin-2026-07-03">
+            <a class="hc-item-link" href="/termine#termin-2026-10-25">
               <div class="hc-date">
-                03.07.2026
-                <small>Fr · 19:30 Uhr</small>
-              </div>
-              <div>
-                <div class="hc-title">FUSSISSIMO – Gypsy-Ethno-Jazz</div>
-                <div class="hc-location">Kulturwerkstatt Disharmonie, Schweinfurt</div>
-              </div>
-              <span class="hc-arrow" aria-hidden="true">Details →</span>
-            </a>
-          </li>
-
-          <li>
-            <a class="hc-item-link" href="termine.html#termin-2026-07-05">
-              <div class="hc-date">
-                05.07.2026
+                25.10.2026
                 <small>So · 17:00 Uhr</small>
               </div>
               <div>
-                <div class="hc-title">Duo KlAkk! Encore!</div>
-                <div class="hc-location">Weytterturm (Innenhof), Straubing</div>
+                <div class="hc-title">Klassik im Dialog</div>
+                <div class="hc-location">NeuStadtHalle am Schloss · Würzburger Str. 48 · Neustadt an der Aisch</div>
               </div>
               <span class="hc-arrow" aria-hidden="true">Details →</span>
             </a>
           </li>
 
           <li>
-            <a class="hc-item-link" href="termine.html#termin-2026-07-18">
+            <a class="hc-item-link" href="/termine#termin-2026-11-05">
               <div class="hc-date">
-                18.07.2026
-                <small>Sa · 19:30 Uhr</small>
+                05.11.2026
+                <small>Do · 19:00 Uhr</small>
               </div>
               <div>
-                <div class="hc-title">PHILHARMONIE UND FILM – Brahms und Blockbuster</div>
-                <div class="hc-location">Schlosshof Hohenschwangau</div>
+                <div class="hc-title">Akkordeon Solo</div>
+                <div class="hc-location">Martinskirche Kleingartach</div>
+              </div>
+              <span class="hc-arrow" aria-hidden="true">Details →</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="hc-item-link" href="/termine#termin-2026-11-07">
+              <div class="hc-date">
+                07.11.2026
+                <small>Sa</small>
+              </div>
+              <div>
+                <div class="hc-title">Landesmusiktag für Akkordeon</div>
+                <div class="hc-location">Baden-Württemberg</div>
               </div>
               <span class="hc-arrow" aria-hidden="true">Details →</span>
             </a>
           </li>
 
         </ul>
-        <a class="teaser-cta" href="termine.html">
+        <a class="teaser-cta" href="/termine">
           Alle Termine
           <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
@@ -987,11 +1031,11 @@ body.dark .nav-toggle:hover { opacity: 1; }
           Preisträger des <em>Internationalen Akkordeonwettbewerbs Klingenthal</em> —
           Solist, Kammermusiker und Komponist zwischen Klassik, Jazz und Weltmusik.
         </p>
-        <a class="teaser-cta" href="bio.html">
+        <a class="teaser-cta" href="/bio">
           Biographie
           <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
-        <p class="home-bio-lang" lang="en"><a href="bio-en.html">Biography in English</a></p>
+        <p class="home-bio-lang" lang="en"><a href="/bio-en">Biography in English</a></p>
       </div>
 
     </section>
@@ -1000,7 +1044,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <section class="home-projects-section">
       <div class="home-projects-header">
         <p class="eyebrow" style="margin-bottom:0">Aktuelle Projekte</p>
-        <a class="teaser-cta" href="projekte.html">
+        <a class="teaser-cta" href="/projekte">
           Alle Projekte
           <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
@@ -1015,7 +1059,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
             <span class="card-role">Duo · Kammermusik</span>
           </div>
           <div class="image-wrap">
-            <img src="projekte/image/page/duoklakk.webp" alt="DUO KlAkk!" loading="lazy">
+            <img src="projekte/image/page/duoklakk-640.webp" srcset="projekte/image/page/duoklakk-640.webp 640w, projekte/image/page/duoklakk-960.webp 960w" sizes="(max-width: 1100px) calc(100vw - 48px), 440px" width="960" height="640" alt="DUO KlAkk!" loading="lazy" decoding="async">
           </div>
           <div class="card-meta">
             <h2>Duo KlAkk!</h2>
@@ -1035,7 +1079,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
             <span class="card-role">Duo · Kammermusik</span>
           </div>
           <div class="image-wrap">
-            <img src="projekte/image/page/duovia.webp" alt="Duo ViA!" loading="lazy">
+            <img src="projekte/image/page/duovia-640.webp" srcset="projekte/image/page/duovia-640.webp 640w, projekte/image/page/duovia-960.webp 960w" sizes="(max-width: 1100px) calc(100vw - 48px), 440px" width="960" height="540" alt="Duo ViA!" loading="lazy" decoding="async">
           </div>
           <div class="card-meta">
             <h2>Duo ViA!</h2>
@@ -1055,7 +1099,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
             <span class="card-role">Ensemble · Jazz &amp; World</span>
           </div>
           <div class="image-wrap">
-            <img src="projekte/image/page/fussissimo.webp" alt="FUSSISSIMO" loading="lazy">
+            <img src="projekte/image/page/fussissimo-640.webp" srcset="projekte/image/page/fussissimo-640.webp 640w, projekte/image/page/fussissimo-960.webp 960w" sizes="(max-width: 1100px) calc(100vw - 48px), 440px" width="960" height="639" alt="FUSSISSIMO" loading="lazy" decoding="async">
           </div>
           <div class="card-meta">
             <h2>FUSSISSIMO</h2>
@@ -1077,7 +1121,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
     <div class="center" id="footer-next-concert"></div>
-    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
 
   <script>
@@ -1091,121 +1135,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
       });
     })();
-  </script>
-
-  <script>
-    // Kommende Konzerte: keep homepage teaser aligned with the next dates in termine.html.
-    (function(){
-      var list = document.getElementById('home-concert-list');
-      if (!list || !window.fetch || !window.DOMParser) return;
-
-      function parseDate(value) {
-        var match = value.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
-        if (!match) return null;
-        return new Date(Number(match[3]), Number(match[2]) - 1, Number(match[1]));
-      }
-
-      function cleanText(value) {
-        return value.replace(/\s+/g, ' ').trim();
-      }
-
-      function escapeHtml(value) {
-        return value.replace(/[&<>"']/g, function(char) {
-          return {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;'
-          }[char];
-        });
-      }
-
-      function getTitle(item) {
-        var title = item.querySelector('.c-title');
-        if (!title) return '';
-        var clone = title.cloneNode(true);
-        clone.querySelectorAll('small, .badge-abgesagt').forEach(function(node){ node.remove(); });
-        return cleanText(clone.textContent || title.textContent);
-      }
-
-      function getLocation(item) {
-        var location = item.querySelector('.c-location a') || item.querySelector('.c-location');
-        return location ? cleanText(location.textContent) : '';
-      }
-
-      function getTerminId(date) {
-        var m = date.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
-        return m ? 'termin-' + m[3] + '-' + m[2] + '-' + m[1] : '';
-      }
-
-      function render(events) {
-        list.innerHTML = events.map(function(event) {
-          var href = event.terminId ? 'termine.html#' + event.terminId : 'termine.html';
-          return [
-            '<li>',
-              '<a class="hc-item-link" href="' + href + '">',
-                '<div class="hc-date">',
-                  escapeHtml(event.date),
-                  '<small>' + escapeHtml(event.day) + '</small>',
-                '</div>',
-                '<div>',
-                  '<div class="hc-title">' + escapeHtml(event.title) + '</div>',
-                  '<div class="hc-location">' + escapeHtml(event.location) + '</div>',
-                '</div>',
-                '<span class="hc-arrow" aria-hidden="true">Details →</span>',
-              '</a>',
-            '</li>'
-          ].join('');
-        }).join('');
-      }
-
-      fetch('termine.html', { cache: 'no-cache' })
-        .then(function(response) {
-          if (!response.ok) throw new Error('Termine konnten nicht geladen werden.');
-          return response.text();
-        })
-        .then(function(html) {
-          var doc = new DOMParser().parseFromString(html, 'text/html');
-          var today = new Date();
-          today.setHours(0, 0, 0, 0);
-
-          var events = Array.from(doc.querySelectorAll('.concert-item')).map(function(item) {
-            var dateEl = item.querySelector('.c-date');
-            var dayEl = item.querySelector('.c-day');
-            var date = dateEl ? cleanText(dateEl.textContent) : '';
-            var parsedDate = parseDate(date);
-            return {
-              date: date,
-              day: dayEl ? cleanText(dayEl.textContent) : '',
-              title: getTitle(item),
-              location: getLocation(item),
-              parsedDate: parsedDate,
-              terminId: item.id || getTerminId(date),
-              cancelled: Boolean(item.querySelector('.badge-abgesagt'))
-            };
-          }).filter(function(event) {
-            return event.parsedDate && event.parsedDate >= today && !event.cancelled && event.title;
-          }).sort(function(a, b) {
-            return a.parsedDate - b.parsedDate;
-          }).slice(0, 3);
-
-          if (events.length) render(events);
-        })
-        .catch(function() {
-          // Keep the static fallback list in place.
-        });
-    })();
-  </script>
-
-  <script>
-    // Header scroll: transparent over hero, opaque when scrolled
-    const header = document.querySelector('.site-header');
-    function onScroll() {
-      header.classList.toggle('scrolled', window.scrollY > 60);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
   </script>
 
   <!-- Scroll to top button -->
@@ -1249,25 +1178,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
   </style>
-  <script>
-    (function(){
-      var btn = document.getElementById('scrollTopBtn');
-      if (!btn) return;
-      var showAt = 500;
-      function sync(){
-        var visible = window.scrollY > showAt;
-        btn.classList.toggle('is-visible', visible);
-        btn.tabIndex = visible ? 0 : -1;
-      }
-      window.addEventListener('scroll', sync, { passive: true });
-      sync();
-      btn.addEventListener('click', function(){
-        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      });
-    })();
-  </script>
-
-  <script src="assets/site.js?v=8" defer></script>
+  <script src="assets/site.js?v=9" defer></script>
 </body>
 </html>

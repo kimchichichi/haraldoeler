@@ -10,13 +10,20 @@
     if (toggle.__navBound || window.__HO_NAV_CUSTOM) return true;
     toggle.__navBound = true;
 
-    var backdrop = document.querySelector('.nav-backdrop');
-    if (!backdrop) {
-      backdrop = document.createElement('button');
-      backdrop.className = 'nav-backdrop';
-      backdrop.type = 'button';
-      backdrop.setAttribute('aria-label', 'Menü schließen');
-      document.body.appendChild(backdrop);
+    var backdrop = null;
+
+    function ensureBackdrop() {
+      if (backdrop && backdrop.isConnected) return backdrop;
+      backdrop = document.querySelector('.nav-backdrop');
+      if (!backdrop) {
+        backdrop = document.createElement('button');
+        backdrop.className = 'nav-backdrop';
+        backdrop.type = 'button';
+        backdrop.setAttribute('aria-label', 'Menü schließen');
+        document.body.appendChild(backdrop);
+        backdrop.addEventListener('click', close);
+      }
+      return backdrop;
     }
 
     var OPEN = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>';
@@ -52,6 +59,7 @@
     }
 
     function open() {
+      ensureBackdrop();
       mountNav();
       nav.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
@@ -89,7 +97,6 @@
       window.location.assign(url);
     }, { passive: true });
 
-    backdrop.addEventListener('click', close);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close();
     });
@@ -107,6 +114,7 @@
       var show = window.scrollY > showAt;
       if (btn.classList.contains('is-visible') !== show) {
         btn.classList.toggle('is-visible', show);
+        btn.tabIndex = show ? 0 : -1;
       }
       ticking = false;
     }
@@ -155,69 +163,162 @@
     return '';
   }
 
-  function isIncompleteConcert(item) {
-    if (item.querySelector('.badge-abgesagt')) return true;
-    if (item.querySelector('.c-tba')) return true;
-    var blob = item.textContent.replace(/\s+/g, ' ');
-    return /Uhrzeit folgt|Terminzeit TBA|Details TBA|Ort folgt/i.test(blob);
+  function cleanText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
   }
 
-  function concertIdFromDate(dateEl) {
-    var m = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
-    if (!m) return '';
-    return 'termin-' + m[3] + '-' + m[2] + '-' + m[1];
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function (char) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
+    });
   }
 
-  /* Footer next concert teaser */
-  function initFooterConcert() {
-    var el = document.getElementById('footer-next-concert');
-    if (!el || !window.fetch) return;
-    var prefix = sitePrefix();
-    fetch(prefix + 'termine.html', { cache: 'no-cache' })
-      .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
-      .then(function (html) {
-        var doc = new DOMParser().parseFromString(html, 'text/html');
-        var today = new Date();
-        today.setHours(0, 0, 0, 0);
-        var items = Array.from(doc.querySelectorAll('.concert-item'));
-        for (var i = 0; i < items.length; i++) {
-          var item = items[i];
-          if (isIncompleteConcert(item)) continue;
-          var dateEl = item.querySelector('.c-date');
-          if (!dateEl) continue;
-          var m = dateEl.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
-          if (!m) continue;
-          var d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
-          if (d < today) continue;
-          var titleEl = item.querySelector('.c-title');
-          var locEl = item.querySelector('.c-location a') || item.querySelector('.c-location');
-          var title = titleEl ? titleEl.childNodes[0].textContent.trim() : '';
-          var loc = locEl ? locEl.textContent.replace(/\s+/g, ' ').trim() : '';
-          var id = item.id || concertIdFromDate(dateEl);
-          var href = prefix + 'termine.html' + (id ? '#' + id : '');
-          el.innerHTML = '<a href="' + href + '">Nächstes Konzert: ' + dateEl.textContent.trim() + ' — ' + title + (loc ? ' · ' + loc : '') + '</a>';
-          return;
+  var termineHtmlPromise = null;
+  function fetchTermineHtml() {
+    if (!window.fetch) return Promise.reject();
+    if (!termineHtmlPromise) {
+      termineHtmlPromise = fetch(sitePrefix() + 'termine.html').then(function (r) {
+        if (!r.ok) throw new Error('termine');
+        return r.text();
+      });
+    }
+    return termineHtmlPromise;
+  }
+
+  function stripTags(value) {
+    return cleanText(String(value || '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/&(?:amp|#38);/g, '&')
+      .replace(/&(?:nbsp|#160);/g, ' ')
+      .replace(/&(?:quot|#34);/g, '"')
+      .replace(/&#39;|&apos;/g, "'")
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>'));
+  }
+
+  function classBlock(html, className) {
+    var at = html.indexOf('class="' + className + '"');
+    if (at === -1) return '';
+    var open = html.lastIndexOf('<', at);
+    var gt = html.indexOf('>', at);
+    if (open === -1 || gt === -1) return '';
+    var tag = html.slice(open + 1, html.indexOf(' ', open));
+    var end = html.indexOf('</' + tag + '>', gt);
+    if (end === -1) return '';
+    return html.slice(gt + 1, end);
+  }
+
+  /* String scan instead of DOMParser: termine.html is large, and building a
+     document for the footer teaser was a long main-thread task. */
+  function upcomingConcerts(html) {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var chunks = html.split('<li class="concert-item"');
+    var events = [];
+    for (var i = 1; i < chunks.length; i++) {
+      var chunk = chunks[i];
+      var itemEnd = chunk.indexOf('</li>');
+      if (itemEnd !== -1) chunk = chunk.slice(0, itemEnd);
+      var gt = chunk.indexOf('>');
+      var attrs = gt === -1 ? '' : chunk.slice(0, gt);
+      var body = gt === -1 ? chunk : chunk.slice(gt + 1);
+      var date = stripTags(classBlock(body, 'c-date'));
+      var match = date.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+      var titleHtml = classBlock(body, 'c-title').replace(/<small\b[\s\S]*?<\/small>/gi, '');
+      var idMatch = attrs.match(/\bid="([^"]*)"/);
+      events.push({
+        date: date,
+        day: stripTags(classBlock(body, 'c-day')),
+        title: stripTags(titleHtml),
+        location: stripTags(classBlock(body, 'c-location')),
+        parsedDate: match ? new Date(Number(match[3]), Number(match[2]) - 1, Number(match[1])) : null,
+        terminId: (idMatch && idMatch[1]) || (match ? 'termin-' + match[3] + '-' + match[2] + '-' + match[1] : ''),
+        cancelled: body.indexOf('badge-abgesagt') !== -1,
+        incomplete: /badge-abgesagt|\bc-tba\b|Uhrzeit folgt|Terminzeit TBA|Details TBA|Ort folgt/i.test(body)
+      });
+    }
+    return events.filter(function (event) {
+      return event.parsedDate && event.parsedDate >= today && event.title;
+    }).sort(function (a, b) {
+      return a.parsedDate - b.parsedDate;
+    });
+  }
+
+  /* One termine.html fetch feeds the footer teaser and the homepage list. */
+  function initConcertTeasers() {
+    var footer = document.getElementById('footer-next-concert');
+    var list = document.getElementById('home-concert-list');
+    if ((!footer && !list) || !window.fetch) return;
+    fetchTermineHtml().then(function (html) {
+      var events = upcomingConcerts(html);
+      if (footer) {
+        var next = null;
+        for (var i = 0; i < events.length; i++) {
+          if (!events[i].incomplete) { next = events[i]; break; }
         }
-      })
-      .catch(function () {});
+        if (next) {
+          var href = '/termine' + (next.terminId ? '#' + next.terminId : '');
+          footer.textContent = '';
+          var link = document.createElement('a');
+          link.href = href;
+          link.textContent = 'Nächstes Konzert: ' + next.date + ' — ' + next.title + (next.location ? ' · ' + next.location : '');
+          footer.appendChild(link);
+        }
+      }
+      if (!list) return;
+      var home = events.filter(function (event) { return !event.cancelled; }).slice(0, 3);
+      if (!home.length) return;
+      var key = home.map(function (event) { return event.date + '|' + event.title; }).join('||');
+      if (list.getAttribute('data-concerts') === key) return;
+      var markup = home.map(function (event) {
+        var itemHref = '/termine' + (event.terminId ? '#' + event.terminId : '');
+        return [
+          '<li>',
+            '<a class="hc-item-link" href="' + itemHref + '">',
+              '<div class="hc-date">',
+                escapeHtml(event.date),
+                '<small>' + escapeHtml(event.day) + '</small>',
+              '</div>',
+              '<div>',
+                '<div class="hc-title">' + escapeHtml(event.title) + '</div>',
+                '<div class="hc-location">' + escapeHtml(event.location) + '</div>',
+              '</div>',
+              '<span class="hc-arrow" aria-hidden="true">Details →</span>',
+            '</a>',
+          '</li>'
+        ].join('');
+      }).join('');
+      requestAnimationFrame(function () {
+        list.setAttribute('data-concerts', key);
+        list.innerHTML = markup;
+      });
+    }).catch(function () {});
   }
 
   function boot() {
-    initNav();
     initScrollTop();
     initHeroHeader();
-    initFooterConcert();
+    initNav();
+    if ('requestIdleCallback' in window) requestIdleCallback(initConcertTeasers, { timeout: 2000 });
+    else setTimeout(initConcertTeasers, 1);
     bootReactPages();
   }
 
   function bootReactPages() {
-    if (!document.getElementById('root')) return;
-    var tries = 0;
-    var iv = setInterval(function () {
-      tries++;
-      initNav();
-      if (tries > 80) clearInterval(iv);
-    }, 50);
+    var root = document.getElementById('root');
+    if (!root || initNav()) return;
+    if (typeof MutationObserver !== 'function') {
+      var tries = 0;
+      var iv = setInterval(function () {
+        tries++;
+        if (initNav() || tries > 40) clearInterval(iv);
+      }, 100);
+      return;
+    }
+    var obs = new MutationObserver(function () {
+      if (initNav()) obs.disconnect();
+    });
+    obs.observe(root, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') {

@@ -1,4 +1,4 @@
-/* Kontakt form — FormSubmit AJAX */
+/* Kontakt form — FormSubmit AJAX, mailto if the provider rejects the send */
 (function () {
   'use strict';
 
@@ -7,11 +7,47 @@
   if (!form || !status) return;
 
   var EMAIL = 'harald.oeler@gmx.de';
+  var INACTIVE_KEY = 'kontakt-formsubmit-inactive';
 
   function showStatus(msg, type) {
     status.style.display = 'block';
     status.textContent = msg;
     status.className = 'form-status form-status--' + (type || 'info');
+  }
+
+  function fieldValue(id) {
+    var el = form.querySelector('#' + id);
+    return el ? el.value.trim() : '';
+  }
+
+  function mailtoHref() {
+    var subject = fieldValue('cf-subject') || 'Kontaktanfrage über haraldoeler.com';
+    var body = 'Name: ' + fieldValue('cf-name')
+      + '\nE-Mail: ' + fieldValue('cf-email')
+      + '\n\n' + fieldValue('cf-message');
+    return 'mailto:' + EMAIL
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  }
+
+  function openMailto() {
+    var link = document.createElement('a');
+    link.href = mailtoHref();
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  function showMailtoFallback() {
+    openMailto();
+    status.style.display = 'block';
+    status.className = 'form-status form-status--info';
+    status.textContent = '';
+    status.appendChild(document.createTextNode('E-Mail-Programm geöffnet — bitte dort senden. '));
+    var again = document.createElement('a');
+    again.href = mailtoHref();
+    again.textContent = 'Erneut öffnen';
+    status.appendChild(again);
   }
 
   function clearFieldErrors() {
@@ -80,33 +116,56 @@
 
     var btn = form.querySelector('.btn-send');
     if (btn) btn.disabled = true;
+
+    var skipProvider = false;
+    try { skipProvider = sessionStorage.getItem(INACTIVE_KEY) === '1'; } catch (err) { skipProvider = false; }
+
+    if (skipProvider) {
+      showMailtoFallback();
+      if (btn) btn.disabled = false;
+      return;
+    }
+
     showStatus('Wird gesendet …', 'info');
 
-    var payload = new FormData();
-    payload.append('name', form.querySelector('#cf-name').value.trim());
-    payload.append('email', form.querySelector('#cf-email').value.trim());
-    payload.append('message', form.querySelector('#cf-message').value.trim());
-    payload.append('_replyto', form.querySelector('#cf-email').value.trim());
-    payload.append('_subject', (form.querySelector('#cf-subject').value.trim() || 'Kontaktanfrage über haraldoeler.com'));
-    payload.append('_captcha', 'false');
-    payload.append('_template', 'table');
+    var replyTo = fieldValue('cf-email');
+    var subject = fieldValue('cf-subject') || 'Kontaktanfrage über haraldoeler.com';
 
     fetch('https://formsubmit.co/ajax/' + encodeURIComponent(EMAIL), {
       method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: payload
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      referrerPolicy: 'origin',
+      body: JSON.stringify({
+        name: fieldValue('cf-name'),
+        email: replyTo,
+        message: fieldValue('cf-message'),
+        _replyto: replyTo,
+        _subject: subject,
+        _captcha: 'false',
+        _template: 'table'
+      })
     })
-      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; });
+      })
       .then(function (data) {
-        if (data.success === 'true' || data.success === true) {
+        if (data && (data.success === 'true' || data.success === true)) {
+          try { sessionStorage.removeItem(INACTIVE_KEY); } catch (err) { /* ignore */ }
           showStatus('Vielen Dank — Ihre Nachricht wurde gesendet.', 'success');
           form.reset();
-        } else {
-          throw new Error(data.message || 'Senden fehlgeschlagen');
+          return;
         }
+        var message = (data && data.message) ? String(data.message) : '';
+        if (/activat/i.test(message) || /web server/i.test(message)) {
+          try { sessionStorage.setItem(INACTIVE_KEY, '1'); } catch (err) { /* ignore */ }
+        }
+        showMailtoFallback();
       })
       .catch(function () {
-        showStatus('Senden fehlgeschlagen. Bitte E-Mail kopieren oder direkt schreiben.', 'error');
+        showMailtoFallback();
       })
       .finally(function () {
         if (btn) btn.disabled = false;

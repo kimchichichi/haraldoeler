@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
+  <meta charset="UTF-8" />
+  <title>HARALD OELER — termine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+  <style>
+    :root {
+      --ink: #0e0d0c;
+      --paper: #f4f1ec;
+      --muted: #6b655c;
+      --accent: #6b1d1a;
+      --serif: "Cormorant Garamond", "Times New Roman", serif;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+    .sheet {
+      width: 1200px;
+      margin: 0 auto;
+      background: var(--paper);
+    }
+    .site-header { border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+    .header-inner {
+      padding: 22px 48px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .wordmark {
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .wordmark .dot {
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin: 0 10px 2px;
+      vertical-align: middle;
+    }
+    .wordmark small {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: var(--muted);
+      margin-left: 14px;
+    }
+    nav {
+      display: flex;
+      gap: 22px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--muted);
+    }
+    nav .active {
+      color: var(--ink);
+      box-shadow: inset 0 -1px 0 var(--accent);
+      padding-bottom: 2px;
+    }
+    .page-head {
+      padding: 56px 48px 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      align-items: end;
+      gap: 48px;
+      border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+    }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .page-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 108px;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+    }
+    .page-meta {
+      justify-self: end;
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-bottom: 8px;
+    }
+    .page-meta b { color: var(--ink); font-weight: 500; }
+    .photo {
+      width: 420px;
+      height: 236px;
+      object-fit: cover;
+      object-position: 42% 42%;
+      display: block;
+      justify-self: end;
+    }
+    .list { list-style: none; padding: 0 48px; }
+    .concert-item {
+      display: grid;
+      grid-template-columns: 168px 1fr;
+      gap: 0 36px;
+      padding: 22px 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+      align-items: start;
+    }
+    .c-left { display: flex; flex-direction: column; gap: 6px; padding-top: 4px; }
+    .c-date {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+    .c-day {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .c-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+    }
+    .c-title small {
+      display: block;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 17px;
+      color: color-mix(in srgb, var(--ink) 65%, transparent);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+    .c-location {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .c-location svg { color: var(--accent); flex-shrink: 0; }
+    .site-footer {
+      padding: 28px 48px 32px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="wordmark">HARALD<span class="dot"></span>OELER<small>accordionist &amp; composer</small></div>
+        <nav>
+          <span>bio</span>
+          <span>projekte</span>
+          <span class="active">termine</span>
+          <span>news</span>
+          <span>unterricht</span>
+          <span>medien</span>
+          <span>kontakt</span>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-head">
+      <div>
+        <div class="eyebrow">— Termine</div>
+        <h1 class="page-title">termine</h1>
+        <div class="page-meta" style="text-align:left; justify-self:start; margin-top:22px; padding-bottom:0;">
+          <div>September — Dezember</div>
+          <div><b>2026</b></div>
+        </div>
+      </div>
+      <img class="photo" src="media/download/07.png" alt="Harald Oeler">
+    </section>
+
+    <ul class="list">
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">12.09.2026</span><span class="c-day">Sa · 17:00 Uhr</span></div>
+        <div>
+          <div class="c-title">TangoFeuer<small>Tangomusik &amp; Tanz</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Barockgarten Eibelstadt</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">13.09.2026</span><span class="c-day">So · 17:00 Uhr</span></div>
+        <div>
+          <div class="c-title">Duo KlAkk! goes BACH!<small>Ji Eun Kim &amp; Harald Oeler</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Schloß Eyb, Dörzbach</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">18.09.2026</span><span class="c-day">Fr · 20:00 Uhr</span></div>
+        <div>
+          <div class="c-title">Duo KlAkk! Encore!<small>Ji Eun Kim &amp; Harald Oeler</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Neuneinhalb im Gerberhaus, Bayreuth</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">19.09.2026</span><span class="c-day">Sa · 19:00 Uhr</span></div>
+        <div>
+          <div class="c-title">Sonate für Akkordeon<small>Solo</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Arche, Dittelbrunn</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">26.09.2026</span><span class="c-day">Sa · 19:00 Uhr</span></div>
+        <div>
+          <div class="c-title">La Vie En Rose<small>Rannveig Káradóttir &amp; Harald Oeler</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Café Victoria, Coburg</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">27.09.2026</span><span class="c-day">So · 19:30 Uhr</span></div>
+        <div>
+          <div class="c-title">Fussissimo<small>Gypsy-Ethno-Jazz</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Huttenschloss, Gemünden am Main</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">25.10.2026</span><span class="c-day">So · 17:00 Uhr</span></div>
+        <div>
+          <div class="c-title">Klassik im Dialog<small>Duo Turkalj / Oeler</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>NeuStadtHalle, Neustadt an der Aisch</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">19.11.2026</span><span class="c-day">Do · 19:00 Uhr</span></div>
+        <div>
+          <div class="c-title">Würzburger Bachtage<small>Eröffnungsakt</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Bertold-Hummel-Saal, Würzburg</div>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="c-left"><span class="c-date">05.12.2026</span><span class="c-day">Sa · 18:00 Uhr</span></div>
+        <div>
+          <div class="c-title">Duo KlAkk! Encore!<small>Ji Eun Kim &amp; Harald Oeler</small></div>
+          <div class="c-location"><svg width="10" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Mauritiuskirche, Kirchheim am Neckar</div>
+        </div>
+      </li>
+    </ul>
+
+    <footer class="site-footer">
+      <div>© Harald Oeler · 2026</div>
+      <div>haraldoeler.com</div>
+    </footer>
+  </div>
+</body>
+</html>

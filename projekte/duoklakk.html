@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -14,12 +26,15 @@
   <title>HARALD OELER — Duo KlAkk!</title>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/site.css?v=9">
-  <!-- Preload the LCP hero image so it's discoverable before the JS bundle runs -->
-  <link rel="preload" as="image" href="/projekte/image/page/duoklakk.webp" fetchpriority="high">
+  <!-- site.css is not render-blocking: critical header/hero rules are inlined below -->
+  <link rel="preload" href="../assets/site.css?v=11" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/site.css?v=11"></noscript>
+  <!-- Mobile LCP uses the 960w file (~27 KiB). Desktop keeps the full hero. -->
+  <link rel="preload" as="image" href="/projekte/image/page/duoklakk-960.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/projekte/image/page/duoklakk.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <style>
 /* Harald OELER — projekte / duoklakk */
@@ -36,8 +51,19 @@ html, body { background: var(--paper); color: var(--ink); font-family: var(--san
 }
 a { color: inherit; text-decoration: none; }
 
+.skip-link { position: absolute; top: -100px; left: 16px; z-index: 10010; padding: 10px 18px; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+.skip-link:focus { top: 12px; }
 .site-header { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); backdrop-filter: saturate(140%); }
-.wordmark { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; }
+.header-inner { max-width: 1480px; margin: 0 auto; padding: 22px 48px; display: flex; align-items: center; gap: 48px; }
+.wordmark { flex: 1 1 auto; min-width: 0; font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; }
+nav.primary { display: flex; gap: 28px; margin-left: auto; font-size: 12px; letter-spacing: 0.18em; text-transform: lowercase; font-weight: 400; }
+.nav-toggle { display: none; width: 40px; height: 40px; background: none; border: none; cursor: pointer; color: inherit; padding: 0; line-height: 0; }
+@media (max-width: 1024px) {
+  .header-inner { padding: 18px 24px; gap: 16px; }
+  nav.primary { display: none !important; }
+  .nav-toggle { display: inline-flex !important; align-items: center; justify-content: center; margin-left: auto; position: fixed; top: max(14px, env(safe-area-inset-top)); right: 18px; z-index: 10002; }
+  .back-link { padding: 20px 24px; }
+}
 .wordmark .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin: 0 10px 2px; vertical-align: middle; }
 .wordmark small { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 13px; letter-spacing: 0.04em; text-transform: none; color: var(--muted); }
 nav.primary a { color: var(--muted); position: relative; padding: 4px 0; transition: color .25s ease; }
@@ -54,12 +80,22 @@ nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0
 .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
 
 .detail .hero { position: relative; height: 78vh; min-height: 560px; overflow: hidden; background: var(--ink); }
+.detail .hero picture { display: block; width: 100%; height: 100%; }
 .detail .hero img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
 .detail .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,13,12,0.25) 0%, transparent 30%, rgba(14,13,12,0.85) 100%); }
 .detail .hero-meta { position: absolute; left: 48px; right: 48px; bottom: 48px; z-index: 2; color: var(--paper); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; }
 .detail .hero-meta .eyebrow { color: rgba(244,241,236,0.65); }
 .detail .hero-meta h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(72px, 12vw, 200px); line-height: 0.9; letter-spacing: -0.02em; }
 .detail .hero-meta .runtime { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-align: right; line-height: 1.8; color: rgba(244,241,236,0.8); }
+@media (max-width: 1024px) {
+  .detail .hero-meta { left: 24px; right: 24px; bottom: 28px; gap: 16px; }
+}
+@media (max-width: 720px) {
+  .detail .hero { height: 72vh; min-height: 420px; }
+  .detail .hero-meta { grid-template-columns: 1fr; }
+  .detail .hero-meta .runtime { text-align: left; }
+  .hero-scroll-cta { align-items: flex-start; }
+}
 .hero-scroll-cta {
   display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
   margin-top: 18px; padding-top: 14px;
@@ -321,8 +357,66 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <div id="root"></div>
-  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=45"></script>
+  <div class="detail" id="static-shell">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="/index.html">HARALD<span class="dot"></span>OELER <small>accordionist &amp; composer</small></a>
+        <nav class="primary">
+          <a href="/bio.html">bio</a>
+          <a class="active" href="/projekte">projekte</a>
+          <a href="/termine.html">termine</a>
+          <a href="/news.html">news</a>
+          <a href="/unterricht.html">unterricht</a>
+          <a href="/medien.html">medien</a>
+          <a href="/kontakt.html">kontakt</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <line x1="0" y1="1" x2="22" y2="1" />
+            <line x1="0" y1="7" x2="22" y2="7" />
+            <line x1="0" y1="13" x2="22" y2="13" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <a class="back-link" href="/projekte">
+      <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M18 8 L0 8 M6 2 L0 8 L6 14"/></svg>
+      zurück zu projekte
+    </a>
+    <section class="hero" id="main">
+      <picture>
+        <source media="(max-width: 900px)" srcset="/projekte/image/page/duoklakk-960.webp" type="image/webp">
+        <img src="/projekte/image/page/duoklakk.webp" alt="Duo KlAkk!" width="1800" height="1200" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero-meta">
+        <div>
+          <div class="eyebrow">Projekt 05 · neue musik × alte musik</div>
+          <h1>Duo KlAkk!</h1>
+        </div>
+        <div class="runtime">
+          <div><a href="https://www.sinnyang.com" target="_blank" rel="noopener noreferrer">Ji Eun Kim</a> · Klarinette</div>
+          <div>Harald Oeler · Akkordeon</div>
+          <div>3 Konzertprogramme</div>
+          <div class="hero-scroll-cta">
+            <button type="button" class="hero-scroll-btn" data-target="#programme">Programme ↓</button>
+            <button type="button" class="hero-scroll-btn" data-target="#dossier">Dossier</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="root"></div>
+  </div>
+  <script type="module" src="../assets/projekte__duoklakk.bundle.js?v=46" fetchpriority="low"></script>
+  <script>
+    document.querySelectorAll(".hero-scroll-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var el = document.querySelector(btn.getAttribute("data-target"));
+        if (!el) return;
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      });
+    });
+  </script>
 
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
@@ -368,7 +462,8 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
   <script>
     (function(){
       var btn = document.getElementById('scrollTopBtn');
-      if (!btn) return;
+      if (!btn || btn.__scrollBound) return;
+      btn.__scrollBound = true;
       var showAt = 500;
       function sync(){
         btn.classList.toggle('is-visible', window.scrollY > showAt);
@@ -381,7 +476,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
       });
     })();
   </script>
-  <script src="../assets/site.js?v=8" defer></script>
+  <script src="../assets/site.js?v=10" defer></script>
   <script>
     (function(){
       function ensurePrintImages(){

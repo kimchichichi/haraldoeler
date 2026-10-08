@@ -7,7 +7,8 @@
     "rebuild:projekte": "node scripts/rebuild-projekte.mjs",
     "sync:termine": "node scripts/sync-termine.mjs",
     "sync:termine:check": "node scripts/sync-termine.mjs --check",
-    "apply:site-assets": "python3 scripts/apply-site-assets.py"
+    "apply:site-assets": "python3 scripts/apply-site-assets.py",
+    "build:vita": "node scripts/generate-vita-pdf.mjs"
   },
   "dependencies": {
     "react": "18.3.1",

@@ -112,18 +112,19 @@ const DETAILS = {
       { text: "Die Präzision des Klaviers und die Sogkraft des Orchesters: beides vereint das Akkordeon — genauer gesagt: der Bayan — von Harald Oeler aufs Schönste. … Da zischt der Gnom böse wie selten und die kleinen Küken flattern und piepen über die Knöpfe, dass es eine Freude ist!", cite: "GENUIN" },
     ],
     terminePreview: 2,
-    termineMoreHref: "/termine.html",
+    termineMoreHref: "/termine",
     termineInAside: true,
-    newsMoreHref: "/news.html",
+    newsMoreHref: "/news",
     termine: [
       { date: "25. Juli 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Evangelische Kirche", city: "Berg", note: "Das Akkordeon · Instrument des Jahres 2026" },
       { date: "19. September 2026", time: "19:00 Uhr", title: "Sonate für Akkordeon – Solo", venue: "Arche", city: "Dittelbrunn", note: "Hauptstr. 64 · 97456 Dittelbrunn", link: "https://termine.mainpost.de/veranstaltung/sonate-fur-akkordeon-2629896.html" },
+      { date: "5. November 2026", time: "19:00 Uhr", title: "Akkordeon Solo", venue: "Martinskirche", city: "Kleingartach", note: "Das Akkordeon · Instrument des Jahres 2026" },
       { date: "19. November 2026", time: "19:00 Uhr", title: "Würzburger Bachtage — Eröffnungsakt", venue: "Bertold-Hummel-Saal im Mozartareal", city: "Würzburg", note: "Opus ultimum et summum · Bach BWV 232 · Vortrag Prof. Dr. Ulrich Konrad", link: "https://www.bachtage-wuerzburg.de/bachtage-2026" },
     ],
     news: [
-      { year: "2026", title: "Würzburger Bachtage — Eröffnungsakt", subtitle: "Bach und die Zukunft · Bertold-Hummel-Saal · 19. November 2026", href: "/news/bachtage26.html" },
-      { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Brahms und Blockbuster · Füssener Zeitung", href: "/news/hohenschwangau.html" },
-      { year: "2025", title: "Solo · Remembering!", subtitle: "TKVL Konzerte 2025", href: "/news/tkvlsolo.html" },
+      { year: "2026", title: "Würzburger Bachtage — Eröffnungsakt", subtitle: "Bach und die Zukunft · Bertold-Hummel-Saal · 19. November 2026", href: "/news/bachtage26" },
+      { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Brahms und Blockbuster · Füssener Zeitung", href: "/news/hohenschwangau" },
+      { year: "2025", title: "Solo · Remembering!", subtitle: "TKVL Konzerte 2025", href: "/news/tkvlsolo" },
     ],
     media: [
       { kind: "youtube", id: "P8dHtuQ0E1c", caption: "Remembering · Solo · whole program live" },
@@ -153,10 +154,10 @@ const DETAILS = {
     ],
     quotes: [],
     news: [
-      { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Brahms und Blockbuster · Füssener Zeitung", href: "/news/hohenschwangau.html" },
-      { year: "2023", title: "Die Vier EvangCellisten & friends — 15-Jahre-Jubiläum", subtitle: "Rosenthal-Theater Selb · Opale Concerto & Tango de las Profundidades", href: "/news/selb.html" },
-      { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Richard Galliano — „Opale Concerto\" für Akkordeon und Streichorchester", href: "/news/kinderkonzert.html" },
-      { year: "2016", title: "Bach geht auch mit Knöpfen", subtitle: "Clavierkonzert am Knopfakkordeon · Selb & Münchberg · Frankenpost", href: "/news/bach_knoepfen.html" },
+      { year: "2026", title: "Hohenschwangau Klassik · Königliche Konzerte 2026", subtitle: "Philharmonie und Film · Brahms und Blockbuster · Füssener Zeitung", href: "/news/hohenschwangau" },
+      { year: "2023", title: "Die Vier EvangCellisten & friends — 15-Jahre-Jubiläum", subtitle: "Rosenthal-Theater Selb · Opale Concerto & Tango de las Profundidades", href: "/news/selb" },
+      { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Richard Galliano — „Opale Concerto\" für Akkordeon und Streichorchester", href: "/news/kinderkonzert" },
+      { year: "2016", title: "Bach geht auch mit Knöpfen", subtitle: "Clavierkonzert am Knopfakkordeon · Selb & Münchberg · Frankenpost", href: "/news/bach_knoepfen" },
     ],
     media: [
       { kind: "youtube", id: "yQ-Xje5yJIg", caption: "Galliano · Opale Concerto III · New York Tango · live in Selb" },
@@ -191,16 +192,17 @@ const DETAILS = {
       { kind: "youtube", id: "05HxYd95Phw", caption: "Ani Suni · live in der musik-butik" },
     ],
     news: [
-      { year: "2026", title: "NEU — Website · Fussissimo", subtitle: "www.fussissimo.de · studio kimi", href: "/news/fussissimo_website.html" },
-      { year: "2026", title: "Tour | Fussissimo · 2026", subtitle: "Eyrichshof · Frankfurt · Würzburg · Schweinfurt · Gemünden", href: "/news/fussissimo26.html" },
-      { year: "2023", title: "Tour mit Fussissimo", subtitle: "Gypsy-Ethno-Jazz · Darstadt · Hof · Schweinfurt", href: "/news/fussissimo_1.html" },
+      { year: "2026", title: "NEU — Website · Fussissimo", subtitle: "www.fussissimo.de · studio kimi", href: "/news/fussissimo_website" },
+      { year: "2026", title: "Tour | Fussissimo · 2026", subtitle: "Eyrichshof · Frankfurt · Würzburg · Schweinfurt · Gemünden", href: "/news/fussissimo26" },
+      { year: "2023", title: "Tour mit Fussissimo", subtitle: "Gypsy-Ethno-Jazz · Darstadt · Hof · Schweinfurt", href: "/news/fussissimo_1" },
     ],
     termineInAside: true,
     terminePreview: 2,
-    termineMoreHref: "/termine.html",
+    termineMoreHref: "/termine",
     termine: [
       { date: "21. Juni 2026", time: "17:40 Uhr", title: "Umsonst & Draussen Festival", venue: "Draussen-Bühne", city: "Würzburg", note: "Freies Open-Air-Konzert" },
       { date: "27. September 2026", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Huttenschloss", city: "Gemünden am Main", note: "" },
+      { date: "23. Januar 2027", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Café Victoria · Münzmeisterhaus", city: "Coburg", note: "" },
       { date: "17. April 2027", time: "Uhrzeit folgt", title: "Fussissimo", venue: "Ort folgt", city: "", note: "" },
     ],
   },
@@ -254,7 +256,7 @@ const DETAILS = {
       { text: "Akkordeon und Solo-Geige verschmelzen auf eine neue, man könnte fast sagen: ideale Weise.", cite: "NDR Kultur" },
     ],
     termineInAside: true,
-    termineMoreHref: "/termine.html",
+    termineMoreHref: "/termine",
     termine: [
       { date: "14. März 2026", time: "Uhrzeit folgt", title: "Duo ViA!", venue: "Obersdorf", city: "", note: "Abgesagt" },
       { date: "18. April 2026", time: "19:00 Uhr", title: "Duo ViA! · Four Seasons – One World", venue: "Berlin-Neukölln", city: "Berlin", note: "Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a." },
@@ -263,17 +265,17 @@ const DETAILS = {
       { date: "13. Mai 2026", time: "19:30 Uhr", title: "Duo ViA! · 4. Meisterkonzert", venue: "Teo Otto Theater", city: "Remscheid", note: "" },
     ],
     news: [
-      { year: "2026", title: "Duo ViA! · Neues Programm", subtitle: "Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.", href: "/news/duovia_1.html" },
-      { year: "2025", title: "Duo ViA! · 8 Jahreszeiten", subtitle: "Trailer — Vivaldi & Piazzolla · Bearbeitung für Violine und Akkordeon", href: "/news/duovia_2.html" },
-      { year: "2024", title: "Duo ViA! · Residenz Würzburg", subtitle: "Jubiläumskonzert 40 Jahre ZONTA CLUB WÜRZBURG — Vivaldi meets Piazzolla „Acht Jahreszeiten“", href: "/news/zontaclub.html" },
-      { year: "2024", title: "Violine und Akkordeon passten wunderbar zusammen", subtitle: "Duo ViA! · Kaisersaal Residenz Würzburg · Main-Post", href: "/news/wunderbar_zusammen.html" },
+      { year: "2026", title: "Duo ViA! · Neues Programm", subtitle: "Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.", href: "/news/duovia_1" },
+      { year: "2025", title: "Duo ViA! · 8 Jahreszeiten", subtitle: "Trailer — Vivaldi & Piazzolla · Bearbeitung für Violine und Akkordeon", href: "/news/duovia_2" },
+      { year: "2024", title: "Duo ViA! · Residenz Würzburg", subtitle: "Jubiläumskonzert 40 Jahre ZONTA CLUB WÜRZBURG — Vivaldi meets Piazzolla „Acht Jahreszeiten“", href: "/news/zontaclub" },
+      { year: "2024", title: "Violine und Akkordeon passten wunderbar zusammen", subtitle: "Duo ViA! · Kaisersaal Residenz Würzburg · Main-Post", href: "/news/wunderbar_zusammen" },
     ],
     media: [
       { kind: "youtube", id: "AJ6uhwH7-gI", caption: "Duo ViA! · Trailer", poster: "/news/image/main/duo%20via%20trailer.webp" },
       { kind: "youtube", id: "kw7_NO-klxM", caption: "Duo ViA! · concert highlight" },
       { kind: "spotify", url: "https://open.spotify.com/embed/album/0MfH41bgOifWl6W9fXDcW1?utm_source=generator&theme=0", caption: "8 Jahreszeiten · OehmsClassics" },
     ],
-    newsMoreHref: "/news.html",
+    newsMoreHref: "/news",
   },
   duoklakk: {
     title: "Duo KlAkk!",
@@ -361,30 +363,31 @@ const DETAILS = {
     programNumMotion: true,
     quotes: [],
     dossier: {
-      html: "/projekte/duoklakk-dossier.html",
+      html: "/projekte/duoklakk-dossier",
       pdf: "/projekte/Duo-KlAkk-Dossier.pdf",
     },
     terminePreview: 2,
-    termineMoreHref: "/termine.html",
+    termineMoreHref: "/termine",
     termineInAside: true,
     newsPreview: 3,
-    newsMoreHref: "/news.html",
+    newsMoreHref: "/news",
     news: [
-      { year: "2026", title: "Hohenschwangau Klassik · Bergkonzert Duo KlAkk!", subtitle: "Tegelberg · Schwangau · 19. Juli 2026", href: "/news/hohenschwangau_bergkonzert.html" },
-      { year: "2026", title: "Musik aus dem Moment heraus", subtitle: "Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026", href: "/news/straubing2.html" },
-      { year: "2026", title: "Tour · Duo KlAkk! · 2026", subtitle: "Walheim · Kronach · Straubing · Tegelberg · Dörzbach · Bayreuth · Kirchheim am Neckar", href: "/news/klakk26.html" },
-      { year: "2025", title: "Herzlichen Glückwunsch!", subtitle: "Tonkünstlerverband Hochfranken e.V. · Rückblick 2025", href: "/news/klakk25_tkv.html" },
-      { year: "2025", title: "Duo KlAkk! · Spitäle Würzburg", subtitle: "VKU · 1. März 2025", href: "/news/klakk25_vku.html" },
-      { year: "2025", title: "Tour · Duo KlAkk! · 2025", subtitle: "Gemmrigheim · Würzburg · Straubing · Hallerstein · Eibelstadt · Aschaffenburg · Kirchheim am Neckar", href: "/news/klakk25.html" },
-      { year: "2025", title: "Duo KlAkk! · Eibelstadt", subtitle: "Rathauskeller Eibelstadt · 11. Oktober 2025", href: "/news/klakk25_eibelstadt.html" },
-      { year: "2025", title: "Ein instrumentales Wunder", subtitle: "Duo KlAkk! · Weytterturm Straubing · Straubinger Tagblatt", href: "/news/straubing1.html" },
-      { year: "2024", title: "Tour · Duo KlAkk! · 2024", subtitle: "Bad Reichenhall · Hof · Bayreuth", href: "/news/klakk24.html" },
+      { year: "2026", title: "Hohenschwangau Klassik · Bergkonzert Duo KlAkk!", subtitle: "Tegelberg · Schwangau · 19. Juli 2026", href: "/news/hohenschwangau_bergkonzert" },
+      { year: "2026", title: "Musik aus dem Moment heraus", subtitle: "Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026", href: "/news/straubing2" },
+      { year: "2026", title: "Tour · Duo KlAkk! · 2026", subtitle: "Walheim · Kronach · Straubing · Tegelberg · Dörzbach · Bayreuth · Kirchheim am Neckar", href: "/news/klakk26" },
+      { year: "2025", title: "Herzlichen Glückwunsch!", subtitle: "Tonkünstlerverband Hochfranken e.V. · Rückblick 2025", href: "/news/klakk25_tkv" },
+      { year: "2025", title: "Duo KlAkk! · Spitäle Würzburg", subtitle: "VKU · 1. März 2025", href: "/news/klakk25_vku" },
+      { year: "2025", title: "Tour · Duo KlAkk! · 2025", subtitle: "Gemmrigheim · Würzburg · Straubing · Hallerstein · Eibelstadt · Aschaffenburg · Kirchheim am Neckar", href: "/news/klakk25" },
+      { year: "2025", title: "Duo KlAkk! · Eibelstadt", subtitle: "Rathauskeller Eibelstadt · 11. Oktober 2025", href: "/news/klakk25_eibelstadt" },
+      { year: "2025", title: "Ein instrumentales Wunder", subtitle: "Duo KlAkk! · Weytterturm Straubing · Straubinger Tagblatt", href: "/news/straubing1" },
+      { year: "2024", title: "Tour · Duo KlAkk! · 2024", subtitle: "Bad Reichenhall · Hof · Bayreuth", href: "/news/klakk24" },
     ],
     termine: [
       { date: "13. September 2026", time: "17:00 Uhr", title: "Duo KlAkk! goes BACH!", venue: "Schloß Eyb", city: "Dörzbach", note: "Bachs barocke Gambensonate, Haydns elegantes Divertimento und Piazzollas leidenschaftliche Klänge auf Klarinette und Akkordeon, so noch nie gehört! Dazu freche Eigenkompositionen aus der Komponierwerkstatt. Duo KlAkk! goes BACH! Kommen Sie und lassen Sie sich verblüffen!", link: "http://schubertiade-schloss-eyb.de/programm2017.html" },
       { date: "18. September 2026", time: "20:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Neuneinhalb im Gerberhaus", city: "Bayreuth", note: "Gerberplatz 1 · 95445 Bayreuth" },
       { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
       { date: "27. Februar 2027", time: "19:30 Uhr", title: "Duo KlAkk! Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
+      { date: "3. Oktober 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! goes BACH!", venue: "Petrikirche", city: "Kulmbach", note: "" },
     ],
     media: [
       { kind: "youtube", id: "4NPvdif9o6M", caption: "J.S. Bach · Sonate für Viola da Gamba und Cembalo in g-Moll, BWV 1029", filter: "bach" },
@@ -412,12 +415,12 @@ const DETAILS = {
     ],
     quotes: [],
     news: [
-      { year: "2025", title: "Singer-Songwriter — Mammen & Jung", subtitle: "KunstKaufHaus Hof · 29. Oktober 2025 · Tonkünstler Live Special", href: "/news/mammen_jung.html" },
-      { year: "2024", title: "projects4cellos — Haus Marteau", subtitle: "Die Vier EvangCellisten & friends · Lichtenberg · 16. Juni 2024", href: "/news/lichtenberg.html" },
-      { year: "2024", title: "Tour mit Joscho Stephan", subtitle: "Hot Swing Jazz · Hof · Nagold · Gemmrigheim", href: "/news/joschostephan.html" },
-      { year: "2023", title: "Neustart Jazz — Glashalle Hof", subtitle: "Christopher von Mammen · VHS Hofer Land · 10. November 2023", href: "/news/neustart_jazz.html" },
-      { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Hofer Symphoniker · Galliano Opale Concerto · Freiheitshalle Hof", href: "/news/kinderkonzert.html" },
-      { year: "2023", title: "Die Vier EvangCellisten & friends — 15-Jahre-Jubiläum", subtitle: "Rosenthal-Theater Selb · Opale Concerto & Tango de las Profundidades", href: "/news/selb.html" },
+      { year: "2025", title: "Singer-Songwriter — Mammen & Jung", subtitle: "KunstKaufHaus Hof · 29. Oktober 2025 · Tonkünstler Live Special", href: "/news/mammen_jung" },
+      { year: "2024", title: "projects4cellos — Haus Marteau", subtitle: "Die Vier EvangCellisten & friends · Lichtenberg · 16. Juni 2024", href: "/news/lichtenberg" },
+      { year: "2024", title: "Tour mit Joscho Stephan", subtitle: "Hot Swing Jazz · Hof · Nagold · Gemmrigheim", href: "/news/joschostephan" },
+      { year: "2023", title: "Neustart Jazz — Glashalle Hof", subtitle: "Christopher von Mammen · VHS Hofer Land · 10. November 2023", href: "/news/neustart_jazz" },
+      { year: "2023", title: "Kinderkonzert — Orchesterwerk", subtitle: "Hofer Symphoniker · Galliano Opale Concerto · Freiheitshalle Hof", href: "/news/kinderkonzert" },
+      { year: "2023", title: "Die Vier EvangCellisten & friends — 15-Jahre-Jubiläum", subtitle: "Rosenthal-Theater Selb · Opale Concerto & Tango de las Profundidades", href: "/news/selb" },
     ],
     media: [],
   },
@@ -425,19 +428,19 @@ const DETAILS = {
 
 function Header({ active = "projekte" }) {
   const navItems = [
-    { id: "bio", label: "bio", href: "/bio.html" },
+    { id: "bio", label: "bio", href: "/bio" },
     { id: "projekte", label: "projekte", href: "/projekte" },
-    { id: "termine", label: "termine", href: "/termine.html" },
-    { id: "news", label: "news", href: "/news.html" },
-    { id: "unterricht", label: "unterricht", href: "/unterricht.html" },
-    { id: "medien", label: "medien", href: "/medien.html" },
-    { id: "kontakt", label: "kontakt", href: "/kontakt.html" },
+    { id: "termine", label: "termine", href: "/termine" },
+    { id: "news", label: "news", href: "/news" },
+    { id: "unterricht", label: "unterricht", href: "/unterricht" },
+    { id: "medien", label: "medien", href: "/medien" },
+    { id: "kontakt", label: "kontakt", href: "/kontakt" },
   ];
 
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="wordmark" href="/index.html">
+        <a className="wordmark" href="/">
           HARALD<span className="dot"></span>OELER
           {" "}<small>accordionist &amp; composer</small>
         </a>
@@ -463,7 +466,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="left">© Harald Oeler · 2026</div>
       <div className="center"></div>
-      <div className="right"><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div>
+      <div className="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
     </footer>
   );
 }

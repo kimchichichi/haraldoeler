@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
+  <meta charset="UTF-8" />
+  <title>Akkordeon Solo — Martinskirche Kleingartach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #3f4c08;
+    }
+    .story {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(1200px 800px at 80% 18%, rgba(214, 214, 40, 0.08), transparent 55%),
+        linear-gradient(180deg, #4a5810 0%, #3e4b09 42%, #343f08 72%, #2c3507 100%);
+      font-family: "Playfair Display", Georgia, serif;
+    }
+
+    .halo {
+      position: absolute;
+      width: 680px;
+      height: 680px;
+      border-radius: 50%;
+      right: -150px;
+      top: 320px;
+      background: radial-gradient(circle at 42% 42%, #e7ef6a 0%, #d5e234 58%, #c6d21c 100%);
+    }
+
+    .portrait {
+      position: absolute;
+      z-index: 2;
+      width: 540px;
+      height: 540px;
+      border-radius: 50%;
+      overflow: hidden;
+      right: -46px;
+      top: 300px;
+    }
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 48% 16%;
+      transform: scale(1.55);
+      transform-origin: 50% 18%;
+      filter: grayscale(1) contrast(1.06);
+    }
+
+    .copy {
+      position: relative;
+      z-index: 3;
+      padding: 132px 72px 0;
+      max-width: 700px;
+    }
+    .kicker {
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    h1 {
+      font-weight: 500;
+      font-size: 124px;
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+    }
+    .lede {
+      margin-top: 32px;
+      max-width: 520px;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 1.28;
+    }
+
+    .date-block {
+      position: absolute;
+      z-index: 3;
+      left: 72px;
+      right: 64px;
+      top: 1008px;
+    }
+    .daynum {
+      font-weight: 500;
+      font-size: 196px;
+      line-height: 0.82;
+      letter-spacing: -0.045em;
+    }
+    .date-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    .when {
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    .year {
+      font-weight: 500;
+      font-size: 168px;
+      line-height: 0.8;
+      letter-spacing: -0.04em;
+      margin-bottom: -6px;
+    }
+
+    .cta {
+      position: absolute;
+      z-index: 5;
+      left: 72px;
+      top: 1368px;
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      height: 92px;
+      padding: 0 28px 0 40px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #9bc428 0%, #7eab18 100%);
+      color: #fff;
+      text-decoration: none;
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      letter-spacing: -0.01em;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    }
+    .cta span.arrow {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.16);
+    }
+    .cta svg { display: block; }
+
+    .meta {
+      position: absolute;
+      z-index: 4;
+      left: 0;
+      right: 0;
+      bottom: 210px;
+      height: 250px;
+      padding: 36px 72px 0;
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr 1.1fr;
+      gap: 28px;
+      background: transparent;
+    }
+    .meta h2 {
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.72;
+      margin-bottom: 12px;
+    }
+    .meta p {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+    .meta p em {
+      display: block;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 28px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <article class="story">
+    <div class="halo" aria-hidden="true"></div>
+    <div class="portrait">
+      <img src="media/download/01.png" alt="Harald Oeler">
+    </div>
+
+    <div class="copy">
+      <p class="kicker">Harald Oeler</p>
+      <h1>Akkordeon<br>Solo</h1>
+      <p class="lede">Schenken Sie sich oder Ihren Freunden einen besonderen Abend.</p>
+    </div>
+
+    <div class="date-block">
+      <div class="daynum">05.11.</div>
+      <div class="date-row">
+        <div class="when">Donnerstag<br>19:00 Uhr</div>
+        <div class="year">2026</div>
+      </div>
+    </div>
+
+    <a class="cta" href="https://www.haraldoeler.com/termine">
+      Mehr Infos
+      <span class="arrow">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M4 11h14M12 5l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+
+    <footer class="meta">
+      <div>
+        <h2>Spielort</h2>
+        <p>Martinskirche<em>Kleingartach</em></p>
+      </div>
+      <div>
+        <h2>Beginn</h2>
+        <p>19:00 Uhr<em>Donnerstag</em></p>
+      </div>
+      <div>
+        <h2>Programm</h2>
+        <p>Akkordeon Solo<em>Instrument des Jahres</em></p>
+      </div>
+    </footer>
+  </article>
+</body>
+</html>

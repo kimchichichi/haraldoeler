@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="keyword" content="accordion, akkordeon, harald oeler, fussissimo, sinn yang, accordionist, akkordeonist">
@@ -840,13 +852,13 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
       <small>accordionist &amp; composer</small>
     </a>
     <nav class="primary">
-      <a href="bio.html">bio</a>
-      <a href="projekte.html">projekte</a>
-      <a href="termine.html" class="active">termine</a>
-      <a href="news.html">news</a>
-      <a href="unterricht.html">unterricht</a>
-      <a href="medien.html">medien</a>
-      <a href="kontakt.html">kontakt</a>
+      <a href="/bio">bio</a>
+      <a href="/projekte">projekte</a>
+      <a href="/termine" class="active">termine</a>
+      <a href="/news">news</a>
+      <a href="/unterricht">unterricht</a>
+      <a href="/medien">medien</a>
+      <a href="/kontakt">kontakt</a>
     </nav>
 <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
   <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
@@ -876,7 +888,7 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
           Benachrichtigungen
         </a>
-        <a class="past-link" href="termine/past.html">
+        <a class="past-link" href="/termine/past">
           vergangene Termine
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.2">
             <path d="M0 7H16M10 1l6 6-6 6"/>
@@ -1350,7 +1362,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
         </div>
         <div class="c-right">
-          <a class="c-info-link" href="news/hohenschwangau_bergkonzert.html">
+          <a class="c-info-link" href="/news/hohenschwangau_bergkonzert">
             mehr infos
             <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
           </a>
@@ -1620,6 +1632,69 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         </div>
       </li>
 
+      <!-- 05.11.2026 -->
+      <li class="concert-item">
+        <div class="c-left">
+          <span class="c-date">05.11.2026</span>
+          <span class="c-day">Do · 19:00 Uhr</span>
+        </div>
+        <div class="c-middle">
+          <div class="c-title">
+            Akkordeon Solo
+            <small>Das Akkordeon, das Instrument des Jahres 2026</small>
+          </div>
+          <div class="c-location">
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            <a href="https://www.google.com/maps/dir//Martinskirche+Kleingartach" target="_blank">
+              Martinskirche Kleingartach
+            </a>
+          </div>
+        </div>
+        <div class="c-right">
+          <a class="c-info-link" href="https://www.haraldoeler.com/projekte/solo" target="_blank">
+            mehr infos
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+          </a>
+          <div class="c-cal">
+            <span class="cal-icon">📅</span>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Akkordeon%20Solo&details=Harald%20Oeler%20(Akkordeon)%0ADas%20Akkordeon%2C%20das%20Instrument%20des%20Jahres%202026&location=Martinskirche%20Kleingartach&dates=20261105T180000Z/20261105T200000Z" target="_blank">Google</a>
+            <span>|</span>
+            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Akkordeon%20Solo%0D%0ADESCRIPTION:Harald%20Oeler%20(Akkordeon)%0D%0ADTSTART:20261105T180000Z%0D%0ADTEND:20261105T200000Z%0D%0ALOCATION:Martinskirche%20Kleingartach%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Akkordeon_Solo_Martinskirche_Kleingartach_2026-11-05.ics">iCal</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- 07.11.2026 -->
+      <li class="concert-item">
+        <div class="c-left">
+          <span class="c-date">07.11.2026</span>
+          <span class="c-day">Sa</span>
+        </div>
+        <div class="c-middle">
+          <div class="c-title">
+            Landesmusiktag für Akkordeon
+            <small>Solo, Duo, Trio, Ensembles und Kammermusik</small>
+            <small>als Juror tätig · Akkordeonjugend Baden-Württemberg (DHV)</small>
+          </div>
+          <div class="c-location">
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            Baden-Württemberg
+          </div>
+        </div>
+        <div class="c-right">
+          <a class="c-info-link" href="http://www.landesmusiktag.de/index.php?article_id=90" target="_blank" rel="noopener noreferrer">
+            mehr infos
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+          </a>
+          <div class="c-cal">
+            <span class="cal-icon">📅</span>
+            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Landesmusiktag%20f%C3%BCr%20Akkordeon&details=Solo%2C%20Duo%2C%20Trio%2C%20Ensembles%20und%20Kammermusik%0AHarald%20Oeler%20als%20Juror%20t%C3%A4tig%0AAkkordeonjugend%20Baden-W%C3%BCrttemberg%20(DHV)%0Ahttp%3A%2F%2Fwww.landesmusiktag.de%2Findex.php%3Farticle_id%3D90&location=Baden-W%C3%BCrttemberg&dates=20261107/20261108" target="_blank">Google</a>
+            <span>|</span>
+            <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:Landesmusiktag%20f%C3%BCr%20Akkordeon%0D%0ADESCRIPTION:Solo%2C%20Duo%2C%20Trio%2C%20Ensembles%20und%20Kammermusik%0D%0AHarald%20Oeler%20als%20Juror%20t%C3%A4tig%20%C2%B7%20Akkordeonjugend%20Baden-W%C3%BCrttemberg%20(DHV)%0D%0ADTSTART;VALUE=DATE:20261107%0D%0ADTEND;VALUE=DATE:20261108%0D%0ALOCATION:Baden-W%C3%BCrttemberg%0D%0AURL:http://www.landesmusiktag.de/index.php?article_id=90%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="Landesmusiktag_Akkordeon_2026-11-07.ics">iCal</a>
+          </div>
+        </div>
+      </li>
+
       <!-- 19.11.2026 -->
       <li class="concert-item">
         <div class="c-left">
@@ -1744,6 +1819,38 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
         <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=PREMIERE&dates=20270116T183000Z/20270116T213000Z&location=Theater+Hof,+Kulmbacher+Str.+5,+95030+Hof" target="_blank">Google</a>
         <span>|</span>
         <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:PREMIERE%20%E2%80%9ESpatz%20und%20Engel%E2%80%9C%20Theaterstück%0D%0ADESCRIPTION:Theaterstück%20mit%20Musik%20von%20Daniel%20Gro%C3%9Fe%20Boymann%20und%20Thomas%20Kahry%20(in%20der%20Fassung%20f%C3%BCr%204%20Darsteller%3Ainnen%2C%20Klavier%20und%20Akkordeon)%0D%0ADTSTART:20270116T183000Z%0D%0ADTEND:20270116T213000Z%0D%0ALOCATION:Theater%20Hof%2C%20Kulmbacher%20Str.%205%2C%2095030%20Hof%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="PREMIERE_Spatz_und_Engel_2027-01-16_Hof.ics">iCal</a>
+      </div>
+    </div>
+  </li>
+
+  <!-- 23.01.2027 -->
+  <li class="concert-item">
+    <div class="c-left">
+      <span class="c-date">23.01.2027</span>
+      <span class="c-day">Sa · 19:30 Uhr</span>
+    </div>
+    <div class="c-middle">
+      <div class="c-title">
+        FUSSISSIMO – Gypsy-Ethno-Jazz
+        <small>Rehan Syed (Guitar &amp; Komponist) &amp; Harald Oeler (Akkordeon) &amp; Simon Ort (Bass)</small>
+      </div>
+      <div class="c-location">
+        <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+        <a href="https://www.google.com/maps/dir//Café+Victoria+Coburg+Münzmeisterhaus" target="_blank">
+          Café Victoria · Münzmeisterhaus, Coburg
+        </a>
+      </div>
+    </div>
+    <div class="c-right">
+      <a class="c-info-link" href="https://www.haraldoeler.com/projekte/fussissimo" target="_blank">
+        mehr infos
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+      </a>
+      <div class="c-cal">
+        <span class="cal-icon">📅</span>
+        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=FUSSISSIMO%20–%20Gypsy-Ethno-Jazz&details=Rehan%20Syed%20(Guitar%20%26%20Komponist)%20%26%20Harald%20Oeler%20(Akkordeon)%20%26%20Simon%20Ort%20(Bass)&location=Caf%C3%A9%20Victoria%20%C2%B7%20M%C3%BCnzmeisterhaus%2C%20Coburg&dates=20270123T183000Z/20270123T203000Z" target="_blank">Google</a>
+        <span>|</span>
+        <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:FUSSISSIMO%20–%20Gypsy-Ethno-Jazz%0D%0ADESCRIPTION:Rehan%20Syed%20(Guitar%20%26%20Komponist)%20%26%20Harald%20Oeler%20(Akkordeon)%20%26%20Simon%20Ort%20(Bass)%0D%0ADTSTART:20270123T183000Z%0D%0ADTEND:20270123T203000Z%0D%0ALOCATION:Caf%C3%A9%20Victoria%20%C2%B7%20M%C3%BCnzmeisterhaus%2C%20Coburg%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR" download="FUSSISSIMO_Cafe_Victoria_Coburg_2027-01-23.ics">iCal</a>
       </div>
     </div>
   </li>
@@ -2082,6 +2189,33 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
           </div>
         </div>
       </li>
+
+      <!-- 03.10.2027 -->
+      <li class="concert-item">
+        <div class="c-left">
+          <span class="c-date">03.10.2027</span>
+          <span class="c-day">So · Uhrzeit folgt</span>
+        </div>
+        <div class="c-middle">
+          <div class="c-title">
+            Duo KlAkk! goes BACH!
+            <small><a href="https://www.sinnyang.com" target="_blank" rel="noopener noreferrer">Ji Eun Kim</a> (Klarinette) &amp; Harald Oeler (Akkordeon)</small>
+          </div>
+          <div class="c-location">
+            <svg class="loc-icon" width="10" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            <a href="https://www.google.com/maps/dir//Petrikirche+Kulmbach" target="_blank">
+              Petrikirche, Kulmbach
+            </a>
+          </div>
+        </div>
+        <div class="c-right">
+          <a class="c-info-link" href="https://www.haraldoeler.com/projekte/duoklakk" target="_blank">
+            mehr infos
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+          </a>
+          <div class="c-tba">Uhrzeit folgt</div>
+        </div>
+      </li>
 </ul>
     <div class="termine-empty" id="termine-empty" role="status">
       Keine Termine gefunden.
@@ -2118,10 +2252,10 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
     <div class="center" id="footer-next-concert"></div>
-    <div class="right"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></div>
+    <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
 
-  <script src="assets/site.js?v=8" defer></script>
+  <script src="assets/site.js?v=9" defer></script>
   <script src="assets/termine.js?v=3" defer></script>
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

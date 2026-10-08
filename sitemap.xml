@@ -16,14 +16,14 @@
   <!-- Linked directly from the main navbar               -->
   <!-- ================================================== -->
   <url>
-    <loc>https://www.haraldoeler.com/bio.html</loc>
+    <loc>https://www.haraldoeler.com/bio</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news.html</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://www.haraldoeler.com/news</loc>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -34,31 +34,31 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/termine.html</loc>
+    <loc>https://www.haraldoeler.com/termine</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/medien.html</loc>
+    <loc>https://www.haraldoeler.com/medien</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/discographie.html</loc>
+    <loc>https://www.haraldoeler.com/discographie</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/unterricht.html</loc>
+    <loc>https://www.haraldoeler.com/unterricht</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/kontakt.html</loc>
+    <loc>https://www.haraldoeler.com/kontakt</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
@@ -81,7 +81,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/projekte/duoklakk-dossier.html</loc>
+    <loc>https://www.haraldoeler.com/projekte/duoklakk-dossier</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -122,361 +122,367 @@
   <!-- Individual news detail pages                       -->
   <!-- ================================================== -->
   <url>
-    <loc>https://www.haraldoeler.com/news/podcast.html</loc>
+    <loc>https://www.haraldoeler.com/news/podcast</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/akkordeonschule.html</loc>
+    <loc>https://www.haraldoeler.com/news/akkordeonschule</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/remembering.html</loc>
+    <loc>https://www.haraldoeler.com/news/remembering</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/vortrag.html</loc>
+    <loc>https://www.haraldoeler.com/news/vortrag</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/workshop.html</loc>
+    <loc>https://www.haraldoeler.com/news/workshop</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klakk24.html</loc>
+    <loc>https://www.haraldoeler.com/news/klakk24</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klakk25.html</loc>
+    <loc>https://www.haraldoeler.com/news/klakk25</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/straubing2.html</loc>
+    <loc>https://www.haraldoeler.com/news/straubing2</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/straubing1.html</loc>
+    <loc>https://www.haraldoeler.com/news/straubing1</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/hohenschwangau_bergkonzert.html</loc>
+    <loc>https://www.haraldoeler.com/news/hohenschwangau_bergkonzert</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/hohenschwangau.html</loc>
+    <loc>https://www.haraldoeler.com/news/hohenschwangau</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/bachtage26.html</loc>
+    <loc>https://www.haraldoeler.com/news/hfm_nuernberg</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.haraldoeler.com/news/bachtage26</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klakk26.html</loc>
+    <loc>https://www.haraldoeler.com/news/klakk26</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/walheim.html</loc>
+    <loc>https://www.haraldoeler.com/news/walheim</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/duovia_2.html</loc>
+    <loc>https://www.haraldoeler.com/news/duovia_2</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/duovia_8seasons.html</loc>
+    <loc>https://www.haraldoeler.com/news/duovia_8seasons</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/duovia_korea.html</loc>
+    <loc>https://www.haraldoeler.com/news/duovia_korea</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klakk25_eibelstadt.html</loc>
+    <loc>https://www.haraldoeler.com/news/klakk25_eibelstadt</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klakk25_vku.html</loc>
+    <loc>https://www.haraldoeler.com/news/klakk25_vku</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klakk25_tkv.html</loc>
+    <loc>https://www.haraldoeler.com/news/klakk25_tkv</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/fussissimo26.html</loc>
+    <loc>https://www.haraldoeler.com/news/fussissimo26</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/fussissimo_1.html</loc>
+    <loc>https://www.haraldoeler.com/news/fussissimo_1</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/joschostephan.html</loc>
+    <loc>https://www.haraldoeler.com/news/joschostephan</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/kinderkonzert.html</loc>
+    <loc>https://www.haraldoeler.com/news/kinderkonzert</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/mammen_jung.html</loc>
+    <loc>https://www.haraldoeler.com/news/mammen_jung</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/lichtenberg.html</loc>
+    <loc>https://www.haraldoeler.com/news/lichtenberg</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/neustart_jazz.html</loc>
+    <loc>https://www.haraldoeler.com/news/neustart_jazz</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klang_manufaktur.html</loc>
+    <loc>https://www.haraldoeler.com/news/klang_manufaktur</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/lebensfreude.html</loc>
+    <loc>https://www.haraldoeler.com/news/lebensfreude</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/schloss_borbeck.html</loc>
+    <loc>https://www.haraldoeler.com/news/schloss_borbeck</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/perspektiven_heilbronn.html</loc>
+    <loc>https://www.haraldoeler.com/news/perspektiven_heilbronn</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/pigini.html</loc>
+    <loc>https://www.haraldoeler.com/news/pigini</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/armonica.html</loc>
+    <loc>https://www.haraldoeler.com/news/armonica</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/villa_weiss.html</loc>
+    <loc>https://www.haraldoeler.com/news/villa_weiss</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/acht_jahreszeiten.html</loc>
+    <loc>https://www.haraldoeler.com/news/acht_jahreszeiten</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klingenthal14.html</loc>
+    <loc>https://www.haraldoeler.com/news/klingenthal14</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/trossingen.html</loc>
+    <loc>https://www.haraldoeler.com/news/trossingen</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/klingenthal13.html</loc>
+    <loc>https://www.haraldoeler.com/news/klingenthal13</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/aub.html</loc>
+    <loc>https://www.haraldoeler.com/news/aub</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/rehan_syed.html</loc>
+    <loc>https://www.haraldoeler.com/news/rehan_syed</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/serioeses_cd_recital.html</loc>
+    <loc>https://www.haraldoeler.com/news/serioeses_cd_recital</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/kulturpreis_bayern.html</loc>
+    <loc>https://www.haraldoeler.com/news/kulturpreis_bayern</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/arrasate.html</loc>
+    <loc>https://www.haraldoeler.com/news/arrasate</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/pictures_exhibition.html</loc>
+    <loc>https://www.haraldoeler.com/news/pictures_exhibition</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/wemmetsweiler.html</loc>
+    <loc>https://www.haraldoeler.com/news/wemmetsweiler</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/con_brio.html</loc>
+    <loc>https://www.haraldoeler.com/news/con_brio</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/bach_knoepfen.html</loc>
+    <loc>https://www.haraldoeler.com/news/bach_knoepfen</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/sensationelles_ergebnis.html</loc>
+    <loc>https://www.haraldoeler.com/news/sensationelles_ergebnis</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/akkordeon_verbindet.html</loc>
+    <loc>https://www.haraldoeler.com/news/akkordeon_verbindet</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/shenzhen.html</loc>
+    <loc>https://www.haraldoeler.com/news/shenzhen</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/stille_thraenen.html</loc>
+    <loc>https://www.haraldoeler.com/news/stille_thraenen</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/ein_jahr.html</loc>
+    <loc>https://www.haraldoeler.com/news/ein_jahr</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/selb.html</loc>
+    <loc>https://www.haraldoeler.com/news/selb</loc>
     <lastmod>2026-07-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/siebold.html</loc>
+    <loc>https://www.haraldoeler.com/news/siebold</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/solo.html</loc>
+    <loc>https://www.haraldoeler.com/news/solo</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/solo_gemmirgheim.html</loc>
+    <loc>https://www.haraldoeler.com/news/solo_gemmirgheim</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/tkvlsolo.html</loc>
+    <loc>https://www.haraldoeler.com/news/tkvlsolo</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/zontaclub.html</loc>
+    <loc>https://www.haraldoeler.com/news/zontaclub</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/wunderbar_zusammen.html</loc>
+    <loc>https://www.haraldoeler.com/news/wunderbar_zusammen</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/news/kmf_via.html</loc>
+    <loc>https://www.haraldoeler.com/news/kmf_via</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -486,13 +492,13 @@
   <!-- TIER 5 — Archive / Supporting Pages (Priority 0.5) -->
   <!-- ================================================== -->
   <url>
-    <loc>https://www.haraldoeler.com/termine/past.html</loc>
+    <loc>https://www.haraldoeler.com/termine/past</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/media.html</loc>
+    <loc>https://www.haraldoeler.com/media</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -503,13 +509,13 @@
   <!-- No SEO value; included for full-site compliance    -->
   <!-- ================================================== -->
   <url>
-    <loc>https://www.haraldoeler.com/impressum.html</loc>
+    <loc>https://www.haraldoeler.com/impressum</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://www.haraldoeler.com/datenschutz.html</loc>
+    <loc>https://www.haraldoeler.com/datenschutz</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>

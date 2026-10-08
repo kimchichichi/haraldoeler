@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=medien.html" />
+  <meta http-equiv="refresh" content="0; url=/medien" />
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://www.haraldoeler.com/medien" />
   <title>Weiterleitung — medien</title>
-  <script>location.replace('medien.html');</script>
+  <script>location.replace('/medien');</script>
 </head>
 <body>
-  <p>Weiterleitung zu <a href="medien.html">medien</a> …</p>
+  <p>Weiterleitung zu <a href="/medien">medien</a> …</p>
 </body>
 </html>

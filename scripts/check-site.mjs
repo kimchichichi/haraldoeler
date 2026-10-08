@@ -30,8 +30,14 @@ function isIgnorable(u) {
 }
 
 function normalizeTarget(fromFile, u) {
-  if (u.startsWith("/")) return path.join(root, u.slice(1));
-  return path.join(path.dirname(fromFile), u);
+  const rel = u.startsWith("/")
+    ? u.slice(1)
+    : path.relative(root, path.join(path.dirname(fromFile), u));
+  if (rel === "" || rel === ".") return path.join(root, "index.html");
+  const abs = path.join(root, rel);
+  if (fs.existsSync(abs)) return abs;
+  if (!path.extname(rel) && fs.existsSync(abs + ".html")) return abs + ".html";
+  return abs;
 }
 
 const files = listHtmlFiles(root);

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Canonical project-scoped concert lists used by data.jsx (React projekte pages). Edit this file, then run: node scripts/sync-termine.mjs  (optionally: npm run rebuild:projekte). termine.html remains the public full calendar and is not auto-generated from this file.",
-    "updated": "2026-09-04",
+    "updated": "2026-10-07",
     "rebuild": "npm run rebuild:projekte"
   },
   "byProject": {
@@ -22,6 +22,14 @@
         "city": "Dittelbrunn",
         "note": "Hauptstr. 64 · 97456 Dittelbrunn",
         "link": "https://termine.mainpost.de/veranstaltung/sonate-fur-akkordeon-2629896.html"
+      },
+      {
+        "date": "5. November 2026",
+        "time": "19:00 Uhr",
+        "title": "Akkordeon Solo",
+        "venue": "Martinskirche",
+        "city": "Kleingartach",
+        "note": "Das Akkordeon · Instrument des Jahres 2026"
       },
       {
         "date": "19. November 2026",
@@ -49,6 +57,14 @@
         "title": "Fussissimo – Gypsy-Ethno-Jazz",
         "venue": "Huttenschloss",
         "city": "Gemünden am Main",
+        "note": ""
+      },
+      {
+        "date": "23. Januar 2027",
+        "time": "19:30 Uhr",
+        "title": "Fussissimo – Gypsy-Ethno-Jazz",
+        "venue": "Café Victoria · Münzmeisterhaus",
+        "city": "Coburg",
         "note": ""
       },
       {
@@ -134,6 +150,14 @@
         "title": "Duo KlAkk! Encore!",
         "venue": "Alte Kelter",
         "city": "Gemmrigheim",
+        "note": ""
+      },
+      {
+        "date": "3. Oktober 2027",
+        "time": "Uhrzeit folgt",
+        "title": "Duo KlAkk! goes BACH!",
+        "venue": "Petrikirche",
+        "city": "Kulmbach",
         "note": ""
       }
     ],

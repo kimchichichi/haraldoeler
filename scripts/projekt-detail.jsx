@@ -23,19 +23,14 @@ function renderRichContent(content) {
 // until the visitor actually wants to play the media — big perf win.
 function TerminNote({ text }) {
   const [expanded, setExpanded] = React.useState(false);
-  const ref = React.useRef(null);
-  const [truncated, setTruncated] = React.useState(false);
-
-  React.useEffect(() => {
-    const el = ref.current;
-    if (!el || expanded) return;
-    setTruncated(el.scrollHeight > el.clientHeight + 1);
-  }, [text, expanded]);
+  // Length check avoids a layout read (scrollHeight/clientHeight), which Lighthouse
+  // reports as a forced reflow while the page is still settling.
+  const long = text.length > 80;
 
   return (
     <span className={"termin-note-wrap" + (expanded ? " is-expanded" : "")}>
-      <span ref={ref} className="termin-note">{text}</span>
-      {!expanded && truncated && (
+      <span className="termin-note">{text}</span>
+      {!expanded && long && (
         <button type="button" className="termin-note-more" onClick={() => setExpanded(true)}>mehr</button>
       )}
     </span>
@@ -44,8 +39,28 @@ function TerminNote({ text }) {
 
 function MediaEmbed({ m }) {
   const [open, setOpen] = React.useState(false);
+  const [posterOn, setPosterOn] = React.useState(false);
+  const btnRef = React.useRef(null);
   const isYouTube = m.kind === "youtube";
   const isApple = m.kind === "apple";
+
+  React.useEffect(() => {
+    if (!isYouTube || posterOn) return;
+    const el = btnRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver !== "function") {
+      setPosterOn(true);
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setPosterOn(true);
+        obs.disconnect();
+      }
+    }, { rootMargin: "200px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [isYouTube, posterOn]);
 
   if (open) {
     const src = isYouTube
@@ -77,13 +92,14 @@ function MediaEmbed({ m }) {
   };
 
   return (
-    <button type="button" style={btnStyle} onClick={() => setOpen(true)}
+    <button ref={btnRef} type="button" style={btnStyle} onClick={() => setOpen(true)}
       aria-label={`Abspielen: ${m.caption}`}>
-      {isYouTube && (
+      {isYouTube && posterOn && (
         <img
           src={m.poster || `https://i.ytimg.com/vi/${m.id}/hqdefault.jpg`}
-          alt={m.caption}
+          alt=""
           loading="lazy"
+          decoding="async"
           width="480"
           height="360"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: 0.94 }}
@@ -191,7 +207,7 @@ function ProjektDetail({ id, onBack }) {
     const previewCount = detail.terminePreview ?? detail.termine.length;
     const shown = detail.termine.slice(0, previewCount);
     const moreHref = detail.termine.length > previewCount
-      ? (detail.termineMoreHref || "/termine.html")
+      ? (detail.termineMoreHref || "/termine")
       : null;
     const isAside = className.includes("termine-aside");
     return (
@@ -239,8 +255,12 @@ function ProjektDetail({ id, onBack }) {
     );
   };
 
+  const hasShell = typeof document !== "undefined" && !!document.getElementById("static-shell");
+
   return (
     <div className="detail">
+      {hasShell ? null : (
+        <>
       <Header active="projekte" />
       <a
         className="back-link"
@@ -280,6 +300,8 @@ function ProjektDetail({ id, onBack }) {
           </div>
         </div>
       </section>
+        </>
+      )}
 
       <div className="detail-body">
         <aside>
@@ -514,7 +536,7 @@ function ProjektDetail({ id, onBack }) {
             const previewCount = detail.newsPreview ?? detail.news.length;
             const shown = detail.news.slice(0, previewCount);
             const moreHref = detail.newsMoreHref
-              || (detail.news.length > previewCount ? "/news.html" : null);
+              || (detail.news.length > previewCount ? "/news" : null);
             return (
               <div className="project-news">
                 <h3>— News</h3>

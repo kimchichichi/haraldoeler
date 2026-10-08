@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Harald Oeler — Heiße Klänge in kalten Gefilden · Neujahrskonzert Steinhaus-Orchester · Duo KlAkk! · Walheim · LKZ">
@@ -423,13 +435,13 @@ body.dark .nav-toggle:hover {
     <div class="header-inner">
       <a class="wordmark" href="/">HARALD<span class="dot"></span>OELER<small>· accordionist &amp; composer</small></a>
       <nav class="primary">
-        <a href="../bio.html">bio</a>
-        <a href="../projekte.html">projekte</a>
-        <a href="../termine.html">termine</a>
-        <a href="../news.html" class="active">news</a>
-        <a href="../unterricht.html">unterricht</a>
-        <a href="../medien.html">medien</a>
-        <a href="../kontakt.html">kontakt</a>
+        <a href="/bio">bio</a>
+        <a href="/projekte">projekte</a>
+        <a href="/termine">termine</a>
+        <a href="/news" class="active">news</a>
+        <a href="/unterricht">unterricht</a>
+        <a href="/medien">medien</a>
+        <a href="/kontakt">kontakt</a>
       </nav>
 <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
   <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><line x1="0" y1="1" x2="22" y2="1"/><line x1="0" y1="7" x2="22" y2="7"/><line x1="0" y1="13" x2="22" y2="13"/></svg>
@@ -438,7 +450,7 @@ body.dark .nav-toggle:hover {
   </header>
 
   <div class="article-nav">
-    <a class="back-link" href="../news.html">news</a>
+    <a class="back-link" href="/news">news</a>
   </div>
 
   <section class="article-head">
@@ -486,7 +498,7 @@ body.dark .nav-toggle:hover {
         <div class="info-label">Links</div>
         <p class="body-text"><a href="https://www.lkz.de/lokales/landkreis-ludwigsburg_artikel,-heisse-klaenge-in-kalten-gefilden-konzert-des-steinhaus-orchesters-in-walheim-_arid,852894.html" target="_blank" rel="noopener">Artikel · Ludwigsburger Kreiszeitung</a></p>
         <p class="body-text" style="margin-top:8px"><a href="https://mein-besigheim.de/event/neujahrskonzert-steinhaus-orchester-besigheim/" target="_blank" rel="noopener">Event · Mein Besigheim</a></p>
-        <p class="body-text" style="margin-top:8px"><a href="klakk26.html">Tour · Duo KlAkk! 2026</a></p>
+        <p class="body-text" style="margin-top:8px"><a href="/news/klakk26">Tour · Duo KlAkk! 2026</a></p>
       </div>
     </div>
   </main>
@@ -494,7 +506,7 @@ body.dark .nav-toggle:hover {
   <footer class="site-footer">
     <div class="left">© Harald Oeler · 2026</div>
     <div class="center" id="footer-next-concert"></div>
-    <div class="right"><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></div>
+    <div class="right"><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></div>
   </footer>
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
@@ -553,6 +565,6 @@ body.dark .nav-toggle:hover {
       });
     })();
   </script>
-  <script src="../assets/site.js?v=8" defer></script>
+  <script src="../assets/site.js?v=9" defer></script>
 </body>
 </html>

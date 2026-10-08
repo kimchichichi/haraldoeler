@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <script data-clean-url>
+  (function () {
+    try {
+      var p = location.pathname;
+      if (!/\.html$/i.test(p)) return;
+      var c = p.replace(/\.html$/i, "");
+      if (c === "/index" || /\/index$/.test(c)) c = c.slice(0, -6) || "/";
+      history.replaceState(null, "", c + location.search + location.hash);
+    } catch (e) {}
+  })();
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow" />
   <meta name="description" content="Duo KlAkk! — Presse- &amp; Booking-Dossier für Konzertveranstalter. Drei Programme: goes Bach, ENCORES!, Von Bach bis Tango Nuevo." />
-  <link rel="canonical" href="https://www.haraldoeler.com/projekte/duoklakk-dossier.html" />
+  <link rel="canonical" href="https://www.haraldoeler.com/projekte/duoklakk-dossier" />
   <title>Duo KlAkk! — Presse- &amp; Booking-Dossier</title>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +25,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="image/coverduoklakk.png" fetchpriority="high">
   <style>
+@font-face { font-family: "Inter Static"; src: url("../vita/fonts/Inter-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Inter Static"; src: url("../vita/fonts/Inter-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; }
+@font-face { font-family: "Cormorant Static"; src: url("../vita/fonts/CormorantGaramond-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Cormorant Static"; src: url("../vita/fonts/CormorantGaramond-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "JetBrains Static"; src: url("../vita/fonts/JetBrainsMono-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
 :root {
   --ink: #0e0d0c;
   --paper: #f4f1ec;
@@ -473,6 +490,27 @@ img { max-width: 100%; display: block; }
   .links .url, .yt-list .url-row, .contact-item a {
     color: var(--accent) !important;
   }
+
+  /* Static faces only. Variable Google fonts split glyphs in the PDF text layer,
+     so a copied paragraph breaks on every line and stray letters land on the photos. */
+  body {
+    font-family: "Inter Static", sans-serif;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
+  }
+  .cover h1, .page h2, .bio h3, .contact-item dd, .links .title, .yt-list .work, .cover-tag,
+  .lede, .closing, .quote, .prog-title {
+    font-family: "Cormorant Static", serif;
+  }
+  .eyebrow, .cover-line, .page-kicker, .prog-num, .prog-sub, .bio .role, .quote cite,
+  .links h3, .yt-list .num, .yt-list .url-row, .links .url, .page-footer,
+  .contact-item dt, .style-label, .final-contact h3 {
+    font-family: "JetBrains Static", monospace;
+  }
+  .body, .bio p, .style-text, .lede, .quote, .closing {
+    color: #3c3935;
+  }
+  strong, b { font-weight: 500; }
 }
   </style>
 </head>

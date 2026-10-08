@@ -51,29 +51,36 @@ function build({ entryFile, outfile }) {
   );
 }
 
-function preamble() {
+function preamble(dataSource = "data.jsx") {
   return [
     `import * as React from "react";`,
     `import { createRoot } from "react-dom/client";`,
     `const ReactDOM = { createRoot };`,
-    readSource("data.jsx"),
+    dataSource === "data.jsx" ? readSource("data.jsx") : dataSource,
   ].join("\n");
+}
+
+/** Overview only needs PROJECTS + chrome components — drop heavy DETAILS. */
+function overviewData() {
+  let src = readSource("data.jsx");
+  const start = src.indexOf("const DETAILS =");
+  const end = src.indexOf("\nfunction Header");
+  if (start >= 0 && end > start) {
+    src = src.slice(0, start) + "const DETAILS = {};\n" + src.slice(end + 1);
+  }
+  return src;
 }
 
 function buildOverview() {
   const entry = writeEntry(
     "overview-entry.jsx",
-    [
-      preamble(),
-      readSource("tweaks-panel.jsx"),
-      readSource("app.jsx"),
-    ].join("\n\n")
+    [preamble(overviewData()), readSource("app-overview.jsx")].join("\n\n")
   );
   build({
     entryFile: entry,
     outfile: path.join(root, "assets/projekte.bundle.js"),
   });
-  console.log("[ok] assets/projekte.bundle.js");
+  console.log("[ok] assets/projekte.bundle.js (slim overview)");
 }
 
 function buildDetail(id) {

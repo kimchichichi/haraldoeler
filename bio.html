@@ -210,8 +210,8 @@ nav.primary a.active::after {
 }
 
 /* Deep link ?lang=en or #en — correct tab + panel before first paint */
-html.bio-initial-en #bio-de { display: none !important; }
-html.bio-initial-en #bio-en.bio-content { display: block !important; }
+html.bio-initial-en .bio-content[data-lang="de"] { display: none !important; }
+html.bio-initial-en .bio-content[data-lang="en"] { display: block !important; }
 html.bio-initial-en .lang-btn[data-lang="de"].active {
   background: transparent;
   color: var(--muted);
@@ -332,6 +332,11 @@ body.dark html.bio-initial-en .lang-btn[data-lang="en"] {
 
 /* ─── Image side ─────────────────────────────────────────────────────────── */
 .about-images { position: sticky; top: 88px; min-width: 0; }
+.about-images .bio-highlights { margin-top: 28px; padding-top: 22px; }
+.about-images .highlight-item { grid-template-columns: 44px minmax(0, 1fr); gap: 14px; }
+.about-images .h-text { font-size: 16px; }
+.about-images .cv-downloads { margin-top: 28px; }
+.about-images .cv-downloads a.cv-link { flex: 1 1 0; justify-content: space-between; min-width: 0; }
 
 .swiper-container {
   width: 100%;
@@ -738,7 +743,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       </div>
 
       <!-- German bio -->
-      <div class="bio-content visible" id="bio-de">
+      <div class="bio-content visible" id="bio-de" data-lang="de">
         <p>Bereits als Jugendlicher ausgebildet in Komposition, Orgel- und Klavierspiel, erhielt Harald Oeler seine entscheidenden musikalischen Impulse von Hans Bogner an der Musikschule Gaggenau. Erste Preise bei nationalen Wettbewerben und die Vorbereitung auf das bevorstehende Musikstudium, waren der Nährboden einer äußerst wertvollen Unterrichtszeit bei Hans Bogner.</p>
 
         <p>Nach dem Abitur folgte ein Musikstudium im Hauptfach Akkordeon, zunächst bei Prof Hugo Noth, später bei <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> an der <a href="https://hfm-wuerzburg.de" target="_blank">Hochschule für Musik in Würzburg</a>. Die eindrucksvollen Studienjahre formten einen Musiker, welcher heute in einem breitgefächerten musikalisch-künstlerischen Aufgabenfeld von Jazz, Transkriptionsmusik und zeitgenössischer Musik aktiv ist.</p>
@@ -752,47 +757,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <p>Im Sommer 2012 lehrte Harald Oeler als Gastdozent an der „Normal Shenzhen University" in China. Als Lehrbeauftragter für Akkordeon arbeitete Harald Oeler von 2007 bis 2019 an der <a href="https://www.lmu.de" target="_blank">Ludwig-Maximilians-Universität München</a>. Weiterhin ist er hauptamtlicher Akkordeondozent und Leiter der Theorie- und Förderklasse an der Musikschule der „Hofer Symphoniker". Zu Beginn des Schuljahres 2026 etablierte Harald Oeler das Fach Akkordeon an der <a href="https://musikschule.bayreuth.de/" target="_blank">Städtischen Musikschule Bayreuth</a>. Ab dem Wintersemester 2026/2027 ist er zudem Lehrbeauftragter für Fachdidaktik/Lehrpraxis und Methodik im Fach Akkordeon an der <a href="https://www.hfm-nuernberg.de/personenverzeichnis/profil/harald-oeler" target="_blank">Hochschule für Musik Nürnberg</a>.</p>
 
         <p>Unter seinen Schülern befinden sich zahlreiche Preisträger verschiedener Wettbewerbe, darunter vierzehn 1. Bundespreisträger bei Jugend musiziert, 1. Preisträger des Deutschen Akkordeon Musikpreis und Preisträger des Internationalen Akkordeonfestivals in Innsbruck.</p>
-
-        <!-- Award highlights -->
-        <div class="bio-highlights">
-          <div class="highlight-item">
-            <span class="h-year">2002</span>
-            <span class="h-text">3. Preis — International Accordion Competition JAA, Tokio</span>
-          </div>
-          <div class="highlight-item">
-            <span class="h-year">2007</span>
-            <span class="h-text">2. Preis — Internationaler Akkordeonwettbewerb Arrasate</span>
-          </div>
-          <div class="highlight-item">
-            <span class="h-year">2008</span>
-            <span class="h-text">1. Preis — 45. Internationaler Akkordeonwettbewerb Klingenthal · Meisterklassendiplom</span>
-          </div>
-          <div class="highlight-item">
-            <span class="h-year">—</span>
-            <span class="h-text">Stipendiat der Studienstiftung des deutschen Volkes &amp; Yehudi Menuhin Stiftung</span>
-          </div>
-        </div>
-
-        <div class="cv-downloads">
-          <a class="cv-link" href="Harald_Oeler_Vita.pdf" download="Harald_Oeler_Vita.pdf">
-            <span class="cv-lang">DE</span>
-            CV Deutsch
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
-            </svg>
-          </a>
-          <a class="cv-link" href="Harald_Oeler_Vita_EN.pdf" download="Harald_Oeler_Vita_EN.pdf">
-            <span class="cv-lang">EN</span>
-            CV English
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
-            </svg>
-          </a>
-        </div>
       </div><!-- /#bio-de -->
 
       <!-- English bio -->
-      <div class="bio-content" id="bio-en">
+      <div class="bio-content" id="bio-en" data-lang="en">
         <p>Harald Oeler is a German accordionist. He received his first lessons on the accordion as a six-year-old. After completing organ studies, he received instruction on the accordion from Hans Bogner in Gaggenau, Germany in preparation for conservatory study.</p>
 
         <p>After successfully competing in Jugend musiziert and Jugend komponiert competitions, he began studying with Prof. Hugo Noth. He continued his studies with <a href="https://hfm-wuerzburg.de/lehre/hussong-stefan" target="_blank">Prof. Stefan Hussong</a> at the <a href="https://hfm-wuerzburg.de" target="_blank">Würzburg Musikhochschule</a> in 2001, where, upon completing his performing arts degree (künstlerisches Diplom) with distinction in 2005, he was accepted into the master class.</p>
@@ -802,43 +770,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <p>Harald Oeler pursues a very active career as a concert artist in Germany and internationally, performing as a soloist and in various ensembles.</p>
 
         <p>In summer 2012 he taught as a visiting lecturer at Shenzhen Normal University in China. From 2007 to 2019 he held a teaching appointment in accordion at <a href="https://www.lmu.de" target="_blank">Ludwig Maximilian University of Munich</a>. He is also a full-time accordion lecturer and head of the theory and talent class at the music school of the Hofer Symphoniker. At the beginning of the 2026 school year he established accordion as a subject at the <a href="https://musikschule.bayreuth.de/" target="_blank">Städtische Musikschule Bayreuth</a>. From the winter semester 2026/2027 he additionally holds a lectureship in subject didactics, teaching practice and methodology in accordion at the <a href="https://www.hfm-nuernberg.de/personenverzeichnis/profil/harald-oeler" target="_blank">Nuremberg University of Music</a>.</p>
-
-        <!-- Award highlights -->
-        <div class="bio-highlights">
-          <div class="highlight-item">
-            <span class="h-year">2002</span>
-            <span class="h-text">3rd Prize — International Accordion Competition JAA, Tokyo</span>
-          </div>
-          <div class="highlight-item">
-            <span class="h-year">2007</span>
-            <span class="h-text">2nd Prize — International Accordion Competition Arrasate</span>
-          </div>
-          <div class="highlight-item">
-            <span class="h-year">2008</span>
-            <span class="h-text">1st Prize — 45th International Accordion Competition Klingenthal · Master Class Diploma</span>
-          </div>
-          <div class="highlight-item">
-            <span class="h-year">—</span>
-            <span class="h-text">Scholar, German National Merit Foundation &amp; Yehudi Menuhin Foundation</span>
-          </div>
-        </div>
-
-        <div class="cv-downloads">
-          <a class="cv-link" href="Harald_Oeler_Vita_EN.pdf" download="Harald_Oeler_Vita_EN.pdf">
-            <span class="cv-lang">EN</span>
-            CV English
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
-            </svg>
-          </a>
-          <a class="cv-link" href="Harald_Oeler_Vita.pdf" download="Harald_Oeler_Vita.pdf">
-            <span class="cv-lang">DE</span>
-            CV Deutsch
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
-            </svg>
-          </a>
-        </div>
       </div><!-- /#bio-en -->
 
     </div><!-- /.about-text -->
@@ -867,9 +798,77 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
       </div>
-      <div class="image-caption">
-        <span>Harald Oeler</span>
-        <span>© photos</span>
+      <div class="bio-content visible" data-lang="de">
+        <div class="bio-highlights">
+          <div class="highlight-item">
+            <span class="h-year">2002</span>
+            <span class="h-text">3. Preis — International Accordion Competition JAA, Tokio</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2007</span>
+            <span class="h-text">2. Preis — Internationaler Akkordeonwettbewerb Arrasate</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2008</span>
+            <span class="h-text">1. Preis — 45. Internationaler Akkordeonwettbewerb Klingenthal · Meisterklassendiplom</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">—</span>
+            <span class="h-text">Stipendiat der Studienstiftung des deutschen Volkes &amp; Yehudi Menuhin Stiftung</span>
+          </div>
+        </div>
+        <div class="cv-downloads">
+          <a class="cv-link" href="Harald_Oeler_Vita.pdf" download="Harald_Oeler_Vita.pdf">
+            <span class="cv-lang">DE</span>
+            CV Deutsch
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
+          </a>
+          <a class="cv-link" href="Harald_Oeler_Vita_EN.pdf" download="Harald_Oeler_Vita_EN.pdf">
+            <span class="cv-lang">EN</span>
+            CV English
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="bio-content" data-lang="en">
+        <div class="bio-highlights">
+          <div class="highlight-item">
+            <span class="h-year">2002</span>
+            <span class="h-text">3rd Prize — International Accordion Competition JAA, Tokyo</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2007</span>
+            <span class="h-text">2nd Prize — International Accordion Competition Arrasate</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">2008</span>
+            <span class="h-text">1st Prize — 45th International Accordion Competition Klingenthal · Master Class Diploma</span>
+          </div>
+          <div class="highlight-item">
+            <span class="h-year">—</span>
+            <span class="h-text">Scholar, German National Merit Foundation &amp; Yehudi Menuhin Foundation</span>
+          </div>
+        </div>
+        <div class="cv-downloads">
+          <a class="cv-link" href="Harald_Oeler_Vita_EN.pdf" download="Harald_Oeler_Vita_EN.pdf">
+            <span class="cv-lang">EN</span>
+            CV English
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
+          </a>
+          <a class="cv-link" href="Harald_Oeler_Vita.pdf" download="Harald_Oeler_Vita.pdf">
+            <span class="cv-lang">DE</span>
+            CV Deutsch
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M6 1.5v7M3.5 6l2.5 2.5L8.5 6M2 10.5h8"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -901,10 +900,8 @@ body.dark .nav-toggle:hover { opacity: 1; }
         b.classList.toggle('active', b.dataset.lang === lang);
       });
       document.querySelectorAll('.bio-content').forEach(function (el) {
-        el.classList.remove('visible');
+        el.classList.toggle('visible', el.dataset.lang === lang);
       });
-      var panel = document.getElementById('bio-' + lang);
-      if (panel) panel.classList.add('visible');
     }
     function syncBioLangInUrl(lang) {
       try {

@@ -158,7 +158,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=20';
+    link.href = sitePrefix() + 'assets/chrome.css?v=21';
     (document.body || document.head).appendChild(link);
   }
 
@@ -594,18 +594,15 @@
     var titleEl = document.createElement('span');
     titleEl.className = 'pager-title';
     titleEl.textContent = item.title;
-    if (dir === 'prev') {
-      a.appendChild(dirEl);
-      a.appendChild(titleEl);
-    } else {
-      a.appendChild(titleEl);
-      a.appendChild(dirEl);
-    }
+    // Same stack order on both sides: label above title
+    a.appendChild(dirEl);
+    a.appendChild(titleEl);
     return a;
   }
 
   function loadArticlePager(nav) {
     var slug = location.pathname.replace(/\.html$/i, '').replace(/\/$/, '').split('/').pop();
+    if (nav.querySelector('.article-pager')) return;
     fetch(sitePrefix() + 'news.html').then(function (r) {
       if (!r.ok) throw new Error('news');
       return r.text();
@@ -633,10 +630,15 @@
       if (idx < 0) return;
       var pager = document.createElement('div');
       pager.className = 'article-pager';
-      if (idx > 0) pager.appendChild(pagerLink(items[idx - 1], 'prev'));
-      else pager.appendChild(document.createElement('span'));
-      if (idx < items.length - 1) pager.appendChild(pagerLink(items[idx + 1], 'next'));
-      if (!pager.querySelector('a')) return;
+      var prevSlot = document.createElement('div');
+      prevSlot.className = 'pager-slot pager-slot-prev';
+      var nextSlot = document.createElement('div');
+      nextSlot.className = 'pager-slot pager-slot-next';
+      if (idx > 0) prevSlot.appendChild(pagerLink(items[idx - 1], 'prev'));
+      if (idx < items.length - 1) nextSlot.appendChild(pagerLink(items[idx + 1], 'next'));
+      if (!prevSlot.childNodes.length && !nextSlot.childNodes.length) return;
+      pager.appendChild(prevSlot);
+      pager.appendChild(nextSlot);
       nav.appendChild(pager);
     }).catch(function () {});
   }

@@ -158,7 +158,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=16';
+    link.href = sitePrefix() + 'assets/chrome.css?v=17';
     (document.body || document.head).appendChild(link);
   }
 
@@ -588,7 +588,19 @@
     a.href = item.href;
     a.className = dir === 'prev' ? 'pager-prev' : 'pager-next';
     a.setAttribute('aria-label', (dir === 'prev' ? 'Vorheriger Beitrag: ' : 'Nächster Beitrag: ') + item.title);
-    a.textContent = dir === 'prev' ? '‹ ' + item.title : item.title + ' ›';
+    var dirEl = document.createElement('span');
+    dirEl.className = 'pager-dir';
+    dirEl.textContent = dir === 'prev' ? '‹ Vorheriger' : 'Nächster ›';
+    var titleEl = document.createElement('span');
+    titleEl.className = 'pager-title';
+    titleEl.textContent = item.title;
+    if (dir === 'prev') {
+      a.appendChild(dirEl);
+      a.appendChild(titleEl);
+    } else {
+      a.appendChild(titleEl);
+      a.appendChild(dirEl);
+    }
     return a;
   }
 
@@ -622,8 +634,9 @@
       var pager = document.createElement('div');
       pager.className = 'article-pager';
       if (idx > 0) pager.appendChild(pagerLink(items[idx - 1], 'prev'));
+      else pager.appendChild(document.createElement('span'));
       if (idx < items.length - 1) pager.appendChild(pagerLink(items[idx + 1], 'next'));
-      if (!pager.childNodes.length) return;
+      if (!pager.querySelector('a')) return;
       nav.appendChild(pager);
     }).catch(function () {});
   }

@@ -56,7 +56,7 @@ a { color: inherit; text-decoration: none; }
   padding: 10px 18px;
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -279,7 +279,7 @@ body.dark .site-footer .center a { color: var(--paper); }
 }
 .hc-item-link:hover { padding-left: 10px; }
 .hc-item-link .hc-arrow {
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -336,7 +336,7 @@ body.dark .concert-item.is-highlighted {
   position: sticky;
   top: calc(var(--header-h, 72px) + var(--controls-h, 0px));
   z-index: 40;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -380,7 +380,7 @@ body.dark .concert-item.is-cancelled .c-title {
   padding: 0;
   margin: 0;
   cursor: pointer;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -416,7 +416,7 @@ body.dark .cal-menu {
 .cal-menu a {
   display: block;
   padding: 8px 14px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -450,7 +450,7 @@ body.dark .controls-bar.is-sticky {
   display: none;
   padding: 48px 0;
   text-align: center;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -462,7 +462,7 @@ body.dark .controls-bar.is-sticky {
   background: none;
   border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
   color: var(--ink);
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -483,7 +483,7 @@ body.dark .termine-empty button {
   bottom: 14px;
   right: 14px;
   z-index: 3;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -504,7 +504,7 @@ body.dark .termine-empty button {
 .field-error {
   display: block;
   margin-top: 6px;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.1em;
   color: var(--accent);
@@ -526,7 +526,7 @@ body.dark .form-status--success { color: var(--paper) !important; }
   margin-top: 0;
   background: none;
   border: none;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;

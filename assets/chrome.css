@@ -40,6 +40,87 @@ a.card:focus-visible,
   align-items: center;
   font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
 }
+
+/* Labels / meta — same face & rhythm as footer */
+.eyebrow,
+.page-meta,
+.article-eyebrow,
+.back-link,
+.photo-credit,
+.info-label,
+.info-source,
+.cast-role,
+.concert-date,
+.h-year,
+.image-caption,
+.month-divider,
+.project-chip,
+.cal-link,
+.ticket-link a,
+.article-pager,
+.press-quote cite,
+.press-docs .press-meta,
+.hc-item-link .hc-arrow,
+.lang-btn,
+.cv-downloads a.cv-link,
+.cv-lang,
+.cal-toggle,
+.cal-menu a,
+.termine-empty,
+.termine-empty button,
+.sp-preview-btn,
+.field-error,
+.btn-copy-email,
+.skip-link,
+.card .index,
+.card .role,
+.detail .hero-meta .runtime,
+.detail-body aside,
+.repertoire h3,
+.repertoire li .num,
+.repertoire li .dur,
+.rep-cursor-sub,
+.quote cite,
+.media h3,
+.media-item figcaption,
+.tour-dates h3,
+.tour-date-item .t-date,
+.tour-date-item .t-city,
+.projects-subnav-inner a,
+nav.primary.open::before,
+.yr-btn,
+.filter-btn,
+.cat-btn,
+.btn-send,
+.form-status,
+.funding-note .mono,
+.section-label,
+.meta,
+.meta-label {
+  font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
+}
+.eyebrow,
+.page-meta,
+.article-eyebrow,
+.back-link,
+.photo-credit,
+.info-label,
+.info-source,
+.cast-role,
+.concert-date,
+.h-year,
+.image-caption,
+.month-divider,
+.project-chip,
+.press-quote cite,
+.press-docs .press-meta,
+.article-pager,
+.cal-link,
+.ticket-link a {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
 .site-footer .left {
   display: flex;
   flex-direction: column;
@@ -81,9 +162,6 @@ body.dark .site-footer .center a { color: var(--paper, #f4f1ec); }
   gap: 8px 22px;
   margin-left: auto;
   max-width: 100%;
-  font-family: var(--mono, ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.04em;
 }
 .article-pager a {
   color: var(--muted, #6b655c);
@@ -98,10 +176,6 @@ body.dark .site-footer .center a { color: var(--paper, #f4f1ec); }
   margin-top: 18px;
   padding: 6px 12px;
   border: 1px solid color-mix(in srgb, var(--ink, #0e0d0c) 22%, transparent);
-  font-family: var(--mono, ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--ink, #0e0d0c);
 }
 body.dark .project-chip {
@@ -112,26 +186,14 @@ body.dark .project-chip {
 .ticket-link { margin-top: 12px; }
 .cal-link,
 .ticket-link a {
-  font-family: var(--mono, ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--accent, #6b1d1a);
 }
 
 /* News sidebar: Info / Presse / Repertoire / Zum Konzert / Nachbericht — same compact body text */
-.article-info .info-label {
-  font-size: 9px;
-  letter-spacing: 0.16em;
-}
 .article-info .body-text {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.55;
-}
-.article-info .info-source {
-  font-size: 10px;
-  letter-spacing: 0.14em;
 }
 .article-info .concert-title {
   font-size: 16px;
@@ -193,9 +255,10 @@ img.is-zoomable { cursor: zoom-in; }
 .news-lightbox figcaption {
   margin-top: 14px;
   text-align: center;
-  font-family: var(--mono, ui-monospace, monospace);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--paper, #f4f1ec);
 }
 .news-lightbox-close {

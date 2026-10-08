@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>HARALD OELER — CV Deutsch</title>
+  <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+  <style>
+    @font-face { font-family: "Cormorant Garamond"; src: url("fonts/CormorantGaramond-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Cormorant Garamond"; src: url("fonts/CormorantGaramond-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+    @font-face { font-family: Inter; src: url("fonts/Inter-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: Inter; src: url("fonts/Inter-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; }
+    @font-face { font-family: "JetBrains Mono"; src: url("fonts/JetBrainsMono-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  </style>
+  <style>
+:root {
+  --ink: #0e0d0c;
+  --paper: #f4f1ec;
+  --paper-2: #ebe6dd;
+  --muted: #6b655c;
+  --accent: #6b1d1a;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #d9d4cb; }
+body {
+  background: #d9d4cb;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.screen-bar {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 14px 24px;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted);
+}
+.screen-bar a { color: inherit; text-decoration: none; }
+.screen-bar a:hover { color: var(--accent); }
+.screen-btn {
+  appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--paper);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 10px 14px; cursor: pointer; text-decoration: none;
+}
+.screen-btn:hover { background: var(--accent); border-color: var(--accent); }
+
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 28px auto 64px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 18px 50px rgba(14,13,12,.12);
+  padding: 13mm 15mm 11mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.mast {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 4.5mm;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+.wordmark .dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 8px 1px;
+  vertical-align: middle;
+}
+.wordmark small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted);
+  margin-left: 10px;
+}
+.mast-meta {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 18px;
+  padding: 7mm 0 5.5mm;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3mm;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+}
+h1 em { font-style: italic; color: var(--accent); }
+.head-meta {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.75;
+  padding-bottom: 2px;
+}
+.head-meta b { color: var(--ink); font-weight: 500; }
+
+.copy {
+  padding-top: 6mm;
+}
+.copy::after { content: ""; display: block; clear: both; }
+.portrait {
+  float: right;
+  width: 68mm;
+  margin: 0.5mm 0 4.5mm 6mm;
+}
+.portrait img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+  background: #1a1816;
+}
+.image-caption {
+  margin-top: 2.4mm;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.copy p {
+  font-size: 11.15px;
+  line-height: 1.55;
+  color: #373634;
+  text-wrap: pretty;
+  hyphens: manual;
+}
+.copy p + p { margin-top: 0.68em; }
+
+.highlights {
+  margin-top: 4.2mm;
+  padding-top: 3.4mm;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 2.6mm;
+}
+.highlight {
+  display: grid;
+  grid-template-columns: 14mm 1fr;
+  gap: 4mm;
+  align-items: baseline;
+}
+.h-year {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.h-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.25;
+  color: #3c3b39;
+}
+
+.sheet-footer {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sheet-footer .center { text-align: center; }
+.sheet-footer .right { text-align: right; }
+.sheet-footer a { color: inherit; text-decoration: none; }
+
+@page { size: A4; margin: 0; }
+@media print {
+  html, body { background: var(--paper); }
+  .screen-bar { display: none !important; }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    width: 210mm;
+    height: 297mm;
+    min-height: 297mm;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="screen-bar">
+    <a href="../bio.html">← Bio</a>
+    <span>CV Deutsch · A4</span>
+    <button class="screen-btn" type="button" onclick="window.print()">Drucken / PDF</button>
+  </div>
+
+  <article class="sheet">
+    <header class="mast">
+      <div class="wordmark">HARALD<span class="dot"></span>OELER<small>Akkordeonist &amp; Komponist</small></div>
+      <div class="mast-meta">Vita</div>
+    </header>
+
+    <section class="head">
+      <div>
+        <div class="eyebrow">— Biografie</div>
+        <h1>Harald<br><em>Oeler</em></h1>
+      </div>
+      <div class="head-meta">
+        <div>Akkordeonist</div>
+      </div>
+    </section>
+
+    <div class="copy">
+      <figure class="portrait">
+        <img src="portrait.jpg" alt="Harald Oeler">
+        <figcaption class="image-caption"><span>Harald Oeler</span><span>Schwarzenbach Fotografie</span></figcaption>
+      </figure>
+
+      <p>Bereits als Jugendlicher ausgebildet in Komposition, Orgel- und Klavierspiel, erhielt Harald Oeler seine entscheidenden musikalischen Impulse von Hans Bogner an der Musikschule Gaggenau. Erste Preise bei nationalen Wettbewerben und die Vorbereitung auf das bevorstehende Musikstudium, waren der Nährboden einer äußerst wertvollen Unterrichtszeit bei Hans Bogner.</p>
+
+      <p>Nach dem Abitur folgte ein Musikstudium im Hauptfach Akkordeon, zunächst bei Prof Hugo Noth, später bei Prof. Stefan Hussong an der Hochschule für Musik in Würzburg. Die eindrucksvollen Studienjahre formten einen Musiker, welcher heute in einem breitgefächerten musikalisch-künstlerischen Aufgabenfeld von Jazz, Transkriptionsmusik und zeitgenössischer Musik aktiv ist.</p>
+
+      <p>Zahlreiche nationale und internationale Wettbewerbserfolge festigten, auf dem Weg zum Meisterklassendiplom, 2008, die Bühnenreife und künstlerische Individualität Harald Oelers. Ein 3. Preis beim 3rd Internationale Accordion Competition JAA Tokio/Japan 2002, ein 2. Preis beim bedeutendsten internationalen Akkordeonwettbewerb in Arrasate 2007 und ein 1. Preis beim 45. Internationalen Akkordeonwettbewerb Klingenthal mit dem Akkordeonduo Animé 2008, belegen dies eindrucksvoll.</p>
+
+      <p>Gefördert wurde Harald Oeler während seines Studiums als Stipendiat der Studienstiftung des deutschen Volkes und der Yehudi Menuhin Stiftung „Live Music Now“. Konzerte bei renomierten Klassik- und Jazzfestivals wie dem Heidelberger Frühling, dem Literaturfest Niedersachsen, den Sommerlichen Musiktagen Hitzacker und dem 41. Frankfurter Jazzfestival folgten.</p>
+
+      <p>Neben zahlreichen Rundfunkaufnahmen ist sein weitgefächertes künstlerisches Schaffen auf CDs von Genuin, Thorofon, OehmsClassics und Dewey Records dokumentiert.</p>
+
+      <p>Im Sommer 2012 lehrte Harald Oeler als Gastdozent an der „Normal Shenzhen University“ in China. Als Lehrbeauftragter für Akkordeon arbeitete Harald Oeler von 2007 bis 2019 an der Ludwig-Maximilians-Universität München. Weiterhin ist er hauptamtlicher Akkordeondozent und Leiter der Theorie- und Förderklasse an der Musikschule der „Hofer Symphoniker“. Zu Beginn des Schuljahres 2026 etablierte Harald Oeler das Fach Akkordeon an der Städtischen Musikschule Bayreuth. Ab dem Wintersemester 2026/2027 ist er zudem Lehrbeauftragter für Fachdidaktik/Lehrpraxis und Methodik im Fach Akkordeon an der Hochschule für Musik Nürnberg.</p>
+
+      <p>Unter seinen Schülern befinden sich zahlreiche Preisträger verschiedener Wettbewerbe, darunter vierzehn 1. Bundespreisträger bei Jugend musiziert, 1. Preisträger des Deutschen Akkordeon Musikpreis und Preisträger des Internationalen Akkordeonfestivals in Innsbruck.</p>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight">
+        <span class="h-year">2002</span>
+        <span class="h-text">3. Preis — International Accordion Competition JAA, Tokio</span>
+      </div>
+      <div class="highlight">
+        <span class="h-year">2007</span>
+        <span class="h-text">2. Preis — Internationaler Akkordeonwettbewerb Arrasate</span>
+      </div>
+      <div class="highlight">
+        <span class="h-year">2008</span>
+        <span class="h-text">1. Preis — 45. Internationaler Akkordeonwettbewerb Klingenthal · Meisterklassendiplom</span>
+      </div>
+      <div class="highlight">
+        <span class="h-year">—</span>
+        <span class="h-text">Stipendiat der Studienstiftung des deutschen Volkes &amp; Yehudi Menuhin Stiftung</span>
+      </div>
+    </div>
+
+    <footer class="sheet-footer">
+      <div>© Harald Oeler · 2026</div>
+      <div class="center"><a href="https://www.haraldoeler.com">haraldoeler.com</a></div>
+      <div class="right">Vita</div>
+    </footer>
+  </article>
+</body>
+</html>

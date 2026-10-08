@@ -158,7 +158,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=1';
+    link.href = sitePrefix() + 'assets/chrome.css?v=4';
     (document.body || document.head).appendChild(link);
   }
 
@@ -365,12 +365,269 @@
     }).catch(function () {});
   }
 
+  function initNewsArticle() {
+    var head = document.querySelector('.article-head');
+    var nav = document.querySelector('.article-nav');
+    if (!head || !nav) return;
+
+    var back = nav.querySelector('.back-link');
+    if (back && cleanText(back.textContent).toLowerCase() === 'news') {
+      back.textContent = 'Alle News';
+    }
+
+    addProjectChip(head);
+    var sections = concertSections();
+    sections.forEach(function (sec) { sec.classList.add('is-dates'); });
+    addCalendarLinks(sections);
+    addTicketLink();
+    initGallery();
+    loadArticlePager(nav);
+  }
+
+  function addProjectChip(head) {
+    if (head.querySelector('.project-chip')) return;
+    var eyebrow = head.querySelector('.article-eyebrow');
+    var title = head.querySelector('.article-title');
+    var sub = head.querySelector('.article-subtitle');
+    var blob = [eyebrow, title, sub].map(function (el) {
+      return el ? el.textContent : '';
+    }).join(' ').toLowerCase();
+    var chip = '';
+    if (/klakk/.test(blob)) chip = 'KlAkk!';
+    else if (/via!|duo via/.test(blob)) chip = 'ViA!';
+    else if (/\bsolo\b/.test(blob)) chip = 'Solo';
+    if (!chip) return;
+    var el = document.createElement('p');
+    el.className = 'project-chip';
+    el.textContent = chip;
+    var anchor = sub || title;
+    if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(el, anchor.nextSibling);
+  }
+
+  function concertSections() {
+    return Array.prototype.filter.call(document.querySelectorAll('.info-section'), function (sec) {
+      var label = sec.querySelector('.info-label');
+      return label && /konzertdaten/i.test(label.textContent || '');
+    });
+  }
+
+  function pad2(n) {
+    n = String(n);
+    return n.length < 2 ? '0' + n : n;
+  }
+
+  function googleCalUrl(title, dm, tm, location) {
+    var d = pad2(dm[1]);
+    var m = pad2(dm[2]);
+    var y = dm[3];
+    var start;
+    var end;
+    if (tm) {
+      var hh = parseInt(tm[1], 10);
+      var mm = parseInt(tm[2], 10);
+      var endMin = hh * 60 + mm + 120;
+      start = y + m + d + 'T' + pad2(hh) + pad2(mm) + '00';
+      end = y + m + d + 'T' + pad2(Math.floor(endMin / 60)) + pad2(endMin % 60) + '00';
+    } else {
+      start = y + m + d;
+      var dt = new Date(Date.UTC(+y, +m - 1, +d + 1));
+      end = dt.getUTCFullYear() + pad2(dt.getUTCMonth() + 1) + pad2(dt.getUTCDate());
+    }
+    return 'https://www.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent(title)
+      + '&dates=' + start + '/' + end
+      + (location ? '&location=' + encodeURIComponent(location) : '')
+      + '&ctz=Europe/Berlin';
+  }
+
+  function addCalendarLinks(sections) {
+    var pageTitle = document.querySelector('.article-title');
+    var fallbackTitle = pageTitle ? cleanText(pageTitle.textContent) : 'Konzert';
+    sections.forEach(function (sec) {
+      var entries = sec.querySelectorAll('.concert-entry');
+      var targets = entries.length ? Array.prototype.slice.call(entries) : [sec];
+      targets.forEach(function (entry) {
+        if (entry.querySelector('.cal-link')) return;
+        var dateEl = entry.querySelector('.concert-date') || sec.querySelector('.concert-date');
+        if (!dateEl) return;
+        var raw = cleanText(dateEl.textContent);
+        var dm = raw.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+        if (!dm) return;
+        var tm = raw.match(/(\d{1,2})[:.](\d{2})\s*Uhr/);
+        var titleEl = entry.querySelector('.concert-title');
+        var title = titleEl ? cleanText(titleEl.textContent) : fallbackTitle;
+        var venueEl = entry.querySelector('.concert-venue');
+        var location = venueEl ? cleanText(venueEl.textContent) : '';
+        var line = document.createElement('p');
+        line.className = 'cal-line';
+        var a = document.createElement('a');
+        a.className = 'cal-link';
+        a.href = googleCalUrl(title, dm, tm, location);
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'Kalender';
+        line.appendChild(a);
+        var slot = venueEl || dateEl;
+        if (slot.parentNode) slot.parentNode.insertBefore(line, slot.nextSibling);
+      });
+    });
+  }
+
+  function addTicketLink() {
+    if (document.querySelector('.ticket-link')) return;
+    var links = document.querySelectorAll('main a[href]');
+    var found = null;
+    for (var i = 0; i < links.length; i++) {
+      var href = (links[i].getAttribute('href') || '').toLowerCase();
+      var text = (links[i].textContent || '').toLowerCase();
+      if (/ticket|eventim|reservix/.test(href) || /\b(tickets?|kartenvorverkauf|karten)\b/.test(text) || /\bkarten\b/.test(href)) {
+        found = links[i];
+        break;
+      }
+    }
+    if (!found) return;
+    var sec = document.querySelector('.info-section.is-dates') || document.querySelector('.article-info');
+    if (!sec) return;
+    var p = document.createElement('p');
+    p.className = 'ticket-link';
+    var a = document.createElement('a');
+    a.href = found.getAttribute('href');
+    a.textContent = 'Tickets';
+    if (/^https?:/i.test(found.getAttribute('href') || '')) {
+      a.target = '_blank';
+      a.rel = 'noopener';
+    }
+    p.appendChild(a);
+    var label = sec.querySelector('.info-label');
+    if (label) label.insertAdjacentElement('afterend', p);
+    else sec.appendChild(p);
+  }
+
+  function initGallery() {
+    var imgs = document.querySelectorAll('.media-gallery img, img.media-photo');
+    var list = Array.prototype.filter.call(imgs, function (img) {
+      if (img.classList.contains('partner-logo')) return false;
+      return !(img.closest && img.closest('a'));
+    });
+    if (!list.length) return;
+
+    var box = document.createElement('div');
+    box.className = 'news-lightbox';
+    box.hidden = true;
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Bild');
+    box.innerHTML = '<button type="button" class="news-lightbox-close" aria-label="Schließen">×</button><figure><img alt=""><figcaption></figcaption></figure>';
+    document.body.appendChild(box);
+    var big = box.querySelector('img');
+    var cap = box.querySelector('figcaption');
+    var closeBtn = box.querySelector('.news-lightbox-close');
+    var last = null;
+
+    function open(img) {
+      last = img;
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt || '';
+      cap.textContent = img.alt || '';
+      cap.hidden = !img.alt;
+      box.hidden = false;
+      document.body.classList.add('news-lightbox-open');
+      closeBtn.focus();
+    }
+    function close() {
+      box.hidden = true;
+      big.removeAttribute('src');
+      document.body.classList.remove('news-lightbox-open');
+      if (last && last.focus) last.focus();
+    }
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', function (e) {
+      if (e.target === box) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !box.hidden) close();
+    });
+
+    list.forEach(function (img) {
+      img.classList.add('is-zoomable');
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-haspopup', 'dialog');
+      img.setAttribute('aria-label', img.alt ? 'Vergrößern: ' + img.alt : 'Bild vergrößern');
+      img.addEventListener('click', function () { open(img); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open(img);
+        }
+      });
+    });
+  }
+
+  function decodeTitle(html) {
+    return String(html || '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&#160;/g, ' ')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;|&apos;/g, "'")
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function pagerLink(item, dir) {
+    var a = document.createElement('a');
+    a.href = item.href;
+    a.className = dir === 'prev' ? 'pager-prev' : 'pager-next';
+    a.setAttribute('aria-label', (dir === 'prev' ? 'Vorheriger Beitrag: ' : 'Nächster Beitrag: ') + item.title);
+    a.textContent = dir === 'prev' ? '‹ ' + item.title : item.title + ' ›';
+    return a;
+  }
+
+  function loadArticlePager(nav) {
+    var slug = location.pathname.replace(/\.html$/i, '').replace(/\/$/, '').split('/').pop();
+    fetch(sitePrefix() + 'news.html').then(function (r) {
+      if (!r.ok) throw new Error('news');
+      return r.text();
+    }).then(function (html) {
+      var items = [];
+      var re = /<a class="card\b[^>]*href="([^"]+)"[^>]*data-date="(\d{4}-\d{2}-\d{2})"[\s\S]*?<h2>([\s\S]*?)<\/h2>/g;
+      var m;
+      while ((m = re.exec(html))) {
+        items.push({
+          href: m[1],
+          id: m[1].replace(/\.html$/i, '').split('/').pop(),
+          date: m[2],
+          title: decodeTitle(m[3]),
+          i: items.length
+        });
+      }
+      items.sort(function (a, b) {
+        if (a.date !== b.date) return a.date < b.date ? -1 : 1;
+        return a.i - b.i;
+      });
+      var idx = -1;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].id === slug) { idx = i; break; }
+      }
+      if (idx < 0) return;
+      var pager = document.createElement('div');
+      pager.className = 'article-pager';
+      if (idx > 0) pager.appendChild(pagerLink(items[idx - 1], 'prev'));
+      if (idx < items.length - 1) pager.appendChild(pagerLink(items[idx + 1], 'next'));
+      if (!pager.childNodes.length) return;
+      nav.appendChild(pager);
+    }).catch(function () {});
+  }
+
   function boot() {
     injectChromeCss();
     watchChrome();
     initScrollTop();
     initHeroHeader();
     initNav();
+    initNewsArticle();
     if ('requestIdleCallback' in window) requestIdleCallback(initConcertTeasers, { timeout: 2000 });
     else setTimeout(initConcertTeasers, 1);
     bootReactPages();

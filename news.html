@@ -221,6 +221,12 @@ nav.primary a.active::after {
   background: color-mix(in srgb, var(--ink) 8%, transparent);
   color: var(--ink);
 }
+.filter-btn:focus-visible,
+.year-select:focus-visible,
+.news-load-more:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
 /* Card grid */
 .news-grid {
@@ -318,15 +324,26 @@ nav.primary a.active::after {
   letter-spacing: 0.18em;
   color: var(--muted);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: 16px;
+  align-items: baseline;
   padding-bottom: 14px;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
 }
 .card .index .cat {
+  grid-column: 3;
   text-align: right;
   text-transform: uppercase;
   line-height: 1.4;
+}
+.card .aktuell {
+  grid-column: 2;
+  justify-self: end;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .card .image-wrap {
@@ -340,20 +357,11 @@ nav.primary a.active::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   display: block;
   filter: grayscale(1) contrast(1.05);
   transition: transform 1.2s cubic-bezier(.2,.7,.1,1), filter .6s ease;
   transform-origin: center;
-}
-.card.card--klakk26 .image-wrap img {
-  object-position: 28% top;
-}
-.card.card--klakk25 .image-wrap img {
-  object-position: center top;
-}
-.card.card--arrasate .image-wrap img {
-  object-position: left top;
 }
 .card.card--hfm .image-wrap {
   background: var(--paper);
@@ -398,8 +406,8 @@ nav.primary a.active::after {
 .card .meta {
   margin-top: 18px;
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px 24px;
+  grid-template-columns: 1fr;
+  gap: 10px;
   align-items: baseline;
 }
 .card h2 {
@@ -410,14 +418,7 @@ nav.primary a.active::after {
   letter-spacing: -0.005em;
 }
 .card h2 em { font-style: italic; }
-.card .role {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
+.card .role { display: none; }
 .card p.subtitle {
   grid-column: 1 / -1;
   font-family: var(--serif);
@@ -479,7 +480,6 @@ nav.primary a.active::after {
   .page-meta { text-align: left; margin-top: 16px; }
   .news-wrap { padding: 40px 24px 80px; }
   .news-grid { grid-template-columns: 1fr; gap: 40px; }
-  .card .image-wrap { aspect-ratio: 3 / 2; }
   .filter-row { width: 100%; }
   .filter-bar { width: 100%; flex-wrap: wrap; }
   .filter-btn { flex: 1 1 auto; text-align: center; border-right: none; border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); }
@@ -846,7 +846,27 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <button class="filter-btn" data-filter="medien">Medien</button>
       </div>
       <div class="filter-sep" aria-hidden="true"></div>
-      <div class="filter-bar year-bar" id="year-bar" role="group" aria-label="Jahr filtern"></div>
+      <div class="filter-bar year-bar" id="year-bar" role="group" aria-label="Jahr filtern">
+        <button class="filter-btn active" type="button" data-year="all">Alle</button>
+        <button class="filter-btn" type="button" data-year="2026">2026</button>
+        <button class="filter-btn" type="button" data-year="2025">2025</button>
+        <button class="filter-btn" type="button" data-year="2024">2024</button>
+        <button class="filter-btn" type="button" data-year="2023">2023</button>
+        <select class="year-select" aria-label="Ältere Jahre" title="Ältere Jahre">
+          <option value="">Älter…</option>
+          <option value="2019">2019</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+        </select>
+      </div>
     </div>
 
     <div class="news-grid">
@@ -855,6 +875,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <a class="card card--hfm" href="/news/hfm_nuernberg" data-date="2026-10-05" data-featured="1" data-cat="unterricht">
         <div class="index">
           <span>Okt 2026</span>
+          <span class="aktuell">Aktuell</span>
           <span class="cat">Unterricht</span>
         </div>
         <div class="image-wrap">
@@ -862,7 +883,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Lehrbeauftragter</em> — Fachdidaktik Akkordeon</h2>
-          <span class="role">Unterricht</span>
           <p class="subtitle">Hochschule für Musik Nürnberg · Studienjahr 2026/27</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -873,6 +893,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <a class="card" href="/news/bachtage26" data-date="2026-11-19" data-featured="2" data-cat="solo">
         <div class="index">
           <span>Nov 2026</span>
+          <span class="aktuell">Aktuell</span>
           <span class="cat">Solo</span>
         </div>
         <div class="image-wrap">
@@ -880,7 +901,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Würzburger Bachtage</em> — Eröffnungsakt</h2>
-          <span class="role">Solo</span>
           <p class="subtitle">Bach und die Zukunft · Bertold-Hummel-Saal · 19. November 2026</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -891,6 +911,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <a class="card" href="/news/hohenschwangau_bergkonzert" data-date="2026-07-19" data-featured="3" data-cat="konzert">
         <div class="index">
           <span>2026</span>
+          <span class="aktuell">Aktuell</span>
           <span class="cat">Konzert</span>
         </div>
         <div class="image-wrap">
@@ -898,7 +919,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Hohenschwangau Klassik</em> — Bergkonzert Duo KlAkk!</h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Tegelberg · Schwangau · 19. Juli 2026</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -909,6 +929,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <a class="card" href="/news/hohenschwangau" data-date="2026-07-18" data-featured="4" data-cat="konzert">
         <div class="index">
           <span>2026</span>
+          <span class="aktuell">Aktuell</span>
           <span class="cat">Konzert</span>
         </div>
         <div class="image-wrap">
@@ -916,7 +937,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Hohenschwangau Klassik</em> — Königliche Konzerte 2026</h2>
-          <span class="role">Festival</span>
           <p class="subtitle">Philharmonie und Film · Bergkonzert Duo KlAkk! · Füssener Zeitung</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -927,6 +947,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <a class="card" href="/news/fussissimo_website" data-date="2026-08-03" data-featured="5" data-cat="medien">
         <div class="index">
           <span>2026</span>
+          <span class="aktuell">Aktuell</span>
           <span class="cat">Media</span>
         </div>
         <div class="image-wrap">
@@ -934,7 +955,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>NEU</em> — Website · Fussissimo</h2>
-          <span class="role">Media</span>
           <p class="subtitle">www.fussissimo.de · gestaltet von studio kimi</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -945,6 +965,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       <a class="card" href="/news/straubing2" data-date="2026-07-05" data-featured="6" data-cat="konzert">
         <div class="index">
           <span>2026</span>
+          <span class="aktuell">Aktuell</span>
           <span class="cat">Konzert</span>
         </div>
         <div class="image-wrap">
@@ -952,7 +973,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Musik aus dem Moment heraus</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo KlAkk! · Weytterturm Straubing · 5. Juli 2026</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -970,7 +990,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Tour | <em>Duo KlAkk! · 2026</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Walheim · Kronach · Straubing · Tegelberg · Dörzbach · Bayreuth · Kirchheim am Neckar</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -987,7 +1006,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Tour | <em>Fussissimo · 2026</em></h2>
-          <span class="role">Trio</span>
           <p class="subtitle">Eyrichshof · Frankfurt · Würzburg · Schweinfurt · Gemünden</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1005,7 +1023,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>NEU</em> — Website II</h2>
-          <span class="role">Media</span>
           <p class="subtitle">Version II</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1022,7 +1039,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo | <em>Neues Programm</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Werke von Harald Oeler, Astor Piazzolla, Richard Galliano u.a.</p>
 
         </div>
@@ -1041,7 +1057,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Reise durch die <em>Jahreszeiten</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo ViA! · Kammermusik Festival Würzburg · Facebook</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1059,7 +1074,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Heiße Klänge in kalten <em>Gefilden</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Neujahrskonzert · Duo KlAkk! · Walheim · LKZ</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1076,7 +1090,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Tour | <em>Duo KlAkk! · 2025</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Gemmrigheim · Würzburg · Straubing · Hallerstein · Eibelstadt · Aschaffenburg· Kirchheim am Necker</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1094,7 +1107,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Solo | <em>Remembering!</em></h2>
-          <span class="role">Solo</span>
           <p class="subtitle">TKVL Konzerte 2025</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1112,7 +1124,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Singer-Songwriter — <em>Mammen &amp; Jung</em></h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">KunstKaufHaus Hof · 29. Oktober 2025 · Tonkünstler Live Special</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1129,7 +1140,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo KlAkk! | <em>Eibelstadt</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Rathauskeller Eibelstadt · 11. Oktober 2025</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1147,7 +1157,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Ein instrumentales Wunder</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo KlAkk! · Weytterturm Straubing · Straubinger Tagblatt</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1164,7 +1173,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo KlAkk! | <em>Herzlichen Glückwunsch!</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Tonkünstlerverband Hochfranken e.V. · Rückblick 2025</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1181,7 +1189,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo ViA! | <em>8 Jahreszeiten</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Trailer — Vivaldi &amp; Piazzolla · Bearbeitung für Violine und Akkordeon</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1199,7 +1206,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo KlAkk! | <em>Spitäle Würzburg</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">VKU · 1. März 2025</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1216,7 +1222,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Spielerische <em>Virtuosität</em> und reichlich Inspiration</h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">Trio Fussissimo · Jazz im Schlösschen · Wertheim · Main-Echo</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1234,7 +1239,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>projects4cellos — <em>Haus Marteau</em></h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">Die Vier EvangCellisten &amp; friends · Lichtenberg · 16. Juni 2024</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1252,7 +1256,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Tour | <em>Duo KlAkk! · 2024</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Bad Reichenhall · Hof · Bayreuth</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1270,7 +1273,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo ViA! | <em>Residenz Würzburg</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Jubiläumskonzert 40 Jahre ZONTA CLUB WÜRZBURG — Vivaldi meets Piazzolla „Acht Jahreszeiten"</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1288,7 +1290,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Violine und Akkordeon passten <em>wunderbar</em> zusammen</h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo ViA! · Kaisersaal Residenz Würzburg · Main-Post</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1306,7 +1307,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Tour</em> mit Joscho Stephan</h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">Hot Swing Jazz in Hof, Nagold und Gemmrigheim — 26.–28.01.2024</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1323,7 +1323,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Duo | <em>Akkordeon &amp; Cello</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Konzert mit Ivan Turkalj — „Remembering"</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1341,7 +1340,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>SynapsePlus</em> — mehr als nur 5 Töne!</h2>
-          <span class="role">Vortrag</span>
           <p class="subtitle">Neurologische Grundlagen und musikalische Beweglichkeit im Anfängerunterricht</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1359,7 +1357,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Neustart Jazz</em> — Glashalle Hof</h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">Christopher von Mammen · VHS Hofer Land · 10. November 2023</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1377,7 +1374,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Tour</em> mit Fussissimo</h2>
-          <span class="role">Trio</span>
           <p class="subtitle">Gypsy-Ethno-Jazz — Darstadt · Hof · Schweinfurt</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1395,7 +1391,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Kinderkonzert — Orchesterwerk</h2>
-          <span class="role">Konzert</span>
           <p class="subtitle">Richard Galliano — „Opale Concerto" für Akkordeon und Streichorchester</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1413,7 +1408,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Die Vier EvangCellisten &amp; friends — <em>15-Jahre-Jubiläum</em></h2>
-          <span class="role">Konzert</span>
           <p class="subtitle">Rosenthal-Theater Selb · Opale Concerto &amp; Tango de las Profundidades</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1431,7 +1425,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Musikalische <em>Früherziehung</em></h2>
-          <span class="role">Workshop</span>
           <p class="subtitle">Workshops für Kinder in der Klangmanufaktur der Hofer Symphoniker</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1449,7 +1442,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Pittis's Podcast</em></h2>
-          <span class="role">Podcast</span>
           <p class="subtitle">Akkordeonspecial — 40 Jahre und 200 Knöpfe. Mit Live-Musik!</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1467,7 +1459,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Solo | <em>Remembering</em> — Videos</h2>
-          <span class="role">Solo</span>
           <p class="subtitle">„Remembering Bach" &amp; „Remembering Piazzolla" — Video-Aufnahmen</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1485,7 +1476,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Solo | <em>Gemmrigheim</em></h2>
-          <span class="role">Solo</span>
           <p class="subtitle">Soloabend mit dem vollständigen „Remembering"-Programm</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1504,7 +1494,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Solo — <em>Remembering</em></h2>
-          <span class="role">Solo</span>
           <p class="subtitle">Eigenkomponiertes Soloprogramm: Paris · Tokio · Bach · Piazzolla</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1521,7 +1510,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>NEU</em> — Website</h2>
-          <span class="role">Media</span>
           <p class="subtitle">Version I · Januar 2023</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1537,7 +1525,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Duo ViA!</em> | Schloß Borbeck</h2>
-          <span class="role">Duo</span>
           <p class="subtitle">8 Jahreszeiten · Vivaldi &amp; Piazzolla · Stadt Essen</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1555,7 +1542,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Aufmüpfigsein</em> als Geisteshaltung</h2>
-          <span class="role">Solo</span>
           <p class="subtitle">Perspektiven Heilbronn · 1/4-Ton · Heilbronner Stimme</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1573,7 +1559,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Selbst Züge können die <em>Klänge</em> nicht stören</h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">KlangSpuren · Klang-Manufaktur Hof · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1589,7 +1574,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Lebensfreude in jedem <em>Ton</em></h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">Marco-Böttger-Quartett · Kulturkantine Hof · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1605,7 +1589,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Bach geht auch mit <em>Knöpfen</em></h2>
-          <span class="role">Orchester</span>
           <p class="subtitle">Clavierkonzert · Selb &amp; Münchberg · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1623,7 +1606,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Duo ViA!</em> · Korea Tour</h2>
-          <span class="role">Duo</span>
           <p class="subtitle">8 Seasons · Seoul &amp; Daejeon · August 2016</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1641,7 +1623,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Duo ViA!</em> · 8 Seasons</h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Wechterswinkel · Bad Brückenau · Seoul · Oettingen</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1659,7 +1640,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>News and upcoming <em>dates</em></h2>
-          <span class="role">Medien</span>
           <p class="subtitle">Harald Oeler · Pigini Accordions</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1675,7 +1655,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Nürnberg · <em>Armonica</em></h2>
-          <span class="role">Orchester</span>
           <p class="subtitle">Widmann · Nürnberger Symphoniker · Meistersingerhalle</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1693,7 +1672,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Erster Spatenstich mit <em>Baustellenkonzert</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo ViA! · Villa Weiss Helmbrechts</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1709,7 +1687,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>8 Jahreszeiten</em></h2>
-          <span class="role">Medien</span>
           <p class="subtitle">Duo ViA! · OehmsClassics OC 429 · Naxos</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1727,7 +1704,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>8 Jahreszeiten</em> · Klingenthal</h2>
-          <span class="role">Duo</span>
           <p class="subtitle">CD-Präsentation · Duo ViA! · 51. Internationaler Akkordeonwettbewerb</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1745,7 +1721,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Ein internationales Festival der <em>Spitzenklasse</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Akkordeon grenzenlos · Duo ViA! · Trossingen</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1761,7 +1736,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Abschlusskonzert in <em>Klingenthal</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo Animé · 50. Internationaler Akkordeonwettbewerb</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1777,7 +1751,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Piazzolla trifft auf <em>Vivaldi</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">8 Jahreszeiten · Wemmetsweiler · Saarbrücker Zeitung</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1795,7 +1768,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Das Akkordeon <em>verbindet</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Duo Animé · Lulu Wang · Abschlusskonzert Hof · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1813,7 +1785,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Accordionduo <em>ANIMÉ</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Shenzhen Concert Hall · Live · Shenzhen Radio</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1831,7 +1802,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Sensationelles</em> Ergebnis junger Musiker</h2>
-          <span class="role">Unterricht</span>
           <p class="subtitle">Musikschule Hofer Symphoniker · Akkordeon-Wettbewerbe · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1849,7 +1819,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Stille Thränen</em> für die Opfer</h2>
-          <span class="role">Benefiz</span>
           <p class="subtitle">Marienkirche Hof · Benefizkonzert Japan · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1867,7 +1836,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Ein Jahr und noch <em>eins</em></h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">Acht Jahreszeiten · Haus der Musik Hof · Frankenpost</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1883,7 +1851,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Licht &amp; <em>Leben</em></h2>
-          <span class="role">Orchester</span>
           <p class="subtitle">Con Brio · Bach BWV 1052 · Leporello</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1899,7 +1866,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Seriöses <em>CD-Recital</em></h2>
-          <span class="role">Medien</span>
           <p class="subtitle">Sinn Yang · Oehms Classics · nmz</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1917,7 +1883,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Vivaldi auf Akkordeon und <em>Geige</em></h2>
-          <span class="role">Duo</span>
           <p class="subtitle">Acht Jahreszeiten · Ars Musica Aub · Main-Post</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1935,7 +1900,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Swing mit dem <em>Rehan Syed</em>-Ensemble</h2>
-          <span class="role">Ensemble</span>
           <p class="subtitle">klang-räume · Convenartis Keller Wertheim · Main-Echo</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1951,7 +1915,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Kulturpreis <em>Bayern</em></h2>
-          <span class="role">Auszeichnung</span>
           <p class="subtitle">Dreiländerhalle Passau · GENUIN · 30.10.2008</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1967,7 +1930,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2>Arrasate <em>Hiria</em></h2>
-          <span class="role">Auszeichnung</span>
           <p class="subtitle">XV Certamen Internacional · 2. Preis · Arrasate / Mondragón</p>
         </div>
         <span class="arrow">mehr lesen</span>
@@ -1985,14 +1947,13 @@ body.dark .nav-toggle:hover { opacity: 1; }
         </div>
         <div class="meta">
           <h2><em>Pictures at an Exhibition</em></h2>
-          <span class="role">Medien</span>
           <p class="subtitle">Mussorgsky · Gubaidulina · GENUIN GEN 87523</p>
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
 
       <div class="news-load-more-wrap" id="news-load-more-wrap">
-        <button type="button" class="news-load-more" id="news-load-more">Mehr laden</button>
+        <button type="button" class="news-load-more" id="news-load-more">Weitere laden</button>
       </div>
     </div><!-- /.news-grid -->
   </main>
@@ -2175,6 +2136,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     </svg>
   </button>
 
-  <script src="assets/site.js?v=11" defer></script>
+  <script src="assets/site.js?v=14" defer></script>
 </body>
 </html>

@@ -108,7 +108,9 @@
     var btn = document.getElementById('scrollTopBtn');
     if (!btn || btn.__scrollBound) return;
     btn.__scrollBound = true;
-    var showAt = 500;
+    /* Quiet text control — replace FAB icon markup site-wide */
+    btn.innerHTML = '<span aria-hidden="true">↑</span> Nach oben';
+    var showAt = 640;
     var ticking = false;
     function sync() {
       var show = window.scrollY > showAt;
@@ -158,7 +160,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=25';
+    link.href = sitePrefix() + 'assets/chrome.css?v=27';
     (document.body || document.head).appendChild(link);
   }
 

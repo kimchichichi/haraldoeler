@@ -47,16 +47,19 @@ a.card:focus-visible,
 /* Mobile: Nächster Termin bottom-right */
 @media (max-width: 720px) {
   .site-footer {
-    padding: 24px;
-    padding-right: max(24px, calc(18px + 44px + 12px));
+    padding: 14px 16px;
+    padding-right: max(16px, calc(14px + 44px + 10px));
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "left center"
       "right center";
-    gap: 12px 28px;
+    gap: 4px 14px;
     align-items: end;
   }
-  .site-footer .left { grid-area: left; }
+  .site-footer .left {
+    grid-area: left;
+    gap: 4px;
+  }
   .site-footer .right {
     grid-area: right;
     text-align: left;
@@ -67,6 +70,10 @@ a.card:focus-visible,
     justify-self: end;
     align-self: end;
     max-width: min(36ch, 55vw);
+  }
+  .footer-social a {
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -407,4 +414,58 @@ body.news-lightbox-open { overflow: hidden; }
 img.is-zoomable:focus-visible {
   outline: 2px solid var(--accent, #6b1d1a);
   outline-offset: 3px;
+}
+
+/* Quiet “Nach oben” — beats inline FAB styles copied into each page */
+button.scroll-top {
+  width: auto !important;
+  height: auto !important;
+  min-height: 44px;
+  padding: 10px 2px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  font-family: var(--sans, Avenir, 'Avenir Next', Inter, sans-serif);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted, #6b655c) !important;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  transition: opacity .25s ease, transform .25s ease, color .2s ease;
+}
+button.scroll-top svg { display: none !important; }
+button.scroll-top.is-visible { opacity: 1 !important; transform: translateY(0) !important; }
+button.scroll-top:hover,
+button.scroll-top:focus-visible {
+  color: var(--ink, #0e0d0c) !important;
+  background: transparent !important;
+  border: none !important;
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+}
+body.dark button.scroll-top {
+  color: color-mix(in srgb, var(--paper, #f4f1ec) 55%, transparent) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+body.dark button.scroll-top:hover,
+body.dark button.scroll-top:focus-visible {
+  color: var(--paper, #f4f1ec) !important;
+}
+@media (max-width: 720px) {
+  button.scroll-top {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(64px, calc(env(safe-area-inset-bottom) + 52px));
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
 }

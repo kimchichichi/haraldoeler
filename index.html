@@ -33,8 +33,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"></noscript>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="preload" href="assets/site.css?v=10" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/site.css?v=10"></noscript>
+  <link rel="preload" href="assets/site.css?v=11" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/site.css?v=11"></noscript>
 
   <style>
 :root {
@@ -995,16 +995,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
   }
   body.nav-open { overscroll-behavior: none; overflow: hidden; }
   .site-footer {
-    padding: 24px;
-    padding-right: max(24px, calc(18px + 44px + 12px));
+    padding: 14px 16px;
+    padding-right: max(16px, calc(14px + 44px + 10px));
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "left center"
       "right center";
-    gap: 12px 28px;
+    gap: 4px 14px;
     align-items: end;
   }
-  .site-footer .left { grid-area: left; }
+  .site-footer .left {
+    grid-area: left;
+    gap: 4px;
+  }
   .site-footer .right {
     grid-area: right;
     text-align: left;
@@ -1015,6 +1018,10 @@ body.dark .nav-toggle:hover { opacity: 1; }
     justify-self: end;
     align-self: end;
     max-width: min(36ch, 55vw);
+  }
+  .footer-social a {
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -1349,6 +1356,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
   </style>
-  <script src="assets/site.js?v=36" defer></script>
+  <script src="assets/site.js?v=37" defer></script>
 </body>
 </html>

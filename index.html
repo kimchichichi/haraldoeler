@@ -196,7 +196,7 @@ nav.primary a.active::after {
   bottom: 72px;
   z-index: 2;
   color: var(--paper);
-  text-align: left;
+  text-align: right;
   max-width: 680px;
 }
 .hero-eyebrow {
@@ -227,6 +227,7 @@ nav.primary a.active::after {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 12px;
   margin-top: 28px;
 }
@@ -659,7 +660,7 @@ body.dark .home-bio-lang a:hover {
   .hero-img { object-position: 32% 16%; }
 
   .hero-content {
-    text-align: left;
+    text-align: right;
     left: 24px;
     right: 24px;
     bottom: max(88px, calc(env(safe-area-inset-bottom) + 72px));

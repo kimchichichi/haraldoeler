@@ -191,15 +191,15 @@
       var posterHref = item.dataset.poster;
       if (!posterHref || item.querySelector('.c-poster-link')) return;
       var actions = item.querySelector('.c-right');
-      var infoLink = item.querySelector('.c-info-link');
-      if (!actions || !infoLink) return;
+      if (!actions) return;
       var posterLink = document.createElement('a');
       posterLink.className = 'c-info-link c-poster-link';
       posterLink.href = posterHref;
       posterLink.target = '_blank';
       posterLink.rel = 'noopener';
       posterLink.innerHTML = 'plakat <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>';
-      actions.insertBefore(posterLink, infoLink.nextSibling);
+      var cal = actions.querySelector('.c-cal');
+      actions.insertBefore(posterLink, cal || actions.firstChild);
     });
   }
 

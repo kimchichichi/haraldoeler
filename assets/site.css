@@ -387,8 +387,8 @@ body.dark .concert-item.is-cancelled .c-title {
   margin: 0;
   cursor: pointer;
   font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
   transition: color .25s;

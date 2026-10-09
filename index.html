@@ -33,8 +33,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"></noscript>
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="preload" href="assets/site.css?v=9" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/site.css?v=9"></noscript>
+  <link rel="preload" href="assets/site.css?v=10" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/site.css?v=10"></noscript>
 
   <style>
 :root {
@@ -170,7 +170,7 @@ nav.primary a.active::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 12% 20%;
+  object-position: 0% 20%;
   /* No forced grayscale — source is mono; colour portraits stay readable */
   filter: contrast(1.05);
   transform-origin: center;
@@ -652,11 +652,11 @@ body.dark .home-bio-lang a:hover {
 }
 
 @media (max-width: 1100px) {
-  .hero-img { object-position: 32% 18%; }
+  .hero-img { object-position: 18% 18%; }
 }
 
 @media (max-width: 720px) {
-  .hero-img { object-position: 48% 16%; }
+  .hero-img { object-position: 32% 16%; }
 
   .hero-content {
     text-align: left;
@@ -664,30 +664,99 @@ body.dark .home-bio-lang a:hover {
     right: 24px;
     bottom: max(88px, calc(env(safe-area-inset-bottom) + 72px));
   }
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  .hero-name {
+    font-size: clamp(48px, 14vw, 78px);
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+  .hero-actions {
+    margin-top: 18px;
+    gap: 8px;
+  }
+  .hero-cta {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    padding: 9px 14px;
+  }
   /* Show hero scroll hint on mobile */
   .hero-scroll {
     display: flex;
     left: 24px;
     bottom: max(20px, env(safe-area-inset-bottom));
     transform: none;
-    font-size: 8px;
-    letter-spacing: 0.18em;
+    font-size: 7px;
+    letter-spacing: 0.16em;
     color: rgba(244,241,236,0.5);
   }
-  .hero-scroll::before { height: 42px; }
+  .hero-scroll::before { height: 36px; }
 
-  .home-teasers { padding: 56px 24px 56px; }
-  .hc-item-link { grid-template-columns: 100px 1fr auto; gap: 16px; }
-  .home-news { padding: 48px 24px 56px; }
-  .home-news-link { grid-template-columns: 1fr; gap: 20px; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.18em; margin-bottom: 20px; }
+  .home-pullquote {
+    font-size: clamp(20px, 5.6vw, 28px);
+    margin-bottom: 22px;
+  }
+  .teaser-cta {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+  .teaser-cta svg { width: 13px; height: 10px; }
+  .hc-date { font-size: 10px; }
+  .hc-date small { font-size: 9px; }
+  .hc-title { font-size: 17px; }
+  .hc-location { font-size: 9px; }
+  .hc-item-link .hc-arrow { font-size: 9px; letter-spacing: 0.1em; }
+
+  /* News header CTA → icon only (less cramped on small screens) */
+  .home-news-header .teaser-cta {
+    position: relative;
+    padding: 8px 10px;
+    gap: 0;
+  }
+  .home-news-header .teaser-cta .cta-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .home-teasers { padding: 48px 24px 48px; }
+  .hc-item-link { grid-template-columns: 88px 1fr auto; gap: 12px; }
+  .home-news { padding: 40px 24px 48px; }
+  .home-news-header { margin-bottom: 24px; gap: 12px 16px; }
+  .home-news-link { grid-template-columns: 1fr; gap: 16px; }
   .home-news-media { aspect-ratio: 16 / 10; max-width: 420px; }
+  .home-news-meta { font-size: 10px; margin-bottom: 10px; }
+  .home-news-title { font-size: clamp(22px, 6vw, 30px); margin-bottom: 8px; }
+  .home-news-dek { font-size: 15px; }
 
-  .home-projects-section { padding: 56px 24px 80px; }
+  .home-projects-section { padding: 48px 24px 72px; }
+  .home-projects-header { margin-bottom: 36px; }
   .home-proj-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
-  .home-proj-circle { width: min(72vw, 220px); }
+  .home-proj-circle { width: min(64vw, 200px); }
+  .home-proj-meta { margin-top: 16px; }
+  .home-proj-index { font-size: 9px; margin-bottom: 6px; }
+  .home-proj-title { font-size: clamp(22px, 5.5vw, 28px); margin-bottom: 6px; }
+  .home-proj-cast { font-size: 10px; }
+  .home-bio-lang { font-size: 9px; margin-top: 14px; }
+  .nav-toggle svg { width: 18px; height: 12px; }
 
 }
   
@@ -1136,9 +1205,9 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <section class="home-news" aria-labelledby="home-news-heading">
       <div class="home-news-header">
         <p class="eyebrow" id="home-news-heading" style="margin-bottom:0">Aktuell</p>
-        <a class="teaser-cta" href="/news">
-          Alle News
-          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
+        <a class="teaser-cta" href="/news" aria-label="Alle News">
+          <span class="cta-label">Alle News</span>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 6H14M8 1l6 5-6 5"/></svg>
         </a>
       </div>
       <a class="home-news-link" href="/news/bachtage26">
@@ -1210,9 +1279,15 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <div class="left">
       <div>© Harald Oeler · 2026</div>
       <div class="footer-social">
-        <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.66-.12-.48.12-1.02.66-1.14 4.38-1.32 9.76-.66 13.46 1.62.36.18.54.78.22 1.26zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.48-1.02.66-1.56.36z"/></svg>
+        </a>
       </div>
     </div>
     <div class="center" id="footer-next-concert"></div>
@@ -1273,6 +1348,6 @@ body.dark .nav-toggle:hover { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
   </style>
-  <script src="assets/site.js?v=35" defer></script>
+  <script src="assets/site.js?v=36" defer></script>
 </body>
 </html>

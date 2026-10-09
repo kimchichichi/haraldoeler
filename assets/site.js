@@ -158,8 +158,55 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=24';
+    link.href = sitePrefix() + 'assets/chrome.css?v=25';
     (document.body || document.head).appendChild(link);
+  }
+
+  var SOCIAL_ICONS = {
+    instagram: {
+      label: 'Instagram',
+      svg: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'
+    },
+    youtube: {
+      label: 'YouTube',
+      svg: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>'
+    },
+    spotify: {
+      label: 'Spotify',
+      svg: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.66-.12-.48.12-1.02.66-1.14 4.38-1.32 9.76-.66 13.46 1.62.36.18.54.78.22 1.26zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.48-1.02.66-1.56.36z"/></svg>'
+    },
+    facebook: {
+      label: 'Facebook',
+      svg: '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 13.5h2.5l.5-3H14V8.75c0-.83.17-1.25 1.34-1.25H17V5.08C16.69 5.03 15.8 5 14.79 5 12.6 5 11 6.24 11 8.65V10.5H8.5v3H11V20h3v-6.5z"/></svg>'
+    }
+  };
+
+  function socialKind(href) {
+    var url = String(href || '').toLowerCase();
+    if (url.indexOf('instagram') !== -1) return 'instagram';
+    if (url.indexOf('youtube') !== -1 || url.indexOf('youtu.be') !== -1) return 'youtube';
+    if (url.indexOf('spotify') !== -1) return 'spotify';
+    if (url.indexOf('facebook') !== -1 || url.indexOf('fb.com') !== -1) return 'facebook';
+    return null;
+  }
+
+  function socialLinkHtml(kind, href) {
+    var meta = SOCIAL_ICONS[kind];
+    if (!meta) return '';
+    return '<a href="' + href + '" target="_blank" rel="noopener" aria-label="' + meta.label + '" title="' + meta.label + '">' + meta.svg + '</a>';
+  }
+
+  function iconifyFooterSocial(container) {
+    if (!container || container.getAttribute('data-icons') === '1') return;
+    Array.prototype.forEach.call(container.querySelectorAll('a'), function (a) {
+      var kind = socialKind(a.getAttribute('href') || '');
+      var meta = kind && SOCIAL_ICONS[kind];
+      if (!meta) return;
+      a.setAttribute('aria-label', meta.label);
+      a.setAttribute('title', meta.label);
+      a.innerHTML = meta.svg;
+    });
+    container.setAttribute('data-icons', '1');
   }
 
   function enhanceFooter(footer) {
@@ -169,12 +216,14 @@
       var social = document.createElement('div');
       social.className = 'footer-social';
       social.innerHTML = [
-        '<a href="https://www.instagram.com/haraldoeler/" target="_blank" rel="noopener">Instagram</a>',
-        '<a href="https://www.youtube.com/@HO-yg4ur/videos" target="_blank" rel="noopener">YouTube</a>',
-        '<a href="https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA" target="_blank" rel="noopener">Spotify</a>'
+        socialLinkHtml('instagram', 'https://www.instagram.com/haraldoeler/'),
+        socialLinkHtml('youtube', 'https://www.youtube.com/@HO-yg4ur/videos'),
+        socialLinkHtml('spotify', 'https://open.spotify.com/artist/1Oe30Bgo655dNTk0OEqmIA')
       ].join('');
       left.appendChild(social);
     }
+    var existingSocial = footer.querySelector('.footer-social');
+    if (existingSocial) iconifyFooterSocial(existingSocial);
     var center = footer.querySelector(':scope > .center');
     if (center && !center.id && !cleanText(center.textContent)) {
       center.id = 'footer-next-concert';

@@ -189,10 +189,24 @@ a.card:focus-visible,
 .footer-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 14px;
-  letter-spacing: 0.14em;
+  align-items: center;
+  gap: 4px 6px;
+  letter-spacing: 0;
 }
-.footer-social a { transition: color .2s; }
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: inherit;
+  transition: color .2s;
+}
+.footer-social a svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
 .footer-social a:hover { color: var(--accent, #6b1d1a); }
 .site-footer .center { max-width: 36ch; }
 .site-footer .center a {

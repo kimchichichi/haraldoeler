@@ -273,7 +273,14 @@ function ProjektDetail({ id, onBack }) {
         <Arrow dir="left" /> zurück zu projekte
       </a>
       <section className="hero" style={{ viewTransitionName: `image-${id}` }}>
-        <img src={detail.image} alt={detail.title} fetchpriority="high" decoding="async" />
+        <img
+          src={detail.image}
+          srcSet={detail.imageSrcSet || undefined}
+          sizes={detail.imageSrcSet ? (detail.imageSizes || "100vw") : undefined}
+          alt={detail.title}
+          fetchpriority="high"
+          decoding="async"
+        />
         <div className="hero-meta">
           <div>
             <div className="eyebrow">{detail.eyebrow}</div>

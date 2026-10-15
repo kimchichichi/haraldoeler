@@ -174,6 +174,8 @@ const DETAILS = {
     title: "Fussissimo",
     eyebrow: "Projekt 03 · Gypsy · Ethno · Jazz",
     image: `${PROJECT_HERO_IMAGE_BASE}/fussissimo.webp`,
+    imageSrcSet: `${PROJECT_HERO_IMAGE_BASE}/fussissimo-640.webp 640w, ${PROJECT_HERO_IMAGE_BASE}/fussissimo-960.webp 960w, ${PROJECT_HERO_IMAGE_BASE}/fussissimo.webp 1600w`,
+    imageSizes: "100vw",
     runtime: ["Trio · seit fast 20 Jahren", "Rehan Syed · Gitarre", "Simon Ort · Bass · Harald Oeler · Akkordeon"],
     lede: ["Tango, Bossa, Musette, Orient — ", { em: "alles in einem Atemzug." }],
     body: [
@@ -210,6 +212,8 @@ const DETAILS = {
     title: "Duo ViA!",
     eyebrow: "Projekt 04 · Akkordeon & Violine",
     image: `${PROJECT_HERO_IMAGE_BASE}/duovia.webp`,
+    imageSrcSet: `${PROJECT_HERO_IMAGE_BASE}/duovia-640.webp 640w, ${PROJECT_HERO_IMAGE_BASE}/duovia-960.webp 960w, ${PROJECT_HERO_IMAGE_BASE}/duovia.webp 1600w`,
+    imageSizes: "100vw",
     runtime: ["Sinn Yang · Violine", "Harald Oeler · Akkordeon", "Album · 8 Jahreszeiten · OehmsClassics"],
     lede: ["Vivaldi & Piazzolla — ", { em: "ein kühnes Wagnis" }, " der Harmonie und der Erfindung."],
     body: [

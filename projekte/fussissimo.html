@@ -26,12 +26,15 @@
   <title>HARALD OELER — Fussissimo</title>
   <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/site.css?v=11">
-  <!-- Preload the LCP hero image so it's discoverable before the JS bundle runs -->
-  <link rel="preload" as="image" href="/projekte/image/page/fussissimo.webp" fetchpriority="high">
+  <!-- site.css is not render-blocking: critical header/hero rules are inlined below -->
+  <link rel="preload" href="../assets/site.css?v=12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/site.css?v=12"></noscript>
+  <!-- Mobile LCP uses the 960w file. Desktop keeps the full hero. -->
+  <link rel="preload" as="image" href="/projekte/image/page/fussissimo-960.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/projekte/image/page/fussissimo.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" as="style" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
   <style>
 /* Harald OELER — projekte / fussissimo */
@@ -49,9 +52,11 @@ html, body { background: var(--paper); color: var(--ink); font-family: var(--san
 a { color: inherit; text-decoration: none; }
 
 .site-header { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); backdrop-filter: saturate(140%); }
+.header-inner { max-width: 1480px; margin: 0 auto; padding: 22px 48px; display: flex; align-items: center; gap: 48px; }
 .wordmark { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; }
 .wordmark .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin: 0 10px 2px; vertical-align: middle; }
 .wordmark small { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 13px; letter-spacing: 0.04em; text-transform: none; color: var(--muted); }
+nav.primary { display: flex; gap: 28px; margin-left: auto; font-size: 12px; letter-spacing: 0.18em; text-transform: lowercase; }
 nav.primary a { color: var(--muted); position: relative; padding: 4px 0; transition: color .25s ease; }
 nav.primary a.active { color: var(--ink); }
 body.dark nav.primary a.active { color: var(--paper); }
@@ -70,6 +75,7 @@ nav.primary a.active::after { content: ""; position: absolute; left: 0; right: 0
 .eyebrow { font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
 
 .detail .hero { position: relative; height: 78vh; min-height: 560px; overflow: hidden; background: var(--ink); }
+.detail .hero picture { display: block; width: 100%; height: 100%; }
 .detail .hero img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
 .detail .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,13,12,0.25) 0%, transparent 30%, rgba(14,13,12,0.85) 100%); }
 .detail .hero-meta { position: absolute; left: 48px; right: 48px; bottom: 48px; z-index: 2; color: var(--paper); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; }
@@ -249,66 +255,58 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-  <div id="root"></div>
-  <script type="module" src="../assets/projekte__fussissimo.bundle.js?v=10"></script>
+  <!-- Static shell: LCP hero paints before the React bundle -->
+  <div class="detail" id="static-shell">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="/">HARALD<span class="dot"></span>OELER <small>accordionist &amp; composer</small></a>
+        <nav class="primary">
+          <a href="/bio">bio</a>
+          <a class="active" href="/projekte">projekte</a>
+          <a href="/termine">termine</a>
+          <a href="/news">news</a>
+          <a href="/unterricht">unterricht</a>
+          <a href="/medien">medien</a>
+          <a href="/kontakt">kontakt</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Menü öffnen" aria-expanded="false">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <line x1="0" y1="1" x2="22" y2="1" />
+            <line x1="0" y1="7" x2="22" y2="7" />
+            <line x1="0" y1="13" x2="22" y2="13" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <a class="back-link" href="/projekte">
+      <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M18 8 L0 8 M6 2 L0 8 L6 14"/></svg>
+      zurück zu projekte
+    </a>
+    <section class="hero" id="main">
+      <picture>
+        <source media="(max-width: 900px)" srcset="/projekte/image/page/fussissimo-960.webp" type="image/webp">
+        <img src="/projekte/image/page/fussissimo.webp" alt="Fussissimo" width="1600" height="1067" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero-meta">
+        <div>
+          <div class="eyebrow">Projekt 03 · Gypsy · Ethno · Jazz</div>
+          <h1>Fussissimo</h1>
+        </div>
+        <div class="runtime">
+          <div>Trio · seit fast 20 Jahren</div>
+          <div>Rehan Syed · Gitarre</div>
+          <div>Simon Ort · Bass · Harald Oeler · Akkordeon</div>
+        </div>
+      </div>
+    </section>
+    <div id="root"></div>
+  </div>
+  <script type="module" src="../assets/projekte__fussissimo.bundle.js?v=11" fetchpriority="low"></script>
 
-  <!-- Scroll to top button -->
+  <!-- Scroll to top — opacity/transform only (composited) -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M12 19V5" />
-      <path d="M5 12l7-7 7 7" />
-    </svg>
+    <span aria-hidden="true">oben</span>
   </button>
-  <style>
-    .scroll-top{
-      position:fixed; right:18px; bottom:18px; z-index:9999;
-      width:44px; height:44px; border-radius:999px;
-      display:grid; place-items:center;
-      border:1px solid color-mix(in srgb, var(--ink, #0e0d0c) 18%, transparent);
-      background:color-mix(in srgb, var(--paper, #f4f1ec) 86%, transparent);
-      color:var(--ink, #0e0d0c);
-      -webkit-backdrop-filter: blur(12px) saturate(140%);
-      backdrop-filter: blur(12px) saturate(140%);
-      box-shadow:0 10px 28px rgba(0,0,0,.14);
-      cursor:pointer;
-      opacity:0; transform:translateY(8px); pointer-events:none;
-      transition: opacity .2s ease, transform .2s ease, background-color .2s ease, border-color .2s ease;
-    }
-    body.dark .scroll-top{
-      border-color: color-mix(in srgb, var(--paper, #f4f1ec) 18%, transparent);
-      background: color-mix(in srgb, var(--ink, #0e0d0c) 78%, transparent);
-      color: var(--paper, #f4f1ec);
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
-    }
-    .scroll-top.is-visible{ opacity:0.92; transform:translateY(0); pointer-events:auto; }
-    .scroll-top:hover{
-      opacity:1; transform:translateY(-1px);
-      border-color: color-mix(in srgb, var(--accent, #6b1d1a) 55%, transparent);
-    }
-    .scroll-top:focus-visible{
-      outline:2px solid var(--accent, #6b1d1a);
-      outline-offset:3px;
-      opacity:1;
-      pointer-events:auto;
-    }
-    @media (prefers-reduced-motion: reduce){ .scroll-top{ transition:none; } }
-  </style>
-  <script>
-    (function(){
-      var btn = document.getElementById('scrollTopBtn');
-      if (!btn) return;
-      var showAt = 500;
-      function sync(){
-        btn.classList.toggle('is-visible', window.scrollY > showAt);
-      }
-      window.addEventListener('scroll', sync, { passive: true });
-      sync();
-      btn.addEventListener('click', function(){
-        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      });
-    })();
-  </script>
-  <script src="../assets/site.js?v=38" defer></script>
+  <script src="../assets/site.js?v=39" defer></script>
 </body>
 </html>

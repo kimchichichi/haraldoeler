@@ -71,6 +71,42 @@ function overviewData() {
   return src;
 }
 
+/** Detail pages only ship one project entry — cuts unused JS (~other DETAILS). */
+function detailData(id) {
+  let src = readSource("data.jsx");
+  const start = src.indexOf("const DETAILS =");
+  const end = src.indexOf("\nfunction Header");
+  if (start < 0 || end <= start) return src;
+
+  const block = src.slice(start, end);
+  const keyAt = block.indexOf(`\n  ${id}:`);
+  if (keyAt < 0) {
+    console.warn(`[warn] DETAILS.${id} not found — bundling full data`);
+    return src;
+  }
+
+  let i = block.indexOf("{", keyAt);
+  if (i < 0) return src;
+  let depth = 0;
+  let endObj = -1;
+  for (; i < block.length; i++) {
+    const ch = block[i];
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) {
+        endObj = i;
+        break;
+      }
+    }
+  }
+  if (endObj < 0) return src;
+
+  const entry = block.slice(keyAt, endObj + 1).replace(/^\s*,?\s*/, "").replace(/,?\s*$/, "");
+  const slim = `const DETAILS = {\n  ${entry}\n};\n`;
+  return src.slice(0, start) + slim + src.slice(end + 1);
+}
+
 function buildOverview() {
   const entry = writeEntry(
     "overview-entry.jsx",
@@ -87,7 +123,7 @@ function buildDetail(id) {
   const entry = writeEntry(
     `detail-${id}-entry.jsx`,
     [
-      preamble(),
+      preamble(detailData(id)),
       readSource("scripts/projekt-detail.jsx"),
       "",
       `createRoot(document.getElementById("root")).render(`,
@@ -100,7 +136,8 @@ function buildDetail(id) {
   );
   const outfile = path.join(root, "assets", `projekte__${id}.bundle.js`);
   build({ entryFile: entry, outfile });
-  console.log(`[ok] assets/projekte__${id}.bundle.js`);
+  const kb = Math.round(fs.statSync(outfile).size / 1024);
+  console.log(`[ok] assets/projekte__${id}.bundle.js (${kb} KiB, DETAILS.${id} only)`);
 }
 
 ensureEsbuild();

@@ -160,7 +160,7 @@
     var link = document.createElement('link');
     link.id = 'ho-chrome';
     link.rel = 'stylesheet';
-    link.href = sitePrefix() + 'assets/chrome.css?v=28';
+    link.href = sitePrefix() + 'assets/chrome.css?v=29';
     (document.body || document.head).appendChild(link);
   }
 

@@ -277,7 +277,25 @@
   function locationText(item) {
     var locEl = item.querySelector('.c-location');
     if (!locEl) return '';
-    return locEl.textContent.replace(/\s+/g, ' ').trim();
+    // Prefer explicit calendar address (street + PLZ) over display shorthand
+    var explicit = (locEl.getAttribute('data-location') || item.getAttribute('data-location') || '').trim();
+    if (explicit) return explicit;
+    var link = locEl.querySelector('a[href*="maps"]');
+    if (link) {
+      try {
+        var q = new URL(link.href).searchParams.get('query');
+        if (q) {
+          var display = locEl.textContent.replace(/\s+/g, ' ').trim();
+          var venue = display.split('·')[0].trim();
+          var street = q.replace(/\+/g, ' ').trim();
+          if (venue && street && street.toLowerCase().indexOf(venue.toLowerCase().slice(0, Math.min(12, venue.length))) === -1) {
+            return venue + ', ' + street.replace(/\s+(\d{5})\s+/, ', $1 ');
+          }
+          return street.replace(/\s+(\d{5})\s+/, ', $1 ');
+        }
+      } catch (err) { /* fall through */ }
+    }
+    return locEl.textContent.replace(/\s+/g, ' ').trim().replace(/\s*·\s*/g, ', ');
   }
 
   function parseConcertTime(dayEl) {

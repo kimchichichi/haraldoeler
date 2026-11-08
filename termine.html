@@ -610,6 +610,12 @@ body.dark .follow-btn--secondary:hover { border-color: var(--paper); }
     margin-top: 12px;
     white-space: normal;
   }
+  /* Actions align left here — open calendar menu to the right so it isn't clipped by body overflow-x */
+  .c-cal { align-items: flex-start; }
+  .cal-menu {
+    left: 0;
+    right: auto;
+  }
 }
 
 @media (max-width: 720px) {

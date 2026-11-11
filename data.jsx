@@ -205,7 +205,7 @@ const DETAILS = {
       { date: "21. Juni 2026", time: "17:40 Uhr", title: "Umsonst & Draussen Festival", venue: "Draussen-Bühne", city: "Würzburg", note: "Freies Open-Air-Konzert" },
       { date: "27. September 2026", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Huttenschloss", city: "Gemünden am Main", note: "" },
       { date: "23. Januar 2027", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Café Victoria · Münzmeisterhaus", city: "Coburg", note: "" },
-      { date: "17. April 2027", time: "Uhrzeit folgt", title: "Fussissimo", venue: "Ort folgt", city: "", note: "" },
+      { date: "17. April 2027", time: "19:30 Uhr", title: "Fussissimo – Gypsy-Ethno-Jazz", venue: "Kronenzentrum", city: "Bietigheim-Bissingen", note: "" },
     ],
   },
   duovia: {
@@ -392,7 +392,7 @@ const DETAILS = {
       { date: "18. September 2026", time: "20:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Neuneinhalb im Gerberhaus", city: "Bayreuth", note: "Gerberplatz 1 · 95445 Bayreuth" },
       { date: "5. Dezember 2026", time: "18:00 Uhr", title: "Duo KlAkk! Encore!", venue: "Mauritiuskirche", city: "Kirchheim am Neckar", note: "Kirchgasse 6 · 74366 Kirchheim am Neckar" },
       { date: "27. Februar 2027", time: "19:30 Uhr", title: "Duo KlAkk! Encore!", venue: "Alte Kelter", city: "Gemmrigheim", note: "" },
-      { date: "26. September 2027", time: "Uhrzeit folgt", title: "Duo KlAkk! goes BACH!", venue: "Spitalkirche", city: "Kulmbach", note: "" },
+      { date: "26. September 2027", time: "19:00 Uhr", title: "Duo KlAkk! goes BACH!", venue: "Spitalkirche", city: "Kulmbach", note: "" },
     ],
     media: [
       { kind: "youtube", id: "4NPvdif9o6M", caption: "J.S. Bach · Sonate für Viola da Gamba und Cembalo in g-Moll, BWV 1029", filter: "bach" },

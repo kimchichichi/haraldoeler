@@ -531,6 +531,16 @@ body.dark .section-rule { background: color-mix(in srgb, var(--paper) 18%, trans
   color: rgba(244,241,236,0.45);
 }
 
+.lb-credit {
+  margin-top: 8px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244,241,236,0.45);
+  min-height: 1.2em;
+}
+
 .lb-download {
   margin-top: 14px;
   font-family: var(--sans);
@@ -1301,38 +1311,40 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <div class="media-wrap">
 
       <p class="photo-credit">
-        Kat Schulze ·
+        01 ·
         <a href="https://www.schwarzenbach-fotografie.de" target="_blank" rel="noopener">Schwarzenbach Fotografie</a>
+        · 02–07, 09–11 · Kat Schulze
+        · 12 · Irène Zandel
       </p>
       <p class="photo-note">Für Presse und Plakat: Foto öffnen, dann Original herunterladen.</p>
 
       <!-- Photo grid: thumb + lightbox preview, download stays full resolution -->
       <div class="photo-grid" id="photoGrid">
-        <div class="photo-item" data-index="0" data-preview="image/media/view/1-1280.webp" data-download="image/media/download/01-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_01.jpg">
+        <div class="photo-item" data-index="0" data-credit="Schwarzenbach Fotografie" data-preview="image/media/view/1-1280.webp" data-download="image/media/download/01-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_01.jpg">
           <img src="image/media/view/1-640.webp" srcset="image/media/view/1-640.webp 640w, image/media/view/1-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="904" alt="Harald Oeler — Foto 1" loading="lazy" decoding="async">
           <span class="photo-index">01</span>
         </div>
-        <div class="photo-item" data-index="1" data-preview="image/media/view/2-1280.webp" data-download="image/media/download/02-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_02.jpg">
+        <div class="photo-item" data-index="1" data-credit="Kat Schulze" data-preview="image/media/view/2-1280.webp" data-download="image/media/download/02-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_02.jpg">
           <img src="image/media/view/2-640.webp" srcset="image/media/view/2-640.webp 640w, image/media/view/2-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="427" alt="Harald Oeler — Foto 2" loading="lazy" decoding="async">
           <span class="photo-index">02</span>
         </div>
-        <div class="photo-item" data-index="2" data-preview="image/media/view/3-1280.webp" data-download="image/media/download/03-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_03.jpg">
+        <div class="photo-item" data-index="2" data-credit="Kat Schulze" data-preview="image/media/view/3-1280.webp" data-download="image/media/download/03-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_03.jpg">
           <img src="image/media/view/3-640.webp" srcset="image/media/view/3-640.webp 640w, image/media/view/3-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="960" alt="Harald Oeler — Foto 3" loading="lazy" decoding="async">
           <span class="photo-index">03</span>
         </div>
-        <div class="photo-item" data-index="3" data-preview="image/media/view/4-1280.webp" data-download="image/media/download/04-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_04.jpg">
+        <div class="photo-item" data-index="3" data-credit="Kat Schulze" data-preview="image/media/view/4-1280.webp" data-download="image/media/download/04-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_04.jpg">
           <img src="image/media/view/4-640.webp" srcset="image/media/view/4-640.webp 640w, image/media/view/4-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="960" alt="Harald Oeler — Foto 4" loading="lazy" decoding="async">
           <span class="photo-index">04</span>
         </div>
-        <div class="photo-item" data-index="4" data-preview="image/media/view/5-1280.webp" data-download="image/media/download/05-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_05.jpg">
+        <div class="photo-item" data-index="4" data-credit="Kat Schulze" data-preview="image/media/view/5-1280.webp" data-download="image/media/download/05-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_05.jpg">
           <img src="image/media/view/5-640.webp" srcset="image/media/view/5-640.webp 640w, image/media/view/5-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="960" alt="Harald Oeler — Foto 5" loading="lazy" decoding="async">
           <span class="photo-index">05</span>
         </div>
-        <div class="photo-item" data-index="5" data-preview="image/media/view/6-1280.webp" data-download="image/media/download/06-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_06.jpg">
+        <div class="photo-item" data-index="5" data-credit="Kat Schulze" data-preview="image/media/view/6-1280.webp" data-download="image/media/download/06-opt.jpg" data-download-name="Harald-Oeler_Pressefoto_06.jpg">
           <img src="image/media/view/6-640.webp" srcset="image/media/view/6-640.webp 640w, image/media/view/6-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="427" alt="Harald Oeler — Foto 6" loading="lazy" decoding="async">
           <span class="photo-index">06</span>
         </div>
-        <div class="photo-item" data-index="6" data-preview="image/media/view/7-1280.webp" data-download="image/media/download/07.png" data-download-name="Harald-Oeler_Pressefoto_07.png">
+        <div class="photo-item" data-index="6" data-credit="Kat Schulze" data-preview="image/media/view/7-1280.webp" data-download="image/media/download/07.png" data-download-name="Harald-Oeler_Pressefoto_07.png">
           <img src="image/media/view/7-640.webp" srcset="image/media/view/7-640.webp 640w, image/media/view/7-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="303" alt="Harald Oeler — Foto 7" loading="lazy" decoding="async">
           <span class="photo-index">07</span>
         </div>
@@ -1340,19 +1352,19 @@ body.dark .nav-toggle:hover { opacity: 1; }
           <img src="image/media/view/8-640.webp" srcset="image/media/view/8-640.webp 640w, image/media/view/8-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="360" alt="Duo ViA! — Pressefoto" loading="lazy" decoding="async">
           <span class="photo-index">08</span>
         </div>
-        <div class="photo-item" data-index="8" data-preview="image/media/view/9-1280.webp" data-download="image/media/download/09-opt.jpg" data-download-name="Harald-Oeler_Duo-KlAkk_Konzert.jpg">
+        <div class="photo-item" data-index="8" data-credit="Kat Schulze" data-preview="image/media/view/9-1280.webp" data-download="image/media/download/09-opt.jpg" data-download-name="Harald-Oeler_Duo-KlAkk_Konzert.jpg">
           <img src="image/media/view/9-640.webp" srcset="image/media/view/9-640.webp 640w, image/media/view/9-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="427" alt="Duo KlAkk! — Konzert" loading="lazy" decoding="async">
           <span class="photo-index">09</span>
         </div>
-        <div class="photo-item" data-index="9" data-preview="image/media/view/10-1280.webp" data-download="image/media/download/10-opt.jpg" data-download-name="Harald-Oeler_Duo-KlAkk_Pressefoto.jpg">
+        <div class="photo-item" data-index="9" data-credit="Kat Schulze" data-preview="image/media/view/10-1280.webp" data-download="image/media/download/10-opt.jpg" data-download-name="Harald-Oeler_Duo-KlAkk_Pressefoto.jpg">
           <img src="image/media/view/10-640.webp" srcset="image/media/view/10-640.webp 640w, image/media/view/10-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="427" alt="Duo KlAkk! — Pressefoto" loading="lazy" decoding="async">
           <span class="photo-index">10</span>
         </div>
-        <div class="photo-item" data-index="10" data-preview="image/media/view/11-1280.webp" data-download="image/media/download/11.png" data-download-name="Harald-Oeler_Fussissimo_Trio.png">
+        <div class="photo-item" data-index="10" data-credit="Kat Schulze" data-preview="image/media/view/11-1280.webp" data-download="image/media/download/11.png" data-download-name="Harald-Oeler_Fussissimo_Trio.png">
           <img src="image/media/view/11-640.webp" srcset="image/media/view/11-640.webp 640w, image/media/view/11-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="427" alt="Fussissimo — Trio" loading="lazy" decoding="async">
           <span class="photo-index">11</span>
         </div>
-        <div class="photo-item" data-index="11" data-preview="image/media/view/12-1280.webp" data-download="image/media/download/12.png" data-download-name="Harald-Oeler_Duo-ViA_Pressefoto_12.png">
+        <div class="photo-item" data-index="11" data-credit="Irène Zandel" data-preview="image/media/view/12-1280.webp" data-download="image/media/download/12.png" data-download-name="Harald-Oeler_Duo-ViA_Pressefoto_12.png">
           <img src="image/media/view/12-640.webp" srcset="image/media/view/12-640.webp 640w, image/media/view/12-1280.webp 1280w" sizes="(max-width: 720px) calc(50vw - 26px), (max-width: 1100px) 30vw, 340px" width="640" height="426" alt="Duo ViA! — Pressefoto" loading="lazy" decoding="async">
           <span class="photo-index">12</span>
         </div>
@@ -1393,6 +1405,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     <div class="lb-inner">
       <img id="lbImg" alt="" width="1280" height="1808">
       <div class="lb-counter" id="lbCounter"></div>
+      <div class="lb-credit" id="lbCredit"></div>
       <a class="lb-download" id="lbDownload" href="image/media/download/01-opt.jpg" download="Harald-Oeler_Pressefoto_01.jpg">Original herunterladen</a>
     </div>
 
@@ -1412,6 +1425,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       return {
         preview: item.dataset.preview || img.getAttribute("src"),
         alt: img.getAttribute("alt"),
+        credit: item.dataset.credit || "",
         download: item.dataset.download,
         downloadName: item.dataset.downloadName
       };
@@ -1421,6 +1435,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
     var lightbox  = document.getElementById("lightbox");
     var lbImg     = document.getElementById("lbImg");
     var lbCounter = document.getElementById("lbCounter");
+    var lbCredit  = document.getElementById("lbCredit");
     var lbDownload = document.getElementById("lbDownload");
 
     function downloadLabel(name) {
@@ -1433,6 +1448,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
       lbImg.src = photo.preview;
       lbImg.alt = photo.alt;
       lbCounter.textContent = (current + 1) + " / " + photos.length;
+      lbCredit.textContent = photo.credit ? ("Foto · " + photo.credit) : "";
       lbDownload.href = photo.download;
       lbDownload.setAttribute("download", photo.downloadName);
       lbDownload.textContent = downloadLabel(photo.downloadName);

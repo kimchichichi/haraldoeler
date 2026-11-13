@@ -3,6 +3,7 @@
   'use strict';
 
   var MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+  var MONTHS_SHORT = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 
   function assignConcertIds() {
     document.querySelectorAll('.concert-item').forEach(function (item) {
@@ -109,10 +110,12 @@
     var searchInput = document.getElementById('concert-search');
     var items = document.querySelectorAll('.concert-item');
     var emptyEl = document.getElementById('termine-empty');
+    var monthFilters = document.getElementById('month-filters');
     if (!searchInput || !items.length) return;
 
     var originals = Array.from(items).map(function (item) { return item.innerHTML; });
     var activeYear = 'all';
+    var activeMonth = 'all';
 
     function escapeRe(s) {
       return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -124,11 +127,57 @@
       });
     }
 
-    function getItemYear(item) {
+    function parseItemDate(item) {
       var el = item.querySelector('.c-date');
       if (!el) return null;
-      var m = el.textContent.match(/\d{4}/);
-      return m ? m[0] : null;
+      var m = el.textContent.trim().match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+      if (!m) return null;
+      return { day: m[1], month: m[2], year: m[3] };
+    }
+
+    function getItemYear(item) {
+      var d = parseItemDate(item);
+      return d ? d.year : null;
+    }
+
+    function getItemMonth(item) {
+      var d = parseItemDate(item);
+      return d ? d.month : null;
+    }
+
+    function availableMonths() {
+      var seen = {};
+      items.forEach(function (item) {
+        var d = parseItemDate(item);
+        if (!d) return;
+        if (activeYear !== 'all' && d.year !== activeYear) return;
+        seen[d.month] = true;
+      });
+      return Object.keys(seen).sort();
+    }
+
+    function rebuildMonthButtons() {
+      if (!monthFilters) return;
+      var months = availableMonths();
+      if (activeMonth !== 'all' && months.indexOf(activeMonth) === -1) {
+        activeMonth = 'all';
+      }
+      monthFilters.innerHTML = '';
+      var allBtn = document.createElement('button');
+      allBtn.type = 'button';
+      allBtn.className = 'mo-btn' + (activeMonth === 'all' ? ' active' : '');
+      allBtn.dataset.mo = 'all';
+      allBtn.textContent = 'Monat';
+      monthFilters.appendChild(allBtn);
+      months.forEach(function (mo) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'mo-btn' + (activeMonth === mo ? ' active' : '');
+        btn.dataset.mo = mo;
+        btn.textContent = MONTHS_SHORT[Number(mo) - 1];
+        btn.setAttribute('aria-label', MONTHS[Number(mo) - 1]);
+        monthFilters.appendChild(btn);
+      });
     }
 
     function applyFilters() {
@@ -138,9 +187,11 @@
       items.forEach(function (item, i) {
         item.innerHTML = originals[i];
         var year = getItemYear(item);
+        var month = getItemMonth(item);
         var yearMatch = activeYear === 'all' || year === activeYear;
+        var monthMatch = activeMonth === 'all' || month === activeMonth;
         var textMatch = q === '' || item.textContent.toLowerCase().includes(q.toLowerCase());
-        var show = yearMatch && textMatch;
+        var show = yearMatch && monthMatch && textMatch;
         item.style.display = show ? '' : 'none';
         if (show) visible++;
         if (show && q !== '') item.innerHTML = highlightIn(originals[i], q);
@@ -165,9 +216,22 @@
         document.querySelectorAll('.yr-btn').forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
         activeYear = btn.dataset.yr;
+        rebuildMonthButtons();
         applyFilters();
       });
     });
+
+    if (monthFilters) {
+      monthFilters.addEventListener('click', function (e) {
+        var btn = e.target.closest('.mo-btn');
+        if (!btn) return;
+        activeMonth = btn.dataset.mo;
+        monthFilters.querySelectorAll('.mo-btn').forEach(function (b) {
+          b.classList.toggle('active', b.dataset.mo === activeMonth);
+        });
+        applyFilters();
+      });
+    }
 
     searchInput.addEventListener('input', applyFilters);
 
@@ -176,13 +240,16 @@
       resetBtn.addEventListener('click', function () {
         searchInput.value = '';
         activeYear = 'all';
+        activeMonth = 'all';
         document.querySelectorAll('.yr-btn').forEach(function (b) {
           b.classList.toggle('active', b.dataset.yr === 'all');
         });
+        rebuildMonthButtons();
         applyFilters();
       });
     }
 
+    rebuildMonthButtons();
     window.termineApplyFilters = applyFilters;
   }
 

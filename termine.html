@@ -242,13 +242,16 @@ nav.primary a.active::after {
 .search-wrap input::placeholder { color: var(--muted); }
 .search-wrap .search-icon { color: var(--muted); flex-shrink: 0; }
 
-/* ─── Year filters ───────────────────────────────────────────────────────── */
-.year-filters {
+/* ─── Year / month filters ───────────────────────────────────────────────── */
+.year-filters,
+.month-filters {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 4px;
 }
-.yr-btn {
+.yr-btn,
+.mo-btn {
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -261,11 +264,14 @@ nav.primary a.active::after {
   transition: color .25s, border-color .25s;
   line-height: 1;
 }
-.yr-btn:hover { color: var(--ink); }
-.yr-btn.active {
+.yr-btn:hover,
+.mo-btn:hover { color: var(--ink); }
+.yr-btn.active,
+.mo-btn.active {
   color: var(--ink);
   border-color: color-mix(in srgb, var(--ink) 22%, transparent);
 }
+.mo-btn { padding: 5px 10px; letter-spacing: 0.12em; }
 
 /* ─── Concert list ───────────────────────────────────────────────────────── */
 .concert-list {
@@ -688,8 +694,10 @@ body.dark .controls-bar { border-bottom-color: color-mix(in srgb, var(--paper) 1
 body.dark .search-wrap { border-color: color-mix(in srgb, var(--paper) 16%, transparent); }
 body.dark .search-wrap:focus-within { border-color: color-mix(in srgb, var(--paper) 40%, transparent); }
 body.dark .search-wrap input { color: var(--paper); }
-body.dark .yr-btn:hover { color: var(--paper); }
-body.dark .yr-btn.active { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 22%, transparent); }
+body.dark .yr-btn:hover,
+body.dark .mo-btn:hover { color: var(--paper); }
+body.dark .yr-btn.active,
+body.dark .mo-btn.active { color: var(--paper); border-color: color-mix(in srgb, var(--paper) 22%, transparent); }
 body.dark .concert-item { border-bottom-color: color-mix(in srgb, var(--paper) 10%, transparent); }
 body.dark .c-title small { color: color-mix(in srgb, var(--paper) 65%, transparent); }
 body.dark a.c-title:hover { color: color-mix(in srgb, var(--paper) 92%, transparent); }
@@ -1006,11 +1014,12 @@ body.dark { --accent: #8f2a25; --accent-soft: #a83a34; }
 
     <div class="controls-bar">
       <div class="controls-tools">
-        <div class="year-filters">
+        <div class="year-filters" role="group" aria-label="Jahr filtern">
           <button class="yr-btn active" type="button" data-yr="all">Alle</button>
           <button class="yr-btn" type="button" data-yr="2026">2026</button>
           <button class="yr-btn" type="button" data-yr="2027">2027</button>
         </div>
+        <div class="month-filters" id="month-filters" role="group" aria-label="Monat filtern"></div>
         <div class="search-wrap">
           <label for="concert-search" class="visually-hidden">Konzerte suchen</label>
           <svg class="search-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -2332,7 +2341,7 @@ Auch in diesem Jahr präsentieren ausgewählte Aussteller ihr kuratiertes Angebo
   </footer>
 
   <script src="assets/site.js?v=39" defer></script>
-  <script src="assets/termine.js?v=7" defer></script>
+  <script src="assets/termine.js?v=8" defer></script>
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M12 19V5" />

@@ -30,6 +30,7 @@ html, body {
 body.dark {
   background: var(--ink);
   color: var(--paper);
+  --muted: #a39e94; /* ≥4.5:1 on --ink for WCAG AA */
   --accent: #8f2a25;
   --accent-soft: #a83a34;
 }

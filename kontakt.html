@@ -15,24 +15,21 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Official website of the German accordionist Harald Oeler. Features all major projects, and media. Includes biographical information as well as past, current, and upcoming concerts." />
+  <meta name="description" content="Kontakt zu Harald Oeler — Konzertanfragen, Unterricht und Presse. E-Mail harald.oeler@gmx.de, Hof (Deutschland)." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta property="og:title" content="HARALD OELER | accordionist" />
-  <meta property="og:description" content="Official website of the German accordionist Harald Oeler." />
+  <meta property="og:title" content="HARALD OELER — Kontakt" />
+  <meta property="og:description" content="Konzertanfragen, Unterricht und Presse — Kontakt zu Harald Oeler." />
   <meta property="og:image" content="https://www.haraldoeler.com/image/hero.webp" />
   <meta property="og:url" content="https://www.haraldoeler.com/kontakt" />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://www.haraldoeler.com/kontakt" />
-  <title>HARALD OELER — kontakt</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap"></noscript>
-  <link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesrcset="image/contact-profile-640.webp 640w, image/contact-profile-800.webp 800w" imagesizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) 260px, 340px">
+  <title>HARALD OELER — Kontakt</title>
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesrcset="image/contact-profile-640.webp 640w, image/contact-profile-800.webp 800w" imagesizes="(max-width: 720px) calc(100vw - 48px), (max-width: 1100px) 260px, 340px">
+    <link rel="stylesheet" href="/assets/fonts.css?v=1">
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/site.css?v=11" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/site.css?v=11"></noscript>
+  <link rel="stylesheet" href="assets/site.css?v=12" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/site.css?v=12"></noscript>
   <!-- Extracted from Projekte.html — design system styles -->
   <style>
 /* HARALD OELER — kontakt */
@@ -428,6 +425,55 @@ body.dark .btn-send {
 }
 .btn-send svg { transition: transform .35s ease; }
 .btn-send:hover svg { transform: translateX(6px); }
+.btn-send:disabled { opacity: 0.55; cursor: wait; }
+
+.field-group--consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.field-group--consent input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.field-group--consent label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.field-group--consent label a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.field-group--consent label a:hover { color: var(--accent); }
+.field-group.has-error .field-error {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--accent);
+}
+.hp-field {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 
 /* ---------- Responsive (extracted from Projekte.html) ---------- */
 @media (max-width: 1100px) {
@@ -808,6 +854,20 @@ body.dark .nav-toggle:hover { opacity: 1; }
             <textarea id="cf-message" name="message" placeholder="Ihre Nachricht …" required></textarea>
           </div>
 
+          <!-- Honeypot — leave empty -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="cf-company">Firma</label>
+            <input type="text" id="cf-company" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="field-group field-group--consent">
+            <input type="checkbox" id="cf-consent" name="consent" value="1" required />
+            <label for="cf-consent">
+              Ich willige ein, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden.
+              Hinweise in der <a href="/datenschutz">Datenschutzerklärung</a>. Widerruf jederzeit möglich.
+            </label>
+          </div>
+
           <button type="submit" class="btn-send">
             Senden
             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
@@ -845,7 +905,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
   /* kontakt.js handles submission */
 })();
 </script>
-<script src="assets/kontakt.js?v=4" defer></script>
+<script src="assets/kontakt.js?v=5" defer></script>
 <script src="assets/site.js?v=39" defer></script>
   <!-- Scroll to top button -->
   <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Nach oben" title="Nach oben">

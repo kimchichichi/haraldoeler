@@ -1,8 +1,9 @@
-node_modules/
-scripts/.cache/
-tools/
 .DS_Store
+.claude/
 Icon
 Icon?
-.claude/
+localhost.pem
+node_modules/
+scripts/.cache/
 scripts/compress-images.py
+tools/

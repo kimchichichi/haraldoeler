@@ -64,7 +64,7 @@ function MediaEmbed({ m }) {
 
   if (open) {
     const src = isYouTube
-      ? `https://www.youtube.com/embed/${m.id}?autoplay=1`
+      ? `https://www.youtube-nocookie.com/embed/${m.id}?autoplay=1`
       : (m.url + (m.url.includes("?") ? "&" : "?") + "autoplay=1");
     return (
       <iframe
@@ -630,7 +630,7 @@ function ProjektDetail({ id, onBack }) {
               )}
               {r.embed.type === "youtube" && (
                 <iframe
-                  src={`https://www.youtube.com/embed/${r.embed.id}?autoplay=1`}
+                  src={`https://www.youtube-nocookie.com/embed/${r.embed.id}?autoplay=1`}
                   title={`${r.work} — Hörbeispiel`}
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

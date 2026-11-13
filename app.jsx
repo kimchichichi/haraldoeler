@@ -144,7 +144,7 @@ function ProjektDetail({ id, onBack }) {
                     <div className="frame">
                       {m.kind === "youtube" ? (
                         <iframe
-                          src={`https://www.youtube.com/embed/${m.id}`}
+                          src={`https://www.youtube-nocookie.com/embed/${m.id}`}
                           title={m.caption}
                           loading="lazy"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

@@ -78,17 +78,23 @@
     var err = document.createElement('span');
     err.className = 'field-error';
     err.id = id + '-error';
+    err.setAttribute('role', 'alert');
     err.textContent = msg;
     input.setAttribute('aria-describedby', err.id);
+    input.setAttribute('aria-invalid', 'true');
     group.appendChild(err);
   }
 
   function validate() {
     clearFieldErrors();
+    form.querySelectorAll('[aria-invalid]').forEach(function (el) {
+      el.removeAttribute('aria-invalid');
+    });
     var ok = true;
     var name = form.querySelector('#cf-name');
     var email = form.querySelector('#cf-email');
     var message = form.querySelector('#cf-message');
+    var consent = form.querySelector('#cf-consent');
 
     if (!name.value.trim()) {
       setFieldError('cf-name', 'Bitte Namen eingeben.');
@@ -105,6 +111,10 @@
     var subject = form.querySelector('#cf-subject');
     if (subject && !subject.value) {
       setFieldError('cf-subject', 'Bitte Betreff wählen.');
+      ok = false;
+    }
+    if (consent && !consent.checked) {
+      setFieldError('cf-consent', 'Bitte Einwilligung zur Datenverarbeitung bestätigen.');
       ok = false;
     }
     return ok;
@@ -160,8 +170,19 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    // Honeypot: bots fill hidden fields — abort silently
+    var honey = form.querySelector('#cf-company');
+    if (honey && honey.value) {
+      showStatus('Nachricht gesendet. Antwort in der Regel innerhalb weniger Tage.', 'success');
+      form.reset();
+      return;
+    }
+
     if (!validate()) {
       showStatus('Bitte Pflichtfelder korrekt ausfüllen.', 'error');
+      var firstErr = form.querySelector('.has-error input, .has-error select, .has-error textarea, .has-error input[type="checkbox"]');
+      if (firstErr) firstErr.focus();
       return;
     }
 
@@ -196,8 +217,8 @@
         message: fieldValue('cf-message'),
         _replyto: replyTo,
         _subject: subject,
-        _captcha: 'false',
-        _template: 'table'
+        _template: 'table',
+        _honey: fieldValue('cf-company') || ''
       })
     })
       .then(function (r) {

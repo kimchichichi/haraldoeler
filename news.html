@@ -24,17 +24,13 @@
   <link rel="canonical" href="https://www.haraldoeler.com/news" />
   <meta property="og:type" content="website">
   <title>HARALD OELER — news</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Trimmed weights (was 300–600 × 3 families) to cut third-party / render-chain cost -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"></noscript>
+<!-- Trimmed weights (was 300–600 × 3 families) to cut third-party / render-chain cost -->
+  <link rel="stylesheet" href="/assets/fonts.css?v=1">
   <link rel="icon" href="image/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <!-- LCP: first card image -->
   <link rel="preload" as="image" href="news/image/hfm_nuernberg/logo.svg" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=11">
+  <link rel="stylesheet" href="assets/site.css?v=12">
 
   <!-- Extracted from Projekte.html -->
   <style>
@@ -714,33 +710,15 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
     <div class="news-grid">
 
-      <!-- GENUIN classics · 2026 Jahr des Akkordeons · Nov 2026 -->
-      <a class="card" href="/news/genuin_pictures" data-date="2026-11-13" data-featured="1" data-cat="medien">
-        <div class="index">
-          <span>Nov 2026</span>
-          <span class="aktuell">Aktuell</span>
-          <span class="cat">Media</span>
-        </div>
-        <div class="image-wrap">
-          <img src="news/image/cards/pictures_exhibition.webp" alt="CD-Cover Pictures at an Exhibition — Harald Oeler · GENUIN" width="900" height="600" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
-        </div>
-        <div class="meta">
-          <h2>2026 <em>Jahr</em> des Akkordeons</h2>
-          <p class="subtitle">GENUIN classics · Pictures at an Exhibition · GEN 87523</p>
-        </div>
-        <span class="arrow">mehr lesen</span>
-      </a>
-
-
       <!-- Lehrbeauftragter · HfM Nürnberg · Fachdidaktik Akkordeon -->
-      <a class="card card--hfm" href="/news/hfm_nuernberg" data-date="2026-10-05" data-featured="2" data-cat="unterricht">
+      <a class="card card--hfm" href="/news/hfm_nuernberg" data-date="2026-10-05" data-featured="1" data-cat="unterricht">
         <div class="index">
           <span>Okt 2026</span>
           <span class="aktuell">Aktuell</span>
           <span class="cat">Unterricht</span>
         </div>
         <div class="image-wrap">
-          <img src="news/image/hfm_nuernberg/logo.svg" alt="Logo der Hochschule für Musik Nürnberg" width="380" height="46" loading="lazy" decoding="async">
+          <img src="news/image/hfm_nuernberg/logo.svg" alt="Logo der Hochschule für Musik Nürnberg" width="380" height="46" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="meta">
           <h2><em>Lehrbeauftragter</em> — Fachdidaktik Akkordeon</h2>
@@ -751,7 +729,7 @@ body.dark .nav-toggle:hover { opacity: 1; }
 
 
       <!-- Würzburger Bachtage 2026 · Eröffnungsakt -->
-      <a class="card" href="/news/bachtage26" data-date="2026-11-19" data-featured="3" data-cat="solo">
+      <a class="card" href="/news/bachtage26" data-date="2026-11-19" data-featured="2" data-cat="solo">
         <div class="index">
           <span>Nov 2026</span>
           <span class="aktuell">Aktuell</span>
@@ -763,6 +741,24 @@ body.dark .nav-toggle:hover { opacity: 1; }
         <div class="meta">
           <h2><em>Würzburger Bachtage</em> — Eröffnungsakt</h2>
           <p class="subtitle">Bach und die Zukunft · Bertold-Hummel-Saal · 19. November 2026</p>
+        </div>
+        <span class="arrow">mehr lesen</span>
+      </a>
+
+
+      <!-- GENUIN classics · 2026 Jahr des Akkordeons · Nov 2026 -->
+      <a class="card" href="/news/genuin_pictures" data-date="2026-11-13" data-featured="3" data-cat="medien">
+        <div class="index">
+          <span>Nov 2026</span>
+          <span class="aktuell">Aktuell</span>
+          <span class="cat">Media</span>
+        </div>
+        <div class="image-wrap">
+          <img src="news/image/cards/pictures_exhibition.webp" alt="CD-Cover Pictures at an Exhibition — Harald Oeler · GENUIN" width="900" height="600" loading="lazy" decoding="async" sizes="(max-width: 720px) 92vw, (max-width: 1100px) 45vw, 435px">
+        </div>
+        <div class="meta">
+          <h2>2026 <em>Jahr</em> des Akkordeons</h2>
+          <p class="subtitle">GENUIN classics · Pictures at an Exhibition · GEN 87523</p>
         </div>
         <span class="arrow">mehr lesen</span>
       </a>
